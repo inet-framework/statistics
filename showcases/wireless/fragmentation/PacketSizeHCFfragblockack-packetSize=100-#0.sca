@@ -1,0 +1,5190 @@
+version 3
+run PacketSizeHCFfragblockack-0-20230411-10:35:01-43381
+attr configname PacketSizeHCFfragblockack
+attr datetime 20230411-10:35:01
+attr datetimef 20230411-103501
+attr experiment PacketSizeHCFfragblockack
+attr inifile parameterstudy.ini
+attr iterationvars $packetSize=100
+attr iterationvarsd packetSize=100
+attr iterationvarsf packetSize=100-
+attr measurement $packetSize=100
+attr network FragmentationShowcase
+attr processid 43381
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar packetSize 100
+config **.param-recording false
+config image-path /home/levy/workspace/inet/images
+config sim-time-limit 1s
+config extends PacketSizeHCFfrag
+config **.fragmentationThreshold "int((100 + 8 + 20 + 8 + 15) / 16) * 1B + 26B + 4B"
+config *.*.wlan[*].mac.hcf.isBlockAckSupported true
+config extends IterationPacketSize
+config **.fragmentationThreshold "int((100 + 8 + 20 + 8 + 15) / 16) * 1B + 26B + 4B"
+config *.*.wlan[*].mac.qosStation true
+config *.*.wlan[*].mac.hcf.isBlockAckSupported false
+config **.wlan[*].classifier.typename QosClassifier
+config **.mac.hcf.originatorMacDataService.msduAggregationPolicy.typename ""
+config *.wifiHost1.app[0].destPort 4000
+config *.wifiHost2.app[0].localPort 4000
+config sim-time-limit 1s
+config *.wifiHost1.app[0].messageLength 100B
+config **.fragmentationThreshold "int((100 + 8 + 20 + 8 + 15) / 16) * 1B + 24B + 4B"
+config **.mtu 12250B
+config network FragmentationShowcase
+config sim-time-limit 10s
+config **.arp.typename GlobalArp
+config *.wifiHost1.numApps 1
+config *.wifiHost1.app[0].typename UdpBasicApp
+config *.wifiHost1.app[0].destAddresses "\"wifiHost2\""
+config *.wifiHost1.app[0].destPort 4000
+config *.wifiHost1.app[0].sendInterval 0.5ms
+config *.wifiHost1.app[0].messageLength 2000Byte
+config *.wifiHost2.numApps 1
+config *.wifiHost2.app[0].typename UdpSink
+config *.wifiHost2.app[0].localPort 4000
+config *.wifiHost*.wlan[*].radio.receiver.energyDetection -105dBm
+config *.wifiHost*.wlan[*].radio.receiver.sensitivity -105dBm
+config *.wifiHost*.wlan[*].radio.receiver.snirThreshold 0dB
+config *.wifiHost*.wlan[*].radio.transmitter.power 0.08mW
+config *.visualizer.*.dataLinkVisualizer.displayLinks true
+config *.visualizer.*.physicalLinkVisualizer.displayLinks true
+config *.visualizer.*.interfaceTableVisualizer.displayInterfaceTables true
+config *.visualizer.*.interfaceTableVisualizer.format "\"%N %\\\\%a/%l\\n%m\""
+
+scalar FragmentationShowcase.wifiHost1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar FragmentationShowcase.wifiHost1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar FragmentationShowcase.wifiHost1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar FragmentationShowcase.wifiHost1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar FragmentationShowcase.wifiHost1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 9708
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 0
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf frameSequenceFinished:count 0
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].contention stateChanged:count 9708
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopEnded:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source txopEnded
+attr title "txops ended, count"
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopDuration:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source txopDuration(txopEnded)
+attr title "txop duration"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].contention stateChanged:count 9708
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopEnded:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source txopEnded
+attr title "txops ended, count"
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopDuration:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source txopDuration(txopEnded)
+attr title "txop duration"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:last 100
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:max 100
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:timeavg 96.544353274843
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:last 132800
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:max 132800
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:timeavg 128210.90114899
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram
+field count 475
+field mean 0.17989806546991
+field stddev 0.057236580097229
+field min 0
+field max 0.21615931168
+field sum 85.451581098208
+field sqrsum 16.925410502894
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	4
+bin	0.005	4
+bin	0.01	3
+bin	0.015	4
+bin	0.02	4
+bin	0.025	3
+bin	0.03	1
+bin	0.035	4
+bin	0.04	3
+bin	0.045	3
+bin	0.05	3
+bin	0.055	2
+bin	0.06	2
+bin	0.065	4
+bin	0.07	4
+bin	0.075	4
+bin	0.08	3
+bin	0.085	3
+bin	0.09	2
+bin	0.095	3
+bin	0.1	2
+bin	0.105	3
+bin	0.11	3
+bin	0.115	4
+bin	0.12	3
+bin	0.125	3
+bin	0.13	5
+bin	0.135	2
+bin	0.14	3
+bin	0.145	3
+bin	0.15	4
+bin	0.155	3
+bin	0.16	3
+bin	0.165	4
+bin	0.17	3
+bin	0.175	3
+bin	0.18	3
+bin	0.185	4
+bin	0.19	3
+bin	0.195	12
+bin	0.2	43
+bin	0.205	141
+bin	0.21	149
+bin	0.215	6
+bin	0.22	0
+bin	0.225	0
+bin	0.23	0
+bin	0.235	0
+bin	0.24	0
+bin	0.245	0
+bin	0.25	0
+bin	0.255	0
+bin	0.26	0
+bin	0.265	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPackets:count 475
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:sum 630800
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram
+field count 475
+field mean 1328
+field stddev 0
+field min 1328
+field max 1328
+field sum 630800
+field sqrsum 837702400
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	1327	0
+bin	1328	475
+bin	1329	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPackets:count 2000
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPacketLengths:sum 2656000
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPacketLengths:histogram
+field count 2000
+field mean 1328
+field stddev 0
+field min 1328
+field max 1328
+field sum 2656000
+field sqrsum 3527168000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	1327	0
+bin	1328	2000
+bin	1329	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue droppedPacketsQueueOverflow:count 1425
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue droppedPacketLengthsQueueOverflow:sum 1892400
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram
+field count 7580
+field mean 0.0017275340841795
+field stddev 0.00098678459905492
+field min 8.7397088e-05
+field max 0.006411367968
+field sum 13.09470835808
+field sqrsum 0.030001559611713
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	1
+bin	0.0001	1
+bin	0.0002	182
+bin	0.0003	182
+bin	0.0004	5
+bin	0.0005	404
+bin	0.0006	482
+bin	0.0007	233
+bin	0.0008	22
+bin	0.0009	455
+bin	0.001	412
+bin	0.0011	302
+bin	0.0012	157
+bin	0.0013	446
+bin	0.0014	408
+bin	0.0015	271
+bin	0.0016	226
+bin	0.0017	347
+bin	0.0018	239
+bin	0.0019	219
+bin	0.002	278
+bin	0.0021	222
+bin	0.0022	207
+bin	0.0023	194
+bin	0.0024	187
+bin	0.0025	156
+bin	0.0026	124
+bin	0.0027	145
+bin	0.0028	93
+bin	0.0029	127
+bin	0.003	90
+bin	0.0031	97
+bin	0.0032	86
+bin	0.0033	82
+bin	0.0034	48
+bin	0.0035	65
+bin	0.0036	59
+bin	0.0037	39
+bin	0.0038	48
+bin	0.0039	50
+bin	0.004	29
+bin	0.0041	17
+bin	0.0042	17
+bin	0.0043	13
+bin	0.0044	1
+bin	0.0045	23
+bin	0.0046	10
+bin	0.0047	4
+bin	0.0048	9
+bin	0.0049	18
+bin	0.005	12
+bin	0.0051	11
+bin	0.0052	6
+bin	0.0053	6
+bin	0.0054	2
+bin	0.0055	4
+bin	0.0056	0
+bin	0.0057	0
+bin	0.0058	0
+bin	0.0059	0
+bin	0.006	2
+bin	0.0061	3
+bin	0.0062	0
+bin	0.0063	0
+bin	0.0064	2
+bin	0.0065	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:max 22
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:timeavg 13.119653629632
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].contention channelAccessGranted:count 602
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].contention stateChanged:count 12116
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopEnded:count 601
+attr interpolationmode none
+attr recordingmode count
+attr source txopEnded
+attr title "txops ended, count"
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram
+field count 601
+field mean 0.0014467411196805
+field stddev 0.0012702486160874
+field min 0.000301
+field max 0.00604695632
+field sum 0.869491412928
+field sqrsum 0.0022260479082952
+attr interpolationmode none
+attr recordingmode histogram
+attr source txopDuration(txopEnded)
+attr title "txop duration"
+bin	-inf	0
+bin	0	0
+bin	0.0001	0
+bin	0.0002	0
+bin	0.0003	176
+bin	0.0004	0
+bin	0.0005	0
+bin	0.0006	0
+bin	0.0007	114
+bin	0.0008	0
+bin	0.0009	0
+bin	0.001	0
+bin	0.0011	90
+bin	0.0012	0
+bin	0.0013	0
+bin	0.0014	0
+bin	0.0015	62
+bin	0.0016	0
+bin	0.0017	1
+bin	0.0018	0
+bin	0.0019	31
+bin	0.002	0
+bin	0.0021	0
+bin	0.0022	0
+bin	0.0023	31
+bin	0.0024	0
+bin	0.0025	0
+bin	0.0026	0
+bin	0.0027	23
+bin	0.0028	0
+bin	0.0029	0
+bin	0.003	0
+bin	0.0031	22
+bin	0.0032	0
+bin	0.0033	0
+bin	0.0034	0
+bin	0.0035	9
+bin	0.0036	0
+bin	0.0037	0
+bin	0.0038	0
+bin	0.0039	10
+bin	0.004	0
+bin	0.0041	0
+bin	0.0042	0
+bin	0.0043	6
+bin	0.0044	0
+bin	0.0045	0
+bin	0.0046	0
+bin	0.0047	8
+bin	0.0048	0
+bin	0.0049	0
+bin	0.005	0
+bin	0.0051	7
+bin	0.0052	0
+bin	0.0053	0
+bin	0.0054	0
+bin	0.0055	2
+bin	0.0056	0
+bin	0.0057	0
+bin	0.0058	0
+bin	0.0059	4
+bin	0.006	5
+bin	0.0061	0
+bin	0.0062	0
+bin	0.0063	0
+bin	0.0064	0
+bin	0.0065	0
+bin	0.0066	0
+bin	0.0067	0
+bin	0.0068	0
+bin	0.0069	0
+bin	0.007	0
+bin	0.0071	0
+bin	0.0072	0
+bin	0.0073	0
+bin	0.0074	0
+bin	0.0075	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] channelOwnershipChanged:count 1203
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeer:count 13206
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeer:sum(packetBytes) 516140
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerUnicast:count 13206
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerUnicast:sum(packetBytes) 516140
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithRetry:count 2
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithRetry:sum(packetBytes) 78
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:count 13204
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:sum(packetBytes) 516062
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:timeavg 0.0005024635992708
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:max 296
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:timeavg 0.14872922538416
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram
+field count 1
+field mean 0.001044191264
+field stddev nan
+field min 0.001044191264
+field max 0.001044191264
+field sum 0.001044191264
+field sqrsum 1.0903353958139e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPackets:count 1
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:sum 296
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram
+field count 1
+field mean 296
+field stddev nan
+field min 296
+field max 296
+field sum 296
+field sqrsum 87616
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	295	0
+bin	296	1
+bin	297	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPackets:count 1
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:sum 296
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram
+field count 1
+field mean 296
+field stddev nan
+field min 296
+field max 296
+field sum 296
+field sqrsum 87616
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	295	0
+bin	296	1
+bin	297	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram
+field count 1
+field mean 8.7397088e-05
+field stddev nan
+field min 8.7397088e-05
+field max 8.7397088e-05
+field sum 8.7397088e-05
+field sqrsum 7.6382509908797e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	1
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:timeavg 8.7397088e-05
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].contention channelAccessGranted:count 1
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].contention stateChanged:count 9712
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopEnded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source txopEnded
+attr title "txops ended, count"
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram
+field count 1
+field mean 8.7397088e-05
+field stddev nan
+field min 8.7397088e-05
+field max 8.7397088e-05
+field sum 8.7397088e-05
+field sqrsum 7.6382509908797e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source txopDuration(txopEnded)
+attr title "txop duration"
+bin	-inf	0
+bin	0	1
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] channelOwnershipChanged:count 2
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:count 1
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:sum(packetBytes) 37
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:sum(packetBytes) 37
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:sum(packetBytes) 37
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.originatorMacDataService packetFragmented:count 475
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDefragmented:count 1
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf blockAckAgreementDeleted:count 0
+attr recordingmode count
+attr title "deleted block ack agreements, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf blockAckAgreementAdded:count 1
+attr recordingmode count
+attr title "added block ack agreements, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf edcaCollisionDetected:count 0
+attr recordingmode count
+attr title "EDCA collisions detected, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceFinished:count 602
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram
+field count 602
+field mean 0.0014444830731163
+field stddev 0.0012704000409801
+field min 8.7397088e-05
+field max 0.00604695632
+field sum 0.869578810016
+field sqrsum 0.0022260555465462
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0	1
+bin	0.0001	0
+bin	0.0002	0
+bin	0.0003	176
+bin	0.0004	0
+bin	0.0005	0
+bin	0.0006	0
+bin	0.0007	114
+bin	0.0008	0
+bin	0.0009	0
+bin	0.001	0
+bin	0.0011	90
+bin	0.0012	0
+bin	0.0013	0
+bin	0.0014	0
+bin	0.0015	62
+bin	0.0016	0
+bin	0.0017	1
+bin	0.0018	0
+bin	0.0019	31
+bin	0.002	0
+bin	0.0021	0
+bin	0.0022	0
+bin	0.0023	31
+bin	0.0024	0
+bin	0.0025	0
+bin	0.0026	0
+bin	0.0027	23
+bin	0.0028	0
+bin	0.0029	0
+bin	0.003	0
+bin	0.0031	22
+bin	0.0032	0
+bin	0.0033	0
+bin	0.0034	0
+bin	0.0035	9
+bin	0.0036	0
+bin	0.0037	0
+bin	0.0038	0
+bin	0.0039	10
+bin	0.004	0
+bin	0.0041	0
+bin	0.0042	0
+bin	0.0043	6
+bin	0.0044	0
+bin	0.0045	0
+bin	0.0046	0
+bin	0.0047	8
+bin	0.0048	0
+bin	0.0049	0
+bin	0.005	0
+bin	0.0051	7
+bin	0.0052	0
+bin	0.0053	0
+bin	0.0054	0
+bin	0.0055	2
+bin	0.0056	0
+bin	0.0057	0
+bin	0.0058	0
+bin	0.0059	4
+bin	0.006	5
+bin	0.0061	0
+bin	0.0062	0
+bin	0.0063	0
+bin	0.0064	0
+bin	0.0065	0
+bin	0.0066	0
+bin	0.0067	0
+bin	0.0068	0
+bin	0.0069	0
+bin	0.007	0
+bin	0.0071	0
+bin	0.0072	0
+bin	0.0073	0
+bin	0.0074	0
+bin	0.0075	0
+bin	0.0076	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram
+field count 602
+field mean 25.609634551495
+field stddev 22.212379218544
+field min 2
+field max 106
+field sum 15417
+field sqrsum 691351
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	0	0
+bin	2	1
+bin	4	0
+bin	6	174
+bin	8	2
+bin	10	0
+bin	12	1
+bin	14	113
+bin	16	0
+bin	18	0
+bin	20	90
+bin	22	0
+bin	24	0
+bin	26	0
+bin	28	62
+bin	30	0
+bin	32	0
+bin	34	32
+bin	36	0
+bin	38	0
+bin	40	1
+bin	42	30
+bin	44	0
+bin	46	0
+bin	48	23
+bin	50	0
+bin	52	0
+bin	54	0
+bin	56	22
+bin	58	0
+bin	60	0
+bin	62	9
+bin	64	0
+bin	66	0
+bin	68	0
+bin	70	10
+bin	72	0
+bin	74	0
+bin	76	6
+bin	78	0
+bin	80	0
+bin	82	0
+bin	84	8
+bin	86	0
+bin	88	0
+bin	90	7
+bin	92	0
+bin	94	0
+bin	96	0
+bin	98	2
+bin	100	0
+bin	102	0
+bin	104	4
+bin	106	5
+bin	108	0
+bin	110	0
+bin	112	0
+bin	114	0
+bin	116	0
+bin	118	0
+bin	120	0
+bin	122	0
+bin	124	0
+bin	126	0
+bin	128	0
+bin	130	0
+bin	132	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerUnicast:count 1621
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerUnicast:sum(packetBytes) 243931
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:count 1621
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 243931
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeer:count 13208
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeer:sum(packetBytes) 516191
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerUnicast:count 13208
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerUnicast:sum(packetBytes) 516191
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithRetry:count 2
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithRetry:sum(packetBytes) 78
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithoutRetry:count 13206
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithoutRetry:sum(packetBytes) 516113
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDrop:count 1425
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDrop:sum(packetBytes) 236550
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropQueueOverflow:count 1425
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropQueueOverflow:sum(packetBytes) 236550
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromLower:count 2059
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 310369
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToLower:count 13208
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToLower:sum(packetBytes) 516191
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromUpper:count 2000
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 272000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToUpper:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDrop:count 1863
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDrop:sum(packetBytes) 302988
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropIncorrectlyReceived:count 438
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 66438
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropQueueOverflow:count 1425
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 236550
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+statistic FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:histogram
+field count 1
+field mean 0
+field stddev nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioMode:count 26419
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio receptionState:count 30536
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio transmissionState:count 52832
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram
+field count 2059
+field mean 17.84547201846
+field stddev 0
+field min 17.845472018459
+field max 17.845472018459
+field sum 36743.826886009
+field sqrsum 655710.93454537
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	17.34	0
+bin	17.36	0
+bin	17.38	0
+bin	17.4	0
+bin	17.42	0
+bin	17.44	0
+bin	17.46	0
+bin	17.48	0
+bin	17.5	0
+bin	17.52	0
+bin	17.54	0
+bin	17.56	0
+bin	17.58	0
+bin	17.6	0
+bin	17.62	0
+bin	17.64	0
+bin	17.66	0
+bin	17.68	0
+bin	17.7	0
+bin	17.72	0
+bin	17.74	0
+bin	17.76	0
+bin	17.78	0
+bin	17.8	0
+bin	17.82	0
+bin	17.84	2059
+bin	17.86	0
+bin	17.88	0
+bin	17.9	0
+bin	17.92	0
+bin	17.94	0
+bin	17.96	0
+bin	17.98	0
+bin	18	0
+bin	18.02	0
+bin	18.04	0
+bin	18.06	0
+bin	18.08	0
+bin	18.1	0
+bin	18.12	0
+bin	18.14	0
+bin	18.16	0
+bin	18.18	0
+bin	18.2	0
+bin	18.22	0
+bin	18.24	0
+bin	18.26	0
+bin	18.28	0
+bin	18.3	0
+bin	18.32	0
+bin	18.34	0
+bin	18.36	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram
+field count 2059
+field mean 0.21485899874194
+field stddev 0.017021106251667
+field min 0.036840217568255
+field max 0.21649962316663
+field sum 442.39467840965
+field sqrsum 95.648717415285
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	0	0
+bin	0.005	0
+bin	0.01	0
+bin	0.015	0
+bin	0.02	0
+bin	0.025	0
+bin	0.03	0
+bin	0.035	18
+bin	0.04	0
+bin	0.045	0
+bin	0.05	0
+bin	0.055	0
+bin	0.06	0
+bin	0.065	0
+bin	0.07	1
+bin	0.075	0
+bin	0.08	0
+bin	0.085	0
+bin	0.09	0
+bin	0.095	0
+bin	0.1	0
+bin	0.105	0
+bin	0.11	0
+bin	0.115	0
+bin	0.12	0
+bin	0.125	0
+bin	0.13	0
+bin	0.135	0
+bin	0.14	0
+bin	0.145	0
+bin	0.15	0
+bin	0.155	0
+bin	0.16	0
+bin	0.165	0
+bin	0.17	0
+bin	0.175	0
+bin	0.18	0
+bin	0.185	0
+bin	0.19	0
+bin	0.195	0
+bin	0.2	0
+bin	0.205	0
+bin	0.21	0
+bin	0.215	2040
+bin	0.22	0
+bin	0.225	0
+bin	0.23	0
+bin	0.235	0
+bin	0.24	0
+bin	0.245	0
+bin	0.25	0
+bin	0.255	0
+bin	0.26	0
+bin	0.265	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost1.wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost1.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar FragmentationShowcase.wifiHost1.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FragmentationShowcase.wifiHost1.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.udp packetSent:count 2000
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost1.udp packetSent:sum(packetBytes) 216000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar FragmentationShowcase.wifiHost1.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar FragmentationShowcase.wifiHost1.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar FragmentationShowcase.wifiHost1.app[0] "packets sent" 2000
+scalar FragmentationShowcase.wifiHost1.app[0] "packets received" 0
+scalar FragmentationShowcase.wifiHost1.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FragmentationShowcase.wifiHost1.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic FragmentationShowcase.wifiHost1.app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar FragmentationShowcase.wifiHost1.app[0] packetSent:count 2000
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost1.app[0] packetSent:sum(packetBytes) 200000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar FragmentationShowcase.wifiHost2.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar FragmentationShowcase.wifiHost2.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar FragmentationShowcase.wifiHost2.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar FragmentationShowcase.wifiHost2.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 62882
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 0
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf frameSequenceFinished:count 0
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].contention stateChanged:count 62882
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopEnded:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source txopEnded
+attr title "txops ended, count"
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopDuration:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source txopDuration(txopEnded)
+attr title "txop duration"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].contention stateChanged:count 62882
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopEnded:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source txopEnded
+attr title "txops ended, count"
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopDuration:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source txopDuration(txopEnded)
+attr title "txop duration"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].contention stateChanged:count 62882
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopEnded:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source txopEnded
+attr title "txops ended, count"
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source txopDuration(txopEnded)
+attr title "txop duration"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeer:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeer:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerUnicast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerUnicast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:timeavg 0.0001141240402562
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:max 296
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:timeavg 0.033780715915836
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram
+field count 1
+field mean 0.001200889808
+field stddev nan
+field min 0.001200889808
+field max 0.001200889808
+field sum 0.001200889808
+field sqrsum 1.4421363309583e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPackets:count 1
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:sum 296
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram
+field count 1
+field mean 296
+field stddev nan
+field min 296
+field max 296
+field sum 296
+field sqrsum 87616
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	295	0
+bin	296	1
+bin	297	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPackets:count 1
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:sum 296
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram
+field count 1
+field mean 296
+field stddev nan
+field min 296
+field max 296
+field sum 296
+field sqrsum 87616
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	295	0
+bin	296	1
+bin	297	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram
+field count 1
+field mean 8.7397088e-05
+field stddev nan
+field min 8.7397088e-05
+field max 8.7397088e-05
+field sum 8.7397088e-05
+field sqrsum 7.6382509908797e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	1
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:timeavg 8.7397088e-05
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].contention channelAccessGranted:count 1
+attr recordingmode count
+attr title "channel access granted, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].contention stateChanged:count 62886
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopEnded:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source txopEnded
+attr title "txops ended, count"
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram
+field count 1
+field mean 8.7397088e-05
+field stddev nan
+field min 8.7397088e-05
+field max 8.7397088e-05
+field sum 8.7397088e-05
+field sqrsum 7.6382509908797e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source txopDuration(txopEnded)
+attr title "txop duration"
+bin	-inf	0
+bin	0	1
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] channelOwnershipChanged:count 2
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:count 1
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:sum(packetBytes) 37
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:sum(packetBytes) 37
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:sum(packetBytes) 37
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDefragmented:count 474
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 39
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf blockAckAgreementDeleted:count 0
+attr recordingmode count
+attr title "deleted block ack agreements, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf blockAckAgreementAdded:count 1
+attr recordingmode count
+attr title "added block ack agreements, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf edcaCollisionDetected:count 0
+attr recordingmode count
+attr title "EDCA collisions detected, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceFinished:count 1
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram
+field count 1
+field mean 8.7397088e-05
+field stddev nan
+field min 8.7397088e-05
+field max 8.7397088e-05
+field sum 8.7397088e-05
+field sqrsum 7.6382509908797e-09
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0	1
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram
+field count 1
+field mean 2
+field stddev nan
+field min 2
+field max 2
+field sum 2
+field sqrsum 4
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	1	0
+bin	2	1
+bin	3	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerUnicast:count 12239
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerUnicast:sum(packetBytes) 478297
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:count 2
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:sum(packetBytes) 78
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:count 12237
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 478219
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeer:count 2059
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeer:sum(packetBytes) 310369
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerUnicast:count 2059
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerUnicast:sum(packetBytes) 310369
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithoutRetry:count 2059
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithoutRetry:sum(packetBytes) 310369
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:sum(packetBytes) 39
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromLower:count 13208
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 516191
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToLower:count 2060
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToLower:sum(packetBytes) 310521
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToUpper:count 473
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToUpper:sum(packetBytes) 64328
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:count 970
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:sum(packetBytes) 37933
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropIncorrectlyReceived:count 969
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 37894
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropDuplicateDetected:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 39
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+statistic FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:histogram
+field count 1
+field mean 0
+field stddev nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioMode:count 4122
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio receptionState:count 30536
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio transmissionState:count 8238
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram
+field count 13208
+field mean 17.845472018461
+field stddev 0
+field min 17.845472018459
+field max 17.845472018459
+field sum 235702.99441984
+field sqrsum 4206231.1915848
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	17.34	0
+bin	17.36	0
+bin	17.38	0
+bin	17.4	0
+bin	17.42	0
+bin	17.44	0
+bin	17.46	0
+bin	17.48	0
+bin	17.5	0
+bin	17.52	0
+bin	17.54	0
+bin	17.56	0
+bin	17.58	0
+bin	17.6	0
+bin	17.62	0
+bin	17.64	0
+bin	17.66	0
+bin	17.68	0
+bin	17.7	0
+bin	17.72	0
+bin	17.74	0
+bin	17.76	0
+bin	17.78	0
+bin	17.8	0
+bin	17.82	0
+bin	17.84	13208
+bin	17.86	0
+bin	17.88	0
+bin	17.9	0
+bin	17.92	0
+bin	17.94	0
+bin	17.96	0
+bin	17.98	0
+bin	18	0
+bin	18.02	0
+bin	18.04	0
+bin	18.06	0
+bin	18.08	0
+bin	18.1	0
+bin	18.12	0
+bin	18.14	0
+bin	18.16	0
+bin	18.18	0
+bin	18.2	0
+bin	18.22	0
+bin	18.24	0
+bin	18.26	0
+bin	18.28	0
+bin	18.3	0
+bin	18.32	0
+bin	18.34	0
+bin	18.36	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram
+field count 13208
+field mean 0.071407731435388
+field stddev 0.0039116616964498
+field min 0.036840217568255
+field max 0.072323233506033
+field sum 943.1533167986
+field sqrsum 67.550520339433
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	0.027	0
+bin	0.028	0
+bin	0.029	0
+bin	0.03	0
+bin	0.031	0
+bin	0.032	0
+bin	0.033	0
+bin	0.034	0
+bin	0.035	0
+bin	0.036	1
+bin	0.037	0
+bin	0.038	0
+bin	0.039	0
+bin	0.04	0
+bin	0.041	0
+bin	0.042	0
+bin	0.043	0
+bin	0.044	0
+bin	0.045	0
+bin	0.046	0
+bin	0.047	0
+bin	0.048	0
+bin	0.049	0
+bin	0.05	0
+bin	0.051	0
+bin	0.052	0
+bin	0.053	0
+bin	0.054	686
+bin	0.055	0
+bin	0.056	0
+bin	0.057	0
+bin	0.058	0
+bin	0.059	0
+bin	0.06	0
+bin	0.061	0
+bin	0.062	0
+bin	0.063	0
+bin	0.064	0
+bin	0.065	0
+bin	0.066	0
+bin	0.067	0
+bin	0.068	0
+bin	0.069	0
+bin	0.07	0
+bin	0.071	0
+bin	0.072	12521
+bin	0.073	0
+bin	0.074	0
+bin	0.075	0
+bin	0.076	0
+bin	0.077	0
+bin	0.078	0
+bin	0.079	0
+bin	0.08	0
+bin	0.081	0
+bin	0.082	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FragmentationShowcase.wifiHost2.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar FragmentationShowcase.wifiHost2.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.udp packetReceived:count 473
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FragmentationShowcase.wifiHost2.udp packetReceived:sum(packetBytes) 51084
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FragmentationShowcase.wifiHost2.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.udp passedUpPk:count 473
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar FragmentationShowcase.wifiHost2.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar FragmentationShowcase.wifiHost2.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar FragmentationShowcase.wifiHost2.app[0] packetReceived:count 473
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FragmentationShowcase.wifiHost2.app[0] packetReceived:sum(packetBytes) 47300
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic FragmentationShowcase.wifiHost2.app[0] endToEndDelay:histogram
+field count 473
+field mean 0.18249134837111
+field stddev 0.05674598384589
+field min 0.004448037392
+field max 0.217749240528
+field sum 86.318407779536
+field sqrsum 17.27225297914
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	0.005	4
+bin	0.01	4
+bin	0.015	4
+bin	0.02	3
+bin	0.025	3
+bin	0.03	2
+bin	0.035	3
+bin	0.04	3
+bin	0.045	3
+bin	0.05	4
+bin	0.055	1
+bin	0.06	3
+bin	0.065	4
+bin	0.07	3
+bin	0.075	4
+bin	0.08	4
+bin	0.085	2
+bin	0.09	2
+bin	0.095	4
+bin	0.1	2
+bin	0.105	3
+bin	0.11	2
+bin	0.115	5
+bin	0.12	2
+bin	0.125	3
+bin	0.13	5
+bin	0.135	3
+bin	0.14	3
+bin	0.145	3
+bin	0.15	2
+bin	0.155	4
+bin	0.16	4
+bin	0.165	4
+bin	0.17	3
+bin	0.175	3
+bin	0.18	3
+bin	0.185	4
+bin	0.19	3
+bin	0.195	4
+bin	0.2	26
+bin	0.205	61
+bin	0.21	204
+bin	0.215	56
+bin	0.22	0
+bin	0.225	0
+bin	0.23	0
+bin	0.235	0
+bin	0.24	0
+bin	0.245	0
+bin	0.25	0
+bin	0.255	0
+bin	0.26	0
+bin	0.265	0
+scalar FragmentationShowcase.radioMedium.propagation "Arrival computation count" 15268
+scalar FragmentationShowcase.radioMedium "transmission count" 15268
+scalar FragmentationShowcase.radioMedium "signal send count" 15268
+scalar FragmentationShowcase.radioMedium "reception computation count" 15268
+scalar FragmentationShowcase.radioMedium "interference computation count" 61073
+scalar FragmentationShowcase.radioMedium "reception decision computation count" 15267
+scalar FragmentationShowcase.radioMedium "listening decision computation count" 30538
+scalar FragmentationShowcase.radioMedium "reception cache hit" 85.713751029269
+attr unit %
+scalar FragmentationShowcase.radioMedium "interference cache hit" 66.666666666667
+attr unit %
+scalar FragmentationShowcase.radioMedium "noise cache hit" 0
+attr unit %
+scalar FragmentationShowcase.radioMedium "snir cache hit" 50
+attr unit %
+scalar FragmentationShowcase.radioMedium "reception decision cache hit" 50
+attr unit %
+scalar FragmentationShowcase.radioMedium "reception result cache hit" 0
+attr unit %
+

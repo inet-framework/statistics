@@ -1,0 +1,2927 @@
+version 3
+run RequestResponseTraffic-0-20230411-10:31:43-42645
+attr configname RequestResponseTraffic
+attr datetime 20230411-10:31:43
+attr datetimef 20230411-103143
+attr experiment RequestResponseTraffic
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network UdpAppExample
+attr processid 42645
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config image-path /home/levy/workspace/inet/images
+config sim-time-limit 100s
+config sim-time-limit 100s
+config *.server.app[0].typename UdpRequestResponseApp
+config *.server.app[0].io.localPort 1000
+config *.server.app[0].io.destAddress "\"client\""
+config *.server.app[0].io.destPort 1000
+config *.server.app[0].sink.tokenGenerator[0].numTokensPerPacket "intuniform(10, 20)"
+config *.server.app[0].sink.tokenGenerator[1].numTokensPerPacket "intuniform(5, 10)"
+config *.server.app[0].source.provider[0].packetLength "intuniform(100B, 1000B)"
+config *.server.app[0].source.provider[0].providingInterval "uniform(0s, 0.2s)"
+config *.server.app[0].source.provider[1].packetLength "intuniform(1000B, 10000B)"
+config *.server.app[0].source.provider[1].providingInterval "uniform(0s, 0.2s)"
+config network UdpAppExample
+config *.*.numApps 1
+config *.client.app[0].typename UdpApp
+config *.client.app[0].io.localPort 1000
+config *.client.app[0].io.destAddress "\"server\""
+config *.client.app[0].io.destPort 1000
+config *.client.app[0].source.productionInterval 1s
+config *.client.app[0].source.packetLength "intuniform(100B, 200B)"
+config *.client.app[0].source.packetData "intuniform(0, 1)"
+
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar UdpAppExample.client.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar UdpAppExample.client.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar UdpAppExample.client.ppp[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar UdpAppExample.client.ppp[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar UdpAppExample.client.ppp[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic UdpAppExample.client.ppp[0].queue queueingTime:histogram
+field count 101
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	101
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar UdpAppExample.client.ppp[0].queue outgoingPackets:count 101
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:sum 144096
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram
+field count 101
+field mean 1426.6930693069
+field stddev 238.61541201583
+field min 1032
+field max 1824
+field sum 144096
+field sqrsum 211274496
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	820	0
+bin	840	0
+bin	860	0
+bin	880	0
+bin	900	0
+bin	920	0
+bin	940	0
+bin	960	0
+bin	980	0
+bin	1000	0
+bin	1020	1
+bin	1040	2
+bin	1060	2
+bin	1080	4
+bin	1100	6
+bin	1120	3
+bin	1140	0
+bin	1160	2
+bin	1180	1
+bin	1200	3
+bin	1220	2
+bin	1240	4
+bin	1260	0
+bin	1280	2
+bin	1300	5
+bin	1320	4
+bin	1340	1
+bin	1360	6
+bin	1380	0
+bin	1400	3
+bin	1420	4
+bin	1440	2
+bin	1460	1
+bin	1480	0
+bin	1500	3
+bin	1520	3
+bin	1540	3
+bin	1560	5
+bin	1580	3
+bin	1600	0
+bin	1620	2
+bin	1640	1
+bin	1660	1
+bin	1680	2
+bin	1700	2
+bin	1720	4
+bin	1740	3
+bin	1760	3
+bin	1780	3
+bin	1800	3
+bin	1820	2
+bin	1840	0
+bin	1860	0
+bin	1880	0
+bin	1900	0
+bin	1920	0
+bin	1940	0
+bin	1960	0
+bin	1980	0
+bin	2000	0
+bin	2020	0
+bin	2040	0
+statistic UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar UdpAppExample.client.ppp[0].queue incomingPackets:count 101
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:sum 144096
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram
+field count 101
+field mean 1426.6930693069
+field stddev 238.61541201583
+field min 1032
+field max 1824
+field sum 144096
+field sqrsum 211274496
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	820	0
+bin	840	0
+bin	860	0
+bin	880	0
+bin	900	0
+bin	920	0
+bin	940	0
+bin	960	0
+bin	980	0
+bin	1000	0
+bin	1020	1
+bin	1040	2
+bin	1060	2
+bin	1080	4
+bin	1100	6
+bin	1120	3
+bin	1140	0
+bin	1160	2
+bin	1180	1
+bin	1200	3
+bin	1220	2
+bin	1240	4
+bin	1260	0
+bin	1280	2
+bin	1300	5
+bin	1320	4
+bin	1340	1
+bin	1360	6
+bin	1380	0
+bin	1400	3
+bin	1420	4
+bin	1440	2
+bin	1460	1
+bin	1480	0
+bin	1500	3
+bin	1520	3
+bin	1540	3
+bin	1560	5
+bin	1580	3
+bin	1600	0
+bin	1620	2
+bin	1640	1
+bin	1660	1
+bin	1680	2
+bin	1700	2
+bin	1720	4
+bin	1740	3
+bin	1760	3
+bin	1780	3
+bin	1800	3
+bin	1820	2
+bin	1840	0
+bin	1860	0
+bin	1880	0
+bin	1900	0
+bin	1920	0
+bin	1940	0
+bin	1960	0
+bin	1980	0
+bin	2000	0
+bin	2020	0
+bin	2040	0
+scalar UdpAppExample.client.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:timeavg 0.000147896
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:count 1269
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:sum(packetBytes) 2531106
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar UdpAppExample.client.ppp[0].ppp txPk:count 101
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar UdpAppExample.client.ppp[0].ppp txPk:sum(packetBytes) 18719
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:count 101
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 18012
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:count 1269
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:sum(packetBytes) 2522223
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar UdpAppExample.client.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar UdpAppExample.client.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar UdpAppExample.client.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar UdpAppExample.client.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar UdpAppExample.client.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar UdpAppExample.client.udp packetReceived:count 989
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar UdpAppExample.client.udp packetReceived:sum(packetBytes) 2496843
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar UdpAppExample.client.udp packetSent:count 101
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar UdpAppExample.client.udp packetSent:sum(packetBytes) 15992
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar UdpAppExample.client.udp passedUpPk:count 989
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar UdpAppExample.client.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar UdpAppExample.client.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar UdpAppExample.client.app[0].source packets:count 101
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar UdpAppExample.client.app[0].source packetLengths:sum 121472
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic UdpAppExample.client.app[0].source packetLengths:histogram
+field count 101
+field mean 1202.6930693069
+field stddev 238.61541201583
+field min 808
+field max 1600
+field sum 121472
+field sqrsum 151787264
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	0
+bin	700	0
+bin	720	0
+bin	740	0
+bin	760	0
+bin	780	0
+bin	800	2
+bin	820	1
+bin	840	4
+bin	860	2
+bin	880	8
+bin	900	1
+bin	920	0
+bin	940	2
+bin	960	3
+bin	980	1
+bin	1000	2
+bin	1020	4
+bin	1040	0
+bin	1060	2
+bin	1080	7
+bin	1100	2
+bin	1120	4
+bin	1140	3
+bin	1160	2
+bin	1180	1
+bin	1200	5
+bin	1220	1
+bin	1240	1
+bin	1260	0
+bin	1280	4
+bin	1300	2
+bin	1320	5
+bin	1340	3
+bin	1360	3
+bin	1380	0
+bin	1400	2
+bin	1420	1
+bin	1440	2
+bin	1460	1
+bin	1480	3
+bin	1500	3
+bin	1520	5
+bin	1540	1
+bin	1560	4
+bin	1580	2
+bin	1600	2
+bin	1620	0
+bin	1640	0
+bin	1660	0
+bin	1680	0
+bin	1700	0
+bin	1720	0
+bin	1740	0
+bin	1760	0
+bin	1780	0
+bin	1800	0
+scalar UdpAppExample.client.app[0].sink packets:count 989
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar UdpAppExample.client.app[0].sink packetLengths:sum 19911448
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic UdpAppExample.client.app[0].sink packetLengths:histogram
+field count 989
+field mean 20132.910010111
+field stddev 23397.940599994
+field min 800
+field max 79952
+field sum 19911448
+field sqrsum 941769451584
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	90
+bin	2000	170
+bin	4000	187
+bin	6000	148
+bin	8000	15
+bin	10000	10
+bin	12000	9
+bin	14000	6
+bin	16000	14
+bin	18000	9
+bin	20000	12
+bin	22000	7
+bin	24000	12
+bin	26000	16
+bin	28000	17
+bin	30000	6
+bin	32000	15
+bin	34000	16
+bin	36000	7
+bin	38000	11
+bin	40000	5
+bin	42000	9
+bin	44000	13
+bin	46000	11
+bin	48000	13
+bin	50000	13
+bin	52000	11
+bin	54000	11
+bin	56000	6
+bin	58000	8
+bin	60000	11
+bin	62000	13
+bin	64000	11
+bin	66000	15
+bin	68000	9
+bin	70000	10
+bin	72000	9
+bin	74000	10
+bin	76000	8
+bin	78000	16
+bin	80000	0
+bin	82000	0
+bin	84000	0
+bin	86000	0
+bin	88000	0
+bin	90000	0
+bin	92000	0
+bin	94000	0
+bin	96000	0
+bin	98000	0
+bin	100000	0
+statistic UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram
+field count 988
+field mean 0.1031609687419
+field stddev 0.58596356628838
+field min 0.0001081
+field max 6.169951730898
+field sum 101.923037117
+field sqrsum 349.40418735028
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	0	945
+bin	0.15	1
+bin	0.3	2
+bin	0.45	2
+bin	0.6	4
+bin	0.75	0
+bin	0.9	1
+bin	1.05	2
+bin	1.2	2
+bin	1.35	3
+bin	1.5	3
+bin	1.65	0
+bin	1.8	3
+bin	1.95	1
+bin	2.1	1
+bin	2.25	1
+bin	2.4	2
+bin	2.55	0
+bin	2.7	2
+bin	2.85	0
+bin	3	2
+bin	3.15	1
+bin	3.3	0
+bin	3.45	1
+bin	3.6	0
+bin	3.75	0
+bin	3.9	2
+bin	4.05	0
+bin	4.2	0
+bin	4.35	1
+bin	4.5	0
+bin	4.65	1
+bin	4.8	0
+bin	4.95	1
+bin	5.1	1
+bin	5.25	0
+bin	5.4	0
+bin	5.55	0
+bin	5.7	1
+bin	5.85	1
+bin	6	0
+bin	6.15	1
+bin	6.3	0
+statistic UdpAppExample.client.app[0].sink packetJitter:histogram
+field count 988
+field mean 4.8179149797539e-06
+field stddev 0.84077743005801
+field min -6.161905230898
+field max 6.169159630898
+field sum 0.0047600999999968
+field sqrsum 697.71689998825
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-6.2	1
+bin	-6	1
+bin	-5.8	1
+bin	-5.6	0
+bin	-5.4	0
+bin	-5.2	1
+bin	-5	1
+bin	-4.8	1
+bin	-4.6	1
+bin	-4.4	0
+bin	-4.2	1
+bin	-4	1
+bin	-3.8	0
+bin	-3.6	1
+bin	-3.4	1
+bin	-3.2	2
+bin	-3	0
+bin	-2.8	2
+bin	-2.6	2
+bin	-2.4	2
+bin	-2.2	0
+bin	-2	4
+bin	-1.8	1
+bin	-1.6	3
+bin	-1.4	4
+bin	-1.2	3
+bin	-1	0
+bin	-0.8	4
+bin	-0.6	2
+bin	-0.4	3
+bin	-0.2	453
+bin	0	449
+bin	0.2	3
+bin	0.4	2
+bin	0.6	4
+bin	0.8	0
+bin	1	3
+bin	1.2	4
+bin	1.4	3
+bin	1.6	1
+bin	1.8	4
+bin	2	0
+bin	2.2	2
+bin	2.4	2
+bin	2.6	2
+bin	2.8	1
+bin	3	1
+bin	3.2	1
+bin	3.4	1
+bin	3.6	0
+bin	3.8	1
+bin	4	1
+bin	4.2	0
+bin	4.4	1
+bin	4.6	1
+bin	4.8	0
+bin	5	2
+bin	5.2	0
+bin	5.4	0
+bin	5.6	1
+bin	5.8	1
+bin	6	1
+bin	6.2	0
+statistic UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram
+field count 988
+field mean -0.0045135347606747
+field stddev 0.58473968673268
+field min -6.0676591923492
+field max 0.13873219540054
+field sum -4.4593723435466
+field sqrsum 337.49566225619
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-6.1	1
+bin	-6	0
+bin	-5.9	0
+bin	-5.8	1
+bin	-5.7	1
+bin	-5.6	0
+bin	-5.5	0
+bin	-5.4	0
+bin	-5.3	0
+bin	-5.2	0
+bin	-5.1	1
+bin	-5	0
+bin	-4.9	1
+bin	-4.8	0
+bin	-4.7	1
+bin	-4.6	0
+bin	-4.5	0
+bin	-4.4	1
+bin	-4.3	0
+bin	-4.2	0
+bin	-4.1	0
+bin	-4	1
+bin	-3.9	1
+bin	-3.8	0
+bin	-3.7	0
+bin	-3.6	0
+bin	-3.5	1
+bin	-3.4	0
+bin	-3.3	0
+bin	-3.2	1
+bin	-3.1	1
+bin	-3	0
+bin	-2.9	1
+bin	-2.8	0
+bin	-2.7	2
+bin	-2.6	0
+bin	-2.5	1
+bin	-2.4	0
+bin	-2.3	1
+bin	-2.2	2
+bin	-2.1	0
+bin	-2	0
+bin	-1.9	2
+bin	-1.8	1
+bin	-1.7	1
+bin	-1.6	1
+bin	-1.5	2
+bin	-1.4	1
+bin	-1.3	2
+bin	-1.2	2
+bin	-1.1	0
+bin	-1	3
+bin	-0.9	0
+bin	-0.8	0
+bin	-0.7	1
+bin	-0.6	3
+bin	-0.5	2
+bin	-0.4	0
+bin	-0.3	3
+bin	-0.2	0
+bin	-0.1	7
+bin	0	596
+bin	0.1	342
+bin	0.2	0
+bin	0.3	0
+bin	0.4	0
+bin	0.5	0
+bin	0.6	0
+bin	0.7	0
+bin	0.8	0
+bin	0.9	0
+bin	1	0
+bin	1.1	0
+statistic UdpAppExample.client.app[0].sink packetDelayVariation:histogram
+field count 988
+field mean 0.52151608085787
+field stddev 0.082483578543312
+field min 0
+field max 0.6220533011599
+field sum 515.25788788757
+field sqrsum 275.43036902206
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	14
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	1
+bin	0.05	7
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	1
+bin	0.41	2
+bin	0.42	3
+bin	0.43	3
+bin	0.44	18
+bin	0.45	18
+bin	0.46	16
+bin	0.47	24
+bin	0.48	41
+bin	0.49	28
+bin	0.5	31
+bin	0.51	54
+bin	0.52	92
+bin	0.53	128
+bin	0.54	198
+bin	0.55	182
+bin	0.56	73
+bin	0.57	20
+bin	0.58	16
+bin	0.59	6
+bin	0.6	6
+bin	0.61	5
+bin	0.62	1
+bin	0.63	0
+bin	0.64	0
+bin	0.65	0
+bin	0.66	0
+bin	0.67	0
+bin	0.68	0
+bin	0.69	0
+bin	0.7	0
+bin	0.71	0
+bin	0.72	0
+bin	0.73	0
+bin	0.74	0
+bin	0.75	0
+bin	0.76	0
+bin	0.77	0
+bin	0.78	0
+scalar UdpAppExample.client.app[0].sink droppedPackets:count 989
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:sum 19911448
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic UdpAppExample.client.app[0].sink droppedPacketLengths:histogram
+field count 989
+field mean 20132.910010111
+field stddev 23397.940599994
+field min 800
+field max 79952
+field sum 19911448
+field sqrsum 941769451584
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	90
+bin	2000	170
+bin	4000	187
+bin	6000	148
+bin	8000	15
+bin	10000	10
+bin	12000	9
+bin	14000	6
+bin	16000	14
+bin	18000	9
+bin	20000	12
+bin	22000	7
+bin	24000	12
+bin	26000	16
+bin	28000	17
+bin	30000	6
+bin	32000	15
+bin	34000	16
+bin	36000	7
+bin	38000	11
+bin	40000	5
+bin	42000	9
+bin	44000	13
+bin	46000	11
+bin	48000	13
+bin	50000	13
+bin	52000	11
+bin	54000	11
+bin	56000	6
+bin	58000	8
+bin	60000	11
+bin	62000	13
+bin	64000	11
+bin	66000	15
+bin	68000	9
+bin	70000	10
+bin	72000	9
+bin	74000	10
+bin	76000	8
+bin	78000	16
+bin	80000	0
+bin	82000	0
+bin	84000	0
+bin	86000	0
+bin	88000	0
+bin	90000	0
+bin	92000	0
+bin	94000	0
+bin	96000	0
+bin	98000	0
+bin	100000	0
+scalar UdpAppExample.client.app[0].io "packets sent" 101
+scalar UdpAppExample.client.app[0].io "packets received" 989
+scalar UdpAppExample.client.app[0].io packetReceived:count 989
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar UdpAppExample.client.app[0].io packetReceived:sum(packetBytes) 2488931
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar UdpAppExample.client.app[0].io packetSent:count 101
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar UdpAppExample.client.app[0].io packetSent:sum(packetBytes) 15184
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar UdpAppExample.server.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar UdpAppExample.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar UdpAppExample.server.ppp[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar UdpAppExample.server.ppp[0].queue queueLength:max 4
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar UdpAppExample.server.ppp[0].queue queueLength:timeavg 0.012301621450894
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:max 99376
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:timeavg 215.978637927
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic UdpAppExample.server.ppp[0].queue queueingTime:histogram
+field count 1269
+field mean 0.00096939352424508
+field stddev 0.0019302714963422
+field min 0
+field max 0.012361190004
+field sum 1.230160382267
+field sqrsum 0.005917011635234
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	981
+bin	0.0003	0
+bin	0.0006	0
+bin	0.0009	0
+bin	0.0012	1
+bin	0.0015	0
+bin	0.0018	0
+bin	0.0021	1
+bin	0.0024	1
+bin	0.0027	0
+bin	0.003	0
+bin	0.0033	228
+bin	0.0036	0
+bin	0.0039	1
+bin	0.0042	0
+bin	0.0045	0
+bin	0.0048	1
+bin	0.0051	2
+bin	0.0054	0
+bin	0.0057	1
+bin	0.006	1
+bin	0.0063	0
+bin	0.0066	0
+bin	0.0069	47
+bin	0.0072	0
+bin	0.0075	0
+bin	0.0078	0
+bin	0.0081	0
+bin	0.0084	0
+bin	0.0087	2
+bin	0.009	0
+bin	0.0093	0
+bin	0.0096	1
+bin	0.0099	0
+bin	0.0102	0
+bin	0.0105	0
+bin	0.0108	0
+bin	0.0111	0
+bin	0.0114	0
+bin	0.0117	0
+bin	0.012	0
+bin	0.0123	1
+bin	0.0126	0
+scalar UdpAppExample.server.ppp[0].queue outgoingPackets:count 1269
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:sum 20177784
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram
+field count 1269
+field mean 15900.539007092
+field stddev 13544.01833395
+field min 184
+field max 35744
+field sum 20177784
+field sqrsum 553440110144
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	3
+bin	500	6
+bin	1000	25
+bin	1500	51
+bin	2000	44
+bin	2500	48
+bin	3000	43
+bin	3500	55
+bin	4000	51
+bin	4500	40
+bin	5000	54
+bin	5500	53
+bin	6000	52
+bin	6500	28
+bin	7000	40
+bin	7500	49
+bin	8000	30
+bin	8500	12
+bin	9000	6
+bin	9500	5
+bin	10000	7
+bin	10500	9
+bin	11000	9
+bin	11500	3
+bin	12000	5
+bin	12500	3
+bin	13000	7
+bin	13500	5
+bin	14000	6
+bin	14500	6
+bin	15000	6
+bin	15500	5
+bin	16000	1
+bin	16500	4
+bin	17000	4
+bin	17500	11
+bin	18000	6
+bin	18500	7
+bin	19000	4
+bin	19500	5
+bin	20000	5
+bin	20500	2
+bin	21000	6
+bin	21500	3
+bin	22000	6
+bin	22500	6
+bin	23000	3
+bin	23500	2
+bin	24000	5
+bin	24500	5
+bin	25000	7
+bin	25500	4
+bin	26000	4
+bin	26500	9
+bin	27000	6
+bin	27500	6
+bin	28000	10
+bin	28500	9
+bin	29000	5
+bin	29500	6
+bin	30000	9
+bin	30500	4
+bin	31000	5
+bin	31500	5
+bin	32000	6
+bin	32500	7
+bin	33000	8
+bin	33500	4
+bin	34000	7
+bin	34500	9
+bin	35000	5
+bin	35500	283
+bin	36000	0
+bin	36500	0
+bin	37000	0
+bin	37500	0
+bin	38000	0
+bin	38500	0
+bin	39000	0
+bin	39500	0
+bin	40000	0
+bin	40500	0
+bin	41000	0
+bin	41500	0
+bin	42000	0
+bin	42500	0
+bin	43000	0
+bin	43500	0
+bin	44000	0
+bin	44500	0
+bin	45000	0
+statistic UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar UdpAppExample.server.ppp[0].queue incomingPackets:count 1269
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:sum 20177784
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram
+field count 1269
+field mean 15900.539007092
+field stddev 13544.01833395
+field min 184
+field max 35744
+field sum 20177784
+field sqrsum 553440110144
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	3
+bin	500	6
+bin	1000	25
+bin	1500	51
+bin	2000	44
+bin	2500	48
+bin	3000	43
+bin	3500	55
+bin	4000	51
+bin	4500	40
+bin	5000	54
+bin	5500	53
+bin	6000	52
+bin	6500	28
+bin	7000	40
+bin	7500	49
+bin	8000	30
+bin	8500	12
+bin	9000	6
+bin	9500	5
+bin	10000	7
+bin	10500	9
+bin	11000	9
+bin	11500	3
+bin	12000	5
+bin	12500	3
+bin	13000	7
+bin	13500	5
+bin	14000	6
+bin	14500	6
+bin	15000	6
+bin	15500	5
+bin	16000	1
+bin	16500	4
+bin	17000	4
+bin	17500	11
+bin	18000	6
+bin	18500	7
+bin	19000	4
+bin	19500	5
+bin	20000	5
+bin	20500	2
+bin	21000	6
+bin	21500	3
+bin	22000	6
+bin	22500	6
+bin	23000	3
+bin	23500	2
+bin	24000	5
+bin	24500	5
+bin	25000	7
+bin	25500	4
+bin	26000	4
+bin	26500	9
+bin	27000	6
+bin	27500	6
+bin	28000	10
+bin	28500	9
+bin	29000	5
+bin	29500	6
+bin	30000	9
+bin	30500	4
+bin	31000	5
+bin	31500	5
+bin	32000	6
+bin	32500	7
+bin	33000	8
+bin	33500	4
+bin	34000	7
+bin	34500	9
+bin	35000	5
+bin	35500	283
+bin	36000	0
+bin	36500	0
+bin	37000	0
+bin	37500	0
+bin	38000	0
+bin	38500	0
+bin	39000	0
+bin	39500	0
+bin	40000	0
+bin	40500	0
+bin	41000	0
+bin	41500	0
+bin	42000	0
+bin	42500	0
+bin	43000	0
+bin	43500	0
+bin	44000	0
+bin	44500	0
+bin	45000	0
+scalar UdpAppExample.server.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:timeavg 0.020248848
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:count 100
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:sum(packetBytes) 18487
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar UdpAppExample.server.ppp[0].ppp txPk:count 1269
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar UdpAppExample.server.ppp[0].ppp txPk:sum(packetBytes) 2531106
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:count 1269
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2522223
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:count 100
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:sum(packetBytes) 17787
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar UdpAppExample.server.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar UdpAppExample.server.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar UdpAppExample.server.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar UdpAppExample.server.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar UdpAppExample.server.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar UdpAppExample.server.udp packetReceived:count 100
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar UdpAppExample.server.udp packetReceived:sum(packetBytes) 15787
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar UdpAppExample.server.udp packetSent:count 989
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar UdpAppExample.server.udp packetSent:sum(packetBytes) 2496843
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar UdpAppExample.server.udp passedUpPk:count 100
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar UdpAppExample.server.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar UdpAppExample.server.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar UdpAppExample.server.app[0].source.provider[0] packets:count 595
+attr recordingmode count
+attr source packetPulled
+attr title "packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:sum 2648200
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram
+field count 595
+field mean 4450.756302521
+field stddev 2010.6972205097
+field min 800
+field max 7976
+field sum 2648200
+field sqrsum 14187977408
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	0
+bin	400	0
+bin	600	0
+bin	800	11
+bin	1000	7
+bin	1200	13
+bin	1400	17
+bin	1600	25
+bin	1800	17
+bin	2000	17
+bin	2200	13
+bin	2400	19
+bin	2600	14
+bin	2800	17
+bin	3000	16
+bin	3200	13
+bin	3400	22
+bin	3600	22
+bin	3800	17
+bin	4000	17
+bin	4200	14
+bin	4400	16
+bin	4600	16
+bin	4800	23
+bin	5000	15
+bin	5200	20
+bin	5400	19
+bin	5600	25
+bin	5800	22
+bin	6000	15
+bin	6200	14
+bin	6400	9
+bin	6600	12
+bin	6800	17
+bin	7000	17
+bin	7200	8
+bin	7400	18
+bin	7600	16
+bin	7800	22
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	0
+bin	8800	0
+bin	9000	0
+bin	9200	0
+bin	9400	0
+bin	9600	0
+bin	9800	0
+scalar UdpAppExample.server.app[0].source.provider[1] packets:count 394
+attr recordingmode count
+attr source packetPulled
+attr title "packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:sum 17263248
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram
+field count 394
+field mean 43815.350253807
+field stddev 20870.753154737
+field min 8000
+field max 79952
+field sum 17263248
+field sqrsum 927581474176
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	2000	0
+bin	4000	0
+bin	6000	0
+bin	8000	15
+bin	10000	10
+bin	12000	9
+bin	14000	6
+bin	16000	14
+bin	18000	9
+bin	20000	12
+bin	22000	7
+bin	24000	12
+bin	26000	16
+bin	28000	17
+bin	30000	6
+bin	32000	15
+bin	34000	16
+bin	36000	7
+bin	38000	11
+bin	40000	5
+bin	42000	9
+bin	44000	13
+bin	46000	11
+bin	48000	13
+bin	50000	13
+bin	52000	11
+bin	54000	11
+bin	56000	6
+bin	58000	8
+bin	60000	11
+bin	62000	13
+bin	64000	11
+bin	66000	15
+bin	68000	9
+bin	70000	10
+bin	72000	9
+bin	74000	10
+bin	76000	8
+bin	78000	16
+bin	80000	0
+bin	82000	0
+bin	84000	0
+bin	86000	0
+bin	88000	0
+bin	90000	0
+bin	92000	0
+bin	94000	0
+bin	96000	0
+bin	98000	0
+scalar UdpAppExample.server.app[0].source.server[0] numTokensDepleted:count 40
+attr interpolationmode none
+attr recordingmode count
+attr source tokensDepleted
+attr title "number of times tokens are depleted, count"
+attr unit tk
+scalar UdpAppExample.server.app[0].source.server[0] removedTokens:sum 4359
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensRemoved
+attr title "removed tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].source.server[0] addedTokens:sum 595
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensAdded
+attr title "added tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].source.server[0] incomingPackets:count 595
+attr recordingmode count
+attr source packetPulled
+attr title "incoming packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:sum 2648200
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram
+field count 595
+field mean 4450.756302521
+field stddev 2010.6972205097
+field min 800
+field max 7976
+field sum 2648200
+field sqrsum 14187977408
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	0
+bin	400	0
+bin	600	0
+bin	800	11
+bin	1000	7
+bin	1200	13
+bin	1400	17
+bin	1600	25
+bin	1800	17
+bin	2000	17
+bin	2200	13
+bin	2400	19
+bin	2600	14
+bin	2800	17
+bin	3000	16
+bin	3200	13
+bin	3400	22
+bin	3600	22
+bin	3800	17
+bin	4000	17
+bin	4200	14
+bin	4400	16
+bin	4600	16
+bin	4800	23
+bin	5000	15
+bin	5200	20
+bin	5400	19
+bin	5600	25
+bin	5800	22
+bin	6000	15
+bin	6200	14
+bin	6400	9
+bin	6600	12
+bin	6800	17
+bin	7000	17
+bin	7200	8
+bin	7400	18
+bin	7600	16
+bin	7800	22
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	0
+bin	8800	0
+bin	9000	0
+bin	9200	0
+bin	9400	0
+bin	9600	0
+bin	9800	0
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPackets:count 595
+attr recordingmode count
+attr source packetPushed
+attr title "outgoing packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:sum 2648200
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram
+field count 595
+field mean 4450.756302521
+field stddev 2010.6972205097
+field min 800
+field max 7976
+field sum 2648200
+field sqrsum 14187977408
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	200	0
+bin	400	0
+bin	600	0
+bin	800	11
+bin	1000	7
+bin	1200	13
+bin	1400	17
+bin	1600	25
+bin	1800	17
+bin	2000	17
+bin	2200	13
+bin	2400	19
+bin	2600	14
+bin	2800	17
+bin	3000	16
+bin	3200	13
+bin	3400	22
+bin	3600	22
+bin	3800	17
+bin	4000	17
+bin	4200	14
+bin	4400	16
+bin	4600	16
+bin	4800	23
+bin	5000	15
+bin	5200	20
+bin	5400	19
+bin	5600	25
+bin	5800	22
+bin	6000	15
+bin	6200	14
+bin	6400	9
+bin	6600	12
+bin	6800	17
+bin	7000	17
+bin	7200	8
+bin	7400	18
+bin	7600	16
+bin	7800	22
+bin	8000	0
+bin	8200	0
+bin	8400	0
+bin	8600	0
+bin	8800	0
+bin	9000	0
+bin	9200	0
+bin	9400	0
+bin	9600	0
+bin	9800	0
+scalar UdpAppExample.server.app[0].source.server[1] numTokensDepleted:count 52
+attr interpolationmode none
+attr recordingmode count
+attr source tokensDepleted
+attr title "number of times tokens are depleted, count"
+attr unit tk
+scalar UdpAppExample.server.app[0].source.server[1] removedTokens:sum 1362
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensRemoved
+attr title "removed tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].source.server[1] addedTokens:sum 398
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensAdded
+attr title "added tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].source.server[1] incomingPackets:count 394
+attr recordingmode count
+attr source packetPulled
+attr title "incoming packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:sum 17263248
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram
+field count 394
+field mean 43815.350253807
+field stddev 20870.753154737
+field min 8000
+field max 79952
+field sum 17263248
+field sqrsum 927581474176
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	2000	0
+bin	4000	0
+bin	6000	0
+bin	8000	15
+bin	10000	10
+bin	12000	9
+bin	14000	6
+bin	16000	14
+bin	18000	9
+bin	20000	12
+bin	22000	7
+bin	24000	12
+bin	26000	16
+bin	28000	17
+bin	30000	6
+bin	32000	15
+bin	34000	16
+bin	36000	7
+bin	38000	11
+bin	40000	5
+bin	42000	9
+bin	44000	13
+bin	46000	11
+bin	48000	13
+bin	50000	13
+bin	52000	11
+bin	54000	11
+bin	56000	6
+bin	58000	8
+bin	60000	11
+bin	62000	13
+bin	64000	11
+bin	66000	15
+bin	68000	9
+bin	70000	10
+bin	72000	9
+bin	74000	10
+bin	76000	8
+bin	78000	16
+bin	80000	0
+bin	82000	0
+bin	84000	0
+bin	86000	0
+bin	88000	0
+bin	90000	0
+bin	92000	0
+bin	94000	0
+bin	96000	0
+bin	98000	0
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPackets:count 394
+attr recordingmode count
+attr source packetPushed
+attr title "outgoing packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:sum 17263248
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram
+field count 394
+field mean 43815.350253807
+field stddev 20870.753154737
+field min 8000
+field max 79952
+field sum 17263248
+field sqrsum 927581474176
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	2000	0
+bin	4000	0
+bin	6000	0
+bin	8000	15
+bin	10000	10
+bin	12000	9
+bin	14000	6
+bin	16000	14
+bin	18000	9
+bin	20000	12
+bin	22000	7
+bin	24000	12
+bin	26000	16
+bin	28000	17
+bin	30000	6
+bin	32000	15
+bin	34000	16
+bin	36000	7
+bin	38000	11
+bin	40000	5
+bin	42000	9
+bin	44000	13
+bin	46000	11
+bin	48000	13
+bin	50000	13
+bin	52000	11
+bin	54000	11
+bin	56000	6
+bin	58000	8
+bin	60000	11
+bin	62000	13
+bin	64000	11
+bin	66000	15
+bin	68000	9
+bin	70000	10
+bin	72000	9
+bin	74000	10
+bin	76000	8
+bin	78000	16
+bin	80000	0
+bin	82000	0
+bin	84000	0
+bin	86000	0
+bin	88000	0
+bin	90000	0
+bin	92000	0
+bin	94000	0
+bin	96000	0
+bin	98000	0
+scalar UdpAppExample.server.app[0].source.multiplexer packets:count 0
+attr recordingmode count
+attr source "merge(packetPushed, packetPulled)"
+attr title "packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushed, packetPulled))"
+attr title "packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushed, packetPulled))"
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar UdpAppExample.server.app[0].source.tokenGenerator tokensCreated:count 93
+attr recordingmode count
+attr source count(tokensCreated)
+attr title "tokens created, count"
+attr unit tk
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:sum 92
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensCreated
+attr title "number of created tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].sink.queue queueLength:last 7
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.queue queueLength:max 9
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.queue queueLength:timeavg 4.0540761845568
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:last 9672
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:max 12376
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:timeavg 4929.679601732
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic UdpAppExample.server.app[0].sink.queue queueingTime:histogram
+field count 93
+field mean 4.0581527032964
+field stddev 2.5145392826151
+field min 0
+field max 8.230500109815
+field sum 377.40820140657
+field sqrsum 2113.2876307352
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	4
+bin	0.2	2
+bin	0.4	4
+bin	0.6	3
+bin	0.8	5
+bin	1	5
+bin	1.2	1
+bin	1.4	1
+bin	1.6	2
+bin	1.8	3
+bin	2	0
+bin	2.2	1
+bin	2.4	0
+bin	2.6	0
+bin	2.8	1
+bin	3	3
+bin	3.2	1
+bin	3.4	0
+bin	3.6	2
+bin	3.8	1
+bin	4	1
+bin	4.2	1
+bin	4.4	4
+bin	4.6	4
+bin	4.8	4
+bin	5	6
+bin	5.2	2
+bin	5.4	1
+bin	5.6	2
+bin	5.8	4
+bin	6	3
+bin	6.2	2
+bin	6.4	3
+bin	6.6	3
+bin	6.8	3
+bin	7	2
+bin	7.2	0
+bin	7.4	3
+bin	7.6	0
+bin	7.8	4
+bin	8	1
+bin	8.2	1
+bin	8.4	0
+bin	8.6	0
+bin	8.8	0
+bin	9	0
+bin	9.2	0
+bin	9.4	0
+bin	9.6	0
+bin	9.8	0
+bin	10	0
+bin	10.2	0
+bin	10.4	0
+scalar UdpAppExample.server.app[0].sink.queue outgoingPackets:count 93
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:sum 110224
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram
+field count 93
+field mean 1185.2043010753
+field stddev 232.85284395476
+field min 808
+field max 1600
+field sum 110224
+field sqrsum 135626240
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	0
+bin	700	0
+bin	720	0
+bin	740	0
+bin	760	0
+bin	780	0
+bin	800	2
+bin	820	1
+bin	840	4
+bin	860	2
+bin	880	8
+bin	900	1
+bin	920	0
+bin	940	2
+bin	960	3
+bin	980	1
+bin	1000	2
+bin	1020	4
+bin	1040	0
+bin	1060	2
+bin	1080	6
+bin	1100	2
+bin	1120	3
+bin	1140	3
+bin	1160	2
+bin	1180	1
+bin	1200	4
+bin	1220	1
+bin	1240	1
+bin	1260	0
+bin	1280	4
+bin	1300	2
+bin	1320	5
+bin	1340	3
+bin	1360	3
+bin	1380	0
+bin	1400	2
+bin	1420	1
+bin	1440	2
+bin	1460	1
+bin	1480	3
+bin	1500	3
+bin	1520	3
+bin	1540	1
+bin	1560	3
+bin	1580	0
+bin	1600	2
+bin	1620	0
+bin	1640	0
+bin	1660	0
+bin	1680	0
+bin	1700	0
+bin	1720	0
+bin	1740	0
+bin	1760	0
+bin	1780	0
+bin	1800	0
+statistic UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar UdpAppExample.server.app[0].sink.queue incomingPackets:count 100
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:sum 119896
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram
+field count 100
+field mean 1198.96
+field stddev 236.83476403296
+field min 808
+field max 1600
+field sum 119896
+field sqrsum 149303488
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	0
+bin	700	0
+bin	720	0
+bin	740	0
+bin	760	0
+bin	780	0
+bin	800	2
+bin	820	1
+bin	840	4
+bin	860	2
+bin	880	8
+bin	900	1
+bin	920	0
+bin	940	2
+bin	960	3
+bin	980	1
+bin	1000	2
+bin	1020	4
+bin	1040	0
+bin	1060	2
+bin	1080	7
+bin	1100	2
+bin	1120	4
+bin	1140	3
+bin	1160	2
+bin	1180	1
+bin	1200	5
+bin	1220	1
+bin	1240	1
+bin	1260	0
+bin	1280	4
+bin	1300	2
+bin	1320	5
+bin	1340	3
+bin	1360	3
+bin	1380	0
+bin	1400	2
+bin	1420	1
+bin	1440	2
+bin	1460	1
+bin	1480	3
+bin	1500	3
+bin	1520	5
+bin	1540	1
+bin	1560	3
+bin	1580	2
+bin	1600	2
+bin	1620	0
+bin	1640	0
+bin	1660	0
+bin	1680	0
+bin	1700	0
+bin	1720	0
+bin	1740	0
+bin	1760	0
+bin	1780	0
+bin	1800	0
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar UdpAppExample.server.app[0].sink.server numTokensDepleted:count 90
+attr interpolationmode none
+attr recordingmode count
+attr source tokensDepleted
+attr title "number of times tokens are depleted, count"
+attr unit tk
+scalar UdpAppExample.server.app[0].sink.server removedTokens:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensRemoved
+attr title "removed tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].sink.server addedTokens:sum 92
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensAdded
+attr title "added tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].sink.server incomingPackets:count 93
+attr recordingmode count
+attr source packetPulled
+attr title "incoming packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:sum 110224
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram
+field count 93
+field mean 1185.2043010753
+field stddev 232.85284395476
+field min 808
+field max 1600
+field sum 110224
+field sqrsum 135626240
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	0
+bin	700	0
+bin	720	0
+bin	740	0
+bin	760	0
+bin	780	0
+bin	800	2
+bin	820	1
+bin	840	4
+bin	860	2
+bin	880	8
+bin	900	1
+bin	920	0
+bin	940	2
+bin	960	3
+bin	980	1
+bin	1000	2
+bin	1020	4
+bin	1040	0
+bin	1060	2
+bin	1080	6
+bin	1100	2
+bin	1120	3
+bin	1140	3
+bin	1160	2
+bin	1180	1
+bin	1200	4
+bin	1220	1
+bin	1240	1
+bin	1260	0
+bin	1280	4
+bin	1300	2
+bin	1320	5
+bin	1340	3
+bin	1360	3
+bin	1380	0
+bin	1400	2
+bin	1420	1
+bin	1440	2
+bin	1460	1
+bin	1480	3
+bin	1500	3
+bin	1520	3
+bin	1540	1
+bin	1560	3
+bin	1580	0
+bin	1600	2
+bin	1620	0
+bin	1640	0
+bin	1660	0
+bin	1680	0
+bin	1700	0
+bin	1720	0
+bin	1740	0
+bin	1760	0
+bin	1780	0
+bin	1800	0
+scalar UdpAppExample.server.app[0].sink.server outgoingPackets:count 93
+attr recordingmode count
+attr source packetPushed
+attr title "outgoing packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:sum 110224
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram
+field count 93
+field mean 1185.2043010753
+field stddev 232.85284395476
+field min 808
+field max 1600
+field sum 110224
+field sqrsum 135626240
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	0
+bin	700	0
+bin	720	0
+bin	740	0
+bin	760	0
+bin	780	0
+bin	800	2
+bin	820	1
+bin	840	4
+bin	860	2
+bin	880	8
+bin	900	1
+bin	920	0
+bin	940	2
+bin	960	3
+bin	980	1
+bin	1000	2
+bin	1020	4
+bin	1040	0
+bin	1060	2
+bin	1080	6
+bin	1100	2
+bin	1120	3
+bin	1140	3
+bin	1160	2
+bin	1180	1
+bin	1200	4
+bin	1220	1
+bin	1240	1
+bin	1260	0
+bin	1280	4
+bin	1300	2
+bin	1320	5
+bin	1340	3
+bin	1360	3
+bin	1380	0
+bin	1400	2
+bin	1420	1
+bin	1440	2
+bin	1460	1
+bin	1480	3
+bin	1500	3
+bin	1520	3
+bin	1540	1
+bin	1560	3
+bin	1580	0
+bin	1600	2
+bin	1620	0
+bin	1640	0
+bin	1660	0
+bin	1680	0
+bin	1700	0
+bin	1720	0
+bin	1740	0
+bin	1760	0
+bin	1780	0
+bin	1800	0
+scalar UdpAppExample.server.app[0].sink.classifier packets:count 93
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:sum 110224
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic UdpAppExample.server.app[0].sink.classifier packetLengths:histogram
+field count 93
+field mean 1185.2043010753
+field stddev 232.85284395476
+field min 808
+field max 1600
+field sum 110224
+field sqrsum 135626240
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	0
+bin	700	0
+bin	720	0
+bin	740	0
+bin	760	0
+bin	780	0
+bin	800	2
+bin	820	1
+bin	840	4
+bin	860	2
+bin	880	8
+bin	900	1
+bin	920	0
+bin	940	2
+bin	960	3
+bin	980	1
+bin	1000	2
+bin	1020	4
+bin	1040	0
+bin	1060	2
+bin	1080	6
+bin	1100	2
+bin	1120	3
+bin	1140	3
+bin	1160	2
+bin	1180	1
+bin	1200	4
+bin	1220	1
+bin	1240	1
+bin	1260	0
+bin	1280	4
+bin	1300	2
+bin	1320	5
+bin	1340	3
+bin	1360	3
+bin	1380	0
+bin	1400	2
+bin	1420	1
+bin	1440	2
+bin	1460	1
+bin	1480	3
+bin	1500	3
+bin	1520	3
+bin	1540	1
+bin	1560	3
+bin	1580	0
+bin	1600	2
+bin	1620	0
+bin	1640	0
+bin	1660	0
+bin	1680	0
+bin	1700	0
+bin	1720	0
+bin	1740	0
+bin	1760	0
+bin	1780	0
+bin	1800	0
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] tokensCreated:count 41
+attr recordingmode count
+attr source count(tokensCreated)
+attr title "tokens created, count"
+attr unit tk
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:sum 595
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensCreated
+attr title "number of created tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] tokensCreated:count 54
+attr recordingmode count
+attr source count(tokensCreated)
+attr title "tokens created, count"
+attr unit tk
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:sum 398
+attr interpolationmode none
+attr recordingmode sum
+attr source tokensCreated
+attr title "number of created tokens, sum"
+attr unit tk
+scalar UdpAppExample.server.app[0].io "packets sent" 989
+scalar UdpAppExample.server.app[0].io "packets received" 100
+scalar UdpAppExample.server.app[0].io packetReceived:count 100
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar UdpAppExample.server.app[0].io packetReceived:sum(packetBytes) 14987
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar UdpAppExample.server.app[0].io packetSent:count 989
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar UdpAppExample.server.app[0].io packetSent:sum(packetBytes) 2488931
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+

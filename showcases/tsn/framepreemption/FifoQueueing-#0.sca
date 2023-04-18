@@ -1,0 +1,4966 @@
+version 3
+run FifoQueueing-0-20230411-10:34:01-43174
+attr configname FifoQueueing
+attr datetime 20230411-10:34:01
+attr datetimef 20230411-103401
+attr description "High and low priority frames are transmitted in first-in first-out order"
+attr experiment FifoQueueing
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network FramePreemptionShowcase
+attr processid 43174
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config image-path /home/levy/workspace/inet/images
+config sim-time-limit 1s
+config description "High and low priority frames are transmitted in first-in first-out order"
+config **.macLayer.queue.packetCapacity 4
+config **.macLayer.queue.typename DropTailQueue
+config network FramePreemptionShowcase
+config sim-time-limit 1s
+config *.*.ethernet.typename EthernetLayer
+config *.host*.eth[0].typename LayeredEthernetInterface
+config *.host*.eth[0].bitrate 100Mbps
+config **.recordPcap true
+config **.dumpProtocols "\"ethernetphy\""
+config **.crcMode "\"computed\""
+config **.fcsMode "\"computed\""
+config **.arp.typename GlobalArp
+config *.host1.numApps 2
+config *.host1.app[*].typename UdpSourceApp
+config *.host1.app[0].source.packetNameFormat "\"background-%c\""
+config *.host1.app[1].source.packetNameFormat "\"ts-%c\""
+config *.host1.app[*].tagger.typename PacketTagger
+config *.host1.app[0].tagger.vlanId 1
+config *.host1.app[1].tagger.vlanId 0
+config *.host1.app[*].io.destAddress "\"host2\""
+config *.host1.app[0].io.destPort 1000
+config *.host1.app[1].io.destPort 1001
+config *.host1.app[0].source.packetLength 1200B
+config *.host1.app[0].source.productionInterval truncnormal(100us,50us)
+config *.host1.app[0].source.initialProductionOffset 5us
+config *.host1.app[1].source.packetLength 1200B
+config *.host1.app[1].source.productionInterval truncnormal(1ms,500us)
+config *.host2.numApps 2
+config *.host2.app[*].typename UdpSinkApp
+config *.host2.app[0].io.localPort 1000
+config *.host2.app[1].io.localPort 1001
+
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderInserter outgoingPackets:count 10729
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderInserter outgoingPacketLengths:sum 106603344
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderInserter outgoingPacketLengths:histogram
+field count 10729
+field mean 9936
+field stddev 0
+field min 9936
+field max 9936
+field sum 106603344
+field sqrsum 1059210825984
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9935	0
+bin	9936	10729
+bin	9937	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderInserter incomingPackets:count 10729
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderInserter incomingPacketLengths:sum 105401696
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderInserter incomingPacketLengths:histogram
+field count 10729
+field mean 9824
+field stddev 0
+field min 9824
+field max 9824
+field sum 105401696
+field sqrsum 1035466261504
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9823	0
+bin	9824	10729
+bin	9825	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.paddingInserter outgoingPackets:count 10729
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.paddingInserter outgoingPacketLengths:sum 106603344
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.paddingInserter outgoingPacketLengths:histogram
+field count 10729
+field mean 9936
+field stddev 0
+field min 9936
+field max 9936
+field sum 106603344
+field sqrsum 1059210825984
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9935	0
+bin	9936	10729
+bin	9937	0
+scalar FramePreemptionShowcase.host1.ethernet.paddingInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.paddingInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.paddingInserter incomingPackets:count 10729
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.paddingInserter incomingPacketLengths:sum 106603344
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.paddingInserter incomingPacketLengths:histogram
+field count 10729
+field mean 9936
+field stddev 0
+field min 9936
+field max 9936
+field sum 106603344
+field sqrsum 1059210825984
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9935	0
+bin	9936	10729
+bin	9937	0
+scalar FramePreemptionShowcase.host1.ethernet.paddingInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.paddingInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsInserter outgoingPackets:count 10729
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.fcsInserter outgoingPacketLengths:sum 106946672
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsInserter outgoingPacketLengths:histogram
+field count 10729
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 106946672
+field sqrsum 1066044426496
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	10729
+bin	9969	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsInserter incomingPackets:count 10729
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.fcsInserter incomingPacketLengths:sum 106603344
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsInserter incomingPacketLengths:histogram
+field count 10729
+field mean 9936
+field stddev 0
+field min 9936
+field max 9936
+field sum 106603344
+field sqrsum 1059210825984
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9935	0
+bin	9936	10729
+bin	9937	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderChecker outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderChecker incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.macHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.macHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsChecker outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsChecker incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.ethernet.fcsChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.ethernet.fcsChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar FramePreemptionShowcase.host1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar FramePreemptionShowcase.host1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar FramePreemptionShowcase.host1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar FramePreemptionShowcase.host1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue queueLength:last 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue queueLength:max 4
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue queueLength:timeavg 2.646258485038
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue queueBitLength:last 19936
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue queueBitLength:max 39872
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue queueBitLength:timeavg 26377.904578859
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.queue queueingTime:histogram
+field count 9839
+field mean 0.00026892173172894
+field stddev 9.1987529187153e-05
+field min 0
+field max 0.000405113644
+field sum 2.645920918481
+field sqrsum 0.0007947918943801
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	125
+bin	1e-05	47
+bin	2e-05	36
+bin	3e-05	35
+bin	4e-05	58
+bin	5e-05	55
+bin	6e-05	54
+bin	7e-05	65
+bin	8e-05	62
+bin	9e-05	84
+bin	0.0001	85
+bin	0.00011	82
+bin	0.00012	119
+bin	0.00013	121
+bin	0.00014	143
+bin	0.00015	141
+bin	0.00016	157
+bin	0.00017	172
+bin	0.00018	216
+bin	0.00019	195
+bin	0.0002	251
+bin	0.00021	246
+bin	0.00022	277
+bin	0.00023	297
+bin	0.00024	342
+bin	0.00025	337
+bin	0.00026	426
+bin	0.00027	425
+bin	0.00028	416
+bin	0.00029	443
+bin	0.0003	487
+bin	0.00031	485
+bin	0.00032	458
+bin	0.00033	470
+bin	0.00034	463
+bin	0.00035	445
+bin	0.00036	378
+bin	0.00037	364
+bin	0.00038	344
+bin	0.00039	290
+bin	0.0004	143
+bin	0.00041	0
+bin	0.00042	0
+bin	0.00043	0
+bin	0.00044	0
+bin	0.00045	0
+bin	0.00046	0
+bin	0.00047	0
+bin	0.00048	0
+bin	0.00049	0
+bin	0.0005	0
+bin	0.00051	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue outgoingPackets:count 9839
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue outgoingPacketLengths:sum 98075152
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.queue outgoingPacketLengths:histogram
+field count 9839
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98075152
+field sqrsum 977613115136
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9839
+bin	9969	0
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue incomingPackets:count 10729
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue incomingPacketLengths:sum 106946672
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.queue incomingPacketLengths:histogram
+field count 10729
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 106946672
+field sqrsum 1066044426496
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	10729
+bin	9969	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue droppedPacketsQueueOverflow:count 888
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.queue droppedPacketLengthsQueueOverflow:sum 8851584
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.server incomingPackets:count 9839
+attr recordingmode count
+attr source packetPulled
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.server incomingPacketLengths:sum 98075152
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.server incomingPacketLengths:histogram
+field count 9839
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98075152
+field sqrsum 977613115136
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9839
+bin	9969	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.server outgoingPackets:count 9839
+attr recordingmode count
+attr source packetPushed
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.server outgoingPacketLengths:sum 98075152
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.server outgoingPacketLengths:histogram
+field count 9839
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98075152
+field sqrsum 977613115136
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9839
+bin	9969	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter outgoingPackets:count 9839
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter outgoingPacketLengths:sum 98075152
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter outgoingPacketLengths:histogram
+field count 9839
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98075152
+field sqrsum 977613115136
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9839
+bin	9969	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter incomingPackets:count 9839
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter incomingPacketLengths:sum 98075152
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter incomingPacketLengths:histogram
+field count 9839
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98075152
+field sqrsum 977613115136
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9839
+bin	9969	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.outboundEmitter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.fcsChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].macLayer.inboundEmitter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter outgoingPackets:count 9839
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter outgoingPacketLengths:sum 98704848
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter outgoingPacketLengths:histogram
+field count 9839
+field mean 10032
+field stddev 0
+field min 10032
+field max 10032
+field sum 98704848
+field sqrsum 990207035136
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	10031	0
+bin	10032	9839
+bin	10033	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter incomingPackets:count 9839
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter incomingPacketLengths:sum 98075152
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter incomingPacketLengths:histogram
+field count 9839
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98075152
+field sqrsum 977613115136
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9839
+bin	9969	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter outgoingPackets:count 9839
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter outgoingPacketLengths:sum 98704848
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter outgoingPacketLengths:histogram
+field count 9839
+field mean 10032
+field stddev 0
+field min 10032
+field max 10032
+field sum 98704848
+field sqrsum 990207035136
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	10031	0
+bin	10032	9839
+bin	10033	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter incomingPackets:count 9839
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter incomingPacketLengths:sum 98704848
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter incomingPacketLengths:histogram
+field count 9839
+field mean 10032
+field stddev 0
+field min 10032
+field max 10032
+field sum 98704848
+field sqrsum 990207035136
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	10031	0
+bin	10032	9839
+bin	10033	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.outboundEmitter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.transmitter propagationTime 5e-08
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.transmitter utilization:histogram
+field count 98
+field mean 98.70436394374
+field stddev 0.77166960053226
+field min 95.670943169207
+field max 99.052132701422
+field sum 9673.0276664865
+field sqrsum 954827.80420608
+attr interpolationmode linear
+attr recordingmode histogram
+attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
+attr title utilization
+attr unit %
+bin	-inf	0
+bin	94.8	0
+bin	94.9	0
+bin	95	0
+bin	95.1	0
+bin	95.2	0
+bin	95.3	0
+bin	95.4	0
+bin	95.5	0
+bin	95.6	2
+bin	95.7	0
+bin	95.8	0
+bin	95.9	2
+bin	96	0
+bin	96.1	0
+bin	96.2	0
+bin	96.3	0
+bin	96.4	0
+bin	96.5	0
+bin	96.6	0
+bin	96.7	0
+bin	96.8	0
+bin	96.9	2
+bin	97	0
+bin	97.1	1
+bin	97.2	0
+bin	97.3	0
+bin	97.4	1
+bin	97.5	1
+bin	97.6	0
+bin	97.7	0
+bin	97.8	2
+bin	97.9	1
+bin	98	2
+bin	98.1	1
+bin	98.2	0
+bin	98.3	2
+bin	98.4	3
+bin	98.5	2
+bin	98.6	1
+bin	98.7	1
+bin	98.8	2
+bin	98.9	1
+bin	99	71
+bin	99.1	0
+bin	99.2	0
+bin	99.3	0
+bin	99.4	0
+bin	99.5	0
+bin	99.6	0
+bin	99.7	0
+bin	99.8	0
+bin	99.9	0
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.transmitter transmissionTime:histogram
+field count 9838
+field mean 0.00010032000000002
+field stddev 0
+field min 0.00010032
+field max 0.00010032
+field sum 0.98694816000016
+field sqrsum 9.9010639411212e-05
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(transmissionEnded)
+attr title "transmission time"
+attr unit s
+bin	-inf	0
+bin	0	9838
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.transmitter flowTransmissionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(demuxFlow(transmissionEnded))
+attr title "flow transmission time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.phyHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.inboundEmitter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.receiver receptionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(receptionEnded)
+attr title "reception time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FramePreemptionShowcase.host1.eth[0].phyLayer.receiver flowReceptionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(demuxFlow(receptionEnded))
+attr title "flow reception time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar FramePreemptionShowcase.host1.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar FramePreemptionShowcase.host1.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar FramePreemptionShowcase.host1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FramePreemptionShowcase.host1.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.udp packetSent:count 10729
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FramePreemptionShowcase.host1.udp packetSent:sum(packetBytes) 12960632
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar FramePreemptionShowcase.host1.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar FramePreemptionShowcase.host1.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar FramePreemptionShowcase.host1.app[0].source packets:count 9736
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.app[0].source packetLengths:sum 93465600
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[0].source packetLengths:histogram
+field count 9736
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 93465600
+field sqrsum 897269760000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	9736
+bin	9601	0
+scalar FramePreemptionShowcase.host1.app[0].tagger outgoingPackets:count 9736
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.app[0].tagger outgoingPacketLengths:sum 93465600
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[0].tagger outgoingPacketLengths:histogram
+field count 9736
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 93465600
+field sqrsum 897269760000
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	9736
+bin	9601	0
+scalar FramePreemptionShowcase.host1.app[0].tagger flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[0].tagger flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.app[0].tagger incomingPackets:count 9736
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.app[0].tagger incomingPacketLengths:sum 93465600
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[0].tagger incomingPacketLengths:histogram
+field count 9736
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 93465600
+field sqrsum 897269760000
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	9736
+bin	9601	0
+scalar FramePreemptionShowcase.host1.app[0].tagger flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[0].tagger flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.app[0].io "packets sent" 9736
+scalar FramePreemptionShowcase.host1.app[0].io "packets received" 0
+scalar FramePreemptionShowcase.host1.app[0].io packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FramePreemptionShowcase.host1.app[0].io packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.app[0].io packetSent:count 9736
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FramePreemptionShowcase.host1.app[0].io packetSent:sum(packetBytes) 11683200
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.app[1].source packets:count 993
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.app[1].source packetLengths:sum 9532800
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[1].source packetLengths:histogram
+field count 993
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 9532800
+field sqrsum 91514880000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	993
+bin	9601	0
+scalar FramePreemptionShowcase.host1.app[1].tagger outgoingPackets:count 993
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.app[1].tagger outgoingPacketLengths:sum 9532800
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[1].tagger outgoingPacketLengths:histogram
+field count 993
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 9532800
+field sqrsum 91514880000
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	993
+bin	9601	0
+scalar FramePreemptionShowcase.host1.app[1].tagger flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[1].tagger flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.app[1].tagger incomingPackets:count 993
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host1.app[1].tagger incomingPacketLengths:sum 9532800
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[1].tagger incomingPacketLengths:histogram
+field count 993
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 9532800
+field sqrsum 91514880000
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	993
+bin	9601	0
+scalar FramePreemptionShowcase.host1.app[1].tagger flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host1.app[1].tagger flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host1.app[1].io "packets sent" 993
+scalar FramePreemptionShowcase.host1.app[1].io "packets received" 0
+scalar FramePreemptionShowcase.host1.app[1].io packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FramePreemptionShowcase.host1.app[1].io packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar FramePreemptionShowcase.host1.app[1].io packetSent:count 993
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FramePreemptionShowcase.host1.app[1].io packetSent:sum(packetBytes) 1191600
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderInserter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderInserter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.paddingInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.paddingInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.paddingInserter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.paddingInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.paddingInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.paddingInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.paddingInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.paddingInserter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.paddingInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.paddingInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.fcsInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsInserter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.fcsInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsInserter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker outgoingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker outgoingPacketLengths:sum 96648512
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderChecker outgoingPacketLengths:histogram
+field count 9838
+field mean 9824
+field stddev 0
+field min 9824
+field max 9824
+field sum 96648512
+field sqrsum 949474981888
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9823	0
+bin	9824	9838
+bin	9825	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker incomingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker incomingPacketLengths:sum 97750368
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderChecker incomingPacketLengths:histogram
+field count 9838
+field mean 9936
+field stddev 0
+field min 9936
+field max 9936
+field sum 97750368
+field sqrsum 971247656448
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9935	0
+bin	9936	9838
+bin	9937	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.macHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.macHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker outgoingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker outgoingPacketLengths:sum 97750368
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsChecker outgoingPacketLengths:histogram
+field count 9838
+field mean 9936
+field stddev 0
+field min 9936
+field max 9936
+field sum 97750368
+field sqrsum 971247656448
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9935	0
+bin	9936	9838
+bin	9937	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker incomingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker incomingPacketLengths:sum 98065184
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsChecker incomingPacketLengths:histogram
+field count 9838
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98065184
+field sqrsum 977513754112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9838
+bin	9969	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.ethernet.fcsChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.ethernet.fcsChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar FramePreemptionShowcase.host2.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar FramePreemptionShowcase.host2.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar FramePreemptionShowcase.host2.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar FramePreemptionShowcase.host2.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.queue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.queue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.queue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.server incomingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.server incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.server incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.server outgoingPackets:count 0
+attr recordingmode count
+attr source packetPushed
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.server outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.server outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.outboundEmitter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker outgoingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker outgoingPacketLengths:sum 98065184
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker outgoingPacketLengths:histogram
+field count 9838
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98065184
+field sqrsum 977513754112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9838
+bin	9969	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker incomingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker incomingPacketLengths:sum 98065184
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker incomingPacketLengths:histogram
+field count 9838
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98065184
+field sqrsum 977513754112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9838
+bin	9969	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.fcsChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter outgoingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter outgoingPacketLengths:sum 98065184
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter outgoingPacketLengths:histogram
+field count 9838
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98065184
+field sqrsum 977513754112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9838
+bin	9969	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter incomingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter incomingPacketLengths:sum 98065184
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter incomingPacketLengths:histogram
+field count 9838
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98065184
+field sqrsum 977513754112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9838
+bin	9969	0
+scalar FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].macLayer.inboundEmitter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.outboundEmitter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.transmitter propagationTime 5e-08
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.transmitter utilization:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr recordingmode histogram
+attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
+attr title utilization
+attr unit %
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.transmitter transmissionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(transmissionEnded)
+attr title "transmission time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.transmitter flowTransmissionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(demuxFlow(transmissionEnded))
+attr title "flow transmission time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker outgoingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker outgoingPacketLengths:sum 98065184
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker outgoingPacketLengths:histogram
+field count 9838
+field mean 9968
+field stddev 0
+field min 9968
+field max 9968
+field sum 98065184
+field sqrsum 977513754112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	9967	0
+bin	9968	9838
+bin	9969	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker incomingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker incomingPacketLengths:sum 98694816
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker incomingPacketLengths:histogram
+field count 9838
+field mean 10032
+field stddev 0
+field min 10032
+field max 10032
+field sum 98694816
+field sqrsum 990106394112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	10031	0
+bin	10032	9838
+bin	10033	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.phyHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter outgoingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter outgoingPacketLengths:sum 98694816
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter outgoingPacketLengths:histogram
+field count 9838
+field mean 10032
+field stddev 0
+field min 10032
+field max 10032
+field sum 98694816
+field sqrsum 990106394112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	10031	0
+bin	10032	9838
+bin	10033	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter incomingPackets:count 9838
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter incomingPacketLengths:sum 98694816
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter incomingPacketLengths:histogram
+field count 9838
+field mean 10032
+field stddev 0
+field min 10032
+field max 10032
+field sum 98694816
+field sqrsum 990106394112
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	10031	0
+bin	10032	9838
+bin	10033	0
+scalar FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.inboundEmitter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.receiver receptionTime:histogram
+field count 9838
+field mean 0.00010032000000002
+field stddev 0
+field min 0.00010032
+field max 0.00010032
+field sum 0.98694816000016
+field sqrsum 9.9010639411212e-05
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(receptionEnded)
+attr title "reception time"
+attr unit s
+bin	-inf	0
+bin	0	9838
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+statistic FramePreemptionShowcase.host2.eth[0].phyLayer.receiver flowReceptionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(demuxFlow(receptionEnded))
+attr title "flow reception time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar FramePreemptionShowcase.host2.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar FramePreemptionShowcase.host2.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar FramePreemptionShowcase.host2.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar FramePreemptionShowcase.host2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.udp packetReceived:count 9838
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FramePreemptionShowcase.host2.udp packetReceived:sum(packetBytes) 11884304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FramePreemptionShowcase.host2.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.udp passedUpPk:count 9838
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar FramePreemptionShowcase.host2.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar FramePreemptionShowcase.host2.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar FramePreemptionShowcase.host2.app[0].sink packets:count 8969
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.app[0].sink packetLengths:sum 86102400
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.app[0].sink packetLengths:histogram
+field count 8969
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 86102400
+field sqrsum 826583040000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	8969
+bin	9601	0
+statistic FramePreemptionShowcase.host2.app[0].sink meanBitLifeTimePerPacket:histogram
+field count 8968
+field mean 0.00036901399904884
+field stddev 9.1911595094629e-05
+field min 0.00010037
+field max 0.000505483644
+field sum 3.30931754347
+field sqrsum 0.0012969353971906
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1e-05	0
+bin	2e-05	0
+bin	3e-05	0
+bin	4e-05	0
+bin	5e-05	0
+bin	6e-05	0
+bin	7e-05	0
+bin	8e-05	0
+bin	9e-05	0
+bin	0.0001	115
+bin	0.00011	38
+bin	0.00012	36
+bin	0.00013	35
+bin	0.00014	52
+bin	0.00015	48
+bin	0.00016	53
+bin	0.00017	59
+bin	0.00018	55
+bin	0.00019	74
+bin	0.0002	76
+bin	0.00021	72
+bin	0.00022	113
+bin	0.00023	109
+bin	0.00024	136
+bin	0.00025	128
+bin	0.00026	142
+bin	0.00027	155
+bin	0.00028	198
+bin	0.00029	174
+bin	0.0003	224
+bin	0.00031	215
+bin	0.00032	250
+bin	0.00033	269
+bin	0.00034	308
+bin	0.00035	317
+bin	0.00036	373
+bin	0.00037	394
+bin	0.00038	377
+bin	0.00039	415
+bin	0.0004	452
+bin	0.00041	455
+bin	0.00042	428
+bin	0.00043	431
+bin	0.00044	424
+bin	0.00045	400
+bin	0.00046	341
+bin	0.00047	324
+bin	0.00048	296
+bin	0.00049	269
+bin	0.0005	138
+bin	0.00051	0
+bin	0.00052	0
+bin	0.00053	0
+bin	0.00054	0
+bin	0.00055	0
+bin	0.00056	0
+bin	0.00057	0
+bin	0.00058	0
+bin	0.00059	0
+bin	0.0006	0
+bin	0.00061	0
+statistic FramePreemptionShowcase.host2.app[0].sink packetJitter:histogram
+field count 8968
+field mean 4.595332471008e-08
+field stddev 5.0864993602771e-05
+field min -0.000202718506
+field max 0.00019665
+field sum 0.000412109416
+field sqrsum 2.3199867935738e-05
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-0.00023	0
+bin	-0.00022	0
+bin	-0.00021	1
+bin	-0.0002	0
+bin	-0.00019	1
+bin	-0.00018	5
+bin	-0.00017	3
+bin	-0.00016	6
+bin	-0.00015	15
+bin	-0.00014	20
+bin	-0.00013	43
+bin	-0.00012	48
+bin	-0.00011	90
+bin	-0.0001	125
+bin	-9e-05	150
+bin	-8e-05	246
+bin	-7e-05	320
+bin	-6e-05	369
+bin	-5e-05	458
+bin	-4e-05	516
+bin	-3e-05	659
+bin	-2e-05	628
+bin	-1e-05	736
+bin	0	785
+bin	1e-05	715
+bin	2e-05	608
+bin	3e-05	519
+bin	4e-05	482
+bin	5e-05	383
+bin	6e-05	293
+bin	7e-05	230
+bin	8e-05	185
+bin	9e-05	128
+bin	0.0001	59
+bin	0.00011	41
+bin	0.00012	32
+bin	0.00013	19
+bin	0.00014	20
+bin	0.00015	11
+bin	0.00016	9
+bin	0.00017	5
+bin	0.00018	2
+bin	0.00019	3
+bin	0.0002	0
+bin	0.00021	0
+bin	0.00022	0
+bin	0.00023	0
+bin	0.00024	0
+bin	0.00025	0
+bin	0.00026	0
+bin	0.00027	0
+bin	0.00028	0
+bin	0.00029	0
+statistic FramePreemptionShowcase.host2.app[0].sink packetDelayDifferenceToMean:histogram
+field count 8968
+field mean -7.4133364338062e-06
+field stddev 9.1565233402559e-05
+field min -0.00020173040425
+field max 0.00026988176302543
+field sum -0.066482801138374
+field sqrsum 7.5673908749541e-05
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-0.0003	0
+bin	-0.00029	0
+bin	-0.00028	0
+bin	-0.00027	0
+bin	-0.00026	0
+bin	-0.00025	0
+bin	-0.00024	0
+bin	-0.00023	0
+bin	-0.00022	0
+bin	-0.00021	1
+bin	-0.0002	0
+bin	-0.00019	2
+bin	-0.00018	3
+bin	-0.00017	4
+bin	-0.00016	16
+bin	-0.00015	112
+bin	-0.00014	207
+bin	-0.00013	291
+bin	-0.00012	306
+bin	-0.00011	351
+bin	-0.0001	375
+bin	-9e-05	419
+bin	-8e-05	445
+bin	-7e-05	419
+bin	-6e-05	445
+bin	-5e-05	455
+bin	-4e-05	429
+bin	-3e-05	404
+bin	-2e-05	383
+bin	-1e-05	360
+bin	0	336
+bin	1e-05	313
+bin	2e-05	292
+bin	3e-05	262
+bin	4e-05	230
+bin	5e-05	209
+bin	6e-05	191
+bin	7e-05	206
+bin	8e-05	158
+bin	9e-05	133
+bin	0.0001	147
+bin	0.00011	118
+bin	0.00012	133
+bin	0.00013	90
+bin	0.00014	81
+bin	0.00015	91
+bin	0.00016	61
+bin	0.00017	65
+bin	0.00018	45
+bin	0.00019	52
+bin	0.0002	50
+bin	0.00021	38
+bin	0.00022	41
+bin	0.00023	41
+bin	0.00024	39
+bin	0.00025	54
+bin	0.00026	65
+bin	0.00027	0
+statistic FramePreemptionShowcase.host2.app[0].sink packetDelayVariation:histogram
+field count 8968
+field mean 9.4862275088407e-05
+field stddev 4.2983253474607e-06
+field min 0
+field max 0.0001205494356574
+field sum 0.85072488299284
+field sqrsum 8.0867368587327e-05
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	2e-06	0
+bin	4e-06	0
+bin	6e-06	0
+bin	8e-06	0
+bin	1e-05	0
+bin	1.2e-05	0
+bin	1.4e-05	0
+bin	1.6e-05	0
+bin	1.8e-05	0
+bin	2e-05	1
+bin	2.2e-05	0
+bin	2.4e-05	0
+bin	2.6e-05	0
+bin	2.8e-05	0
+bin	3e-05	0
+bin	3.2e-05	0
+bin	3.4e-05	1
+bin	3.6e-05	1
+bin	3.8e-05	0
+bin	4e-05	0
+bin	4.2e-05	0
+bin	4.4e-05	0
+bin	4.6e-05	0
+bin	4.8e-05	0
+bin	5e-05	0
+bin	5.2e-05	3
+bin	5.4e-05	1
+bin	5.6e-05	0
+bin	5.8e-05	1
+bin	6e-05	1
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	1
+bin	7.4e-05	1
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	1
+bin	8.6e-05	17
+bin	8.8e-05	91
+bin	9e-05	2282
+bin	9.2e-05	1618
+bin	9.4e-05	2803
+bin	9.6e-05	576
+bin	9.8e-05	442
+bin	0.0001	552
+bin	0.000102	254
+bin	0.000104	170
+bin	0.000106	99
+bin	0.000108	33
+bin	0.00011	3
+bin	0.000112	6
+bin	0.000114	2
+bin	0.000116	3
+bin	0.000118	3
+bin	0.00012	1
+bin	0.000122	0
+bin	0.000124	0
+bin	0.000126	0
+bin	0.000128	0
+bin	0.00013	0
+bin	0.000132	0
+bin	0.000134	0
+bin	0.000136	0
+bin	0.000138	0
+bin	0.00014	0
+bin	0.000142	0
+bin	0.000144	0
+bin	0.000146	0
+bin	0.000148	0
+bin	0.00015	0
+bin	0.000152	0
+scalar FramePreemptionShowcase.host2.app[0].sink droppedPackets:count 8969
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.app[0].sink droppedPacketLengths:sum 86102400
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.app[0].sink droppedPacketLengths:histogram
+field count 8969
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 86102400
+field sqrsum 826583040000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	8969
+bin	9601	0
+scalar FramePreemptionShowcase.host2.app[0].io "packets sent" 0
+scalar FramePreemptionShowcase.host2.app[0].io "packets received" 8969
+scalar FramePreemptionShowcase.host2.app[0].io packetReceived:count 8969
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FramePreemptionShowcase.host2.app[0].io packetReceived:sum(packetBytes) 10762800
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.app[0].io packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FramePreemptionShowcase.host2.app[0].io packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.app[1].sink packets:count 869
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.app[1].sink packetLengths:sum 8342400
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.app[1].sink packetLengths:histogram
+field count 869
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 8342400
+field sqrsum 80087040000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	869
+bin	9601	0
+statistic FramePreemptionShowcase.host2.app[1].sink meanBitLifeTimePerPacket:histogram
+field count 868
+field mean 0.00037204207266935
+field stddev 9.2905546272762e-05
+field min 0.00010037
+field max 0.00050543818
+field sum 0.322932519077
+field sqrsum 0.00012762794266773
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1e-05	0
+bin	2e-05	0
+bin	3e-05	0
+bin	4e-05	0
+bin	5e-05	0
+bin	6e-05	0
+bin	7e-05	0
+bin	8e-05	0
+bin	9e-05	0
+bin	0.0001	8
+bin	0.00011	7
+bin	0.00012	1
+bin	0.00013	2
+bin	0.00014	4
+bin	0.00015	6
+bin	0.00016	4
+bin	0.00017	5
+bin	0.00018	6
+bin	0.00019	8
+bin	0.0002	12
+bin	0.00021	5
+bin	0.00022	9
+bin	0.00023	10
+bin	0.00024	9
+bin	0.00025	11
+bin	0.00026	16
+bin	0.00027	9
+bin	0.00028	28
+bin	0.00029	20
+bin	0.0003	27
+bin	0.00031	25
+bin	0.00032	25
+bin	0.00033	27
+bin	0.00034	23
+bin	0.00035	38
+bin	0.00036	44
+bin	0.00037	27
+bin	0.00038	34
+bin	0.00039	34
+bin	0.0004	30
+bin	0.00041	37
+bin	0.00042	27
+bin	0.00043	37
+bin	0.00044	40
+bin	0.00045	44
+bin	0.00046	42
+bin	0.00047	40
+bin	0.00048	39
+bin	0.00049	32
+bin	0.0005	16
+bin	0.00051	0
+bin	0.00052	0
+bin	0.00053	0
+bin	0.00054	0
+bin	0.00055	0
+bin	0.00056	0
+bin	0.00057	0
+bin	0.00058	0
+bin	0.00059	0
+bin	0.0006	0
+statistic FramePreemptionShowcase.host2.app[1].sink packetJitter:histogram
+field count 868
+field mean 4.7319413940092e-07
+field stddev 0.00010735814814887
+field min -0.000390274183
+field max 0.000372582727
+field sum 0.000410732513
+field sqrsum 9.9930386576368e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-0.00056	0
+bin	-0.00054	0
+bin	-0.00052	0
+bin	-0.0005	0
+bin	-0.00048	0
+bin	-0.00046	0
+bin	-0.00044	0
+bin	-0.00042	0
+bin	-0.0004	1
+bin	-0.00038	1
+bin	-0.00036	3
+bin	-0.00034	1
+bin	-0.00032	1
+bin	-0.0003	2
+bin	-0.00028	1
+bin	-0.00026	4
+bin	-0.00024	5
+bin	-0.00022	11
+bin	-0.0002	11
+bin	-0.00018	16
+bin	-0.00016	21
+bin	-0.00014	24
+bin	-0.00012	37
+bin	-0.0001	45
+bin	-8e-05	42
+bin	-6e-05	67
+bin	-4e-05	73
+bin	-2e-05	77
+bin	0	61
+bin	2e-05	67
+bin	4e-05	53
+bin	6e-05	41
+bin	8e-05	51
+bin	0.0001	39
+bin	0.00012	32
+bin	0.00014	27
+bin	0.00016	18
+bin	0.00018	14
+bin	0.0002	8
+bin	0.00022	3
+bin	0.00024	2
+bin	0.00026	3
+bin	0.00028	2
+bin	0.0003	1
+bin	0.00032	0
+bin	0.00034	1
+bin	0.00036	2
+bin	0.00038	0
+bin	0.0004	0
+bin	0.00042	0
+bin	0.00044	0
+bin	0.00046	0
+bin	0.00048	0
+bin	0.0005	0
+bin	0.00052	0
+bin	0.00054	0
+statistic FramePreemptionShowcase.host2.app[1].sink packetDelayDifferenceToMean:histogram
+field count 868
+field mean -5.4058569295641e-06
+field stddev 9.2335163007068e-05
+field min -0.00016994144766667
+field max 0.00027339174358333
+field sum -0.0046922838148616
+field sqrsum 7.4172190929548e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-0.00029	0
+bin	-0.00028	0
+bin	-0.00027	0
+bin	-0.00026	0
+bin	-0.00025	0
+bin	-0.00024	0
+bin	-0.00023	0
+bin	-0.00022	0
+bin	-0.00021	0
+bin	-0.0002	0
+bin	-0.00019	0
+bin	-0.00018	0
+bin	-0.00017	1
+bin	-0.00016	1
+bin	-0.00015	5
+bin	-0.00014	17
+bin	-0.00013	27
+bin	-0.00012	48
+bin	-0.00011	38
+bin	-0.0001	48
+bin	-9e-05	40
+bin	-8e-05	33
+bin	-7e-05	39
+bin	-6e-05	33
+bin	-5e-05	32
+bin	-4e-05	33
+bin	-3e-05	35
+bin	-2e-05	31
+bin	-1e-05	32
+bin	0	34
+bin	1e-05	46
+bin	2e-05	21
+bin	3e-05	30
+bin	4e-05	25
+bin	5e-05	23
+bin	6e-05	24
+bin	7e-05	21
+bin	8e-05	22
+bin	9e-05	13
+bin	0.0001	8
+bin	0.00011	20
+bin	0.00012	6
+bin	0.00013	9
+bin	0.00014	10
+bin	0.00015	6
+bin	0.00016	9
+bin	0.00017	8
+bin	0.00018	8
+bin	0.00019	2
+bin	0.0002	6
+bin	0.00021	5
+bin	0.00022	3
+bin	0.00023	1
+bin	0.00024	3
+bin	0.00025	5
+bin	0.00026	4
+bin	0.00027	3
+bin	0.00028	0
+bin	0.00029	0
+bin	0.0003	0
+bin	0.00031	0
+bin	0.00032	0
+bin	0.00033	0
+bin	0.00034	0
+bin	0.00035	0
+bin	0.00036	0
+bin	0.00037	0
+bin	0.00038	0
+bin	0.00039	0
+statistic FramePreemptionShowcase.host2.app[1].sink packetDelayVariation:histogram
+field count 868
+field mean 9.6739109033375e-05
+field stddev 6.6567387689832e-06
+field min 0
+field max 0.00011860019473656
+field sum 0.08396954664097
+field sqrsum 8.1615577802742e-06
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	2e-06	0
+bin	4e-06	0
+bin	6e-06	0
+bin	8e-06	0
+bin	1e-05	0
+bin	1.2e-05	0
+bin	1.4e-05	0
+bin	1.6e-05	0
+bin	1.8e-05	0
+bin	2e-05	0
+bin	2.2e-05	0
+bin	2.4e-05	0
+bin	2.6e-05	1
+bin	2.8e-05	0
+bin	3e-05	0
+bin	3.2e-05	0
+bin	3.4e-05	0
+bin	3.6e-05	0
+bin	3.8e-05	0
+bin	4e-05	0
+bin	4.2e-05	0
+bin	4.4e-05	0
+bin	4.6e-05	0
+bin	4.8e-05	0
+bin	5e-05	0
+bin	5.2e-05	0
+bin	5.4e-05	0
+bin	5.6e-05	0
+bin	5.8e-05	0
+bin	6e-05	0
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	0
+bin	7.4e-05	0
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	1
+bin	8.6e-05	0
+bin	8.8e-05	0
+bin	9e-05	74
+bin	9.2e-05	253
+bin	9.4e-05	166
+bin	9.6e-05	105
+bin	9.8e-05	67
+bin	0.0001	68
+bin	0.000102	30
+bin	0.000104	32
+bin	0.000106	28
+bin	0.000108	11
+bin	0.00011	14
+bin	0.000112	7
+bin	0.000114	9
+bin	0.000116	0
+bin	0.000118	1
+bin	0.00012	0
+bin	0.000122	0
+bin	0.000124	0
+bin	0.000126	0
+bin	0.000128	0
+bin	0.00013	0
+bin	0.000132	0
+bin	0.000134	0
+bin	0.000136	0
+bin	0.000138	0
+bin	0.00014	0
+bin	0.000142	0
+bin	0.000144	0
+bin	0.000146	0
+bin	0.000148	0
+bin	0.00015	0
+scalar FramePreemptionShowcase.host2.app[1].sink droppedPackets:count 869
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar FramePreemptionShowcase.host2.app[1].sink droppedPacketLengths:sum 8342400
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic FramePreemptionShowcase.host2.app[1].sink droppedPacketLengths:histogram
+field count 869
+field mean 9600
+field stddev 0
+field min 9600
+field max 9600
+field sum 8342400
+field sqrsum 80087040000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	9599	0
+bin	9600	869
+bin	9601	0
+scalar FramePreemptionShowcase.host2.app[1].io "packets sent" 0
+scalar FramePreemptionShowcase.host2.app[1].io "packets received" 869
+scalar FramePreemptionShowcase.host2.app[1].io packetReceived:count 869
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar FramePreemptionShowcase.host2.app[1].io packetReceived:sum(packetBytes) 1042800
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar FramePreemptionShowcase.host2.app[1].io packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar FramePreemptionShowcase.host2.app[1].io packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+

@@ -1,0 +1,6597 @@
+version 3
+run Mixed-0-20230411-10:31:57-42680
+attr configname Mixed
+attr datetime 20230411-10:31:57
+attr datetimef 20230411-103157
+attr experiment Mixed
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network NClientsEthPpp
+attr processid 42680
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config image-path /home/levy/workspace/inet/images
+config sim-time-limit 50s
+config extends "ETH_base, PPP_base"
+config network NClientsEthPpp
+config **.eth[*].queue.typename EthernetQosQueue
+config **.eth[*].queue.dataQueue.typename DropTailQueue
+config **.eth[*].queue.dataQueue.packetCapacity 10
+config **.eth[*].duplexMode true
+config **.ppp[*].queue.typename DropTailQueue
+config **.ppp[*].queue.packetCapacity 10
+config sim-time-limit 50s
+config *.n 1
+config **.cli[*].numApps 1
+config **.cli[*].app[*].typename TelnetApp
+config **.cli[*].app[0].localAddress "\"\""
+config **.cli[*].app[0].localPort -1
+config **.cli[*].app[0].connectAddress "\"srv\""
+config **.cli[*].app[0].connectPort 1000
+config **.cli[*].app[0].startTime "15s + exponential(5s)"
+config **.cli[*].app[0].numCommands int(exponential(10))
+config **.cli[*].app[0].commandLength intWithUnit(exponential(10B))
+config **.cli[*].app[0].keyPressDelay exponential(0.1s)
+config **.cli[*].app[0].commandOutputLength intWithUnit(exponential(40B))
+config **.cli[*].app[0].thinkTime truncnormal(2s,3s)
+config **.cli[*].app[0].idleInterval truncnormal(3600s,1200s)
+config **.cli[*].app[0].reconnectInterval 30s
+config **.srv.numApps 1
+config **.srv.app[*].typename TcpGenericServerApp
+config **.srv.app[0].localAddress "\"\""
+config **.srv.app[0].localPort 1000
+config **.srv.app[0].replyDelay 0s
+
+scalar NClientsEthPpp.r1.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar NClientsEthPpp.r1.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar NClientsEthPpp.r1.ethernet decapPk:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar NClientsEthPpp.r1.ethernet decapPk:sum(packetBytes) 12117
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ethernet encapPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar NClientsEthPpp.r1.ethernet encapPk:sum(packetBytes) 12301
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar NClientsEthPpp.r1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.r1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ppp[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r1.ppp[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r1.ppp[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r1.ppp[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r1.ppp[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r1.ppp[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r1.ppp[0].queue queueingTime:histogram
+field count 197
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	197
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.r1.ppp[0].queue outgoingPackets:count 197
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.ppp[0].queue outgoingPacketLengths:sum 95400
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.ppp[0].queue outgoingPacketLengths:histogram
+field count 197
+field mean 484.26395939086
+field stddev 4.8834759449039
+field min 480
+field max 512
+field sum 95400
+field sqrsum 46203456
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	472	0
+bin	473	0
+bin	474	0
+bin	475	0
+bin	476	0
+bin	477	0
+bin	478	0
+bin	479	0
+bin	480	98
+bin	481	0
+bin	482	0
+bin	483	0
+bin	484	0
+bin	485	0
+bin	486	0
+bin	487	0
+bin	488	97
+bin	489	0
+bin	490	0
+bin	491	0
+bin	492	0
+bin	493	0
+bin	494	0
+bin	495	0
+bin	496	0
+bin	497	0
+bin	498	0
+bin	499	0
+bin	500	0
+bin	501	0
+bin	502	0
+bin	503	0
+bin	504	0
+bin	505	0
+bin	506	0
+bin	507	0
+bin	508	0
+bin	509	0
+bin	510	0
+bin	511	0
+bin	512	2
+bin	513	0
+bin	514	0
+bin	515	0
+bin	516	0
+bin	517	0
+bin	518	0
+bin	519	0
+bin	520	0
+statistic NClientsEthPpp.r1.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r1.ppp[0].queue incomingPackets:count 197
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.ppp[0].queue incomingPacketLengths:sum 95400
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.ppp[0].queue incomingPacketLengths:histogram
+field count 197
+field mean 484.26395939086
+field stddev 4.8834759449039
+field min 480
+field max 512
+field sum 95400
+field sqrsum 46203456
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	472	0
+bin	473	0
+bin	474	0
+bin	475	0
+bin	476	0
+bin	477	0
+bin	478	0
+bin	479	0
+bin	480	98
+bin	481	0
+bin	482	0
+bin	483	0
+bin	484	0
+bin	485	0
+bin	486	0
+bin	487	0
+bin	488	97
+bin	489	0
+bin	490	0
+bin	491	0
+bin	492	0
+bin	493	0
+bin	494	0
+bin	495	0
+bin	496	0
+bin	497	0
+bin	498	0
+bin	499	0
+bin	500	0
+bin	501	0
+bin	502	0
+bin	503	0
+bin	504	0
+bin	505	0
+bin	506	0
+bin	507	0
+bin	508	0
+bin	509	0
+bin	510	0
+bin	511	0
+bin	512	2
+bin	513	0
+bin	514	0
+bin	515	0
+bin	516	0
+bin	517	0
+bin	518	0
+bin	519	0
+bin	520	0
+scalar NClientsEthPpp.r1.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r1.ppp[0].ppp transmissionState:timeavg 2.12864e-06
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar NClientsEthPpp.r1.ppp[0].ppp rxPkOk:count 196
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar NClientsEthPpp.r1.ppp[0].ppp rxPkOk:sum(packetBytes) 13425
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ppp[0].ppp txPk:count 197
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar NClientsEthPpp.r1.ppp[0].ppp txPk:sum(packetBytes) 13304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ppp[0].ppp rcvdPkFromHl:count 197
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.r1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 11925
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ppp[0].ppp passedUpPk:count 196
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r1.ppp[0].ppp passedUpPk:sum(packetBytes) 12053
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar NClientsEthPpp.r1.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar NClientsEthPpp.r1.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r1.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r1.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0].queue.classifier packets:count 199
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.classifier packetLengths:sum 127064
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue.classifier packetLengths:histogram
+field count 199
+field mean 638.51256281407
+field stddev 62.678581982671
+field min 624
+field max 1312
+field sum 127064
+field sqrsum 81909824
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	97
+bin	630	90
+bin	640	0
+bin	650	2
+bin	660	0
+bin	670	1
+bin	680	1
+bin	690	0
+bin	700	1
+bin	710	1
+bin	720	2
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	1
+bin	910	0
+bin	920	0
+bin	930	1
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	1
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	0
+bin	1210	0
+bin	1220	0
+bin	1230	0
+bin	1240	0
+bin	1250	0
+bin	1260	0
+bin	1270	0
+bin	1280	0
+bin	1290	0
+bin	1300	0
+bin	1310	1
+bin	1320	0
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue.pauseQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic NClientsEthPpp.r1.eth[0].queue.pauseQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue.pauseQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.pauseQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue.dataQueue queueingTime:histogram
+field count 199
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	199
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue outgoingPackets:count 199
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue outgoingPacketLengths:sum 127064
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue.dataQueue outgoingPacketLengths:histogram
+field count 199
+field mean 638.51256281407
+field stddev 62.678581982671
+field min 624
+field max 1312
+field sum 127064
+field sqrsum 81909824
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	97
+bin	630	90
+bin	640	0
+bin	650	2
+bin	660	0
+bin	670	1
+bin	680	1
+bin	690	0
+bin	700	1
+bin	710	1
+bin	720	2
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	1
+bin	910	0
+bin	920	0
+bin	930	1
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	1
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	0
+bin	1210	0
+bin	1220	0
+bin	1230	0
+bin	1240	0
+bin	1250	0
+bin	1260	0
+bin	1270	0
+bin	1280	0
+bin	1290	0
+bin	1300	0
+bin	1310	1
+bin	1320	0
+statistic NClientsEthPpp.r1.eth[0].queue.dataQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue incomingPackets:count 199
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue incomingPacketLengths:sum 127064
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue.dataQueue incomingPacketLengths:histogram
+field count 199
+field mean 638.51256281407
+field stddev 62.678581982671
+field min 624
+field max 1312
+field sum 127064
+field sqrsum 81909824
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	97
+bin	630	90
+bin	640	0
+bin	650	2
+bin	660	0
+bin	670	1
+bin	680	1
+bin	690	0
+bin	700	1
+bin	710	1
+bin	720	2
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	1
+bin	910	0
+bin	920	0
+bin	930	1
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	1
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	0
+bin	1210	0
+bin	1220	0
+bin	1230	0
+bin	1240	0
+bin	1250	0
+bin	1260	0
+bin	1270	0
+bin	1280	0
+bin	1290	0
+bin	1300	0
+bin	1310	1
+bin	1320	0
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.dataQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].queue.scheduler packets:count 199
+attr recordingmode count
+attr source packetPulled
+attr title "packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue.scheduler packetLengths:sum 127064
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue.scheduler packetLengths:histogram
+field count 199
+field mean 638.51256281407
+field stddev 62.678581982671
+field min 624
+field max 1312
+field sum 127064
+field sqrsum 81909824
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	97
+bin	630	90
+bin	640	0
+bin	650	2
+bin	660	0
+bin	670	1
+bin	680	1
+bin	690	0
+bin	700	1
+bin	710	1
+bin	720	2
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	1
+bin	910	0
+bin	920	0
+bin	930	1
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	1
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	0
+bin	1210	0
+bin	1220	0
+bin	1230	0
+bin	1240	0
+bin	1250	0
+bin	1260	0
+bin	1270	0
+bin	1280	0
+bin	1290	0
+bin	1300	0
+bin	1310	1
+bin	1320	0
+scalar NClientsEthPpp.r1.eth[0].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].queue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue queueingTime:histogram
+field count 199
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(localSignal(packetPulled))
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	199
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.r1.eth[0].queue outgoingPackets:count 199
+attr recordingmode count
+attr source localSignal(packetPulled)
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue outgoingPacketLengths:sum 127064
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(localSignal(packetPulled))
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue outgoingPacketLengths:histogram
+field count 199
+field mean 638.51256281407
+field stddev 62.678581982671
+field min 624
+field max 1312
+field sum 127064
+field sqrsum 81909824
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(localSignal(packetPulled))
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	97
+bin	630	90
+bin	640	0
+bin	650	2
+bin	660	0
+bin	670	1
+bin	680	1
+bin	690	0
+bin	700	1
+bin	710	1
+bin	720	2
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	1
+bin	910	0
+bin	920	0
+bin	930	1
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	1
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	0
+bin	1210	0
+bin	1220	0
+bin	1230	0
+bin	1240	0
+bin	1250	0
+bin	1260	0
+bin	1270	0
+bin	1280	0
+bin	1290	0
+bin	1300	0
+bin	1310	1
+bin	1320	0
+statistic NClientsEthPpp.r1.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(localSignal(packetPulled)))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r1.eth[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source localSignal(packetPushStarted)
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(localSignal(packetPushStarted))
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r1.eth[0].queue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(localSignal(packetPushStarted))
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r1.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(localSignal(packetDropped))
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r1.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(localSignal(packetDropped)))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r1.eth[0].mac "simulated time" 50
+scalar NClientsEthPpp.r1.eth[0].mac full-duplex 1
+scalar NClientsEthPpp.r1.eth[0].mac "frames/sec sent" 3.98
+scalar NClientsEthPpp.r1.eth[0].mac "frames/sec rcvd" 4
+scalar NClientsEthPpp.r1.eth[0].mac "bits/sec sent" 2541.28
+scalar NClientsEthPpp.r1.eth[0].mac "bits/sec rcvd" 2514.72
+scalar NClientsEthPpp.r1.eth[0].mac "rx channel idle (%)" 99.99722928
+scalar NClientsEthPpp.r1.eth[0].mac "rx channel utilization (%)" 0.00277072
+scalar NClientsEthPpp.r1.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar NClientsEthPpp.r1.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar NClientsEthPpp.r1.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar NClientsEthPpp.r1.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar NClientsEthPpp.r1.eth[0].mac rxPkOk:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar NClientsEthPpp.r1.eth[0].mac rxPkOk:sum(packetBytes) 15717
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0].mac txPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar NClientsEthPpp.r1.eth[0].mac txPk:sum(packetBytes) 15883
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0].mac packetReceivedFromUpper:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar NClientsEthPpp.r1.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 15883
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0].mac passedUpPk:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r1.eth[0].mac passedUpPk:sum(packetBytes) 15717
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar NClientsEthPpp.r1.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar NClientsEthPpp.r1.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar NClientsEthPpp.r1.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r1.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r1.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r1.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r1.ipv6.neighbourDiscovery startDad:count 2
+attr recordingmode count
+attr title "DAD started, count"
+scalar NClientsEthPpp.r2.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar NClientsEthPpp.r2.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar NClientsEthPpp.r2.ethernet decapPk:count 198
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar NClientsEthPpp.r2.ethernet decapPk:sum(packetBytes) 12197
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ethernet encapPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar NClientsEthPpp.r2.ethernet encapPk:sum(packetBytes) 12069
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar NClientsEthPpp.r2.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.r2.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r2.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r2.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r2.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r2.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r2.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r2.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ppp[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r2.ppp[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r2.ppp[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r2.ppp[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r2.ppp[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r2.ppp[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r2.ppp[0].queue queueingTime:histogram
+field count 196
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	196
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.r2.ppp[0].queue outgoingPackets:count 196
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.ppp[0].queue outgoingPacketLengths:sum 96424
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.ppp[0].queue outgoingPacketLengths:histogram
+field count 196
+field mean 491.95918367347
+field stddev 57.708714778458
+field min 480
+field max 1168
+field sum 96424
+field sqrsum 48086080
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	472	97
+bin	484	90
+bin	496	0
+bin	508	2
+bin	520	1
+bin	532	0
+bin	544	1
+bin	556	1
+bin	568	1
+bin	580	0
+bin	592	0
+bin	604	0
+bin	616	0
+bin	628	0
+bin	640	0
+bin	652	0
+bin	664	0
+bin	676	0
+bin	688	0
+bin	700	0
+bin	712	0
+bin	724	0
+bin	736	0
+bin	748	0
+bin	760	1
+bin	772	0
+bin	784	1
+bin	796	0
+bin	808	0
+bin	820	0
+bin	832	0
+bin	844	0
+bin	856	0
+bin	868	0
+bin	880	0
+bin	892	0
+bin	904	0
+bin	916	0
+bin	928	0
+bin	940	0
+bin	952	0
+bin	964	0
+bin	976	0
+bin	988	0
+bin	1000	0
+bin	1012	0
+bin	1024	0
+bin	1036	0
+bin	1048	0
+bin	1060	0
+bin	1072	0
+bin	1084	0
+bin	1096	0
+bin	1108	0
+bin	1120	0
+bin	1132	0
+bin	1144	0
+bin	1156	0
+bin	1168	1
+bin	1180	0
+statistic NClientsEthPpp.r2.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r2.ppp[0].queue incomingPackets:count 196
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.ppp[0].queue incomingPacketLengths:sum 96424
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.ppp[0].queue incomingPacketLengths:histogram
+field count 196
+field mean 491.95918367347
+field stddev 57.708714778458
+field min 480
+field max 1168
+field sum 96424
+field sqrsum 48086080
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	472	97
+bin	484	90
+bin	496	0
+bin	508	2
+bin	520	1
+bin	532	0
+bin	544	1
+bin	556	1
+bin	568	1
+bin	580	0
+bin	592	0
+bin	604	0
+bin	616	0
+bin	628	0
+bin	640	0
+bin	652	0
+bin	664	0
+bin	676	0
+bin	688	0
+bin	700	0
+bin	712	0
+bin	724	0
+bin	736	0
+bin	748	0
+bin	760	1
+bin	772	0
+bin	784	1
+bin	796	0
+bin	808	0
+bin	820	0
+bin	832	0
+bin	844	0
+bin	856	0
+bin	868	0
+bin	880	0
+bin	892	0
+bin	904	0
+bin	916	0
+bin	928	0
+bin	940	0
+bin	952	0
+bin	964	0
+bin	976	0
+bin	988	0
+bin	1000	0
+bin	1012	0
+bin	1024	0
+bin	1036	0
+bin	1048	0
+bin	1060	0
+bin	1072	0
+bin	1084	0
+bin	1096	0
+bin	1108	0
+bin	1120	0
+bin	1132	0
+bin	1144	0
+bin	1156	0
+bin	1168	1
+bin	1180	0
+scalar NClientsEthPpp.r2.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r2.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r2.ppp[0].ppp transmissionState:timeavg 2.148e-06
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar NClientsEthPpp.r2.ppp[0].ppp rxPkOk:count 197
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar NClientsEthPpp.r2.ppp[0].ppp rxPkOk:sum(packetBytes) 13304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ppp[0].ppp txPk:count 196
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar NClientsEthPpp.r2.ppp[0].ppp txPk:sum(packetBytes) 13425
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ppp[0].ppp rcvdPkFromHl:count 196
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.r2.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 12053
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ppp[0].ppp passedUpPk:count 197
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r2.ppp[0].ppp passedUpPk:sum(packetBytes) 11925
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar NClientsEthPpp.r2.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar NClientsEthPpp.r2.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r2.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r2.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0].queue.classifier packets:count 199
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.classifier packetLengths:sum 125208
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue.classifier packetLengths:histogram
+field count 199
+field mean 629.18592964824
+field stddev 10.380663989538
+field min 624
+field max 720
+field sum 125208
+field sqrsum 78800448
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	2
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	2
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue.pauseQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic NClientsEthPpp.r2.eth[0].queue.pauseQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue.pauseQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.pauseQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue.dataQueue queueingTime:histogram
+field count 199
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	199
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue outgoingPackets:count 199
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue outgoingPacketLengths:sum 125208
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue.dataQueue outgoingPacketLengths:histogram
+field count 199
+field mean 629.18592964824
+field stddev 10.380663989538
+field min 624
+field max 720
+field sum 125208
+field sqrsum 78800448
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	2
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	2
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+statistic NClientsEthPpp.r2.eth[0].queue.dataQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue incomingPackets:count 199
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue incomingPacketLengths:sum 125208
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue.dataQueue incomingPacketLengths:histogram
+field count 199
+field mean 629.18592964824
+field stddev 10.380663989538
+field min 624
+field max 720
+field sum 125208
+field sqrsum 78800448
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	2
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	2
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.dataQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].queue.scheduler packets:count 199
+attr recordingmode count
+attr source packetPulled
+attr title "packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue.scheduler packetLengths:sum 125208
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue.scheduler packetLengths:histogram
+field count 199
+field mean 629.18592964824
+field stddev 10.380663989538
+field min 624
+field max 720
+field sum 125208
+field sqrsum 78800448
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	2
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	2
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+scalar NClientsEthPpp.r2.eth[0].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].queue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue queueingTime:histogram
+field count 199
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(localSignal(packetPulled))
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	199
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.r2.eth[0].queue outgoingPackets:count 199
+attr recordingmode count
+attr source localSignal(packetPulled)
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue outgoingPacketLengths:sum 125208
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(localSignal(packetPulled))
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue outgoingPacketLengths:histogram
+field count 199
+field mean 629.18592964824
+field stddev 10.380663989538
+field min 624
+field max 720
+field sum 125208
+field sqrsum 78800448
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(localSignal(packetPulled))
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	2
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	2
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+statistic NClientsEthPpp.r2.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(localSignal(packetPulled)))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r2.eth[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source localSignal(packetPushStarted)
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(localSignal(packetPushStarted))
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r2.eth[0].queue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(localSignal(packetPushStarted))
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r2.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(localSignal(packetDropped))
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r2.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(localSignal(packetDropped)))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r2.eth[0].mac "simulated time" 50
+scalar NClientsEthPpp.r2.eth[0].mac full-duplex 1
+scalar NClientsEthPpp.r2.eth[0].mac "frames/sec sent" 3.98
+scalar NClientsEthPpp.r2.eth[0].mac "frames/sec rcvd" 3.96
+scalar NClientsEthPpp.r2.eth[0].mac "bits/sec sent" 2504.16
+scalar NClientsEthPpp.r2.eth[0].mac "bits/sec rcvd" 2521.76
+scalar NClientsEthPpp.r2.eth[0].mac "rx channel idle (%)" 99.9972248
+scalar NClientsEthPpp.r2.eth[0].mac "rx channel utilization (%)" 0.0027752
+scalar NClientsEthPpp.r2.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar NClientsEthPpp.r2.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar NClientsEthPpp.r2.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar NClientsEthPpp.r2.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar NClientsEthPpp.r2.eth[0].mac rxPkOk:count 198
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar NClientsEthPpp.r2.eth[0].mac rxPkOk:sum(packetBytes) 15761
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0].mac txPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar NClientsEthPpp.r2.eth[0].mac txPk:sum(packetBytes) 15651
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0].mac packetReceivedFromUpper:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar NClientsEthPpp.r2.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 15651
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0].mac passedUpPk:count 198
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r2.eth[0].mac passedUpPk:sum(packetBytes) 15761
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar NClientsEthPpp.r2.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar NClientsEthPpp.r2.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar NClientsEthPpp.r2.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r2.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r2.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r2.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r2.ipv6.neighbourDiscovery startDad:count 2
+attr recordingmode count
+attr title "DAD started, count"
+scalar NClientsEthPpp.r3.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar NClientsEthPpp.r3.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar NClientsEthPpp.r3.ethernet decapPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar NClientsEthPpp.r3.ethernet decapPk:sum(packetBytes) 12069
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ethernet encapPk:count 198
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar NClientsEthPpp.r3.ethernet encapPk:sum(packetBytes) 12197
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar NClientsEthPpp.r3.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.r3.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r3.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r3.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r3.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r3.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r3.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r3.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ppp[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r3.ppp[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r3.ppp[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r3.ppp[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r3.ppp[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r3.ppp[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r3.ppp[0].queue queueingTime:histogram
+field count 200
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	200
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.r3.ppp[0].queue outgoingPackets:count 200
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.ppp[0].queue outgoingPacketLengths:sum 97320
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.ppp[0].queue outgoingPacketLengths:histogram
+field count 200
+field mean 486.6
+field stddev 25.919085535082
+field min 480
+field max 832
+field sum 97320
+field sqrsum 47489600
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	390	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	195
+bin	490	0
+bin	500	0
+bin	510	3
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	1
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	1
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+statistic NClientsEthPpp.r3.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r3.ppp[0].queue incomingPackets:count 200
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.ppp[0].queue incomingPacketLengths:sum 97320
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.ppp[0].queue incomingPacketLengths:histogram
+field count 200
+field mean 486.6
+field stddev 25.919085535082
+field min 480
+field max 832
+field sum 97320
+field sqrsum 47489600
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	390	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	195
+bin	490	0
+bin	500	0
+bin	510	3
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	1
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	1
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+scalar NClientsEthPpp.r3.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r3.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r3.ppp[0].ppp transmissionState:timeavg 2.1704e-06
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar NClientsEthPpp.r3.ppp[0].ppp rxPkOk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar NClientsEthPpp.r3.ppp[0].ppp rxPkOk:sum(packetBytes) 13638
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ppp[0].ppp txPk:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar NClientsEthPpp.r3.ppp[0].ppp txPk:sum(packetBytes) 13565
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ppp[0].ppp rcvdPkFromHl:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.r3.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 12165
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ppp[0].ppp passedUpPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r3.ppp[0].ppp passedUpPk:sum(packetBytes) 12245
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar NClientsEthPpp.r3.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar NClientsEthPpp.r3.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r3.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r3.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0].queue.classifier packets:count 198
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.classifier packetLengths:sum 126088
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue.classifier packetLengths:histogram
+field count 198
+field mean 636.80808080808
+field stddev 58.029867466034
+field min 624
+field max 1312
+field sum 126088
+field sqrsum 80957248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	612	0
+bin	624	187
+bin	636	0
+bin	648	2
+bin	660	0
+bin	672	1
+bin	684	1
+bin	696	1
+bin	708	1
+bin	720	2
+bin	732	0
+bin	744	0
+bin	756	0
+bin	768	0
+bin	780	0
+bin	792	0
+bin	804	0
+bin	816	0
+bin	828	0
+bin	840	0
+bin	852	0
+bin	864	0
+bin	876	0
+bin	888	0
+bin	900	1
+bin	912	0
+bin	924	0
+bin	936	1
+bin	948	0
+bin	960	0
+bin	972	0
+bin	984	0
+bin	996	0
+bin	1008	0
+bin	1020	0
+bin	1032	0
+bin	1044	0
+bin	1056	0
+bin	1068	0
+bin	1080	0
+bin	1092	0
+bin	1104	0
+bin	1116	0
+bin	1128	0
+bin	1140	0
+bin	1152	0
+bin	1164	0
+bin	1176	0
+bin	1188	0
+bin	1200	0
+bin	1212	0
+bin	1224	0
+bin	1236	0
+bin	1248	0
+bin	1260	0
+bin	1272	0
+bin	1284	0
+bin	1296	0
+bin	1308	1
+bin	1320	0
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue.pauseQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic NClientsEthPpp.r3.eth[0].queue.pauseQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue.pauseQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.pauseQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue queueLength:timeavg 1.4169123865932e-05
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue queueBitLength:max 1312
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue queueBitLength:timeavg 0.0091621051452914
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue.dataQueue queueingTime:histogram
+field count 198
+field mean 3.5667070707071e-06
+field stddev 3.6491626443785e-06
+field min 0
+field max 7.296e-06
+field sum 0.000706208
+field sqrsum 5.142165504e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	101
+bin	2e-07	0
+bin	4e-07	0
+bin	6e-07	0
+bin	8e-07	0
+bin	1e-06	0
+bin	1.2e-06	0
+bin	1.4e-06	0
+bin	1.6e-06	0
+bin	1.8e-06	0
+bin	2e-06	0
+bin	2.2e-06	0
+bin	2.4e-06	0
+bin	2.6e-06	0
+bin	2.8e-06	0
+bin	3e-06	0
+bin	3.2e-06	0
+bin	3.4e-06	0
+bin	3.6e-06	0
+bin	3.8e-06	0
+bin	4e-06	0
+bin	4.2e-06	0
+bin	4.4e-06	0
+bin	4.6e-06	0
+bin	4.8e-06	0
+bin	5e-06	0
+bin	5.2e-06	0
+bin	5.4e-06	0
+bin	5.6e-06	0
+bin	5.8e-06	0
+bin	6e-06	0
+bin	6.2e-06	0
+bin	6.4e-06	0
+bin	6.6e-06	1
+bin	6.8e-06	1
+bin	7e-06	1
+bin	7.2e-06	94
+bin	7.4e-06	0
+bin	7.6e-06	0
+bin	7.8e-06	0
+bin	8e-06	0
+bin	8.2e-06	0
+bin	8.4e-06	0
+bin	8.6e-06	0
+bin	8.8e-06	0
+bin	9e-06	0
+bin	9.2e-06	0
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue outgoingPackets:count 198
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue outgoingPacketLengths:sum 126088
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue.dataQueue outgoingPacketLengths:histogram
+field count 198
+field mean 636.80808080808
+field stddev 58.029867466034
+field min 624
+field max 1312
+field sum 126088
+field sqrsum 80957248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	612	0
+bin	624	187
+bin	636	0
+bin	648	2
+bin	660	0
+bin	672	1
+bin	684	1
+bin	696	1
+bin	708	1
+bin	720	2
+bin	732	0
+bin	744	0
+bin	756	0
+bin	768	0
+bin	780	0
+bin	792	0
+bin	804	0
+bin	816	0
+bin	828	0
+bin	840	0
+bin	852	0
+bin	864	0
+bin	876	0
+bin	888	0
+bin	900	1
+bin	912	0
+bin	924	0
+bin	936	1
+bin	948	0
+bin	960	0
+bin	972	0
+bin	984	0
+bin	996	0
+bin	1008	0
+bin	1020	0
+bin	1032	0
+bin	1044	0
+bin	1056	0
+bin	1068	0
+bin	1080	0
+bin	1092	0
+bin	1104	0
+bin	1116	0
+bin	1128	0
+bin	1140	0
+bin	1152	0
+bin	1164	0
+bin	1176	0
+bin	1188	0
+bin	1200	0
+bin	1212	0
+bin	1224	0
+bin	1236	0
+bin	1248	0
+bin	1260	0
+bin	1272	0
+bin	1284	0
+bin	1296	0
+bin	1308	1
+bin	1320	0
+statistic NClientsEthPpp.r3.eth[0].queue.dataQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue incomingPackets:count 198
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue incomingPacketLengths:sum 126088
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue.dataQueue incomingPacketLengths:histogram
+field count 198
+field mean 636.80808080808
+field stddev 58.029867466034
+field min 624
+field max 1312
+field sum 126088
+field sqrsum 80957248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	612	0
+bin	624	187
+bin	636	0
+bin	648	2
+bin	660	0
+bin	672	1
+bin	684	1
+bin	696	1
+bin	708	1
+bin	720	2
+bin	732	0
+bin	744	0
+bin	756	0
+bin	768	0
+bin	780	0
+bin	792	0
+bin	804	0
+bin	816	0
+bin	828	0
+bin	840	0
+bin	852	0
+bin	864	0
+bin	876	0
+bin	888	0
+bin	900	1
+bin	912	0
+bin	924	0
+bin	936	1
+bin	948	0
+bin	960	0
+bin	972	0
+bin	984	0
+bin	996	0
+bin	1008	0
+bin	1020	0
+bin	1032	0
+bin	1044	0
+bin	1056	0
+bin	1068	0
+bin	1080	0
+bin	1092	0
+bin	1104	0
+bin	1116	0
+bin	1128	0
+bin	1140	0
+bin	1152	0
+bin	1164	0
+bin	1176	0
+bin	1188	0
+bin	1200	0
+bin	1212	0
+bin	1224	0
+bin	1236	0
+bin	1248	0
+bin	1260	0
+bin	1272	0
+bin	1284	0
+bin	1296	0
+bin	1308	1
+bin	1320	0
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.dataQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].queue.scheduler packets:count 198
+attr recordingmode count
+attr source packetPulled
+attr title "packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue.scheduler packetLengths:sum 126088
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue.scheduler packetLengths:histogram
+field count 198
+field mean 636.80808080808
+field stddev 58.029867466034
+field min 624
+field max 1312
+field sum 126088
+field sqrsum 80957248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	612	0
+bin	624	187
+bin	636	0
+bin	648	2
+bin	660	0
+bin	672	1
+bin	684	1
+bin	696	1
+bin	708	1
+bin	720	2
+bin	732	0
+bin	744	0
+bin	756	0
+bin	768	0
+bin	780	0
+bin	792	0
+bin	804	0
+bin	816	0
+bin	828	0
+bin	840	0
+bin	852	0
+bin	864	0
+bin	876	0
+bin	888	0
+bin	900	1
+bin	912	0
+bin	924	0
+bin	936	1
+bin	948	0
+bin	960	0
+bin	972	0
+bin	984	0
+bin	996	0
+bin	1008	0
+bin	1020	0
+bin	1032	0
+bin	1044	0
+bin	1056	0
+bin	1068	0
+bin	1080	0
+bin	1092	0
+bin	1104	0
+bin	1116	0
+bin	1128	0
+bin	1140	0
+bin	1152	0
+bin	1164	0
+bin	1176	0
+bin	1188	0
+bin	1200	0
+bin	1212	0
+bin	1224	0
+bin	1236	0
+bin	1248	0
+bin	1260	0
+bin	1272	0
+bin	1284	0
+bin	1296	0
+bin	1308	1
+bin	1320	0
+scalar NClientsEthPpp.r3.eth[0].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].queue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue queueingTime:histogram
+field count 198
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(localSignal(packetPulled))
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	198
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.r3.eth[0].queue outgoingPackets:count 198
+attr recordingmode count
+attr source localSignal(packetPulled)
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue outgoingPacketLengths:sum 126088
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(localSignal(packetPulled))
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue outgoingPacketLengths:histogram
+field count 198
+field mean 636.80808080808
+field stddev 58.029867466034
+field min 624
+field max 1312
+field sum 126088
+field sqrsum 80957248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(localSignal(packetPulled))
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	600	0
+bin	612	0
+bin	624	187
+bin	636	0
+bin	648	2
+bin	660	0
+bin	672	1
+bin	684	1
+bin	696	1
+bin	708	1
+bin	720	2
+bin	732	0
+bin	744	0
+bin	756	0
+bin	768	0
+bin	780	0
+bin	792	0
+bin	804	0
+bin	816	0
+bin	828	0
+bin	840	0
+bin	852	0
+bin	864	0
+bin	876	0
+bin	888	0
+bin	900	1
+bin	912	0
+bin	924	0
+bin	936	1
+bin	948	0
+bin	960	0
+bin	972	0
+bin	984	0
+bin	996	0
+bin	1008	0
+bin	1020	0
+bin	1032	0
+bin	1044	0
+bin	1056	0
+bin	1068	0
+bin	1080	0
+bin	1092	0
+bin	1104	0
+bin	1116	0
+bin	1128	0
+bin	1140	0
+bin	1152	0
+bin	1164	0
+bin	1176	0
+bin	1188	0
+bin	1200	0
+bin	1212	0
+bin	1224	0
+bin	1236	0
+bin	1248	0
+bin	1260	0
+bin	1272	0
+bin	1284	0
+bin	1296	0
+bin	1308	1
+bin	1320	0
+statistic NClientsEthPpp.r3.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(localSignal(packetPulled)))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r3.eth[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source localSignal(packetPushStarted)
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(localSignal(packetPushStarted))
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.r3.eth[0].queue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(localSignal(packetPushStarted))
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.r3.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(localSignal(packetDropped))
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.r3.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(localSignal(packetDropped)))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.r3.eth[0].mac "simulated time" 50
+scalar NClientsEthPpp.r3.eth[0].mac full-duplex 1
+scalar NClientsEthPpp.r3.eth[0].mac "frames/sec sent" 3.96
+scalar NClientsEthPpp.r3.eth[0].mac "frames/sec rcvd" 3.98
+scalar NClientsEthPpp.r3.eth[0].mac "bits/sec sent" 2521.76
+scalar NClientsEthPpp.r3.eth[0].mac "bits/sec rcvd" 2504.16
+scalar NClientsEthPpp.r3.eth[0].mac "rx channel idle (%)" 99.99724112
+scalar NClientsEthPpp.r3.eth[0].mac "rx channel utilization (%)" 0.00275888
+scalar NClientsEthPpp.r3.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar NClientsEthPpp.r3.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar NClientsEthPpp.r3.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar NClientsEthPpp.r3.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar NClientsEthPpp.r3.eth[0].mac rxPkOk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar NClientsEthPpp.r3.eth[0].mac rxPkOk:sum(packetBytes) 15651
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0].mac txPk:count 198
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar NClientsEthPpp.r3.eth[0].mac txPk:sum(packetBytes) 15761
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0].mac packetReceivedFromUpper:count 198
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar NClientsEthPpp.r3.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 15761
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0].mac passedUpPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.r3.eth[0].mac passedUpPk:sum(packetBytes) 15651
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar NClientsEthPpp.r3.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar NClientsEthPpp.r3.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar NClientsEthPpp.r3.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.r3.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.r3.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.r3.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.r3.ipv6.neighbourDiscovery startDad:count 2
+attr recordingmode count
+attr title "DAD started, count"
+scalar NClientsEthPpp.cli[0].ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar NClientsEthPpp.cli[0].ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar NClientsEthPpp.cli[0].ethernet decapPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar NClientsEthPpp.cli[0].ethernet decapPk:sum(packetBytes) 12301
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].ethernet encapPk:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar NClientsEthPpp.cli[0].ethernet encapPk:sum(packetBytes) 12117
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.cli[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.cli[0].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.cli[0].lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.cli[0].lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0].queue.classifier packets:count 200
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.classifier packetLengths:sum 125736
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue.classifier packetLengths:histogram
+field count 200
+field mean 628.68
+field stddev 8.72226977052
+field min 592
+field max 720
+field sum 125736
+field sqrsum 79062848
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	560	0
+bin	562	0
+bin	564	0
+bin	566	0
+bin	568	0
+bin	570	0
+bin	572	0
+bin	574	0
+bin	576	0
+bin	578	0
+bin	580	0
+bin	582	0
+bin	584	0
+bin	586	0
+bin	588	0
+bin	590	0
+bin	592	1
+bin	594	0
+bin	596	0
+bin	598	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	3
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	1
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+bin	746	0
+bin	748	0
+bin	750	0
+bin	752	0
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue.pauseQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue.pauseQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic NClientsEthPpp.cli[0].eth[0].queue.pauseQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue.pauseQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.pauseQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue.dataQueue queueingTime:histogram
+field count 200
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	200
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue outgoingPackets:count 200
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue outgoingPacketLengths:sum 125736
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue.dataQueue outgoingPacketLengths:histogram
+field count 200
+field mean 628.68
+field stddev 8.72226977052
+field min 592
+field max 720
+field sum 125736
+field sqrsum 79062848
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	560	0
+bin	562	0
+bin	564	0
+bin	566	0
+bin	568	0
+bin	570	0
+bin	572	0
+bin	574	0
+bin	576	0
+bin	578	0
+bin	580	0
+bin	582	0
+bin	584	0
+bin	586	0
+bin	588	0
+bin	590	0
+bin	592	1
+bin	594	0
+bin	596	0
+bin	598	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	3
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	1
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+bin	746	0
+bin	748	0
+bin	750	0
+bin	752	0
+statistic NClientsEthPpp.cli[0].eth[0].queue.dataQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue incomingPackets:count 200
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue incomingPacketLengths:sum 125736
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue.dataQueue incomingPacketLengths:histogram
+field count 200
+field mean 628.68
+field stddev 8.72226977052
+field min 592
+field max 720
+field sum 125736
+field sqrsum 79062848
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	560	0
+bin	562	0
+bin	564	0
+bin	566	0
+bin	568	0
+bin	570	0
+bin	572	0
+bin	574	0
+bin	576	0
+bin	578	0
+bin	580	0
+bin	582	0
+bin	584	0
+bin	586	0
+bin	588	0
+bin	590	0
+bin	592	1
+bin	594	0
+bin	596	0
+bin	598	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	3
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	1
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+bin	746	0
+bin	748	0
+bin	750	0
+bin	752	0
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.dataQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].queue.scheduler packets:count 200
+attr recordingmode count
+attr source packetPulled
+attr title "packets, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue.scheduler packetLengths:sum 125736
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue.scheduler packetLengths:histogram
+field count 200
+field mean 628.68
+field stddev 8.72226977052
+field min 592
+field max 720
+field sum 125736
+field sqrsum 79062848
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	560	0
+bin	562	0
+bin	564	0
+bin	566	0
+bin	568	0
+bin	570	0
+bin	572	0
+bin	574	0
+bin	576	0
+bin	578	0
+bin	580	0
+bin	582	0
+bin	584	0
+bin	586	0
+bin	588	0
+bin	590	0
+bin	592	1
+bin	594	0
+bin	596	0
+bin	598	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	3
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	1
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+bin	746	0
+bin	748	0
+bin	750	0
+bin	752	0
+scalar NClientsEthPpp.cli[0].eth[0].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + count(localSignal(packetPushStarted)) - count(localSignal(packetPulled)) - count(localSignal(packetRemoved)) - count(localSignal(packetDropped))))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].queue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(localSignal(packetPushEnded)) + sum(packetLength(localSignal(packetPushStarted))) - sum(packetLength(localSignal(packetPulled))) - sum(packetLength(localSignal(packetRemoved))) - sum(packetLength(localSignal(packetDropped)))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue queueingTime:histogram
+field count 200
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(localSignal(packetPulled))
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	200
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar NClientsEthPpp.cli[0].eth[0].queue outgoingPackets:count 200
+attr recordingmode count
+attr source localSignal(packetPulled)
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue outgoingPacketLengths:sum 125736
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(localSignal(packetPulled))
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue outgoingPacketLengths:histogram
+field count 200
+field mean 628.68
+field stddev 8.72226977052
+field min 592
+field max 720
+field sum 125736
+field sqrsum 79062848
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(localSignal(packetPulled))
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	560	0
+bin	562	0
+bin	564	0
+bin	566	0
+bin	568	0
+bin	570	0
+bin	572	0
+bin	574	0
+bin	576	0
+bin	578	0
+bin	580	0
+bin	582	0
+bin	584	0
+bin	586	0
+bin	588	0
+bin	590	0
+bin	592	1
+bin	594	0
+bin	596	0
+bin	598	0
+bin	600	0
+bin	602	0
+bin	604	0
+bin	606	0
+bin	608	0
+bin	610	0
+bin	612	0
+bin	614	0
+bin	616	0
+bin	618	0
+bin	620	0
+bin	622	0
+bin	624	98
+bin	626	0
+bin	628	0
+bin	630	0
+bin	632	97
+bin	634	0
+bin	636	0
+bin	638	0
+bin	640	0
+bin	642	0
+bin	644	0
+bin	646	0
+bin	648	0
+bin	650	0
+bin	652	0
+bin	654	0
+bin	656	3
+bin	658	0
+bin	660	0
+bin	662	0
+bin	664	0
+bin	666	0
+bin	668	0
+bin	670	0
+bin	672	0
+bin	674	0
+bin	676	0
+bin	678	0
+bin	680	0
+bin	682	0
+bin	684	0
+bin	686	0
+bin	688	0
+bin	690	0
+bin	692	0
+bin	694	0
+bin	696	0
+bin	698	0
+bin	700	0
+bin	702	0
+bin	704	0
+bin	706	0
+bin	708	0
+bin	710	0
+bin	712	0
+bin	714	0
+bin	716	0
+bin	718	0
+bin	720	1
+bin	722	0
+bin	724	0
+bin	726	0
+bin	728	0
+bin	730	0
+bin	732	0
+bin	734	0
+bin	736	0
+bin	738	0
+bin	740	0
+bin	742	0
+bin	744	0
+bin	746	0
+bin	748	0
+bin	750	0
+bin	752	0
+statistic NClientsEthPpp.cli[0].eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(localSignal(packetPulled)))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.cli[0].eth[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source localSignal(packetPushStarted)
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(localSignal(packetPushStarted))
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.cli[0].eth[0].queue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(localSignal(packetPushStarted))
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.cli[0].eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(localSignal(packetDropped))
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.cli[0].eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(localSignal(packetDropped)))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.cli[0].eth[0].mac "simulated time" 50
+scalar NClientsEthPpp.cli[0].eth[0].mac full-duplex 1
+scalar NClientsEthPpp.cli[0].eth[0].mac "frames/sec sent" 4
+scalar NClientsEthPpp.cli[0].eth[0].mac "frames/sec rcvd" 3.98
+scalar NClientsEthPpp.cli[0].eth[0].mac "bits/sec sent" 2514.72
+scalar NClientsEthPpp.cli[0].eth[0].mac "bits/sec rcvd" 2541.28
+scalar NClientsEthPpp.cli[0].eth[0].mac "rx channel idle (%)" 99.997204
+scalar NClientsEthPpp.cli[0].eth[0].mac "rx channel utilization (%)" 0.002796
+scalar NClientsEthPpp.cli[0].eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar NClientsEthPpp.cli[0].eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar NClientsEthPpp.cli[0].eth[0].mac rxPkOk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac rxPkOk:sum(packetBytes) 15883
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0].mac txPk:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac txPk:sum(packetBytes) 15717
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0].mac packetReceivedFromUpper:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac packetReceivedFromUpper:sum(packetBytes) 15717
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0].mac passedUpPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac passedUpPk:sum(packetBytes) 15883
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar NClientsEthPpp.cli[0].eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.cli[0].eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.cli[0].eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].ipv6.neighbourDiscovery startDad:count 1
+attr recordingmode count
+attr title "DAD started, count"
+scalar NClientsEthPpp.cli[0].udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar NClientsEthPpp.cli[0].udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar NClientsEthPpp.cli[0].udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar NClientsEthPpp.cli[0].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar NClientsEthPpp.cli[0].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar NClientsEthPpp.cli[0].app[0] packetReceived:count 97
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar NClientsEthPpp.cli[0].app[0] packetReceived:sum(packetBytes) 285
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic NClientsEthPpp.cli[0].app[0] endToEndDelay:histogram
+field count 97
+field mean 2.5365608247423e-05
+field stddev 1.6900872423029e-06
+field min 2.504e-05
+field max 3.932e-05
+field sum 0.002460464
+field sqrsum 6.268537984e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	2.34e-05	0
+bin	2.36e-05	0
+bin	2.38e-05	0
+bin	2.4e-05	0
+bin	2.42e-05	0
+bin	2.44e-05	0
+bin	2.46e-05	0
+bin	2.48e-05	0
+bin	2.5e-05	90
+bin	2.52e-05	0
+bin	2.54e-05	0
+bin	2.56e-05	0
+bin	2.58e-05	1
+bin	2.6e-05	0
+bin	2.62e-05	1
+bin	2.64e-05	1
+bin	2.66e-05	1
+bin	2.68e-05	0
+bin	2.7e-05	0
+bin	2.72e-05	0
+bin	2.74e-05	0
+bin	2.76e-05	0
+bin	2.78e-05	0
+bin	2.8e-05	0
+bin	2.82e-05	0
+bin	2.84e-05	0
+bin	2.86e-05	0
+bin	2.88e-05	0
+bin	2.9e-05	0
+bin	2.92e-05	0
+bin	2.94e-05	0
+bin	2.96e-05	0
+bin	2.98e-05	0
+bin	3e-05	0
+bin	3.02e-05	0
+bin	3.04e-05	0
+bin	3.06e-05	1
+bin	3.08e-05	0
+bin	3.1e-05	0
+bin	3.12e-05	0
+bin	3.14e-05	1
+bin	3.16e-05	0
+bin	3.18e-05	0
+bin	3.2e-05	0
+bin	3.22e-05	0
+bin	3.24e-05	0
+bin	3.26e-05	0
+bin	3.28e-05	0
+bin	3.3e-05	0
+bin	3.32e-05	0
+bin	3.34e-05	0
+bin	3.36e-05	0
+bin	3.38e-05	0
+bin	3.4e-05	0
+bin	3.42e-05	0
+bin	3.44e-05	0
+bin	3.46e-05	0
+bin	3.48e-05	0
+bin	3.5e-05	0
+bin	3.52e-05	0
+bin	3.54e-05	0
+bin	3.56e-05	0
+bin	3.58e-05	0
+bin	3.6e-05	0
+bin	3.62e-05	0
+bin	3.64e-05	0
+bin	3.66e-05	0
+bin	3.68e-05	0
+bin	3.7e-05	0
+bin	3.72e-05	0
+bin	3.74e-05	0
+bin	3.76e-05	0
+bin	3.78e-05	0
+bin	3.8e-05	0
+bin	3.82e-05	0
+bin	3.84e-05	0
+bin	3.86e-05	0
+bin	3.88e-05	0
+bin	3.9e-05	0
+bin	3.92e-05	1
+bin	3.94e-05	0
+statistic NClientsEthPpp.cli[0].app[0] endToEndDelay:weightedHistogram
+field count 97
+field mean 3.1092715789474e-05
+field stddev 6.3174214272678e-06
+field min 2.504e-05
+field max 3.932e-05
+field weights 2280
+field weightedSum 0.070891392
+field sqrSumWeights 675392
+field weightedSqrSum 2.283378011136e-06
+attr interpolationmode none
+attr recordingmode weightedHistogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, weightedHistogram"
+attr unit s
+bin	-inf	0
+bin	2.34e-05	0
+bin	2.36e-05	0
+bin	2.38e-05	0
+bin	2.4e-05	0
+bin	2.42e-05	0
+bin	2.44e-05	0
+bin	2.46e-05	0
+bin	2.48e-05	0
+bin	2.5e-05	720
+bin	2.52e-05	0
+bin	2.54e-05	0
+bin	2.56e-05	0
+bin	2.58e-05	48
+bin	2.6e-05	0
+bin	2.62e-05	64
+bin	2.64e-05	80
+bin	2.66e-05	88
+bin	2.68e-05	0
+bin	2.7e-05	0
+bin	2.72e-05	0
+bin	2.74e-05	0
+bin	2.76e-05	0
+bin	2.78e-05	0
+bin	2.8e-05	0
+bin	2.82e-05	0
+bin	2.84e-05	0
+bin	2.86e-05	0
+bin	2.88e-05	0
+bin	2.9e-05	0
+bin	2.92e-05	0
+bin	2.94e-05	0
+bin	2.96e-05	0
+bin	2.98e-05	0
+bin	3e-05	0
+bin	3.02e-05	0
+bin	3.04e-05	0
+bin	3.06e-05	280
+bin	3.08e-05	0
+bin	3.1e-05	0
+bin	3.12e-05	0
+bin	3.14e-05	312
+bin	3.16e-05	0
+bin	3.18e-05	0
+bin	3.2e-05	0
+bin	3.22e-05	0
+bin	3.24e-05	0
+bin	3.26e-05	0
+bin	3.28e-05	0
+bin	3.3e-05	0
+bin	3.32e-05	0
+bin	3.34e-05	0
+bin	3.36e-05	0
+bin	3.38e-05	0
+bin	3.4e-05	0
+bin	3.42e-05	0
+bin	3.44e-05	0
+bin	3.46e-05	0
+bin	3.48e-05	0
+bin	3.5e-05	0
+bin	3.52e-05	0
+bin	3.54e-05	0
+bin	3.56e-05	0
+bin	3.58e-05	0
+bin	3.6e-05	0
+bin	3.62e-05	0
+bin	3.64e-05	0
+bin	3.66e-05	0
+bin	3.68e-05	0
+bin	3.7e-05	0
+bin	3.72e-05	0
+bin	3.74e-05	0
+bin	3.76e-05	0
+bin	3.78e-05	0
+bin	3.8e-05	0
+bin	3.82e-05	0
+bin	3.84e-05	0
+bin	3.86e-05	0
+bin	3.88e-05	0
+bin	3.9e-05	0
+bin	3.92e-05	688
+bin	3.94e-05	0
+scalar NClientsEthPpp.cli[0].app[0] packetSent:count 97
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar NClientsEthPpp.cli[0].app[0] packetSent:sum(packetBytes) 97
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar NClientsEthPpp.cli[0].app[0] numActiveSessions:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source warmup(sum(connect))
+attr title "number of active sessions, max"
+scalar NClientsEthPpp.cli[0].app[0] numActiveSessions:timeavg 0.62041254954342
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source warmup(sum(connect))
+attr title "number of active sessions, timeavg"
+scalar NClientsEthPpp.cli[0].app[0] numSessions:last 1
+attr recordingmode last
+attr source sum(connect+1)/2
+attr title "total number of sessions, last"
+scalar NClientsEthPpp.srv.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.srv.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.srv.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.srv.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.srv.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.srv.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.srv.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.srv.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ppp[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar NClientsEthPpp.srv.ppp[0].queue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar NClientsEthPpp.srv.ppp[0].queue queueLength:timeavg 1.0554785343987e-06
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar NClientsEthPpp.srv.ppp[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar NClientsEthPpp.srv.ppp[0].queue queueBitLength:max 1168
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar NClientsEthPpp.srv.ppp[0].queue queueBitLength:timeavg 0.00053143888268074
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic NClientsEthPpp.srv.ppp[0].queue queueingTime:histogram
+field count 199
+field mean 2.6126633165829e-07
+field stddev 2.6859109475921e-07
+field min 0
+field max 5.36e-07
+field sum 5.1992e-05
+field sqrsum 2.7867712e-11
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	102
+bin	1e-08	0
+bin	2e-08	0
+bin	3e-08	0
+bin	4e-08	0
+bin	5e-08	0
+bin	6e-08	0
+bin	7e-08	0
+bin	8e-08	0
+bin	9e-08	0
+bin	1e-07	0
+bin	1.1e-07	0
+bin	1.2e-07	0
+bin	1.3e-07	0
+bin	1.4e-07	0
+bin	1.5e-07	0
+bin	1.6e-07	0
+bin	1.7e-07	0
+bin	1.8e-07	0
+bin	1.9e-07	0
+bin	2e-07	0
+bin	2.1e-07	0
+bin	2.2e-07	0
+bin	2.3e-07	0
+bin	2.4e-07	0
+bin	2.5e-07	0
+bin	2.6e-07	0
+bin	2.7e-07	0
+bin	2.8e-07	0
+bin	2.9e-07	0
+bin	3e-07	0
+bin	3.1e-07	0
+bin	3.2e-07	0
+bin	3.3e-07	0
+bin	3.4e-07	0
+bin	3.5e-07	0
+bin	3.6e-07	0
+bin	3.7e-07	0
+bin	3.8e-07	0
+bin	3.9e-07	0
+bin	4e-07	0
+bin	4.1e-07	0
+bin	4.2e-07	0
+bin	4.3e-07	0
+bin	4.4e-07	0
+bin	4.5e-07	0
+bin	4.6e-07	0
+bin	4.7e-07	0
+bin	4.8e-07	0
+bin	4.9e-07	0
+bin	5e-07	0
+bin	5.1e-07	0
+bin	5.2e-07	0
+bin	5.3e-07	97
+bin	5.4e-07	0
+bin	5.5e-07	0
+bin	5.6e-07	0
+bin	5.7e-07	0
+bin	5.8e-07	0
+bin	5.9e-07	0
+bin	6e-07	0
+bin	6.1e-07	0
+bin	6.2e-07	0
+bin	6.3e-07	0
+bin	6.4e-07	0
+bin	6.5e-07	0
+bin	6.6e-07	0
+bin	6.7e-07	0
+scalar NClientsEthPpp.srv.ppp[0].queue outgoingPackets:count 199
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar NClientsEthPpp.srv.ppp[0].queue outgoingPacketLengths:sum 97960
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.srv.ppp[0].queue outgoingPacketLengths:histogram
+field count 199
+field mean 492.26130653266
+field stddev 57.681921789367
+field min 448
+field max 1168
+field sum 97960
+field sqrsum 48880704
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	432	0
+bin	448	1
+bin	464	0
+bin	480	187
+bin	496	0
+bin	512	3
+bin	528	1
+bin	544	1
+bin	560	2
+bin	576	1
+bin	592	0
+bin	608	0
+bin	624	0
+bin	640	0
+bin	656	0
+bin	672	0
+bin	688	0
+bin	704	0
+bin	720	0
+bin	736	0
+bin	752	1
+bin	768	0
+bin	784	1
+bin	800	0
+bin	816	0
+bin	832	0
+bin	848	0
+bin	864	0
+bin	880	0
+bin	896	0
+bin	912	0
+bin	928	0
+bin	944	0
+bin	960	0
+bin	976	0
+bin	992	0
+bin	1008	0
+bin	1024	0
+bin	1040	0
+bin	1056	0
+bin	1072	0
+bin	1088	0
+bin	1104	0
+bin	1120	0
+bin	1136	0
+bin	1152	0
+bin	1168	1
+bin	1184	0
+statistic NClientsEthPpp.srv.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar NClientsEthPpp.srv.ppp[0].queue incomingPackets:count 199
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar NClientsEthPpp.srv.ppp[0].queue incomingPacketLengths:sum 97960
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic NClientsEthPpp.srv.ppp[0].queue incomingPacketLengths:histogram
+field count 199
+field mean 492.26130653266
+field stddev 57.681921789367
+field min 448
+field max 1168
+field sum 97960
+field sqrsum 48880704
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	432	0
+bin	448	1
+bin	464	0
+bin	480	187
+bin	496	0
+bin	512	3
+bin	528	1
+bin	544	1
+bin	560	2
+bin	576	1
+bin	592	0
+bin	608	0
+bin	624	0
+bin	640	0
+bin	656	0
+bin	672	0
+bin	688	0
+bin	704	0
+bin	720	0
+bin	736	0
+bin	752	1
+bin	768	0
+bin	784	1
+bin	800	0
+bin	816	0
+bin	832	0
+bin	848	0
+bin	864	0
+bin	880	0
+bin	896	0
+bin	912	0
+bin	928	0
+bin	944	0
+bin	960	0
+bin	976	0
+bin	992	0
+bin	1008	0
+bin	1024	0
+bin	1040	0
+bin	1056	0
+bin	1072	0
+bin	1088	0
+bin	1104	0
+bin	1120	0
+bin	1136	0
+bin	1152	0
+bin	1168	1
+bin	1184	0
+scalar NClientsEthPpp.srv.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar NClientsEthPpp.srv.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar NClientsEthPpp.srv.ppp[0].ppp transmissionState:timeavg 2.18208e-06
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar NClientsEthPpp.srv.ppp[0].ppp rxPkOk:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar NClientsEthPpp.srv.ppp[0].ppp rxPkOk:sum(packetBytes) 13565
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ppp[0].ppp txPk:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar NClientsEthPpp.srv.ppp[0].ppp txPk:sum(packetBytes) 13638
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ppp[0].ppp rcvdPkFromHl:count 199
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar NClientsEthPpp.srv.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 12245
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ppp[0].ppp passedUpPk:count 200
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar NClientsEthPpp.srv.ppp[0].ppp passedUpPk:sum(packetBytes) 12165
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar NClientsEthPpp.srv.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar NClientsEthPpp.srv.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar NClientsEthPpp.srv.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar NClientsEthPpp.srv.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar NClientsEthPpp.srv.ipv6.neighbourDiscovery startDad:count 1
+attr recordingmode count
+attr title "DAD started, count"
+scalar NClientsEthPpp.srv.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar NClientsEthPpp.srv.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar NClientsEthPpp.srv.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar NClientsEthPpp.srv.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar NClientsEthPpp.srv.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar NClientsEthPpp.srv.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar NClientsEthPpp.srv.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar NClientsEthPpp.srv.app[0] packetReceived:count 97
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar NClientsEthPpp.srv.app[0] packetReceived:sum(packetBytes) 97
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic NClientsEthPpp.srv.app[0] endToEndDelay:histogram
+field count 97
+field mean 1.7208e-05
+field stddev 0
+field min 1.7208e-05
+field max 1.7208e-05
+field sum 0.001669176
+field sqrsum 2.8723180608e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	97
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+statistic NClientsEthPpp.srv.app[0] endToEndDelay:weightedHistogram
+field count 97
+field mean 1.7208e-05
+field stddev 0
+field min 1.7208e-05
+field max 1.7208e-05
+field weights 776
+field weightedSum 0.013353408
+field sqrSumWeights 6208
+field weightedSqrSum 2.29785444864e-07
+attr interpolationmode none
+attr recordingmode weightedHistogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, weightedHistogram"
+attr unit s
+bin	-inf	0
+bin	0	776
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar NClientsEthPpp.srv.app[0] packetSent:count 97
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar NClientsEthPpp.srv.app[0] packetSent:sum(packetBytes) 285
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+

@@ -1,0 +1,256 @@
+version 3
+run Network2-0-20230411-10:35:38-43498
+attr configname Network2
+attr datetime 20230411-10:35:38
+attr datetimef 20230411-103538
+attr experiment Network2
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network2
+attr processid 43498
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config image-path /home/levy/workspace/inet/images
+config sim-time-limit 1ps
+config network Network2
+config extends Base2
+config extends Base1
+config *.client.transmitter.datarate 100Mbps
+config *.server.receiver.datarate 100Mbps
+config *.client.app.productionInterval "uniform(0us, 500us)"
+config *.client.app.packetLength 1000B
+
+scalar Network2.client.app packets:count 1
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar Network2.client.app packetLengths:sum 8000
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic Network2.client.app packetLengths:histogram
+field count 1
+field mean 8000
+field stddev nan
+field min 8000
+field max 8000
+field sum 8000
+field sqrsum 64000000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	7999	0
+bin	8000	1
+bin	8001	0
+scalar Network2.client.transmitter propagationTime 1e-06
+statistic Network2.client.transmitter utilization:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode linear
+attr recordingmode histogram
+attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
+attr title utilization
+attr unit %
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Network2.client.transmitter transmissionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(transmissionEnded)
+attr title "transmission time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Network2.client.transmitter flowTransmissionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(demuxFlow(transmissionEnded))
+attr title "flow transmission time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Network2.server.app packets:count 0
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar Network2.server.app packetLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic Network2.server.app packetLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Network2.server.app meanBitLifeTimePerPacket:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Network2.server.app packetJitter:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Network2.server.app packetDelayDifferenceToMean:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Network2.server.app packetDelayVariation:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Network2.server.app droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar Network2.server.app droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic Network2.server.app droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Network2.server.receiver receptionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(receptionEnded)
+attr title "reception time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Network2.server.receiver flowReceptionTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(demuxFlow(receptionEnded))
+attr title "flow reception time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+

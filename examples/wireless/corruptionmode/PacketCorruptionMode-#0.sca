@@ -1,0 +1,1901 @@
+version 3
+run PacketCorruptionMode-0-20230411-10:33:07-42887
+attr configname PacketCorruptionMode
+attr datetime 20230411-10:33:07
+attr datetimef 20230411-103307
+attr experiment PacketCorruptionMode
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network CorruptionModeExample
+attr processid 42887
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config image-path /home/levy/workspace/inet/images
+config sim-time-limit 10s
+config *.*Host.wlan[*].radio.receiver.errorModel.corruptionMode "\"packet\""
+config network CorruptionModeExample
+config sim-time-limit 10s
+config **.fcsMode "\"computed\""
+config **.crcMode "\"computed\""
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 1000m
+config **.constraintAreaMaxY 1000m
+config **.constraintAreaMaxZ 0m
+config *.*Host.mobility.typename StationaryMobility
+config *.*Host.mobility.initFromDisplayString false
+config *.*Host.mobility.initialY 500m
+config *.*Host.mobility.initialZ 0m
+config *.sourceHost.mobility.initialX 0m
+config *.destinationHost.mobility.initialX 300m
+config *.sourceHost.numApps 1
+config *.sourceHost.app[0].typename PingApp
+config *.sourceHost.app[0].destAddr "\"destinationHost\""
+config *.sourceHost.app[0].startTime 0s
+config *.sourceHost.app[0].printPing true
+config *.radioMedium.backgroundNoise.power -110dBm
+config *.*Host.wlan[0].typename CsmaCaInterface
+config *.*Host.wlan[0].mac.bitrate 100Mbps
+config *.*Host.wlan[0].mac.retryLimit 0
+config *.*Host.wlan[0].radio.typename ApskScalarRadio
+config *.*Host.wlan[0].radio.centerFrequency 2GHz
+config *.*Host.wlan[0].radio.bandwidth 20MHz
+config *.*Host.wlan[0].radio.transmitter.power 1mW
+config *.*Host.wlan[0].radio.transmitter.bitrate 100Mbps
+config *.*Host.wlan[0].radio.transmitter.preambleDuration 1us
+config *.*Host.wlan[0].radio.transmitter.headerLength 64b
+config *.*Host.wlan[0].radio.transmitter.modulation "\"QAM-64\""
+config *.*Host.wlan[0].radio.receiver.sensitivity -100dBm
+config *.*Host.wlan[0].radio.receiver.energyDetection -100dBm
+config *.*Host.wlan[0].radio.receiver.snirThreshold 0dB
+
+scalar CorruptionModeExample.radioMedium.propagation "Arrival computation count" 30
+scalar CorruptionModeExample.radioMedium "transmission count" 30
+scalar CorruptionModeExample.radioMedium "signal send count" 30
+scalar CorruptionModeExample.radioMedium "reception computation count" 30
+scalar CorruptionModeExample.radioMedium "interference computation count" 124
+scalar CorruptionModeExample.radioMedium "reception decision computation count" 30
+scalar CorruptionModeExample.radioMedium "listening decision computation count" 64
+scalar CorruptionModeExample.radioMedium "reception cache hit" 85.714285714286
+attr unit %
+scalar CorruptionModeExample.radioMedium "interference cache hit" 66.666666666667
+attr unit %
+scalar CorruptionModeExample.radioMedium "noise cache hit" 0
+attr unit %
+scalar CorruptionModeExample.radioMedium "snir cache hit" 50
+attr unit %
+scalar CorruptionModeExample.radioMedium "reception decision cache hit" 50
+attr unit %
+scalar CorruptionModeExample.radioMedium "reception result cache hit" 0
+attr unit %
+scalar CorruptionModeExample.sourceHost.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar CorruptionModeExample.sourceHost.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar CorruptionModeExample.sourceHost.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar CorruptionModeExample.sourceHost.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar CorruptionModeExample.sourceHost.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.wlan[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar CorruptionModeExample.sourceHost.wlan[0].queue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar CorruptionModeExample.sourceHost.wlan[0].queue queueLength:timeavg 1e-06
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar CorruptionModeExample.sourceHost.wlan[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar CorruptionModeExample.sourceHost.wlan[0].queue queueBitLength:max 672
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar CorruptionModeExample.sourceHost.wlan[0].queue queueBitLength:timeavg 0.000672
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic CorruptionModeExample.sourceHost.wlan[0].queue queueingTime:histogram
+field count 12
+field mean 8.3333333333333e-07
+field stddev 2.8867513459481e-06
+field min 0
+field max 1e-05
+field sum 1e-05
+field sqrsum 1e-10
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	11
+bin	2e-07	0
+bin	4e-07	0
+bin	6e-07	0
+bin	8e-07	0
+bin	1e-06	0
+bin	1.2e-06	0
+bin	1.4e-06	0
+bin	1.6e-06	0
+bin	1.8e-06	0
+bin	2e-06	0
+bin	2.2e-06	0
+bin	2.4e-06	0
+bin	2.6e-06	0
+bin	2.8e-06	0
+bin	3e-06	0
+bin	3.2e-06	0
+bin	3.4e-06	0
+bin	3.6e-06	0
+bin	3.8e-06	0
+bin	4e-06	0
+bin	4.2e-06	0
+bin	4.4e-06	0
+bin	4.6e-06	0
+bin	4.8e-06	0
+bin	5e-06	0
+bin	5.2e-06	0
+bin	5.4e-06	0
+bin	5.6e-06	0
+bin	5.8e-06	0
+bin	6e-06	0
+bin	6.2e-06	0
+bin	6.4e-06	0
+bin	6.6e-06	0
+bin	6.8e-06	0
+bin	7e-06	0
+bin	7.2e-06	0
+bin	7.4e-06	0
+bin	7.6e-06	0
+bin	7.8e-06	0
+bin	8e-06	0
+bin	8.2e-06	0
+bin	8.4e-06	0
+bin	8.6e-06	0
+bin	8.8e-06	0
+bin	9e-06	0
+bin	9.2e-06	0
+bin	9.4e-06	0
+bin	9.6e-06	0
+bin	9.8e-06	1
+bin	1e-05	0
+bin	1.02e-05	0
+bin	1.04e-05	0
+bin	1.06e-05	0
+bin	1.08e-05	0
+bin	1.1e-05	0
+bin	1.12e-05	0
+bin	1.14e-05	0
+bin	1.16e-05	0
+bin	1.18e-05	0
+bin	1.2e-05	0
+bin	1.22e-05	0
+bin	1.24e-05	0
+bin	1.26e-05	0
+scalar CorruptionModeExample.sourceHost.wlan[0].queue outgoingPackets:count 12
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar CorruptionModeExample.sourceHost.wlan[0].queue outgoingPacketLengths:sum 7616
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic CorruptionModeExample.sourceHost.wlan[0].queue outgoingPacketLengths:histogram
+field count 12
+field mean 634.66666666667
+field stddev 129.32646029848
+field min 224
+field max 672
+field sum 7616
+field sqrsum 5017600
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	110	0
+bin	120	0
+bin	130	0
+bin	140	0
+bin	150	0
+bin	160	0
+bin	170	0
+bin	180	0
+bin	190	0
+bin	200	0
+bin	210	0
+bin	220	1
+bin	230	0
+bin	240	0
+bin	250	0
+bin	260	0
+bin	270	0
+bin	280	0
+bin	290	0
+bin	300	0
+bin	310	0
+bin	320	0
+bin	330	0
+bin	340	0
+bin	350	0
+bin	360	0
+bin	370	0
+bin	380	0
+bin	390	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	0
+bin	490	0
+bin	500	0
+bin	510	0
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	11
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+statistic CorruptionModeExample.sourceHost.wlan[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar CorruptionModeExample.sourceHost.wlan[0].queue incomingPackets:count 12
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar CorruptionModeExample.sourceHost.wlan[0].queue incomingPacketLengths:sum 7616
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic CorruptionModeExample.sourceHost.wlan[0].queue incomingPacketLengths:histogram
+field count 12
+field mean 634.66666666667
+field stddev 129.32646029848
+field min 224
+field max 672
+field sum 7616
+field sqrsum 5017600
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	110	0
+bin	120	0
+bin	130	0
+bin	140	0
+bin	150	0
+bin	160	0
+bin	170	0
+bin	180	0
+bin	190	0
+bin	200	0
+bin	210	0
+bin	220	1
+bin	230	0
+bin	240	0
+bin	250	0
+bin	260	0
+bin	270	0
+bin	280	0
+bin	290	0
+bin	300	0
+bin	310	0
+bin	320	0
+bin	330	0
+bin	340	0
+bin	350	0
+bin	360	0
+bin	370	0
+bin	380	0
+bin	390	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	0
+bin	490	0
+bin	500	0
+bin	510	0
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	11
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+scalar CorruptionModeExample.sourceHost.wlan[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar CorruptionModeExample.sourceHost.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar CorruptionModeExample.sourceHost.wlan[0].mac numRetry 0
+scalar CorruptionModeExample.sourceHost.wlan[0].mac numSentWithoutRetry 5
+scalar CorruptionModeExample.sourceHost.wlan[0].mac numGivenUp 5
+scalar CorruptionModeExample.sourceHost.wlan[0].mac numCollision 4
+scalar CorruptionModeExample.sourceHost.wlan[0].mac numSent 5
+scalar CorruptionModeExample.sourceHost.wlan[0].mac numReceived 4
+scalar CorruptionModeExample.sourceHost.wlan[0].mac numSentBroadcast 1
+scalar CorruptionModeExample.sourceHost.wlan[0].mac numReceivedBroadcast 0
+scalar CorruptionModeExample.sourceHost.wlan[0].mac packetDropIncorrectlyReceived:count 4
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar CorruptionModeExample.sourceHost.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 420
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar CorruptionModeExample.sourceHost.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, count"
+scalar CorruptionModeExample.sourceHost.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.wlan[0].mac packetDropRetryLimitReached:count 5
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, count"
+scalar CorruptionModeExample.sourceHost.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 525
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.wlan[0].mac linkBroken:count 5
+attr interpolationmode none
+attr recordingmode count
+attr source linkBroken
+attr title "link break, count"
+scalar CorruptionModeExample.sourceHost.wlan[0].radio radioMode:count 33
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar CorruptionModeExample.sourceHost.wlan[0].radio receptionState:count 61
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar CorruptionModeExample.sourceHost.wlan[0].radio transmissionState:count 60
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic CorruptionModeExample.sourceHost.wlan[0].radio minSnir:histogram
+field count 15
+field mean 158.0953793651
+field stddev 0
+field min 158.0953793651
+field max 158.0953793651
+field sum 2371.4306904764
+field sqrsum 374912.2346489
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	157.58	0
+bin	157.6	0
+bin	157.62	0
+bin	157.64	0
+bin	157.66	0
+bin	157.68	0
+bin	157.7	0
+bin	157.72	0
+bin	157.74	0
+bin	157.76	0
+bin	157.78	0
+bin	157.8	0
+bin	157.82	0
+bin	157.84	0
+bin	157.86	0
+bin	157.88	0
+bin	157.9	0
+bin	157.92	0
+bin	157.94	0
+bin	157.96	0
+bin	157.98	0
+bin	158	0
+bin	158.02	0
+bin	158.04	0
+bin	158.06	0
+bin	158.08	15
+bin	158.1	0
+bin	158.12	0
+bin	158.14	0
+bin	158.16	0
+bin	158.18	0
+bin	158.2	0
+bin	158.22	0
+bin	158.24	0
+bin	158.26	0
+bin	158.28	0
+bin	158.3	0
+bin	158.32	0
+bin	158.34	0
+bin	158.36	0
+bin	158.38	0
+bin	158.4	0
+bin	158.42	0
+bin	158.44	0
+bin	158.46	0
+bin	158.48	0
+bin	158.5	0
+bin	158.52	0
+bin	158.54	0
+bin	158.56	0
+bin	158.58	0
+bin	158.6	0
+statistic CorruptionModeExample.sourceHost.wlan[0].radio packetErrorRate:histogram
+field count 15
+field mean 0.32480298278024
+field stddev 0.17706664942606
+field min 0.1498783074117
+field max 0.50368053327937
+field sum 4.8720447417036
+field sqrsum 2.0213910410897
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	7
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	1
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	7
+bin	0.51	0
+bin	0.52	0
+bin	0.53	0
+bin	0.54	0
+bin	0.55	0
+bin	0.56	0
+bin	0.57	0
+bin	0.58	0
+bin	0.59	0
+bin	0.6	0
+statistic CorruptionModeExample.sourceHost.wlan[0].radio bitErrorRate:histogram
+field count 15
+field mean 0.00077291910590152
+field stddev 0
+field min 0.00077291910590152
+field max 0.00077291910590152
+field sum 0.011593786588523
+field sqrsum 8.9610591640141e-06
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	15
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+statistic CorruptionModeExample.sourceHost.wlan[0].radio symbolErrorRate:histogram
+field count 15
+field mean 0.0046321379999108
+field stddev 0
+field min 0.0046321379999108
+field max 0.0046321379999108
+field sum 0.069482069998662
+field sqrsum 0.00032185053675326
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	15
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar CorruptionModeExample.sourceHost.wlan[0].radio packetDropped:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets dropped, count"
+scalar CorruptionModeExample.sourceHost.wlan[0].radio packetDropped:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets dropped, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar CorruptionModeExample.sourceHost.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar CorruptionModeExample.sourceHost.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar CorruptionModeExample.sourceHost.ipv4.arp arpResolutionCompleted:count 1
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar CorruptionModeExample.sourceHost.ipv4.arp arpResolutionInitiated:count 1
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar CorruptionModeExample.sourceHost.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar CorruptionModeExample.sourceHost.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.arp arpRequestSent:count 1
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar CorruptionModeExample.sourceHost.ipv4.arp arpRequestSent:sum(packetBytes) 28
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar CorruptionModeExample.sourceHost.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar CorruptionModeExample.sourceHost.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar CorruptionModeExample.sourceHost.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar CorruptionModeExample.sourceHost.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar CorruptionModeExample.sourceHost.app[0] "Pings sent" 11
+scalar CorruptionModeExample.sourceHost.app[0] "ping loss rate (%)" 72.727272727273
+scalar CorruptionModeExample.sourceHost.app[0] "ping out-of-order rate (%)" 0
+scalar CorruptionModeExample.sourceHost.app[0] pingRxSeq:count 3
+attr interpolationmode none
+attr recordingmode count
+attr title "ping rx seq, count"
+scalar CorruptionModeExample.sourceHost.app[0] pingTxSeq:count 11
+attr interpolationmode none
+attr recordingmode count
+attr title "ping tx seq, count"
+scalar CorruptionModeExample.sourceHost.app[0] numOutOfOrderArrivals:last nan
+attr interpolationmode none
+attr recordingmode last
+attr title "ping out-of-order arrivals, last"
+scalar CorruptionModeExample.sourceHost.app[0] numLost:last 6
+attr interpolationmode none
+attr recordingmode last
+attr title "pings lost, last"
+statistic CorruptionModeExample.sourceHost.app[0] rtt:histogram
+field count 3
+field mean 0.000890628512
+field stddev 0.00065053173270766
+field min 0.000495221384
+field max 0.001641442768
+field sum 0.002671885536
+field sqrsum 3.2260405096813e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr title "ping round-trip time"
+attr unit s
+bin	-inf	0
+bin	0.0002	0
+bin	0.00022	0
+bin	0.00024	0
+bin	0.00026	0
+bin	0.00028	0
+bin	0.0003	0
+bin	0.00032	0
+bin	0.00034	0
+bin	0.00036	0
+bin	0.00038	0
+bin	0.0004	0
+bin	0.00042	0
+bin	0.00044	0
+bin	0.00046	0
+bin	0.00048	1
+bin	0.0005	0
+bin	0.00052	1
+bin	0.00054	0
+bin	0.00056	0
+bin	0.00058	0
+bin	0.0006	0
+bin	0.00062	0
+bin	0.00064	0
+bin	0.00066	0
+bin	0.00068	0
+bin	0.0007	0
+bin	0.00072	0
+bin	0.00074	0
+bin	0.00076	0
+bin	0.00078	0
+bin	0.0008	0
+bin	0.00082	0
+bin	0.00084	0
+bin	0.00086	0
+bin	0.00088	0
+bin	0.0009	0
+bin	0.00092	0
+bin	0.00094	0
+bin	0.00096	0
+bin	0.00098	0
+bin	0.001	0
+bin	0.00102	0
+bin	0.00104	0
+bin	0.00106	0
+bin	0.00108	0
+bin	0.0011	0
+bin	0.00112	0
+bin	0.00114	0
+bin	0.00116	0
+bin	0.00118	0
+bin	0.0012	0
+bin	0.00122	0
+bin	0.00124	0
+bin	0.00126	0
+bin	0.00128	0
+bin	0.0013	0
+bin	0.00132	0
+bin	0.00134	0
+bin	0.00136	0
+bin	0.00138	0
+bin	0.0014	0
+bin	0.00142	0
+bin	0.00144	0
+bin	0.00146	0
+bin	0.00148	0
+bin	0.0015	0
+bin	0.00152	0
+bin	0.00154	0
+bin	0.00156	0
+bin	0.00158	0
+bin	0.0016	0
+bin	0.00162	0
+bin	0.00164	1
+bin	0.00166	0
+bin	0.00168	0
+bin	0.0017	0
+bin	0.00172	0
+bin	0.00174	0
+bin	0.00176	0
+bin	0.00178	0
+bin	0.0018	0
+bin	0.00182	0
+bin	0.00184	0
+bin	0.00186	0
+bin	0.00188	0
+bin	0.0019	0
+bin	0.00192	0
+bin	0.00194	0
+scalar CorruptionModeExample.destinationHost.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar CorruptionModeExample.destinationHost.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar CorruptionModeExample.destinationHost.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar CorruptionModeExample.destinationHost.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar CorruptionModeExample.destinationHost.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.wlan[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar CorruptionModeExample.destinationHost.wlan[0].queue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar CorruptionModeExample.destinationHost.wlan[0].queue queueLength:timeavg 7.000207598641e-06
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar CorruptionModeExample.destinationHost.wlan[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar CorruptionModeExample.destinationHost.wlan[0].queue queueBitLength:max 672
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar CorruptionModeExample.destinationHost.wlan[0].queue queueBitLength:timeavg 0.0047041395062867
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic CorruptionModeExample.destinationHost.wlan[0].queue queueingTime:histogram
+field count 8
+field mean 8.75e-06
+field stddev 3.5355339059327e-06
+field min 0
+field max 1e-05
+field sum 7e-05
+field sqrsum 7e-10
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	2e-07	0
+bin	4e-07	0
+bin	6e-07	0
+bin	8e-07	0
+bin	1e-06	0
+bin	1.2e-06	0
+bin	1.4e-06	0
+bin	1.6e-06	0
+bin	1.8e-06	0
+bin	2e-06	0
+bin	2.2e-06	0
+bin	2.4e-06	0
+bin	2.6e-06	0
+bin	2.8e-06	0
+bin	3e-06	0
+bin	3.2e-06	0
+bin	3.4e-06	0
+bin	3.6e-06	0
+bin	3.8e-06	0
+bin	4e-06	0
+bin	4.2e-06	0
+bin	4.4e-06	0
+bin	4.6e-06	0
+bin	4.8e-06	0
+bin	5e-06	0
+bin	5.2e-06	0
+bin	5.4e-06	0
+bin	5.6e-06	0
+bin	5.8e-06	0
+bin	6e-06	0
+bin	6.2e-06	0
+bin	6.4e-06	0
+bin	6.6e-06	0
+bin	6.8e-06	0
+bin	7e-06	0
+bin	7.2e-06	0
+bin	7.4e-06	0
+bin	7.6e-06	0
+bin	7.8e-06	0
+bin	8e-06	0
+bin	8.2e-06	0
+bin	8.4e-06	0
+bin	8.6e-06	0
+bin	8.8e-06	0
+bin	9e-06	0
+bin	9.2e-06	0
+bin	9.4e-06	0
+bin	9.6e-06	0
+bin	9.8e-06	7
+bin	1e-05	0
+bin	1.02e-05	0
+bin	1.04e-05	0
+bin	1.06e-05	0
+bin	1.08e-05	0
+bin	1.1e-05	0
+bin	1.12e-05	0
+bin	1.14e-05	0
+bin	1.16e-05	0
+bin	1.18e-05	0
+bin	1.2e-05	0
+bin	1.22e-05	0
+bin	1.24e-05	0
+bin	1.26e-05	0
+scalar CorruptionModeExample.destinationHost.wlan[0].queue outgoingPackets:count 8
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar CorruptionModeExample.destinationHost.wlan[0].queue outgoingPacketLengths:sum 4928
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic CorruptionModeExample.destinationHost.wlan[0].queue outgoingPacketLengths:histogram
+field count 8
+field mean 616
+field stddev 158.39191898579
+field min 224
+field max 672
+field sum 4928
+field sqrsum 3211264
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	110	0
+bin	120	0
+bin	130	0
+bin	140	0
+bin	150	0
+bin	160	0
+bin	170	0
+bin	180	0
+bin	190	0
+bin	200	0
+bin	210	0
+bin	220	1
+bin	230	0
+bin	240	0
+bin	250	0
+bin	260	0
+bin	270	0
+bin	280	0
+bin	290	0
+bin	300	0
+bin	310	0
+bin	320	0
+bin	330	0
+bin	340	0
+bin	350	0
+bin	360	0
+bin	370	0
+bin	380	0
+bin	390	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	0
+bin	490	0
+bin	500	0
+bin	510	0
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	7
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+statistic CorruptionModeExample.destinationHost.wlan[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar CorruptionModeExample.destinationHost.wlan[0].queue incomingPackets:count 8
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar CorruptionModeExample.destinationHost.wlan[0].queue incomingPacketLengths:sum 4928
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic CorruptionModeExample.destinationHost.wlan[0].queue incomingPacketLengths:histogram
+field count 8
+field mean 616
+field stddev 158.39191898579
+field min 224
+field max 672
+field sum 4928
+field sqrsum 3211264
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	110	0
+bin	120	0
+bin	130	0
+bin	140	0
+bin	150	0
+bin	160	0
+bin	170	0
+bin	180	0
+bin	190	0
+bin	200	0
+bin	210	0
+bin	220	1
+bin	230	0
+bin	240	0
+bin	250	0
+bin	260	0
+bin	270	0
+bin	280	0
+bin	290	0
+bin	300	0
+bin	310	0
+bin	320	0
+bin	330	0
+bin	340	0
+bin	350	0
+bin	360	0
+bin	370	0
+bin	380	0
+bin	390	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	0
+bin	490	0
+bin	500	0
+bin	510	0
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	7
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+scalar CorruptionModeExample.destinationHost.wlan[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar CorruptionModeExample.destinationHost.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar CorruptionModeExample.destinationHost.wlan[0].mac numRetry 0
+scalar CorruptionModeExample.destinationHost.wlan[0].mac numSentWithoutRetry 4
+scalar CorruptionModeExample.destinationHost.wlan[0].mac numGivenUp 4
+scalar CorruptionModeExample.destinationHost.wlan[0].mac numCollision 3
+scalar CorruptionModeExample.destinationHost.wlan[0].mac numSent 4
+scalar CorruptionModeExample.destinationHost.wlan[0].mac numReceived 7
+scalar CorruptionModeExample.destinationHost.wlan[0].mac numSentBroadcast 0
+scalar CorruptionModeExample.destinationHost.wlan[0].mac numReceivedBroadcast 1
+scalar CorruptionModeExample.destinationHost.wlan[0].mac packetDropIncorrectlyReceived:count 3
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar CorruptionModeExample.destinationHost.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 315
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar CorruptionModeExample.destinationHost.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, count"
+scalar CorruptionModeExample.destinationHost.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drop: queue overflow, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.wlan[0].mac packetDropRetryLimitReached:count 4
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, count"
+scalar CorruptionModeExample.destinationHost.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 420
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drop: retry limit reached, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.wlan[0].mac linkBroken:count 4
+attr interpolationmode none
+attr recordingmode count
+attr source linkBroken
+attr title "link break, count"
+scalar CorruptionModeExample.destinationHost.wlan[0].radio radioMode:count 33
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar CorruptionModeExample.destinationHost.wlan[0].radio receptionState:count 61
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar CorruptionModeExample.destinationHost.wlan[0].radio transmissionState:count 60
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic CorruptionModeExample.destinationHost.wlan[0].radio minSnir:histogram
+field count 15
+field mean 158.0953793651
+field stddev 0
+field min 158.0953793651
+field max 158.0953793651
+field sum 2371.4306904764
+field sqrsum 374912.2346489
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	157.58	0
+bin	157.6	0
+bin	157.62	0
+bin	157.64	0
+bin	157.66	0
+bin	157.68	0
+bin	157.7	0
+bin	157.72	0
+bin	157.74	0
+bin	157.76	0
+bin	157.78	0
+bin	157.8	0
+bin	157.82	0
+bin	157.84	0
+bin	157.86	0
+bin	157.88	0
+bin	157.9	0
+bin	157.92	0
+bin	157.94	0
+bin	157.96	0
+bin	157.98	0
+bin	158	0
+bin	158.02	0
+bin	158.04	0
+bin	158.06	0
+bin	158.08	15
+bin	158.1	0
+bin	158.12	0
+bin	158.14	0
+bin	158.16	0
+bin	158.18	0
+bin	158.2	0
+bin	158.22	0
+bin	158.24	0
+bin	158.26	0
+bin	158.28	0
+bin	158.3	0
+bin	158.32	0
+bin	158.34	0
+bin	158.36	0
+bin	158.38	0
+bin	158.4	0
+bin	158.42	0
+bin	158.44	0
+bin	158.46	0
+bin	158.48	0
+bin	158.5	0
+bin	158.52	0
+bin	158.54	0
+bin	158.56	0
+bin	158.58	0
+bin	158.6	0
+statistic CorruptionModeExample.destinationHost.wlan[0].radio packetErrorRate:histogram
+field count 15
+field mean 0.39556342795377
+field stddev 0.16213450672372
+field min 0.1498783074117
+field max 0.50368053327937
+field sum 5.9334514193066
+field sqrsum 2.7150827588057
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	4
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	1
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	10
+bin	0.51	0
+bin	0.52	0
+bin	0.53	0
+bin	0.54	0
+bin	0.55	0
+bin	0.56	0
+bin	0.57	0
+bin	0.58	0
+bin	0.59	0
+bin	0.6	0
+statistic CorruptionModeExample.destinationHost.wlan[0].radio bitErrorRate:histogram
+field count 15
+field mean 0.00077291910590152
+field stddev 0
+field min 0.00077291910590152
+field max 0.00077291910590152
+field sum 0.011593786588523
+field sqrsum 8.9610591640141e-06
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	15
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+statistic CorruptionModeExample.destinationHost.wlan[0].radio symbolErrorRate:histogram
+field count 15
+field mean 0.0046321379999108
+field stddev 0
+field min 0.0046321379999108
+field max 0.0046321379999108
+field sum 0.069482069998662
+field sqrsum 0.00032185053675326
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	15
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar CorruptionModeExample.destinationHost.wlan[0].radio packetDropped:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets dropped, count"
+scalar CorruptionModeExample.destinationHost.wlan[0].radio packetDropped:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets dropped, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar CorruptionModeExample.destinationHost.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar CorruptionModeExample.destinationHost.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar CorruptionModeExample.destinationHost.ipv4.arp arpResolutionCompleted:count 1
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar CorruptionModeExample.destinationHost.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar CorruptionModeExample.destinationHost.ipv4.arp arpReplySent:count 1
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar CorruptionModeExample.destinationHost.ipv4.arp arpReplySent:sum(packetBytes) 28
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar CorruptionModeExample.destinationHost.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar CorruptionModeExample.destinationHost.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar CorruptionModeExample.destinationHost.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar CorruptionModeExample.destinationHost.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar CorruptionModeExample.destinationHost.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+

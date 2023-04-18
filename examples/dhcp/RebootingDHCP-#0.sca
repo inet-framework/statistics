@@ -1,0 +1,1266 @@
+version 3
+run RebootingDHCP-0-20230411-10:30:36-42319
+attr configname RebootingDHCP
+attr datetime 20230411-10:30:36
+attr datetimef 20230411-103036
+attr description "DHCP with rebooting host and server"
+attr experiment RebootingDHCP
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network DHCPShutdownReboot
+attr processid 42319
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config image-path /home/levy/workspace/inet/images
+config sim-time-limit 500s
+config description "DHCP with rebooting host and server"
+config network DHCPShutdownReboot
+config *.visualizer.*.interfaceTableVisualizer.displayInterfaceTables true
+config **.hasStatus true
+config **.scenarioManager.script "xmldoc(\"scenario.xml\")"
+config **.client.numApps 1
+config **.client.app[0].typename DhcpClient
+config **.server.numApps 1
+config **.server.app[0].typename DhcpServer
+config **.server.app[0].numReservedAddresses 100
+config **.server.app[0].maxNumClients 100
+config **.server.app[0].gateway "\"192.168.1.1\""
+config **.server.app[0].leaseTime 40s
+config sim-time-limit 500s
+
+scalar DHCPShutdownReboot.client.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar DHCPShutdownReboot.client.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar DHCPShutdownReboot.client.ethernet decapPk:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar DHCPShutdownReboot.client.ethernet decapPk:sum(packetBytes) 7406
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ethernet encapPk:count 32
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar DHCPShutdownReboot.client.ethernet encapPk:sum(packetBytes) 7401
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram
+field count 32
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	32
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPackets:count 32
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:sum 63816
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram
+field count 32
+field mean 1994.25
+field stddev 874.63994435314
+field min 368
+field max 2536
+field sum 63816
+field sqrsum 150979904
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	50	0
+bin	100	0
+bin	150	0
+bin	200	0
+bin	250	0
+bin	300	0
+bin	350	7
+bin	400	0
+bin	450	0
+bin	500	0
+bin	550	0
+bin	600	0
+bin	650	0
+bin	700	0
+bin	750	0
+bin	800	0
+bin	850	0
+bin	900	0
+bin	950	0
+bin	1000	0
+bin	1050	0
+bin	1100	0
+bin	1150	0
+bin	1200	0
+bin	1250	0
+bin	1300	0
+bin	1350	0
+bin	1400	0
+bin	1450	0
+bin	1500	0
+bin	1550	0
+bin	1600	0
+bin	1650	0
+bin	1700	0
+bin	1750	0
+bin	1800	0
+bin	1850	0
+bin	1900	0
+bin	1950	0
+bin	2000	0
+bin	2050	0
+bin	2100	0
+bin	2150	0
+bin	2200	0
+bin	2250	0
+bin	2300	0
+bin	2350	0
+bin	2400	22
+bin	2450	1
+bin	2500	2
+bin	2550	0
+bin	2600	0
+bin	2650	0
+bin	2700	0
+bin	2750	0
+bin	2800	0
+bin	2850	0
+bin	2900	0
+bin	2950	0
+bin	3000	0
+bin	3050	0
+bin	3100	0
+statistic DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPackets:count 32
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:sum 63816
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram
+field count 32
+field mean 1994.25
+field stddev 874.63994435314
+field min 368
+field max 2536
+field sum 63816
+field sqrsum 150979904
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	50	0
+bin	100	0
+bin	150	0
+bin	200	0
+bin	250	0
+bin	300	0
+bin	350	7
+bin	400	0
+bin	450	0
+bin	500	0
+bin	550	0
+bin	600	0
+bin	650	0
+bin	700	0
+bin	750	0
+bin	800	0
+bin	850	0
+bin	900	0
+bin	950	0
+bin	1000	0
+bin	1050	0
+bin	1100	0
+bin	1150	0
+bin	1200	0
+bin	1250	0
+bin	1300	0
+bin	1350	0
+bin	1400	0
+bin	1450	0
+bin	1500	0
+bin	1550	0
+bin	1600	0
+bin	1650	0
+bin	1700	0
+bin	1750	0
+bin	1800	0
+bin	1850	0
+bin	1900	0
+bin	1950	0
+bin	2000	0
+bin	2050	0
+bin	2100	0
+bin	2150	0
+bin	2200	0
+bin	2250	0
+bin	2300	0
+bin	2350	0
+bin	2400	22
+bin	2450	1
+bin	2500	2
+bin	2550	0
+bin	2600	0
+bin	2650	0
+bin	2700	0
+bin	2750	0
+bin	2800	0
+bin	2850	0
+bin	2900	0
+bin	2950	0
+bin	3000	0
+bin	3050	0
+bin	3100	0
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar DHCPShutdownReboot.client.eth[0].mac "simulated time" 500
+scalar DHCPShutdownReboot.client.eth[0].mac full-duplex 1
+scalar DHCPShutdownReboot.client.eth[0].mac "frames/sec sent" 0.064
+scalar DHCPShutdownReboot.client.eth[0].mac "frames/sec rcvd" 0.054
+scalar DHCPShutdownReboot.client.eth[0].mac "bits/sec sent" 129.648
+scalar DHCPShutdownReboot.client.eth[0].mac "bits/sec rcvd" 126.272
+scalar DHCPShutdownReboot.client.eth[0].mac "rx channel idle (%)" 99.99870272
+scalar DHCPShutdownReboot.client.eth[0].mac "rx channel utilization (%)" 0.00129728
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:sum(packetBytes) 7892
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:count 32
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:sum(packetBytes) 8103
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:count 32
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 7977
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:sum(packetBytes) 7892
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 287
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionFailed:count 1
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionCompleted:count 4
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionInitiated:count 5
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:count 7
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:sum(packetBytes) 196
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.udp packetReceived:count 23
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar DHCPShutdownReboot.client.udp packetReceived:sum(packetBytes) 6762
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.udp packetSent:count 26
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar DHCPShutdownReboot.client.udp packetSent:sum(packetBytes) 6972
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar DHCPShutdownReboot.client.udp passedUpPk:count 23
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar DHCPShutdownReboot.server.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar DHCPShutdownReboot.server.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar DHCPShutdownReboot.server.ethernet decapPk:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar DHCPShutdownReboot.server.ethernet decapPk:sum(packetBytes) 6815
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ethernet encapPk:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar DHCPShutdownReboot.server.ethernet encapPk:sum(packetBytes) 7334
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram
+field count 27
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	27
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPackets:count 27
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:sum 62560
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram
+field count 27
+field mean 2317.037037037
+field stddev 828.28801575119
+field min 368
+field max 2656
+field sum 62560
+field sqrsum 162791424
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	50	0
+bin	100	0
+bin	150	0
+bin	200	0
+bin	250	0
+bin	300	0
+bin	350	4
+bin	400	0
+bin	450	0
+bin	500	0
+bin	550	0
+bin	600	0
+bin	650	0
+bin	700	0
+bin	750	0
+bin	800	0
+bin	850	0
+bin	900	0
+bin	950	0
+bin	1000	0
+bin	1050	0
+bin	1100	0
+bin	1150	0
+bin	1200	0
+bin	1250	0
+bin	1300	0
+bin	1350	0
+bin	1400	0
+bin	1450	0
+bin	1500	0
+bin	1550	0
+bin	1600	0
+bin	1650	0
+bin	1700	0
+bin	1750	0
+bin	1800	0
+bin	1850	0
+bin	1900	0
+bin	1950	0
+bin	2000	0
+bin	2050	0
+bin	2100	0
+bin	2150	0
+bin	2200	0
+bin	2250	0
+bin	2300	0
+bin	2350	0
+bin	2400	0
+bin	2450	0
+bin	2500	0
+bin	2550	0
+bin	2600	0
+bin	2650	23
+bin	2700	0
+bin	2750	0
+bin	2800	0
+bin	2850	0
+bin	2900	0
+bin	2950	0
+bin	3000	0
+bin	3050	0
+bin	3100	0
+bin	3150	0
+bin	3200	0
+bin	3250	0
+statistic DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPackets:count 27
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:sum 62560
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram
+field count 27
+field mean 2317.037037037
+field stddev 828.28801575119
+field min 368
+field max 2656
+field sum 62560
+field sqrsum 162791424
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	50	0
+bin	100	0
+bin	150	0
+bin	200	0
+bin	250	0
+bin	300	0
+bin	350	4
+bin	400	0
+bin	450	0
+bin	500	0
+bin	550	0
+bin	600	0
+bin	650	0
+bin	700	0
+bin	750	0
+bin	800	0
+bin	850	0
+bin	900	0
+bin	950	0
+bin	1000	0
+bin	1050	0
+bin	1100	0
+bin	1150	0
+bin	1200	0
+bin	1250	0
+bin	1300	0
+bin	1350	0
+bin	1400	0
+bin	1450	0
+bin	1500	0
+bin	1550	0
+bin	1600	0
+bin	1650	0
+bin	1700	0
+bin	1750	0
+bin	1800	0
+bin	1850	0
+bin	1900	0
+bin	1950	0
+bin	2000	0
+bin	2050	0
+bin	2100	0
+bin	2150	0
+bin	2200	0
+bin	2250	0
+bin	2300	0
+bin	2350	0
+bin	2400	0
+bin	2450	0
+bin	2500	0
+bin	2550	0
+bin	2600	0
+bin	2650	23
+bin	2700	0
+bin	2750	0
+bin	2800	0
+bin	2850	0
+bin	2900	0
+bin	2950	0
+bin	3000	0
+bin	3050	0
+bin	3100	0
+bin	3150	0
+bin	3200	0
+bin	3250	0
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar DHCPShutdownReboot.server.eth[0].mac "simulated time" 500
+scalar DHCPShutdownReboot.server.eth[0].mac full-duplex 1
+scalar DHCPShutdownReboot.server.eth[0].mac "frames/sec sent" 0.054
+scalar DHCPShutdownReboot.server.eth[0].mac "frames/sec rcvd" 0.054
+scalar DHCPShutdownReboot.server.eth[0].mac "bits/sec sent" 126.272
+scalar DHCPShutdownReboot.server.eth[0].mac "bits/sec rcvd" 116.816
+scalar DHCPShutdownReboot.server.eth[0].mac "rx channel idle (%)" 99.99879728
+scalar DHCPShutdownReboot.server.eth[0].mac "rx channel utilization (%)" 0.00120272
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:sum(packetBytes) 7301
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:sum(packetBytes) 7892
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 7820
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:count 27
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:sum(packetBytes) 7301
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionCompleted:count 4
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:count 4
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:sum(packetBytes) 112
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.udp packetReceived:count 23
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar DHCPShutdownReboot.server.udp packetReceived:sum(packetBytes) 6171
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.udp packetSent:count 23
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar DHCPShutdownReboot.server.udp packetSent:sum(packetBytes) 6762
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar DHCPShutdownReboot.server.udp passedUpPk:count 23
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+

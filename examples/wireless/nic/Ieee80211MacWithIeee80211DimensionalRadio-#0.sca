@@ -1,0 +1,2684 @@
+version 3
+run Ieee80211MacWithIeee80211DimensionalRadio-0-20230411-10:33:20-42980
+attr configname Ieee80211MacWithIeee80211DimensionalRadio
+attr datetime 20230411-10:33:20
+attr datetimef 20230411-103320
+attr description "IEEE 802.11 mac with IEEE 802.11 dimensional radio"
+attr experiment Ieee80211MacWithIeee80211DimensionalRadio
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network TestNic
+attr processid 42980
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config image-path /home/levy/workspace/inet/images
+config sim-time-limit 100s
+config sim-time-limit 100s
+config extends "AbstractIeee80211Mac, AbstractIeee80211DimensionalRadio"
+config description "IEEE 802.11 mac with IEEE 802.11 dimensional radio"
+config *.host[*].wlan[*].typename Ieee80211Interface
+config *.host[*].wlan[*].mgmt.typename Ieee80211MgmtAdhoc
+config *.host[*].wlan[*].agent.typename ""
+config *.radioMedium.typename Ieee80211DimensionalRadioMedium
+config *.radioMedium.backgroundNoise.power -110dBm
+config *.host[*].wlan[*].radio.typename Ieee80211DimensionalRadio
+config *.host[*].wlan[*].radio.transmitter.power 2mW
+config *.host[*].wlan[*].radio.receiver.sensitivity -85dBm
+config *.host[*].wlan[*].radio.receiver.energyDetection -85dBm
+config *.host[*].wlan[*].radio.receiver.snirThreshold 4dB
+config num-rngs 3
+config network TestNic
+config **.mobility.rng-0 1
+config **.wlan[*].mac.rng-0 2
+config *.numHosts 2
+config **.host[0].numPcapRecorders 1
+config **.host[0].pcapRecorder[*].pcapFile "\"results/pcapfile.pcap\""
+config **.host[0].pcapRecorder[*].helpers "\"inet::AckingMacToEthernetPcapRecorderHelper\""
+config **.host[0].pcapRecorder[*].sendingSignalNames "\"sentDownPk\""
+config **.host[0].pcapRecorder[*].receivingSignalNames "\"packetReceivedFromLower\""
+config **.host[0].pcapRecorder[*].dumpProtocols "\"ackingmac\""
+config **.host[0].pcapRecorder[*].alwaysFlush true
+config **.crcMode "\"computed\""
+config **.fcsMode "\"computed\""
+config *.host[*].mobility.typename MassMobility
+config *.host[*].mobility.constraintAreaMinX 0m
+config *.host[*].mobility.constraintAreaMinY 0m
+config *.host[*].mobility.constraintAreaMinZ 0m
+config *.host[*].mobility.constraintAreaMaxX 60m
+config *.host[*].mobility.constraintAreaMaxY 40m
+config *.host[*].mobility.constraintAreaMaxZ 0m
+config *.host[*].mobility.initFromDisplayString false
+config *.host[*].mobility.changeInterval "truncnormal(2s, 0.5s)"
+config *.host[*].mobility.angleDelta "normal(0deg, 30deg)"
+config *.host[*].mobility.speed "truncnormal(20mps, 8mps)"
+config *.host[*].mobility.updateInterval 100ms
+config *.host[0].numApps 0
+config *.host[*].numApps 1
+config *.host[*].app[0].typename PingApp
+config *.host[*].app[*].destAddr "\"host[0]\""
+config *.host[*].app[*].printPing true
+
+scalar TestNic.radioMedium.propagation "Arrival computation count" 403
+scalar TestNic.radioMedium "transmission count" 403
+scalar TestNic.radioMedium "signal send count" 403
+scalar TestNic.radioMedium "reception computation count" 403
+scalar TestNic.radioMedium "interference computation count" 1616
+scalar TestNic.radioMedium "reception decision computation count" 403
+scalar TestNic.radioMedium "listening decision computation count" 810
+scalar TestNic.radioMedium "reception cache hit" 85.714285714286
+attr unit %
+scalar TestNic.radioMedium "interference cache hit" 66.666666666667
+attr unit %
+scalar TestNic.radioMedium "noise cache hit" 0
+attr unit %
+scalar TestNic.radioMedium "snir cache hit" 50
+attr unit %
+scalar TestNic.radioMedium "reception decision cache hit" 50
+attr unit %
+scalar TestNic.radioMedium "reception result cache hit" 0
+attr unit %
+scalar TestNic.host[0].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar TestNic.host[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar TestNic.host[0].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestNic.host[0].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestNic.host[0].lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar TestNic.host[0].lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar TestNic.host[0].lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar TestNic.host[0].lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg 0.00037093593244214
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:max 960
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 0.35398127449021
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 101
+field mean 0.00036524752475248
+field stddev 0.00018965966392149
+field min 9.4e-05
+field max 0.000714
+field sum 0.03689
+field sqrsum 1.707106e-05
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1e-05	0
+bin	2e-05	0
+bin	3e-05	0
+bin	4e-05	0
+bin	5e-05	0
+bin	6e-05	0
+bin	7e-05	0
+bin	8e-05	0
+bin	9e-05	7
+bin	0.0001	0
+bin	0.00011	2
+bin	0.00012	0
+bin	0.00013	5
+bin	0.00014	0
+bin	0.00015	9
+bin	0.00016	0
+bin	0.00017	4
+bin	0.00018	0
+bin	0.00019	2
+bin	0.0002	0
+bin	0.00021	3
+bin	0.00022	0
+bin	0.00023	1
+bin	0.00024	0
+bin	0.00025	2
+bin	0.00026	0
+bin	0.00027	8
+bin	0.00028	0
+bin	0.00029	2
+bin	0.0003	0
+bin	0.00031	3
+bin	0.00032	0
+bin	0.00033	0
+bin	0.00034	0
+bin	0.00035	3
+bin	0.00036	0
+bin	0.00037	3
+bin	0.00038	0
+bin	0.00039	3
+bin	0.0004	0
+bin	0.00041	0
+bin	0.00042	0
+bin	0.00043	2
+bin	0.00044	0
+bin	0.00045	4
+bin	0.00046	1
+bin	0.00047	6
+bin	0.00048	0
+bin	0.00049	3
+bin	0.0005	0
+bin	0.00051	4
+bin	0.00052	0
+bin	0.00053	0
+bin	0.00054	0
+bin	0.00055	5
+bin	0.00056	0
+bin	0.00057	5
+bin	0.00058	0
+bin	0.00059	1
+bin	0.0006	0
+bin	0.00061	3
+bin	0.00062	0
+bin	0.00063	3
+bin	0.00064	0
+bin	0.00065	0
+bin	0.00066	0
+bin	0.00067	2
+bin	0.00068	0
+bin	0.00069	2
+bin	0.0007	0
+bin	0.00071	3
+bin	0.00072	0
+bin	0.00073	0
+bin	0.00074	0
+bin	0.00075	0
+bin	0.00076	0
+bin	0.00077	0
+bin	0.00078	0
+bin	0.00079	0
+bin	0.0008	0
+bin	0.00081	0
+bin	0.00082	0
+bin	0.00083	0
+bin	0.00084	0
+bin	0.00085	0
+bin	0.00086	0
+bin	0.00087	0
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPackets:count 101
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 96512
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 101
+field mean 955.56435643564
+field stddev 44.577666121408
+field min 512
+field max 960
+field sum 96512
+field sqrsum 92422144
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	0
+bin	490	0
+bin	500	0
+bin	510	1
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	100
+bin	970	0
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+statistic TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPackets:count 101
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 96512
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 101
+field mean 955.56435643564
+field stddev 44.577666121408
+field min 512
+field max 960
+field sum 96512
+field sqrsum 92422144
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	0
+bin	490	0
+bin	500	0
+bin	510	1
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	100
+bin	970	0
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic TestNic.host[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 101
+field mean 0.00011395410415842
+field stddev 1.9803694183962e-06
+field min 9.4265275e-05
+field max 0.000114345139
+field sum 0.01150936452
+field sqrsum 1.3119315096126e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	8.9e-05	0
+bin	8.95e-05	0
+bin	9e-05	0
+bin	9.05e-05	0
+bin	9.1e-05	0
+bin	9.15e-05	0
+bin	9.2e-05	0
+bin	9.25e-05	0
+bin	9.3e-05	0
+bin	9.35e-05	0
+bin	9.4e-05	1
+bin	9.45e-05	0
+bin	9.5e-05	0
+bin	9.55e-05	0
+bin	9.6e-05	0
+bin	9.65e-05	0
+bin	9.7e-05	0
+bin	9.75e-05	0
+bin	9.8e-05	0
+bin	9.85e-05	0
+bin	9.9e-05	0
+bin	9.95e-05	0
+bin	0.0001	0
+bin	0.0001005	0
+bin	0.000101	0
+bin	0.0001015	0
+bin	0.000102	0
+bin	0.0001025	0
+bin	0.000103	0
+bin	0.0001035	0
+bin	0.000104	0
+bin	0.0001045	0
+bin	0.000105	0
+bin	0.0001055	0
+bin	0.000106	0
+bin	0.0001065	0
+bin	0.000107	0
+bin	0.0001075	0
+bin	0.000108	0
+bin	0.0001085	0
+bin	0.000109	0
+bin	0.0001095	0
+bin	0.00011	0
+bin	0.0001105	0
+bin	0.000111	0
+bin	0.0001115	0
+bin	0.000112	0
+bin	0.0001125	0
+bin	0.000113	0
+bin	0.0001135	0
+bin	0.000114	100
+bin	0.0001145	0
+bin	0.000115	0
+bin	0.0001155	0
+bin	0.000116	0
+bin	0.0001165	0
+bin	0.000117	0
+bin	0.0001175	0
+bin	0.000118	0
+bin	0.0001185	0
+bin	0.000119	0
+bin	0.0001195	0
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0.0001150936452
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 101
+attr recordingmode count
+attr title "channel access granted, count"
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess.contention stateChanged:count 1614
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar TestNic.host[0].wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 202
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar TestNic.host[0].wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar TestNic.host[0].wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar TestNic.host[0].wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar TestNic.host[0].wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 101
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar TestNic.host[0].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar TestNic.host[0].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar TestNic.host[0].wlan[0].mac.dcf frameSequenceFinished:count 101
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic TestNic.host[0].wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 101
+field mean 0.00011395410415842
+field stddev 1.9803694183962e-06
+field min 9.4265275e-05
+field max 0.000114345139
+field sum 0.01150936452
+field sqrsum 1.3119315096126e-06
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	8.9e-05	0
+bin	8.95e-05	0
+bin	9e-05	0
+bin	9.05e-05	0
+bin	9.1e-05	0
+bin	9.15e-05	0
+bin	9.2e-05	0
+bin	9.25e-05	0
+bin	9.3e-05	0
+bin	9.35e-05	0
+bin	9.4e-05	1
+bin	9.45e-05	0
+bin	9.5e-05	0
+bin	9.55e-05	0
+bin	9.6e-05	0
+bin	9.65e-05	0
+bin	9.7e-05	0
+bin	9.75e-05	0
+bin	9.8e-05	0
+bin	9.85e-05	0
+bin	9.9e-05	0
+bin	9.95e-05	0
+bin	0.0001	0
+bin	0.0001005	0
+bin	0.000101	0
+bin	0.0001015	0
+bin	0.000102	0
+bin	0.0001025	0
+bin	0.000103	0
+bin	0.0001035	0
+bin	0.000104	0
+bin	0.0001045	0
+bin	0.000105	0
+bin	0.0001055	0
+bin	0.000106	0
+bin	0.0001065	0
+bin	0.000107	0
+bin	0.0001075	0
+bin	0.000108	0
+bin	0.0001085	0
+bin	0.000109	0
+bin	0.0001095	0
+bin	0.00011	0
+bin	0.0001105	0
+bin	0.000111	0
+bin	0.0001115	0
+bin	0.000112	0
+bin	0.0001125	0
+bin	0.000113	0
+bin	0.0001135	0
+bin	0.000114	100
+bin	0.0001145	0
+bin	0.000115	0
+bin	0.0001155	0
+bin	0.000116	0
+bin	0.0001165	0
+bin	0.000117	0
+bin	0.0001175	0
+bin	0.000118	0
+bin	0.0001185	0
+bin	0.000119	0
+bin	0.0001195	0
+statistic TestNic.host[0].wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 101
+field mean 2
+field stddev 0
+field min 2
+field max 2
+field sum 202
+field sqrsum 404
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	1	0
+bin	2	101
+bin	3	0
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeer:count 202
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 13478
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 201
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 13414
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 64
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 64
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 202
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 13478
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeer:count 201
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 13464
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerUnicast:count 201
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 13464
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 201
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 13464
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar TestNic.host[0].wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar TestNic.host[0].wlan[0].mac packetReceivedFromLower:count 202
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar TestNic.host[0].wlan[0].mac packetReceivedFromLower:sum(packetBytes) 13478
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetSentToLower:count 201
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar TestNic.host[0].wlan[0].mac packetSentToLower:sum(packetBytes) 13464
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetReceivedFromUpper:count 101
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar TestNic.host[0].wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 9236
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetSentToUpper:count 101
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar TestNic.host[0].wlan[0].mac packetSentToUpper:sum(packetBytes) 9236
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar TestNic.host[0].wlan[0].mac packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar TestNic.host[0].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar TestNic.host[0].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar TestNic.host[0].wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar TestNic.host[0].wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar TestNic.host[0].wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar TestNic.host[0].wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+statistic TestNic.host[0].wlan[0].radio radioChannel:histogram
+field count 1
+field mean 0
+field stddev nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar TestNic.host[0].wlan[0].radio radioMode:count 405
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar TestNic.host[0].wlan[0].radio receptionState:count 807
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar TestNic.host[0].wlan[0].radio transmissionState:count 804
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic TestNic.host[0].wlan[0].radio minSnir:histogram
+field count 202
+field mean 2046709.9168029
+field stddev 13387511.993216
+field min 7525.3645265304
+field max 116789369.46921
+field sum 413435403.19419
+field sqrsum 3.6870503290745e+16
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	0	196
+bin	2000000	0
+bin	4000000	0
+bin	6000000	2
+bin	8000000	0
+bin	10000000	0
+bin	12000000	0
+bin	14000000	0
+bin	16000000	0
+bin	18000000	0
+bin	20000000	0
+bin	22000000	0
+bin	24000000	0
+bin	26000000	0
+bin	28000000	0
+bin	30000000	0
+bin	32000000	0
+bin	34000000	0
+bin	36000000	0
+bin	38000000	0
+bin	40000000	0
+bin	42000000	0
+bin	44000000	0
+bin	46000000	0
+bin	48000000	0
+bin	50000000	0
+bin	52000000	0
+bin	54000000	0
+bin	56000000	0
+bin	58000000	0
+bin	60000000	0
+bin	62000000	0
+bin	64000000	0
+bin	66000000	0
+bin	68000000	1
+bin	70000000	1
+bin	72000000	0
+bin	74000000	0
+bin	76000000	0
+bin	78000000	0
+bin	80000000	0
+bin	82000000	0
+bin	84000000	0
+bin	86000000	0
+bin	88000000	0
+bin	90000000	0
+bin	92000000	0
+bin	94000000	0
+bin	96000000	0
+bin	98000000	0
+bin	100000000	0
+bin	102000000	0
+bin	104000000	0
+bin	106000000	0
+bin	108000000	0
+bin	110000000	0
+bin	112000000	0
+bin	114000000	1
+bin	116000000	1
+bin	118000000	0
+bin	120000000	0
+bin	122000000	0
+bin	124000000	0
+bin	126000000	0
+bin	128000000	0
+bin	130000000	0
+bin	132000000	0
+bin	134000000	0
+bin	136000000	0
+bin	138000000	0
+bin	140000000	0
+bin	142000000	0
+bin	144000000	0
+bin	146000000	0
+statistic TestNic.host[0].wlan[0].radio packetErrorRate:histogram
+field count 202
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	202
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic TestNic.host[0].wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic TestNic.host[0].wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestNic.host[0].wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar TestNic.host[0].wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar TestNic.host[0].wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar TestNic.host[0].wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar TestNic.host[0].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar TestNic.host[0].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar TestNic.host[0].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar TestNic.host[0].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar TestNic.host[0].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar TestNic.host[0].ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar TestNic.host[0].ipv4.arp arpResolutionCompleted:count 1
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar TestNic.host[0].ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar TestNic.host[0].ipv4.arp arpReplySent:count 1
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar TestNic.host[0].ipv4.arp arpReplySent:sum(packetBytes) 28
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar TestNic.host[0].ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar TestNic.host[0].udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar TestNic.host[0].udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar TestNic.host[0].udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar TestNic.host[0].udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar TestNic.host[0].udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar TestNic.host[0].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar TestNic.host[0].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar TestNic.host[1].lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar TestNic.host[1].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar TestNic.host[1].lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar TestNic.host[1].lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar TestNic.host[1].lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar TestNic.host[1].lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar TestNic.host[1].lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar TestNic.host[1].lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg 9.4518731561013e-07
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:max 960
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 0.00090737982298573
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 101
+field mean 9.3069306930693e-07
+field stddev 9.3533495879739e-06
+field min 0
+field max 9.4e-05
+field sum 9.4e-05
+field sqrsum 8.836e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	100
+bin	2e-06	0
+bin	4e-06	0
+bin	6e-06	0
+bin	8e-06	0
+bin	1e-05	0
+bin	1.2e-05	0
+bin	1.4e-05	0
+bin	1.6e-05	0
+bin	1.8e-05	0
+bin	2e-05	0
+bin	2.2e-05	0
+bin	2.4e-05	0
+bin	2.6e-05	0
+bin	2.8e-05	0
+bin	3e-05	0
+bin	3.2e-05	0
+bin	3.4e-05	0
+bin	3.6e-05	0
+bin	3.8e-05	0
+bin	4e-05	0
+bin	4.2e-05	0
+bin	4.4e-05	0
+bin	4.6e-05	0
+bin	4.8e-05	0
+bin	5e-05	0
+bin	5.2e-05	0
+bin	5.4e-05	0
+bin	5.6e-05	0
+bin	5.8e-05	0
+bin	6e-05	0
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	0
+bin	7.4e-05	0
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	0
+bin	8.6e-05	0
+bin	8.8e-05	0
+bin	9e-05	0
+bin	9.2e-05	1
+bin	9.4e-05	0
+bin	9.6e-05	0
+bin	9.8e-05	0
+bin	0.0001	0
+bin	0.000102	0
+bin	0.000104	0
+bin	0.000106	0
+bin	0.000108	0
+bin	0.00011	0
+bin	0.000112	0
+bin	0.000114	0
+bin	0.000116	0
+bin	0.000118	0
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPackets:count 101
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 96512
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 101
+field mean 955.56435643564
+field stddev 44.577666121408
+field min 512
+field max 960
+field sum 96512
+field sqrsum 92422144
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	0
+bin	490	0
+bin	500	0
+bin	510	1
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	100
+bin	970	0
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+statistic TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPackets:count 101
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 96512
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 101
+field mean 955.56435643564
+field stddev 44.577666121408
+field min 512
+field max 960
+field sum 96512
+field sqrsum 92422144
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	400	0
+bin	410	0
+bin	420	0
+bin	430	0
+bin	440	0
+bin	450	0
+bin	460	0
+bin	470	0
+bin	480	0
+bin	490	0
+bin	500	0
+bin	510	1
+bin	520	0
+bin	530	0
+bin	540	0
+bin	550	0
+bin	560	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	0
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	0
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	0
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	100
+bin	970	0
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic TestNic.host[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 101
+field mean 0.00011351738579208
+field stddev 6.3839356567194e-06
+field min 5e-05
+field max 0.000114344952
+field sum 0.011465255965
+field sqrsum 1.3055813480308e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	3.2e-05	0
+bin	3.4e-05	0
+bin	3.6e-05	0
+bin	3.8e-05	0
+bin	4e-05	0
+bin	4.2e-05	0
+bin	4.4e-05	0
+bin	4.6e-05	0
+bin	4.8e-05	1
+bin	5e-05	0
+bin	5.2e-05	0
+bin	5.4e-05	0
+bin	5.6e-05	0
+bin	5.8e-05	0
+bin	6e-05	0
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	0
+bin	7.4e-05	0
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	0
+bin	8.6e-05	0
+bin	8.8e-05	0
+bin	9e-05	0
+bin	9.2e-05	0
+bin	9.4e-05	0
+bin	9.6e-05	0
+bin	9.8e-05	0
+bin	0.0001	0
+bin	0.000102	0
+bin	0.000104	0
+bin	0.000106	0
+bin	0.000108	0
+bin	0.00011	0
+bin	0.000112	0
+bin	0.000114	100
+bin	0.000116	0
+bin	0.000118	0
+bin	0.00012	0
+bin	0.000122	0
+bin	0.000124	0
+bin	0.000126	0
+bin	0.000128	0
+bin	0.00013	0
+bin	0.000132	0
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0.00011465255965
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 101
+attr recordingmode count
+attr title "channel access granted, count"
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess.contention stateChanged:count 1618
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar TestNic.host[1].wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 202
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar TestNic.host[1].wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar TestNic.host[1].wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar TestNic.host[1].wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar TestNic.host[1].wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 101
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar TestNic.host[1].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar TestNic.host[1].wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar TestNic.host[1].wlan[0].mac.dcf frameSequenceFinished:count 101
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic TestNic.host[1].wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 101
+field mean 0.00011351738579208
+field stddev 6.3839356567194e-06
+field min 5e-05
+field max 0.000114344952
+field sum 0.011465255965
+field sqrsum 1.3055813480308e-06
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	3.2e-05	0
+bin	3.4e-05	0
+bin	3.6e-05	0
+bin	3.8e-05	0
+bin	4e-05	0
+bin	4.2e-05	0
+bin	4.4e-05	0
+bin	4.6e-05	0
+bin	4.8e-05	1
+bin	5e-05	0
+bin	5.2e-05	0
+bin	5.4e-05	0
+bin	5.6e-05	0
+bin	5.8e-05	0
+bin	6e-05	0
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	0
+bin	7.4e-05	0
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	0
+bin	8.6e-05	0
+bin	8.8e-05	0
+bin	9e-05	0
+bin	9.2e-05	0
+bin	9.4e-05	0
+bin	9.6e-05	0
+bin	9.8e-05	0
+bin	0.0001	0
+bin	0.000102	0
+bin	0.000104	0
+bin	0.000106	0
+bin	0.000108	0
+bin	0.00011	0
+bin	0.000112	0
+bin	0.000114	100
+bin	0.000116	0
+bin	0.000118	0
+bin	0.00012	0
+bin	0.000122	0
+bin	0.000124	0
+bin	0.000126	0
+bin	0.000128	0
+bin	0.00013	0
+bin	0.000132	0
+statistic TestNic.host[1].wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 101
+field mean 1.990099009901
+field stddev 0.099503719020998
+field min 1
+field max 2
+field sum 201
+field sqrsum 401
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	0	0
+bin	1	1
+bin	2	100
+bin	3	0
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeer:count 201
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 13464
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 201
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 13464
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 201
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 13464
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeer:count 202
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 13478
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerUnicast:count 201
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 13414
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerMulticast:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 64
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerBroadcast:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 64
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 202
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 13478
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar TestNic.host[1].wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar TestNic.host[1].wlan[0].mac packetReceivedFromLower:count 201
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar TestNic.host[1].wlan[0].mac packetReceivedFromLower:sum(packetBytes) 13464
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetSentToLower:count 202
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar TestNic.host[1].wlan[0].mac packetSentToLower:sum(packetBytes) 13478
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetReceivedFromUpper:count 101
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar TestNic.host[1].wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 9236
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetSentToUpper:count 101
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar TestNic.host[1].wlan[0].mac packetSentToUpper:sum(packetBytes) 9236
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar TestNic.host[1].wlan[0].mac packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar TestNic.host[1].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar TestNic.host[1].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar TestNic.host[1].wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar TestNic.host[1].wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar TestNic.host[1].wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar TestNic.host[1].wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+statistic TestNic.host[1].wlan[0].radio radioChannel:histogram
+field count 1
+field mean 0
+field stddev nan
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar TestNic.host[1].wlan[0].radio radioMode:count 407
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar TestNic.host[1].wlan[0].radio receptionState:count 807
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar TestNic.host[1].wlan[0].radio transmissionState:count 808
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic TestNic.host[1].wlan[0].radio minSnir:histogram
+field count 201
+field mean 2059822.4181162
+field stddev 13419427.487889
+field min 8041.8294495443
+field max 116563335.87844
+field sum 414024306.04136
+field sqrsum 3.6869023367773e+16
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	0	195
+bin	2000000	0
+bin	4000000	0
+bin	6000000	2
+bin	8000000	0
+bin	10000000	0
+bin	12000000	0
+bin	14000000	0
+bin	16000000	0
+bin	18000000	0
+bin	20000000	0
+bin	22000000	0
+bin	24000000	0
+bin	26000000	0
+bin	28000000	0
+bin	30000000	0
+bin	32000000	0
+bin	34000000	0
+bin	36000000	0
+bin	38000000	0
+bin	40000000	0
+bin	42000000	0
+bin	44000000	0
+bin	46000000	0
+bin	48000000	0
+bin	50000000	0
+bin	52000000	0
+bin	54000000	0
+bin	56000000	0
+bin	58000000	0
+bin	60000000	0
+bin	62000000	0
+bin	64000000	0
+bin	66000000	0
+bin	68000000	1
+bin	70000000	1
+bin	72000000	0
+bin	74000000	0
+bin	76000000	0
+bin	78000000	0
+bin	80000000	0
+bin	82000000	0
+bin	84000000	0
+bin	86000000	0
+bin	88000000	0
+bin	90000000	0
+bin	92000000	0
+bin	94000000	0
+bin	96000000	0
+bin	98000000	0
+bin	100000000	0
+bin	102000000	0
+bin	104000000	0
+bin	106000000	0
+bin	108000000	0
+bin	110000000	0
+bin	112000000	0
+bin	114000000	1
+bin	116000000	1
+bin	118000000	0
+bin	120000000	0
+bin	122000000	0
+bin	124000000	0
+bin	126000000	0
+bin	128000000	0
+bin	130000000	0
+bin	132000000	0
+bin	134000000	0
+bin	136000000	0
+bin	138000000	0
+bin	140000000	0
+bin	142000000	0
+bin	144000000	0
+bin	146000000	0
+statistic TestNic.host[1].wlan[0].radio packetErrorRate:histogram
+field count 201
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	201
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic TestNic.host[1].wlan[0].radio bitErrorRate:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic TestNic.host[1].wlan[0].radio symbolErrorRate:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar TestNic.host[1].wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar TestNic.host[1].wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar TestNic.host[1].wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar TestNic.host[1].wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar TestNic.host[1].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar TestNic.host[1].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar TestNic.host[1].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar TestNic.host[1].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar TestNic.host[1].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar TestNic.host[1].ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar TestNic.host[1].ipv4.arp arpResolutionCompleted:count 1
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar TestNic.host[1].ipv4.arp arpResolutionInitiated:count 1
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar TestNic.host[1].ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar TestNic.host[1].ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.arp arpRequestSent:count 1
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar TestNic.host[1].ipv4.arp arpRequestSent:sum(packetBytes) 28
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar TestNic.host[1].udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar TestNic.host[1].udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar TestNic.host[1].udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar TestNic.host[1].udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar TestNic.host[1].udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar TestNic.host[1].udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar TestNic.host[1].udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar TestNic.host[1].app[0] "Pings sent" 100
+scalar TestNic.host[1].app[0] "ping loss rate (%)" 0
+scalar TestNic.host[1].app[0] "ping out-of-order rate (%)" 0
+scalar TestNic.host[1].app[0] pingRxSeq:count 100
+attr interpolationmode none
+attr recordingmode count
+attr title "ping rx seq, count"
+scalar TestNic.host[1].app[0] pingTxSeq:count 100
+attr interpolationmode none
+attr recordingmode count
+attr title "ping tx seq, count"
+scalar TestNic.host[1].app[0] numOutOfOrderArrivals:last nan
+attr interpolationmode none
+attr recordingmode last
+attr title "ping out-of-order arrivals, last"
+scalar TestNic.host[1].app[0] numLost:last nan
+attr interpolationmode none
+attr recordingmode last
+attr title "pings lost, last"
+statistic TestNic.host[1].app[0] rtt:histogram
+field count 100
+field mean 0.00051099522014
+field stddev 0.00019445384485156
+field min 0.000234034865
+field max 0.000958530552
+field sum 0.051099522014
+field sqrsum 2.9855028980571e-05
+attr interpolationmode none
+attr recordingmode histogram
+attr title "ping round-trip time"
+attr unit s
+bin	-inf	0
+bin	4e-05	0
+bin	6e-05	0
+bin	8e-05	0
+bin	0.0001	0
+bin	0.00012	0
+bin	0.00014	0
+bin	0.00016	0
+bin	0.00018	0
+bin	0.0002	0
+bin	0.00022	7
+bin	0.00024	2
+bin	0.00026	5
+bin	0.00028	8
+bin	0.0003	4
+bin	0.00032	2
+bin	0.00034	3
+bin	0.00036	1
+bin	0.00038	2
+bin	0.0004	8
+bin	0.00042	2
+bin	0.00044	3
+bin	0.00046	0
+bin	0.00048	3
+bin	0.0005	3
+bin	0.00052	3
+bin	0.00054	0
+bin	0.00056	2
+bin	0.00058	4
+bin	0.0006	6
+bin	0.00062	3
+bin	0.00064	4
+bin	0.00066	0
+bin	0.00068	5
+bin	0.0007	5
+bin	0.00072	1
+bin	0.00074	3
+bin	0.00076	3
+bin	0.00078	0
+bin	0.0008	2
+bin	0.00082	2
+bin	0.00084	3
+bin	0.00086	0
+bin	0.00088	0
+bin	0.0009	0
+bin	0.00092	0
+bin	0.00094	1
+bin	0.00096	0
+bin	0.00098	0
+bin	0.001	0
+bin	0.00102	0
+bin	0.00104	0
+bin	0.00106	0
+bin	0.00108	0
+bin	0.0011	0
+bin	0.00112	0
+bin	0.00114	0
+
