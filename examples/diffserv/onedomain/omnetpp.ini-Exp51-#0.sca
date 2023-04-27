@@ -1,0 +1,199 @@
+version 3
+run Exp51-0-20230426-16:22:32-212872
+attr configname Exp51
+attr datetime 20230426-16:22:32
+attr datetimef 20230426-162232
+attr description "compound queue settings for Exp5"
+attr experiment Exp51
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network DiffservNetwork
+attr processid 212872
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/omnetpp.ini-Exp51-#0.sca
+config sim-time-limit 10s
+config extends "Exp5, Exp5_cq, Apps"
+config **.R?.eth[*].ingressTC.typename TC1
+config **.ingressTC.numClasses 3
+config **.ingressTC.classifier.filters "xmldoc(\"filters.xml\", \"//experiment[@id='5.1']\")"
+config **.ingressTC.marker.dscps "\"EF AF11 AF21 BE\""
+config **.R?.ppp[*].queue.typename DSQueue1
+config **.R?.ppp[*].queue.packetCapacity -1
+config **.R?.ppp[*].queue.*.packetCapacity 100
+config **.R?.**.wrr.weights "\"4 3 0 0 1\""
+config repeat 3
+config **.edgeDatarate 500kbps
+config **.coreDatarate 500kbps
+config **.H{1..4}.app[*].packetSent.result-recording-modes count
+config **.H{5..8}.app[*].packetReceived.result-recording-modes count
+config **.H{5..8}.app[*].endToEndDelay.result-recording-modes vector
+config **.app[*].packetSent.scalar-recording true
+config **.app[*].packetReceived.scalar-recording true
+config **.app[*].rcvdPk*.scalar-recording true
+config **.app[*].endToEndDelay.scalar-recording true
+config description "compound queue settings for Exp5"
+config **.R2.ppp[2].**Queue.incomingPackets.result-recording-modes count
+config **.R2.ppp[2].**Queue.droppedPackets*.result-recording-modes count
+config **.R2.ppp[2].**Queue.queueLength.result-recording-modes timeavg
+config **.R2.ppp[2].**Queue.queueingTime.result-recording-modes vector
+config **.R2.ppp[2].**Queue.*.scalar-recording true
+config **.H{1..8}.numApps 2
+config **.H{1..4}.app[0].typename UdpBasicBurst
+config **.H1.app[*].destAddresses "\"H5\""
+config **.H2.app[*].destAddresses "\"H6\""
+config **.H3.app[*].destAddresses "\"H7\""
+config **.H4.app[*].destAddresses "\"H8\""
+config **.H{1..4}.app[0].chooseDestAddrMode "\"once\""
+config **.H{1..4}.app[0].destPort 2000
+config **.H{1..4}.app[0].startTime uniform(1s,2s)
+config **.H{1..4}.app[0].stopTime 1200s
+config **.H{1..4}.app[0].messageLength 172B
+config **.H{1..4}.app[0].burstDuration exponential(0.352s)
+config **.H{1..4}.app[0].sleepDuration exponential(0.650s)
+config **.H{1..4}.app[0].sendInterval 20ms
+config **.H{5..8}.app[0].typename UdpBasicBurst
+config **.H{5..8}.app[0].localPort 2000
+config **.H{5..8}.app[0].delayLimit 0ms
+config **.H{5..8}.app[0].destAddresses "\"\""
+config **.H{5..8}.app[0].chooseDestAddrMode "\"once\""
+config **.H{5..8}.app[0].destPort 0
+config **.H{5..8}.app[0].messageLength 0B
+config **.H{5..8}.app[0].burstDuration 0s
+config **.H{5..8}.app[0].sleepDuration 0s
+config **.H{5..8}.app[0].sendInterval 0ms
+config **.H{1..4}.app[1].typename UdpBasicApp
+config **.H{1..4}.app[1].destPort 1000
+config **.H{1..4}.app[1].startTime uniform(1s,2s)
+config **.H{1..4}.app[1].stopTime 1200s
+config **.H{1..4}.app[1].sendInterval 40ms
+config **.H{1..4}.app[1].messageLength 500B
+config **.H{5..8}.app[1].typename UdpSink
+config **.H{5..8}.app[1].localPort 1000
+config network DiffservNetwork
+config sim-time-limit 10s
+config **.result-recording-modes ""
+config **.scalar-recording false
+config **.eth[*].queue.typename EthernetQosQueue
+config **.queue.dataQueue.typename DropTailQueue
+config **.queue.packetCapacity 100
+config **.queue.dataQueue.packetCapacity 100
+
+scalar DiffservNetwork.R2.ppp[2].queue.efQueue queueLength:timeavg 0.32426055374247
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.efQueue incomingPackets:count 617
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.efQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af1xQueue queueLength:timeavg 5.4739945598555
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af1xQueue incomingPackets:count 414
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af1xQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af2xQueue queueLength:timeavg 47.30029117003
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af2xQueue incomingPackets:count 408
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af2xQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af3xQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af3xQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af3xQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af4xQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af4xQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.af4xQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.beQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.beQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar DiffservNetwork.R2.ppp[2].queue.beQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+

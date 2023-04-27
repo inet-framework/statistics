@@ -1,0 +1,1507 @@
+version 3
+run inet__inet_stream-0-20230426-16:23:41-213169
+attr configname inet__inet_stream
+attr datetime 20230426-16:23:41
+attr datetimef 20230426-162341
+attr description "inet_TCP <---> inet_TCP"
+attr experiment inet__inet_stream
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network ClientServer
+attr processid 213169
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/omnetpp.ini-inet__inet_stream-#0.sca
+config sim-time-limit 100s
+config sim-time-limit 100s
+config description "inet_TCP <---> inet_TCP"
+config **.tcp.typename Tcp
+config **.app[*].dataTransferMode "\"bytestream\""
+config **.server*.app[0].echoFactor 2.0
+config network ClientServer
+config total-stack 7MiB
+config **.server.numPcapRecorders 1
+config **.server.pcapRecorder[0].pcapFile "\"results/server.pcap\""
+config **.client1.numPcapRecorders 1
+config **.client1.pcapRecorder[0].pcapFile "\"results/client1.pcap\""
+config **.crcMode "\"computed\""
+config **.numApps 1
+config **.client*.app[*].typename TcpSessionApp
+config **.client*.app[0].active true
+config **.client*.app[0].localPort -1
+config **.client*.app[0].connectAddress "\"server\""
+config **.client*.app[0].connectPort 1000
+config **.client*.app[0].tOpen 0.2s
+config **.client*.app[0].tSend 0.4s
+config **.client*.app[0].sendBytes 1000000B
+config **.client*.app[0].sendScript "\"\""
+config **.client*.app[0].tClose 25s
+config **.server*.app[*].typename TcpEchoApp
+config **.server*.app[0].localPort 1000
+config **.server*.app[0].echoDelay 0s
+config **.ppp[*].queue.typename DropTailQueue
+config **.ppp[*].queue.packetCapacity 10
+config *.configurator.config "xml(\"<config><interface hosts='*' address='192.168.1.x' netmask='255.255.255.0'/></config>\")"
+
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar ClientServer.client1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar ClientServer.client1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar ClientServer.client1.ppp[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar ClientServer.client1.ppp[0].queue queueLength:max 10
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar ClientServer.client1.ppp[0].queue queueLength:timeavg 0.067302721442885
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar ClientServer.client1.ppp[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar ClientServer.client1.ppp[0].queue queueBitLength:max 46080
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar ClientServer.client1.ppp[0].queue queueBitLength:timeavg 306.62484303005
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic ClientServer.client1.ppp[0].queue queueingTime:histogram
+field count 5617
+field mean 0.0011958005340929
+field stddev 0.0017761724262017
+field min 0
+field max 0.0046262
+field sum 6.7168116
+field sqrsum 0.02574925904504
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	3702
+bin	0.0001	1
+bin	0.0002	0
+bin	0.0003	6
+bin	0.0004	10
+bin	0.0005	4
+bin	0.0006	2
+bin	0.0007	7
+bin	0.0008	31
+bin	0.0009	11
+bin	0.001	5
+bin	0.0011	8
+bin	0.0012	3
+bin	0.0013	32
+bin	0.0014	7
+bin	0.0015	3
+bin	0.0016	5
+bin	0.0017	2
+bin	0.0018	28
+bin	0.0019	7
+bin	0.002	9
+bin	0.0021	0
+bin	0.0022	162
+bin	0.0023	7
+bin	0.0024	8
+bin	0.0025	0
+bin	0.0026	0
+bin	0.0027	217
+bin	0.0028	3
+bin	0.0029	8
+bin	0.003	0
+bin	0.0031	0
+bin	0.0032	216
+bin	0.0033	2
+bin	0.0034	0
+bin	0.0035	0
+bin	0.0036	287
+bin	0.0037	0
+bin	0.0038	0
+bin	0.0039	0
+bin	0.004	0
+bin	0.0041	264
+bin	0.0042	0
+bin	0.0043	0
+bin	0.0044	0
+bin	0.0045	0
+bin	0.0046	560
+bin	0.0047	0
+scalar ClientServer.client1.ppp[0].queue outgoingPackets:count 5617
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:sum 9823200
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram
+field count 5617
+field mean 1748.8338970981
+field stddev 2021.2012710257
+field min 320
+field max 4608
+field sum 9823200
+field sqrsum 40121934848
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	100	0
+bin	200	0
+bin	300	3745
+bin	400	0
+bin	500	0
+bin	600	0
+bin	700	0
+bin	800	0
+bin	900	0
+bin	1000	0
+bin	1100	0
+bin	1200	0
+bin	1300	0
+bin	1400	0
+bin	1500	0
+bin	1600	0
+bin	1700	0
+bin	1800	0
+bin	1900	0
+bin	2000	0
+bin	2100	0
+bin	2200	0
+bin	2300	0
+bin	2400	0
+bin	2500	0
+bin	2600	0
+bin	2700	0
+bin	2800	0
+bin	2900	0
+bin	3000	0
+bin	3100	0
+bin	3200	1
+bin	3300	0
+bin	3400	0
+bin	3500	0
+bin	3600	0
+bin	3700	0
+bin	3800	0
+bin	3900	0
+bin	4000	0
+bin	4100	0
+bin	4200	0
+bin	4300	0
+bin	4400	0
+bin	4500	0
+bin	4600	1871
+bin	4700	0
+bin	4800	0
+bin	4900	0
+bin	5000	0
+bin	5100	0
+bin	5200	0
+bin	5300	0
+bin	5400	0
+bin	5500	0
+bin	5600	0
+bin	5700	0
+statistic ClientServer.client1.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar ClientServer.client1.ppp[0].queue incomingPackets:count 5650
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:sum 9975264
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram
+field count 5650
+field mean 1765.5334513274
+field stddev 2027.0337694067
+field min 320
+field max 4608
+field sum 9975264
+field sqrsum 40822645760
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	100	0
+bin	200	0
+bin	300	3745
+bin	400	0
+bin	500	0
+bin	600	0
+bin	700	0
+bin	800	0
+bin	900	0
+bin	1000	0
+bin	1100	0
+bin	1200	0
+bin	1300	0
+bin	1400	0
+bin	1500	0
+bin	1600	0
+bin	1700	0
+bin	1800	0
+bin	1900	0
+bin	2000	0
+bin	2100	0
+bin	2200	0
+bin	2300	0
+bin	2400	0
+bin	2500	0
+bin	2600	0
+bin	2700	0
+bin	2800	0
+bin	2900	0
+bin	3000	0
+bin	3100	0
+bin	3200	1
+bin	3300	0
+bin	3400	0
+bin	3500	0
+bin	3600	0
+bin	3700	0
+bin	3800	0
+bin	3900	0
+bin	4000	0
+bin	4100	0
+bin	4200	0
+bin	4300	0
+bin	4400	0
+bin	4500	0
+bin	4600	1904
+bin	4700	0
+bin	4800	0
+bin	4900	0
+bin	5000	0
+bin	5100	0
+bin	5200	0
+bin	5300	0
+bin	5400	0
+bin	5500	0
+bin	5600	0
+bin	5700	0
+scalar ClientServer.client1.ppp[0].queue droppedPacketsQueueOverflow:count 33
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 152064
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar ClientServer.client1.ppp[0].ppp transmissionState:timeavg 0.010137751999999
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:count 5616
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:sum(packetBytes) 2268780
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar ClientServer.client1.ppp[0].ppp txPk:count 5617
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar ClientServer.client1.ppp[0].ppp txPk:sum(packetBytes) 1267219
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:count 5617
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 1227900
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:count 5616
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:sum(packetBytes) 2229468
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar ClientServer.client1.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar ClientServer.client1.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar ClientServer.client1.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar ClientServer.client1.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar ClientServer.client1.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar ClientServer.client1.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar ClientServer.client1.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar ClientServer.client1.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar ClientServer.client1.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar ClientServer.client1.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar ClientServer.client1.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar ClientServer.client1.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar ClientServer.client1.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar ClientServer.client1.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar ClientServer.client1.app[0] bytesRcvd 2000000
+scalar ClientServer.client1.app[0] bytesSent 1000000
+scalar ClientServer.client1.app[0] packetReceived:count 3196
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar ClientServer.client1.app[0] packetReceived:sum(packetBytes) 2000000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic ClientServer.client1.app[0] endToEndDelay:histogram
+field count 3733
+field mean 4.3214299932369
+field stddev 0.74848833786361
+field min 0.0009706
+field max 5.269701281086
+field sum 16131.898164753
+field sqrsum 71803.664820446
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	19
+bin	0.1	0
+bin	0.2	0
+bin	0.3	0
+bin	0.4	0
+bin	0.5	0
+bin	0.6	0
+bin	0.7	0
+bin	0.8	0
+bin	0.9	0
+bin	1	0
+bin	1.1	0
+bin	1.2	0
+bin	1.3	0
+bin	1.4	0
+bin	1.5	74
+bin	1.6	35
+bin	1.7	0
+bin	1.8	0
+bin	1.9	0
+bin	2	0
+bin	2.1	0
+bin	2.2	0
+bin	2.3	0
+bin	2.4	0
+bin	2.5	13
+bin	2.6	0
+bin	2.7	0
+bin	2.8	0
+bin	2.9	0
+bin	3	0
+bin	3.1	0
+bin	3.2	0
+bin	3.3	0
+bin	3.4	0
+bin	3.5	11
+bin	3.6	213
+bin	3.7	215
+bin	3.8	214
+bin	3.9	215
+bin	4	214
+bin	4.1	210
+bin	4.2	219
+bin	4.3	214
+bin	4.4	215
+bin	4.5	214
+bin	4.6	214
+bin	4.7	215
+bin	4.8	209
+bin	4.9	220
+bin	5	214
+bin	5.1	215
+bin	5.2	151
+bin	5.3	0
+statistic ClientServer.client1.app[0] endToEndDelay:weightedHistogram
+field count 3733
+field mean 4.3210090204419
+field stddev 0.7483877016003
+field min 0.0009706
+field max 5.269701281086
+field weights 16000000
+field weightedSum 69136144.327071
+field sqrSumWeights 68595744768
+field weightedSqrSum 307696848.49451
+attr interpolationmode none
+attr recordingmode weightedHistogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, weightedHistogram"
+attr unit s
+bin	-inf	0
+bin	0	81472
+bin	0.1	0
+bin	0.2	0
+bin	0.3	0
+bin	0.4	0
+bin	0.5	0
+bin	0.6	0
+bin	0.7	0
+bin	0.8	0
+bin	0.9	0
+bin	1	0
+bin	1.1	0
+bin	1.2	0
+bin	1.3	0
+bin	1.4	0
+bin	1.5	317312
+bin	1.6	150080
+bin	1.7	0
+bin	1.8	0
+bin	1.9	0
+bin	2	0
+bin	2.1	0
+bin	2.2	0
+bin	2.3	0
+bin	2.4	0
+bin	2.5	55744
+bin	2.6	0
+bin	2.7	0
+bin	2.8	0
+bin	2.9	0
+bin	3	0
+bin	3.1	0
+bin	3.2	0
+bin	3.3	0
+bin	3.4	0
+bin	3.5	47168
+bin	3.6	913344
+bin	3.7	921920
+bin	3.8	917632
+bin	3.9	921920
+bin	4	917632
+bin	4.1	900480
+bin	4.2	939072
+bin	4.3	917632
+bin	4.4	921920
+bin	4.5	917632
+bin	4.6	917632
+bin	4.7	921920
+bin	4.8	896192
+bin	4.9	943360
+bin	5	917632
+bin	5.1	921920
+bin	5.2	640384
+bin	5.3	0
+scalar ClientServer.client1.app[0] packetSent:count 1
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar ClientServer.client1.app[0] packetSent:sum(packetBytes) 1000000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar ClientServer.server.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar ClientServer.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar ClientServer.server.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar ClientServer.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar ClientServer.server.ppp[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar ClientServer.server.ppp[0].queue queueLength:max 10
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar ClientServer.server.ppp[0].queue queueLength:timeavg 0.13495178017947
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar ClientServer.server.ppp[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar ClientServer.server.ppp[0].queue queueBitLength:max 46080
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar ClientServer.server.ppp[0].queue queueBitLength:timeavg 618.1876086971
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic ClientServer.server.ppp[0].queue queueingTime:histogram
+field count 5616
+field mean 0.0023981805809087
+field stddev 0.0018671764195412
+field min 0
+field max 0.0046262
+field sum 13.468182142383
+field sqrsum 0.051874975668199
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	1837
+bin	0.0001	0
+bin	0.0002	0
+bin	0.0003	2
+bin	0.0004	19
+bin	0.0005	9
+bin	0.0006	2
+bin	0.0007	2
+bin	0.0008	59
+bin	0.0009	11
+bin	0.001	2
+bin	0.0011	3
+bin	0.0012	1
+bin	0.0013	76
+bin	0.0014	3
+bin	0.0015	1
+bin	0.0016	4
+bin	0.0017	8
+bin	0.0018	62
+bin	0.0019	6
+bin	0.002	2
+bin	0.0021	3
+bin	0.0022	351
+bin	0.0023	1
+bin	0.0024	2
+bin	0.0025	2
+bin	0.0026	3
+bin	0.0027	443
+bin	0.0028	1
+bin	0.0029	8
+bin	0.003	0
+bin	0.0031	2
+bin	0.0032	442
+bin	0.0033	2
+bin	0.0034	0
+bin	0.0035	0
+bin	0.0036	583
+bin	0.0037	2
+bin	0.0038	0
+bin	0.0039	0
+bin	0.004	0
+bin	0.0041	530
+bin	0.0042	3
+bin	0.0043	0
+bin	0.0044	0
+bin	0.0045	0
+bin	0.0046	1129
+bin	0.0047	0
+scalar ClientServer.server.ppp[0].queue outgoingPackets:count 5616
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:sum 17835744
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram
+field count 5616
+field mean 3175.8803418803
+field stddev 2022.3571135809
+field min 320
+field max 4608
+field sum 17835744
+field sqrsum 79609136128
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	100	0
+bin	200	0
+bin	300	1875
+bin	400	0
+bin	500	0
+bin	600	0
+bin	700	0
+bin	800	0
+bin	900	0
+bin	1000	0
+bin	1100	0
+bin	1200	0
+bin	1300	0
+bin	1400	0
+bin	1500	0
+bin	1600	0
+bin	1700	1
+bin	1800	0
+bin	1900	0
+bin	2000	0
+bin	2100	0
+bin	2200	0
+bin	2300	0
+bin	2400	0
+bin	2500	0
+bin	2600	0
+bin	2700	0
+bin	2800	0
+bin	2900	0
+bin	3000	0
+bin	3100	0
+bin	3200	0
+bin	3300	0
+bin	3400	0
+bin	3500	0
+bin	3600	0
+bin	3700	0
+bin	3800	0
+bin	3900	0
+bin	4000	0
+bin	4100	0
+bin	4200	0
+bin	4300	0
+bin	4400	0
+bin	4500	0
+bin	4600	3740
+bin	4700	0
+bin	4800	0
+bin	4900	0
+bin	5000	0
+bin	5100	0
+bin	5200	0
+bin	5300	0
+bin	5400	0
+bin	5500	0
+bin	5600	0
+bin	5700	0
+statistic ClientServer.server.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar ClientServer.server.ppp[0].queue incomingPackets:count 5679
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:sum 18126048
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic ClientServer.server.ppp[0].queue incomingPacketLengths:histogram
+field count 5679
+field mean 3191.7675647121
+field stddev 2016.6934912766
+field min 320
+field max 4608
+field sum 18126048
+field sqrsum 80946856960
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	100	0
+bin	200	0
+bin	300	1875
+bin	400	0
+bin	500	0
+bin	600	0
+bin	700	0
+bin	800	0
+bin	900	0
+bin	1000	0
+bin	1100	0
+bin	1200	0
+bin	1300	0
+bin	1400	0
+bin	1500	0
+bin	1600	0
+bin	1700	1
+bin	1800	0
+bin	1900	0
+bin	2000	0
+bin	2100	0
+bin	2200	0
+bin	2300	0
+bin	2400	0
+bin	2500	0
+bin	2600	0
+bin	2700	0
+bin	2800	0
+bin	2900	0
+bin	3000	0
+bin	3100	0
+bin	3200	0
+bin	3300	0
+bin	3400	0
+bin	3500	0
+bin	3600	0
+bin	3700	0
+bin	3800	0
+bin	3900	0
+bin	4000	0
+bin	4100	0
+bin	4200	0
+bin	4300	0
+bin	4400	0
+bin	4500	0
+bin	4600	3803
+bin	4700	0
+bin	4800	0
+bin	4900	0
+bin	5000	0
+bin	5100	0
+bin	5200	0
+bin	5300	0
+bin	5400	0
+bin	5500	0
+bin	5600	0
+bin	5700	0
+scalar ClientServer.server.ppp[0].queue droppedPacketsQueueOverflow:count 63
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 290304
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar ClientServer.server.ppp[0].ppp transmissionState:timeavg 0.018150240000001
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar ClientServer.server.ppp[0].ppp rxPkOk:count 5617
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar ClientServer.server.ppp[0].ppp rxPkOk:sum(packetBytes) 1267219
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar ClientServer.server.ppp[0].ppp txPk:count 5616
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar ClientServer.server.ppp[0].ppp txPk:sum(packetBytes) 2268780
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:count 5616
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2229468
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar ClientServer.server.ppp[0].ppp passedUpPk:count 5617
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar ClientServer.server.ppp[0].ppp passedUpPk:sum(packetBytes) 1227900
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar ClientServer.server.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar ClientServer.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar ClientServer.server.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar ClientServer.server.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar ClientServer.server.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar ClientServer.server.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar ClientServer.server.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar ClientServer.server.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar ClientServer.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar ClientServer.server.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar ClientServer.server.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar ClientServer.server.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar ClientServer.server.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar ClientServer.server.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar ClientServer.server.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar ClientServer.server.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar ClientServer.server.app[0] bytesRcvd 1000000
+scalar ClientServer.server.app[0] bytesSent 2000000
+scalar ClientServer.server.app[0] packetReceived:count 1600
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar ClientServer.server.app[0] packetReceived:sum(packetBytes) 1000000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic ClientServer.server.app[0] endToEndDelay:histogram
+field count 1866
+field mean 2.9417938632186
+field stddev 0.44095455932577
+field min 0.0004665
+field max 3.426590581086
+field sum 5489.3873487658
+field sqrsum 16511.278337552
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	19
+bin	0.05	0
+bin	0.1	0
+bin	0.15	0
+bin	0.2	0
+bin	0.25	0
+bin	0.3	0
+bin	0.35	0
+bin	0.4	0
+bin	0.45	0
+bin	0.5	0
+bin	0.55	0
+bin	0.6	0
+bin	0.65	0
+bin	0.7	0
+bin	0.75	0
+bin	0.8	0
+bin	0.85	0
+bin	0.9	0
+bin	0.95	0
+bin	1	0
+bin	1.05	0
+bin	1.1	0
+bin	1.15	0
+bin	1.2	0
+bin	1.25	0
+bin	1.3	0
+bin	1.35	0
+bin	1.4	0
+bin	1.45	0
+bin	1.5	0
+bin	1.55	45
+bin	1.6	0
+bin	1.65	0
+bin	1.7	0
+bin	1.75	0
+bin	1.8	0
+bin	1.85	0
+bin	1.9	0
+bin	1.95	0
+bin	2	0
+bin	2.05	0
+bin	2.1	0
+bin	2.15	0
+bin	2.2	0
+bin	2.25	0
+bin	2.3	0
+bin	2.35	0
+bin	2.4	0
+bin	2.45	0
+bin	2.5	0
+bin	2.55	29
+bin	2.6	107
+bin	2.65	107
+bin	2.7	108
+bin	2.75	105
+bin	2.8	109
+bin	2.85	107
+bin	2.9	107
+bin	2.95	108
+bin	3	107
+bin	3.05	107
+bin	3.1	105
+bin	3.15	109
+bin	3.2	108
+bin	3.25	107
+bin	3.3	107
+bin	3.35	107
+bin	3.4	58
+bin	3.45	0
+bin	3.5	0
+bin	3.55	0
+bin	3.6	0
+bin	3.65	0
+bin	3.7	0
+bin	3.75	0
+bin	3.8	0
+statistic ClientServer.server.app[0] endToEndDelay:weightedHistogram
+field count 1866
+field mean 2.9417085389962
+field stddev 0.44094643285645
+field min 0.0004665
+field max 3.426590581086
+field weights 8000000
+field weightedSum 23533668.31197
+field sqrSumWeights 34299944960
+field weightedSqrSum 70783829.447023
+attr interpolationmode none
+attr recordingmode weightedHistogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, weightedHistogram"
+attr unit s
+bin	-inf	0
+bin	0	81472
+bin	0.05	0
+bin	0.1	0
+bin	0.15	0
+bin	0.2	0
+bin	0.25	0
+bin	0.3	0
+bin	0.35	0
+bin	0.4	0
+bin	0.45	0
+bin	0.5	0
+bin	0.55	0
+bin	0.6	0
+bin	0.65	0
+bin	0.7	0
+bin	0.75	0
+bin	0.8	0
+bin	0.85	0
+bin	0.9	0
+bin	0.95	0
+bin	1	0
+bin	1.05	0
+bin	1.1	0
+bin	1.15	0
+bin	1.2	0
+bin	1.25	0
+bin	1.3	0
+bin	1.35	0
+bin	1.4	0
+bin	1.45	0
+bin	1.5	0
+bin	1.55	192960
+bin	1.6	0
+bin	1.65	0
+bin	1.7	0
+bin	1.75	0
+bin	1.8	0
+bin	1.85	0
+bin	1.9	0
+bin	1.95	0
+bin	2	0
+bin	2.05	0
+bin	2.1	0
+bin	2.15	0
+bin	2.2	0
+bin	2.25	0
+bin	2.3	0
+bin	2.35	0
+bin	2.4	0
+bin	2.45	0
+bin	2.5	0
+bin	2.55	124352
+bin	2.6	458816
+bin	2.65	458816
+bin	2.7	463104
+bin	2.75	450240
+bin	2.8	467392
+bin	2.85	458816
+bin	2.9	458816
+bin	2.95	463104
+bin	3	458816
+bin	3.05	458816
+bin	3.1	450240
+bin	3.15	467392
+bin	3.2	463104
+bin	3.25	458816
+bin	3.3	458816
+bin	3.35	458816
+bin	3.4	247296
+bin	3.45	0
+bin	3.5	0
+bin	3.55	0
+bin	3.6	0
+bin	3.65	0
+bin	3.7	0
+bin	3.75	0
+bin	3.8	0
+scalar ClientServer.server.app[0] packetSent:count 1600
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar ClientServer.server.app[0] packetSent:sum(packetBytes) 2000000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+

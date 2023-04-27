@@ -1,0 +1,5940 @@
+version 3
+run IPv6-0-20230426-16:24:40-213485
+attr configname IPv6
+attr datetime 20230426-16:24:40
+attr datetimef 20230426-162440
+attr description "network layer for multiple network protocols"
+attr experiment IPv6
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network SimpleTest
+attr processid 213485
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/omnetpp.ini-IPv6-#0.sca
+config sim-time-limit 600s
+config description "network layer for multiple network protocols"
+config **.hasIpv4 false
+config **.hasIpv6 true
+config **.hasGn false
+config **.rip.mode "\"RIPng\""
+config **.rip.routingTableModule "\"^.ipv6.routingTable\""
+config description "Simple test"
+config network SimpleTest
+config sim-time-limit 600s
+config **.H1.numApps 2
+config **.H2.numApps 2
+config **.app[0].typename UdpBasicApp
+config **.app[0].destPort 1234
+config **.app[0].messageLength "32 bytes"
+config **.app[0].sendInterval 0.1s
+config **.app[0].startTime 4s
+config **.H2.app[0].destAddresses "\"H1\""
+config **.H1.app[0].destAddresses "\"H2\""
+config **.app[1].typename UdpEchoApp
+config **.app[1].localPort 1234
+
+scalar SimpleTest.H1.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar SimpleTest.H1.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar SimpleTest.H1.ethernet decapPk:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar SimpleTest.H1.ethernet decapPk:sum(packetBytes) 959364
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar SimpleTest.H1.ethernet encapPk:count 11958
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar SimpleTest.H1.ethernet encapPk:sum(packetBytes) 956184
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar SimpleTest.H1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar SimpleTest.H1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar SimpleTest.H1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.H1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.H1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.H1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.H1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.H1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.H1.eth[0].queue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.H1.eth[0].queue queueLength:timeavg 2.3150386289126e-07
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.H1.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.H1.eth[0].queue queueBitLength:max 784
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.H1.eth[0].queue queueBitLength:timeavg 0.00018149902850675
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.H1.eth[0].queue queueingTime:histogram
+field count 11958
+field mean 1.1600602107376e-08
+field stddev 3.0746421702369e-07
+field min 0
+field max 8.16e-06
+field sum 0.00013872
+field sqrsum 1.1319552e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11958
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar SimpleTest.H1.eth[0].queue outgoingPackets:count 11958
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.H1.eth[0].queue outgoingPacketLengths:sum 9371424
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.H1.eth[0].queue outgoingPacketLengths:histogram
+field count 11958
+field mean 783.69493226292
+field stddev 5.8155351732602
+field min 592
+field max 784
+field sum 9371424
+field sqrsum 7344741888
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	540	0
+bin	545	0
+bin	550	0
+bin	555	0
+bin	560	0
+bin	565	0
+bin	570	0
+bin	575	0
+bin	580	0
+bin	585	0
+bin	590	1
+bin	595	0
+bin	600	0
+bin	605	0
+bin	610	0
+bin	615	0
+bin	620	0
+bin	625	0
+bin	630	0
+bin	635	0
+bin	640	0
+bin	645	0
+bin	650	0
+bin	655	18
+bin	660	0
+bin	665	0
+bin	670	0
+bin	675	0
+bin	680	0
+bin	685	0
+bin	690	0
+bin	695	0
+bin	700	0
+bin	705	0
+bin	710	0
+bin	715	0
+bin	720	18
+bin	725	0
+bin	730	0
+bin	735	0
+bin	740	0
+bin	745	0
+bin	750	0
+bin	755	0
+bin	760	0
+bin	765	0
+bin	770	0
+bin	775	0
+bin	780	11921
+bin	785	0
+bin	790	0
+bin	795	0
+bin	800	0
+bin	805	0
+bin	810	0
+bin	815	0
+bin	820	0
+bin	825	0
+bin	830	0
+bin	835	0
+statistic SimpleTest.H1.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.H1.eth[0].queue incomingPackets:count 11958
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.H1.eth[0].queue incomingPacketLengths:sum 9371424
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.H1.eth[0].queue incomingPacketLengths:histogram
+field count 11958
+field mean 783.69493226292
+field stddev 5.8155351732602
+field min 592
+field max 784
+field sum 9371424
+field sqrsum 7344741888
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	540	0
+bin	545	0
+bin	550	0
+bin	555	0
+bin	560	0
+bin	565	0
+bin	570	0
+bin	575	0
+bin	580	0
+bin	585	0
+bin	590	1
+bin	595	0
+bin	600	0
+bin	605	0
+bin	610	0
+bin	615	0
+bin	620	0
+bin	625	0
+bin	630	0
+bin	635	0
+bin	640	0
+bin	645	0
+bin	650	0
+bin	655	18
+bin	660	0
+bin	665	0
+bin	670	0
+bin	675	0
+bin	680	0
+bin	685	0
+bin	690	0
+bin	695	0
+bin	700	0
+bin	705	0
+bin	710	0
+bin	715	0
+bin	720	18
+bin	725	0
+bin	730	0
+bin	735	0
+bin	740	0
+bin	745	0
+bin	750	0
+bin	755	0
+bin	760	0
+bin	765	0
+bin	770	0
+bin	775	0
+bin	780	11921
+bin	785	0
+bin	790	0
+bin	795	0
+bin	800	0
+bin	805	0
+bin	810	0
+bin	815	0
+bin	820	0
+bin	825	0
+bin	830	0
+bin	835	0
+scalar SimpleTest.H1.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.H1.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.H1.eth[0].mac "simulated time" 600
+scalar SimpleTest.H1.eth[0].mac full-duplex 1
+scalar SimpleTest.H1.eth[0].mac "frames/sec sent" 19.928333333333
+scalar SimpleTest.H1.eth[0].mac "frames/sec rcvd" 19.973333333333
+scalar SimpleTest.H1.eth[0].mac "bits/sec sent" 15617.733333333
+scalar SimpleTest.H1.eth[0].mac "bits/sec rcvd" 15667.68
+scalar SimpleTest.H1.eth[0].mac "rx channel idle (%)" 99.983054026667
+scalar SimpleTest.H1.eth[0].mac "rx channel utilization (%)" 0.016945973333333
+scalar SimpleTest.H1.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.H1.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.H1.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.H1.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.H1.eth[0].mac rxPkOk:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.H1.eth[0].mac rxPkOk:sum(packetBytes) 1175076
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0].mac txPk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.H1.eth[0].mac txPk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0].mac packetReceivedFromUpper:count 11958
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.H1.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 1171428
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0].mac passedUpPk:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.H1.eth[0].mac passedUpPk:sum(packetBytes) 1175076
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.H1.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.H1.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.H1.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.H1.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.H1.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.H1.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.H1.ipv6.neighbourDiscovery startDad:count 1
+attr recordingmode count
+attr title "DAD started, count"
+scalar SimpleTest.H1.udp packetReceived:count 11920
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar SimpleTest.H1.udp packetReceived:sum(packetBytes) 476800
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar SimpleTest.H1.udp packetSent:count 11921
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar SimpleTest.H1.udp packetSent:sum(packetBytes) 476840
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar SimpleTest.H1.udp passedUpPk:count 11920
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar SimpleTest.H1.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar SimpleTest.H1.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar SimpleTest.H1.app[0] "packets sent" 5961
+scalar SimpleTest.H1.app[0] "packets received" 5960
+scalar SimpleTest.H1.app[0] packetReceived:count 5960
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar SimpleTest.H1.app[0] packetReceived:sum(packetBytes) 190720
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic SimpleTest.H1.app[0] rcvdPkLifetime:stats
+field count 5960
+field mean 8.5867154362427e-05
+field stddev 9.406549694064e-07
+field min 8.58e-05
+field max 0.00013516
+field sum 0.51176824000007
+field sqrsum 4.39493551744e-05
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar SimpleTest.H1.app[0] packetSent:count 5961
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar SimpleTest.H1.app[0] packetSent:sum(packetBytes) 190752
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar SimpleTest.H1.app[1] echoedPk:count 5960
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets echoed, count"
+scalar SimpleTest.H1.app[1] echoedPk:sum(packetBytes) 190720
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets echoed, sum(packetBytes)"
+scalar SimpleTest.N1.bridging "processed frames" 0
+scalar SimpleTest.N1.bridging "discarded frames" 0
+scalar SimpleTest.N1.bridging "number of received BPDUs from STP module" 0
+scalar SimpleTest.N1.bridging "number of received frames from network (including BPDUs)" 23941
+scalar SimpleTest.N1.bridging "number of dropped frames (including BPDUs)" 0
+scalar SimpleTest.N1.bridging "number of delivered BPDUs to the STP module" 0
+scalar SimpleTest.N1.bridging "number of dispatched BPDU frames to the network" 0
+scalar SimpleTest.N1.bridging "number of dispatched non-BDPU frames to the network" 0
+scalar SimpleTest.N1.bridging packetDropped:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets dropped, count"
+scalar SimpleTest.N1.bridging packetDropped:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets dropped, sum(packetBytes)"
+scalar SimpleTest.N1.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar SimpleTest.N1.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar SimpleTest.N1.ethernet decapPk:count 23941
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar SimpleTest.N1.ethernet decapPk:sum(packetBytes) 1915468
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar SimpleTest.N1.ethernet encapPk:count 23941
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar SimpleTest.N1.ethernet encapPk:sum(packetBytes) 1915468
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar SimpleTest.N1.ieee8021q.qTagHeaderInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021q.qTagHeaderInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderInserter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021q.qTagHeaderInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderInserter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderChecker outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderChecker incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021q.qTagHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021q.qTagHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021r.rTagHeaderInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderInserter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021r.rTagHeaderInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderInserter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderChecker outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderChecker incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.ieee8021r.rTagHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.ieee8021r.rTagHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.N1.eth[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.N1.eth[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.N1.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.N1.eth[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.N1.eth[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.N1.eth[0].queue queueingTime:histogram
+field count 11984
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11984
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar SimpleTest.N1.eth[0].queue outgoingPackets:count 11984
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N1.eth[0].queue outgoingPacketLengths:sum 9400608
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.eth[0].queue outgoingPacketLengths:histogram
+field count 11984
+field mean 784.42990654206
+field stddev 17.936606872583
+field min 656
+field max 1200
+field sum 9400608
+field sqrsum 7377973248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	18
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	22
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	11920
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	5
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	19
+bin	1210	0
+statistic SimpleTest.N1.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.eth[0].queue incomingPackets:count 11984
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N1.eth[0].queue incomingPacketLengths:sum 9400608
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.eth[0].queue incomingPacketLengths:histogram
+field count 11984
+field mean 784.42990654206
+field stddev 17.936606872583
+field min 656
+field max 1200
+field sum 9400608
+field sqrsum 7377973248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	18
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	22
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	11920
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	5
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	19
+bin	1210	0
+scalar SimpleTest.N1.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.N1.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.N1.eth[0].mac "simulated time" 600
+scalar SimpleTest.N1.eth[0].mac full-duplex 1
+scalar SimpleTest.N1.eth[0].mac "frames/sec sent" 19.973333333333
+scalar SimpleTest.N1.eth[0].mac "frames/sec rcvd" 19.928333333333
+scalar SimpleTest.N1.eth[0].mac "bits/sec sent" 15667.68
+scalar SimpleTest.N1.eth[0].mac "bits/sec rcvd" 15617.733333333
+scalar SimpleTest.N1.eth[0].mac "rx channel idle (%)" 99.983106853333
+scalar SimpleTest.N1.eth[0].mac "rx channel utilization (%)" 0.016893146666667
+scalar SimpleTest.N1.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.N1.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.N1.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.N1.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.N1.eth[0].mac rxPkOk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.N1.eth[0].mac rxPkOk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.N1.eth[0].mac txPk:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.N1.eth[0].mac txPk:sum(packetBytes) 1175076
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.N1.eth[0].mac packetReceivedFromUpper:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.N1.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 1175076
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.N1.eth[0].mac passedUpPk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.N1.eth[0].mac passedUpPk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.N1.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.N1.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.N1.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.N1.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.N1.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.N1.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.N1.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.N1.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.N1.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.N1.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.N1.eth[1].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.N1.eth[1].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.N1.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.N1.eth[1].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.N1.eth[1].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.N1.eth[1].queue queueingTime:histogram
+field count 11957
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11957
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar SimpleTest.N1.eth[1].queue outgoingPackets:count 11957
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N1.eth[1].queue outgoingPacketLengths:sum 9370640
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.eth[1].queue outgoingPacketLengths:histogram
+field count 11957
+field mean 783.69490674918
+field stddev 5.8157777046209
+field min 592
+field max 784
+field sum 9370640
+field sqrsum 7344127232
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	540	0
+bin	545	0
+bin	550	0
+bin	555	0
+bin	560	0
+bin	565	0
+bin	570	0
+bin	575	0
+bin	580	0
+bin	585	0
+bin	590	1
+bin	595	0
+bin	600	0
+bin	605	0
+bin	610	0
+bin	615	0
+bin	620	0
+bin	625	0
+bin	630	0
+bin	635	0
+bin	640	0
+bin	645	0
+bin	650	0
+bin	655	18
+bin	660	0
+bin	665	0
+bin	670	0
+bin	675	0
+bin	680	0
+bin	685	0
+bin	690	0
+bin	695	0
+bin	700	0
+bin	705	0
+bin	710	0
+bin	715	0
+bin	720	18
+bin	725	0
+bin	730	0
+bin	735	0
+bin	740	0
+bin	745	0
+bin	750	0
+bin	755	0
+bin	760	0
+bin	765	0
+bin	770	0
+bin	775	0
+bin	780	11920
+bin	785	0
+bin	790	0
+bin	795	0
+bin	800	0
+bin	805	0
+bin	810	0
+bin	815	0
+bin	820	0
+bin	825	0
+bin	830	0
+bin	835	0
+statistic SimpleTest.N1.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N1.eth[1].queue incomingPackets:count 11957
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N1.eth[1].queue incomingPacketLengths:sum 9370640
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N1.eth[1].queue incomingPacketLengths:histogram
+field count 11957
+field mean 783.69490674918
+field stddev 5.8157777046209
+field min 592
+field max 784
+field sum 9370640
+field sqrsum 7344127232
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	540	0
+bin	545	0
+bin	550	0
+bin	555	0
+bin	560	0
+bin	565	0
+bin	570	0
+bin	575	0
+bin	580	0
+bin	585	0
+bin	590	1
+bin	595	0
+bin	600	0
+bin	605	0
+bin	610	0
+bin	615	0
+bin	620	0
+bin	625	0
+bin	630	0
+bin	635	0
+bin	640	0
+bin	645	0
+bin	650	0
+bin	655	18
+bin	660	0
+bin	665	0
+bin	670	0
+bin	675	0
+bin	680	0
+bin	685	0
+bin	690	0
+bin	695	0
+bin	700	0
+bin	705	0
+bin	710	0
+bin	715	0
+bin	720	18
+bin	725	0
+bin	730	0
+bin	735	0
+bin	740	0
+bin	745	0
+bin	750	0
+bin	755	0
+bin	760	0
+bin	765	0
+bin	770	0
+bin	775	0
+bin	780	11920
+bin	785	0
+bin	790	0
+bin	795	0
+bin	800	0
+bin	805	0
+bin	810	0
+bin	815	0
+bin	820	0
+bin	825	0
+bin	830	0
+bin	835	0
+scalar SimpleTest.N1.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.N1.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.N1.eth[1].mac "simulated time" 600
+scalar SimpleTest.N1.eth[1].mac full-duplex 1
+scalar SimpleTest.N1.eth[1].mac "frames/sec sent" 19.928333333333
+scalar SimpleTest.N1.eth[1].mac "frames/sec rcvd" 19.973333333333
+scalar SimpleTest.N1.eth[1].mac "bits/sec sent" 15617.733333333
+scalar SimpleTest.N1.eth[1].mac "bits/sec rcvd" 15667.68
+scalar SimpleTest.N1.eth[1].mac "rx channel idle (%)" 99.983054026667
+scalar SimpleTest.N1.eth[1].mac "rx channel utilization (%)" 0.016945973333333
+scalar SimpleTest.N1.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.N1.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.N1.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.N1.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.N1.eth[1].mac rxPkOk:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.N1.eth[1].mac rxPkOk:sum(packetBytes) 1175076
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1].mac txPk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.N1.eth[1].mac txPk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1].mac packetReceivedFromUpper:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.N1.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1].mac passedUpPk:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.N1.eth[1].mac passedUpPk:sum(packetBytes) 1175076
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.N1.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.N1.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.N1.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.N1.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.N1.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.N1.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.R1.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar SimpleTest.R1.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar SimpleTest.R1.ethernet decapPk:count 23937
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar SimpleTest.R1.ethernet decapPk:sum(packetBytes) 1915116
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar SimpleTest.R1.ethernet encapPk:count 23965
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar SimpleTest.R1.ethernet encapPk:sum(packetBytes) 1918480
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar SimpleTest.R1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar SimpleTest.R1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar SimpleTest.R1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.R1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.R1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.R1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.R1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.R1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.R1.eth[0].queue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.R1.eth[0].queue queueLength:timeavg 1.2241821182717e-07
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.R1.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.R1.eth[0].queue queueBitLength:max 784
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.R1.eth[0].queue queueBitLength:timeavg 9.5975878072498e-05
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.R1.eth[0].queue queueingTime:histogram
+field count 11984
+field mean 6.128170894526e-09
+field stddev 2.2354527495542e-07
+field min 0
+field max 8.16e-06
+field sum 7.344e-05
+field sqrsum 5.992704e-10
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11984
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar SimpleTest.R1.eth[0].queue outgoingPackets:count 11984
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.R1.eth[0].queue outgoingPacketLengths:sum 9400608
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.R1.eth[0].queue outgoingPacketLengths:histogram
+field count 11984
+field mean 784.42990654206
+field stddev 17.936606872583
+field min 656
+field max 1200
+field sum 9400608
+field sqrsum 7377973248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	18
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	22
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	11920
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	5
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	19
+bin	1210	0
+statistic SimpleTest.R1.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.R1.eth[0].queue incomingPackets:count 11984
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.R1.eth[0].queue incomingPacketLengths:sum 9400608
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.R1.eth[0].queue incomingPacketLengths:histogram
+field count 11984
+field mean 784.42990654206
+field stddev 17.936606872583
+field min 656
+field max 1200
+field sum 9400608
+field sqrsum 7377973248
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	18
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	22
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	11920
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	5
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	19
+bin	1210	0
+scalar SimpleTest.R1.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.R1.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.R1.eth[0].mac "simulated time" 600
+scalar SimpleTest.R1.eth[0].mac full-duplex 1
+scalar SimpleTest.R1.eth[0].mac "frames/sec sent" 19.973333333333
+scalar SimpleTest.R1.eth[0].mac "frames/sec rcvd" 19.928333333333
+scalar SimpleTest.R1.eth[0].mac "bits/sec sent" 15667.68
+scalar SimpleTest.R1.eth[0].mac "bits/sec rcvd" 15617.733333333
+scalar SimpleTest.R1.eth[0].mac "rx channel idle (%)" 99.983106853333
+scalar SimpleTest.R1.eth[0].mac "rx channel utilization (%)" 0.016893146666667
+scalar SimpleTest.R1.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.R1.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.R1.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.R1.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.R1.eth[0].mac rxPkOk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.R1.eth[0].mac rxPkOk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0].mac txPk:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.R1.eth[0].mac txPk:sum(packetBytes) 1175076
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0].mac packetReceivedFromUpper:count 11984
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.R1.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 1175076
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0].mac passedUpPk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.R1.eth[0].mac passedUpPk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.R1.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.R1.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.R1.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.R1.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.R1.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.R1.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.R1.eth[1].queue queueLength:max 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.R1.eth[1].queue queueLength:timeavg 5.2597824836525e-07
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.R1.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.R1.eth[1].queue queueBitLength:max 1504
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.R1.eth[1].queue queueBitLength:timeavg 0.00039359508741282
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.R1.eth[1].queue queueingTime:histogram
+field count 11981
+field mean 2.6336699774643e-08
+field stddev 4.9443093187024e-07
+field min 0
+field max 1.03e-05
+field sum 0.00031554
+field sqrsum 2.9369644e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	11945
+bin	1.4e-07	0
+bin	2.8e-07	0
+bin	4.2e-07	0
+bin	5.6e-07	0
+bin	7e-07	0
+bin	8.4e-07	2
+bin	9.8e-07	0
+bin	1.12e-06	0
+bin	1.26e-06	0
+bin	1.4e-06	0
+bin	1.54e-06	0
+bin	1.68e-06	0
+bin	1.82e-06	0
+bin	1.96e-06	0
+bin	2.1e-06	0
+bin	2.24e-06	0
+bin	2.38e-06	0
+bin	2.52e-06	0
+bin	2.66e-06	0
+bin	2.8e-06	0
+bin	2.94e-06	0
+bin	3.08e-06	0
+bin	3.22e-06	0
+bin	3.36e-06	0
+bin	3.5e-06	0
+bin	3.64e-06	0
+bin	3.78e-06	0
+bin	3.92e-06	0
+bin	4.06e-06	0
+bin	4.2e-06	0
+bin	4.34e-06	0
+bin	4.48e-06	0
+bin	4.62e-06	0
+bin	4.76e-06	0
+bin	4.9e-06	0
+bin	5.04e-06	0
+bin	5.18e-06	0
+bin	5.32e-06	0
+bin	5.46e-06	0
+bin	5.6e-06	0
+bin	5.74e-06	0
+bin	5.88e-06	0
+bin	6.02e-06	0
+bin	6.16e-06	0
+bin	6.3e-06	0
+bin	6.44e-06	0
+bin	6.58e-06	0
+bin	6.72e-06	0
+bin	6.86e-06	0
+bin	7e-06	0
+bin	7.14e-06	0
+bin	7.28e-06	0
+bin	7.42e-06	0
+bin	7.56e-06	0
+bin	7.7e-06	0
+bin	7.84e-06	0
+bin	7.98e-06	0
+bin	8.12e-06	17
+bin	8.26e-06	0
+bin	8.4e-06	0
+bin	8.54e-06	0
+bin	8.68e-06	0
+bin	8.82e-06	0
+bin	8.96e-06	0
+bin	9.1e-06	0
+bin	9.24e-06	0
+bin	9.38e-06	0
+bin	9.52e-06	0
+bin	9.66e-06	0
+bin	9.8e-06	0
+bin	9.94e-06	0
+bin	1.008e-05	0
+bin	1.022e-05	17
+bin	1.036e-05	0
+scalar SimpleTest.R1.eth[1].queue outgoingPackets:count 11981
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.R1.eth[1].queue outgoingPacketLengths:sum 9398192
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.R1.eth[1].queue outgoingPacketLengths:histogram
+field count 11981
+field mean 784.42467239796
+field stddev 17.833844666698
+field min 656
+field max 1200
+field sum 9398192
+field sqrsum 7375983872
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	624	0
+bin	634	0
+bin	644	0
+bin	654	18
+bin	664	0
+bin	674	0
+bin	684	0
+bin	694	0
+bin	704	0
+bin	714	20
+bin	724	0
+bin	734	0
+bin	744	0
+bin	754	0
+bin	764	0
+bin	774	0
+bin	784	11920
+bin	794	0
+bin	804	0
+bin	814	0
+bin	824	0
+bin	834	0
+bin	844	0
+bin	854	0
+bin	864	0
+bin	874	0
+bin	884	0
+bin	894	0
+bin	904	0
+bin	914	0
+bin	924	0
+bin	934	0
+bin	944	0
+bin	954	0
+bin	964	0
+bin	974	4
+bin	984	0
+bin	994	0
+bin	1004	0
+bin	1014	0
+bin	1024	0
+bin	1034	0
+bin	1044	0
+bin	1054	0
+bin	1064	0
+bin	1074	0
+bin	1084	0
+bin	1094	0
+bin	1104	0
+bin	1114	0
+bin	1124	0
+bin	1134	0
+bin	1144	0
+bin	1154	0
+bin	1164	0
+bin	1174	0
+bin	1184	0
+bin	1194	19
+bin	1204	0
+statistic SimpleTest.R1.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.R1.eth[1].queue incomingPackets:count 11981
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.R1.eth[1].queue incomingPacketLengths:sum 9398192
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.R1.eth[1].queue incomingPacketLengths:histogram
+field count 11981
+field mean 784.42467239796
+field stddev 17.833844666698
+field min 656
+field max 1200
+field sum 9398192
+field sqrsum 7375983872
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	624	0
+bin	634	0
+bin	644	0
+bin	654	18
+bin	664	0
+bin	674	0
+bin	684	0
+bin	694	0
+bin	704	0
+bin	714	20
+bin	724	0
+bin	734	0
+bin	744	0
+bin	754	0
+bin	764	0
+bin	774	0
+bin	784	11920
+bin	794	0
+bin	804	0
+bin	814	0
+bin	824	0
+bin	834	0
+bin	844	0
+bin	854	0
+bin	864	0
+bin	874	0
+bin	884	0
+bin	894	0
+bin	904	0
+bin	914	0
+bin	924	0
+bin	934	0
+bin	944	0
+bin	954	0
+bin	964	0
+bin	974	4
+bin	984	0
+bin	994	0
+bin	1004	0
+bin	1014	0
+bin	1024	0
+bin	1034	0
+bin	1044	0
+bin	1054	0
+bin	1064	0
+bin	1074	0
+bin	1084	0
+bin	1094	0
+bin	1104	0
+bin	1114	0
+bin	1124	0
+bin	1134	0
+bin	1144	0
+bin	1154	0
+bin	1164	0
+bin	1174	0
+bin	1184	0
+bin	1194	19
+bin	1204	0
+scalar SimpleTest.R1.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.R1.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.R1.eth[1].mac "simulated time" 600
+scalar SimpleTest.R1.eth[1].mac full-duplex 1
+scalar SimpleTest.R1.eth[1].mac "frames/sec sent" 19.968333333333
+scalar SimpleTest.R1.eth[1].mac "frames/sec rcvd" 19.966666666667
+scalar SimpleTest.R1.eth[1].mac "bits/sec sent" 15663.653333333
+scalar SimpleTest.R1.eth[1].mac "bits/sec rcvd" 15662.026666667
+scalar SimpleTest.R1.eth[1].mac "rx channel idle (%)" 99.983060106667
+scalar SimpleTest.R1.eth[1].mac "rx channel utilization (%)" 0.016939893333333
+scalar SimpleTest.R1.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.R1.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.R1.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.R1.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.R1.eth[1].mac rxPkOk:count 11980
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.R1.eth[1].mac rxPkOk:sum(packetBytes) 1174652
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1].mac txPk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.R1.eth[1].mac txPk:sum(packetBytes) 1174774
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1].mac packetReceivedFromUpper:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.R1.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 1174774
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1].mac passedUpPk:count 11980
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.R1.eth[1].mac passedUpPk:sum(packetBytes) 1174652
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.R1.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.R1.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.R1.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.R1.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.R1.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.R1.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.R1.ipv6.neighbourDiscovery startDad:count 2
+attr recordingmode count
+attr title "DAD started, count"
+scalar SimpleTest.R1.udp packetReceived:count 20
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar SimpleTest.R1.udp packetReceived:sum(packetBytes) 1780
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar SimpleTest.R1.udp packetSent:count 41
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar SimpleTest.R1.udp packetSent:sum(packetBytes) 3652
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar SimpleTest.R1.udp passedUpPk:count 20
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar SimpleTest.R1.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar SimpleTest.R1.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar SimpleTest.R1.rip numRoutes:last 4
+attr interpolationmode none
+attr recordingmode last
+attr source numRoutes
+attr title "number of routes, last"
+scalar SimpleTest.R1.rip badResponse:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source badResponse
+attr title "bad response received, count"
+scalar SimpleTest.R1.rip rcvdResponse:count 19
+attr interpolationmode none
+attr recordingmode count
+attr source rcvdResponse
+attr title "response received, count"
+scalar SimpleTest.R1.rip sentUpdate:count 39
+attr interpolationmode none
+attr recordingmode count
+attr source sentUpdate
+attr title "update sent, count"
+scalar SimpleTest.R1.rip sentRequest:count 2
+attr interpolationmode none
+attr recordingmode count
+attr source sentRequest
+attr title "request sent, count"
+scalar SimpleTest.R2.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar SimpleTest.R2.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar SimpleTest.R2.ethernet decapPk:count 23938
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar SimpleTest.R2.ethernet decapPk:sum(packetBytes) 1915220
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar SimpleTest.R2.ethernet encapPk:count 23961
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar SimpleTest.R2.ethernet encapPk:sum(packetBytes) 1918160
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar SimpleTest.R2.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar SimpleTest.R2.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar SimpleTest.R2.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.R2.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.R2.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.R2.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.R2.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.R2.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.R2.eth[0].queue queueLength:max 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.R2.eth[0].queue queueLength:timeavg 5.2615351727639e-07
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.R2.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.R2.eth[0].queue queueBitLength:max 1504
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.R2.eth[0].queue queueBitLength:timeavg 0.00039372624299314
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.R2.eth[0].queue queueingTime:histogram
+field count 11980
+field mean 2.6338898163606e-08
+field stddev 4.9445151028606e-07
+field min 0
+field max 1.03e-05
+field sum 0.00031554
+field sqrsum 2.9369644e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	11944
+bin	1.4e-07	0
+bin	2.8e-07	0
+bin	4.2e-07	0
+bin	5.6e-07	0
+bin	7e-07	0
+bin	8.4e-07	2
+bin	9.8e-07	0
+bin	1.12e-06	0
+bin	1.26e-06	0
+bin	1.4e-06	0
+bin	1.54e-06	0
+bin	1.68e-06	0
+bin	1.82e-06	0
+bin	1.96e-06	0
+bin	2.1e-06	0
+bin	2.24e-06	0
+bin	2.38e-06	0
+bin	2.52e-06	0
+bin	2.66e-06	0
+bin	2.8e-06	0
+bin	2.94e-06	0
+bin	3.08e-06	0
+bin	3.22e-06	0
+bin	3.36e-06	0
+bin	3.5e-06	0
+bin	3.64e-06	0
+bin	3.78e-06	0
+bin	3.92e-06	0
+bin	4.06e-06	0
+bin	4.2e-06	0
+bin	4.34e-06	0
+bin	4.48e-06	0
+bin	4.62e-06	0
+bin	4.76e-06	0
+bin	4.9e-06	0
+bin	5.04e-06	0
+bin	5.18e-06	0
+bin	5.32e-06	0
+bin	5.46e-06	0
+bin	5.6e-06	0
+bin	5.74e-06	0
+bin	5.88e-06	0
+bin	6.02e-06	0
+bin	6.16e-06	0
+bin	6.3e-06	0
+bin	6.44e-06	0
+bin	6.58e-06	0
+bin	6.72e-06	0
+bin	6.86e-06	0
+bin	7e-06	0
+bin	7.14e-06	0
+bin	7.28e-06	0
+bin	7.42e-06	0
+bin	7.56e-06	0
+bin	7.7e-06	0
+bin	7.84e-06	0
+bin	7.98e-06	0
+bin	8.12e-06	17
+bin	8.26e-06	0
+bin	8.4e-06	0
+bin	8.54e-06	0
+bin	8.68e-06	0
+bin	8.82e-06	0
+bin	8.96e-06	0
+bin	9.1e-06	0
+bin	9.24e-06	0
+bin	9.38e-06	0
+bin	9.52e-06	0
+bin	9.66e-06	0
+bin	9.8e-06	0
+bin	9.94e-06	0
+bin	1.008e-05	0
+bin	1.022e-05	17
+bin	1.036e-05	0
+scalar SimpleTest.R2.eth[0].queue outgoingPackets:count 11980
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.R2.eth[0].queue outgoingPacketLengths:sum 9397216
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.R2.eth[0].queue outgoingPacketLengths:histogram
+field count 11980
+field mean 784.40868113523
+field stddev 17.74847945634
+field min 656
+field max 1200
+field sum 9397216
+field sqrsum 7375031296
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	624	0
+bin	634	0
+bin	644	0
+bin	654	18
+bin	664	0
+bin	674	0
+bin	684	0
+bin	694	0
+bin	704	0
+bin	714	20
+bin	724	0
+bin	734	0
+bin	744	0
+bin	754	0
+bin	764	0
+bin	774	0
+bin	784	11920
+bin	794	0
+bin	804	0
+bin	814	0
+bin	824	0
+bin	834	0
+bin	844	0
+bin	854	0
+bin	864	0
+bin	874	0
+bin	884	0
+bin	894	0
+bin	904	0
+bin	914	0
+bin	924	0
+bin	934	0
+bin	944	0
+bin	954	0
+bin	964	0
+bin	974	3
+bin	984	0
+bin	994	0
+bin	1004	0
+bin	1014	0
+bin	1024	0
+bin	1034	0
+bin	1044	0
+bin	1054	0
+bin	1064	0
+bin	1074	0
+bin	1084	0
+bin	1094	0
+bin	1104	0
+bin	1114	0
+bin	1124	0
+bin	1134	0
+bin	1144	0
+bin	1154	0
+bin	1164	0
+bin	1174	0
+bin	1184	0
+bin	1194	19
+bin	1204	0
+statistic SimpleTest.R2.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.R2.eth[0].queue incomingPackets:count 11980
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.R2.eth[0].queue incomingPacketLengths:sum 9397216
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.R2.eth[0].queue incomingPacketLengths:histogram
+field count 11980
+field mean 784.40868113523
+field stddev 17.74847945634
+field min 656
+field max 1200
+field sum 9397216
+field sqrsum 7375031296
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	624	0
+bin	634	0
+bin	644	0
+bin	654	18
+bin	664	0
+bin	674	0
+bin	684	0
+bin	694	0
+bin	704	0
+bin	714	20
+bin	724	0
+bin	734	0
+bin	744	0
+bin	754	0
+bin	764	0
+bin	774	0
+bin	784	11920
+bin	794	0
+bin	804	0
+bin	814	0
+bin	824	0
+bin	834	0
+bin	844	0
+bin	854	0
+bin	864	0
+bin	874	0
+bin	884	0
+bin	894	0
+bin	904	0
+bin	914	0
+bin	924	0
+bin	934	0
+bin	944	0
+bin	954	0
+bin	964	0
+bin	974	3
+bin	984	0
+bin	994	0
+bin	1004	0
+bin	1014	0
+bin	1024	0
+bin	1034	0
+bin	1044	0
+bin	1054	0
+bin	1064	0
+bin	1074	0
+bin	1084	0
+bin	1094	0
+bin	1104	0
+bin	1114	0
+bin	1124	0
+bin	1134	0
+bin	1144	0
+bin	1154	0
+bin	1164	0
+bin	1174	0
+bin	1184	0
+bin	1194	19
+bin	1204	0
+scalar SimpleTest.R2.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.R2.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.R2.eth[0].mac "simulated time" 600
+scalar SimpleTest.R2.eth[0].mac full-duplex 1
+scalar SimpleTest.R2.eth[0].mac "frames/sec sent" 19.966666666667
+scalar SimpleTest.R2.eth[0].mac "frames/sec rcvd" 19.968333333333
+scalar SimpleTest.R2.eth[0].mac "bits/sec sent" 15662.026666667
+scalar SimpleTest.R2.eth[0].mac "bits/sec rcvd" 15663.653333333
+scalar SimpleTest.R2.eth[0].mac "rx channel idle (%)" 99.983058373333
+scalar SimpleTest.R2.eth[0].mac "rx channel utilization (%)" 0.016941626666667
+scalar SimpleTest.R2.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.R2.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.R2.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.R2.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.R2.eth[0].mac rxPkOk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.R2.eth[0].mac rxPkOk:sum(packetBytes) 1174774
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0].mac txPk:count 11980
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.R2.eth[0].mac txPk:sum(packetBytes) 1174652
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0].mac packetReceivedFromUpper:count 11980
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.R2.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 1174652
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0].mac passedUpPk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.R2.eth[0].mac passedUpPk:sum(packetBytes) 1174774
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.R2.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.R2.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.R2.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.R2.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.R2.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.R2.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.R2.eth[1].queue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.R2.eth[1].queue queueLength:timeavg 1.2245900459142e-07
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.R2.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.R2.eth[1].queue queueBitLength:max 784
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.R2.eth[1].queue queueBitLength:timeavg 9.6007859599676e-05
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.R2.eth[1].queue queueingTime:histogram
+field count 11981
+field mean 6.1297053668308e-09
+field stddev 2.2357324197535e-07
+field min 0
+field max 8.16e-06
+field sum 7.344e-05
+field sqrsum 5.992704e-10
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11981
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar SimpleTest.R2.eth[1].queue outgoingPackets:count 11981
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.R2.eth[1].queue outgoingPacketLengths:sum 9398448
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.R2.eth[1].queue outgoingPacketLengths:histogram
+field count 11981
+field mean 784.44603956264
+field stddev 17.909847424608
+field min 656
+field max 1200
+field sum 9398448
+field sqrsum 7376418048
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	18
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	19
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	11920
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	5
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	19
+bin	1210	0
+statistic SimpleTest.R2.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.R2.eth[1].queue incomingPackets:count 11981
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.R2.eth[1].queue incomingPacketLengths:sum 9398448
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.R2.eth[1].queue incomingPacketLengths:histogram
+field count 11981
+field mean 784.44603956264
+field stddev 17.909847424608
+field min 656
+field max 1200
+field sum 9398448
+field sqrsum 7376418048
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	18
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	19
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	11920
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	5
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	19
+bin	1210	0
+scalar SimpleTest.R2.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.R2.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.R2.eth[1].mac "simulated time" 600
+scalar SimpleTest.R2.eth[1].mac full-duplex 1
+scalar SimpleTest.R2.eth[1].mac "frames/sec sent" 19.968333333333
+scalar SimpleTest.R2.eth[1].mac "frames/sec rcvd" 19.928333333333
+scalar SimpleTest.R2.eth[1].mac "bits/sec sent" 15664.08
+scalar SimpleTest.R2.eth[1].mac "bits/sec rcvd" 15617.733333333
+scalar SimpleTest.R2.eth[1].mac "rx channel idle (%)" 99.983106853333
+scalar SimpleTest.R2.eth[1].mac "rx channel utilization (%)" 0.016893146666667
+scalar SimpleTest.R2.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.R2.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.R2.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.R2.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.R2.eth[1].mac rxPkOk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.R2.eth[1].mac rxPkOk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1].mac txPk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.R2.eth[1].mac txPk:sum(packetBytes) 1174806
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1].mac packetReceivedFromUpper:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.R2.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 1174806
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1].mac passedUpPk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.R2.eth[1].mac passedUpPk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.R2.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.R2.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.R2.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.R2.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.R2.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.R2.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.R2.ipv6.neighbourDiscovery startDad:count 2
+attr recordingmode count
+attr title "DAD started, count"
+scalar SimpleTest.R2.udp packetReceived:count 19
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar SimpleTest.R2.udp packetReceived:sum(packetBytes) 1748
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar SimpleTest.R2.udp packetSent:count 40
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar SimpleTest.R2.udp packetSent:sum(packetBytes) 3560
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar SimpleTest.R2.udp passedUpPk:count 19
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar SimpleTest.R2.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar SimpleTest.R2.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar SimpleTest.R2.rip numRoutes:last 4
+attr interpolationmode none
+attr recordingmode last
+attr source numRoutes
+attr title "number of routes, last"
+scalar SimpleTest.R2.rip badResponse:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source badResponse
+attr title "bad response received, count"
+scalar SimpleTest.R2.rip rcvdResponse:count 19
+attr interpolationmode none
+attr recordingmode count
+attr source rcvdResponse
+attr title "response received, count"
+scalar SimpleTest.R2.rip sentUpdate:count 38
+attr interpolationmode none
+attr recordingmode count
+attr source sentUpdate
+attr title "update sent, count"
+scalar SimpleTest.R2.rip sentRequest:count 2
+attr interpolationmode none
+attr recordingmode count
+attr source sentRequest
+attr title "request sent, count"
+scalar SimpleTest.N2.bridging "processed frames" 0
+scalar SimpleTest.N2.bridging "discarded frames" 0
+scalar SimpleTest.N2.bridging "number of received BPDUs from STP module" 0
+scalar SimpleTest.N2.bridging "number of received frames from network (including BPDUs)" 23938
+scalar SimpleTest.N2.bridging "number of dropped frames (including BPDUs)" 0
+scalar SimpleTest.N2.bridging "number of delivered BPDUs to the STP module" 0
+scalar SimpleTest.N2.bridging "number of dispatched BPDU frames to the network" 0
+scalar SimpleTest.N2.bridging "number of dispatched non-BDPU frames to the network" 0
+scalar SimpleTest.N2.bridging packetDropped:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets dropped, count"
+scalar SimpleTest.N2.bridging packetDropped:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets dropped, sum(packetBytes)"
+scalar SimpleTest.N2.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar SimpleTest.N2.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar SimpleTest.N2.ethernet decapPk:count 23938
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar SimpleTest.N2.ethernet decapPk:sum(packetBytes) 1915252
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar SimpleTest.N2.ethernet encapPk:count 23938
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar SimpleTest.N2.ethernet encapPk:sum(packetBytes) 1915252
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar SimpleTest.N2.ieee8021q.qTagHeaderInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021q.qTagHeaderInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderInserter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021q.qTagHeaderInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderInserter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderChecker outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderChecker incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021q.qTagHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021q.qTagHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderInserter outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021r.rTagHeaderInserter outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderInserter outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderInserter incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021r.rTagHeaderInserter incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderInserter incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker outgoingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderChecker outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker incomingPackets:count 0
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderChecker incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.ieee8021r.rTagHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.ieee8021r.rTagHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.N2.eth[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.N2.eth[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.N2.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.N2.eth[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.N2.eth[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.N2.eth[0].queue queueingTime:histogram
+field count 11957
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11957
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar SimpleTest.N2.eth[0].queue outgoingPackets:count 11957
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N2.eth[0].queue outgoingPacketLengths:sum 9370640
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.eth[0].queue outgoingPacketLengths:histogram
+field count 11957
+field mean 783.69490674918
+field stddev 5.8157777046209
+field min 592
+field max 784
+field sum 9370640
+field sqrsum 7344127232
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	540	0
+bin	545	0
+bin	550	0
+bin	555	0
+bin	560	0
+bin	565	0
+bin	570	0
+bin	575	0
+bin	580	0
+bin	585	0
+bin	590	1
+bin	595	0
+bin	600	0
+bin	605	0
+bin	610	0
+bin	615	0
+bin	620	0
+bin	625	0
+bin	630	0
+bin	635	0
+bin	640	0
+bin	645	0
+bin	650	0
+bin	655	18
+bin	660	0
+bin	665	0
+bin	670	0
+bin	675	0
+bin	680	0
+bin	685	0
+bin	690	0
+bin	695	0
+bin	700	0
+bin	705	0
+bin	710	0
+bin	715	0
+bin	720	18
+bin	725	0
+bin	730	0
+bin	735	0
+bin	740	0
+bin	745	0
+bin	750	0
+bin	755	0
+bin	760	0
+bin	765	0
+bin	770	0
+bin	775	0
+bin	780	11920
+bin	785	0
+bin	790	0
+bin	795	0
+bin	800	0
+bin	805	0
+bin	810	0
+bin	815	0
+bin	820	0
+bin	825	0
+bin	830	0
+bin	835	0
+statistic SimpleTest.N2.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.eth[0].queue incomingPackets:count 11957
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N2.eth[0].queue incomingPacketLengths:sum 9370640
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.eth[0].queue incomingPacketLengths:histogram
+field count 11957
+field mean 783.69490674918
+field stddev 5.8157777046209
+field min 592
+field max 784
+field sum 9370640
+field sqrsum 7344127232
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	540	0
+bin	545	0
+bin	550	0
+bin	555	0
+bin	560	0
+bin	565	0
+bin	570	0
+bin	575	0
+bin	580	0
+bin	585	0
+bin	590	1
+bin	595	0
+bin	600	0
+bin	605	0
+bin	610	0
+bin	615	0
+bin	620	0
+bin	625	0
+bin	630	0
+bin	635	0
+bin	640	0
+bin	645	0
+bin	650	0
+bin	655	18
+bin	660	0
+bin	665	0
+bin	670	0
+bin	675	0
+bin	680	0
+bin	685	0
+bin	690	0
+bin	695	0
+bin	700	0
+bin	705	0
+bin	710	0
+bin	715	0
+bin	720	18
+bin	725	0
+bin	730	0
+bin	735	0
+bin	740	0
+bin	745	0
+bin	750	0
+bin	755	0
+bin	760	0
+bin	765	0
+bin	770	0
+bin	775	0
+bin	780	11920
+bin	785	0
+bin	790	0
+bin	795	0
+bin	800	0
+bin	805	0
+bin	810	0
+bin	815	0
+bin	820	0
+bin	825	0
+bin	830	0
+bin	835	0
+scalar SimpleTest.N2.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.N2.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.N2.eth[0].mac "simulated time" 600
+scalar SimpleTest.N2.eth[0].mac full-duplex 1
+scalar SimpleTest.N2.eth[0].mac "frames/sec sent" 19.928333333333
+scalar SimpleTest.N2.eth[0].mac "frames/sec rcvd" 19.968333333333
+scalar SimpleTest.N2.eth[0].mac "bits/sec sent" 15617.733333333
+scalar SimpleTest.N2.eth[0].mac "bits/sec rcvd" 15664.08
+scalar SimpleTest.N2.eth[0].mac "rx channel idle (%)" 99.983057946667
+scalar SimpleTest.N2.eth[0].mac "rx channel utilization (%)" 0.016942053333333
+scalar SimpleTest.N2.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.N2.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.N2.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.N2.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.N2.eth[0].mac rxPkOk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.N2.eth[0].mac rxPkOk:sum(packetBytes) 1174806
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.N2.eth[0].mac txPk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.N2.eth[0].mac txPk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.N2.eth[0].mac packetReceivedFromUpper:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.N2.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.N2.eth[0].mac passedUpPk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.N2.eth[0].mac passedUpPk:sum(packetBytes) 1174806
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.N2.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.N2.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.N2.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.N2.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.N2.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.N2.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.N2.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.N2.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.N2.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.N2.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.N2.eth[1].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.N2.eth[1].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.N2.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.N2.eth[1].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.N2.eth[1].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.N2.eth[1].queue queueingTime:histogram
+field count 11981
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11981
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar SimpleTest.N2.eth[1].queue outgoingPackets:count 11981
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.N2.eth[1].queue outgoingPacketLengths:sum 9398448
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.eth[1].queue outgoingPacketLengths:histogram
+field count 11981
+field mean 784.44603956264
+field stddev 17.909847424608
+field min 656
+field max 1200
+field sum 9398448
+field sqrsum 7376418048
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	18
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	19
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	11920
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	5
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	19
+bin	1210	0
+statistic SimpleTest.N2.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.N2.eth[1].queue incomingPackets:count 11981
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.N2.eth[1].queue incomingPacketLengths:sum 9398448
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.N2.eth[1].queue incomingPacketLengths:histogram
+field count 11981
+field mean 784.44603956264
+field stddev 17.909847424608
+field min 656
+field max 1200
+field sum 9398448
+field sqrsum 7376418048
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	570	0
+bin	580	0
+bin	590	0
+bin	600	0
+bin	610	0
+bin	620	0
+bin	630	0
+bin	640	0
+bin	650	18
+bin	660	0
+bin	670	0
+bin	680	0
+bin	690	0
+bin	700	0
+bin	710	0
+bin	720	19
+bin	730	0
+bin	740	0
+bin	750	0
+bin	760	0
+bin	770	0
+bin	780	11920
+bin	790	0
+bin	800	0
+bin	810	0
+bin	820	0
+bin	830	0
+bin	840	0
+bin	850	0
+bin	860	0
+bin	870	0
+bin	880	0
+bin	890	0
+bin	900	0
+bin	910	0
+bin	920	0
+bin	930	0
+bin	940	0
+bin	950	0
+bin	960	0
+bin	970	5
+bin	980	0
+bin	990	0
+bin	1000	0
+bin	1010	0
+bin	1020	0
+bin	1030	0
+bin	1040	0
+bin	1050	0
+bin	1060	0
+bin	1070	0
+bin	1080	0
+bin	1090	0
+bin	1100	0
+bin	1110	0
+bin	1120	0
+bin	1130	0
+bin	1140	0
+bin	1150	0
+bin	1160	0
+bin	1170	0
+bin	1180	0
+bin	1190	0
+bin	1200	19
+bin	1210	0
+scalar SimpleTest.N2.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.N2.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.N2.eth[1].mac "simulated time" 600
+scalar SimpleTest.N2.eth[1].mac full-duplex 1
+scalar SimpleTest.N2.eth[1].mac "frames/sec sent" 19.968333333333
+scalar SimpleTest.N2.eth[1].mac "frames/sec rcvd" 19.928333333333
+scalar SimpleTest.N2.eth[1].mac "bits/sec sent" 15664.08
+scalar SimpleTest.N2.eth[1].mac "bits/sec rcvd" 15617.733333333
+scalar SimpleTest.N2.eth[1].mac "rx channel idle (%)" 99.983106853333
+scalar SimpleTest.N2.eth[1].mac "rx channel utilization (%)" 0.016893146666667
+scalar SimpleTest.N2.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.N2.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.N2.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.N2.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.N2.eth[1].mac rxPkOk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.N2.eth[1].mac rxPkOk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1].mac txPk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.N2.eth[1].mac txPk:sum(packetBytes) 1174806
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1].mac packetReceivedFromUpper:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.N2.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 1174806
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1].mac passedUpPk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.N2.eth[1].mac passedUpPk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.N2.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.N2.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.N2.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.N2.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.N2.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.N2.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.H2.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar SimpleTest.H2.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar SimpleTest.H2.ethernet decapPk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar SimpleTest.H2.ethernet decapPk:sum(packetBytes) 959148
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar SimpleTest.H2.ethernet encapPk:count 11958
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar SimpleTest.H2.ethernet encapPk:sum(packetBytes) 956184
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar SimpleTest.H2.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar SimpleTest.H2.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar SimpleTest.H2.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.H2.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.H2.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.H2.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.H2.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.H2.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar SimpleTest.H2.eth[0].queue queueLength:max 1
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar SimpleTest.H2.eth[0].queue queueLength:timeavg 2.3141737565457e-07
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar SimpleTest.H2.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar SimpleTest.H2.eth[0].queue queueBitLength:max 784
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar SimpleTest.H2.eth[0].queue queueBitLength:timeavg 0.00018143122251318
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic SimpleTest.H2.eth[0].queue queueingTime:histogram
+field count 11958
+field mean 1.1600602107376e-08
+field stddev 3.0746421702369e-07
+field min 0
+field max 8.16e-06
+field sum 0.00013872
+field sqrsum 1.1319552e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11958
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar SimpleTest.H2.eth[0].queue outgoingPackets:count 11958
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar SimpleTest.H2.eth[0].queue outgoingPacketLengths:sum 9371424
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic SimpleTest.H2.eth[0].queue outgoingPacketLengths:histogram
+field count 11958
+field mean 783.69493226292
+field stddev 5.8155351732602
+field min 592
+field max 784
+field sum 9371424
+field sqrsum 7344741888
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	540	0
+bin	545	0
+bin	550	0
+bin	555	0
+bin	560	0
+bin	565	0
+bin	570	0
+bin	575	0
+bin	580	0
+bin	585	0
+bin	590	1
+bin	595	0
+bin	600	0
+bin	605	0
+bin	610	0
+bin	615	0
+bin	620	0
+bin	625	0
+bin	630	0
+bin	635	0
+bin	640	0
+bin	645	0
+bin	650	0
+bin	655	18
+bin	660	0
+bin	665	0
+bin	670	0
+bin	675	0
+bin	680	0
+bin	685	0
+bin	690	0
+bin	695	0
+bin	700	0
+bin	705	0
+bin	710	0
+bin	715	0
+bin	720	18
+bin	725	0
+bin	730	0
+bin	735	0
+bin	740	0
+bin	745	0
+bin	750	0
+bin	755	0
+bin	760	0
+bin	765	0
+bin	770	0
+bin	775	0
+bin	780	11921
+bin	785	0
+bin	790	0
+bin	795	0
+bin	800	0
+bin	805	0
+bin	810	0
+bin	815	0
+bin	820	0
+bin	825	0
+bin	830	0
+bin	835	0
+statistic SimpleTest.H2.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar SimpleTest.H2.eth[0].queue incomingPackets:count 11958
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar SimpleTest.H2.eth[0].queue incomingPacketLengths:sum 9371424
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic SimpleTest.H2.eth[0].queue incomingPacketLengths:histogram
+field count 11958
+field mean 783.69493226292
+field stddev 5.8155351732602
+field min 592
+field max 784
+field sum 9371424
+field sqrsum 7344741888
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	540	0
+bin	545	0
+bin	550	0
+bin	555	0
+bin	560	0
+bin	565	0
+bin	570	0
+bin	575	0
+bin	580	0
+bin	585	0
+bin	590	1
+bin	595	0
+bin	600	0
+bin	605	0
+bin	610	0
+bin	615	0
+bin	620	0
+bin	625	0
+bin	630	0
+bin	635	0
+bin	640	0
+bin	645	0
+bin	650	0
+bin	655	18
+bin	660	0
+bin	665	0
+bin	670	0
+bin	675	0
+bin	680	0
+bin	685	0
+bin	690	0
+bin	695	0
+bin	700	0
+bin	705	0
+bin	710	0
+bin	715	0
+bin	720	18
+bin	725	0
+bin	730	0
+bin	735	0
+bin	740	0
+bin	745	0
+bin	750	0
+bin	755	0
+bin	760	0
+bin	765	0
+bin	770	0
+bin	775	0
+bin	780	11921
+bin	785	0
+bin	790	0
+bin	795	0
+bin	800	0
+bin	805	0
+bin	810	0
+bin	815	0
+bin	820	0
+bin	825	0
+bin	830	0
+bin	835	0
+scalar SimpleTest.H2.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar SimpleTest.H2.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar SimpleTest.H2.eth[0].mac "simulated time" 600
+scalar SimpleTest.H2.eth[0].mac full-duplex 1
+scalar SimpleTest.H2.eth[0].mac "frames/sec sent" 19.928333333333
+scalar SimpleTest.H2.eth[0].mac "frames/sec rcvd" 19.968333333333
+scalar SimpleTest.H2.eth[0].mac "bits/sec sent" 15617.733333333
+scalar SimpleTest.H2.eth[0].mac "bits/sec rcvd" 15664.08
+scalar SimpleTest.H2.eth[0].mac "rx channel idle (%)" 99.983057946667
+scalar SimpleTest.H2.eth[0].mac "rx channel utilization (%)" 0.016942053333333
+scalar SimpleTest.H2.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar SimpleTest.H2.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar SimpleTest.H2.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar SimpleTest.H2.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar SimpleTest.H2.eth[0].mac rxPkOk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar SimpleTest.H2.eth[0].mac rxPkOk:sum(packetBytes) 1174806
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0].mac txPk:count 11957
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar SimpleTest.H2.eth[0].mac txPk:sum(packetBytes) 1171330
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0].mac packetReceivedFromUpper:count 11958
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar SimpleTest.H2.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 1171428
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0].mac passedUpPk:count 11981
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar SimpleTest.H2.eth[0].mac passedUpPk:sum(packetBytes) 1174806
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar SimpleTest.H2.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar SimpleTest.H2.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar SimpleTest.H2.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar SimpleTest.H2.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar SimpleTest.H2.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar SimpleTest.H2.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar SimpleTest.H2.ipv6.neighbourDiscovery startDad:count 1
+attr recordingmode count
+attr title "DAD started, count"
+scalar SimpleTest.H2.udp packetReceived:count 11920
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar SimpleTest.H2.udp packetReceived:sum(packetBytes) 476800
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar SimpleTest.H2.udp packetSent:count 11921
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar SimpleTest.H2.udp packetSent:sum(packetBytes) 476840
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar SimpleTest.H2.udp passedUpPk:count 11920
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar SimpleTest.H2.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar SimpleTest.H2.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar SimpleTest.H2.app[0] "packets sent" 5961
+scalar SimpleTest.H2.app[0] "packets received" 5960
+scalar SimpleTest.H2.app[0] packetReceived:count 5960
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar SimpleTest.H2.app[0] packetReceived:sum(packetBytes) 190720
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic SimpleTest.H2.app[0] rcvdPkLifetime:stats
+field count 5960
+field mean 8.5867154362427e-05
+field stddev 9.406549694064e-07
+field min 8.58e-05
+field max 0.00013516
+field sum 0.51176824000007
+field sqrsum 4.39493551744e-05
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar SimpleTest.H2.app[0] packetSent:count 5961
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar SimpleTest.H2.app[0] packetSent:sum(packetBytes) 190752
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar SimpleTest.H2.app[1] echoedPk:count 5960
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets echoed, count"
+scalar SimpleTest.H2.app[1] echoedPk:sum(packetBytes) 190720
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets echoed, sum(packetBytes)"
+

@@ -1,0 +1,582 @@
+version 3
+run General-0-20230426-16:22:28-212811
+attr configname General
+attr datetime 20230426-16:22:28
+attr datetimef 20230426-162228
+attr description "2 BGP routers in one AS"
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network BgpNetwork
+attr processid 212811
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/omnetpp.ini-General-#0.sca
+config sim-time-limit 60s
+config description "2 BGP routers in one AS"
+config network BgpNetwork
+config sim-time-limit 60s
+config output-scalar-file results.sca
+config output-scalar-precision 5
+config output-vector-precision 4
+config **.app[0].**.scalar-recording true
+config **.scalar-recording false
+config **.vector-recording false
+config **.eth[*].queue.packetCapacity 100
+config **.tcp.typename Tcp
+config **.tcp.mss 1024
+config **.tcp.advertisedWindow 14336
+config **.tcp.tcpAlgorithmClass "\"TcpReno\""
+config **.ospfConfig "xmldoc(\"OSPFConfig.xml\")"
+config *.A1.ipv4.routingTable.routerId "\"10.10.1.254\""
+config *.A2.ipv4.routingTable.routerId "\"10.10.3.254\""
+config **.bgpConfig "xmldoc(\"BGPConfig.xml\")"
+config *.B.bgp.redistributeOspf "\"O IA E2\""
+config *.C.bgp.redistributeOspf "\"O IA E2\""
+config *.A1.bgp.redistributeOspf "\"O IA E2\""
+config *.A2.bgp.redistributeOspf "\"O IA E2\""
+config *.A1.bgp.nextHopSelf true
+config *.A2.bgp.nextHopSelf true
+config *.A1.bgp.redistributeInternal true
+config *.A2.bgp.redistributeInternal true
+config *.visualizer.interfaceTableVisualizer.displayInterfaceTables true
+config *.H*.numApps 1
+config **.app[0].messageLength "32 bytes"
+config **.app[0].sendInterval 2s
+config **.app[0].localPort 1234
+config **.app[0].destPort 1234
+config **.HA31.app[0].typename UdpBasicApp
+config **.HA31.app[0].destAddresses "\"192.171.1.2\""
+config **.HB11.app[0].typename UdpBasicApp
+config **.HB11.app[0].destAddresses "\"192.172.1.2\""
+config **.HC11.app[0].typename UdpBasicApp
+config **.HC11.app[0].destAddresses "\"192.170.1.2\""
+config **.HC21.app[0].typename UdpBasicApp
+config **.HC21.app[0].destAddresses "\"192.168.1.2\""
+config **.HA32.app[0].typename UdpSink
+config **.HB12.app[0].typename UdpSink
+config **.HC12.app[0].typename UdpSink
+config **.HC22.app[0].typename UdpSink
+
+scalar BgpNetwork.HA31.app[0] "packets sent" 30
+scalar BgpNetwork.HA31.app[0] "packets received" 0
+scalar BgpNetwork.HA31.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar BgpNetwork.HA31.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic BgpNetwork.HA31.app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar BgpNetwork.HA31.app[0] packetSent:count 30
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar BgpNetwork.HA31.app[0] packetSent:sum(packetBytes) 960
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar BgpNetwork.HA32.app[0] packetReceived:count 21
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar BgpNetwork.HA32.app[0] packetReceived:sum(packetBytes) 672
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic BgpNetwork.HA32.app[0] endToEndDelay:histogram
+field count 21
+field mean 0.00046443
+field stddev 4.7574e-05
+field min 0.00044896
+field max 0.000672
+field sum 0.009753
+field sqrsum 4.5749e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0.00039	0
+bin	0.000395	0
+bin	0.0004	0
+bin	0.000405	0
+bin	0.00041	0
+bin	0.000415	0
+bin	0.00042	0
+bin	0.000425	0
+bin	0.00043	0
+bin	0.000435	0
+bin	0.00044	0
+bin	0.000445	1
+bin	0.00045	19
+bin	0.000455	0
+bin	0.00046	0
+bin	0.000465	0
+bin	0.00047	0
+bin	0.000475	0
+bin	0.00048	0
+bin	0.000485	0
+bin	0.00049	0
+bin	0.000495	0
+bin	0.0005	0
+bin	0.000505	0
+bin	0.00051	0
+bin	0.000515	0
+bin	0.00052	0
+bin	0.000525	0
+bin	0.00053	0
+bin	0.000535	0
+bin	0.00054	0
+bin	0.000545	0
+bin	0.00055	0
+bin	0.000555	0
+bin	0.00056	0
+bin	0.000565	0
+bin	0.00057	0
+bin	0.000575	0
+bin	0.00058	0
+bin	0.000585	0
+bin	0.00059	0
+bin	0.000595	0
+bin	0.0006	0
+bin	0.000605	0
+bin	0.00061	0
+bin	0.000615	0
+bin	0.00062	0
+bin	0.000625	0
+bin	0.00063	0
+bin	0.000635	0
+bin	0.00064	0
+bin	0.000645	0
+bin	0.00065	0
+bin	0.000655	0
+bin	0.00066	0
+bin	0.000665	0
+bin	0.00067	1
+bin	0.000675	0
+bin	0.00068	0
+bin	0.000685	0
+bin	0.00069	0
+bin	0.000695	0
+bin	0.0007	0
+bin	0.000705	0
+bin	0.00071	0
+bin	0.000715	0
+bin	0.00072	0
+bin	0.000725	0
+bin	0.00073	0
+scalar BgpNetwork.HB11.app[0] "packets sent" 30
+scalar BgpNetwork.HB11.app[0] "packets received" 0
+scalar BgpNetwork.HB11.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar BgpNetwork.HB11.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic BgpNetwork.HB11.app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar BgpNetwork.HB11.app[0] packetSent:count 30
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar BgpNetwork.HB11.app[0] packetSent:sum(packetBytes) 960
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar BgpNetwork.HB12.app[0] packetReceived:count 19
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar BgpNetwork.HB12.app[0] packetReceived:sum(packetBytes) 608
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic BgpNetwork.HB12.app[0] endToEndDelay:histogram
+field count 19
+field mean 0.00062678
+field stddev 5.1169e-05
+field min 0.00061504
+field max 0.00083808
+field sum 0.011909
+field sqrsum 7.5113e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0.000555	0
+bin	0.00056	0
+bin	0.000565	0
+bin	0.00057	0
+bin	0.000575	0
+bin	0.00058	0
+bin	0.000585	0
+bin	0.00059	0
+bin	0.000595	0
+bin	0.0006	0
+bin	0.000605	0
+bin	0.00061	0
+bin	0.000615	18
+bin	0.00062	0
+bin	0.000625	0
+bin	0.00063	0
+bin	0.000635	0
+bin	0.00064	0
+bin	0.000645	0
+bin	0.00065	0
+bin	0.000655	0
+bin	0.00066	0
+bin	0.000665	0
+bin	0.00067	0
+bin	0.000675	0
+bin	0.00068	0
+bin	0.000685	0
+bin	0.00069	0
+bin	0.000695	0
+bin	0.0007	0
+bin	0.000705	0
+bin	0.00071	0
+bin	0.000715	0
+bin	0.00072	0
+bin	0.000725	0
+bin	0.00073	0
+bin	0.000735	0
+bin	0.00074	0
+bin	0.000745	0
+bin	0.00075	0
+bin	0.000755	0
+bin	0.00076	0
+bin	0.000765	0
+bin	0.00077	0
+bin	0.000775	0
+bin	0.00078	0
+bin	0.000785	0
+bin	0.00079	0
+bin	0.000795	0
+bin	0.0008	0
+bin	0.000805	0
+bin	0.00081	0
+bin	0.000815	0
+bin	0.00082	0
+bin	0.000825	0
+bin	0.00083	0
+bin	0.000835	1
+bin	0.00084	0
+bin	0.000845	0
+bin	0.00085	0
+bin	0.000855	0
+bin	0.00086	0
+bin	0.000865	0
+bin	0.00087	0
+bin	0.000875	0
+bin	0.00088	0
+bin	0.000885	0
+bin	0.00089	0
+bin	0.000895	0
+scalar BgpNetwork.HC11.app[0] "packets sent" 30
+scalar BgpNetwork.HC11.app[0] "packets received" 0
+scalar BgpNetwork.HC11.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar BgpNetwork.HC11.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic BgpNetwork.HC11.app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar BgpNetwork.HC11.app[0] packetSent:count 30
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar BgpNetwork.HC11.app[0] packetSent:sum(packetBytes) 960
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar BgpNetwork.HC12.app[0] packetReceived:count 21
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar BgpNetwork.HC12.app[0] packetReceived:sum(packetBytes) 672
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic BgpNetwork.HC12.app[0] endToEndDelay:histogram
+field count 21
+field mean 0.00052556
+field stddev 9.7343e-05
+field min 0.00050432
+field max 0.0009504
+field sum 0.011037
+field sqrsum 5.99e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0.00039	0
+bin	0.0004	0
+bin	0.00041	0
+bin	0.00042	0
+bin	0.00043	0
+bin	0.00044	0
+bin	0.00045	0
+bin	0.00046	0
+bin	0.00047	0
+bin	0.00048	0
+bin	0.00049	0
+bin	0.0005	20
+bin	0.00051	0
+bin	0.00052	0
+bin	0.00053	0
+bin	0.00054	0
+bin	0.00055	0
+bin	0.00056	0
+bin	0.00057	0
+bin	0.00058	0
+bin	0.00059	0
+bin	0.0006	0
+bin	0.00061	0
+bin	0.00062	0
+bin	0.00063	0
+bin	0.00064	0
+bin	0.00065	0
+bin	0.00066	0
+bin	0.00067	0
+bin	0.00068	0
+bin	0.00069	0
+bin	0.0007	0
+bin	0.00071	0
+bin	0.00072	0
+bin	0.00073	0
+bin	0.00074	0
+bin	0.00075	0
+bin	0.00076	0
+bin	0.00077	0
+bin	0.00078	0
+bin	0.00079	0
+bin	0.0008	0
+bin	0.00081	0
+bin	0.00082	0
+bin	0.00083	0
+bin	0.00084	0
+bin	0.00085	0
+bin	0.00086	0
+bin	0.00087	0
+bin	0.00088	0
+bin	0.00089	0
+bin	0.0009	0
+bin	0.00091	0
+bin	0.00092	0
+bin	0.00093	0
+bin	0.00094	0
+bin	0.00095	1
+bin	0.00096	0
+bin	0.00097	0
+bin	0.00098	0
+bin	0.00099	0
+bin	0.001	0
+bin	0.00101	0
+bin	0.00102	0
+bin	0.00103	0
+bin	0.00104	0
+bin	0.00105	0
+bin	0.00106	0
+bin	0.00107	0
+scalar BgpNetwork.HC21.app[0] "packets sent" 30
+scalar BgpNetwork.HC21.app[0] "packets received" 0
+scalar BgpNetwork.HC21.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar BgpNetwork.HC21.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic BgpNetwork.HC21.app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar BgpNetwork.HC21.app[0] packetSent:count 30
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar BgpNetwork.HC21.app[0] packetSent:sum(packetBytes) 960
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar BgpNetwork.HC22.app[0] packetReceived:count 19
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar BgpNetwork.HC22.app[0] packetReceived:sum(packetBytes) 608
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic BgpNetwork.HC22.app[0] endToEndDelay:histogram
+field count 19
+field mean 0.00062678
+field stddev 5.1169e-05
+field min 0.00061504
+field max 0.00083808
+field sum 0.011909
+field sqrsum 7.5113e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0.000555	0
+bin	0.00056	0
+bin	0.000565	0
+bin	0.00057	0
+bin	0.000575	0
+bin	0.00058	0
+bin	0.000585	0
+bin	0.00059	0
+bin	0.000595	0
+bin	0.0006	0
+bin	0.000605	0
+bin	0.00061	0
+bin	0.000615	18
+bin	0.00062	0
+bin	0.000625	0
+bin	0.00063	0
+bin	0.000635	0
+bin	0.00064	0
+bin	0.000645	0
+bin	0.00065	0
+bin	0.000655	0
+bin	0.00066	0
+bin	0.000665	0
+bin	0.00067	0
+bin	0.000675	0
+bin	0.00068	0
+bin	0.000685	0
+bin	0.00069	0
+bin	0.000695	0
+bin	0.0007	0
+bin	0.000705	0
+bin	0.00071	0
+bin	0.000715	0
+bin	0.00072	0
+bin	0.000725	0
+bin	0.00073	0
+bin	0.000735	0
+bin	0.00074	0
+bin	0.000745	0
+bin	0.00075	0
+bin	0.000755	0
+bin	0.00076	0
+bin	0.000765	0
+bin	0.00077	0
+bin	0.000775	0
+bin	0.00078	0
+bin	0.000785	0
+bin	0.00079	0
+bin	0.000795	0
+bin	0.0008	0
+bin	0.000805	0
+bin	0.00081	0
+bin	0.000815	0
+bin	0.00082	0
+bin	0.000825	0
+bin	0.00083	0
+bin	0.000835	1
+bin	0.00084	0
+bin	0.000845	0
+bin	0.00085	0
+bin	0.000855	0
+bin	0.00086	0
+bin	0.000865	0
+bin	0.00087	0
+bin	0.000875	0
+bin	0.00088	0
+bin	0.000885	0
+bin	0.00089	0
+bin	0.000895	0
+

@@ -1,0 +1,1232 @@
+version 3
+run LinkDownAndUp-0-20230426-16:24:31-213437
+attr configname LinkDownAndUp
+attr datetime 20230426-16:24:31
+attr datetimef 20230426-162431
+attr description "OSPFV3 example v3_2_routers"
+attr experiment LinkDownAndUp
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network v3_2_routers
+attr processid 213437
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/omnetpp.ini-LinkDownAndUp-#0.sca
+config sim-time-limit 400s
+config sim-time-limit 400s
+config **.scenarioManager.script "xmldoc(\"scenario.xml\")"
+config sim-time-limit 400s
+config description "OSPFV3 example v3_2_routers"
+config network v3_2_routers
+config **.Router1.ospf.ospfv3Splitter.ospfv3RoutingConfig "xmldoc(\"config.xml\", \"Devices/Router[@id='Router1']/Routing6/OSPFv3\")"
+config **.Router2.ospf.ospfv3Splitter.ospfv3RoutingConfig "xmldoc(\"config.xml\", \"Devices/Router[@id='Router2']/Routing6/OSPFv3\")"
+config **.Router1.ospf.ospfv3Splitter.ospfv3IntConfig "xmldoc(\"config.xml\", \"Devices/Router[@id='Router1']/Interfaces\")"
+config **.Router2.ospf.ospfv3Splitter.ospfv3IntConfig "xmldoc(\"config.xml\", \"Devices/Router[@id='Router2']/Interfaces\")"
+
+scalar v3_2_routers.Router1.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar v3_2_routers.Router1.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar v3_2_routers.Router1.ethernet decapPk:count 60
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar v3_2_routers.Router1.ethernet decapPk:sum(packetBytes) 5068
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar v3_2_routers.Router1.ethernet encapPk:count 71
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar v3_2_routers.Router1.ethernet encapPk:sum(packetBytes) 6356
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar v3_2_routers.Router1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar v3_2_routers.Router1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar v3_2_routers.Router1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar v3_2_routers.Router1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar v3_2_routers.Router1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar v3_2_routers.Router1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar v3_2_routers.Router1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar v3_2_routers.Router1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar v3_2_routers.Router1.eth[0].queue queueLength:max 5
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar v3_2_routers.Router1.eth[0].queue queueLength:timeavg 1.0613164556962e-06
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar v3_2_routers.Router1.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar v3_2_routers.Router1.eth[0].queue queueBitLength:max 4688
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar v3_2_routers.Router1.eth[0].queue queueBitLength:timeavg 0.00095947584810127
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic v3_2_routers.Router1.eth[0].queue queueingTime:histogram
+field count 71
+field mean 5.9045070422535e-06
+field stddev 1.2616254457613e-05
+field min 0
+field max 5.648e-05
+field sum 0.00041922
+field sqrsum 1.36171788e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	52
+bin	1e-06	1
+bin	2e-06	0
+bin	3e-06	0
+bin	4e-06	0
+bin	5e-06	0
+bin	6e-06	0
+bin	7e-06	0
+bin	8e-06	3
+bin	9e-06	0
+bin	1e-05	2
+bin	1.1e-05	1
+bin	1.2e-05	1
+bin	1.3e-05	0
+bin	1.4e-05	0
+bin	1.5e-05	0
+bin	1.6e-05	0
+bin	1.7e-05	0
+bin	1.8e-05	3
+bin	1.9e-05	1
+bin	2e-05	0
+bin	2.1e-05	0
+bin	2.2e-05	0
+bin	2.3e-05	2
+bin	2.4e-05	0
+bin	2.5e-05	0
+bin	2.6e-05	0
+bin	2.7e-05	0
+bin	2.8e-05	0
+bin	2.9e-05	0
+bin	3e-05	0
+bin	3.1e-05	0
+bin	3.2e-05	0
+bin	3.3e-05	1
+bin	3.4e-05	1
+bin	3.5e-05	0
+bin	3.6e-05	0
+bin	3.7e-05	0
+bin	3.8e-05	0
+bin	3.9e-05	0
+bin	4e-05	0
+bin	4.1e-05	0
+bin	4.2e-05	0
+bin	4.3e-05	0
+bin	4.4e-05	1
+bin	4.5e-05	0
+bin	4.6e-05	0
+bin	4.7e-05	0
+bin	4.8e-05	0
+bin	4.9e-05	0
+bin	5e-05	0
+bin	5.1e-05	0
+bin	5.2e-05	0
+bin	5.3e-05	0
+bin	5.4e-05	1
+bin	5.5e-05	0
+bin	5.6e-05	1
+bin	5.7e-05	0
+bin	5.8e-05	0
+bin	5.9e-05	0
+bin	6e-05	0
+bin	6.1e-05	0
+bin	6.2e-05	0
+bin	6.3e-05	0
+bin	6.4e-05	0
+bin	6.5e-05	0
+bin	6.6e-05	0
+bin	6.7e-05	0
+bin	6.8e-05	0
+bin	6.9e-05	0
+bin	7e-05	0
+bin	7.1e-05	0
+scalar v3_2_routers.Router1.eth[0].queue outgoingPackets:count 71
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar v3_2_routers.Router1.eth[0].queue outgoingPacketLengths:sum 61072
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic v3_2_routers.Router1.eth[0].queue outgoingPacketLengths:histogram
+field count 71
+field mean 860.16901408451
+field stddev 194.67592014242
+field min 688
+field max 1744
+field sum 61072
+field sqrsum 55185152
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	420	0
+bin	440	0
+bin	460	0
+bin	480	0
+bin	500	0
+bin	520	0
+bin	540	0
+bin	560	0
+bin	580	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	4
+bin	700	0
+bin	720	0
+bin	740	13
+bin	760	0
+bin	780	31
+bin	800	1
+bin	820	0
+bin	840	0
+bin	860	0
+bin	880	4
+bin	900	0
+bin	920	0
+bin	940	7
+bin	960	1
+bin	980	0
+bin	1000	0
+bin	1020	0
+bin	1040	6
+bin	1060	0
+bin	1080	0
+bin	1100	0
+bin	1120	0
+bin	1140	0
+bin	1160	1
+bin	1180	0
+bin	1200	0
+bin	1220	0
+bin	1240	0
+bin	1260	0
+bin	1280	0
+bin	1300	0
+bin	1320	0
+bin	1340	0
+bin	1360	0
+bin	1380	0
+bin	1400	0
+bin	1420	0
+bin	1440	0
+bin	1460	0
+bin	1480	1
+bin	1500	0
+bin	1520	0
+bin	1540	0
+bin	1560	0
+bin	1580	0
+bin	1600	0
+bin	1620	0
+bin	1640	0
+bin	1660	0
+bin	1680	1
+bin	1700	0
+bin	1720	0
+bin	1740	1
+bin	1760	0
+bin	1780	0
+bin	1800	0
+bin	1820	0
+bin	1840	0
+bin	1860	0
+bin	1880	0
+bin	1900	0
+bin	1920	0
+bin	1940	0
+bin	1960	0
+bin	1980	0
+bin	2000	0
+bin	2020	0
+statistic v3_2_routers.Router1.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar v3_2_routers.Router1.eth[0].queue incomingPackets:count 71
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar v3_2_routers.Router1.eth[0].queue incomingPacketLengths:sum 61072
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic v3_2_routers.Router1.eth[0].queue incomingPacketLengths:histogram
+field count 71
+field mean 860.16901408451
+field stddev 194.67592014242
+field min 688
+field max 1744
+field sum 61072
+field sqrsum 55185152
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	420	0
+bin	440	0
+bin	460	0
+bin	480	0
+bin	500	0
+bin	520	0
+bin	540	0
+bin	560	0
+bin	580	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	4
+bin	700	0
+bin	720	0
+bin	740	13
+bin	760	0
+bin	780	31
+bin	800	1
+bin	820	0
+bin	840	0
+bin	860	0
+bin	880	4
+bin	900	0
+bin	920	0
+bin	940	7
+bin	960	1
+bin	980	0
+bin	1000	0
+bin	1020	0
+bin	1040	6
+bin	1060	0
+bin	1080	0
+bin	1100	0
+bin	1120	0
+bin	1140	0
+bin	1160	1
+bin	1180	0
+bin	1200	0
+bin	1220	0
+bin	1240	0
+bin	1260	0
+bin	1280	0
+bin	1300	0
+bin	1320	0
+bin	1340	0
+bin	1360	0
+bin	1380	0
+bin	1400	0
+bin	1420	0
+bin	1440	0
+bin	1460	0
+bin	1480	1
+bin	1500	0
+bin	1520	0
+bin	1540	0
+bin	1560	0
+bin	1580	0
+bin	1600	0
+bin	1620	0
+bin	1640	0
+bin	1660	0
+bin	1680	1
+bin	1700	0
+bin	1720	0
+bin	1740	1
+bin	1760	0
+bin	1780	0
+bin	1800	0
+bin	1820	0
+bin	1840	0
+bin	1860	0
+bin	1880	0
+bin	1900	0
+bin	1920	0
+bin	1940	0
+bin	1960	0
+bin	1980	0
+bin	2000	0
+bin	2020	0
+scalar v3_2_routers.Router1.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar v3_2_routers.Router1.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar v3_2_routers.Router1.eth[0].mac "simulated time" 400
+scalar v3_2_routers.Router1.eth[0].mac full-duplex 1
+scalar v3_2_routers.Router1.eth[0].mac "frames/sec sent" 0.15
+scalar v3_2_routers.Router1.eth[0].mac "frames/sec rcvd" 0.15
+scalar v3_2_routers.Router1.eth[0].mac "bits/sec sent" 131.68
+scalar v3_2_routers.Router1.eth[0].mac "bits/sec rcvd" 122.96
+scalar v3_2_routers.Router1.eth[0].mac "rx channel idle (%)" 99.99986744
+scalar v3_2_routers.Router1.eth[0].mac "rx channel utilization (%)" 0.00013256
+scalar v3_2_routers.Router1.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar v3_2_routers.Router1.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar v3_2_routers.Router1.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar v3_2_routers.Router1.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar v3_2_routers.Router1.eth[0].mac rxPkOk:count 60
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar v3_2_routers.Router1.eth[0].mac rxPkOk:sum(packetBytes) 6148
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0].mac txPk:count 60
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar v3_2_routers.Router1.eth[0].mac txPk:sum(packetBytes) 6584
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0].mac packetReceivedFromUpper:count 71
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar v3_2_routers.Router1.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 7634
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0].mac passedUpPk:count 60
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar v3_2_routers.Router1.eth[0].mac passedUpPk:sum(packetBytes) 6148
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar v3_2_routers.Router1.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0].mac packetDropInterfaceDown:count 11
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar v3_2_routers.Router1.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 1050
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar v3_2_routers.Router1.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0] packetDropInterfaceDown:count 11
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar v3_2_routers.Router1.eth[0] packetDropInterfaceDown:sum(packetBytes) 1050
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar v3_2_routers.Router1.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar v3_2_routers.Router1.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar v3_2_routers.Router1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar v3_2_routers.Router1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar v3_2_routers.Router1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar v3_2_routers.Router1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar v3_2_routers.Router1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar v3_2_routers.Router1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar v3_2_routers.Router1.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar v3_2_routers.Router1.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar v3_2_routers.Router1.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar v3_2_routers.Router1.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar v3_2_routers.Router1.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar v3_2_routers.Router1.ipv6.neighbourDiscovery startDad:count 0
+attr recordingmode count
+attr title "DAD started, count"
+scalar v3_2_routers.Router2.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar v3_2_routers.Router2.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar v3_2_routers.Router2.ethernet decapPk:count 60
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar v3_2_routers.Router2.ethernet decapPk:sum(packetBytes) 5504
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar v3_2_routers.Router2.ethernet encapPk:count 71
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar v3_2_routers.Router2.ethernet encapPk:sum(packetBytes) 5920
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar v3_2_routers.Router2.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar v3_2_routers.Router2.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar v3_2_routers.Router2.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar v3_2_routers.Router2.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar v3_2_routers.Router2.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar v3_2_routers.Router2.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar v3_2_routers.Router2.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar v3_2_routers.Router2.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar v3_2_routers.Router2.eth[0].queue queueLength:max 3
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar v3_2_routers.Router2.eth[0].queue queueLength:timeavg 4.1979746835443e-07
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar v3_2_routers.Router2.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar v3_2_routers.Router2.eth[0].queue queueBitLength:max 2256
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar v3_2_routers.Router2.eth[0].queue queueBitLength:timeavg 0.00036024141772152
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic v3_2_routers.Router2.eth[0].queue queueingTime:histogram
+field count 71
+field mean 2.3354929577465e-06
+field stddev 5.1147218298142e-06
+field min 0
+field max 2.304e-05
+field sum 0.00016582
+field sqrsum 2.218498e-09
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	50
+bin	5e-07	5
+bin	1e-06	1
+bin	1.5e-06	0
+bin	2e-06	0
+bin	2.5e-06	0
+bin	3e-06	0
+bin	3.5e-06	3
+bin	4e-06	0
+bin	4.5e-06	1
+bin	5e-06	0
+bin	5.5e-06	1
+bin	6e-06	0
+bin	6.5e-06	0
+bin	7e-06	0
+bin	7.5e-06	0
+bin	8e-06	0
+bin	8.5e-06	0
+bin	9e-06	2
+bin	9.5e-06	1
+bin	1e-05	0
+bin	1.05e-05	0
+bin	1.1e-05	0
+bin	1.15e-05	1
+bin	1.2e-05	0
+bin	1.25e-05	0
+bin	1.3e-05	2
+bin	1.35e-05	0
+bin	1.4e-05	0
+bin	1.45e-05	1
+bin	1.5e-05	0
+bin	1.55e-05	1
+bin	1.6e-05	0
+bin	1.65e-05	0
+bin	1.7e-05	0
+bin	1.75e-05	0
+bin	1.8e-05	0
+bin	1.85e-05	1
+bin	1.9e-05	0
+bin	1.95e-05	0
+bin	2e-05	0
+bin	2.05e-05	0
+bin	2.1e-05	0
+bin	2.15e-05	0
+bin	2.2e-05	0
+bin	2.25e-05	0
+bin	2.3e-05	1
+bin	2.35e-05	0
+bin	2.4e-05	0
+bin	2.45e-05	0
+bin	2.5e-05	0
+bin	2.55e-05	0
+bin	2.6e-05	0
+bin	2.65e-05	0
+bin	2.7e-05	0
+bin	2.75e-05	0
+bin	2.8e-05	0
+bin	2.85e-05	0
+bin	2.9e-05	0
+scalar v3_2_routers.Router2.eth[0].queue outgoingPackets:count 71
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar v3_2_routers.Router2.eth[0].queue outgoingPacketLengths:sum 57584
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic v3_2_routers.Router2.eth[0].queue outgoingPacketLengths:histogram
+field count 71
+field mean 811.04225352113
+field stddev 112.89735371057
+field min 688
+field max 1328
+field sum 57584
+field sqrsum 47595264
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	520	0
+bin	540	0
+bin	560	0
+bin	580	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	4
+bin	700	0
+bin	720	0
+bin	740	22
+bin	760	0
+bin	780	31
+bin	800	1
+bin	820	0
+bin	840	0
+bin	860	0
+bin	880	2
+bin	900	1
+bin	920	0
+bin	940	3
+bin	960	2
+bin	980	0
+bin	1000	0
+bin	1020	0
+bin	1040	2
+bin	1060	0
+bin	1080	0
+bin	1100	0
+bin	1120	1
+bin	1140	0
+bin	1160	1
+bin	1180	0
+bin	1200	0
+bin	1220	0
+bin	1240	0
+bin	1260	0
+bin	1280	0
+bin	1300	0
+bin	1320	1
+bin	1340	0
+bin	1360	0
+bin	1380	0
+bin	1400	0
+bin	1420	0
+bin	1440	0
+bin	1460	0
+bin	1480	0
+bin	1500	0
+statistic v3_2_routers.Router2.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar v3_2_routers.Router2.eth[0].queue incomingPackets:count 71
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar v3_2_routers.Router2.eth[0].queue incomingPacketLengths:sum 57584
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic v3_2_routers.Router2.eth[0].queue incomingPacketLengths:histogram
+field count 71
+field mean 811.04225352113
+field stddev 112.89735371057
+field min 688
+field max 1328
+field sum 57584
+field sqrsum 47595264
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	520	0
+bin	540	0
+bin	560	0
+bin	580	0
+bin	600	0
+bin	620	0
+bin	640	0
+bin	660	0
+bin	680	4
+bin	700	0
+bin	720	0
+bin	740	22
+bin	760	0
+bin	780	31
+bin	800	1
+bin	820	0
+bin	840	0
+bin	860	0
+bin	880	2
+bin	900	1
+bin	920	0
+bin	940	3
+bin	960	2
+bin	980	0
+bin	1000	0
+bin	1020	0
+bin	1040	2
+bin	1060	0
+bin	1080	0
+bin	1100	0
+bin	1120	1
+bin	1140	0
+bin	1160	1
+bin	1180	0
+bin	1200	0
+bin	1220	0
+bin	1240	0
+bin	1260	0
+bin	1280	0
+bin	1300	0
+bin	1320	1
+bin	1340	0
+bin	1360	0
+bin	1380	0
+bin	1400	0
+bin	1420	0
+bin	1440	0
+bin	1460	0
+bin	1480	0
+bin	1500	0
+scalar v3_2_routers.Router2.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar v3_2_routers.Router2.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar v3_2_routers.Router2.eth[0].mac "simulated time" 400
+scalar v3_2_routers.Router2.eth[0].mac full-duplex 1
+scalar v3_2_routers.Router2.eth[0].mac "frames/sec sent" 0.15
+scalar v3_2_routers.Router2.eth[0].mac "frames/sec rcvd" 0.15
+scalar v3_2_routers.Router2.eth[0].mac "bits/sec sent" 122.96
+scalar v3_2_routers.Router2.eth[0].mac "bits/sec rcvd" 131.68
+scalar v3_2_routers.Router2.eth[0].mac "rx channel idle (%)" 99.99985872
+scalar v3_2_routers.Router2.eth[0].mac "rx channel utilization (%)" 0.00014128
+scalar v3_2_routers.Router2.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar v3_2_routers.Router2.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar v3_2_routers.Router2.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar v3_2_routers.Router2.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar v3_2_routers.Router2.eth[0].mac rxPkOk:count 60
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar v3_2_routers.Router2.eth[0].mac rxPkOk:sum(packetBytes) 6584
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0].mac txPk:count 60
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar v3_2_routers.Router2.eth[0].mac txPk:sum(packetBytes) 6148
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0].mac packetReceivedFromUpper:count 71
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar v3_2_routers.Router2.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 7198
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0].mac passedUpPk:count 60
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar v3_2_routers.Router2.eth[0].mac passedUpPk:sum(packetBytes) 6584
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar v3_2_routers.Router2.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0].mac packetDropInterfaceDown:count 11
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar v3_2_routers.Router2.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 1050
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar v3_2_routers.Router2.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0] packetDropInterfaceDown:count 11
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar v3_2_routers.Router2.eth[0] packetDropInterfaceDown:sum(packetBytes) 1050
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar v3_2_routers.Router2.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar v3_2_routers.Router2.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar v3_2_routers.Router2.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar v3_2_routers.Router2.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar v3_2_routers.Router2.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar v3_2_routers.Router2.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar v3_2_routers.Router2.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar v3_2_routers.Router2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar v3_2_routers.Router2.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar v3_2_routers.Router2.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar v3_2_routers.Router2.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar v3_2_routers.Router2.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar v3_2_routers.Router2.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar v3_2_routers.Router2.ipv6.neighbourDiscovery startDad:count 0
+attr recordingmode count
+attr title "DAD started, count"
+

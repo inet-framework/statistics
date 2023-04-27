@@ -1,0 +1,71 @@
+version 3
+run g726-0-20230426-16:24:53-213530
+attr configname g726
+attr datetime 20230426-16:24:53
+attr datetimef 20230426-162453
+attr experiment g726
+attr inifile sender.ini
+attr iterationvars "$sound=\"Beatify_Dabei_cut.mp3\""
+attr iterationvarsd sound=Beatify#_Dabei#_cut.mp3
+attr iterationvarsf sound=Beatify#_Dabei#_cut.mp3-
+attr measurement "$sound=\"Beatify_Dabei_cut.mp3\""
+attr network VoipStreamSenderApplication
+attr processid 213530
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar sound "\"Beatify_Dabei_cut.mp3\""
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/sender.ini-g726-#0.sca
+config sim-time-limit 1ps
+config *.app.codec "\"g726\""
+config *.app.sampleRate 8000Hz
+config *.app.compressedBitRate 40000bps
+config network VoipStreamSenderApplication
+config scheduler-class inet::RealTimeScheduler
+config *.app.packetTimeLength 20ms
+config *.app.voipHeaderSize 28B
+config *.app.traceFileName "\"results/g726_\" + \"Beatify_Dabei_cut.mp3\" + \"_sent.wav\""
+config *.app.voipSilenceThreshold 100
+config *.app.repeatCount 1
+config *.app.soundFile "\"../soundFiles/\" +         \"Beatify_Dabei_cut.mp3\""
+config *.app.localPort -1
+config *.app.destPort 1000
+config *.app.srcAddress "\"\""
+config *.app.destAddress "\"127.0.0.1\""
+
+scalar VoipStreamSenderApplication.app packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar VoipStreamSenderApplication.app packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar VoipStreamSenderApplication.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar VoipStreamSenderApplication.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar VoipStreamSenderApplication.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar VoipStreamSenderApplication.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+

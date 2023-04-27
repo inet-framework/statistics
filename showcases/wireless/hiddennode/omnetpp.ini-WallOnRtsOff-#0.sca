@@ -1,0 +1,3105 @@
+version 3
+run WallOnRtsOff-0-20230426-16:27:31-214149
+attr configname WallOnRtsOff
+attr datetime 20230426-16:27:31
+attr datetimef 20230426-162731
+attr description "Hidden node behind wall, no RTS/CTS"
+attr experiment WallOnRtsOff
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network HiddenNodeShowcase
+attr processid 214149
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/omnetpp.ini-WallOnRtsOff-#0.sca
+config sim-time-limit 5s
+config description "Hidden node behind wall, no RTS/CTS"
+config *.physicalEnvironment.config "xmldoc(\"wall.xml\")"
+config network HiddenNodeShowcase
+config sim-time-limit 5s
+config *.host*.ipv4.arp.typename GlobalArp
+config *.host*.wlan[*].mgmt.typename Ieee80211MgmtAdhoc
+config *.host*.wlan[*].agent.typename ""
+config *.host*.wlan[*].radio.typename Ieee80211UnitDiskRadio
+config *.host*.wlan[*].radio.transmitter.communicationRange 300m
+config *.host*.wlan[*].bitrate 6Mbps
+config **.wlan[*].mac.dcf.channelAccess.pendingQueue.packetCapacity 14
+config **.wlan[*].mac.*.rateSelection.responseAckFrameBitrate 6Mbps
+config **.wlan[*].mac.*.rateSelection.dataFrameBitrate 6Mbps
+config **.wlan[*].mac.*.rateSelection.controlFrameBitrate 6Mbps
+config *.visualizer.mediumVisualizer.displaySignals true
+config *.hostA.wlan[*].radio.displayCommunicationRange true
+config *.hostC.wlan[*].radio.displayCommunicationRange true
+config *.hostA.wlan[*].radio.displayInterferenceRange true
+config *.hostC.wlan[*].radio.displayInterferenceRange true
+config *.visualizer.physicalLinkVisualizer.displayLinks true
+config *.visualizer.dataLinkVisualizer.displayLinks true
+config *.visualizer.dataLinkVisualizer.packetFilter "\"UDP*\""
+config *.hostA.numApps 1
+config *.hostA.app[0].typename UdpBasicApp
+config *.hostA.app[0].destAddresses "\"hostB\""
+config *.hostA.app[0].destPort 5000
+config *.hostA.app[0].packetName "\"UDPData\""
+config *.hostA.app[0].messageLength 1000byte
+config *.hostA.app[0].sendInterval 5ms
+config *.hostC.numApps 1
+config *.hostC.app[0].typename UdpBasicApp
+config *.hostC.app[0].destAddresses "\"hostB\""
+config *.hostC.app[0].destPort 5000
+config *.hostC.app[0].packetName "\"UDPData\""
+config *.hostC.app[0].messageLength 1000byte
+config *.hostC.app[0].sendInterval exponential(5ms)
+config *.hostB.numApps 1
+config *.hostB.app[0].typename UdpSink
+config *.hostB.app[0].localPort 5000
+config *.radioMedium.obstacleLoss.typename IdealObstacleLoss
+
+scalar HiddenNodeShowcase.hostA.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar HiddenNodeShowcase.hostA.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar HiddenNodeShowcase.hostA.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar HiddenNodeShowcase.hostA.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar HiddenNodeShowcase.hostA.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:last 14
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max 14
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg 8.2021101747099
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:last 119168
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:max 119168
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 69816.361807131
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 840
+field mean 0.046154214669852
+field stddev 0.037001085071043
+field min 0
+field max 0.189154384567
+field sum 38.769540322676
+field sqrsum 2.9380360554129
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	92
+bin	0.004	31
+bin	0.008	30
+bin	0.012	29
+bin	0.016	27
+bin	0.02	40
+bin	0.024	40
+bin	0.028	49
+bin	0.032	39
+bin	0.036	47
+bin	0.04	44
+bin	0.044	37
+bin	0.048	37
+bin	0.052	30
+bin	0.056	34
+bin	0.06	32
+bin	0.064	41
+bin	0.068	23
+bin	0.072	13
+bin	0.076	7
+bin	0.08	7
+bin	0.084	5
+bin	0.088	9
+bin	0.092	6
+bin	0.096	6
+bin	0.1	3
+bin	0.104	3
+bin	0.108	4
+bin	0.112	4
+bin	0.116	9
+bin	0.12	6
+bin	0.124	7
+bin	0.128	8
+bin	0.132	7
+bin	0.136	10
+bin	0.14	9
+bin	0.144	6
+bin	0.148	5
+bin	0.152	2
+bin	0.156	0
+bin	0.16	0
+bin	0.164	0
+bin	0.168	1
+bin	0.172	0
+bin	0.176	0
+bin	0.18	0
+bin	0.184	0
+bin	0.188	1
+bin	0.192	0
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPackets:count 840
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 7150080
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 840
+field mean 8512
+field stddev 0
+field min 8512
+field max 8512
+field sum 7150080
+field sqrsum 60861480960
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	8511	0
+bin	8512	840
+bin	8513	0
+statistic HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPackets:count 1000
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 8512000
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 1000
+field mean 8512
+field stddev 0
+field min 8512
+field max 8512
+field sum 8512000
+field sqrsum 72454144000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	8511	0
+bin	8512	1000
+bin	8513	0
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 146
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 1242752
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 838
+field mean 0.010780372184778
+field stddev 0.016069840077961
+field min 0.001511522514
+field max 0.103909973415
+field sum 9.033951890844
+field sqrsum 0.31353604291252
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	36
+bin	0.002	429
+bin	0.004	88
+bin	0.006	55
+bin	0.008	63
+bin	0.01	15
+bin	0.012	13
+bin	0.014	8
+bin	0.016	14
+bin	0.018	4
+bin	0.02	5
+bin	0.022	4
+bin	0.024	5
+bin	0.026	2
+bin	0.028	1
+bin	0.03	3
+bin	0.032	4
+bin	0.034	10
+bin	0.036	2
+bin	0.038	4
+bin	0.04	6
+bin	0.042	5
+bin	0.044	7
+bin	0.046	6
+bin	0.048	3
+bin	0.05	10
+bin	0.052	3
+bin	0.054	7
+bin	0.056	3
+bin	0.058	2
+bin	0.06	8
+bin	0.062	2
+bin	0.064	0
+bin	0.066	0
+bin	0.068	1
+bin	0.07	0
+bin	0.072	0
+bin	0.074	1
+bin	0.076	0
+bin	0.078	1
+bin	0.08	0
+bin	0.082	2
+bin	0.084	2
+bin	0.086	0
+bin	0.088	0
+bin	0.09	1
+bin	0.092	0
+bin	0.094	1
+bin	0.096	0
+bin	0.098	0
+bin	0.1	0
+bin	0.102	2
+bin	0.104	0
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 1.8235990491636
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 1515
+attr recordingmode count
+attr title "channel access granted, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 14836
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 3030
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 0
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 47
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf frameSequenceFinished:count 1515
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic HiddenNodeShowcase.hostA.wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 1515
+field mean 0.0015084054842073
+field stddev 3.2591420371904e-06
+field min 0.001505
+field max 0.001511522514
+field sum 2.285234308574
+field sqrsum 0.00344707604547
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0.0015032	0
+bin	0.0015034	0
+bin	0.0015036	0
+bin	0.0015038	0
+bin	0.001504	0
+bin	0.0015042	0
+bin	0.0015044	0
+bin	0.0015046	0
+bin	0.0015048	724
+bin	0.001505	0
+bin	0.0015052	0
+bin	0.0015054	0
+bin	0.0015056	0
+bin	0.0015058	0
+bin	0.001506	0
+bin	0.0015062	0
+bin	0.0015064	0
+bin	0.0015066	0
+bin	0.0015068	0
+bin	0.001507	0
+bin	0.0015072	0
+bin	0.0015074	0
+bin	0.0015076	0
+bin	0.0015078	0
+bin	0.001508	0
+bin	0.0015082	0
+bin	0.0015084	0
+bin	0.0015086	0
+bin	0.0015088	0
+bin	0.001509	0
+bin	0.0015092	0
+bin	0.0015094	0
+bin	0.0015096	0
+bin	0.0015098	0
+bin	0.00151	0
+bin	0.0015102	0
+bin	0.0015104	0
+bin	0.0015106	0
+bin	0.0015108	0
+bin	0.001511	0
+bin	0.0015112	0
+bin	0.0015114	791
+bin	0.0015116	0
+bin	0.0015118	0
+bin	0.001512	0
+bin	0.0015122	0
+bin	0.0015124	0
+bin	0.0015126	0
+bin	0.0015128	0
+bin	0.001513	0
+bin	0.0015132	0
+statistic HiddenNodeShowcase.hostA.wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 1515
+field mean 2
+field stddev 0
+field min 2
+field max 2
+field sum 3030
+field sqrsum 6060
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	1	0
+bin	2	1515
+bin	3	0
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeer:count 791
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 11074
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 791
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 11074
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 791
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 11074
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeer:count 1515
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 1611960
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerUnicast:count 1515
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 1611960
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerWithRetry:count 676
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 719264
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 839
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 892696
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetDrop:count 871
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetDrop:sum(packetBytes) 214844
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetDropNotAddressedToUs:count 678
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 9492
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetDropQueueOverflow:count 146
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 155344
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetDropRetryLimitReached:count 47
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 50008
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac.dcf linkBroken:count 47
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetReceivedFromLower:count 1469
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 20566
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetSentToLower:count 1515
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetSentToLower:sum(packetBytes) 1611960
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetReceivedFromUpper:count 1000
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 1036000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetSentToUpper:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetSentToUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDrop:count 871
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDrop:sum(packetBytes) 214844
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropNotAddressedToUs:count 678
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 9492
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropQueueOverflow:count 146
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 155344
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropRetryLimitReached:count 47
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 50008
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0].mac linkBroken:count 47
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+statistic HiddenNodeShowcase.hostA.wlan[0].radio radioChannel:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostA.wlan[0].radio radioMode:count 3033
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].radio receptionState:count 5969
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar HiddenNodeShowcase.hostA.wlan[0].radio transmissionState:count 6060
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic HiddenNodeShowcase.hostA.wlan[0].radio minSnir:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic HiddenNodeShowcase.hostA.wlan[0].radio packetErrorRate:histogram
+field count 1469
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1469
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic HiddenNodeShowcase.hostA.wlan[0].radio bitErrorRate:histogram
+field count 1469
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1469
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic HiddenNodeShowcase.hostA.wlan[0].radio symbolErrorRate:histogram
+field count 1469
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1469
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar HiddenNodeShowcase.hostA.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar HiddenNodeShowcase.hostA.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar HiddenNodeShowcase.hostA.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar HiddenNodeShowcase.hostA.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostA.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.udp packetSent:count 1000
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar HiddenNodeShowcase.hostA.udp packetSent:sum(packetBytes) 1008000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostA.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar HiddenNodeShowcase.hostA.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar HiddenNodeShowcase.hostA.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar HiddenNodeShowcase.hostA.app[0] "packets sent" 1000
+scalar HiddenNodeShowcase.hostA.app[0] "packets received" 0
+scalar HiddenNodeShowcase.hostA.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostA.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic HiddenNodeShowcase.hostA.app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar HiddenNodeShowcase.hostA.app[0] packetSent:count 1000
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar HiddenNodeShowcase.hostA.app[0] packetSent:sum(packetBytes) 1000000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar HiddenNodeShowcase.hostB.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar HiddenNodeShowcase.hostB.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar HiddenNodeShowcase.hostB.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar HiddenNodeShowcase.hostB.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg -nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 15662
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 1470
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf frameSequenceFinished:count 0
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic HiddenNodeShowcase.hostB.wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic HiddenNodeShowcase.hostB.wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeer:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 1564080
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 1564080
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 381
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 405384
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 1089
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 1158696
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeer:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 20580
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerUnicast:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 20580
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 20580
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetReceivedFromLower:count 2261
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 2405704
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetSentToLower:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetSentToLower:sum(packetBytes) 20580
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetSentToUpper:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetSentToUpper:sum(packetBytes) 1522920
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDrop:count 791
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDrop:sum(packetBytes) 841624
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropIncorrectlyReceived:count 791
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 841624
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0].mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+statistic HiddenNodeShowcase.hostB.wlan[0].radio radioChannel:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostB.wlan[0].radio radioMode:count 2943
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].radio receptionState:count 7894
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar HiddenNodeShowcase.hostB.wlan[0].radio transmissionState:count 5880
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic HiddenNodeShowcase.hostB.wlan[0].radio minSnir:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic HiddenNodeShowcase.hostB.wlan[0].radio packetErrorRate:histogram
+field count 2261
+field mean 0.34984520123839
+field stddev 0.47702639294547
+field min 0
+field max 1
+field sum 791
+field sqrsum 791
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	0	1470
+bin	1	791
+bin	2	0
+statistic HiddenNodeShowcase.hostB.wlan[0].radio bitErrorRate:histogram
+field count 2261
+field mean 0.34984520123839
+field stddev 0.47702639294547
+field min 0
+field max 1
+field sum 791
+field sqrsum 791
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	1470
+bin	1	791
+bin	2	0
+statistic HiddenNodeShowcase.hostB.wlan[0].radio symbolErrorRate:histogram
+field count 2261
+field mean 0.34984520123839
+field stddev 0.47702639294547
+field min 0
+field max 1
+field sum 791
+field sqrsum 791
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	1470
+bin	1	791
+bin	2	0
+scalar HiddenNodeShowcase.hostB.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar HiddenNodeShowcase.hostB.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar HiddenNodeShowcase.hostB.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar HiddenNodeShowcase.hostB.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.udp packetReceived:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostB.udp packetReceived:sum(packetBytes) 1481760
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar HiddenNodeShowcase.hostB.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostB.udp passedUpPk:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar HiddenNodeShowcase.hostB.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar HiddenNodeShowcase.hostB.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar HiddenNodeShowcase.hostB.app[0] packetReceived:count 1470
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostB.app[0] packetReceived:sum(packetBytes) 1470000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic HiddenNodeShowcase.hostB.app[0] endToEndDelay:histogram
+field count 1470
+field mean 0.062943094715724
+field stddev 0.04811840306171
+field min 0.001450761257
+field max 0.279045202998
+field sum 92.526349232115
+field sqrsum 9.2251890311214
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	90
+bin	0.005	49
+bin	0.01	44
+bin	0.015	54
+bin	0.02	69
+bin	0.025	72
+bin	0.03	74
+bin	0.035	74
+bin	0.04	88
+bin	0.045	79
+bin	0.05	76
+bin	0.055	70
+bin	0.06	79
+bin	0.065	52
+bin	0.07	65
+bin	0.075	72
+bin	0.08	43
+bin	0.085	25
+bin	0.09	22
+bin	0.095	13
+bin	0.1	13
+bin	0.105	16
+bin	0.11	14
+bin	0.115	13
+bin	0.12	23
+bin	0.125	16
+bin	0.13	24
+bin	0.135	17
+bin	0.14	19
+bin	0.145	20
+bin	0.15	14
+bin	0.155	13
+bin	0.16	3
+bin	0.165	2
+bin	0.17	4
+bin	0.175	6
+bin	0.18	2
+bin	0.185	8
+bin	0.19	0
+bin	0.195	1
+bin	0.2	1
+bin	0.205	4
+bin	0.21	6
+bin	0.215	3
+bin	0.22	2
+bin	0.225	3
+bin	0.23	1
+bin	0.235	1
+bin	0.24	0
+bin	0.245	3
+bin	0.25	3
+bin	0.255	4
+bin	0.26	0
+bin	0.265	0
+bin	0.27	0
+bin	0.275	1
+bin	0.28	0
+scalar HiddenNodeShowcase.hostC.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar HiddenNodeShowcase.hostC.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar HiddenNodeShowcase.hostC.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar HiddenNodeShowcase.hostC.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar HiddenNodeShowcase.hostC.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:max 14
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg 9.0368155203225
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:max 119168
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 76921.373708986
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 731
+field mean 0.061750933607968
+field stddev 0.053476991502335
+field min 0
+field max 0.254407290789
+field sum 45.139932467425
+field sqrsum 4.8750786655669
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	83
+bin	0.005	19
+bin	0.01	23
+bin	0.015	41
+bin	0.02	39
+bin	0.025	28
+bin	0.03	30
+bin	0.035	50
+bin	0.04	27
+bin	0.045	35
+bin	0.05	20
+bin	0.055	30
+bin	0.06	30
+bin	0.065	18
+bin	0.07	37
+bin	0.075	29
+bin	0.08	23
+bin	0.085	10
+bin	0.09	7
+bin	0.095	11
+bin	0.1	7
+bin	0.105	11
+bin	0.11	12
+bin	0.115	10
+bin	0.12	11
+bin	0.125	9
+bin	0.13	8
+bin	0.135	9
+bin	0.14	4
+bin	0.145	5
+bin	0.15	4
+bin	0.155	2
+bin	0.16	1
+bin	0.165	2
+bin	0.17	12
+bin	0.175	2
+bin	0.18	4
+bin	0.185	0
+bin	0.19	3
+bin	0.195	1
+bin	0.2	4
+bin	0.205	4
+bin	0.21	3
+bin	0.215	0
+bin	0.22	2
+bin	0.225	0
+bin	0.23	1
+bin	0.235	1
+bin	0.24	3
+bin	0.245	3
+bin	0.25	3
+bin	0.255	0
+bin	0.26	0
+bin	0.265	0
+bin	0.27	0
+bin	0.275	0
+bin	0.28	0
+bin	0.285	0
+bin	0.29	0
+bin	0.295	0
+bin	0.3	0
+bin	0.305	0
+bin	0.31	0
+bin	0.315	0
+bin	0.32	0
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPackets:count 731
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 6222272
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 731
+field mean 8512
+field stddev 0
+field min 8512
+field max 8512
+field sum 6222272
+field sqrsum 52963979264
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	8511	0
+bin	8512	731
+bin	8513	0
+statistic HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPackets:count 995
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 8469440
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 995
+field mean 8512
+field stddev 0
+field min 8512
+field max 8512
+field sum 8469440
+field sqrsum 72091873280
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	8511	0
+bin	8512	995
+bin	8513	0
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 264
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 2247168
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+statistic HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 730
+field mean 0.012488926617441
+field stddev 0.019265171685074
+field min 0.001511522514
+field max 0.126645
+field sum 9.116916430732
+field sqrsum 0.38442654668113
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	17
+bin	0.002	351
+bin	0.004	81
+bin	0.006	75
+bin	0.008	46
+bin	0.01	22
+bin	0.012	14
+bin	0.014	6
+bin	0.016	5
+bin	0.018	5
+bin	0.02	3
+bin	0.022	1
+bin	0.024	1
+bin	0.026	1
+bin	0.028	3
+bin	0.03	1
+bin	0.032	1
+bin	0.034	5
+bin	0.036	1
+bin	0.038	4
+bin	0.04	5
+bin	0.042	5
+bin	0.044	7
+bin	0.046	8
+bin	0.048	6
+bin	0.05	6
+bin	0.052	10
+bin	0.054	4
+bin	0.056	4
+bin	0.058	3
+bin	0.06	6
+bin	0.062	1
+bin	0.064	5
+bin	0.066	1
+bin	0.068	3
+bin	0.07	0
+bin	0.072	0
+bin	0.074	0
+bin	0.076	0
+bin	0.078	0
+bin	0.08	1
+bin	0.082	0
+bin	0.084	3
+bin	0.086	0
+bin	0.088	1
+bin	0.09	1
+bin	0.092	0
+bin	0.094	0
+bin	0.096	1
+bin	0.098	1
+bin	0.1	1
+bin	0.102	0
+bin	0.104	0
+bin	0.106	1
+bin	0.108	0
+bin	0.11	0
+bin	0.112	0
+bin	0.114	0
+bin	0.116	0
+bin	0.118	1
+bin	0.12	0
+bin	0.122	1
+bin	0.124	0
+bin	0.126	1
+bin	0.128	0
+bin	0.13	0
+bin	0.132	0
+bin	0.134	0
+bin	0.136	0
+bin	0.138	0
+bin	0.14	0
+bin	0.142	0
+bin	0.144	0
+bin	0.146	0
+bin	0.148	0
+bin	0.15	0
+bin	0.152	0
+bin	0.154	0
+bin	0.156	0
+bin	0.158	0
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 1.8236384760894
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 1392
+attr recordingmode count
+attr title "channel access granted, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 14296
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 2783
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.recipientMacDataService packetDefragmented:count 0
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf.recoveryProcedure retryLimitReached:count 51
+attr recordingmode count
+attr title "retry limit reached, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf frameSequenceFinished:count 1391
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic HiddenNodeShowcase.hostC.wlan[0].mac.dcf frameSequenceDuration:histogram
+field count 1391
+field mean 0.0015081838871359
+field stddev 3.2615116575279e-06
+field min 0.001505
+field max 0.001511522514
+field sum 2.0978837870061
+field sqrsum 0.0031640093107132
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0.0015032	0
+bin	0.0015034	0
+bin	0.0015036	0
+bin	0.0015038	0
+bin	0.001504	0
+bin	0.0015042	0
+bin	0.0015044	0
+bin	0.0015046	0
+bin	0.0015048	712
+bin	0.001505	0
+bin	0.0015052	0
+bin	0.0015054	0
+bin	0.0015056	0
+bin	0.0015058	0
+bin	0.001506	0
+bin	0.0015062	0
+bin	0.0015064	0
+bin	0.0015066	0
+bin	0.0015068	0
+bin	0.001507	0
+bin	0.0015072	0
+bin	0.0015074	0
+bin	0.0015076	0
+bin	0.0015078	0
+bin	0.001508	0
+bin	0.0015082	0
+bin	0.0015084	0
+bin	0.0015086	0
+bin	0.0015088	0
+bin	0.001509	0
+bin	0.0015092	0
+bin	0.0015094	0
+bin	0.0015096	0
+bin	0.0015098	0
+bin	0.00151	0
+bin	0.0015102	0
+bin	0.0015104	0
+bin	0.0015106	0
+bin	0.0015108	0
+bin	0.001511	0
+bin	0.0015112	0
+bin	0.0015114	679
+bin	0.0015116	0
+bin	0.0015118	0
+bin	0.001512	0
+bin	0.0015122	0
+bin	0.0015124	0
+bin	0.0015126	0
+bin	0.0015128	0
+bin	0.001513	0
+bin	0.0015132	0
+statistic HiddenNodeShowcase.hostC.wlan[0].mac.dcf frameSequenceNumPackets:histogram
+field count 1391
+field mean 2
+field stddev 0
+field min 2
+field max 2
+field sum 2782
+field sqrsum 5564
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	1	0
+bin	2	1391
+bin	3	0
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeer:count 679
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 9506
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerUnicast:count 679
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 9506
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:count 679
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 9506
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeer:count 1391
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 1480024
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerUnicast:count 1391
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 1480024
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerWithRetry:count 661
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 703304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerWithoutRetry:count 730
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 776720
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetDrop:count 1105
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetDrop:sum(packetBytes) 346220
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetDropNotAddressedToUs:count 790
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 11060
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetDropQueueOverflow:count 264
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetDropQueueOverflow:sum(packetBytes) 280896
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetDropRetryLimitReached:count 51
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf packetDropRetryLimitReached:sum(packetBytes) 54264
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac.dcf linkBroken:count 51
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetReceivedFromLower:count 1469
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 20566
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetSentToLower:count 1392
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetSentToLower:sum(packetBytes) 1481088
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetReceivedFromUpper:count 995
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 1030820
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetSentToUpper:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetSentToUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDrop:count 1105
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDrop:sum(packetBytes) 346220
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropNotAddressedToUs:count 790
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 11060
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropQueueOverflow:count 264
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 280896
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropRetryLimitReached:count 51
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 54264
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0].mac linkBroken:count 51
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+statistic HiddenNodeShowcase.hostC.wlan[0].radio radioChannel:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar HiddenNodeShowcase.hostC.wlan[0].radio radioMode:count 2786
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].radio receptionState:count 5722
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+scalar HiddenNodeShowcase.hostC.wlan[0].radio transmissionState:count 5566
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+statistic HiddenNodeShowcase.hostC.wlan[0].radio minSnir:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic HiddenNodeShowcase.hostC.wlan[0].radio packetErrorRate:histogram
+field count 1469
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1469
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic HiddenNodeShowcase.hostC.wlan[0].radio bitErrorRate:histogram
+field count 1469
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1469
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+statistic HiddenNodeShowcase.hostC.wlan[0].radio symbolErrorRate:histogram
+field count 1469
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1469
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar HiddenNodeShowcase.hostC.wlan[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar HiddenNodeShowcase.hostC.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.wlan[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar HiddenNodeShowcase.hostC.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar HiddenNodeShowcase.hostC.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostC.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.udp packetSent:count 995
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar HiddenNodeShowcase.hostC.udp packetSent:sum(packetBytes) 1002960
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar HiddenNodeShowcase.hostC.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar HiddenNodeShowcase.hostC.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar HiddenNodeShowcase.hostC.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar HiddenNodeShowcase.hostC.app[0] "packets sent" 995
+scalar HiddenNodeShowcase.hostC.app[0] "packets received" 0
+scalar HiddenNodeShowcase.hostC.app[0] packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar HiddenNodeShowcase.hostC.app[0] packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic HiddenNodeShowcase.hostC.app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode stats
+attr source dataAge(packetReceived)
+attr title "received packet lifetime"
+attr unit s
+scalar HiddenNodeShowcase.hostC.app[0] packetSent:count 995
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar HiddenNodeShowcase.hostC.app[0] packetSent:sum(packetBytes) 995000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar HiddenNodeShowcase.radioMedium.propagation "Arrival computation count" 8754
+scalar HiddenNodeShowcase.radioMedium "transmission count" 4377
+scalar HiddenNodeShowcase.radioMedium "signal send count" 8754
+scalar HiddenNodeShowcase.radioMedium "reception computation count" 8754
+scalar HiddenNodeShowcase.radioMedium "interference computation count" 27208
+scalar HiddenNodeShowcase.radioMedium "reception decision computation count" 5199
+scalar HiddenNodeShowcase.radioMedium "listening decision computation count" 14119
+scalar HiddenNodeShowcase.radioMedium "reception cache hit" 82.700288526145
+attr unit %
+scalar HiddenNodeShowcase.radioMedium "interference cache hit" 66.666666666667
+attr unit %
+scalar HiddenNodeShowcase.radioMedium "noise cache hit" 0
+attr unit %
+scalar HiddenNodeShowcase.radioMedium "snir cache hit" 50
+attr unit %
+scalar HiddenNodeShowcase.radioMedium "reception decision cache hit" 50
+attr unit %
+scalar HiddenNodeShowcase.radioMedium "reception result cache hit" 0
+attr unit %
+
