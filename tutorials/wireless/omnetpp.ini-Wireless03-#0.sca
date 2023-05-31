@@ -1,8 +1,8 @@
 version 3
-run Wireless03-0-20230511-14:26:23-56797
+run Wireless03-0-20230531-12:30:12-39668
 attr configname Wireless03
-attr datetime 20230511-14:26:23
-attr datetimef 20230511-142623
+attr datetime 20230531-12:30:12
+attr datetimef 20230531-123012
 attr description "Adding more nodes and decreasing the communication range"
 attr experiment Wireless03
 attr inifile omnetpp.ini
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network WirelessB
-attr processid 56797
+attr processid 39668
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -25,7 +25,7 @@ config sim-time-limit 20s
 config description "Adding more nodes and decreasing the communication range"
 config extends Wireless02
 config network WirelessB
-config *.host*.wlan[0].radio.transmitter.communicationRange 250m
+config *.host*.wlan[0].radio.transmitter.analogModel.communicationRange 250m
 config *.hostR1.wlan[0].radio.displayCommunicationRange true
 config description "Setting up some animations"
 config extends Wireless01
@@ -37,6 +37,7 @@ config *.visualizer.physicalLinkVisualizer.packetFilter "\"UDPData*\""
 config description "Two hosts communicating wirelessly"
 config network WirelessA
 config sim-time-limit 20s
+config *.radioMedium.signalAnalogRepresentation "\"unitDisk\""
 config *.host*.ipv4.arp.typename GlobalArp
 config *.hostA.numApps 1
 config *.hostA.app[0].typename UdpBasicApp
@@ -51,7 +52,8 @@ config *.hostB.app[0].localPort 5000
 config *.host*.wlan[0].typename AckingWirelessInterface
 config *.host*.wlan[0].mac.useAck false
 config *.host*.wlan[0].mac.fullDuplex false
-config *.host*.wlan[0].radio.transmitter.communicationRange 500m
+config *.host*.wlan[0].radio.signalAnalogRepresentation "\"unitDisk\""
+config *.host*.wlan[0].radio.transmitter.analogModel.communicationRange 500m
 config *.host*.wlan[0].radio.receiver.ignoreInterference true
 config *.host*.wlan[0].mac.headerLength 23B
 config *.host*.**.bitrate 1Mbps
@@ -1341,19 +1343,19 @@ attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic WirelessB.hostR1.wlan[0].radio minSnir:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 1650
+field mean inf
+field stddev 0
+field min inf
+field max inf
+field sum inf
+field sqrsum inf
 attr recordingmode histogram
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
-bin	1	0
+bin	1	1650
 statistic WirelessB.hostR1.wlan[0].radio packetErrorRate:histogram
 field count 1650
 field mean 0
@@ -1929,19 +1931,19 @@ attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic WirelessB.hostR2.wlan[0].radio minSnir:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 1650
+field mean inf
+field stddev 0
+field min inf
+field max inf
+field sum inf
+field sqrsum inf
 attr recordingmode histogram
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
-bin	1	0
+bin	1	1650
 statistic WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram
 field count 1650
 field mean 0

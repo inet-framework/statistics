@@ -1,8 +1,8 @@
 version 3
-run Wireless02-0-20230511-14:26:22-56796
+run Wireless02-0-20230531-12:30:12-39667
 attr configname Wireless02
-attr datetime 20230511-14:26:22
-attr datetimef 20230511-142622
+attr datetime 20230531-12:30:12
+attr datetimef 20230531-123012
 attr description "Setting up some animations"
 attr experiment Wireless02
 attr inifile omnetpp.ini
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network WirelessA
-attr processid 56796
+attr processid 39667
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -32,6 +32,7 @@ config *.visualizer.physicalLinkVisualizer.packetFilter "\"UDPData*\""
 config description "Two hosts communicating wirelessly"
 config network WirelessA
 config sim-time-limit 20s
+config *.radioMedium.signalAnalogRepresentation "\"unitDisk\""
 config *.host*.ipv4.arp.typename GlobalArp
 config *.hostA.numApps 1
 config *.hostA.app[0].typename UdpBasicApp
@@ -46,7 +47,8 @@ config *.hostB.app[0].localPort 5000
 config *.host*.wlan[0].typename AckingWirelessInterface
 config *.host*.wlan[0].mac.useAck false
 config *.host*.wlan[0].mac.fullDuplex false
-config *.host*.wlan[0].radio.transmitter.communicationRange 500m
+config *.host*.wlan[0].radio.signalAnalogRepresentation "\"unitDisk\""
+config *.host*.wlan[0].radio.transmitter.analogModel.communicationRange 500m
 config *.host*.wlan[0].radio.receiver.ignoreInterference true
 config *.host*.wlan[0].mac.headerLength 23B
 config *.host*.**.bitrate 1Mbps
@@ -889,19 +891,19 @@ attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic WirelessA.hostB.wlan[0].radio minSnir:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 1595
+field mean inf
+field stddev 0
+field min inf
+field max inf
+field sum inf
+field sqrsum inf
 attr recordingmode histogram
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
-bin	1	0
+bin	1	1595
 statistic WirelessA.hostB.wlan[0].radio packetErrorRate:histogram
 field count 1595
 field mean 0

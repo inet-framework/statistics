@@ -1,8 +1,8 @@
 version 3
-run CSMAWithUnitDiskRadio-0-20230511-14:07:36-52484
+run CSMAWithUnitDiskRadio-0-20230531-12:19:49-38409
 attr configname CSMAWithUnitDiskRadio
-attr datetime 20230511-14:07:36
-attr datetimef 20230511-140736
+attr datetime 20230531-12:19:49
+attr datetimef 20230531-121949
 attr description "Ieee802154Mac mac with unit disk radio"
 attr experiment CSMAWithUnitDiskRadio
 attr inifile omnetpp.ini
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network TestNic
-attr processid 52484
+attr processid 38409
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -33,13 +33,15 @@ config *.host[*].wlan[*].mac.rxSetupTime 0s
 config *.host[*].wlan[*].mac.headerLength 16B
 config *.host[*].wlan[*].queue.typename DropTailQueue
 config *.host[*].wlan[*].queue.packetCapacity 100
-config *.radioMedium.typename UnitDiskRadioMedium
-config *.host[*].wlan[*].radio.typename UnitDiskRadio
+config *.radioMedium.signalAnalogRepresentation "\"unitDisk\""
+config *.host[*].wlan[*].radio.typename GenericRadio
+config *.host[*].wlan[*].radio.signalAnalogRepresentation "\"unitDisk\""
+config *.host[*].wlan[*].radio.transmitter.bitrate 2Mbps
 config *.host[*].wlan[*].radio.transmitter.preambleDuration 0s
 config *.host[*].wlan[*].radio.transmitter.headerLength 96b
-config *.host[*].wlan[*].radio.transmitter.communicationRange 100m
-config *.host[*].wlan[*].radio.transmitter.interferenceRange 0m
-config *.host[*].wlan[*].radio.transmitter.detectionRange 0m
+config *.host[*].wlan[*].radio.transmitter.analogModel.communicationRange 100m
+config *.host[*].wlan[*].radio.transmitter.analogModel.interferenceRange 0m
+config *.host[*].wlan[*].radio.transmitter.analogModel.detectionRange 0m
 config *.host[*].wlan[*].radio.receiver.ignoreInterference true
 config num-rngs 3
 config network TestNic
@@ -535,19 +537,19 @@ attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic TestNic.host[0].wlan[0].radio minSnir:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 101
+field mean inf
+field stddev 0
+field min inf
+field max inf
+field sum inf
+field sqrsum inf
 attr recordingmode histogram
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
-bin	1	0
+bin	1	101
 statistic TestNic.host[0].wlan[0].radio packetErrorRate:histogram
 field count 101
 field mean 0
@@ -1320,19 +1322,19 @@ attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic TestNic.host[1].wlan[0].radio minSnir:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 101
+field mean inf
+field stddev 0
+field min inf
+field max inf
+field sum inf
+field sqrsum inf
 attr recordingmode histogram
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
-bin	1	0
+bin	1	101
 statistic TestNic.host[1].wlan[0].radio packetErrorRate:histogram
 field count 101
 field mean 0

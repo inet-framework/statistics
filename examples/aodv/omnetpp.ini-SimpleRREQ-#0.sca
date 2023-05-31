@@ -1,8 +1,8 @@
 version 3
-run SimpleRREQ-0-20230426-16:22:27-212804
+run SimpleRREQ-0-20230531-12:10:32-37001
 attr configname SimpleRREQ
-attr datetime 20230426-16:22:27
-attr datetimef 20230426-162227
+attr datetime 20230531-12:10:32
+attr datetimef 20230531-121032
 attr description "demonstrates a single RREQ-RREP exchange"
 attr experiment SimpleRREQ
 attr inifile omnetpp.ini
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network SimpleRREQ
-attr processid 212804
+attr processid 37001
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -25,7 +25,7 @@ config sim-time-limit 100s
 config sim-time-limit 100s
 config description "demonstrates a single RREQ-RREP exchange"
 config network SimpleRREQ
-config **.wlan[*].radio.transmitter.communicationRange 240m
+config **.wlan[*].radio.transmitter.analogModel.communicationRange 240m
 config **.sender.numApps 1
 config **.sender.app[0].typename PingApp
 config **.sender.app[0].startTime uniform(1s,5s)
@@ -38,10 +38,12 @@ config **.wlan[*].mac.rng-0 2
 config **.wlan[*].typename AckingWirelessInterface
 config **.wlan[*].bitrate 2Mbps
 config **.wlan[*].mac.headerLength 23B
-config **.wlan[*].radio.typename UnitDiskRadio
+config **.wlan[*].radio.typename GenericRadio
+config **.wlan[*].radio.signalAnalogRepresentation "\"unitDisk\""
 config **.wlan[*].radio.transmitter.headerLength 96b
-config **.wlan[*].radio.transmitter.interferenceRange 0m
-config **.wlan[*].radio.transmitter.detectionRange 0m
+config **.wlan[*].radio.transmitter.analogModel.communicationRange 250m
+config **.wlan[*].radio.transmitter.analogModel.interferenceRange 0m
+config **.wlan[*].radio.transmitter.analogModel.detectionRange 0m
 config **.wlan[*].radio.receiver.ignoreInterference true
 config **.mobility.constraintAreaMinZ 0m
 config **.mobility.constraintAreaMaxZ 0m
@@ -524,19 +526,19 @@ attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic SimpleRREQ.sender.wlan[0].radio minSnir:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 198
+field mean inf
+field stddev 0
+field min inf
+field max inf
+field sum inf
+field sqrsum inf
 attr recordingmode histogram
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
-bin	1	0
+bin	1	198
 statistic SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram
 field count 198
 field mean 0
@@ -1445,19 +1447,19 @@ attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 198
+field mean inf
+field stddev 0
+field min inf
+field max inf
+field sum inf
+field sqrsum inf
 attr recordingmode histogram
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
-bin	1	0
+bin	1	198
 statistic SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram
 field count 198
 field mean 0
@@ -2241,19 +2243,19 @@ attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
 statistic SimpleRREQ.receiver.wlan[0].radio minSnir:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 198
+field mean inf
+field stddev 0
+field min inf
+field max inf
+field sum inf
+field sqrsum inf
 attr recordingmode histogram
 attr source minimumSnir(packetSentToUpper)
 attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
-bin	1	0
+bin	1	198
 statistic SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram
 field count 198
 field mean 0
