@@ -1,8 +1,8 @@
 version 3
-run General-0-20230426-16:26:39-213922
+run General-0-20230725-14:27:53-46153
 attr configname General
-attr datetime 20230426-16:26:39
-attr datetimef 20230426-162639
+attr datetime 20230725-14:27:53
+attr datetimef 20230725-142753
 attr description "Traffic shaping several packet sources directly"
 attr experiment General
 attr inifile omnetpp.ini
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network PeekingUnderTheHoodShowcase
-attr processid 213922
+attr processid 46153
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -19,39 +19,42 @@ attr runnumber 0
 attr seedset 0
 config **.param-recording false
 config **.vector-recording false
-config image-path /home/levy/workspace/inet/images
+config image-path /home/user/inet/images
 config output-scalar-file results/omnetpp.ini-General-#0.sca
-config sim-time-limit 1s
+config sim-time-limit 10s
 config network PeekingUnderTheHoodShowcase
-config sim-time-limit 1s
+config sim-time-limit 10s
 config description "Traffic shaping several packet sources directly"
 config *.numSources 3
 config *.source[*].packetLength 1000B
-config *.source[*].productionInterval exponential(0.5ms)
-config *.meter[*].committedInformationRate 8Mbps
+config *.source[0].productionInterval "replaceUnit(sin(dropUnit(simTime() * 2)) + 5, \"ms\") / 10"
+config *.source[1].productionInterval "replaceUnit(sin(dropUnit(simTime() * 3)) + 5, \"ms\") / 10"
+config *.source[2].productionInterval "replaceUnit(sin(dropUnit(simTime() * 1)) + sin(dropUnit(simTime() * 8)) + 5, \"ms\") / 10"
+config *.meter[*].committedInformationRate 16Mbps
 config *.meter[*].committedBurstSize 10kB
 config *.meter[*].maxResidenceTime 10ms
 config *.server.processingTime 0.1ms
+config *.classifier.packetFilters "[\"source[0]*\", \"source[1]*\", \"source[2]*\"]"
 
-scalar PeekingUnderTheHoodShowcase.source[0] packets:count 1930
+scalar PeekingUnderTheHoodShowcase.source[0] packets:count 20284
 attr recordingmode count
 attr source packetPushed
 attr title "packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.source[0] packetLengths:sum 15440000
+scalar PeekingUnderTheHoodShowcase.source[0] packetLengths:sum 162272000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushed)
 attr title "packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.source[0] packetLengths:histogram
-field count 1930
+field count 20284
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15440000
-field sqrsum 123520000000
+field sum 162272000
+field sqrsum 1298176000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushed)
@@ -59,27 +62,27 @@ attr title "packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1930
+bin	8000	20284
 bin	8001	0
-scalar PeekingUnderTheHoodShowcase.source[1] packets:count 1995
+scalar PeekingUnderTheHoodShowcase.source[1] packets:count 20299
 attr recordingmode count
 attr source packetPushed
 attr title "packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.source[1] packetLengths:sum 15960000
+scalar PeekingUnderTheHoodShowcase.source[1] packetLengths:sum 162392000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushed)
 attr title "packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.source[1] packetLengths:histogram
-field count 1995
+field count 20299
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15960000
-field sqrsum 127680000000
+field sum 162392000
+field sqrsum 1299136000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushed)
@@ -87,27 +90,27 @@ attr title "packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1995
+bin	8000	20299
 bin	8001	0
-scalar PeekingUnderTheHoodShowcase.source[2] packets:count 1925
+scalar PeekingUnderTheHoodShowcase.source[2] packets:count 19995
 attr recordingmode count
 attr source packetPushed
 attr title "packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.source[2] packetLengths:sum 15400000
+scalar PeekingUnderTheHoodShowcase.source[2] packetLengths:sum 159960000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushed)
 attr title "packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.source[2] packetLengths:histogram
-field count 1925
+field count 19995
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15400000
-field sqrsum 123200000000
+field sum 159960000
+field sqrsum 1279680000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushed)
@@ -115,27 +118,27 @@ attr title "packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1925
+bin	8000	19995
 bin	8001	0
-scalar PeekingUnderTheHoodShowcase.meter[0] outgoingPackets:count 1930
+scalar PeekingUnderTheHoodShowcase.meter[0] outgoingPackets:count 20284
 attr recordingmode count
 attr source "merge(packetPushedOut, packetPulledOut)"
 attr title "outgoing packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.meter[0] outgoingPacketLengths:sum 15440000
+scalar PeekingUnderTheHoodShowcase.meter[0] outgoingPacketLengths:sum 162272000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.meter[0] outgoingPacketLengths:histogram
-field count 1930
+field count 20284
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15440000
-field sqrsum 123520000000
+field sum 162272000
+field sqrsum 1298176000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
@@ -143,7 +146,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1930
+bin	8000	20284
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.meter[0] flowOutgoingPacketLengths:sum 0
 attr interpolationmode none
@@ -167,25 +170,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.meter[0] incomingPackets:count 1930
+scalar PeekingUnderTheHoodShowcase.meter[0] incomingPackets:count 20284
 attr recordingmode count
 attr source "merge(packetPushedIn, packetPulledIn)"
 attr title "incoming packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.meter[0] incomingPacketLengths:sum 15440000
+scalar PeekingUnderTheHoodShowcase.meter[0] incomingPacketLengths:sum 162272000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.meter[0] incomingPacketLengths:histogram
-field count 1930
+field count 20284
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15440000
-field sqrsum 123520000000
+field sum 162272000
+field sqrsum 1298176000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
@@ -193,7 +196,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1930
+bin	8000	20284
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.meter[0] flowIncomingPacketLengths:sum 0
 attr interpolationmode none
@@ -217,25 +220,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.meter[1] outgoingPackets:count 1995
+scalar PeekingUnderTheHoodShowcase.meter[1] outgoingPackets:count 20299
 attr recordingmode count
 attr source "merge(packetPushedOut, packetPulledOut)"
 attr title "outgoing packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.meter[1] outgoingPacketLengths:sum 15960000
+scalar PeekingUnderTheHoodShowcase.meter[1] outgoingPacketLengths:sum 162392000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.meter[1] outgoingPacketLengths:histogram
-field count 1995
+field count 20299
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15960000
-field sqrsum 127680000000
+field sum 162392000
+field sqrsum 1299136000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
@@ -243,7 +246,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1995
+bin	8000	20299
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.meter[1] flowOutgoingPacketLengths:sum 0
 attr interpolationmode none
@@ -267,25 +270,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.meter[1] incomingPackets:count 1995
+scalar PeekingUnderTheHoodShowcase.meter[1] incomingPackets:count 20299
 attr recordingmode count
 attr source "merge(packetPushedIn, packetPulledIn)"
 attr title "incoming packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.meter[1] incomingPacketLengths:sum 15960000
+scalar PeekingUnderTheHoodShowcase.meter[1] incomingPacketLengths:sum 162392000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.meter[1] incomingPacketLengths:histogram
-field count 1995
+field count 20299
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15960000
-field sqrsum 127680000000
+field sum 162392000
+field sqrsum 1299136000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
@@ -293,7 +296,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1995
+bin	8000	20299
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.meter[1] flowIncomingPacketLengths:sum 0
 attr interpolationmode none
@@ -317,25 +320,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.meter[2] outgoingPackets:count 1925
+scalar PeekingUnderTheHoodShowcase.meter[2] outgoingPackets:count 19995
 attr recordingmode count
 attr source "merge(packetPushedOut, packetPulledOut)"
 attr title "outgoing packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.meter[2] outgoingPacketLengths:sum 15400000
+scalar PeekingUnderTheHoodShowcase.meter[2] outgoingPacketLengths:sum 159960000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.meter[2] outgoingPacketLengths:histogram
-field count 1925
+field count 19995
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15400000
-field sqrsum 123200000000
+field sum 159960000
+field sqrsum 1279680000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
@@ -343,7 +346,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1925
+bin	8000	19995
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.meter[2] flowOutgoingPacketLengths:sum 0
 attr interpolationmode none
@@ -367,25 +370,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.meter[2] incomingPackets:count 1925
+scalar PeekingUnderTheHoodShowcase.meter[2] incomingPackets:count 19995
 attr recordingmode count
 attr source "merge(packetPushedIn, packetPulledIn)"
 attr title "incoming packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.meter[2] incomingPacketLengths:sum 15400000
+scalar PeekingUnderTheHoodShowcase.meter[2] incomingPacketLengths:sum 159960000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.meter[2] incomingPacketLengths:histogram
-field count 1925
+field count 19995
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 15400000
-field sqrsum 123200000000
+field sum 159960000
+field sqrsum 1279680000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
@@ -393,7 +396,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	1925
+bin	8000	19995
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.meter[2] flowIncomingPacketLengths:sum 0
 attr interpolationmode none
@@ -444,25 +447,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.filter outgoingPackets:count 3056
+scalar PeekingUnderTheHoodShowcase.filter outgoingPackets:count 56540
 attr recordingmode count
 attr source "merge(packetPushedOut, packetPulledOut)"
 attr title "outgoing packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.filter outgoingPacketLengths:sum 24448000
+scalar PeekingUnderTheHoodShowcase.filter outgoingPacketLengths:sum 452320000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.filter outgoingPacketLengths:histogram
-field count 3056
+field count 56540
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24448000
-field sqrsum 195584000000
+field sum 452320000
+field sqrsum 3618560000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
@@ -470,7 +473,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3056
+bin	8000	56540
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.filter flowOutgoingPacketLengths:sum 0
 attr interpolationmode none
@@ -494,25 +497,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.filter incomingPackets:count 5850
+scalar PeekingUnderTheHoodShowcase.filter incomingPackets:count 60578
 attr recordingmode count
 attr source "merge(packetPushedIn, packetPulledIn)"
 attr title "incoming packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.filter incomingPacketLengths:sum 46800000
+scalar PeekingUnderTheHoodShowcase.filter incomingPacketLengths:sum 484624000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.filter incomingPacketLengths:histogram
-field count 5850
+field count 60578
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 46800000
-field sqrsum 374400000000
+field sum 484624000
+field sqrsum 3876992000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
@@ -520,7 +523,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	5850
+bin	8000	60578
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.filter flowIncomingPacketLengths:sum 0
 attr interpolationmode none
@@ -544,25 +547,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.filter droppedPackets:count 2794
+scalar PeekingUnderTheHoodShowcase.filter droppedPackets:count 4038
 attr recordingmode count
 attr source packetDropped
 attr title "dropped packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.filter droppedPacketLengths:sum 22352000
+scalar PeekingUnderTheHoodShowcase.filter droppedPacketLengths:sum 32304000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetDropped)
 attr title "dropped packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.filter droppedPacketLengths:histogram
-field count 2794
+field count 4038
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 22352000
-field sqrsum 178816000000
+field sum 32304000
+field sqrsum 258432000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetDropped)
@@ -570,7 +573,7 @@ attr title "dropped packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	2794
+bin	8000	4038
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.filter flowDroppedPacketLengths:sum 0
 attr interpolationmode none
@@ -594,42 +597,42 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.queue queueLength:last 28
+scalar PeekingUnderTheHoodShowcase.queue queueLength:last 39
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode last
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, last"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.queue queueLength:max 32
+scalar PeekingUnderTheHoodShowcase.queue queueLength:max 61
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, max"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.queue queueLength:timeavg 27.95428934226
+scalar PeekingUnderTheHoodShowcase.queue queueLength:timeavg 24.716108785984
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, timeavg"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.queue queueBitLength:last 224000
+scalar PeekingUnderTheHoodShowcase.queue queueBitLength:last 312000
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode last
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, last"
 attr unit b
-scalar PeekingUnderTheHoodShowcase.queue queueBitLength:max 256000
+scalar PeekingUnderTheHoodShowcase.queue queueBitLength:max 488000
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, max"
 attr unit b
-scalar PeekingUnderTheHoodShowcase.queue queueBitLength:timeavg 223634.31473808
+scalar PeekingUnderTheHoodShowcase.queue queueBitLength:timeavg 197728.87028786
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -637,102 +640,103 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.queue queueingTime:histogram
-field count 3028
-field mean 0.0091866819992774
-field stddev 0.0015879736610515
+field count 56501
+field mean 0.004370956714091
+field stddev 0.0046681792377968
 field min 0
-field max 0.010120078071
-field sum 27.817273093812
-field sqrsum 0.26318150787389
+field max 0.010172928444
+field sum 246.96342530286
+field sqrsum 2.3107086448476
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetPulled)
 attr title "queueing times"
 attr unit s
 bin	-inf	0
-bin	0	59
-bin	0.0002	2
-bin	0.0004	2
-bin	0.0006	1
-bin	0.0008	0
-bin	0.001	2
-bin	0.0012	1
-bin	0.0014	1
-bin	0.0016	1
-bin	0.0018	1
-bin	0.002	2
-bin	0.0022	2
-bin	0.0024	0
-bin	0.0026	0
-bin	0.0028	2
-bin	0.003	1
-bin	0.0032	2
-bin	0.0034	0
-bin	0.0036	0
-bin	0.0038	0
-bin	0.004	3
-bin	0.0042	0
-bin	0.0044	2
-bin	0.0046	1
-bin	0.0048	1
-bin	0.005	3
-bin	0.0052	2
-bin	0.0054	4
-bin	0.0056	3
-bin	0.0058	4
-bin	0.006	1
-bin	0.0062	6
-bin	0.0064	1
-bin	0.0066	5
-bin	0.0068	7
-bin	0.007	8
-bin	0.0072	8
-bin	0.0074	10
-bin	0.0076	20
-bin	0.0078	35
-bin	0.008	36
-bin	0.0082	38
-bin	0.0084	77
-bin	0.0086	104
-bin	0.0088	151
-bin	0.009	166
-bin	0.0092	283
-bin	0.0094	387
-bin	0.0096	627
-bin	0.0098	876
-bin	0.01	80
-bin	0.0102	0
-bin	0.0104	0
-bin	0.0106	0
-bin	0.0108	0
-bin	0.011	0
-bin	0.0112	0
-bin	0.0114	0
-bin	0.0116	0
-bin	0.0118	0
-bin	0.012	0
-bin	0.0122	0
-bin	0.0124	0
-bin	0.0126	0
-scalar PeekingUnderTheHoodShowcase.queue outgoingPackets:count 3028
+bin	0	28230
+bin	0.00016	305
+bin	0.00032	93
+bin	0.00048	94
+bin	0.00064	93
+bin	0.0008	103
+bin	0.00096	92
+bin	0.00112	92
+bin	0.00128	85
+bin	0.00144	102
+bin	0.0016	94
+bin	0.00176	87
+bin	0.00192	92
+bin	0.00208	94
+bin	0.00224	89
+bin	0.0024	90
+bin	0.00256	92
+bin	0.00272	90
+bin	0.00288	94
+bin	0.00304	89
+bin	0.0032	92
+bin	0.00336	94
+bin	0.00352	94
+bin	0.00368	85
+bin	0.00384	95
+bin	0.004	93
+bin	0.00416	90
+bin	0.00432	90
+bin	0.00448	94
+bin	0.00464	99
+bin	0.0048	94
+bin	0.00496	93
+bin	0.00512	97
+bin	0.00528	94
+bin	0.00544	96
+bin	0.0056	97
+bin	0.00576	101
+bin	0.00592	96
+bin	0.00608	97
+bin	0.00624	105
+bin	0.0064	95
+bin	0.00656	179
+bin	0.00672	140
+bin	0.00688	131
+bin	0.00704	128
+bin	0.0072	131
+bin	0.00736	130
+bin	0.00752	124
+bin	0.00768	139
+bin	0.00784	130
+bin	0.008	150
+bin	0.00816	138
+bin	0.00832	149
+bin	0.00848	146
+bin	0.00864	163
+bin	0.0088	174
+bin	0.00896	172
+bin	0.00912	204
+bin	0.00928	226
+bin	0.00944	1318
+bin	0.0096	7068
+bin	0.00976	8226
+bin	0.00992	4864
+bin	0.01008	80
+bin	0.01024	0
+scalar PeekingUnderTheHoodShowcase.queue outgoingPackets:count 56501
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.queue outgoingPacketLengths:sum 24224000
+scalar PeekingUnderTheHoodShowcase.queue outgoingPacketLengths:sum 452008000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.queue outgoingPacketLengths:histogram
-field count 3028
+field count 56501
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24224000
-field sqrsum 193792000000
+field sum 452008000
+field sqrsum 3616064000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -740,7 +744,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3028
+bin	8000	56501
 bin	8001	0
 statistic PeekingUnderTheHoodShowcase.queue flowQueueingTime:histogram
 field count 0
@@ -758,25 +762,25 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.queue incomingPackets:count 3056
+scalar PeekingUnderTheHoodShowcase.queue incomingPackets:count 56540
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.queue incomingPacketLengths:sum 24448000
+scalar PeekingUnderTheHoodShowcase.queue incomingPacketLengths:sum 452320000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.queue incomingPacketLengths:histogram
-field count 3056
+field count 56540
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24448000
-field sqrsum 195584000000
+field sum 452320000
+field sqrsum 3618560000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -784,7 +788,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3056
+bin	8000	56540
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.queue droppedPacketsQueueOverflow:count 0
 attr interpolationmode none
@@ -798,25 +802,25 @@ attr recordingmode sum
 attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
 attr title "dropped packet lengths: queue overflow, sum"
 attr unit b
-scalar PeekingUnderTheHoodShowcase.gate outgoingPackets:count 3028
+scalar PeekingUnderTheHoodShowcase.gate outgoingPackets:count 56501
 attr recordingmode count
 attr source "merge(packetPushedOut, packetPulledOut)"
 attr title "outgoing packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.gate outgoingPacketLengths:sum 24224000
+scalar PeekingUnderTheHoodShowcase.gate outgoingPacketLengths:sum 452008000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.gate outgoingPacketLengths:histogram
-field count 3028
+field count 56501
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24224000
-field sqrsum 193792000000
+field sum 452008000
+field sqrsum 3616064000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
@@ -824,7 +828,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3028
+bin	8000	56501
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.gate flowOutgoingPacketLengths:sum 0
 attr interpolationmode none
@@ -848,25 +852,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.gate incomingPackets:count 3028
+scalar PeekingUnderTheHoodShowcase.gate incomingPackets:count 56501
 attr recordingmode count
 attr source "merge(packetPushedIn, packetPulledIn)"
 attr title "incoming packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.gate incomingPacketLengths:sum 24224000
+scalar PeekingUnderTheHoodShowcase.gate incomingPacketLengths:sum 452008000
 attr interpolationmode none
 attr recordingmode sum
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.gate incomingPacketLengths:histogram
-field count 3028
+field count 56501
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24224000
-field sqrsum 193792000000
+field sum 452008000
+field sqrsum 3616064000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
@@ -874,7 +878,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3028
+bin	8000	56501
 bin	8001	0
 scalar PeekingUnderTheHoodShowcase.gate flowIncomingPacketLengths:sum 0
 attr interpolationmode none
@@ -898,25 +902,25 @@ attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar PeekingUnderTheHoodShowcase.server incomingPackets:count 3028
+scalar PeekingUnderTheHoodShowcase.server incomingPackets:count 56501
 attr recordingmode count
 attr source packetPulled
 attr title "incoming packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.server incomingPacketLengths:sum 24224000
+scalar PeekingUnderTheHoodShowcase.server incomingPacketLengths:sum 452008000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.server incomingPacketLengths:histogram
-field count 3028
+field count 56501
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24224000
-field sqrsum 193792000000
+field sum 452008000
+field sqrsum 3616064000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -924,27 +928,27 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3028
+bin	8000	56501
 bin	8001	0
-scalar PeekingUnderTheHoodShowcase.server outgoingPackets:count 3027
+scalar PeekingUnderTheHoodShowcase.server outgoingPackets:count 56501
 attr recordingmode count
 attr source packetPushed
 attr title "outgoing packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.server outgoingPacketLengths:sum 24216000
+scalar PeekingUnderTheHoodShowcase.server outgoingPacketLengths:sum 452008000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushed)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PeekingUnderTheHoodShowcase.server outgoingPacketLengths:histogram
-field count 3027
+field count 56501
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24216000
-field sqrsum 193728000000
+field sum 452008000
+field sqrsum 3616064000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushed)
@@ -952,27 +956,27 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3027
+bin	8000	56501
 bin	8001	0
-scalar PeekingUnderTheHoodShowcase.sink packets:count 3027
+scalar PeekingUnderTheHoodShowcase.classifier packets:count 56501
 attr recordingmode count
 attr source packetPushed
 attr title "packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.sink packetLengths:sum 24216000
+scalar PeekingUnderTheHoodShowcase.classifier packetLengths:sum 452008000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushed)
 attr title "packet lengths, sum"
 attr unit b
-statistic PeekingUnderTheHoodShowcase.sink packetLengths:histogram
-field count 3027
+statistic PeekingUnderTheHoodShowcase.classifier packetLengths:histogram
+field count 56501
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24216000
-field sqrsum 193728000000
+field sum 452008000
+field sqrsum 3616064000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushed)
@@ -980,329 +984,349 @@ attr title "packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3027
+bin	8000	56501
 bin	8001	0
-statistic PeekingUnderTheHoodShowcase.sink meanBitLifeTimePerPacket:histogram
-field count 3027
-field mean 0.0092864563799686
-field stddev 0.0015881874860889
+scalar PeekingUnderTheHoodShowcase.sink[0] packets:count 18943
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar PeekingUnderTheHoodShowcase.sink[0] packetLengths:sum 151544000
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic PeekingUnderTheHoodShowcase.sink[0] packetLengths:histogram
+field count 18943
+field mean 8000
+field stddev 0
+field min 8000
+field max 8000
+field sum 151544000
+field sqrsum 1212352000000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	7999	0
+bin	8000	18943
+bin	8001	0
+statistic PeekingUnderTheHoodShowcase.sink[0] meanBitLifeTimePerPacket:histogram
+field count 18943
+field mean 0.0048127501835466
+field stddev 0.0047320476589664
 field min 0.0001
-field max 0.010220078071
-field sum 28.110103462165
-field sqrsum 0.26867584893747
+field max 0.010226598254
+field sum 91.167926726923
+field sqrsum 0.86292293002371
 attr interpolationmode none
 attr recordingmode histogram
 attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
 attr title "mean bit life time per packet"
 attr unit s
 bin	-inf	0
-bin	0	49
-bin	0.0002	11
-bin	0.0004	2
-bin	0.0006	2
-bin	0.0008	0
-bin	0.001	0
-bin	0.0012	3
-bin	0.0014	1
-bin	0.0016	1
-bin	0.0018	0
-bin	0.002	3
-bin	0.0022	0
-bin	0.0024	2
-bin	0.0026	0
-bin	0.0028	2
-bin	0.003	0
-bin	0.0032	3
-bin	0.0034	0
-bin	0.0036	0
-bin	0.0038	0
-bin	0.004	1
-bin	0.0042	2
-bin	0.0044	0
-bin	0.0046	2
-bin	0.0048	1
-bin	0.005	3
-bin	0.0052	2
-bin	0.0054	4
-bin	0.0056	3
-bin	0.0058	4
-bin	0.006	2
-bin	0.0062	4
-bin	0.0064	3
-bin	0.0066	3
-bin	0.0068	3
-bin	0.007	11
-bin	0.0072	4
-bin	0.0074	13
-bin	0.0076	16
-bin	0.0078	23
-bin	0.008	37
-bin	0.0082	37
-bin	0.0084	57
-bin	0.0086	81
-bin	0.0088	132
-bin	0.009	145
-bin	0.0092	231
-bin	0.0094	352
-bin	0.0096	469
-bin	0.0098	720
-bin	0.01	582
-bin	0.0102	1
-bin	0.0104	0
-bin	0.0106	0
-bin	0.0108	0
-bin	0.011	0
-bin	0.0112	0
-bin	0.0114	0
-bin	0.0116	0
-bin	0.0118	0
-bin	0.012	0
-bin	0.0122	0
-bin	0.0124	0
-bin	0.0126	0
-bin	0.0128	0
-statistic PeekingUnderTheHoodShowcase.sink packetJitter:histogram
-field count 3027
-field mean 3.1723543445656e-06
-field stddev 0.00086592776650675
-field min -0.004749027248
-field max 0.004869913427
-field sum 0.009602716601
-field sqrsum 0.0022690187569588
+bin	6e-05	8904
+bin	0.00022	157
+bin	0.00038	28
+bin	0.00054	27
+bin	0.0007	26
+bin	0.00086	27
+bin	0.00102	27
+bin	0.00118	24
+bin	0.00134	25
+bin	0.0015	29
+bin	0.00166	26
+bin	0.00182	24
+bin	0.00198	29
+bin	0.00214	24
+bin	0.0023	26
+bin	0.00246	28
+bin	0.00262	23
+bin	0.00278	24
+bin	0.00294	30
+bin	0.0031	26
+bin	0.00326	24
+bin	0.00342	27
+bin	0.00358	27
+bin	0.00374	24
+bin	0.0039	28
+bin	0.00406	23
+bin	0.00422	27
+bin	0.00438	28
+bin	0.00454	25
+bin	0.0047	28
+bin	0.00486	27
+bin	0.00502	26
+bin	0.00518	28
+bin	0.00534	24
+bin	0.0055	29
+bin	0.00566	26
+bin	0.00582	31
+bin	0.00598	26
+bin	0.00614	27
+bin	0.0063	31
+bin	0.00646	28
+bin	0.00662	31
+bin	0.00678	27
+bin	0.00694	32
+bin	0.0071	31
+bin	0.00726	31
+bin	0.00742	31
+bin	0.00758	31
+bin	0.00774	35
+bin	0.0079	32
+bin	0.00806	37
+bin	0.00822	33
+bin	0.00838	41
+bin	0.00854	36
+bin	0.0087	43
+bin	0.00886	42
+bin	0.00902	44
+bin	0.00918	52
+bin	0.00934	47
+bin	0.0095	157
+bin	0.00966	2429
+bin	0.00982	3102
+bin	0.00998	2424
+bin	0.01014	77
+bin	0.0103	0
+statistic PeekingUnderTheHoodShowcase.sink[0] packetJitter:histogram
+field count 18943
+field mean 5.278994879375e-09
+field stddev 0.00010662667387702
+field min -0.000527945084
+field max 0.000250436753
+field sum 0.0001
+field sqrsum 0.00021535628822757
 attr interpolationmode none
 attr recordingmode histogram
 attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
 attr title "packet jitter"
 attr unit s
 bin	-inf	0
-bin	-0.005	0
-bin	-0.0048	2
-bin	-0.0046	0
-bin	-0.0044	0
-bin	-0.0042	1
-bin	-0.004	1
-bin	-0.0038	0
-bin	-0.0036	2
-bin	-0.0034	2
-bin	-0.0032	2
-bin	-0.003	4
-bin	-0.0028	4
-bin	-0.0026	9
-bin	-0.0024	12
-bin	-0.0022	13
-bin	-0.002	18
-bin	-0.0018	16
-bin	-0.0016	36
-bin	-0.0014	50
-bin	-0.0012	64
-bin	-0.001	102
-bin	-0.0008	134
-bin	-0.0006	237
-bin	-0.0004	347
-bin	-0.0002	643
-bin	0	522
-bin	0.0002	124
-bin	0.0004	138
-bin	0.0006	146
-bin	0.0008	78
-bin	0.001	88
-bin	0.0012	57
-bin	0.0014	39
-bin	0.0016	37
-bin	0.0018	25
-bin	0.002	18
-bin	0.0022	8
-bin	0.0024	11
-bin	0.0026	7
-bin	0.0028	8
-bin	0.003	4
-bin	0.0032	0
-bin	0.0034	5
-bin	0.0036	5
-bin	0.0038	1
-bin	0.004	0
-bin	0.0042	5
-bin	0.0044	1
-bin	0.0046	0
-bin	0.0048	1
-bin	0.005	0
-bin	0.0052	0
-bin	0.0054	0
-bin	0.0056	0
-bin	0.0058	0
-statistic PeekingUnderTheHoodShowcase.sink packetDelayDifferenceToMean:histogram
-field count 3027
-field mean -0.00093271742362174
-field stddev 0.001280527479685
-field min -0.0078833434766147
-field max 0.0041059368528053
-field sum -2.823335641303
-field sqrsum 0.0075952597403428
+bin	-0.000528	2
+bin	-0.000512	0
+bin	-0.000496	5
+bin	-0.00048	14
+bin	-0.000464	17
+bin	-0.000448	24
+bin	-0.000432	31
+bin	-0.000416	42
+bin	-0.0004	76
+bin	-0.000384	91
+bin	-0.000368	106
+bin	-0.000352	120
+bin	-0.000336	201
+bin	-0.00032	285
+bin	-0.000304	216
+bin	-0.000288	22
+bin	-0.000272	24
+bin	-0.000256	23
+bin	-0.00024	23
+bin	-0.000224	12
+bin	-0.000208	5
+bin	-0.000192	5
+bin	-0.000176	9
+bin	-0.00016	8
+bin	-0.000144	17
+bin	-0.000128	28
+bin	-0.000112	87
+bin	-9.6e-05	358
+bin	-8e-05	356
+bin	-6.4e-05	397
+bin	-4.8e-05	766
+bin	-3.2e-05	899
+bin	-1.6e-05	983
+bin	0	5287
+bin	1.6e-05	1100
+bin	3.2e-05	1360
+bin	4.8e-05	1185
+bin	6.4e-05	1268
+bin	8e-05	1714
+bin	9.6e-05	1184
+bin	0.000112	175
+bin	0.000128	112
+bin	0.000144	114
+bin	0.00016	90
+bin	0.000176	74
+bin	0.000192	17
+bin	0.000208	3
+bin	0.000224	6
+bin	0.00024	2
+bin	0.000256	0
+statistic PeekingUnderTheHoodShowcase.sink[0] packetDelayDifferenceToMean:histogram
+field count 18943
+field mean -0.0014040689782523
+field stddev 0.0045185993267545
+field min -0.0096086529647786
+field max 0.0048664570175496
+field sum -26.597278655033
+field sqrsum 0.42409724259185
 attr interpolationmode none
 attr recordingmode histogram
 attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
 attr title "packet delay difference to mean"
 attr unit s
 bin	-inf	0
-bin	-0.01	0
-bin	-0.0098	0
-bin	-0.0096	0
-bin	-0.0094	0
-bin	-0.0092	0
-bin	-0.009	0
-bin	-0.0088	0
-bin	-0.0086	0
-bin	-0.0084	0
-bin	-0.0082	0
-bin	-0.008	1
-bin	-0.0078	1
-bin	-0.0076	0
-bin	-0.0074	5
-bin	-0.0072	3
-bin	-0.007	2
-bin	-0.0068	2
-bin	-0.0066	5
-bin	-0.0064	8
-bin	-0.0062	3
-bin	-0.006	4
-bin	-0.0058	8
-bin	-0.0056	14
-bin	-0.0054	6
-bin	-0.0052	9
-bin	-0.005	5
-bin	-0.0048	14
-bin	-0.0046	7
-bin	-0.0044	11
-bin	-0.0042	8
-bin	-0.004	11
-bin	-0.0038	18
-bin	-0.0036	15
-bin	-0.0034	20
-bin	-0.0032	23
-bin	-0.003	21
-bin	-0.0028	21
-bin	-0.0026	29
-bin	-0.0024	38
-bin	-0.0022	43
-bin	-0.002	42
-bin	-0.0018	78
-bin	-0.0016	93
-bin	-0.0014	154
-bin	-0.0012	231
-bin	-0.001	409
-bin	-0.0008	498
-bin	-0.0006	351
-bin	-0.0004	217
-bin	-0.0002	182
-bin	0	128
-bin	0.0002	88
-bin	0.0004	60
-bin	0.0006	33
-bin	0.0008	27
-bin	0.001	21
-bin	0.0012	22
-bin	0.0014	8
-bin	0.0016	7
-bin	0.0018	2
-bin	0.002	5
-bin	0.0022	4
-bin	0.0024	1
-bin	0.0026	0
-bin	0.0028	3
-bin	0.003	1
-bin	0.0032	0
-bin	0.0034	2
-bin	0.0036	3
-bin	0.0038	1
-bin	0.004	1
-bin	0.0042	0
-statistic PeekingUnderTheHoodShowcase.sink packetDelayVariation:histogram
-field count 3027
-field mean 0.0022901843600174
-field stddev 0.00079866854813467
+bin	-0.00974	26
+bin	-0.00942	98
+bin	-0.0091	145
+bin	-0.00878	143
+bin	-0.00846	164
+bin	-0.00814	168
+bin	-0.00782	180
+bin	-0.0075	191
+bin	-0.00718	215
+bin	-0.00686	272
+bin	-0.00654	605
+bin	-0.00622	856
+bin	-0.0059	1561
+bin	-0.00558	1976
+bin	-0.00526	1409
+bin	-0.00494	335
+bin	-0.00462	104
+bin	-0.0043	89
+bin	-0.00398	78
+bin	-0.00366	75
+bin	-0.00334	71
+bin	-0.00302	67
+bin	-0.0027	64
+bin	-0.00238	64
+bin	-0.00206	60
+bin	-0.00174	63
+bin	-0.00142	59
+bin	-0.0011	60
+bin	-0.00078	56
+bin	-0.00046	79
+bin	-0.00014	3133
+bin	0.00018	46
+bin	0.0005	45
+bin	0.00082	45
+bin	0.00114	44
+bin	0.00146	47
+bin	0.00178	42
+bin	0.0021	45
+bin	0.00242	46
+bin	0.00274	44
+bin	0.00306	322
+bin	0.00338	807
+bin	0.0037	972
+bin	0.00402	1641
+bin	0.00434	1401
+bin	0.00466	930
+bin	0.00498	0
+statistic PeekingUnderTheHoodShowcase.sink[0] packetDelayVariation:histogram
+field count 18943
+field mean 0.0037892897387389
+field stddev 0.0017634015163449
 field min 0
-field max 0.0042479877492377
-field sum 6.9323880577727
-field sqrsum 0.017806645714515
+field max 0.0048132132023463
+field sum 71.780515520932
+field sqrsum 0.33089892822931
 attr recordingmode histogram
 attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
 attr title "packet delay variation"
 attr unit s
 bin	-inf	0
-bin	0	51
-bin	0.0001	6
-bin	0.0002	4
-bin	0.0003	5
-bin	0.0004	3
-bin	0.0005	3
-bin	0.0006	1
-bin	0.0007	2
-bin	0.0008	1
-bin	0.0009	2
-bin	0.001	1
-bin	0.0011	2
-bin	0.0012	0
-bin	0.0013	1
-bin	0.0014	2
-bin	0.0015	103
-bin	0.0016	411
-bin	0.0017	311
-bin	0.0018	256
-bin	0.0019	217
-bin	0.002	187
-bin	0.0021	161
-bin	0.0022	137
-bin	0.0023	118
-bin	0.0024	108
-bin	0.0025	94
-bin	0.0026	84
-bin	0.0027	74
-bin	0.0028	67
-bin	0.0029	60
-bin	0.003	54
-bin	0.0031	49
-bin	0.0032	47
-bin	0.0033	41
-bin	0.0034	39
-bin	0.0035	39
-bin	0.0036	42
-bin	0.0037	32
-bin	0.0038	33
-bin	0.0039	40
-bin	0.004	39
-bin	0.0041	54
-bin	0.0042	46
-bin	0.0043	0
-bin	0.0044	0
-bin	0.0045	0
-bin	0.0046	0
-bin	0.0047	0
-bin	0.0048	0
-bin	0.0049	0
-bin	0.005	0
-bin	0.0051	0
-bin	0.0052	0
-bin	0.0053	0
-bin	0.0054	0
-scalar PeekingUnderTheHoodShowcase.sink droppedPackets:count 3027
+bin	0	3131
+bin	6.4e-05	23
+bin	0.000128	17
+bin	0.000192	14
+bin	0.000256	14
+bin	0.00032	12
+bin	0.000384	11
+bin	0.000448	11
+bin	0.000512	10
+bin	0.000576	10
+bin	0.00064	9
+bin	0.000704	9
+bin	0.000768	9
+bin	0.000832	8
+bin	0.000896	8
+bin	0.00096	8
+bin	0.001024	8
+bin	0.001088	7
+bin	0.001152	8
+bin	0.001216	7
+bin	0.00128	7
+bin	0.001344	7
+bin	0.001408	7
+bin	0.001472	7
+bin	0.001536	8
+bin	0.0016	9
+bin	0.001664	8
+bin	0.001728	10
+bin	0.001792	9
+bin	0.001856	10
+bin	0.00192	11
+bin	0.001984	11
+bin	0.002048	11
+bin	0.002112	12
+bin	0.002176	13
+bin	0.00224	13
+bin	0.002304	14
+bin	0.002368	14
+bin	0.002432	15
+bin	0.002496	16
+bin	0.00256	16
+bin	0.002624	17
+bin	0.002688	18
+bin	0.002752	18
+bin	0.002816	20
+bin	0.00288	20
+bin	0.002944	21
+bin	0.003008	23
+bin	0.003072	23
+bin	0.003136	24
+bin	0.0032	26
+bin	0.003264	27
+bin	0.003328	29
+bin	0.003392	29
+bin	0.003456	32
+bin	0.00352	34
+bin	0.003584	35
+bin	0.003648	38
+bin	0.003712	40
+bin	0.003776	42
+bin	0.00384	46
+bin	0.003904	48
+bin	0.003968	53
+bin	0.004032	56
+bin	0.004096	62
+bin	0.00416	69
+bin	0.004224	73
+bin	0.004288	82
+bin	0.004352	93
+bin	0.004416	287
+bin	0.00448	869
+bin	0.004544	1062
+bin	0.004608	2098
+bin	0.004672	6480
+bin	0.004736	3211
+bin	0.0048	276
+bin	0.004864	0
+scalar PeekingUnderTheHoodShowcase.sink[0] droppedPackets:count 18943
 attr recordingmode count
 attr source packetDropped
 attr title "dropped packets, count"
 attr unit pk
-scalar PeekingUnderTheHoodShowcase.sink droppedPacketLengths:sum 24216000
+scalar PeekingUnderTheHoodShowcase.sink[0] droppedPacketLengths:sum 151544000
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetDropped)
 attr title "dropped packet lengths, sum"
 attr unit b
-statistic PeekingUnderTheHoodShowcase.sink droppedPacketLengths:histogram
-field count 3027
+statistic PeekingUnderTheHoodShowcase.sink[0] droppedPacketLengths:histogram
+field count 18943
 field mean 8000
 field stddev 0
 field min 8000
 field max 8000
-field sum 24216000
-field sqrsum 193728000000
+field sum 151544000
+field sqrsum 1212352000000
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetDropped)
@@ -1310,6 +1334,804 @@ attr title "dropped packet lengths"
 attr unit b
 bin	-inf	0
 bin	7999	0
-bin	8000	3027
+bin	8000	18943
+bin	8001	0
+scalar PeekingUnderTheHoodShowcase.sink[1] packets:count 18968
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar PeekingUnderTheHoodShowcase.sink[1] packetLengths:sum 151744000
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic PeekingUnderTheHoodShowcase.sink[1] packetLengths:histogram
+field count 18968
+field mean 8000
+field stddev 0
+field min 8000
+field max 8000
+field sum 151744000
+field sqrsum 1213952000000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	7999	0
+bin	8000	18968
+bin	8001	0
+statistic PeekingUnderTheHoodShowcase.sink[1] meanBitLifeTimePerPacket:histogram
+field count 18968
+field mean 0.0046474204199403
+field stddev 0.0046793130490778
+field min 0.0001
+field max 0.010234338211
+field sum 88.152270525428
+field sqrsum 0.82498153668793
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	6.8e-05	8444
+bin	0.000196	740
+bin	0.000324	30
+bin	0.000452	23
+bin	0.00058	29
+bin	0.000708	28
+bin	0.000836	28
+bin	0.000964	27
+bin	0.001092	23
+bin	0.00122	30
+bin	0.001348	24
+bin	0.001476	26
+bin	0.001604	28
+bin	0.001732	27
+bin	0.00186	25
+bin	0.001988	28
+bin	0.002116	23
+bin	0.002244	28
+bin	0.002372	25
+bin	0.0025	26
+bin	0.002628	25
+bin	0.002756	26
+bin	0.002884	23
+bin	0.003012	29
+bin	0.00314	26
+bin	0.003268	24
+bin	0.003396	27
+bin	0.003524	27
+bin	0.003652	26
+bin	0.00378	25
+bin	0.003908	24
+bin	0.004036	25
+bin	0.004164	29
+bin	0.004292	25
+bin	0.00442	26
+bin	0.004548	26
+bin	0.004676	27
+bin	0.004804	26
+bin	0.004932	29
+bin	0.00506	26
+bin	0.005188	26
+bin	0.005316	28
+bin	0.005444	27
+bin	0.005572	27
+bin	0.0057	23
+bin	0.005828	29
+bin	0.005956	29
+bin	0.006084	26
+bin	0.006212	27
+bin	0.00634	31
+bin	0.006468	27
+bin	0.006596	33
+bin	0.006724	28
+bin	0.006852	30
+bin	0.00698	28
+bin	0.007108	30
+bin	0.007236	32
+bin	0.007364	30
+bin	0.007492	34
+bin	0.00762	30
+bin	0.007748	31
+bin	0.007876	37
+bin	0.008004	34
+bin	0.008132	34
+bin	0.00826	36
+bin	0.008388	34
+bin	0.008516	44
+bin	0.008644	38
+bin	0.008772	43
+bin	0.0089	43
+bin	0.009028	52
+bin	0.009156	55
+bin	0.009284	56
+bin	0.009412	71
+bin	0.00954	257
+bin	0.009668	1875
+bin	0.009796	2232
+bin	0.009924	2194
+bin	0.010052	1027
+bin	0.01018	17
+bin	0.010308	0
+statistic PeekingUnderTheHoodShowcase.sink[1] packetJitter:histogram
+field count 18968
+field mean 5.1274893346689e-07
+field stddev 0.00010534114261115
+field min -0.00050853995
+field max 0.000284439628
+field sum 0.00972582177
+field sqrsum 0.0002104771641518
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-0.00051	2
+bin	-0.0005	0
+bin	-0.00049	6
+bin	-0.00048	7
+bin	-0.00047	6
+bin	-0.00046	9
+bin	-0.00045	15
+bin	-0.00044	10
+bin	-0.00043	17
+bin	-0.00042	23
+bin	-0.00041	33
+bin	-0.0004	27
+bin	-0.00039	41
+bin	-0.00038	51
+bin	-0.00037	51
+bin	-0.00036	63
+bin	-0.00035	74
+bin	-0.00034	95
+bin	-0.00033	121
+bin	-0.00032	147
+bin	-0.00031	334
+bin	-0.0003	46
+bin	-0.00029	18
+bin	-0.00028	19
+bin	-0.00027	21
+bin	-0.00026	19
+bin	-0.00025	11
+bin	-0.00024	11
+bin	-0.00023	17
+bin	-0.00022	9
+bin	-0.00021	4
+bin	-0.0002	0
+bin	-0.00019	1
+bin	-0.00018	3
+bin	-0.00017	6
+bin	-0.00016	6
+bin	-0.00015	14
+bin	-0.00014	10
+bin	-0.00013	10
+bin	-0.00012	34
+bin	-0.00011	31
+bin	-0.0001	155
+bin	-9e-05	194
+bin	-8e-05	200
+bin	-7e-05	250
+bin	-6e-05	380
+bin	-5e-05	552
+bin	-4e-05	530
+bin	-3e-05	616
+bin	-2e-05	631
+bin	-1e-05	762
+bin	0	4875
+bin	1e-05	584
+bin	2e-05	534
+bin	3e-05	598
+bin	4e-05	701
+bin	5e-05	760
+bin	6e-05	723
+bin	7e-05	831
+bin	8e-05	954
+bin	9e-05	1677
+bin	0.0001	211
+bin	0.00011	250
+bin	0.00012	124
+bin	0.00013	110
+bin	0.00014	91
+bin	0.00015	68
+bin	0.00016	61
+bin	0.00017	56
+bin	0.00018	46
+bin	0.00019	16
+bin	0.0002	1
+bin	0.00021	0
+bin	0.00022	1
+bin	0.00023	0
+bin	0.00024	1
+bin	0.00025	1
+bin	0.00026	1
+bin	0.00027	0
+bin	0.00028	1
+bin	0.00029	0
+statistic PeekingUnderTheHoodShowcase.sink[1] packetDelayDifferenceToMean:histogram
+field count 18968
+field mean -0.00090504004898138
+field stddev 0.004590581866031
+field min -0.0095575491375097
+field max 0.0048062618823712
+field sum -17.166799649079
+field sqrsum 0.41523661311951
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-0.00968	8
+bin	-0.009424	51
+bin	-0.009168	77
+bin	-0.008912	79
+bin	-0.008656	81
+bin	-0.0084	86
+bin	-0.008144	93
+bin	-0.007888	94
+bin	-0.007632	96
+bin	-0.007376	123
+bin	-0.00712	113
+bin	-0.006864	152
+bin	-0.006608	305
+bin	-0.006352	421
+bin	-0.006096	604
+bin	-0.00584	1186
+bin	-0.005584	1911
+bin	-0.005328	1583
+bin	-0.005072	604
+bin	-0.004816	178
+bin	-0.00456	109
+bin	-0.004304	84
+bin	-0.004048	86
+bin	-0.003792	76
+bin	-0.003536	74
+bin	-0.00328	67
+bin	-0.003024	63
+bin	-0.002768	68
+bin	-0.002512	58
+bin	-0.002256	62
+bin	-0.002	63
+bin	-0.001744	57
+bin	-0.001488	60
+bin	-0.001232	56
+bin	-0.000976	60
+bin	-0.00072	54
+bin	-0.000464	54
+bin	-0.000208	2124
+bin	4.8e-05	93
+bin	0.000304	52
+bin	0.00056	42
+bin	0.000816	47
+bin	0.001072	49
+bin	0.001328	49
+bin	0.001584	47
+bin	0.00184	45
+bin	0.002096	46
+bin	0.002352	47
+bin	0.002608	49
+bin	0.002864	49
+bin	0.00312	361
+bin	0.003376	461
+bin	0.003632	469
+bin	0.003888	991
+bin	0.004144	1988
+bin	0.0044	2187
+bin	0.004656	776
+bin	0.004912	0
+statistic PeekingUnderTheHoodShowcase.sink[1] packetDelayVariation:histogram
+field count 18968
+field mean 0.0040403257336313
+field stddev 0.0015068600366365
+field min 0
+field max 0.004778636785392
+field sum 76.636898515519
+field sqrsum 0.35270501875156
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	2137
+bin	6.4e-05	18
+bin	0.000128	13
+bin	0.000192	12
+bin	0.000256	10
+bin	0.00032	10
+bin	0.000384	9
+bin	0.000448	8
+bin	0.000512	8
+bin	0.000576	8
+bin	0.00064	7
+bin	0.000704	7
+bin	0.000768	7
+bin	0.000832	7
+bin	0.000896	6
+bin	0.00096	6
+bin	0.001024	7
+bin	0.001088	6
+bin	0.001152	5
+bin	0.001216	6
+bin	0.00128	6
+bin	0.001344	5
+bin	0.001408	6
+bin	0.001472	5
+bin	0.001536	5
+bin	0.0016	6
+bin	0.001664	6
+bin	0.001728	7
+bin	0.001792	6
+bin	0.001856	7
+bin	0.00192	7
+bin	0.001984	8
+bin	0.002048	8
+bin	0.002112	8
+bin	0.002176	9
+bin	0.00224	9
+bin	0.002304	9
+bin	0.002368	10
+bin	0.002432	11
+bin	0.002496	11
+bin	0.00256	11
+bin	0.002624	11
+bin	0.002688	13
+bin	0.002752	12
+bin	0.002816	14
+bin	0.00288	14
+bin	0.002944	14
+bin	0.003008	16
+bin	0.003072	16
+bin	0.003136	17
+bin	0.0032	18
+bin	0.003264	19
+bin	0.003328	19
+bin	0.003392	21
+bin	0.003456	22
+bin	0.00352	23
+bin	0.003584	25
+bin	0.003648	26
+bin	0.003712	27
+bin	0.003776	30
+bin	0.00384	31
+bin	0.003904	34
+bin	0.003968	37
+bin	0.004032	41
+bin	0.004096	43
+bin	0.00416	47
+bin	0.004224	52
+bin	0.004288	58
+bin	0.004352	208
+bin	0.004416	549
+bin	0.00448	671
+bin	0.004544	1154
+bin	0.004608	5435
+bin	0.004672	7396
+bin	0.004736	398
+bin	0.0048	0
+scalar PeekingUnderTheHoodShowcase.sink[1] droppedPackets:count 18968
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar PeekingUnderTheHoodShowcase.sink[1] droppedPacketLengths:sum 151744000
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic PeekingUnderTheHoodShowcase.sink[1] droppedPacketLengths:histogram
+field count 18968
+field mean 8000
+field stddev 0
+field min 8000
+field max 8000
+field sum 151744000
+field sqrsum 1213952000000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	7999	0
+bin	8000	18968
+bin	8001	0
+scalar PeekingUnderTheHoodShowcase.sink[2] packets:count 18590
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar PeekingUnderTheHoodShowcase.sink[2] packetLengths:sum 148720000
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic PeekingUnderTheHoodShowcase.sink[2] packetLengths:histogram
+field count 18590
+field mean 8000
+field stddev 0
+field min 8000
+field max 8000
+field sum 148720000
+field sqrsum 1189760000000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	7999	0
+bin	8000	18590
+bin	8001	0
+statistic PeekingUnderTheHoodShowcase.sink[2] meanBitLifeTimePerPacket:histogram
+field count 18590
+field mean 0.0039426211969088
+field stddev 0.0045438198233369
+field min 0.0001
+field max 0.010272928444
+field sum 73.293328050535
+field sqrsum 0.67276187319683
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	4.5e-05	9964
+bin	0.000205	280
+bin	0.000365	38
+bin	0.000525	32
+bin	0.000685	36
+bin	0.000845	34
+bin	0.001005	35
+bin	0.001165	34
+bin	0.001325	34
+bin	0.001485	35
+bin	0.001645	33
+bin	0.001805	31
+bin	0.001965	38
+bin	0.002125	31
+bin	0.002285	31
+bin	0.002445	37
+bin	0.002605	29
+bin	0.002765	35
+bin	0.002925	32
+bin	0.003085	37
+bin	0.003245	31
+bin	0.003405	36
+bin	0.003565	31
+bin	0.003725	36
+bin	0.003885	30
+bin	0.004045	36
+bin	0.004205	29
+bin	0.004365	35
+bin	0.004525	35
+bin	0.004685	32
+bin	0.004845	36
+bin	0.005005	36
+bin	0.005165	30
+bin	0.005325	39
+bin	0.005485	36
+bin	0.005645	33
+bin	0.005805	36
+bin	0.005965	38
+bin	0.006125	33
+bin	0.006285	38
+bin	0.006445	36
+bin	0.006605	88
+bin	0.006765	86
+bin	0.006925	64
+bin	0.007085	61
+bin	0.007245	59
+bin	0.007405	58
+bin	0.007565	61
+bin	0.007725	57
+bin	0.007885	63
+bin	0.008045	52
+bin	0.008205	62
+bin	0.008365	62
+bin	0.008525	61
+bin	0.008685	68
+bin	0.008845	67
+bin	0.009005	67
+bin	0.009165	77
+bin	0.009325	87
+bin	0.009485	116
+bin	0.009645	988
+bin	0.009805	2339
+bin	0.009965	1981
+bin	0.010125	388
+bin	0.010285	0
+statistic PeekingUnderTheHoodShowcase.sink[2] packetJitter:histogram
+field count 18590
+field mean 5.347659337816e-07
+field stddev 9.1626155806194e-05
+field min -0.000569375737
+field max 0.0003
+field sum 0.009941298709
+field sqrsum 0.00015606652254865
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-0.00057	3
+bin	-0.00055	0
+bin	-0.00053	1
+bin	-0.00051	2
+bin	-0.00049	7
+bin	-0.00047	12
+bin	-0.00045	15
+bin	-0.00043	18
+bin	-0.00041	22
+bin	-0.00039	34
+bin	-0.00037	46
+bin	-0.00035	86
+bin	-0.00033	57
+bin	-0.00031	61
+bin	-0.00029	86
+bin	-0.00027	120
+bin	-0.00025	61
+bin	-0.00023	88
+bin	-0.00021	120
+bin	-0.00019	130
+bin	-0.00017	135
+bin	-0.00015	179
+bin	-0.00013	113
+bin	-0.00011	311
+bin	-9e-05	698
+bin	-7e-05	805
+bin	-5e-05	1019
+bin	-3e-05	1125
+bin	-1e-05	6200
+bin	1e-05	1273
+bin	3e-05	1169
+bin	5e-05	1078
+bin	7e-05	1283
+bin	9e-05	730
+bin	0.00011	535
+bin	0.00013	371
+bin	0.00015	263
+bin	0.00017	187
+bin	0.00019	84
+bin	0.00021	34
+bin	0.00023	11
+bin	0.00025	7
+bin	0.00027	10
+bin	0.00029	1
+bin	0.00031	0
+bin	0.00033	0
+bin	0.00035	0
+bin	0.00037	0
+bin	0.00039	0
+bin	0.00041	0
+statistic PeekingUnderTheHoodShowcase.sink[2] packetDelayDifferenceToMean:histogram
+field count 18590
+field mean -0.00087502504012607
+field stddev 0.0044584166185392
+field min -0.0091118679867997
+field max 0.004863153412701
+field sum -16.266715495944
+field sqrsum 0.38373623576045
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-0.00925	3
+bin	-0.00909	37
+bin	-0.00893	78
+bin	-0.00877	112
+bin	-0.00861	130
+bin	-0.00845	115
+bin	-0.00829	172
+bin	-0.00813	167
+bin	-0.00797	178
+bin	-0.00781	157
+bin	-0.00765	154
+bin	-0.00749	147
+bin	-0.00733	147
+bin	-0.00717	101
+bin	-0.00701	122
+bin	-0.00685	211
+bin	-0.00669	275
+bin	-0.00653	245
+bin	-0.00637	322
+bin	-0.00621	449
+bin	-0.00605	520
+bin	-0.00589	468
+bin	-0.00573	366
+bin	-0.00557	369
+bin	-0.00541	435
+bin	-0.00525	432
+bin	-0.00509	291
+bin	-0.00493	154
+bin	-0.00477	84
+bin	-0.00461	68
+bin	-0.00445	71
+bin	-0.00429	76
+bin	-0.00413	73
+bin	-0.00397	97
+bin	-0.00381	72
+bin	-0.00365	44
+bin	-0.00349	38
+bin	-0.00333	39
+bin	-0.00317	48
+bin	-0.00301	32
+bin	-0.00285	39
+bin	-0.00269	39
+bin	-0.00253	39
+bin	-0.00237	33
+bin	-0.00221	37
+bin	-0.00205	39
+bin	-0.00189	35
+bin	-0.00173	36
+bin	-0.00157	37
+bin	-0.00141	36
+bin	-0.00125	32
+bin	-0.00109	38
+bin	-0.00093	35
+bin	-0.00077	33
+bin	-0.00061	38
+bin	-0.00045	31
+bin	-0.00029	40
+bin	-0.00013	672
+bin	3e-05	361
+bin	0.00019	33
+bin	0.00035	29
+bin	0.00051	54
+bin	0.00067	665
+bin	0.00083	738
+bin	0.00099	551
+bin	0.00115	412
+bin	0.00131	313
+bin	0.00147	514
+bin	0.00163	535
+bin	0.00179	188
+bin	0.00195	164
+bin	0.00211	138
+bin	0.00227	97
+bin	0.00243	22
+bin	0.00259	22
+bin	0.00275	19
+bin	0.00291	22
+bin	0.00307	22
+bin	0.00323	23
+bin	0.00339	23
+bin	0.00355	235
+bin	0.00371	1144
+bin	0.00387	712
+bin	0.00403	612
+bin	0.00419	554
+bin	0.00435	543
+bin	0.00451	961
+bin	0.00467	436
+bin	0.00483	60
+bin	0.00499	0
+statistic PeekingUnderTheHoodShowcase.sink[2] packetDelayVariation:histogram
+field count 18590
+field mean 0.00378754206104
+field stddev 0.0012112529535502
+field min 0
+field max 0.0047062721016258
+field sum 70.410406914733
+field sqrsum 0.2939549263988
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	872
+bin	6.4e-05	132
+bin	0.000128	10
+bin	0.000192	8
+bin	0.000256	8
+bin	0.00032	8
+bin	0.000384	7
+bin	0.000448	7
+bin	0.000512	6
+bin	0.000576	7
+bin	0.00064	6
+bin	0.000704	6
+bin	0.000768	6
+bin	0.000832	5
+bin	0.000896	6
+bin	0.00096	6
+bin	0.001024	5
+bin	0.001088	6
+bin	0.001152	5
+bin	0.001216	5
+bin	0.00128	6
+bin	0.001344	5
+bin	0.001408	5
+bin	0.001472	5
+bin	0.001536	5
+bin	0.0016	5
+bin	0.001664	6
+bin	0.001728	5
+bin	0.001792	5
+bin	0.001856	5
+bin	0.00192	5
+bin	0.001984	5
+bin	0.002048	5
+bin	0.002112	6
+bin	0.002176	5
+bin	0.00224	157
+bin	0.002304	338
+bin	0.002368	303
+bin	0.002432	280
+bin	0.002496	264
+bin	0.00256	250
+bin	0.002624	236
+bin	0.002688	222
+bin	0.002752	215
+bin	0.002816	203
+bin	0.00288	194
+bin	0.002944	188
+bin	0.003008	182
+bin	0.003072	176
+bin	0.003136	172
+bin	0.0032	167
+bin	0.003264	316
+bin	0.003328	521
+bin	0.003392	542
+bin	0.003456	168
+bin	0.00352	171
+bin	0.003584	175
+bin	0.003648	164
+bin	0.003712	139
+bin	0.003776	77
+bin	0.00384	83
+bin	0.003904	90
+bin	0.003968	98
+bin	0.004032	106
+bin	0.004096	310
+bin	0.00416	236
+bin	0.004224	158
+bin	0.004288	177
+bin	0.004352	203
+bin	0.004416	242
+bin	0.00448	1657
+bin	0.004544	2898
+bin	0.004608	4075
+bin	0.004672	1238
+bin	0.004736	0
+scalar PeekingUnderTheHoodShowcase.sink[2] droppedPackets:count 18590
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar PeekingUnderTheHoodShowcase.sink[2] droppedPacketLengths:sum 148720000
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic PeekingUnderTheHoodShowcase.sink[2] droppedPacketLengths:histogram
+field count 18590
+field mean 8000
+field stddev 0
+field min 8000
+field max 8000
+field sum 148720000
+field sqrsum 1189760000000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	7999	0
+bin	8000	18590
 bin	8001	0
 
