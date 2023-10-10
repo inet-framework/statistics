@@ -1,8 +1,8 @@
 version 3
-run lwip__inet-0-20230511-14:02:59-51749
+run lwip__inet-0-20231010-11:47:54-74477
 attr configname lwip__inet
-attr datetime 20230511-14:02:59
-attr datetimef 20230511-140259
+attr datetime 20231010-11:47:54
+attr datetimef 20231010-114754
 attr description "TcpLwip <---> inet_TCP"
 attr experiment lwip__inet
 attr inifile omnetpp.ini
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network ClientServer
-attr processid 51749
+attr processid 74477
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -1243,6 +1243,60 @@ attr interpolationmode none
 attr recordingmode count
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
+scalar ClientServer.server.app[0].thread_5 packetReceived:count 1866
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar ClientServer.server.app[0].thread_5 packetReceived:sum(packetBytes) 1000000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic ClientServer.server.app[0].thread_5 endToEndDelay:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic ClientServer.server.app[0].thread_5 endToEndDelay:weightedHistogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field weights 0
+field weightedSum 0
+field sqrSumWeights 0
+field weightedSqrSum 0
+attr interpolationmode none
+attr recordingmode weightedHistogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, weightedHistogram"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar ClientServer.server.app[0].thread_5 packetSent:count 1866
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar ClientServer.server.app[0].thread_5 packetSent:sum(packetBytes) 2000000
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
 scalar ClientServer.server.app[0] bytesRcvd 1000000
 scalar ClientServer.server.app[0] bytesSent 2000000
 scalar ClientServer.server.app[0] packetReceived:count 1866

@@ -1,17 +1,16 @@
 version 3
-run lwip__lwip-0-20231010-11:47:54-74478
-attr configname lwip__lwip
-attr datetime 20231010-11:47:54
-attr datetimef 20231010-114754
-attr description "TcpLwip <---> TcpLwip"
-attr experiment lwip__lwip
+run Delay-01us-0-20231010-11:48:59-74637
+attr configname Delay-01us
+attr datetime 20231010-11:48:59
+attr datetimef 20231010-114859
+attr experiment Delay-01us
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network ClientServer
-attr processid 74478
+attr processid 74637
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -20,33 +19,22 @@ attr seedset 0
 config **.param-recording false
 config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
-config output-scalar-file results/omnetpp.ini-lwip__lwip-#0.sca
-config sim-time-limit 100s
-config sim-time-limit 100s
-config description "TcpLwip <---> TcpLwip"
-config **.tcp.typename TcpLwip
-config **.server*.app[0].echoFactor 2.0
+config output-scalar-file results/omnetpp.ini-Delay-01us-#0.sca
+config **.channel.delay 0.1us
 config network ClientServer
-config total-stack 7MiB
-config **.server.numPcapRecorders 1
-config **.server.pcapRecorder[0].pcapFile "\"results/server.pcap\""
-config **.client1.numPcapRecorders 1
-config **.client1.pcapRecorder[0].pcapFile "\"results/client1.pcap\""
-config **.crcMode "\"computed\""
 config **.numApps 1
 config **.client*.app[*].typename TcpSessionApp
 config **.client*.app[0].active true
 config **.client*.app[0].localPort -1
 config **.client*.app[0].connectAddress "\"server\""
 config **.client*.app[0].connectPort 1000
-config **.client*.app[0].tOpen 0.2s
-config **.client*.app[0].tSend 0.4s
-config **.client*.app[0].sendBytes 1000000B
+config **.client*.app[0].tOpen 0.1s
+config **.client*.app[0].tSend 1s
+config **.client*.app[0].sendBytes 1GB
 config **.client*.app[0].sendScript "\"\""
-config **.client*.app[0].tClose 25s
 config **.server*.app[*].typename TcpEchoApp
 config **.server*.app[0].localPort 1000
-config **.server*.app[0].echoDelay 0s
+config **.server*.app[0].echoFactor 0
 config **.ppp[*].queue.typename DropTailQueue
 config **.ppp[*].queue.packetCapacity 10
 config *.configurator.config "xml(\"<config><interface hosts='*' address='192.168.1.x' netmask='255.255.255.0'/></config>\")"
@@ -98,14 +86,14 @@ attr recordingmode last
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, last"
 attr unit pk
-scalar ClientServer.client1.ppp[0].queue queueLength:max 5
+scalar ClientServer.client1.ppp[0].queue queueLength:max 10
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, max"
 attr unit pk
-scalar ClientServer.client1.ppp[0].queue queueLength:timeavg 0.027736878
+scalar ClientServer.client1.ppp[0].queue queueLength:timeavg 6.1455025745925
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -119,14 +107,14 @@ attr recordingmode last
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, last"
 attr unit b
-scalar ClientServer.client1.ppp[0].queue queueBitLength:max 17216
+scalar ClientServer.client1.ppp[0].queue queueBitLength:max 46080
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, max"
 attr unit b
-scalar ClientServer.client1.ppp[0].queue queueBitLength:timeavg 69.437737856
+scalar ClientServer.client1.ppp[0].queue queueBitLength:timeavg 28318.475863639
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -134,125 +122,97 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic ClientServer.client1.ppp[0].queue queueingTime:histogram
-field count 5390
-field mean 0.00051459884972172
-field stddev 0.00043331058161945
+field count 1865676
+field mean 0.003668482717633
+field stddev 0.00092000478073163
 field min 0
-field max 0.0014742
-field sum 2.7736878000001
-field sqrsum 0.0024391647374799
+field max 0.0046262
+field sum 6844.2001627026
+field sqrsum 26.686953744434
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetPulled)
 attr title "queueing times"
 attr unit s
 bin	-inf	0
-bin	0	1735
-bin	2e-05	0
-bin	4e-05	0
-bin	6e-05	0
-bin	8e-05	0
+bin	0	8
 bin	0.0001	0
-bin	0.00012	0
-bin	0.00014	66
-bin	0.00016	0
-bin	0.00018	0
 bin	0.0002	0
-bin	0.00022	0
-bin	0.00024	0
-bin	0.00026	0
-bin	0.00028	0
 bin	0.0003	0
-bin	0.00032	0
-bin	0.00034	0
-bin	0.00036	0
-bin	0.00038	10
-bin	0.0004	0
-bin	0.00042	229
-bin	0.00044	0
-bin	0.00046	732
-bin	0.00048	0
+bin	0.0004	4
 bin	0.0005	0
-bin	0.00052	0
-bin	0.00054	7
-bin	0.00056	204
-bin	0.00058	0
-bin	0.0006	730
-bin	0.00062	0
-bin	0.00064	0
-bin	0.00066	1
-bin	0.00068	0
+bin	0.0006	0
 bin	0.0007	0
-bin	0.00072	0
-bin	0.00074	0
-bin	0.00076	0
-bin	0.00078	0
-bin	0.0008	12
-bin	0.00082	0
-bin	0.00084	189
-bin	0.00086	0
-bin	0.00088	532
+bin	0.0008	24878
 bin	0.0009	0
-bin	0.00092	69
-bin	0.00094	0
-bin	0.00096	1
-bin	0.00098	0
-bin	0.001	92
-bin	0.00102	0
-bin	0.00104	331
-bin	0.00106	0
-bin	0.00108	0
+bin	0.001	0
 bin	0.0011	0
-bin	0.00112	0
-bin	0.00114	0
-bin	0.00116	0
-bin	0.00118	0
 bin	0.0012	0
-bin	0.00122	0
-bin	0.00124	0
-bin	0.00126	0
-bin	0.00128	81
-bin	0.0013	0
-bin	0.00132	225
-bin	0.00134	99
-bin	0.00136	1
-bin	0.00138	0
+bin	0.0013	24883
 bin	0.0014	0
-bin	0.00142	11
-bin	0.00144	0
-bin	0.00146	33
-bin	0.00148	0
 bin	0.0015	0
-bin	0.00152	0
-bin	0.00154	0
-bin	0.00156	0
-bin	0.00158	0
 bin	0.0016	0
-bin	0.00162	0
-bin	0.00164	0
-bin	0.00166	0
-bin	0.00168	0
 bin	0.0017	0
-bin	0.00172	0
-scalar ClientServer.client1.ppp[0].queue outgoingPackets:count 5390
+bin	0.0018	24882
+bin	0.0019	0
+bin	0.002	0
+bin	0.0021	0
+bin	0.0022	174129
+bin	0.0023	0
+bin	0.0024	0
+bin	0.0025	0
+bin	0.0026	0
+bin	0.0027	223876
+bin	0.0028	0
+bin	0.0029	0
+bin	0.003	0
+bin	0.0031	0
+bin	0.0032	223878
+bin	0.0033	0
+bin	0.0034	0
+bin	0.0035	0
+bin	0.0036	298501
+bin	0.0037	0
+bin	0.0038	0
+bin	0.0039	0
+bin	0.004	0
+bin	0.0041	273628
+bin	0.0042	0
+bin	0.0043	0
+bin	0.0044	0
+bin	0.0045	0
+bin	0.0046	597009
+bin	0.0047	0
+bin	0.0048	0
+bin	0.0049	0
+bin	0.005	0
+bin	0.0051	0
+bin	0.0052	0
+bin	0.0053	0
+bin	0.0054	0
+bin	0.0055	0
+bin	0.0056	0
+bin	0.0057	0
+bin	0.0058	0
+scalar ClientServer.client1.ppp[0].queue outgoingPackets:count 1865676
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:sum 9724832
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:sum 8597020640
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram
-field count 5390
-field mean 1804.2359925788
-field stddev 1996.0271598979
+field count 1865676
+field mean 4607.99229877
+field stddev 5.539325534847
 field min 320
 field max 4608
-field sum 9724832
-field sqrsum 39016338432
+field sum 8597020640
+field sqrsum 39615062148096
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -262,7 +222,7 @@ bin	-inf	0
 bin	0	0
 bin	100	0
 bin	200	0
-bin	300	3443
+bin	300	3
 bin	400	0
 bin	500	0
 bin	600	0
@@ -289,7 +249,7 @@ bin	2600	0
 bin	2700	0
 bin	2800	0
 bin	2900	0
-bin	3000	227
+bin	3000	1
 bin	3100	0
 bin	3200	0
 bin	3300	0
@@ -305,7 +265,7 @@ bin	4200	0
 bin	4300	0
 bin	4400	0
 bin	4500	0
-bin	4600	1720
+bin	4600	1865672
 bin	4700	0
 bin	4800	0
 bin	4900	0
@@ -333,25 +293,25 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar ClientServer.client1.ppp[0].queue incomingPackets:count 5390
+scalar ClientServer.client1.ppp[0].queue incomingPackets:count 1890555
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:sum 9724832
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:sum 8711661536
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram
-field count 5390
-field mean 1804.2359925788
-field stddev 1996.0271598979
+field count 1890555
+field mean 4607.9915876555
+field stddev 5.6150033123511
 field min 320
 field max 4608
-field sum 9724832
-field sqrsum 39016338432
+field sum 8711661536
+field sqrsum 40143322678272
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -361,7 +321,7 @@ bin	-inf	0
 bin	0	0
 bin	100	0
 bin	200	0
-bin	300	3443
+bin	300	3
 bin	400	0
 bin	500	0
 bin	600	0
@@ -388,7 +348,7 @@ bin	2600	0
 bin	2700	0
 bin	2800	0
 bin	2900	0
-bin	3000	227
+bin	3000	2
 bin	3100	0
 bin	3200	0
 bin	3300	0
@@ -404,7 +364,7 @@ bin	4200	0
 bin	4300	0
 bin	4400	0
 bin	4500	0
-bin	4600	1720
+bin	4600	1890550
 bin	4700	0
 bin	4800	0
 bin	4900	0
@@ -416,59 +376,59 @@ bin	5400	0
 bin	5500	0
 bin	5600	0
 bin	5700	0
-scalar ClientServer.client1.ppp[0].queue droppedPacketsQueueOverflow:count 0
+scalar ClientServer.client1.ppp[0].queue droppedPacketsQueueOverflow:count 24879
 attr interpolationmode none
 attr recordingmode count
 attr source packetDropReasonIsQueueOverflow(packetDropped)
 attr title "dropped packets: queue overflow, count"
 attr unit pk
-scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 114640896
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
 attr title "dropped packet lengths: queue overflow, sum"
 attr unit b
-scalar ClientServer.client1.ppp[0].ppp transmissionState:timeavg 0.010026671999999
+scalar ClientServer.client1.ppp[0].ppp transmissionState:timeavg 0.78131965955325
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source transmissionStateChanged
 attr title "tx state, timeavg"
-scalar ClientServer.client1.ppp[0].ppp rxPkOk:count 5605
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:count 1865675
 attr interpolationmode none
 attr recordingmode count
 attr source rxPkOk
 attr title "packets received OK, count"
-scalar ClientServer.client1.ppp[0].ppp rxPkOk:sum(packetBytes) 2263439
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:sum(packetBytes) 87686729
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source rxPkOk
 attr title "packets received OK, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0].ppp txPk:count 5390
+scalar ClientServer.client1.ppp[0].ppp txPk:count 1865676
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToLower
 attr title "packets transmitted, count"
-scalar ClientServer.client1.ppp[0].ppp txPk:sum(packetBytes) 1253334
+scalar ClientServer.client1.ppp[0].ppp txPk:sum(packetBytes) 1087687312
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToLower
 attr title "packets transmitted, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:count 5390
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:count 1865676
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 1215604
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 1074627580
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0].ppp passedUpPk:count 5605
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:count 1865675
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar ClientServer.client1.ppp[0].ppp passedUpPk:sum(packetBytes) 2224204
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:sum(packetBytes) 74627004
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToUpper
@@ -633,14 +593,14 @@ attr interpolationmode none
 attr recordingmode count
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-scalar ClientServer.client1.app[0] bytesRcvd 2000000
-scalar ClientServer.client1.app[0] bytesSent 1000000
-scalar ClientServer.client1.app[0] packetReceived:count 3890
+scalar ClientServer.client1.app[0] bytesRcvd 0
+scalar ClientServer.client1.app[0] bytesSent 1000000000
+scalar ClientServer.client1.app[0] packetReceived:count 0
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceived
 attr title "packets received, count"
-scalar ClientServer.client1.app[0] packetReceived:sum(packetBytes) 2000000
+scalar ClientServer.client1.app[0] packetReceived:sum(packetBytes) 0
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceived
@@ -684,7 +644,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source packetSent
 attr title "packets sent, count"
-scalar ClientServer.client1.app[0] packetSent:sum(packetBytes) 1000000
+scalar ClientServer.client1.app[0] packetSent:sum(packetBytes) 1000000000
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSent
@@ -736,14 +696,14 @@ attr recordingmode last
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, last"
 attr unit pk
-scalar ClientServer.server.ppp[0].queue queueLength:max 5
+scalar ClientServer.server.ppp[0].queue queueLength:max 1
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, max"
 attr unit pk
-scalar ClientServer.server.ppp[0].queue queueLength:timeavg 0.047248047999997
+scalar ClientServer.server.ppp[0].queue queueLength:timeavg 3.376156326593e-08
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -757,14 +717,14 @@ attr recordingmode last
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, last"
 attr unit b
-scalar ClientServer.server.ppp[0].queue queueBitLength:max 13824
+scalar ClientServer.server.ppp[0].queue queueBitLength:max 320
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, max"
 attr unit b
-scalar ClientServer.server.ppp[0].queue queueBitLength:timeavg 165.412221952
+scalar ClientServer.server.ppp[0].queue queueBitLength:timeavg 1.0803700245098e-05
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -772,173 +732,144 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic ClientServer.server.ppp[0].queue queueingTime:histogram
-field count 5605
-field mean 0.00084296249776986
-field stddev 0.00039638641277979
+field count 1865675
+field mean 2.0153563723585e-11
+field stddev 2.7527695072541e-08
 field min 0
-field max 0.0013992
-field sum 4.7248048000001
-field sqrsum 0.0048633459985601
+field max 3.76e-05
+field sum 3.76e-05
+field sqrsum 1.41376e-09
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetPulled)
 attr title "queueing times"
 attr unit s
 bin	-inf	0
-bin	0	205
-bin	2e-05	97
-bin	4e-05	0
-bin	6e-05	0
-bin	8e-05	0
-bin	0.0001	0
-bin	0.00012	0
-bin	0.00014	167
-bin	0.00016	0
-bin	0.00018	83
-bin	0.0002	0
-bin	0.00022	0
-bin	0.00024	0
-bin	0.00026	0
-bin	0.00028	0
-bin	0.0003	0
-bin	0.00032	0
-bin	0.00034	0
-bin	0.00036	0
-bin	0.00038	0
-bin	0.0004	0
-bin	0.00042	496
-bin	0.00044	0
-bin	0.00046	440
-bin	0.00048	0
-bin	0.0005	59
-bin	0.00052	0
-bin	0.00054	0
-bin	0.00056	0
-bin	0.00058	199
-bin	0.0006	0
-bin	0.00062	123
-bin	0.00064	0
-bin	0.00066	0
-bin	0.00068	0
-bin	0.0007	0
-bin	0.00072	0
-bin	0.00074	0
-bin	0.00076	0
-bin	0.00078	0
-bin	0.0008	0
-bin	0.00082	0
-bin	0.00084	730
-bin	0.00086	0
-bin	0.00088	1026
-bin	0.0009	0
-bin	0.00092	165
-bin	0.00094	0
-bin	0.00096	0
-bin	0.00098	0
-bin	0.001	66
-bin	0.00102	0
-bin	0.00104	23
-bin	0.00106	0
-bin	0.00108	0
-bin	0.0011	0
-bin	0.00112	0
-bin	0.00114	0
-bin	0.00116	0
-bin	0.00118	0
-bin	0.0012	646
-bin	0.00122	0
-bin	0.00124	0
-bin	0.00126	0
-bin	0.00128	0
-bin	0.0013	0
-bin	0.00132	0
-bin	0.00134	0
-bin	0.00136	1079
-bin	0.00138	1
-bin	0.0014	0
-scalar ClientServer.server.ppp[0].queue outgoingPackets:count 5605
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	1865675
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar ClientServer.server.ppp[0].queue outgoingPackets:count 1865675
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:sum 17793632
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:sum 597016032
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram
-field count 5605
-field mean 3174.5998215879
-field stddev 1938.6509575539
+field count 1865675
+field mean 320.00001715197
+field stddev 0.023427825588466
 field min 320
-field max 4608
-field sum 17793632
-field sqrsum 77549552640
+field max 352
+field sum 597016032
+field sqrsum 191045141504
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
-bin	0	0
-bin	100	0
-bin	200	0
-bin	300	1715
-bin	400	0
-bin	500	0
-bin	600	0
-bin	700	0
-bin	800	0
-bin	900	0
-bin	1000	0
-bin	1100	0
-bin	1200	0
-bin	1300	0
-bin	1400	0
-bin	1500	0
-bin	1600	0
-bin	1700	0
-bin	1800	0
-bin	1900	0
-bin	2000	0
-bin	2100	0
-bin	2200	0
-bin	2300	0
-bin	2400	0
-bin	2500	0
-bin	2600	0
-bin	2700	0
-bin	2800	0
-bin	2900	0
-bin	3000	442
-bin	3100	0
-bin	3200	1
-bin	3300	0
-bin	3400	0
-bin	3500	0
-bin	3600	0
-bin	3700	0
-bin	3800	0
-bin	3900	0
-bin	4000	0
-bin	4100	0
-bin	4200	0
-bin	4300	0
-bin	4400	0
-bin	4500	0
-bin	4600	3447
-bin	4700	0
-bin	4800	0
-bin	4900	0
-bin	5000	0
-bin	5100	0
-bin	5200	0
-bin	5300	0
-bin	5400	0
-bin	5500	0
-bin	5600	0
-bin	5700	0
+bin	312	0
+bin	313	0
+bin	314	0
+bin	315	0
+bin	316	0
+bin	317	0
+bin	318	0
+bin	319	0
+bin	320	1865674
+bin	321	0
+bin	322	0
+bin	323	0
+bin	324	0
+bin	325	0
+bin	326	0
+bin	327	0
+bin	328	0
+bin	329	0
+bin	330	0
+bin	331	0
+bin	332	0
+bin	333	0
+bin	334	0
+bin	335	0
+bin	336	0
+bin	337	0
+bin	338	0
+bin	339	0
+bin	340	0
+bin	341	0
+bin	342	0
+bin	343	0
+bin	344	0
+bin	345	0
+bin	346	0
+bin	347	0
+bin	348	0
+bin	349	0
+bin	350	0
+bin	351	0
+bin	352	1
+bin	353	0
+bin	354	0
+bin	355	0
+bin	356	0
+bin	357	0
+bin	358	0
+bin	359	0
+bin	360	0
 statistic ClientServer.server.ppp[0].queue flowQueueingTime:histogram
 field count 0
 field mean -nan
@@ -955,89 +886,80 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar ClientServer.server.ppp[0].queue incomingPackets:count 5605
+scalar ClientServer.server.ppp[0].queue incomingPackets:count 1865675
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar ClientServer.server.ppp[0].queue incomingPacketLengths:sum 17793632
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:sum 597016032
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic ClientServer.server.ppp[0].queue incomingPacketLengths:histogram
-field count 5605
-field mean 3174.5998215879
-field stddev 1938.6509575539
+field count 1865675
+field mean 320.00001715197
+field stddev 0.023427825588466
 field min 320
-field max 4608
-field sum 17793632
-field sqrsum 77549552640
+field max 352
+field sum 597016032
+field sqrsum 191045141504
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
-bin	0	0
-bin	100	0
-bin	200	0
-bin	300	1715
-bin	400	0
-bin	500	0
-bin	600	0
-bin	700	0
-bin	800	0
-bin	900	0
-bin	1000	0
-bin	1100	0
-bin	1200	0
-bin	1300	0
-bin	1400	0
-bin	1500	0
-bin	1600	0
-bin	1700	0
-bin	1800	0
-bin	1900	0
-bin	2000	0
-bin	2100	0
-bin	2200	0
-bin	2300	0
-bin	2400	0
-bin	2500	0
-bin	2600	0
-bin	2700	0
-bin	2800	0
-bin	2900	0
-bin	3000	442
-bin	3100	0
-bin	3200	1
-bin	3300	0
-bin	3400	0
-bin	3500	0
-bin	3600	0
-bin	3700	0
-bin	3800	0
-bin	3900	0
-bin	4000	0
-bin	4100	0
-bin	4200	0
-bin	4300	0
-bin	4400	0
-bin	4500	0
-bin	4600	3447
-bin	4700	0
-bin	4800	0
-bin	4900	0
-bin	5000	0
-bin	5100	0
-bin	5200	0
-bin	5300	0
-bin	5400	0
-bin	5500	0
-bin	5600	0
-bin	5700	0
+bin	312	0
+bin	313	0
+bin	314	0
+bin	315	0
+bin	316	0
+bin	317	0
+bin	318	0
+bin	319	0
+bin	320	1865674
+bin	321	0
+bin	322	0
+bin	323	0
+bin	324	0
+bin	325	0
+bin	326	0
+bin	327	0
+bin	328	0
+bin	329	0
+bin	330	0
+bin	331	0
+bin	332	0
+bin	333	0
+bin	334	0
+bin	335	0
+bin	336	0
+bin	337	0
+bin	338	0
+bin	339	0
+bin	340	0
+bin	341	0
+bin	342	0
+bin	343	0
+bin	344	0
+bin	345	0
+bin	346	0
+bin	347	0
+bin	348	0
+bin	349	0
+bin	350	0
+bin	351	0
+bin	352	1
+bin	353	0
+bin	354	0
+bin	355	0
+bin	356	0
+bin	357	0
+bin	358	0
+bin	359	0
+bin	360	0
 scalar ClientServer.server.ppp[0].queue droppedPacketsQueueOverflow:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -1050,47 +972,47 @@ attr recordingmode sum
 attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
 attr title "dropped packet lengths: queue overflow, sum"
 attr unit b
-scalar ClientServer.server.ppp[0].ppp transmissionState:timeavg 0.018107512000001
+scalar ClientServer.server.ppp[0].ppp transmissionState:timeavg 0.062988107418121
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source transmissionStateChanged
 attr title "tx state, timeavg"
-scalar ClientServer.server.ppp[0].ppp rxPkOk:count 5390
+scalar ClientServer.server.ppp[0].ppp rxPkOk:count 1865676
 attr interpolationmode none
 attr recordingmode count
 attr source rxPkOk
 attr title "packets received OK, count"
-scalar ClientServer.server.ppp[0].ppp rxPkOk:sum(packetBytes) 1253334
+scalar ClientServer.server.ppp[0].ppp rxPkOk:sum(packetBytes) 1087687312
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source rxPkOk
 attr title "packets received OK, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].ppp txPk:count 5605
+scalar ClientServer.server.ppp[0].ppp txPk:count 1865675
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToLower
 attr title "packets transmitted, count"
-scalar ClientServer.server.ppp[0].ppp txPk:sum(packetBytes) 2263439
+scalar ClientServer.server.ppp[0].ppp txPk:sum(packetBytes) 87686729
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToLower
 attr title "packets transmitted, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:count 5605
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:count 1865675
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2224204
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 74627004
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].ppp passedUpPk:count 5390
+scalar ClientServer.server.ppp[0].ppp passedUpPk:count 1865676
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar ClientServer.server.ppp[0].ppp passedUpPk:sum(packetBytes) 1215604
+scalar ClientServer.server.ppp[0].ppp passedUpPk:sum(packetBytes) 1074627580
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToUpper
@@ -1255,112 +1177,194 @@ attr interpolationmode none
 attr recordingmode count
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
-scalar ClientServer.server.app[0].thread_5 packetReceived:count 1947
+scalar ClientServer.server.app[0] bytesRcvd 1000000000
+scalar ClientServer.server.app[0] bytesSent 0
+scalar ClientServer.server.app[0] packetReceived:count 1592039
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceived
 attr title "packets received, count"
-scalar ClientServer.server.app[0].thread_5 packetReceived:sum(packetBytes) 1000000
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-statistic ClientServer.server.app[0].thread_5 endToEndDelay:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay"
-attr unit s
-bin	-inf	0
-bin	0	0
-bin	1	0
-statistic ClientServer.server.app[0].thread_5 endToEndDelay:weightedHistogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field weights 0
-field weightedSum 0
-field sqrSumWeights 0
-field weightedSqrSum 0
-attr interpolationmode none
-attr recordingmode weightedHistogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay, weightedHistogram"
-attr unit s
-bin	-inf	0
-bin	0	0
-bin	1	0
-scalar ClientServer.server.app[0].thread_5 packetSent:count 1947
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar ClientServer.server.app[0].thread_5 packetSent:sum(packetBytes) 2000000
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar ClientServer.server.app[0] bytesRcvd 1000000
-scalar ClientServer.server.app[0] bytesSent 2000000
-scalar ClientServer.server.app[0] packetReceived:count 1947
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar ClientServer.server.app[0] packetReceived:sum(packetBytes) 1000000
+scalar ClientServer.server.app[0] packetReceived:sum(packetBytes) 1000000000
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceived
 attr title "packets received, sum(packetBytes)"
 statistic ClientServer.server.app[0] endToEndDelay:histogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
+field count 1865672
+field mean 436.61846041472
+field stddev 251.19060385748
+field min 0.0004665
+field max 872.69243069671
+field sum 814586836.27885
+field sqrsum 473381370033.55
 attr interpolationmode none
 attr recordingmode histogram
 attr source dataAge(packetReceived)
 attr title "end-to-end delay"
 attr unit s
 bin	-inf	0
-bin	0	0
-bin	1	0
+bin	0	24135
+bin	12.8	27444
+bin	25.6	27445
+bin	38.4	27438
+bin	51.2	27450
+bin	64	27444
+bin	76.8	27445
+bin	89.6	27444
+bin	102.4	27444
+bin	115.2	27444
+bin	128	27445
+bin	140.8	27444
+bin	153.6	27444
+bin	166.4	27444
+bin	179.2	27445
+bin	192	27444
+bin	204.8	27438
+bin	217.6	27450
+bin	230.4	27445
+bin	243.2	27444
+bin	256	27444
+bin	268.8	27444
+bin	281.6	27445
+bin	294.4	27444
+bin	307.2	27444
+bin	320	27445
+bin	332.8	27444
+bin	345.6	27444
+bin	358.4	27444
+bin	371.2	27438
+bin	384	27450
+bin	396.8	27445
+bin	409.6	27444
+bin	422.4	27445
+bin	435.2	27444
+bin	448	27444
+bin	460.8	27444
+bin	473.6	27445
+bin	486.4	27444
+bin	499.2	27444
+bin	512	27444
+bin	524.8	27445
+bin	537.6	27437
+bin	550.4	27450
+bin	563.2	27445
+bin	576	27445
+bin	588.8	27444
+bin	601.6	27444
+bin	614.4	27444
+bin	627.2	27445
+bin	640	27444
+bin	652.8	27444
+bin	665.6	27444
+bin	678.4	27445
+bin	691.2	27444
+bin	704	27437
+bin	716.8	27450
+bin	729.6	27446
+bin	742.4	27444
+bin	755.2	27444
+bin	768	27444
+bin	780.8	27445
+bin	793.6	27444
+bin	806.4	27444
+bin	819.2	27444
+bin	832	27445
+bin	844.8	27444
+bin	857.6	27444
+bin	870.4	2772
+bin	883.2	0
 statistic ClientServer.server.app[0] endToEndDelay:weightedHistogram
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field weights 0
-field weightedSum 0
-field sqrSumWeights 0
-field weightedSqrSum 0
+field count 1865672
+field mean 436.61837668852
+field stddev 251.19055529624
+field min 0.0004665
+field max 872.69243069671
+field weights 8000000000
+field weightedSum 3492947013508.1
+field sqrSumWeights 34303995772928
+field weightedSqrSum 2.0298581448986e+15
 attr interpolationmode none
 attr recordingmode weightedHistogram
 attr source dataAge(packetReceived)
 attr title "end-to-end delay, weightedHistogram"
 attr unit s
 bin	-inf	0
-bin	0	0
-bin	1	0
-scalar ClientServer.server.app[0] packetSent:count 1947
+bin	0	103490880
+bin	12.8	117679872
+bin	25.6	117684160
+bin	38.4	117654144
+bin	51.2	117705600
+bin	64	117679872
+bin	76.8	117684160
+bin	89.6	117679872
+bin	102.4	117679872
+bin	115.2	117679872
+bin	128	117684160
+bin	140.8	117679872
+bin	153.6	117679872
+bin	166.4	117679872
+bin	179.2	117684160
+bin	192	117679872
+bin	204.8	117654144
+bin	217.6	117705600
+bin	230.4	117684160
+bin	243.2	117679872
+bin	256	117679872
+bin	268.8	117679872
+bin	281.6	117684160
+bin	294.4	117679872
+bin	307.2	117679872
+bin	320	117684160
+bin	332.8	117679872
+bin	345.6	117679872
+bin	358.4	117679872
+bin	371.2	117654144
+bin	384	117705600
+bin	396.8	117684160
+bin	409.6	117679872
+bin	422.4	117684160
+bin	435.2	117679872
+bin	448	117679872
+bin	460.8	117679872
+bin	473.6	117684160
+bin	486.4	117679872
+bin	499.2	117679872
+bin	512	117679872
+bin	524.8	117684160
+bin	537.6	117649856
+bin	550.4	117705600
+bin	563.2	117684160
+bin	576	117684160
+bin	588.8	117679872
+bin	601.6	117679872
+bin	614.4	117679872
+bin	627.2	117684160
+bin	640	117679872
+bin	652.8	117679872
+bin	665.6	117679872
+bin	678.4	117684160
+bin	691.2	117679872
+bin	704	117649856
+bin	716.8	117705600
+bin	729.6	117688448
+bin	742.4	117679872
+bin	755.2	117679872
+bin	768	117679872
+bin	780.8	117684160
+bin	793.6	117679872
+bin	806.4	117679872
+bin	819.2	117679872
+bin	832	117684160
+bin	844.8	117679872
+bin	857.6	117679872
+bin	870.4	11884800
+bin	883.2	0
+scalar ClientServer.server.app[0] packetSent:count 0
 attr interpolationmode none
 attr recordingmode count
 attr source packetSent
 attr title "packets sent, count"
-scalar ClientServer.server.app[0] packetSent:sum(packetBytes) 2000000
+scalar ClientServer.server.app[0] packetSent:sum(packetBytes) 0
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSent
