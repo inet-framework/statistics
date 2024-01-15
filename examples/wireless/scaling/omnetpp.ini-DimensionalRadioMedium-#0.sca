@@ -1,9 +1,8 @@
 version 3
-run DimensionalRadioMedium-0-20230511-14:52:29-58399
+run DimensionalRadioMedium-0-20240115-11:28:42-15379
 attr configname DimensionalRadioMedium
-attr datetime 20230511-14:52:29
-attr datetimef 20230511-145229
-attr description "Dimensional radio"
+attr datetime 20240115-11:28:42
+attr datetimef 20240115-112842
 attr experiment DimensionalRadioMedium
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network TestRadioScaling
-attr processid 58399
+attr processid 15379
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -25,25 +24,25 @@ config sim-time-limit 0.1s
 config network TestRadioScaling
 config extends AbstractAckingMac
 config description "Dimensional radio"
-config *.radioMedium.typename ApskDimensionalRadioMedium
+config *.radioMedium.signalAnalogRepresentation "\"dimensional\""
 config *.radioMedium.mediumLimitCache.centerFrequency 2.4GHz
 config *.radioMedium.mediumLimitCache.maxTransmissionPower 1W
 config *.radioMedium.mediumLimitCache.minInterferencePower -110dBm
 config *.radioMedium.mediumLimitCache.minReceptionPower -85dBm
 config *.radioMedium.propagation.typename ConstantSpeedPropagation
-config *.radioMedium.analogModel.typename DimensionalAnalogModel
+config *.radioMedium.analogModel.typename DimensionalMediumAnalogModel
 config *.radioMedium.backgroundNoise.typename IsotropicDimensionalBackgroundNoise
 config *.radioMedium.backgroundNoise.power -110dBm
 config *.host[*].wlan[*].mac.fullDuplex false
 config *.host[*].wlan[*].radio.typename ApskRadio
+config *.host[*].wlan[*].radio.signalAnalogRepresentation "\"dimensional\""
 config *.host[*].wlan[*].radio.centerFrequency 2.4GHz
 config *.host[*].wlan[*].radio.bandwidth 2MHz
-config *.host[*].wlan[*].radio.transmitter.typename ApskDimensionalTransmitter
+config *.host[*].wlan[*].radio.transmitter.bitrate 2Mbps
 config *.host[*].wlan[*].radio.transmitter.headerLength 96b
 config *.host[*].wlan[*].radio.transmitter.power 1W
 config *.host[*].wlan[*].radio.transmitter.preambleDuration 0s
 config *.host[*].wlan[*].radio.antenna.typename IsotropicAntenna
-config *.host[*].wlan[*].radio.receiver.typename ApskDimensionalReceiver
 config *.host[*].wlan[*].radio.receiver.energyDetection -85dBm
 config *.host[*].wlan[*].radio.receiver.sensitivity -85dBm
 config *.host[*].wlan[*].radio.receiver.snirThreshold 10dB
@@ -676,6 +675,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[0].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[0].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[0].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -1346,6 +1355,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[1].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[1].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[1].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -2026,6 +2045,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[2].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[2].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[2].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -2704,6 +2733,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[3].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[3].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[3].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -3382,6 +3421,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[4].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[4].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[4].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -4173,6 +4222,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[5].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[5].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[5].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -4851,6 +4910,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[6].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[6].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[6].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -5530,6 +5599,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[7].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[7].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[7].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -6249,6 +6328,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[8].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[8].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[8].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -6927,6 +7016,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[9].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[9].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[9].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -7607,6 +7706,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[10].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[10].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[10].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -8285,6 +8394,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[11].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[11].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[11].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -8963,6 +9082,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[12].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[12].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[12].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -9641,6 +9770,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[13].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[13].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[13].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -10319,6 +10458,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[14].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[14].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[14].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -10997,6 +11146,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[15].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[15].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[15].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -11675,6 +11834,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[16].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[16].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[16].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -12354,6 +12523,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[17].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[17].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[17].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -13032,6 +13211,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[18].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[18].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[18].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -13713,6 +13902,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[19].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[19].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[19].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -14392,6 +14591,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[20].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[20].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[20].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -15118,6 +15327,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[21].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[21].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[21].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -15796,6 +16015,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[22].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[22].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[22].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -16475,6 +16704,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[23].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[23].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[23].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -17155,6 +17394,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[24].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[24].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[24].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -17834,6 +18083,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[25].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[25].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[25].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -18518,6 +18777,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[26].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[26].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[26].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -19281,6 +19550,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[27].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[27].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[27].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -19960,6 +20239,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[28].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[28].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[28].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -20639,6 +20928,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[29].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[29].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[29].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -21318,6 +21617,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[30].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[30].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[30].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -21995,6 +22304,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[31].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[31].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[31].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -22675,6 +22994,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[32].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[32].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[32].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -23356,6 +23685,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[33].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[33].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[33].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -24116,6 +24455,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[34].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[34].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[34].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -24796,6 +25145,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[35].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[35].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[35].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -25477,6 +25836,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[36].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[36].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[36].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -26155,6 +26524,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[37].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[37].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[37].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -26834,6 +27213,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[38].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[38].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[38].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -27512,6 +27901,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[39].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[39].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[39].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -28203,6 +28602,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[40].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[40].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[40].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -28882,6 +29291,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[41].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[41].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[41].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -29560,6 +29979,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[42].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[42].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[42].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -30316,6 +30745,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[43].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[43].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[43].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -31083,6 +31522,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[44].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[44].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[44].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -31761,6 +32210,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[45].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[45].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[45].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -32440,6 +32899,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[46].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[46].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[46].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -33118,6 +33587,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[47].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[47].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[47].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -33834,6 +34313,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[48].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[48].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[48].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -34512,6 +35001,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[49].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[49].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[49].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -35193,6 +35692,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[50].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[50].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[50].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -35908,6 +36417,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[51].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[51].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[51].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -36607,6 +37126,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[52].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[52].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[52].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -37336,6 +37865,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[53].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[53].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[53].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -38016,6 +38555,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[54].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[54].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[54].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -38694,6 +39243,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[55].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[55].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[55].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -39373,6 +39932,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[56].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[56].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[56].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -40114,6 +40683,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[57].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[57].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[57].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -40793,6 +41372,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[58].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[58].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[58].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -41471,6 +42060,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[59].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[59].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[59].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -42226,6 +42825,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[60].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[60].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[60].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -42904,6 +43513,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[61].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[61].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[61].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -43585,6 +44204,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[62].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[62].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[62].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -44266,6 +44895,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[63].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[63].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[63].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -44995,6 +45634,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[64].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[64].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[64].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -45673,6 +46322,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[65].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[65].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[65].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -46365,6 +47024,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[66].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[66].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[66].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -47047,6 +47716,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[67].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[67].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[67].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -47805,6 +48484,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[68].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[68].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[68].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -48485,6 +49174,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[69].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[69].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[69].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -49163,6 +49862,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[70].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[70].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[70].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -49842,6 +50551,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[71].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[71].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[71].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -50521,6 +51240,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[72].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[72].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[72].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -51264,6 +51993,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[73].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[73].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[73].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -51945,6 +52684,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[74].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[74].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[74].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -52730,6 +53479,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[75].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[75].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[75].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -53408,6 +54167,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[76].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[76].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[76].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -54086,6 +54855,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[77].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[77].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[77].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -54767,6 +55546,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[78].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[78].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[78].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -55446,6 +56235,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[79].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[79].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[79].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -56125,6 +56924,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[80].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[80].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[80].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -56804,6 +57613,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[81].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[81].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[81].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -57483,6 +58302,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[82].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[82].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[82].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -58162,6 +58991,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[83].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[83].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[83].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -58933,6 +59772,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[84].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[84].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[84].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -59611,6 +60460,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[85].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[85].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[85].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -60292,6 +61151,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[86].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[86].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[86].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -60973,6 +61842,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[87].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[87].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[87].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -61682,6 +62561,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[88].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[88].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[88].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -62412,6 +63301,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[89].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[89].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[89].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -63091,6 +63990,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[90].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[90].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[90].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -63821,6 +64730,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[91].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[91].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[91].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -64499,6 +65418,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[92].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[92].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[92].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -65180,6 +66109,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[93].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[93].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[93].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -65860,6 +66799,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[94].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[94].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[94].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -66539,6 +67488,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[95].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[95].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[95].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -67218,6 +68177,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[96].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[96].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[96].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -67897,6 +68866,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[97].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[97].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[97].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -68576,6 +69555,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[98].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[98].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[98].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -69255,6 +70244,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestRadioScaling.host[99].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestRadioScaling.host[99].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestRadioScaling.host[99].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

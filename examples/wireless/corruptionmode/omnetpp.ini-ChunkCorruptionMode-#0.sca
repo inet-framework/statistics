@@ -1,8 +1,8 @@
 version 3
-run ChunkCorruptionMode-0-20230511-14:06:52-52360
+run ChunkCorruptionMode-0-20240115-11:27:54-15169
 attr configname ChunkCorruptionMode
-attr datetime 20230511-14:06:52
-attr datetimef 20230511-140652
+attr datetime 20240115-11:27:54
+attr datetimef 20240115-112754
 attr experiment ChunkCorruptionMode
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network CorruptionModeExample
-attr processid 52360
+attr processid 15169
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -47,7 +47,8 @@ config *.radioMedium.backgroundNoise.power -110dBm
 config *.*Host.wlan[0].typename CsmaCaInterface
 config *.*Host.wlan[0].mac.bitrate 100Mbps
 config *.*Host.wlan[0].mac.retryLimit 0
-config *.*Host.wlan[0].radio.typename ApskScalarRadio
+config *.*Host.wlan[0].radio.typename ApskRadio
+config *.*Host.wlan[0].radio.signalAnalogRepresentation "\"scalar\""
 config *.*Host.wlan[0].radio.centerFrequency 2GHz
 config *.*Host.wlan[0].radio.bandwidth 20MHz
 config *.*Host.wlan[0].radio.transmitter.power 1mW
@@ -839,6 +840,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar CorruptionModeExample.sourceHost.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -1821,6 +1832,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar CorruptionModeExample.destinationHost.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

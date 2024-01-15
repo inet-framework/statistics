@@ -1,9 +1,8 @@
 version 3
-run Wireless13-0-20230511-14:26:43-56914
+run Wireless13-0-20240115-11:41:24-17043
 attr configname Wireless13
-attr datetime 20230511-14:26:43
-attr datetimef 20230511-142643
-attr description "Configuring a more accurate pathloss model"
+attr datetime 20240115-11:41:24
+attr datetimef 20240115-114124
 attr experiment Wireless13
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network WirelessC
-attr processid 56914
+attr processid 17043
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -29,10 +28,11 @@ config *.physicalEnvironment.ground.elevation 0m
 config *.radioMedium.pathLoss.typename TwoRayGroundReflection
 config description "Changing to a more realistic radio model"
 config extends Wireless11
-config *.radioMedium.typename ApskScalarRadioMedium
+config *.radioMedium.signalAnalogRepresentation "\"scalar\""
 config *.radioMedium.backgroundNoise.power -90dBm
 config *.radioMedium.mediumLimitCache.centerFrequency 2GHz
-config *.host*.wlan[0].radio.typename ApskScalarRadio
+config *.host*.wlan[0].radio.typename ApskRadio
+config *.host*.wlan[0].radio.signalAnalogRepresentation "\"scalar\""
 config *.host*.wlan[0].radio.centerFrequency 2GHz
 config *.host*.wlan[0].radio.bandwidth 2MHz
 config *.host*.wlan[0].radio.transmitter.power 1.4mW
@@ -83,7 +83,7 @@ config *.host*.wlan[0].mac.useAck true
 config description "Using CSMA to better utilize the medium"
 config extends Wireless05
 config *.host*.wlan[0].typename WirelessInterface
-config *.host*.wlan[0].radio.typename UnitDiskRadio
+config *.host*.wlan[0].radio.typename GenericRadio
 config *.host*.wlan[0].mac.typename CsmaCaMac
 config *.host*.wlan[0].mac.ackTimeout 300us
 config *.host*.wlan[0].queue.typename DropTailQueue
@@ -91,7 +91,7 @@ config *.host*.wlan[0].queue.packetCapacity -1
 config description "Taking interference into account"
 config extends Wireless04
 config *.host*.wlan[0].radio.receiver.ignoreInterference false
-config *.host*.wlan[0].radio.transmitter.interferenceRange 500m
+config *.host*.wlan[0].radio.transmitter.analogModel.interferenceRange 500m
 config *.hostA.wlan[0].radio.displayInterferenceRange true
 config *.visualizer.dataLinkVisualizer.packetFilter "\"\""
 config description "Setting up static routing"
@@ -109,7 +109,7 @@ config *.visualizer.networkRouteVisualizer.packetFilter "\"UDPData*\""
 config description "Adding more nodes and decreasing the communication range"
 config extends Wireless02
 config network WirelessB
-config *.host*.wlan[0].radio.transmitter.communicationRange 250m
+config *.host*.wlan[0].radio.transmitter.analogModel.communicationRange 250m
 config *.hostR1.wlan[0].radio.displayCommunicationRange true
 config description "Setting up some animations"
 config extends Wireless01
@@ -121,6 +121,7 @@ config *.visualizer.physicalLinkVisualizer.packetFilter "\"UDPData*\""
 config description "Two hosts communicating wirelessly"
 config network WirelessA
 config sim-time-limit 20s
+config *.radioMedium.signalAnalogRepresentation "\"unitDisk\""
 config *.host*.ipv4.arp.typename GlobalArp
 config *.hostA.numApps 1
 config *.hostA.app[0].typename UdpBasicApp
@@ -135,7 +136,8 @@ config *.hostB.app[0].localPort 5000
 config *.host*.wlan[0].typename AckingWirelessInterface
 config *.host*.wlan[0].mac.useAck false
 config *.host*.wlan[0].mac.fullDuplex false
-config *.host*.wlan[0].radio.transmitter.communicationRange 500m
+config *.host*.wlan[0].radio.signalAnalogRepresentation "\"unitDisk\""
+config *.host*.wlan[0].radio.transmitter.analogModel.communicationRange 500m
 config *.host*.wlan[0].radio.receiver.ignoreInterference true
 config *.host*.wlan[0].mac.headerLength 23B
 config *.host*.**.bitrate 1Mbps
@@ -936,6 +938,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WirelessC.hostA.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar WirelessC.hostA.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar WirelessC.hostA.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -1643,6 +1655,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WirelessC.hostB.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar WirelessC.hostB.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar WirelessC.hostB.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -2598,6 +2620,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WirelessC.hostR1.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar WirelessC.hostR1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar WirelessC.hostR1.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -3473,6 +3505,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WirelessC.hostR2.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar WirelessC.hostR2.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar WirelessC.hostR2.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -4334,6 +4376,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar WirelessC.hostR3.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar WirelessC.hostR3.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar WirelessC.hostR3.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

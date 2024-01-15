@@ -1,9 +1,8 @@
 version 3
-run Layered-0-20230511-14:07:12-52420
+run Layered-0-20240115-11:28:03-15182
 attr configname Layered
-attr datetime 20230511-14:07:12
-attr datetimef 20230511-140712
-attr description "host1 pinging host0"
+attr datetime 20240115-11:28:03
+attr datetimef 20240115-112803
 attr experiment Layered
 attr inifile omnetpp.ini
 attr iterationvars "$detail=\"symbol\", $distance=100, $bitrate=6"
@@ -11,7 +10,7 @@ attr iterationvarsd detail=symbol/distance=100/bitrate=6
 attr iterationvarsf detail=symbol,distance=100,bitrate=6-
 attr measurement "$detail=\"symbol\", $distance=100, $bitrate=6"
 attr network Ieee80211LevelofDetailShowcase
-attr processid 52420
+attr processid 15182
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -25,7 +24,7 @@ config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-Layered-#0.sca
 config sim-time-limit 1000s
-config *.radioMedium.typename Ieee80211LayeredDimensionalRadioMedium
+config *.radioMedium.typename Ieee80211DimensionalRadioMedium
 config *.*Host.wlan[*].radio.typename Ieee80211OfdmRadio
 config *.*Host.wlan[*].radio.centerFrequency 2.412GHz
 config *.*Host.wlan[*].radio.receiver.channelSpacing 5MHz
@@ -977,6 +976,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar Ieee80211LevelofDetailShowcase.sourceHost.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar Ieee80211LevelofDetailShowcase.sourceHost.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar Ieee80211LevelofDetailShowcase.sourceHost.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -1923,6 +1932,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar Ieee80211LevelofDetailShowcase.destinationHost.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar Ieee80211LevelofDetailShowcase.destinationHost.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar Ieee80211LevelofDetailShowcase.destinationHost.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

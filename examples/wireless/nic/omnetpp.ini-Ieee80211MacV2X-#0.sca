@@ -1,9 +1,8 @@
 version 3
-run Ieee80211MacV2X-0-20230511-14:07:41-52499
+run Ieee80211MacV2X-0-20240115-11:28:33-15329
 attr configname Ieee80211MacV2X
-attr datetime 20230511-14:07:41
-attr datetimef 20230511-140741
-attr description "IEEE 802.11 radios for V2X communication in 5.9 GHz band"
+attr datetime 20240115-11:28:33
+attr datetimef 20240115-112833
 attr experiment Ieee80211MacV2X
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network TestNic
-attr processid 52499
+attr processid 15329
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -35,9 +34,8 @@ config **.wlan*.radio.bandwidth "10 MHz"
 config **.wlan*.radio.centerFrequency "5.9 GHz"
 config **.wlan*.radio.channelNumber 4
 config sim-time-limit 100s
-config extends "AbstractIeee80211Mac, AbstractApskScalarRadio"
+config extends "AbstractIeee80211Mac, AbstractIeee80211ScalarRadio"
 config description "IEEE 80211 mac with scalar radio"
-config *.host[*].wlan[*].radio.typename Ieee80211ScalarRadio
 config **.wlan[*].mac.*.rateSelection.dataFrameBitrate 54Mbps
 config **.wlan[*].mac.*.rateSelection.multicastFrameBitrate 2Mbps
 config **.wlan[*].mac.*.rateSelection.responseAckFrameBitrate 2Mbps
@@ -46,15 +44,11 @@ config **.wlan[*].mac.*.rateSelection.controlFrameBitrate 2Mbps
 config *.host[*].wlan[*].typename Ieee80211Interface
 config *.host[*].wlan[*].mgmt.typename Ieee80211MgmtAdhoc
 config *.host[*].wlan[*].agent.typename ""
-config *.radioMedium.typename ApskScalarRadioMedium
+config *.radioMedium.signalAnalogRepresentation "\"scalar\""
 config *.radioMedium.backgroundNoise.power -110dBm
-config *.host[*].wlan[*].radio.typename ApskScalarRadio
-config *.host[*].wlan[*].radio.centerFrequency 2.412GHz
-config *.host[*].wlan[*].radio.bandwidth 2MHz
+config *.host[*].wlan[*].radio.typename Ieee80211Radio
+config *.host[*].wlan[*].radio.signalAnalogRepresentation "\"scalar\""
 config *.host[*].wlan[*].radio.transmitter.power 2mW
-config *.host[*].wlan[*].radio.transmitter.preambleDuration 0s
-config *.host[*].wlan[*].radio.transmitter.headerLength 96b
-config *.host[*].wlan[*].radio.transmitter.modulation "\"BPSK\""
 config *.host[*].wlan[*].radio.receiver.sensitivity -85dBm
 config *.host[*].wlan[*].radio.receiver.energyDetection -85dBm
 config *.host[*].wlan[*].radio.receiver.snirThreshold 4dB
@@ -2524,6 +2518,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestNic.host[0].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestNic.host[0].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -5049,6 +5053,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestNic.host[1].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestNic.host[1].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

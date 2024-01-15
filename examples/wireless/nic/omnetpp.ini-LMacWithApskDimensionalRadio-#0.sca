@@ -1,9 +1,8 @@
 version 3
-run LMacWithApskDimensionalRadio-0-20230511-14:07:43-52512
+run LMacWithApskDimensionalRadio-0-20240115-11:28:35-15333
 attr configname LMacWithApskDimensionalRadio
-attr datetime 20230511-14:07:43
-attr datetimef 20230511-140743
-attr description "L-MAC with dimensional radio"
+attr datetime 20240115-11:28:35
+attr datetimef 20240115-112835
 attr experiment LMacWithApskDimensionalRadio
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network TestNic
-attr processid 52512
+attr processid 15333
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -29,9 +28,10 @@ config *.host[*].wlan[*].radio.transmitter.bitrate 2Mbps
 config *.host[*].wlan[*].typename LMacInterface
 config *.host[*].wlan[*].mac.numSlots 2
 config *.host[*].wlan[*].mac.headerLength 25B
-config *.radioMedium.typename ApskDimensionalRadioMedium
+config *.radioMedium.signalAnalogRepresentation "\"dimensional\""
 config *.radioMedium.backgroundNoise.power -110dBm
-config *.host[*].wlan[*].radio.typename ApskDimensionalRadio
+config *.host[*].wlan[*].radio.typename ApskRadio
+config *.host[*].wlan[*].radio.signalAnalogRepresentation "\"dimensional\""
 config *.host[*].wlan[*].radio.centerFrequency 2.412GHz
 config *.host[*].wlan[*].radio.bandwidth 2MHz
 config *.host[*].wlan[*].radio.transmitter.power 2mW
@@ -623,6 +623,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestNic.host[0].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestNic.host[0].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestNic.host[0].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -1311,6 +1321,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar TestNic.host[1].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar TestNic.host[1].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar TestNic.host[1].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

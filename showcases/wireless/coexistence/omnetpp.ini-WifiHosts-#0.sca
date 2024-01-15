@@ -1,8 +1,8 @@
 version 3
-run WifiHosts-0-20230511-14:21:16-54778
+run WifiHosts-0-20240115-11:37:24-16432
 attr configname WifiHosts
-attr datetime 20230511-14:21:16
-attr datetimef 20230511-142116
+attr datetime 20240115-11:37:24
+attr datetimef 20240115-113724
 attr experiment WifiHosts
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network CoexistenceShowcase
-attr processid 54778
+attr processid 16432
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -35,17 +35,17 @@ config *.wifiHost2.app[*].localPort 5000
 config network CoexistenceShowcase
 config sim-time-limit 5s
 config repeat 8
-config *.radioMedium.analogModel.typename DimensionalAnalogModel
+config *.radioMedium.analogModel.typename DimensionalMediumAnalogModel
 config *.radioMedium.backgroundNoise.typename IsotropicDimensionalBackgroundNoise
 config *.radioMedium.backgroundNoise.powerSpectralDensity -113dBmWpMHz
-config *.wifiHost*.wlan[*].radio.typename Ieee80211DimensionalRadio
+config *.wifiHost*.wlan[*].radio.signalAnalogRepresentation "\"dimensional\""
 config *.wifiHost*.wlan[*].radio.channelNumber 8
-config *.wifiHost*.wlan[*].radio.transmitter.frequencyGains "\"left c-b*1.5 -40dB linear c-b -28dB linear c-b*0.5-1MHz -20dB linear c-b*0.5+1MHz 0dB linear c+b*0.5-1MHz 0dB linear c+b*0.5+1MHz -20dB linear c+b -28dB linear c+b*1.5 -40dB right\""
-config *.wpanHost*.wlan[*].radio.transmitter.frequencyGains "\"left c-5MHz -40dB linear c-2MHz -20dB linear c-1MHz 0dB either c+1MHz 0dB linear c+2MHz -20dB linear c+5MHz -40dB right\""
+config *.wifiHost*.wlan[*].radio.transmitter.analogModel.frequencyGains "\"left c-b*1.5 -40dB linear c-b -28dB linear c-b*0.5-1MHz -20dB linear c-b*0.5+1MHz 0dB linear c+b*0.5-1MHz 0dB linear c+b*0.5+1MHz -20dB linear c+b -28dB linear c+b*1.5 -40dB right\""
+config *.wpanHost*.wlan[*].radio.transmitter.analogModel.frequencyGains "\"left c-5MHz -40dB linear c-2MHz -20dB linear c-1MHz 0dB either c+1MHz 0dB linear c+2MHz -20dB linear c+5MHz -40dB right\""
 config *.*Host*.wlan[*].radio.receiver.snirThresholdMode "\"mean\""
 config *.*Host*.wlan[*].radio.receiver.errorModel.snirMode "\"mean\""
 config *.wpanHost*.wlan[*].typename Ieee802154NarrowbandInterface
-config *.wpanHost*.wlan[*].radio.typename Ieee802154NarrowbandDimensionalRadio
+config *.wpanHost*.wlan[*].radio.signalAnalogRepresentation "\"dimensional\""
 config *.visualizer.physicalLinkVisualizer.displayLinks true
 config *.visualizer.dataLinkVisualizer.displayLinks true
 config *.visualizer.mediumVisualizer.displaySignals true
@@ -1046,6 +1046,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar CoexistenceShowcase.wifiHost1.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar CoexistenceShowcase.wifiHost1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar CoexistenceShowcase.wifiHost1.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -1924,6 +1934,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar CoexistenceShowcase.wifiHost2.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar CoexistenceShowcase.wifiHost2.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar CoexistenceShowcase.wifiHost2.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -2432,6 +2452,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar CoexistenceShowcase.wpanHost1.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar CoexistenceShowcase.wpanHost1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar CoexistenceShowcase.wpanHost1.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -2863,6 +2893,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar CoexistenceShowcase.wpanHost2.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar CoexistenceShowcase.wpanHost2.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar CoexistenceShowcase.wpanHost2.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

@@ -1,8 +1,8 @@
 version 3
-run Noise-0-20230511-14:20:55-54749
+run Noise-0-20240115-11:37:05-16401
 attr configname Noise
-attr datetime 20230511-14:20:55
-attr datetimef 20230511-142055
+attr datetime 20240115-11:37:05
+attr datetimef 20240115-113705
 attr experiment Noise
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network AnalogModelShowcaseNoiseNetwork
-attr processid 54749
+attr processid 16401
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -44,11 +44,12 @@ config *.host3.app[*].startTime intuniform(0ms,1ms)
 config *.host4.numApps 1
 config *.host4.app[0].typename UdpSink
 config *.host4.app[*].localPort 1000
-config *.host*.wlan[*].radio.typename Ieee80211DimensionalRadio
+config *.host*.wlan[*].radio.signalAnalogRepresentation "\"dimensional\""
 config *.host{1..2}.wlan[*].radio.channelNumber 0
 config *.host{3..4}.wlan[*].radio.channelNumber 3
-config *.host*.wlan[*].radio.transmitter.frequencyGains "\"left c-b*1.5 -40dB linear c-b -28dB linear c-b*0.5-1MHz -20dB linear c-b*0.5+1MHz 0dB linear c+b*0.5-1MHz 0dB linear c+b*0.5+1MHz -20dB linear c+b -28dB linear c+b*1.5 -40dB right\""
-config *.noiseSource.transmitter.typename NoiseDimensionalTransmitter
+config *.host*.wlan[*].radio.transmitter.analogModel.frequencyGains "\"left c-b*1.5 -40dB linear c-b -28dB linear c-b*0.5-1MHz -20dB linear c-b*0.5+1MHz 0dB linear c+b*0.5-1MHz 0dB linear c+b*0.5+1MHz -20dB linear c+b -28dB linear c+b*1.5 -40dB right\""
+config *.noiseSource.transmitter.typename NoiseTransmitter
+config *.noiseSource.transmitter.signalAnalogRepresentation "\"dimensional\""
 config *.noiseSource.transmitter.centerFrequency 2500MHz
 config *.noiseSource.transmitter.bandwidth 250MHz
 config *.noiseSource.transmitter.power 0.0125W
@@ -1176,6 +1177,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar AnalogModelShowcaseNoiseNetwork.host1.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar AnalogModelShowcaseNoiseNetwork.host1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar AnalogModelShowcaseNoiseNetwork.host1.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -2127,6 +2138,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar AnalogModelShowcaseNoiseNetwork.host2.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar AnalogModelShowcaseNoiseNetwork.host2.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar AnalogModelShowcaseNoiseNetwork.host2.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -3151,6 +3172,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar AnalogModelShowcaseNoiseNetwork.host3.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar AnalogModelShowcaseNoiseNetwork.host3.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar AnalogModelShowcaseNoiseNetwork.host3.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -3981,6 +4012,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar AnalogModelShowcaseNoiseNetwork.host4.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar AnalogModelShowcaseNoiseNetwork.host4.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar AnalogModelShowcaseNoiseNetwork.host4.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

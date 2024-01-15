@@ -1,9 +1,8 @@
 version 3
-run General-0-20230511-14:07:24-52443
+run General-0-20240115-11:28:19-15211
 attr configname General
-attr datetime 20230511-14:07:24
-attr datetimef 20230511-140724
-attr description "host1 pinging host0"
+attr datetime 20240115-11:28:19
+attr datetimef 20240115-112819
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars "$distance=110, $detail=\"packet\", $modulation=\"BPSK\", $fecType=\"\", $bitrate=\"\" == \"\" ? 36Mbps : 18Mbps"
@@ -11,7 +10,7 @@ attr iterationvarsd distance=110/detail=packet/modulation=BPSK/fecType=/bitrate=
 attr iterationvarsf distance=110,detail=packet,modulation=BPSK,fecType=,bitrate=#22#22_==_#22#22_#3f_36Mbps_#3a_18Mbps-
 attr measurement "$distance=110, $detail=\"packet\", $modulation=\"BPSK\", $fecType=\"\", $bitrate=\"\" == \"\" ? 36Mbps : 18Mbps"
 attr network LayeredApsk
-attr processid 52443
+attr processid 15211
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -55,7 +54,8 @@ config **.wlan[*].radio.transmitter.power 0.1mW
 config **.wlan[*].radio.receiver.sensitivity -109dBm
 config **.wlan[*].radio.receiver.snirThreshold 1dB
 config **.wlan[*].typename Ieee80211Interface
-config **.wlan[*].radio.typename ApskScalarRadio
+config **.wlan[*].radio.typename ApskRadio
+config **.wlan[*].radio.signalAnalogRepresentation "\"scalar\""
 config **.wlan[*].radio.centerFrequency 2.4GHz
 config **.wlan[*].radio.receiver.energyDetection -90dBm
 config **.wlan[*].radio.bandwidth 20MHz
@@ -64,6 +64,7 @@ config **.wlan[*].radio.**.levelOfDetail "\"packet\""
 config **.wlan[*].radio.**.modulation "\"BPSK\""
 config **.wlan[*].radio.**.fec*.typename ""
 config **.bitrate "\"\" == \"\" ? 36Mbps : 18Mbps"
+config **.backgroundNoise.power -110dBm
 config **.wlan[*].radio.transmitter.typename ApskLayeredTransmitter
 config **.wlan[*].radio.transmitter.encoder.typename ApskEncoder
 config **.wlan[*].radio.transmitter.modulator.typename ApskModulator
@@ -1013,6 +1014,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar LayeredApsk.host[0].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar LayeredApsk.host[0].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar LayeredApsk.host[0].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -1951,6 +1962,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar LayeredApsk.host[1].ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar LayeredApsk.host[1].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar LayeredApsk.host[1].ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count

@@ -1,8 +1,8 @@
 version 3
-run DCFfrag-0-20230511-14:21:38-54848
+run DCFfrag-0-20240115-11:37:42-16464
 attr configname DCFfrag
-attr datetime 20230511-14:21:38
-attr datetimef 20230511-142138
+attr datetime 20240115-11:37:42
+attr datetimef 20240115-113742
 attr experiment DCFfrag
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network FragmentationShowcase
-attr processid 54848
+attr processid 16464
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -24,6 +24,11 @@ config sim-time-limit 10s
 config **.mac.dcf.originatorMacDataService.fragmentationPolicy.fragmentationThreshold 250B
 config network FragmentationShowcase
 config sim-time-limit 10s
+config **.app*.throughput:vector.vector-recording true
+config **.*.wlan[*].radio.minSnir:vector.vector-recording true
+config **.app*.throughput.result-recording-modes +vector
+config **.*.wlan[*].radio.minSnir.result-recording-modes +vector
+config **.vector-recording false
 config **.arp.typename GlobalArp
 config *.wifiHost1.numApps 1
 config *.wifiHost1.app[0].typename UdpBasicApp
@@ -1109,6 +1114,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar FragmentationShowcase.wifiHost1.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -2056,6 +2071,16 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsForwardingDisabled(packetDropped)
 attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
 scalar FragmentationShowcase.wifiHost2.ipv4.ip packetDropNoInterfaceFound:count 0
 attr interpolationmode none
 attr recordingmode count
