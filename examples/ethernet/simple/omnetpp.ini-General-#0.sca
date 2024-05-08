@@ -1,8 +1,8 @@
 version 3
-run General-0-20240311-16:47:20-223883
+run General-0-20240508-14:25:06-97120
 attr configname General
-attr datetime 20240311-16:47:20
-attr datetimef 20240311-164720
+attr datetime 20240508-14:25:06
+attr datetimef 20240508-142506
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network inet.networks.ethernet.LinearNetwork
-attr processid 223883
+attr processid 97120
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -23,9 +23,12 @@ config output-scalar-file results/omnetpp.ini-General-#0.sca
 config sim-time-limit 10s
 config network inet.networks.ethernet.LinearNetwork
 config sim-time-limit 10s
+config *.visualizer.typename ""
 config *.configurator.typename ""
 config *.macForwardingTableConfigurator.typename ""
 config *.*.hasIpv4 false
+config *.*.hasTcp false
+config *.*.hasUdp false
 config *.*.numLoInterfaces 0
 config *.*.ethg$o[*].channel.datarate 100Mbps
 config *.client.numApps 1
@@ -505,41 +508,6 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsNoCarrier(packetDropped)
 attr title "packet drops: no carrier, sum(packetBytes)"
-scalar LinearNetwork.client.udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar LinearNetwork.client.udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar LinearNetwork.client.udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar LinearNetwork.client.udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar LinearNetwork.client.udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar LinearNetwork.client.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar LinearNetwork.client.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
 scalar LinearNetwork.client.app[0].source packets:count 9962
 attr recordingmode count
 attr source packetPushed
@@ -1870,41 +1838,6 @@ attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetDropReasonIsNoCarrier(packetDropped)
 attr title "packet drops: no carrier, sum(packetBytes)"
-scalar LinearNetwork.server.udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar LinearNetwork.server.udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar LinearNetwork.server.udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar LinearNetwork.server.udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar LinearNetwork.server.udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar LinearNetwork.server.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar LinearNetwork.server.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
 scalar LinearNetwork.server.app[0].sink packets:count 9962
 attr recordingmode count
 attr source packetPushed
