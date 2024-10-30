@@ -1,8 +1,8 @@
 version 3
-run sync1-0-20240418-16:56:52-320273
+run sync1-0-20241030-11:06:55-14837
 attr configname sync1
-attr datetime 20240418-16:56:52
-attr datetimef 20240418-165652
+attr datetime 20241030-11:06:55
+attr datetimef 20241030-110655
 attr experiment sync1
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network GptpMasterSlave
-attr processid 320273
+attr processid 14837
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -18,7 +18,7 @@ attr runnumber 0
 attr seedset 0
 config **.param-recording false
 config **.vector-recording false
-config image-path /home/user/inet/images
+config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-sync1-#0.sca
 config sim-time-limit 10s
 config description "gptp on, master is precise, client is precise"
@@ -863,6 +863,16 @@ attr interpolationmode none
 attr recordingmode count
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
 scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:count 0
 attr recordingmode count
 attr title "pause sent, count"
@@ -1554,4 +1564,14 @@ attr interpolationmode none
 attr recordingmode count
 attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
 
