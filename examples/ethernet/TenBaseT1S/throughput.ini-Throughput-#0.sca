@@ -1,0 +1,1634 @@
+version 3
+run Throughput-0-20241104-10:09:25-18818
+attr configname Throughput
+attr datetime 20241104-10:09:25
+attr datetimef 20241104-100925
+attr experiment Throughput
+attr inifile throughput.ini
+attr iterationvars "$numNodes=1, $packetLength=46"
+attr iterationvarsd numNodes=1/packetLength=46
+attr iterationvarsf numNodes=1,packetLength=46-
+attr measurement "$numNodes=1, $packetLength=46"
+attr network MultidropNetwork
+attr processid 18818
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar numNodes 1
+itervar packetLength 46
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/throughput.ini-Throughput-#0.sca
+config sim-time-limit 1s
+config description "Throughput analysis of an Ethernet 10BASE-T1S multidrop link"
+config network MultidropNetwork
+config sim-time-limit 1s
+config *.numNodes 1
+config *.controller.typename EthernetPlcaHost
+config *.node[*].typename EthernetPlcaHost
+config *.node[*].numApps 1
+config *.node[*].app[0].typename EthernetSourceApp
+config *.node[*].app[0].io.interface "\"eth0\""
+config *.node[*].app[0].io.remoteAddress "\"controller\""
+config *.node[*].app[0].source.packetLength 46B
+config *.node[*].app[0].source.productionInterval "1 * (46 + 14 + 4 + 8 + 1 + 12) * 8 / 10E+6 / 2 * 1s"
+config *.controller.numApps 1
+config *.controller.app[0].typename EthernetSinkApp
+config *.controller.app[0].io.interface "\"eth0\""
+config *.controller.app[0].io.localAddress "\"controller\""
+config *.*.eth[0].plca.max_bc 3
+config *.visualizer.interfaceTableVisualizer.displayInterfaceTables true
+config *.visualizer.interfaceTableVisualizer.format "\"%N%\\\\%m\""
+
+scalar MultidropNetwork.controller.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar MultidropNetwork.controller.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar MultidropNetwork.controller.ethernet decapPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar MultidropNetwork.controller.ethernet decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar MultidropNetwork.controller.ethernet encapPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar MultidropNetwork.controller.ethernet encapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar MultidropNetwork.controller.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar MultidropNetwork.controller.eth[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar MultidropNetwork.controller.eth[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic MultidropNetwork.controller.eth[0].queue queueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MultidropNetwork.controller.eth[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar MultidropNetwork.controller.eth[0].mac state:count 43476
+attr enum IDLE,WAIT_IFG,TRANSMITTING,JAMMING,BACKOFF,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source stateChanged
+attr title "state, count"
+attr type enum
+scalar MultidropNetwork.controller.eth[0].mac collision:count 2
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source collisionChanged
+attr title "collision, count"
+attr type int
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:count 28985
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source carrierSenseChanged
+attr title "carrier sense, count"
+attr type int
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:count 7251
+attr interpolationmode none
+attr recordingmode count
+attr title "transmit opportunity used, count"
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packet interval, count"
+attr unit s
+statistic MultidropNetwork.controller.eth[0].plca packetInterval:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "packet interval"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packet pending delay, count"
+attr unit s
+statistic MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr title "packet pending delay"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MultidropNetwork.controller.eth[0].plca txCmd:count 14503
+attr enum NONE,BEACON,COMMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "TX command, count"
+attr type enum
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:count 57968
+attr enum NONE,BEACON,COMMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "RX command, count"
+attr type enum
+scalar MultidropNetwork.controller.eth[0].plca dataState:count 61592
+attr enum WAIT_IDLE,IDLE,RECEIVE,HOLD,COLLIDE,DELAY_PENDING,PENDING,WAIT_MAC,TRANSMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source dataStateChanged
+attr title "data state, count"
+attr type enum
+scalar MultidropNetwork.controller.eth[0].plca controlState:count 65254
+attr enum DISABLE,RESYNC,RECOVER,SEND_BEACON,SYNCING,WAIT_TO,EARLY_RECEIVE,COMMIT,YIELD,RECEIVE,TRANSMIT,BURST,ABORT,NEXT_TX_OPPORTUNITY
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source controlStateChanged
+attr title "control state, count"
+attr type enum
+scalar MultidropNetwork.controller.eth[0].plca collision:count 2
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source collisionChanged
+attr title "collision, count"
+attr type int
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:count 21749
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source carrierSenseChanged
+attr title "carrier sense, count"
+attr type int
+scalar MultidropNetwork.controller.eth[0].phy busUsed:count 72471
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "bus used, count"
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:count 363
+attr interpolationmode linear
+attr recordingmode count
+attr source utilization(busUsed)
+attr title "bus utilization, count"
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:count 14504
+attr enum NONE,BEACON,COMMIT,DATA,JAM
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "transmitted signal type, count"
+attr type enum
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:count 57969
+attr enum NONE,BEACON,COMMIT,DATA,JAM
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "received signal type, count"
+attr type enum
+scalar MultidropNetwork.controller.eth[0].phy state:count 97836
+attr enum IDLE,TRANSMITTING,RECEIVING,COLLISION,CRS_ON
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source stateChanged
+attr title "state, count"
+attr type enum
+statistic MultidropNetwork.controller.eth[0].phy throughput:histogram
+field count 73
+field mean 145015.27996275
+field stddev 1028.1251009873
+field min 143321.97576931
+field max 153534.86780686
+field sum 10586115.437281
+field sqrsum 1535224600823.4
+attr interpolationmode linear
+attr recordingmode histogram
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+bin	-inf	0
+bin	142600	0
+bin	142800	0
+bin	143000	0
+bin	143200	1
+bin	143400	0
+bin	143600	0
+bin	143800	0
+bin	144000	0
+bin	144200	0
+bin	144400	0
+bin	144600	0
+bin	144800	71
+bin	145000	0
+bin	145200	0
+bin	145400	0
+bin	145600	0
+bin	145800	0
+bin	146000	0
+bin	146200	0
+bin	146400	0
+bin	146600	0
+bin	146800	0
+bin	147000	0
+bin	147200	0
+bin	147400	0
+bin	147600	0
+bin	147800	0
+bin	148000	0
+bin	148200	0
+bin	148400	0
+bin	148600	0
+bin	148800	0
+bin	149000	0
+bin	149200	0
+bin	149400	0
+bin	149600	0
+bin	149800	0
+bin	150000	0
+bin	150200	0
+bin	150400	0
+bin	150600	0
+bin	150800	0
+bin	151000	0
+bin	151200	0
+bin	151400	0
+bin	151600	0
+bin	151800	0
+bin	152000	0
+bin	152200	0
+bin	152400	0
+bin	152600	0
+bin	152800	0
+bin	153000	0
+bin	153200	0
+bin	153400	1
+bin	153600	0
+bin	153800	0
+bin	154000	0
+bin	154200	0
+bin	154400	0
+bin	154600	0
+bin	154800	0
+bin	155000	0
+bin	155200	0
+bin	155400	0
+bin	155600	0
+bin	155800	0
+statistic MultidropNetwork.controller.eth[0].phy transmissionTime:histogram
+field count 7251
+field mean 2.0000000000002e-06
+field stddev 0
+field min 2e-06
+field max 2e-06
+field sum 0.014502000000001
+field sqrsum 2.9004000000004e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(transmissionEnded)
+attr title "transmission time"
+attr unit s
+bin	-inf	0
+bin	0	7251
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar MultidropNetwork.controller.app[0].sink packets:count 14491
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar MultidropNetwork.controller.app[0].sink packetLengths:sum 5332688
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic MultidropNetwork.controller.app[0].sink packetLengths:histogram
+field count 14491
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 5332688
+field sqrsum 1962429184
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	14491
+bin	369	0
+statistic MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram
+field count 14491
+field mean 0.064361320140156
+field stddev 0.013906699818158
+field min 0.000123621
+field max 0.069066421
+field sum 932.659890151
+field sqrsum 62.829534156462
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	0	26
+bin	0.001	28
+bin	0.002	29
+bin	0.003	28
+bin	0.004	29
+bin	0.005	28
+bin	0.006	29
+bin	0.007	29
+bin	0.008	28
+bin	0.009	29
+bin	0.01	28
+bin	0.011	29
+bin	0.012	28
+bin	0.013	29
+bin	0.014	29
+bin	0.015	28
+bin	0.016	29
+bin	0.017	28
+bin	0.018	29
+bin	0.019	28
+bin	0.02	29
+bin	0.021	28
+bin	0.022	29
+bin	0.023	29
+bin	0.024	28
+bin	0.025	29
+bin	0.026	28
+bin	0.027	29
+bin	0.028	28
+bin	0.029	29
+bin	0.03	29
+bin	0.031	28
+bin	0.032	29
+bin	0.033	28
+bin	0.034	29
+bin	0.035	28
+bin	0.036	29
+bin	0.037	29
+bin	0.038	28
+bin	0.039	29
+bin	0.04	28
+bin	0.041	29
+bin	0.042	28
+bin	0.043	29
+bin	0.044	29
+bin	0.045	28
+bin	0.046	29
+bin	0.047	28
+bin	0.048	29
+bin	0.049	28
+bin	0.05	29
+bin	0.051	29
+bin	0.052	28
+bin	0.053	29
+bin	0.054	28
+bin	0.055	29
+bin	0.056	28
+bin	0.057	29
+bin	0.058	29
+bin	0.059	28
+bin	0.06	29
+bin	0.061	28
+bin	0.062	29
+bin	0.063	28
+bin	0.064	29
+bin	0.065	29
+bin	0.066	28
+bin	0.067	29
+bin	0.068	28
+bin	0.069	12523
+bin	0.07	0
+statistic MultidropNetwork.controller.app[0].sink packetJitter:histogram
+field count 14491
+field mean 4.7640309847492e-06
+field stddev 1.3351577533754e-05
+field min -3.4000000000006e-05
+field max 0.000123621
+field sum 0.069035573
+field sqrsum 2.9119419908733e-06
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-3.6e-05	370
+bin	-3.2e-05	0
+bin	-2.8e-05	0
+bin	-2.4e-05	0
+bin	-2e-05	0
+bin	-1.6e-05	0
+bin	-1.2e-05	0
+bin	-8e-06	0
+bin	-4e-06	0
+bin	0	9021
+bin	4e-06	3130
+bin	8e-06	0
+bin	1.2e-05	0
+bin	1.6e-05	0
+bin	2e-05	0
+bin	2.4e-05	0
+bin	2.8e-05	0
+bin	3.2e-05	1477
+bin	3.6e-05	492
+bin	4e-05	0
+bin	4.4e-05	0
+bin	4.8e-05	0
+bin	5.2e-05	0
+bin	5.6e-05	0
+bin	6e-05	0
+bin	6.4e-05	0
+bin	6.8e-05	0
+bin	7.2e-05	0
+bin	7.6e-05	0
+bin	8e-05	0
+bin	8.4e-05	0
+bin	8.8e-05	0
+bin	9.2e-05	0
+bin	9.6e-05	0
+bin	0.0001	0
+bin	0.000104	0
+bin	0.000108	0
+bin	0.000112	0
+bin	0.000116	0
+bin	0.00012	1
+bin	0.000124	0
+bin	0.000128	0
+bin	0.000132	0
+bin	0.000136	0
+bin	0.00014	0
+bin	0.000144	0
+bin	0.000148	0
+statistic MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram
+field count 14491
+field mean -0.011690513760077
+field stddev 0.0075257914274268
+field min -0.034461938980711
+field max 0
+field sum -169.40723489727
+field sqrsum 2.8011355160894
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-0.0345	53
+bin	-0.034	57
+bin	-0.0335	61
+bin	-0.033	61
+bin	-0.0325	61
+bin	-0.032	63
+bin	-0.0315	63
+bin	-0.031	63
+bin	-0.0305	65
+bin	-0.03	67
+bin	-0.0295	69
+bin	-0.029	70
+bin	-0.0285	72
+bin	-0.028	70
+bin	-0.0275	76
+bin	-0.027	77
+bin	-0.0265	76
+bin	-0.026	82
+bin	-0.0255	80
+bin	-0.025	83
+bin	-0.0245	89
+bin	-0.024	88
+bin	-0.0235	90
+bin	-0.023	95
+bin	-0.0225	97
+bin	-0.022	101
+bin	-0.0215	105
+bin	-0.021	103
+bin	-0.0205	114
+bin	-0.02	112
+bin	-0.0195	126
+bin	-0.019	124
+bin	-0.0185	131
+bin	-0.018	138
+bin	-0.0175	136
+bin	-0.017	157
+bin	-0.0165	153
+bin	-0.016	168
+bin	-0.0155	175
+bin	-0.015	182
+bin	-0.0145	196
+bin	-0.014	213
+bin	-0.0135	217
+bin	-0.013	241
+bin	-0.0125	246
+bin	-0.012	284
+bin	-0.0115	294
+bin	-0.011	313
+bin	-0.0105	368
+bin	-0.01	369
+bin	-0.0095	432
+bin	-0.009	469
+bin	-0.0085	536
+bin	-0.008	602
+bin	-0.0075	675
+bin	-0.007	769
+bin	-0.0065	893
+bin	-0.006	1057
+bin	-0.0055	1267
+bin	-0.005	939
+bin	-0.0045	29
+bin	-0.004	29
+bin	-0.0035	28
+bin	-0.003	29
+bin	-0.0025	28
+bin	-0.002	29
+bin	-0.0015	28
+bin	-0.001	29
+bin	-0.0005	28
+bin	0	1
+bin	0.0005	0
+bin	0.001	0
+bin	0.0015	0
+bin	0.002	0
+bin	0.0025	0
+bin	0.003	0
+bin	0.0035	0
+bin	0.004	0
+bin	0.0045	0
+statistic MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram
+field count 14491
+field mean 0.016988023433498
+field stddev 0.0044222976289469
+field min 0
+field max 0.02298066061594
+field sum 246.17344757482
+field sqrsum 4.4653771155682
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	39
+bin	0.0004	40
+bin	0.0008	39
+bin	0.0012	40
+bin	0.0016	39
+bin	0.002	40
+bin	0.0024	40
+bin	0.0028	39
+bin	0.0032	40
+bin	0.0036	39
+bin	0.004	40
+bin	0.0044	40
+bin	0.0048	39
+bin	0.0052	40
+bin	0.0056	39
+bin	0.006	40
+bin	0.0064	39
+bin	0.0068	40
+bin	0.0072	40
+bin	0.0076	39
+bin	0.008	40
+bin	0.0084	39
+bin	0.0088	40
+bin	0.0092	40
+bin	0.0096	39
+bin	0.01	40
+bin	0.0104	39
+bin	0.0108	40
+bin	0.0112	39
+bin	0.0116	40
+bin	0.012	40
+bin	0.0124	39
+bin	0.0128	40
+bin	0.0132	39
+bin	0.0136	259
+bin	0.014	925
+bin	0.0144	855
+bin	0.0148	794
+bin	0.0152	738
+bin	0.0156	689
+bin	0.016	644
+bin	0.0164	605
+bin	0.0168	568
+bin	0.0172	535
+bin	0.0176	506
+bin	0.018	479
+bin	0.0184	456
+bin	0.0188	435
+bin	0.0192	416
+bin	0.0196	400
+bin	0.02	389
+bin	0.0204	386
+bin	0.0208	387
+bin	0.0212	397
+bin	0.0216	419
+bin	0.022	474
+bin	0.0224	639
+bin	0.0228	751
+bin	0.0232	0
+scalar MultidropNetwork.controller.app[0].sink droppedPackets:count 14491
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:sum 5332688
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram
+field count 14491
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 5332688
+field sqrsum 1962429184
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	14491
+bin	369	0
+scalar MultidropNetwork.controller.app[0].io "packets sent" 0
+scalar MultidropNetwork.controller.app[0].io "packets received" 14491
+scalar MultidropNetwork.controller.app[0].io packetReceived:count 14491
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar MultidropNetwork.controller.app[0].io packetReceived:sum(packetBytes) 666586
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar MultidropNetwork.controller.app[0].io packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar MultidropNetwork.controller.app[0].io packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar MultidropNetwork.node[0].ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar MultidropNetwork.node[0].ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar MultidropNetwork.node[0].ethernet decapPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar MultidropNetwork.node[0].ethernet decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar MultidropNetwork.node[0].ethernet encapPk:count 29412
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar MultidropNetwork.node[0].ethernet encapPk:sum(packetBytes) 1352952
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:last 999
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:max 1000
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:timeavg 966.3187790684
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:last 511488
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:max 512000
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:timeavg 494755.21488302
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic MultidropNetwork.node[0].eth[0].queue queueingTime:histogram
+field count 14492
+field mean 0.064302226957528
+field stddev 0.013906294117413
+field min 0
+field max 0.0690039975
+field sum 931.8678730685
+field sqrsum 62.723521736495
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	27
+bin	0.001	29
+bin	0.002	28
+bin	0.003	29
+bin	0.004	29
+bin	0.005	28
+bin	0.006	29
+bin	0.007	28
+bin	0.008	29
+bin	0.009	28
+bin	0.01	29
+bin	0.011	28
+bin	0.012	29
+bin	0.013	29
+bin	0.014	28
+bin	0.015	29
+bin	0.016	28
+bin	0.017	29
+bin	0.018	28
+bin	0.019	29
+bin	0.02	29
+bin	0.021	28
+bin	0.022	29
+bin	0.023	28
+bin	0.024	29
+bin	0.025	28
+bin	0.026	29
+bin	0.027	29
+bin	0.028	28
+bin	0.029	29
+bin	0.03	28
+bin	0.031	29
+bin	0.032	28
+bin	0.033	29
+bin	0.034	29
+bin	0.035	28
+bin	0.036	29
+bin	0.037	28
+bin	0.038	29
+bin	0.039	28
+bin	0.04	29
+bin	0.041	29
+bin	0.042	28
+bin	0.043	29
+bin	0.044	28
+bin	0.045	29
+bin	0.046	28
+bin	0.047	29
+bin	0.048	29
+bin	0.049	28
+bin	0.05	29
+bin	0.051	28
+bin	0.052	29
+bin	0.053	28
+bin	0.054	29
+bin	0.055	29
+bin	0.056	28
+bin	0.057	29
+bin	0.058	28
+bin	0.059	29
+bin	0.06	28
+bin	0.061	29
+bin	0.062	28
+bin	0.063	29
+bin	0.064	29
+bin	0.065	28
+bin	0.066	29
+bin	0.067	28
+bin	0.068	11075
+bin	0.069	1476
+bin	0.07	0
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPackets:count 14492
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:sum 7419904
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram
+field count 14492
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 7419904
+field sqrsum 3798990848
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	14492
+bin	513	0
+statistic MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MultidropNetwork.node[0].eth[0].queue incomingPackets:count 29412
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:sum 15058944
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram
+field count 29412
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 15058944
+field sqrsum 7710179328
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	29412
+bin	513	0
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketsQueueOverflow:count 13921
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:sum 7127552
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar MultidropNetwork.node[0].eth[0].mac state:count 43481
+attr enum IDLE,WAIT_IFG,TRANSMITTING,JAMMING,BACKOFF,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source stateChanged
+attr title "state, count"
+attr type enum
+scalar MultidropNetwork.node[0].eth[0].mac collision:count 4
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source collisionChanged
+attr title "collision, count"
+attr type int
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:count 28987
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source carrierSenseChanged
+attr title "carrier sense, count"
+attr type int
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:count 7251
+attr interpolationmode none
+attr recordingmode count
+attr title "transmit opportunity used, count"
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:count 14491
+attr interpolationmode none
+attr recordingmode count
+attr title "packet interval, count"
+attr unit s
+statistic MultidropNetwork.node[0].eth[0].plca packetInterval:histogram
+field count 14491
+field mean 6.9003792146832e-05
+field stddev 1.7389189919857e-06
+field min 6.8e-05
+field max 7.2016e-05
+field sum 0.99993395199974
+field sqrsum 6.9043050015237e-05
+attr interpolationmode none
+attr recordingmode histogram
+attr title "packet interval"
+attr unit s
+bin	-inf	0
+bin	6.69e-05	0
+bin	6.7e-05	0
+bin	6.71e-05	0
+bin	6.72e-05	0
+bin	6.73e-05	0
+bin	6.74e-05	0
+bin	6.75e-05	0
+bin	6.76e-05	0
+bin	6.77e-05	0
+bin	6.78e-05	0
+bin	6.79e-05	10869
+bin	6.8e-05	0
+bin	6.81e-05	0
+bin	6.82e-05	0
+bin	6.83e-05	0
+bin	6.84e-05	0
+bin	6.85e-05	0
+bin	6.86e-05	0
+bin	6.87e-05	0
+bin	6.88e-05	0
+bin	6.89e-05	0
+bin	6.9e-05	0
+bin	6.91e-05	0
+bin	6.92e-05	0
+bin	6.93e-05	0
+bin	6.94e-05	0
+bin	6.95e-05	0
+bin	6.96e-05	0
+bin	6.97e-05	0
+bin	6.98e-05	0
+bin	6.99e-05	0
+bin	7e-05	0
+bin	7.01e-05	0
+bin	7.02e-05	0
+bin	7.03e-05	0
+bin	7.04e-05	0
+bin	7.05e-05	0
+bin	7.06e-05	0
+bin	7.07e-05	0
+bin	7.08e-05	0
+bin	7.09e-05	0
+bin	7.1e-05	0
+bin	7.11e-05	0
+bin	7.12e-05	0
+bin	7.13e-05	0
+bin	7.14e-05	0
+bin	7.15e-05	0
+bin	7.16e-05	0
+bin	7.17e-05	0
+bin	7.18e-05	0
+bin	7.19e-05	0
+bin	7.2e-05	3622
+bin	7.21e-05	0
+bin	7.22e-05	0
+bin	7.23e-05	0
+bin	7.24e-05	0
+bin	7.25e-05	0
+bin	7.26e-05	0
+bin	7.27e-05	0
+bin	7.28e-05	0
+bin	7.29e-05	0
+bin	7.3e-05	0
+bin	7.31e-05	0
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:count 14492
+attr interpolationmode none
+attr recordingmode count
+attr title "packet pending delay, count"
+attr unit s
+statistic MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram
+field count 14492
+field mean 1.0082228470881e-06
+field stddev 1.818825048089e-06
+field min 0
+field max 6.52135e-05
+field sum 0.014611165500001
+field sqrsum 6.2669343814248e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr title "packet pending delay"
+attr unit s
+bin	-inf	0
+bin	0	10869
+bin	1e-06	0
+bin	2e-06	0
+bin	3e-06	0
+bin	4e-06	3622
+bin	5e-06	0
+bin	6e-06	0
+bin	7e-06	0
+bin	8e-06	0
+bin	9e-06	0
+bin	1e-05	0
+bin	1.1e-05	0
+bin	1.2e-05	0
+bin	1.3e-05	0
+bin	1.4e-05	0
+bin	1.5e-05	0
+bin	1.6e-05	0
+bin	1.7e-05	0
+bin	1.8e-05	0
+bin	1.9e-05	0
+bin	2e-05	0
+bin	2.1e-05	0
+bin	2.2e-05	0
+bin	2.3e-05	0
+bin	2.4e-05	0
+bin	2.5e-05	0
+bin	2.6e-05	0
+bin	2.7e-05	0
+bin	2.8e-05	0
+bin	2.9e-05	0
+bin	3e-05	0
+bin	3.1e-05	0
+bin	3.2e-05	0
+bin	3.3e-05	0
+bin	3.4e-05	0
+bin	3.5e-05	0
+bin	3.6e-05	0
+bin	3.7e-05	0
+bin	3.8e-05	0
+bin	3.9e-05	0
+bin	4e-05	0
+bin	4.1e-05	0
+bin	4.2e-05	0
+bin	4.3e-05	0
+bin	4.4e-05	0
+bin	4.5e-05	0
+bin	4.6e-05	0
+bin	4.7e-05	0
+bin	4.8e-05	0
+bin	4.9e-05	0
+bin	5e-05	0
+bin	5.1e-05	0
+bin	5.2e-05	0
+bin	5.3e-05	0
+bin	5.4e-05	0
+bin	5.5e-05	0
+bin	5.6e-05	0
+bin	5.7e-05	0
+bin	5.8e-05	0
+bin	5.9e-05	0
+bin	6e-05	0
+bin	6.1e-05	0
+bin	6.2e-05	0
+bin	6.3e-05	0
+bin	6.4e-05	0
+bin	6.5e-05	1
+bin	6.6e-05	0
+bin	6.7e-05	0
+bin	6.8e-05	0
+bin	6.9e-05	0
+bin	7e-05	0
+bin	7.1e-05	0
+bin	7.2e-05	0
+bin	7.3e-05	0
+bin	7.4e-05	0
+bin	7.5e-05	0
+bin	7.6e-05	0
+bin	7.7e-05	0
+bin	7.8e-05	0
+bin	7.9e-05	0
+bin	8e-05	0
+bin	8.1e-05	0
+bin	8.2e-05	0
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:count 28985
+attr enum NONE,BEACON,COMMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "TX command, count"
+attr type enum
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:count 14503
+attr enum NONE,BEACON,COMMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "RX command, count"
+attr type enum
+scalar MultidropNetwork.node[0].eth[0].plca dataState:count 36234
+attr enum WAIT_IDLE,IDLE,RECEIVE,HOLD,COLLIDE,DELAY_PENDING,PENDING,WAIT_MAC,TRANSMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source dataStateChanged
+attr title "data state, count"
+attr type enum
+scalar MultidropNetwork.node[0].eth[0].plca controlState:count 83369
+attr enum DISABLE,RESYNC,RECOVER,SEND_BEACON,SYNCING,WAIT_TO,EARLY_RECEIVE,COMMIT,YIELD,RECEIVE,TRANSMIT,BURST,ABORT,NEXT_TX_OPPORTUNITY
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source controlStateChanged
+attr title "control state, count"
+attr type enum
+scalar MultidropNetwork.node[0].eth[0].plca collision:count 2
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source collisionChanged
+attr title "collision, count"
+attr type int
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:count 21749
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source carrierSenseChanged
+attr title "carrier sense, count"
+attr type int
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:count 72471
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "bus used, count"
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:count 363
+attr interpolationmode linear
+attr recordingmode count
+attr source utilization(busUsed)
+attr title "bus utilization, count"
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:count 57969
+attr enum NONE,BEACON,COMMIT,DATA,JAM
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "transmitted signal type, count"
+attr type enum
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:count 14504
+attr enum NONE,BEACON,COMMIT,DATA,JAM
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "received signal type, count"
+attr type enum
+scalar MultidropNetwork.node[0].eth[0].phy state:count 83344
+attr enum IDLE,TRANSMITTING,RECEIVING,COLLISION,CRS_ON
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source stateChanged
+attr title "state, count"
+attr type enum
+statistic MultidropNetwork.node[0].eth[0].phy throughput:histogram
+field count 290
+field mean 9390361.1700672
+field stddev 20806.494807464
+field min 9260788.0203396
+field max 9410148.8548201
+field sum 2723204739.3195
+field sqrsum 2.5572001153304e+16
+attr interpolationmode linear
+attr recordingmode histogram
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+bin	-inf	0
+bin	9220000	0
+bin	9225000	0
+bin	9230000	0
+bin	9235000	0
+bin	9240000	0
+bin	9245000	0
+bin	9250000	0
+bin	9255000	0
+bin	9260000	1
+bin	9265000	0
+bin	9270000	0
+bin	9275000	0
+bin	9280000	0
+bin	9285000	0
+bin	9290000	0
+bin	9295000	0
+bin	9300000	0
+bin	9305000	0
+bin	9310000	0
+bin	9315000	0
+bin	9320000	0
+bin	9325000	0
+bin	9330000	0
+bin	9335000	0
+bin	9340000	0
+bin	9345000	0
+bin	9350000	0
+bin	9355000	0
+bin	9360000	0
+bin	9365000	0
+bin	9370000	144
+bin	9375000	0
+bin	9380000	0
+bin	9385000	0
+bin	9390000	0
+bin	9395000	0
+bin	9400000	1
+bin	9405000	0
+bin	9410000	144
+bin	9415000	0
+bin	9420000	0
+bin	9425000	0
+bin	9430000	0
+bin	9435000	0
+bin	9440000	0
+bin	9445000	0
+bin	9450000	0
+statistic MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram
+field count 28983
+field mean 3.2799447952261e-05
+field stddev 2.5768287858098e-05
+field min 0
+field max 5.84e-05
+field sum 0.95062640000039
+field sqrsum 5.042420415999e-05
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(transmissionEnded)
+attr title "transmission time"
+attr unit s
+bin	-inf	0
+bin	0	3622
+bin	1e-06	0
+bin	2e-06	0
+bin	3e-06	0
+bin	4e-06	0
+bin	5e-06	0
+bin	6e-06	0
+bin	7e-06	0
+bin	8e-06	0
+bin	9e-06	10870
+bin	1e-05	0
+bin	1.1e-05	0
+bin	1.2e-05	0
+bin	1.3e-05	0
+bin	1.4e-05	0
+bin	1.5e-05	0
+bin	1.6e-05	0
+bin	1.7e-05	0
+bin	1.8e-05	0
+bin	1.9e-05	0
+bin	2e-05	0
+bin	2.1e-05	0
+bin	2.2e-05	0
+bin	2.3e-05	0
+bin	2.4e-05	0
+bin	2.5e-05	0
+bin	2.6e-05	0
+bin	2.7e-05	0
+bin	2.8e-05	0
+bin	2.9e-05	0
+bin	3e-05	0
+bin	3.1e-05	0
+bin	3.2e-05	0
+bin	3.3e-05	0
+bin	3.4e-05	0
+bin	3.5e-05	0
+bin	3.6e-05	0
+bin	3.7e-05	0
+bin	3.8e-05	0
+bin	3.9e-05	0
+bin	4e-05	0
+bin	4.1e-05	0
+bin	4.2e-05	0
+bin	4.3e-05	0
+bin	4.4e-05	0
+bin	4.5e-05	0
+bin	4.6e-05	0
+bin	4.7e-05	0
+bin	4.8e-05	0
+bin	4.9e-05	0
+bin	5e-05	0
+bin	5.1e-05	0
+bin	5.2e-05	0
+bin	5.3e-05	0
+bin	5.4e-05	0
+bin	5.5e-05	0
+bin	5.6e-05	0
+bin	5.7e-05	0
+bin	5.8e-05	14491
+bin	5.9e-05	0
+bin	6e-05	0
+bin	6.1e-05	0
+bin	6.2e-05	0
+bin	6.3e-05	0
+bin	6.4e-05	0
+bin	6.5e-05	0
+bin	6.6e-05	0
+bin	6.7e-05	0
+bin	6.8e-05	0
+bin	6.9e-05	0
+bin	7e-05	0
+bin	7.1e-05	0
+bin	7.2e-05	0
+bin	7.3e-05	0
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar MultidropNetwork.node[0].app[0].source packets:count 29412
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar MultidropNetwork.node[0].app[0].source packetLengths:sum 10823616
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic MultidropNetwork.node[0].app[0].source packetLengths:histogram
+field count 29412
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 10823616
+field sqrsum 3983090688
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	29412
+bin	369	0
+scalar MultidropNetwork.node[0].app[0].io "packets sent" 29412
+scalar MultidropNetwork.node[0].app[0].io "packets received" 0
+scalar MultidropNetwork.node[0].app[0].io packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar MultidropNetwork.node[0].app[0].io packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar MultidropNetwork.node[0].app[0].io packetSent:count 29412
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar MultidropNetwork.node[0].app[0].io packetSent:sum(packetBytes) 1352952
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar MultidropNetwork.j[0] packetReceived:count 50727
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets, count"
+scalar MultidropNetwork.j[0] packetReceived:sum(packetBytes) 2354977
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets, sum(packetBytes)"
+

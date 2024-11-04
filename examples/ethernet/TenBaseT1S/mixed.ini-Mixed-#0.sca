@@ -1,0 +1,4443 @@
+version 3
+run Mixed-0-20241104-10:09:25-18811
+attr configname Mixed
+attr datetime 20241104-10:09:25
+attr datetimef 20241104-100925
+attr experiment Mixed
+attr inifile mixed.ini
+attr iterationvars "$numNodes=1, $packetInterval=50"
+attr iterationvarsd numNodes=1/packetInterval=50
+attr iterationvarsf numNodes=1,packetInterval=50-
+attr measurement "$numNodes=1, $packetInterval=50"
+attr network MixedMultidropNetwork
+attr processid 18811
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar numNodes 1
+itervar packetInterval 50
+config **.param-recording false
+config **.vector-recording false
+config image-path /home/levy/workspace/inet/images
+config output-scalar-file results/mixed.ini-Mixed-#0.sca
+config sim-time-limit 1ms
+config description "A network that mixes standard Ethernet with 10BASE-T1S Ethernet components"
+config network MixedMultidropNetwork
+config sim-time-limit 1ms
+config *.numNodes 1
+config *.switch.eth[0].typename EthernetPlcaInterface
+config *.node[*].typename EthernetPlcaNode
+config *.*.ethernet.hasSocketSupport true
+config *.*.spi.typename SpiDelayer
+config *.*.spi.speed 10MHz
+config *.*.encryption.delay 10us
+config *.switch.bridging.typename BridgingLayer
+config *.switch.bridging.directionReverser.delayer.typename PacketDelayer
+config *.switch.bridging.directionReverser.delayer.delay 10us
+config *.*.eth[*].plca.max_bc 3
+config *.node[*].numApps 2
+config *.node[*].app[0].typename EthernetSourceApp
+config *.node[*].app[0].io.interface "\"eth0\""
+config *.node[*].app[0].io.remoteAddress "\"host\""
+config *.node[*].app[0].source.productionInterval "2 * 1 * 50us"
+config *.node[*].app[0].source.packetLength 46B
+config *.node[*].app[1].typename EthernetSinkApp
+config *.node[*].app[1].io.interface "\"eth0\""
+config *.node[*].app[1].io.steal true
+config *.node[0].app[1].io.localAddress "\"node[0]\""
+config *.node[1].app[1].io.localAddress "\"node[1]\""
+config *.node[2].app[1].io.localAddress "\"node[2]\""
+config *.node[3].app[1].io.localAddress "\"node[3]\""
+config *.node[4].app[1].io.localAddress "\"node[4]\""
+config *.node[5].app[1].io.localAddress "\"node[5]\""
+config *.node[6].app[1].io.localAddress "\"node[6]\""
+config *.node[7].app[1].io.localAddress "\"node[7]\""
+config *.node[8].app[1].io.localAddress "\"node[8]\""
+config *.node[9].app[1].io.localAddress "\"node[9]\""
+config *.node[*].eth[*].queue.typename DropHeadQueue
+config *.node[*].eth[*].queue.dataCapacity 16kB
+config *.host.numApps "1 + 1"
+config *.host.app[0].typename EthernetSinkApp
+config *.host.app[0].io.steal true
+config *.host.app[0].io.interface "\"eth0\""
+config *.host.app[0].io.localAddress "\"host\""
+config *.host.app[*].typename EthernetSourceApp
+config *.host.app[*].io.interface "\"eth0\""
+config *.host.app[1].io.remoteAddress "\"node[0]\""
+config *.host.app[2].io.remoteAddress "\"node[1]\""
+config *.host.app[3].io.remoteAddress "\"node[2]\""
+config *.host.app[4].io.remoteAddress "\"node[3]\""
+config *.host.app[5].io.remoteAddress "\"node[4]\""
+config *.host.app[6].io.remoteAddress "\"node[5]\""
+config *.host.app[7].io.remoteAddress "\"node[6]\""
+config *.host.app[8].io.remoteAddress "\"node[7]\""
+config *.host.app[9].io.remoteAddress "\"node[8]\""
+config *.host.app[10].io.remoteAddress "\"node[9]\""
+config *.host.app[*].source.productionInterval "2 * 1 * 50us"
+config *.host.app[*].source.packetLength 46B
+config *.visualizer.interfaceTableVisualizer.displayInterfaceTables true
+config *.visualizer.interfaceTableVisualizer.format "\"%N%\\\\%m\""
+
+scalar MixedMultidropNetwork.switch.bridging.directionReverser.reverser outgoingPackets:count 17
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.bridging.directionReverser.reverser outgoingPacketLengths:sum 6480
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.directionReverser.reverser outgoingPacketLengths:histogram
+field count 17
+field mean 381.17647058824
+field stddev 16.233588998268
+field min 368
+field max 400
+field sum 6480
+field sqrsum 2474240
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	360	0
+bin	361	0
+bin	362	0
+bin	363	0
+bin	364	0
+bin	365	0
+bin	366	0
+bin	367	0
+bin	368	10
+bin	369	0
+bin	370	0
+bin	371	0
+bin	372	0
+bin	373	0
+bin	374	0
+bin	375	0
+bin	376	0
+bin	377	0
+bin	378	0
+bin	379	0
+bin	380	0
+bin	381	0
+bin	382	0
+bin	383	0
+bin	384	0
+bin	385	0
+bin	386	0
+bin	387	0
+bin	388	0
+bin	389	0
+bin	390	0
+bin	391	0
+bin	392	0
+bin	393	0
+bin	394	0
+bin	395	0
+bin	396	0
+bin	397	0
+bin	398	0
+bin	399	0
+bin	400	7
+bin	401	0
+bin	402	0
+bin	403	0
+bin	404	0
+bin	405	0
+bin	406	0
+bin	407	0
+bin	408	0
+scalar MixedMultidropNetwork.switch.bridging.directionReverser.reverser flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.directionReverser.reverser flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.switch.bridging.directionReverser.reverser incomingPackets:count 17
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.bridging.directionReverser.reverser incomingPacketLengths:sum 6480
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.directionReverser.reverser incomingPacketLengths:histogram
+field count 17
+field mean 381.17647058824
+field stddev 16.233588998268
+field min 368
+field max 400
+field sum 6480
+field sqrsum 2474240
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	360	0
+bin	361	0
+bin	362	0
+bin	363	0
+bin	364	0
+bin	365	0
+bin	366	0
+bin	367	0
+bin	368	10
+bin	369	0
+bin	370	0
+bin	371	0
+bin	372	0
+bin	373	0
+bin	374	0
+bin	375	0
+bin	376	0
+bin	377	0
+bin	378	0
+bin	379	0
+bin	380	0
+bin	381	0
+bin	382	0
+bin	383	0
+bin	384	0
+bin	385	0
+bin	386	0
+bin	387	0
+bin	388	0
+bin	389	0
+bin	390	0
+bin	391	0
+bin	392	0
+bin	393	0
+bin	394	0
+bin	395	0
+bin	396	0
+bin	397	0
+bin	398	0
+bin	399	0
+bin	400	7
+bin	401	0
+bin	402	0
+bin	403	0
+bin	404	0
+bin	405	0
+bin	406	0
+bin	407	0
+bin	408	0
+scalar MixedMultidropNetwork.switch.bridging.directionReverser.reverser flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.directionReverser.reverser flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.switch.bridging.directionReverser.join packets:count 0
+attr recordingmode count
+attr source "merge(packetPushed, packetPulled)"
+attr title "packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.bridging.directionReverser.join packetLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushed, packetPulled))"
+attr title "packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.directionReverser.join packetLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushed, packetPulled))"
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.switch.bridging.interfaceRelay.learner outgoingPackets:count 17
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:sum 6480
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram
+field count 17
+field mean 381.17647058824
+field stddev 16.233588998268
+field min 368
+field max 400
+field sum 6480
+field sqrsum 2474240
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	360	0
+bin	361	0
+bin	362	0
+bin	363	0
+bin	364	0
+bin	365	0
+bin	366	0
+bin	367	0
+bin	368	10
+bin	369	0
+bin	370	0
+bin	371	0
+bin	372	0
+bin	373	0
+bin	374	0
+bin	375	0
+bin	376	0
+bin	377	0
+bin	378	0
+bin	379	0
+bin	380	0
+bin	381	0
+bin	382	0
+bin	383	0
+bin	384	0
+bin	385	0
+bin	386	0
+bin	387	0
+bin	388	0
+bin	389	0
+bin	390	0
+bin	391	0
+bin	392	0
+bin	393	0
+bin	394	0
+bin	395	0
+bin	396	0
+bin	397	0
+bin	398	0
+bin	399	0
+bin	400	7
+bin	401	0
+bin	402	0
+bin	403	0
+bin	404	0
+bin	405	0
+bin	406	0
+bin	407	0
+bin	408	0
+scalar MixedMultidropNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.switch.bridging.interfaceRelay.learner incomingPackets:count 17
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:sum 6480
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram
+field count 17
+field mean 381.17647058824
+field stddev 16.233588998268
+field min 368
+field max 400
+field sum 6480
+field sqrsum 2474240
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	360	0
+bin	361	0
+bin	362	0
+bin	363	0
+bin	364	0
+bin	365	0
+bin	366	0
+bin	367	0
+bin	368	10
+bin	369	0
+bin	370	0
+bin	371	0
+bin	372	0
+bin	373	0
+bin	374	0
+bin	375	0
+bin	376	0
+bin	377	0
+bin	378	0
+bin	379	0
+bin	380	0
+bin	381	0
+bin	382	0
+bin	383	0
+bin	384	0
+bin	385	0
+bin	386	0
+bin	387	0
+bin	388	0
+bin	389	0
+bin	390	0
+bin	391	0
+bin	392	0
+bin	393	0
+bin	394	0
+bin	395	0
+bin	396	0
+bin	397	0
+bin	398	0
+bin	399	0
+bin	400	7
+bin	401	0
+bin	402	0
+bin	403	0
+bin	404	0
+bin	405	0
+bin	406	0
+bin	407	0
+bin	408	0
+scalar MixedMultidropNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.switch.bridging.interfaceRelay.selector packetDropped:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets dropped, count"
+scalar MixedMultidropNetwork.switch.bridging.interfaceRelay.selector packetDropped:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets dropped, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar MixedMultidropNetwork.switch.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar MixedMultidropNetwork.switch.ethernet decapPk:count 17
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar MixedMultidropNetwork.switch.ethernet decapPk:sum(packetBytes) 810
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.ethernet encapPk:count 17
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar MixedMultidropNetwork.switch.ethernet encapPk:sum(packetBytes) 810
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[0].queue queueLength:last 3
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[0].queue queueLength:max 3
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[0].queue queueLength:timeavg 1.378414
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[0].queue queueBitLength:last 1536
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar MixedMultidropNetwork.switch.eth[0].queue queueBitLength:max 1536
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar MixedMultidropNetwork.switch.eth[0].queue queueBitLength:timeavg 705.747968
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic MixedMultidropNetwork.switch.eth[0].queue queueingTime:histogram
+field count 7
+field mean 0.00011795735714286
+field stddev 9.8985800035794e-05
+field min 0
+field max 0.0002402605
+field sum 0.0008257015
+field sqrsum 1.5618669838125e-07
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	2
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	1
+bin	6e-05	0
+bin	6.5e-05	0
+bin	7e-05	0
+bin	7.5e-05	0
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+bin	0.0001	0
+bin	0.000105	0
+bin	0.00011	0
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	1
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	1
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	1
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	0
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	1
+bin	0.000245	0
+bin	0.00025	0
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	0
+bin	0.000275	0
+bin	0.00028	0
+bin	0.000285	0
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+scalar MixedMultidropNetwork.switch.eth[0].queue outgoingPackets:count 7
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[0].queue outgoingPacketLengths:sum 3584
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.eth[0].queue outgoingPacketLengths:histogram
+field count 7
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 3584
+field sqrsum 1835008
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	7
+bin	513	0
+statistic MixedMultidropNetwork.switch.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.switch.eth[0].queue incomingPackets:count 10
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[0].queue incomingPacketLengths:sum 5120
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.eth[0].queue incomingPacketLengths:histogram
+field count 10
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 5120
+field sqrsum 2621440
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	10
+bin	513	0
+scalar MixedMultidropNetwork.switch.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar MixedMultidropNetwork.switch.eth[0].mac state:count 33
+attr enum IDLE,WAIT_IFG,TRANSMITTING,JAMMING,BACKOFF,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source stateChanged
+attr title "state, count"
+attr type enum
+scalar MixedMultidropNetwork.switch.eth[0].mac collision:count 6
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source collisionChanged
+attr title "collision, count"
+attr type int
+scalar MixedMultidropNetwork.switch.eth[0].mac carrierSense:count 19
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source carrierSenseChanged
+attr title "carrier sense, count"
+attr type int
+scalar MixedMultidropNetwork.switch.eth[0].plca transmitOpportunityUsed:count 8
+attr interpolationmode none
+attr recordingmode count
+attr title "transmit opportunity used, count"
+scalar MixedMultidropNetwork.switch.eth[0].plca packetInterval:count 5
+attr interpolationmode none
+attr recordingmode count
+attr title "packet interval, count"
+attr unit s
+statistic MixedMultidropNetwork.switch.eth[0].plca packetInterval:histogram
+field count 5
+field mean 0.000134644
+field stddev 0.00013104566245397
+field min 6.8e-05
+field max 0.000367616
+field sum 0.00067322
+field sqrsum 1.59336896272e-07
+attr interpolationmode none
+attr recordingmode histogram
+attr title "packet interval"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	3
+bin	7e-05	0
+bin	7.5e-05	0
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+bin	0.0001	1
+bin	0.000105	0
+bin	0.00011	0
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	0
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	0
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	0
+bin	0.000275	0
+bin	0.00028	0
+bin	0.000285	0
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+bin	0.00031	0
+bin	0.000315	0
+bin	0.00032	0
+bin	0.000325	0
+bin	0.00033	0
+bin	0.000335	0
+bin	0.00034	0
+bin	0.000345	0
+bin	0.00035	0
+bin	0.000355	0
+bin	0.00036	0
+bin	0.000365	1
+bin	0.00037	0
+bin	0.000375	0
+bin	0.00038	0
+bin	0.000385	0
+bin	0.00039	0
+bin	0.000395	0
+bin	0.0004	0
+bin	0.000405	0
+bin	0.00041	0
+bin	0.000415	0
+bin	0.00042	0
+bin	0.000425	0
+bin	0.00043	0
+bin	0.000435	0
+bin	0.00044	0
+bin	0.000445	0
+scalar MixedMultidropNetwork.switch.eth[0].plca packetPendingDelay:count 6
+attr interpolationmode none
+attr recordingmode count
+attr title "packet pending delay, count"
+attr unit s
+statistic MixedMultidropNetwork.switch.eth[0].plca packetPendingDelay:histogram
+field count 6
+field mean 3.7214333333333e-05
+field stddev 8.741300542692e-05
+field min 0
+field max 0.000215601
+field sum 0.000223286
+field sqrsum 4.65146072215e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr title "packet pending delay"
+attr unit s
+bin	-inf	0
+bin	0	5
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	0
+bin	7e-05	0
+bin	7.5e-05	0
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+bin	0.0001	0
+bin	0.000105	0
+bin	0.00011	0
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	1
+bin	0.00022	0
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	0
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	0
+scalar MixedMultidropNetwork.switch.eth[0].plca txCmd:count 33
+attr enum NONE,BEACON,COMMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "TX command, count"
+attr type enum
+scalar MixedMultidropNetwork.switch.eth[0].plca rxCmd:count 32
+attr enum NONE,BEACON,COMMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "RX command, count"
+attr type enum
+scalar MixedMultidropNetwork.switch.eth[0].plca dataState:count 34
+attr enum WAIT_IDLE,IDLE,RECEIVE,HOLD,COLLIDE,DELAY_PENDING,PENDING,WAIT_MAC,TRANSMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source dataStateChanged
+attr title "data state, count"
+attr type enum
+scalar MixedMultidropNetwork.switch.eth[0].plca controlState:count 81
+attr enum DISABLE,RESYNC,RECOVER,SEND_BEACON,SYNCING,WAIT_TO,EARLY_RECEIVE,COMMIT,YIELD,RECEIVE,TRANSMIT,BURST,ABORT,NEXT_TX_OPPORTUNITY
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source controlStateChanged
+attr title "control state, count"
+attr type enum
+scalar MixedMultidropNetwork.switch.eth[0].plca collision:count 2
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source collisionChanged
+attr title "collision, count"
+attr type int
+scalar MixedMultidropNetwork.switch.eth[0].plca carrierSense:count 27
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source carrierSenseChanged
+attr title "carrier sense, count"
+attr type int
+scalar MixedMultidropNetwork.switch.eth[0].phy busUsed:count 77
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "bus used, count"
+scalar MixedMultidropNetwork.switch.eth[0].phy busUtilization:count 1
+attr interpolationmode linear
+attr recordingmode count
+attr source utilization(busUsed)
+attr title "bus utilization, count"
+scalar MixedMultidropNetwork.switch.eth[0].phy transmittedSignalType:count 46
+attr enum NONE,BEACON,COMMIT,DATA,JAM
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "transmitted signal type, count"
+attr type enum
+scalar MixedMultidropNetwork.switch.eth[0].phy receivedSignalType:count 33
+attr enum NONE,BEACON,COMMIT,DATA,JAM
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "received signal type, count"
+attr type enum
+scalar MixedMultidropNetwork.switch.eth[0].phy state:count 97
+attr enum IDLE,TRANSMITTING,RECEIVING,COLLISION,CRS_ON
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source stateChanged
+attr title "state, count"
+attr type enum
+statistic MixedMultidropNetwork.switch.eth[0].phy throughput:histogram
+field count 1
+field mean 4256000
+field stddev nan
+field min 4256000
+field max 4256000
+field sum 4256000
+field sqrsum 18113536000000
+attr interpolationmode linear
+attr recordingmode histogram
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+bin	-inf	0
+bin	4255999	0
+bin	4256000	1
+bin	4256001	0
+statistic MixedMultidropNetwork.switch.eth[0].phy transmissionTime:histogram
+field count 22
+field mean 1.9563636363636e-05
+field stddev 2.4661026616227e-05
+field min 0
+field max 5.84e-05
+field sum 0.0004304
+field sqrsum 2.119168e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(transmissionEnded)
+attr title "transmission time"
+attr unit s
+bin	-inf	0
+bin	0	2
+bin	1e-06	8
+bin	2e-06	0
+bin	3e-06	0
+bin	4e-06	0
+bin	5e-06	0
+bin	6e-06	0
+bin	7e-06	0
+bin	8e-06	0
+bin	9e-06	4
+bin	1e-05	0
+bin	1.1e-05	0
+bin	1.2e-05	2
+bin	1.3e-05	0
+bin	1.4e-05	0
+bin	1.5e-05	0
+bin	1.6e-05	0
+bin	1.7e-05	0
+bin	1.8e-05	0
+bin	1.9e-05	0
+bin	2e-05	0
+bin	2.1e-05	0
+bin	2.2e-05	0
+bin	2.3e-05	0
+bin	2.4e-05	0
+bin	2.5e-05	0
+bin	2.6e-05	0
+bin	2.7e-05	0
+bin	2.8e-05	0
+bin	2.9e-05	0
+bin	3e-05	0
+bin	3.1e-05	0
+bin	3.2e-05	0
+bin	3.3e-05	0
+bin	3.4e-05	0
+bin	3.5e-05	0
+bin	3.6e-05	0
+bin	3.7e-05	0
+bin	3.8e-05	0
+bin	3.9e-05	0
+bin	4e-05	0
+bin	4.1e-05	0
+bin	4.2e-05	0
+bin	4.3e-05	0
+bin	4.4e-05	0
+bin	4.5e-05	0
+bin	4.6e-05	0
+bin	4.7e-05	0
+bin	4.8e-05	0
+bin	4.9e-05	0
+bin	5e-05	0
+bin	5.1e-05	0
+bin	5.2e-05	0
+bin	5.3e-05	0
+bin	5.4e-05	0
+bin	5.5e-05	0
+bin	5.6e-05	0
+bin	5.7e-05	0
+bin	5.8e-05	6
+bin	5.9e-05	0
+bin	6e-05	0
+bin	6.1e-05	0
+bin	6.2e-05	0
+bin	6.3e-05	0
+bin	6.4e-05	0
+bin	6.5e-05	0
+bin	6.6e-05	0
+bin	6.7e-05	0
+bin	6.8e-05	0
+bin	6.9e-05	0
+bin	7e-05	0
+bin	7.1e-05	0
+bin	7.2e-05	0
+bin	7.3e-05	0
+scalar MixedMultidropNetwork.switch.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar MixedMultidropNetwork.switch.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar MixedMultidropNetwork.switch.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[1].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[1].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[1].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[1].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar MixedMultidropNetwork.switch.eth[1].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar MixedMultidropNetwork.switch.eth[1].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic MixedMultidropNetwork.switch.eth[1].queue queueingTime:histogram
+field count 7
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	7
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar MixedMultidropNetwork.switch.eth[1].queue outgoingPackets:count 7
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[1].queue outgoingPacketLengths:sum 3808
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.eth[1].queue outgoingPacketLengths:histogram
+field count 7
+field mean 544
+field stddev 0
+field min 544
+field max 544
+field sum 3808
+field sqrsum 2071552
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	543	0
+bin	544	7
+bin	545	0
+statistic MixedMultidropNetwork.switch.eth[1].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.switch.eth[1].queue incomingPackets:count 7
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[1].queue incomingPacketLengths:sum 3808
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.switch.eth[1].queue incomingPacketLengths:histogram
+field count 7
+field mean 544
+field stddev 0
+field min 544
+field max 544
+field sum 3808
+field sqrsum 2071552
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	543	0
+bin	544	7
+bin	545	0
+scalar MixedMultidropNetwork.switch.eth[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar MixedMultidropNetwork.switch.eth[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar MixedMultidropNetwork.switch.eth[1].mac "simulated time" 0.001
+scalar MixedMultidropNetwork.switch.eth[1].mac full-duplex 1
+scalar MixedMultidropNetwork.switch.eth[1].mac "frames/sec sent" 7000
+scalar MixedMultidropNetwork.switch.eth[1].mac "frames/sec rcvd" 10000
+scalar MixedMultidropNetwork.switch.eth[1].mac "bits/sec sent" 3808000
+scalar MixedMultidropNetwork.switch.eth[1].mac "bits/sec rcvd" 5120000
+scalar MixedMultidropNetwork.switch.eth[1].mac "rx channel idle (%)" 94.24
+scalar MixedMultidropNetwork.switch.eth[1].mac "rx channel utilization (%)" 5.76
+scalar MixedMultidropNetwork.switch.eth[1].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar MixedMultidropNetwork.switch.eth[1].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar MixedMultidropNetwork.switch.eth[1].mac rxPkOk:count 10
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac rxPkOk:sum(packetBytes) 640
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+statistic MixedMultidropNetwork.switch.eth[1].mac throughput:histogram
+field count 1
+field mean 4256000
+field stddev nan
+field min 4256000
+field max 4256000
+field sum 4256000
+field sqrsum 18113536000000
+attr interpolationmode linear
+attr recordingmode histogram
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+bin	-inf	0
+bin	4255999	0
+bin	4256000	1
+bin	4256001	0
+statistic MixedMultidropNetwork.switch.eth[1].mac utilization:histogram
+field count 1
+field mean 4.256
+field stddev nan
+field min 4.256
+field max 4.256
+field sum 4.256
+field sqrsum 18.113536
+attr interpolationmode linear
+attr recordingmode histogram
+attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
+attr title utilization
+attr unit %
+bin	-inf	0
+bin	3.74	0
+bin	3.76	0
+bin	3.78	0
+bin	3.8	0
+bin	3.82	0
+bin	3.84	0
+bin	3.86	0
+bin	3.88	0
+bin	3.9	0
+bin	3.92	0
+bin	3.94	0
+bin	3.96	0
+bin	3.98	0
+bin	4	0
+bin	4.02	0
+bin	4.04	0
+bin	4.06	0
+bin	4.08	0
+bin	4.1	0
+bin	4.12	0
+bin	4.14	0
+bin	4.16	0
+bin	4.18	0
+bin	4.2	0
+bin	4.22	0
+bin	4.24	1
+bin	4.26	0
+bin	4.28	0
+bin	4.3	0
+bin	4.32	0
+bin	4.34	0
+bin	4.36	0
+bin	4.38	0
+bin	4.4	0
+bin	4.42	0
+bin	4.44	0
+bin	4.46	0
+bin	4.48	0
+bin	4.5	0
+bin	4.52	0
+bin	4.54	0
+bin	4.56	0
+bin	4.58	0
+bin	4.6	0
+bin	4.62	0
+bin	4.64	0
+bin	4.66	0
+bin	4.68	0
+bin	4.7	0
+bin	4.72	0
+bin	4.74	0
+bin	4.76	0
+scalar MixedMultidropNetwork.switch.eth[1].mac txPk:count 7
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac txPk:sum(packetBytes) 476
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[1].mac packetReceivedFromUpper:count 7
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac packetReceivedFromUpper:sum(packetBytes) 476
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[1].mac passedUpPk:count 10
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac passedUpPk:sum(packetBytes) 640
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[1].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[1].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[1].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar MixedMultidropNetwork.switch.eth[1].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar MixedMultidropNetwork.switch.eth[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar MixedMultidropNetwork.switch.eth[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar MixedMultidropNetwork.switch.eth[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ethernet pauseSent:count 0
+attr recordingmode count
+attr title "pause sent, count"
+scalar MixedMultidropNetwork.host.ethernet pauseSent:sum 0
+attr recordingmode sum
+attr title "pause sent, sum"
+scalar MixedMultidropNetwork.host.ethernet decapPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source decapPk
+attr title "packets decapsulated, count"
+scalar MixedMultidropNetwork.host.ethernet decapPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ethernet encapPk:count 11
+attr interpolationmode none
+attr recordingmode count
+attr source encapPk
+attr title "packets encapsulated, count"
+scalar MixedMultidropNetwork.host.ethernet encapPk:sum(packetBytes) 506
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar MixedMultidropNetwork.host.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar MixedMultidropNetwork.host.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar MixedMultidropNetwork.host.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar MixedMultidropNetwork.host.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.eth[0].queue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar MixedMultidropNetwork.host.eth[0].queue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar MixedMultidropNetwork.host.eth[0].queue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar MixedMultidropNetwork.host.eth[0].queue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar MixedMultidropNetwork.host.eth[0].queue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar MixedMultidropNetwork.host.eth[0].queue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic MixedMultidropNetwork.host.eth[0].queue queueingTime:histogram
+field count 11
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.34	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.22	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.16	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.1	0
+bin	-0.08	0
+bin	-0.06	0
+bin	-0.04	0
+bin	-0.02	0
+bin	0	11
+bin	0.02	0
+bin	0.04	0
+bin	0.06	0
+bin	0.08	0
+bin	0.1	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16	0
+bin	0.18	0
+bin	0.2	0
+bin	0.22	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.3	0
+bin	0.32	0
+bin	0.34	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42	0
+bin	0.44	0
+bin	0.46	0
+bin	0.48	0
+bin	0.5	0
+scalar MixedMultidropNetwork.host.eth[0].queue outgoingPackets:count 11
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.host.eth[0].queue outgoingPacketLengths:sum 5632
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.host.eth[0].queue outgoingPacketLengths:histogram
+field count 11
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 5632
+field sqrsum 2883584
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	11
+bin	513	0
+statistic MixedMultidropNetwork.host.eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.host.eth[0].queue incomingPackets:count 11
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.host.eth[0].queue incomingPacketLengths:sum 5632
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.host.eth[0].queue incomingPacketLengths:histogram
+field count 11
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 5632
+field sqrsum 2883584
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	11
+bin	513	0
+scalar MixedMultidropNetwork.host.eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar MixedMultidropNetwork.host.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar MixedMultidropNetwork.host.eth[0].mac "simulated time" 0.001
+scalar MixedMultidropNetwork.host.eth[0].mac full-duplex 1
+scalar MixedMultidropNetwork.host.eth[0].mac "frames/sec sent" 10000
+scalar MixedMultidropNetwork.host.eth[0].mac "frames/sec rcvd" 7000
+scalar MixedMultidropNetwork.host.eth[0].mac "bits/sec sent" 5120000
+scalar MixedMultidropNetwork.host.eth[0].mac "bits/sec rcvd" 3808000
+scalar MixedMultidropNetwork.host.eth[0].mac "rx channel idle (%)" 95.744
+scalar MixedMultidropNetwork.host.eth[0].mac "rx channel utilization (%)" 4.256
+scalar MixedMultidropNetwork.host.eth[0].mac rxPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units received, count"
+scalar MixedMultidropNetwork.host.eth[0].mac rxPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units received, sum"
+scalar MixedMultidropNetwork.host.eth[0].mac txPausePkUnits:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "pause units sent, count"
+scalar MixedMultidropNetwork.host.eth[0].mac txPausePkUnits:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr title "pause units sent, sum"
+scalar MixedMultidropNetwork.host.eth[0].mac rxPkOk:count 7
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar MixedMultidropNetwork.host.eth[0].mac rxPkOk:sum(packetBytes) 476
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+statistic MixedMultidropNetwork.host.eth[0].mac throughput:histogram
+field count 1
+field mean 5760000
+field stddev nan
+field min 5760000
+field max 5760000
+field sum 5760000
+field sqrsum 33177600000000
+attr interpolationmode linear
+attr recordingmode histogram
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+bin	-inf	0
+bin	5759999	0
+bin	5760000	1
+bin	5760001	0
+statistic MixedMultidropNetwork.host.eth[0].mac utilization:histogram
+field count 1
+field mean 5.76
+field stddev nan
+field min 5.76
+field max 5.76
+field sum 5.76
+field sqrsum 33.1776
+attr interpolationmode linear
+attr recordingmode histogram
+attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
+attr title utilization
+attr unit %
+bin	-inf	0
+bin	5.26	0
+bin	5.28	0
+bin	5.3	0
+bin	5.32	0
+bin	5.34	0
+bin	5.36	0
+bin	5.38	0
+bin	5.4	0
+bin	5.42	0
+bin	5.44	0
+bin	5.46	0
+bin	5.48	0
+bin	5.5	0
+bin	5.52	0
+bin	5.54	0
+bin	5.56	0
+bin	5.58	0
+bin	5.6	0
+bin	5.62	0
+bin	5.64	0
+bin	5.66	0
+bin	5.68	0
+bin	5.7	0
+bin	5.72	0
+bin	5.74	0
+bin	5.76	1
+bin	5.78	0
+bin	5.8	0
+bin	5.82	0
+bin	5.84	0
+bin	5.86	0
+bin	5.88	0
+bin	5.9	0
+bin	5.92	0
+bin	5.94	0
+bin	5.96	0
+bin	5.98	0
+bin	6	0
+bin	6.02	0
+bin	6.04	0
+bin	6.06	0
+bin	6.08	0
+bin	6.1	0
+bin	6.12	0
+bin	6.14	0
+bin	6.16	0
+bin	6.18	0
+bin	6.2	0
+bin	6.22	0
+bin	6.24	0
+bin	6.26	0
+scalar MixedMultidropNetwork.host.eth[0].mac txPk:count 10
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar MixedMultidropNetwork.host.eth[0].mac txPk:sum(packetBytes) 640
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.eth[0].mac packetReceivedFromUpper:count 11
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, count"
+scalar MixedMultidropNetwork.host.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 704
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.eth[0].mac passedUpPk:count 7
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar MixedMultidropNetwork.host.eth[0].mac passedUpPk:sum(packetBytes) 476
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.eth[0].mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar MixedMultidropNetwork.host.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.eth[0].mac packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar MixedMultidropNetwork.host.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.eth[0].mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, count"
+scalar MixedMultidropNetwork.host.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar MixedMultidropNetwork.host.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar MixedMultidropNetwork.host.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropLifetimeExpired:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, count"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsLifetimeExpired(packetDropped)
+attr title "packet drop: lifetime expired, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar MixedMultidropNetwork.host.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar MixedMultidropNetwork.host.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar MixedMultidropNetwork.host.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar MixedMultidropNetwork.host.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar MixedMultidropNetwork.host.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar MixedMultidropNetwork.host.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar MixedMultidropNetwork.host.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar MixedMultidropNetwork.host.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar MixedMultidropNetwork.host.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar MixedMultidropNetwork.host.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+scalar MixedMultidropNetwork.host.app[0].sink packets:count 7
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.host.app[0].sink packetLengths:sum 2800
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.host.app[0].sink packetLengths:histogram
+field count 7
+field mean 400
+field stddev 0
+field min 400
+field max 400
+field sum 2800
+field sqrsum 1120000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	399	0
+bin	400	7
+bin	401	0
+statistic MixedMultidropNetwork.host.app[0].sink meanBitLifeTimePerPacket:histogram
+field count 7
+field mean 0.00030993992857143
+field stddev 9.7673892777373e-05
+field min 0.0001925045
+field max 0.0004377205
+field sum 0.0021695795
+field sqrsum 7.2968045124175e-07
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	1
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	1
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	1
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	0
+bin	0.000275	1
+bin	0.00028	0
+bin	0.000285	0
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+bin	0.00031	0
+bin	0.000315	0
+bin	0.00032	0
+bin	0.000325	0
+bin	0.00033	0
+bin	0.000335	0
+bin	0.00034	0
+bin	0.000345	0
+bin	0.00035	0
+bin	0.000355	0
+bin	0.00036	0
+bin	0.000365	0
+bin	0.00037	0
+bin	0.000375	0
+bin	0.00038	1
+bin	0.000385	0
+bin	0.00039	0
+bin	0.000395	0
+bin	0.0004	0
+bin	0.000405	1
+bin	0.00041	0
+bin	0.000415	0
+bin	0.00042	0
+bin	0.000425	0
+bin	0.00043	0
+bin	0.000435	1
+bin	0.00044	0
+bin	0.000445	0
+bin	0.00045	0
+bin	0.000455	0
+bin	0.00046	0
+bin	0.000465	0
+bin	0.00047	0
+bin	0.000475	0
+bin	0.00048	0
+bin	0.000485	0
+bin	0.00049	0
+bin	0.000495	0
+bin	0.0005	0
+statistic MixedMultidropNetwork.host.app[0].sink packetJitter:histogram
+field count 7
+field mean 5.4302928571429e-05
+field stddev 0.00014225806972788
+field min -2.88e-05
+field max 0.0002789045
+field sum 0.0003801205
+field sqrsum 1.4206580677625e-07
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-0.00011	0
+bin	-0.0001	0
+bin	-9e-05	0
+bin	-8e-05	0
+bin	-7e-05	0
+bin	-6e-05	0
+bin	-5e-05	0
+bin	-4e-05	0
+bin	-3e-05	5
+bin	-2e-05	0
+bin	-1e-05	0
+bin	0	0
+bin	1e-05	0
+bin	2e-05	0
+bin	3e-05	0
+bin	4e-05	0
+bin	5e-05	0
+bin	6e-05	0
+bin	7e-05	0
+bin	8e-05	0
+bin	9e-05	0
+bin	0.0001	0
+bin	0.00011	0
+bin	0.00012	0
+bin	0.00013	0
+bin	0.00014	0
+bin	0.00015	0
+bin	0.00016	0
+bin	0.00017	0
+bin	0.00018	0
+bin	0.00019	0
+bin	0.0002	0
+bin	0.00021	0
+bin	0.00022	0
+bin	0.00023	0
+bin	0.00024	1
+bin	0.00025	0
+bin	0.00026	0
+bin	0.00027	1
+bin	0.00028	0
+bin	0.00029	0
+bin	0.0003	0
+bin	0.00031	0
+bin	0.00032	0
+bin	0.00033	0
+bin	0.00034	0
+bin	0.00035	0
+bin	0.00036	0
+statistic MixedMultidropNetwork.host.app[0].sink packetDelayDifferenceToMean:histogram
+field count 7
+field mean -3.6581529251701e-05
+field stddev 7.834652073418e-05
+field min -0.0001616128
+field max 4.32e-05
+field sum -0.0002560707047619
+field sqrsum 4.6196521843659e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-0.000215	0
+bin	-0.00021	0
+bin	-0.000205	0
+bin	-0.0002	0
+bin	-0.000195	0
+bin	-0.00019	0
+bin	-0.000185	0
+bin	-0.00018	0
+bin	-0.000175	0
+bin	-0.00017	0
+bin	-0.000165	1
+bin	-0.00016	0
+bin	-0.000155	0
+bin	-0.00015	0
+bin	-0.000145	0
+bin	-0.00014	0
+bin	-0.000135	0
+bin	-0.00013	0
+bin	-0.000125	0
+bin	-0.00012	0
+bin	-0.000115	1
+bin	-0.00011	0
+bin	-0.000105	0
+bin	-0.0001	0
+bin	-9.5e-05	0
+bin	-9e-05	0
+bin	-8.5e-05	0
+bin	-8e-05	0
+bin	-7.5e-05	1
+bin	-7e-05	0
+bin	-6.5e-05	0
+bin	-6e-05	0
+bin	-5.5e-05	0
+bin	-5e-05	0
+bin	-4.5e-05	0
+bin	-4e-05	0
+bin	-3.5e-05	0
+bin	-3e-05	0
+bin	-2.5e-05	0
+bin	-2e-05	0
+bin	-1.5e-05	0
+bin	-1e-05	0
+bin	-5e-06	0
+bin	0	1
+bin	5e-06	0
+bin	1e-05	1
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	1
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	1
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	0
+bin	7e-05	0
+bin	7.5e-05	0
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+statistic MixedMultidropNetwork.host.app[0].sink packetDelayVariation:histogram
+field count 7
+field mean 4.8424277705098e-05
+field stddev 3.9794586728108e-05
+field min 0
+field max 9.2641728159612e-05
+field sum 0.00033896994393568
+field sqrsum 2.5916029495988e-08
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	2e-06	0
+bin	4e-06	0
+bin	6e-06	0
+bin	8e-06	0
+bin	1e-05	0
+bin	1.2e-05	0
+bin	1.4e-05	1
+bin	1.6e-05	0
+bin	1.8e-05	0
+bin	2e-05	0
+bin	2.2e-05	1
+bin	2.4e-05	0
+bin	2.6e-05	0
+bin	2.8e-05	0
+bin	3e-05	0
+bin	3.2e-05	1
+bin	3.4e-05	0
+bin	3.6e-05	0
+bin	3.8e-05	0
+bin	4e-05	0
+bin	4.2e-05	0
+bin	4.4e-05	0
+bin	4.6e-05	0
+bin	4.8e-05	0
+bin	5e-05	0
+bin	5.2e-05	0
+bin	5.4e-05	0
+bin	5.6e-05	0
+bin	5.8e-05	0
+bin	6e-05	0
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	0
+bin	7.4e-05	0
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	1
+bin	8.6e-05	0
+bin	8.8e-05	0
+bin	9e-05	1
+bin	9.2e-05	1
+bin	9.4e-05	0
+bin	9.6e-05	0
+bin	9.8e-05	0
+bin	0.0001	0
+bin	0.000102	0
+bin	0.000104	0
+bin	0.000106	0
+bin	0.000108	0
+bin	0.00011	0
+bin	0.000112	0
+bin	0.000114	0
+bin	0.000116	0
+scalar MixedMultidropNetwork.host.app[0].sink droppedPackets:count 7
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.host.app[0].sink droppedPacketLengths:sum 2800
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.host.app[0].sink droppedPacketLengths:histogram
+field count 7
+field mean 400
+field stddev 0
+field min 400
+field max 400
+field sum 2800
+field sqrsum 1120000
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	399	0
+bin	400	7
+bin	401	0
+scalar MixedMultidropNetwork.host.app[0].io "packets sent" 0
+scalar MixedMultidropNetwork.host.app[0].io "packets received" 7
+scalar MixedMultidropNetwork.host.app[0].io packetReceived:count 7
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar MixedMultidropNetwork.host.app[0].io packetReceived:sum(packetBytes) 350
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.app[0].io packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar MixedMultidropNetwork.host.app[0].io packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.app[1].source packets:count 11
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.host.app[1].source packetLengths:sum 4048
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.host.app[1].source packetLengths:histogram
+field count 11
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 4048
+field sqrsum 1489664
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	11
+bin	369	0
+scalar MixedMultidropNetwork.host.app[1].io "packets sent" 11
+scalar MixedMultidropNetwork.host.app[1].io "packets received" 0
+scalar MixedMultidropNetwork.host.app[1].io packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar MixedMultidropNetwork.host.app[1].io packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar MixedMultidropNetwork.host.app[1].io packetSent:count 11
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar MixedMultidropNetwork.host.app[1].io packetSent:sum(packetBytes) 506
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar MixedMultidropNetwork.node[0].app[0].source packets:count 11
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].app[0].source packetLengths:sum 4048
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].app[0].source packetLengths:histogram
+field count 11
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 4048
+field sqrsum 1489664
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	11
+bin	369	0
+scalar MixedMultidropNetwork.node[0].app[0].io "packets sent" 11
+scalar MixedMultidropNetwork.node[0].app[0].io "packets received" 0
+scalar MixedMultidropNetwork.node[0].app[0].io packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar MixedMultidropNetwork.node[0].app[0].io packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar MixedMultidropNetwork.node[0].app[0].io packetSent:count 11
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar MixedMultidropNetwork.node[0].app[0].io packetSent:sum(packetBytes) 506
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar MixedMultidropNetwork.node[0].app[1].sink packets:count 6
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].app[1].sink packetLengths:sum 2208
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].app[1].sink packetLengths:histogram
+field count 6
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 2208
+field sqrsum 812544
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	6
+bin	369	0
+statistic MixedMultidropNetwork.node[0].app[1].sink meanBitLifeTimePerPacket:histogram
+field count 6
+field mean 0.00022495783333333
+field stddev 0.00011823711716152
+field min 7.72105e-05
+field max 0.0003464305
+field sum 0.001349747
+field sqrsum 3.735362400415e-07
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	0
+bin	7e-05	0
+bin	7.5e-05	2
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+bin	0.0001	0
+bin	0.000105	0
+bin	0.00011	0
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	0
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	1
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	0
+bin	0.000275	0
+bin	0.00028	1
+bin	0.000285	0
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+bin	0.00031	1
+bin	0.000315	0
+bin	0.00032	0
+bin	0.000325	0
+bin	0.00033	0
+bin	0.000335	0
+bin	0.00034	0
+bin	0.000345	1
+bin	0.00035	0
+bin	0.000355	0
+bin	0.00036	0
+bin	0.000365	0
+bin	0.00037	0
+bin	0.000375	0
+bin	0.00038	0
+bin	0.000385	0
+bin	0.00039	0
+bin	0.000395	0
+bin	0.0004	0
+bin	0.000405	0
+bin	0.00041	0
+bin	0.000415	0
+statistic MixedMultidropNetwork.node[0].app[1].sink packetJitter:histogram
+field count 6
+field mean 4.1738416666667e-05
+field stddev 0.00011849201241198
+field min -3.2e-05
+field max 0.000267616
+field sum 0.0002504305
+field sqrsum 8.065435758225e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-0.00011	0
+bin	-0.000105	0
+bin	-0.0001	0
+bin	-9.5e-05	0
+bin	-9e-05	0
+bin	-8.5e-05	0
+bin	-8e-05	0
+bin	-7.5e-05	0
+bin	-7e-05	0
+bin	-6.5e-05	0
+bin	-6e-05	0
+bin	-5.5e-05	0
+bin	-5e-05	0
+bin	-4.5e-05	0
+bin	-4e-05	0
+bin	-3.5e-05	3
+bin	-3e-05	0
+bin	-2.5e-05	0
+bin	-2e-05	0
+bin	-1.5e-05	0
+bin	-1e-05	0
+bin	-5e-06	0
+bin	0	1
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	0
+bin	7e-05	0
+bin	7.5e-05	1
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+bin	0.0001	0
+bin	0.000105	0
+bin	0.00011	0
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	0
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	0
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	1
+bin	0.00027	0
+bin	0.000275	0
+bin	0.00028	0
+bin	0.000285	0
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+bin	0.00031	0
+bin	0.000315	0
+bin	0.00032	0
+bin	0.000325	0
+bin	0.00033	0
+bin	0.000335	0
+bin	0.00034	0
+bin	0.000345	0
+statistic MixedMultidropNetwork.node[0].app[1].sink packetDelayDifferenceToMean:histogram
+field count 6
+field mean -6.2999366666667e-05
+field stddev 7.0594743809043e-05
+field min -0.00017894533333333
+field max 0
+field sum -0.0003779962
+field sqrsum 4.8731610469729e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-0.000225	0
+bin	-0.00022	0
+bin	-0.000215	0
+bin	-0.00021	0
+bin	-0.000205	0
+bin	-0.0002	0
+bin	-0.000195	0
+bin	-0.00019	0
+bin	-0.000185	0
+bin	-0.00018	1
+bin	-0.000175	0
+bin	-0.00017	0
+bin	-0.000165	0
+bin	-0.00016	0
+bin	-0.000155	0
+bin	-0.00015	0
+bin	-0.000145	0
+bin	-0.00014	0
+bin	-0.000135	0
+bin	-0.00013	0
+bin	-0.000125	0
+bin	-0.00012	0
+bin	-0.000115	1
+bin	-0.00011	0
+bin	-0.000105	0
+bin	-0.0001	0
+bin	-9.5e-05	0
+bin	-9e-05	0
+bin	-8.5e-05	0
+bin	-8e-05	0
+bin	-7.5e-05	0
+bin	-7e-05	0
+bin	-6.5e-05	1
+bin	-6e-05	0
+bin	-5.5e-05	0
+bin	-5e-05	0
+bin	-4.5e-05	0
+bin	-4e-05	0
+bin	-3.5e-05	0
+bin	-3e-05	1
+bin	-2.5e-05	0
+bin	-2e-05	0
+bin	-1.5e-05	0
+bin	-1e-05	0
+bin	-5e-06	1
+bin	0	1
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+statistic MixedMultidropNetwork.node[0].app[1].sink packetDelayVariation:histogram
+field count 6
+field mean 7.9927579151122e-05
+field stddev 6.1988092793454e-05
+field min 0
+field max 0.00012671635062168
+field sum 0.00047956547490673
+field sqrsum 5.7543125694603e-08
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	2
+bin	2e-06	0
+bin	4e-06	0
+bin	6e-06	0
+bin	8e-06	0
+bin	1e-05	0
+bin	1.2e-05	0
+bin	1.4e-05	0
+bin	1.6e-05	0
+bin	1.8e-05	0
+bin	2e-05	0
+bin	2.2e-05	0
+bin	2.4e-05	0
+bin	2.6e-05	0
+bin	2.8e-05	0
+bin	3e-05	0
+bin	3.2e-05	0
+bin	3.4e-05	0
+bin	3.6e-05	0
+bin	3.8e-05	0
+bin	4e-05	0
+bin	4.2e-05	0
+bin	4.4e-05	0
+bin	4.6e-05	0
+bin	4.8e-05	0
+bin	5e-05	0
+bin	5.2e-05	0
+bin	5.4e-05	0
+bin	5.6e-05	0
+bin	5.8e-05	0
+bin	6e-05	0
+bin	6.2e-05	0
+bin	6.4e-05	0
+bin	6.6e-05	0
+bin	6.8e-05	0
+bin	7e-05	0
+bin	7.2e-05	0
+bin	7.4e-05	0
+bin	7.6e-05	0
+bin	7.8e-05	0
+bin	8e-05	0
+bin	8.2e-05	0
+bin	8.4e-05	0
+bin	8.6e-05	0
+bin	8.8e-05	0
+bin	9e-05	0
+bin	9.2e-05	0
+bin	9.4e-05	0
+bin	9.6e-05	0
+bin	9.8e-05	0
+bin	0.0001	0
+bin	0.000102	0
+bin	0.000104	0
+bin	0.000106	1
+bin	0.000108	0
+bin	0.00011	0
+bin	0.000112	0
+bin	0.000114	0
+bin	0.000116	1
+bin	0.000118	0
+bin	0.00012	0
+bin	0.000122	0
+bin	0.000124	0
+bin	0.000126	2
+bin	0.000128	0
+bin	0.00013	0
+bin	0.000132	0
+bin	0.000134	0
+bin	0.000136	0
+bin	0.000138	0
+bin	0.00014	0
+bin	0.000142	0
+bin	0.000144	0
+bin	0.000146	0
+bin	0.000148	0
+bin	0.00015	0
+bin	0.000152	0
+bin	0.000154	0
+bin	0.000156	0
+bin	0.000158	0
+bin	0.00016	0
+scalar MixedMultidropNetwork.node[0].app[1].sink droppedPackets:count 6
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].app[1].sink droppedPacketLengths:sum 2208
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].app[1].sink droppedPacketLengths:histogram
+field count 6
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 2208
+field sqrsum 812544
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	6
+bin	369	0
+scalar MixedMultidropNetwork.node[0].app[1].io "packets sent" 0
+scalar MixedMultidropNetwork.node[0].app[1].io "packets received" 6
+scalar MixedMultidropNetwork.node[0].app[1].io packetReceived:count 6
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar MixedMultidropNetwork.node[0].app[1].io packetReceived:sum(packetBytes) 276
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar MixedMultidropNetwork.node[0].app[1].io packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar MixedMultidropNetwork.node[0].app[1].io packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar MixedMultidropNetwork.node[0].authentication outgoingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].authentication outgoingPacketLengths:sum 4000
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].authentication outgoingPacketLengths:histogram
+field count 10
+field mean 400
+field stddev 0
+field min 400
+field max 400
+field sum 4000
+field sqrsum 1600000
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	399	0
+bin	400	10
+bin	401	0
+scalar MixedMultidropNetwork.node[0].authentication flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].authentication flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].authentication incomingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].authentication incomingPacketLengths:sum 3680
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].authentication incomingPacketLengths:histogram
+field count 10
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 3680
+field sqrsum 1354240
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	10
+bin	369	0
+scalar MixedMultidropNetwork.node[0].authentication flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].authentication flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor outgoingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor outgoingPacketLengths:sum 4000
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor outgoingPacketLengths:histogram
+field count 10
+field mean 400
+field stddev 0
+field min 400
+field max 400
+field sum 4000
+field sqrsum 1600000
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	399	0
+bin	400	10
+bin	401	0
+scalar MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor incomingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor incomingPacketLengths:sum 4000
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor incomingPacketLengths:histogram
+field count 10
+field mean 400
+field stddev 0
+field min 400
+field max 400
+field sum 4000
+field sqrsum 1600000
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	399	0
+bin	400	10
+bin	401	0
+scalar MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.socketCommandProcessor flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderInserter outgoingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderInserter outgoingPacketLengths:sum 5120
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderInserter outgoingPacketLengths:histogram
+field count 10
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 5120
+field sqrsum 2621440
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	10
+bin	513	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderInserter incomingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderInserter incomingPacketLengths:sum 4000
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderInserter incomingPacketLengths:histogram
+field count 10
+field mean 400
+field stddev 0
+field min 400
+field max 400
+field sum 4000
+field sqrsum 1600000
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	399	0
+bin	400	10
+bin	401	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.paddingInserter outgoingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.paddingInserter outgoingPacketLengths:sum 5120
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.paddingInserter outgoingPacketLengths:histogram
+field count 10
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 5120
+field sqrsum 2621440
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	10
+bin	513	0
+scalar MixedMultidropNetwork.node[0].ethernet.paddingInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.paddingInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.paddingInserter incomingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.paddingInserter incomingPacketLengths:sum 5120
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.paddingInserter incomingPacketLengths:histogram
+field count 10
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 5120
+field sqrsum 2621440
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	10
+bin	513	0
+scalar MixedMultidropNetwork.node[0].ethernet.paddingInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.paddingInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsInserter outgoingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.fcsInserter outgoingPacketLengths:sum 5440
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsInserter outgoingPacketLengths:histogram
+field count 10
+field mean 544
+field stddev 0
+field min 544
+field max 544
+field sum 5440
+field sqrsum 2959360
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	543	0
+bin	544	10
+bin	545	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsInserter flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsInserter flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsInserter incomingPackets:count 10
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.fcsInserter incomingPacketLengths:sum 5120
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsInserter incomingPacketLengths:histogram
+field count 10
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 5120
+field sqrsum 2621440
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	10
+bin	513	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsInserter flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsInserter flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker outgoingPackets:count 6
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker outgoingPacketLengths:sum 2208
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderChecker outgoingPacketLengths:histogram
+field count 6
+field mean 368
+field stddev 0
+field min 368
+field max 368
+field sum 2208
+field sqrsum 812544
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	367	0
+bin	368	6
+bin	369	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker incomingPackets:count 6
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker incomingPacketLengths:sum 2880
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderChecker incomingPacketLengths:histogram
+field count 6
+field mean 480
+field stddev 0
+field min 480
+field max 480
+field sum 2880
+field sqrsum 1382400
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	479	0
+bin	480	6
+bin	481	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.macHeaderChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.macHeaderChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker outgoingPackets:count 6
+attr recordingmode count
+attr source "merge(packetPushedOut, packetPulledOut)"
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker outgoingPacketLengths:sum 2880
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsChecker outgoingPacketLengths:histogram
+field count 6
+field mean 480
+field stddev 0
+field min 480
+field max 480
+field sum 2880
+field sqrsum 1382400
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedOut, packetPulledOut))"
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	479	0
+bin	480	6
+bin	481	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker flowOutgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsChecker flowOutgoingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedOut, packetPulledOut)))"
+attr title "flow specific outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker incomingPackets:count 6
+attr recordingmode count
+attr source "merge(packetPushedIn, packetPulledIn)"
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker incomingPacketLengths:sum 3072
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsChecker incomingPacketLengths:histogram
+field count 6
+field mean 512
+field stddev 0
+field min 512
+field max 512
+field sum 3072
+field sqrsum 1572864
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(merge(packetPushedIn, packetPulledIn))"
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	511	0
+bin	512	6
+bin	513	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker flowIncomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsChecker flowIncomingPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source "packetLength(demuxFlow(merge(packetPushedIn, packetPulledIn)))"
+attr title "flow specific incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker droppedPackets:count 0
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker droppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsChecker droppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].ethernet.fcsChecker flowDroppedPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].ethernet.fcsChecker flowDroppedPacketLengths:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(demuxFlow(packetDropped))
+attr title "flow specific dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].eth[0].queue queueLength:last 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].eth[0].queue queueLength:max 3
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].eth[0].queue queueLength:timeavg 1.34296
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].eth[0].queue queueBitLength:last 1088
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar MixedMultidropNetwork.node[0].eth[0].queue queueBitLength:max 1632
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar MixedMultidropNetwork.node[0].eth[0].queue queueBitLength:timeavg 730.57024
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic MixedMultidropNetwork.node[0].eth[0].queue queueingTime:histogram
+field count 8
+field mean 0.00014207
+field stddev 9.9387623361405e-05
+field min 3.92145e-05
+field max 0.0002844305
+field sum 0.00113656
+field sqrsum 2.30616376942e-07
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	1
+bin	4e-05	1
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	1
+bin	7e-05	0
+bin	7.5e-05	0
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	1
+bin	0.0001	0
+bin	0.000105	0
+bin	0.00011	0
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	1
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	0
+bin	0.000225	1
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	0
+bin	0.000255	1
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	0
+bin	0.000275	0
+bin	0.00028	1
+bin	0.000285	0
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+bin	0.00031	0
+bin	0.000315	0
+bin	0.00032	0
+bin	0.000325	0
+bin	0.00033	0
+bin	0.000335	0
+bin	0.00034	0
+bin	0.000345	0
+bin	0.00035	0
+scalar MixedMultidropNetwork.node[0].eth[0].queue outgoingPackets:count 8
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:sum 4352
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram
+field count 8
+field mean 544
+field stddev 0
+field min 544
+field max 544
+field sum 4352
+field sqrsum 2367488
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	543	0
+bin	544	8
+bin	545	0
+statistic MixedMultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar MixedMultidropNetwork.node[0].eth[0].queue incomingPackets:count 10
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].eth[0].queue incomingPacketLengths:sum 5440
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic MixedMultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram
+field count 10
+field mean 544
+field stddev 0
+field min 544
+field max 544
+field sum 5440
+field sqrsum 2959360
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	543	0
+bin	544	10
+bin	545	0
+scalar MixedMultidropNetwork.node[0].eth[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar MixedMultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+scalar MixedMultidropNetwork.node[0].eth[0].mac state:count 36
+attr enum IDLE,WAIT_IFG,TRANSMITTING,JAMMING,BACKOFF,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source stateChanged
+attr title "state, count"
+attr type enum
+scalar MixedMultidropNetwork.node[0].eth[0].mac collision:count 6
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source collisionChanged
+attr title "collision, count"
+attr type int
+scalar MixedMultidropNetwork.node[0].eth[0].mac carrierSense:count 23
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source carrierSenseChanged
+attr title "carrier sense, count"
+attr type int
+scalar MixedMultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:count 8
+attr interpolationmode none
+attr recordingmode count
+attr title "transmit opportunity used, count"
+scalar MixedMultidropNetwork.node[0].eth[0].plca packetInterval:count 7
+attr interpolationmode none
+attr recordingmode count
+attr title "packet interval, count"
+attr unit s
+statistic MixedMultidropNetwork.node[0].eth[0].plca packetInterval:histogram
+field count 7
+field mean 0.00011034514285714
+field stddev 0.0001035683130361
+field min 7.12e-05
+field max 0.000345216
+field sum 0.000772416
+field sqrsum 1.49590726656e-07
+attr interpolationmode none
+attr recordingmode histogram
+attr title "packet interval"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	0
+bin	7e-05	6
+bin	7.5e-05	0
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+bin	0.0001	0
+bin	0.000105	0
+bin	0.00011	0
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	0
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	0
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	0
+bin	0.000275	0
+bin	0.00028	0
+bin	0.000285	0
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+bin	0.00031	0
+bin	0.000315	0
+bin	0.00032	0
+bin	0.000325	0
+bin	0.00033	0
+bin	0.000335	0
+bin	0.00034	0
+bin	0.000345	1
+bin	0.00035	0
+bin	0.000355	0
+bin	0.00036	0
+bin	0.000365	0
+bin	0.00037	0
+bin	0.000375	0
+bin	0.00038	0
+bin	0.000385	0
+bin	0.00039	0
+bin	0.000395	0
+bin	0.0004	0
+bin	0.000405	0
+bin	0.00041	0
+bin	0.000415	0
+scalar MixedMultidropNetwork.node[0].eth[0].plca packetPendingDelay:count 8
+attr interpolationmode none
+attr recordingmode count
+attr title "packet pending delay, count"
+attr unit s
+statistic MixedMultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram
+field count 8
+field mean 4.85525e-05
+field stddev 9.9508995589056e-05
+field min 0
+field max 0.000274016
+field sum 0.00038842
+field sqrsum 8.8173043472e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr title "packet pending delay"
+attr unit s
+bin	-inf	0
+bin	0	6
+bin	5e-06	0
+bin	1e-05	0
+bin	1.5e-05	0
+bin	2e-05	0
+bin	2.5e-05	0
+bin	3e-05	0
+bin	3.5e-05	0
+bin	4e-05	0
+bin	4.5e-05	0
+bin	5e-05	0
+bin	5.5e-05	0
+bin	6e-05	0
+bin	6.5e-05	0
+bin	7e-05	0
+bin	7.5e-05	0
+bin	8e-05	0
+bin	8.5e-05	0
+bin	9e-05	0
+bin	9.5e-05	0
+bin	0.0001	0
+bin	0.000105	0
+bin	0.00011	1
+bin	0.000115	0
+bin	0.00012	0
+bin	0.000125	0
+bin	0.00013	0
+bin	0.000135	0
+bin	0.00014	0
+bin	0.000145	0
+bin	0.00015	0
+bin	0.000155	0
+bin	0.00016	0
+bin	0.000165	0
+bin	0.00017	0
+bin	0.000175	0
+bin	0.00018	0
+bin	0.000185	0
+bin	0.00019	0
+bin	0.000195	0
+bin	0.0002	0
+bin	0.000205	0
+bin	0.00021	0
+bin	0.000215	0
+bin	0.00022	0
+bin	0.000225	0
+bin	0.00023	0
+bin	0.000235	0
+bin	0.00024	0
+bin	0.000245	0
+bin	0.00025	0
+bin	0.000255	0
+bin	0.00026	0
+bin	0.000265	0
+bin	0.00027	1
+bin	0.000275	0
+bin	0.00028	0
+bin	0.000285	0
+bin	0.00029	0
+bin	0.000295	0
+bin	0.0003	0
+bin	0.000305	0
+bin	0.00031	0
+bin	0.000315	0
+bin	0.00032	0
+bin	0.000325	0
+bin	0.00033	0
+bin	0.000335	0
+bin	0.00034	0
+bin	0.000345	0
+scalar MixedMultidropNetwork.node[0].eth[0].plca txCmd:count 17
+attr enum NONE,BEACON,COMMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "TX command, count"
+attr type enum
+scalar MixedMultidropNetwork.node[0].eth[0].plca rxCmd:count 45
+attr enum NONE,BEACON,COMMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "RX command, count"
+attr type enum
+scalar MixedMultidropNetwork.node[0].eth[0].plca dataState:count 34
+attr enum WAIT_IDLE,IDLE,RECEIVE,HOLD,COLLIDE,DELAY_PENDING,PENDING,WAIT_MAC,TRANSMIT
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source dataStateChanged
+attr title "data state, count"
+attr type enum
+scalar MixedMultidropNetwork.node[0].eth[0].plca controlState:count 82
+attr enum DISABLE,RESYNC,RECOVER,SEND_BEACON,SYNCING,WAIT_TO,EARLY_RECEIVE,COMMIT,YIELD,RECEIVE,TRANSMIT,BURST,ABORT,NEXT_TX_OPPORTUNITY
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source controlStateChanged
+attr title "control state, count"
+attr type enum
+scalar MixedMultidropNetwork.node[0].eth[0].plca collision:count 2
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source collisionChanged
+attr title "collision, count"
+attr type int
+scalar MixedMultidropNetwork.node[0].eth[0].plca carrierSense:count 27
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source carrierSenseChanged
+attr title "carrier sense, count"
+attr type int
+scalar MixedMultidropNetwork.node[0].eth[0].phy busUsed:count 77
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "bus used, count"
+scalar MixedMultidropNetwork.node[0].eth[0].phy busUtilization:count 1
+attr interpolationmode linear
+attr recordingmode count
+attr source utilization(busUsed)
+attr title "bus utilization, count"
+scalar MixedMultidropNetwork.node[0].eth[0].phy transmittedSignalType:count 33
+attr enum NONE,BEACON,COMMIT,DATA,JAM
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "transmitted signal type, count"
+attr type enum
+scalar MixedMultidropNetwork.node[0].eth[0].phy receivedSignalType:count 46
+attr enum NONE,BEACON,COMMIT,DATA,JAM
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "received signal type, count"
+attr type enum
+scalar MixedMultidropNetwork.node[0].eth[0].phy state:count 97
+attr enum IDLE,TRANSMITTING,RECEIVING,COLLISION,CRS_ON
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source stateChanged
+attr title "state, count"
+attr type enum
+statistic MixedMultidropNetwork.node[0].eth[0].phy throughput:histogram
+field count 1
+field mean 5024000
+field stddev nan
+field min 5024000
+field max 5024000
+field sum 5024000
+field sqrsum 25240576000000
+attr interpolationmode linear
+attr recordingmode histogram
+attr source throughput(transmissionEnded)
+attr title throughput
+attr unit bps
+bin	-inf	0
+bin	5023999	0
+bin	5024000	1
+bin	5024001	0
+statistic MixedMultidropNetwork.node[0].eth[0].phy transmissionTime:histogram
+field count 15
+field mean 3.3866666666667e-05
+field stddev 2.6852684533705e-05
+field min 9.6e-06
+field max 6.16e-05
+field sum 0.000508
+field sqrsum 2.72992e-08
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetDuration(transmissionEnded)
+attr title "transmission time"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1e-06	0
+bin	2e-06	0
+bin	3e-06	0
+bin	4e-06	0
+bin	5e-06	0
+bin	6e-06	0
+bin	7e-06	0
+bin	8e-06	0
+bin	9e-06	8
+bin	1e-05	0
+bin	1.1e-05	0
+bin	1.2e-05	0
+bin	1.3e-05	0
+bin	1.4e-05	0
+bin	1.5e-05	0
+bin	1.6e-05	0
+bin	1.7e-05	0
+bin	1.8e-05	0
+bin	1.9e-05	0
+bin	2e-05	0
+bin	2.1e-05	0
+bin	2.2e-05	0
+bin	2.3e-05	0
+bin	2.4e-05	0
+bin	2.5e-05	0
+bin	2.6e-05	0
+bin	2.7e-05	0
+bin	2.8e-05	0
+bin	2.9e-05	0
+bin	3e-05	0
+bin	3.1e-05	0
+bin	3.2e-05	0
+bin	3.3e-05	0
+bin	3.4e-05	0
+bin	3.5e-05	0
+bin	3.6e-05	0
+bin	3.7e-05	0
+bin	3.8e-05	0
+bin	3.9e-05	0
+bin	4e-05	0
+bin	4.1e-05	0
+bin	4.2e-05	0
+bin	4.3e-05	0
+bin	4.4e-05	0
+bin	4.5e-05	0
+bin	4.6e-05	0
+bin	4.7e-05	0
+bin	4.8e-05	0
+bin	4.9e-05	0
+bin	5e-05	0
+bin	5.1e-05	0
+bin	5.2e-05	0
+bin	5.3e-05	0
+bin	5.4e-05	0
+bin	5.5e-05	0
+bin	5.6e-05	0
+bin	5.7e-05	0
+bin	5.8e-05	0
+bin	5.9e-05	0
+bin	6e-05	0
+bin	6.1e-05	7
+bin	6.2e-05	0
+bin	6.3e-05	0
+bin	6.4e-05	0
+bin	6.5e-05	0
+bin	6.6e-05	0
+bin	6.7e-05	0
+bin	6.8e-05	0
+bin	6.9e-05	0
+bin	7e-05	0
+bin	7.1e-05	0
+bin	7.2e-05	0
+bin	7.3e-05	0
+bin	7.4e-05	0
+bin	7.5e-05	0
+scalar MixedMultidropNetwork.node[0].eth[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar MixedMultidropNetwork.node[0].eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar MixedMultidropNetwork.node[0].eth[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar MixedMultidropNetwork.node[0].eth[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+scalar MixedMultidropNetwork.j[0] packetReceived:count 54
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets, count"
+scalar MixedMultidropNetwork.j[0] packetReceived:sum(packetBytes) 2520
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets, sum(packetBytes)"
+
