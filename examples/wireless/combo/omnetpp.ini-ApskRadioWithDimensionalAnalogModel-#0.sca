@@ -1,8 +1,8 @@
 version 3
-run ApskRadioWithDimensionalAnalogModel-0-20240115-11:27:38-15132
+run ApskRadioWithDimensionalAnalogModel-0-20241128-14:29:37-78273
 attr configname ApskRadioWithDimensionalAnalogModel
-attr datetime 20240115-11:27:38
-attr datetimef 20240115-112738
+attr datetime 20241128-14:29:37
+attr datetimef 20241128-142937
 attr experiment ApskRadioWithDimensionalAnalogModel
 attr inifile omnetpp.ini
 attr iterationvars "$hostX=0, $otherHostX=10, $interference=false"
@@ -10,7 +10,7 @@ attr iterationvarsd hostX=0/otherHostX=10/interference=false
 attr iterationvarsf hostX=0,otherHostX=10,interference=false-
 attr measurement "$hostX=0, $otherHostX=10, $interference=false"
 attr network ComboExample
-attr processid 15132
+attr processid 78273
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -37,7 +37,7 @@ config *.host[*].wlan[*].radio.*.analogModel.bandwidth 20MHz
 config *.host[*].wlan[*].radio.transmitter.bitrate 1Mbps
 config *.host[*].wlan[*].radio.transmitter.modulation "\"BPSK\""
 config *.host[*].wlan[*].radio.transmitter.preambleDuration 1us
-config *.host[*].wlan[*].radio.transmitter.headerLength 6B
+config *.host[*].wlan[*].radio.transmitter.headerLength 8B
 config *.host[*].wlan[*].radio.transmitter.power 10mW
 config *.host[*].wlan[*].radio.receiver.snirThreshold 4dB
 config *.host[*].wlan[*].radio.receiver.energyDetection -85dBm
@@ -391,20 +391,26 @@ attr recordingmode count
 attr source linkBroken
 attr title "link break, count"
 scalar ComboExample.host[0].wlan[0].radio radioMode:count 3
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source radioModeChanged
 attr title "Radio mode, count"
+attr type enum
 scalar ComboExample.host[0].wlan[0].radio receptionState:count 3581
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source receptionStateChanged
 attr title "Radio reception state, count"
+attr type enum
 scalar ComboExample.host[0].wlan[0].radio transmissionState:count 3581
+attr enum UNDEFINED,IDLE,TRANSMITTING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
+attr type enum
 statistic ComboExample.host[0].wlan[0].radio minSnir:histogram
 field count 1790
 field mean 383.79021214346
@@ -1093,20 +1099,26 @@ attr recordingmode count
 attr source linkBroken
 attr title "link break, count"
 scalar ComboExample.host[1].wlan[0].radio radioMode:count 3
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source radioModeChanged
 attr title "Radio mode, count"
+attr type enum
 scalar ComboExample.host[1].wlan[0].radio receptionState:count 3581
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source receptionStateChanged
 attr title "Radio reception state, count"
+attr type enum
 scalar ComboExample.host[1].wlan[0].radio transmissionState:count 1792
+attr enum UNDEFINED,IDLE,TRANSMITTING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
+attr type enum
 statistic ComboExample.host[1].wlan[0].radio minSnir:histogram
 field count 1790
 field mean 391.31551042078
@@ -1514,12 +1526,12 @@ attr recordingmode last
 attr title "pings lost, last"
 statistic ComboExample.host[1].app[0] rtt:histogram
 field count 895
-field mean 0.0086503335639999
+field mean 0.0086663335640001
 field stddev 0
-field min 0.008650333564
-field max 0.008650333564
-field sum 7.7420485397799
-field sqrsum 0.066971302337775
+field min 0.008666333564
+field max 0.008666333564
+field sum 7.7563685397801
+field sqrsum 0.067219277011048
 attr interpolationmode none
 attr recordingmode histogram
 attr title "ping round-trip time"
@@ -1884,20 +1896,26 @@ attr recordingmode count
 attr source linkBroken
 attr title "link break, count"
 scalar ComboExample.host[2].wlan[0].radio radioMode:count 3
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source radioModeChanged
 attr title "Radio mode, count"
+attr type enum
 scalar ComboExample.host[2].wlan[0].radio receptionState:count 3581
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source receptionStateChanged
 attr title "Radio reception state, count"
+attr type enum
 scalar ComboExample.host[2].wlan[0].radio transmissionState:count 1791
+attr enum UNDEFINED,IDLE,TRANSMITTING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
+attr type enum
 statistic ComboExample.host[2].wlan[0].radio minSnir:histogram
 field count 1790
 field mean 376.26491386614
@@ -2305,12 +2323,12 @@ attr recordingmode last
 attr title "pings lost, last"
 statistic ComboExample.host[2].app[0] rtt:histogram
 field count 895
-field mean 0.00865034017
+field mean 0.0086663401699998
 field stddev 0
-field min 0.00865034017
-field max 0.00865034017
-field sum 7.74205445215
-field sqrsum 0.06697140462576
+field min 0.00866634017
+field max 0.00866634017
+field sum 7.7563744521498
+field sqrsum 0.06721937948823
 attr interpolationmode none
 attr recordingmode histogram
 attr title "ping round-trip time"

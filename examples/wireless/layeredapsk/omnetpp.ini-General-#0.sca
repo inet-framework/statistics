@@ -1,8 +1,8 @@
 version 3
-run General-0-20240115-11:28:19-15211
+run General-0-20241128-14:29:50-78314
 attr configname General
-attr datetime 20240115-11:28:19
-attr datetimef 20240115-112819
+attr datetime 20241128-14:29:50
+attr datetimef 20241128-142950
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars "$distance=110, $detail=\"packet\", $modulation=\"BPSK\", $fecType=\"\", $bitrate=\"\" == \"\" ? 36Mbps : 18Mbps"
@@ -10,7 +10,7 @@ attr iterationvarsd distance=110/detail=packet/modulation=BPSK/fecType=/bitrate=
 attr iterationvarsf distance=110,detail=packet,modulation=BPSK,fecType=,bitrate=#22#22_==_#22#22_#3f_36Mbps_#3a_18Mbps-
 attr measurement "$distance=110, $detail=\"packet\", $modulation=\"BPSK\", $fecType=\"\", $bitrate=\"\" == \"\" ? 36Mbps : 18Mbps"
 attr network LayeredApsk
-attr processid 15211
+attr processid 78314
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -161,7 +161,7 @@ attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, max"
 attr unit pk
-scalar LayeredApsk.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg 0.000338244444
+scalar LayeredApsk.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:timeavg 0.000338688889
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -182,7 +182,7 @@ attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, max"
 attr unit b
-scalar LayeredApsk.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 0.32471466624
+scalar LayeredApsk.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 0.32514133344
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -191,12 +191,12 @@ attr title "queue bit length, timeavg"
 attr unit b
 statistic LayeredApsk.host[0].wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:histogram
 field count 100
-field mean 0.000338244444
+field mean 0.000338688889
 field stddev 0.00018970886786193
-field min 6.4444444e-05
-field max 0.000684444444
-field sum 0.0338244444
-field sqrsum 1.5003886389687e-05
+field min 6.4888889e-05
+field max 0.000684888889
+field sum 0.0338688889
+field sqrsum 1.5033972353205e-05
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetPulled)
@@ -374,12 +374,12 @@ attr title "dropped packet lengths: queue overflow, sum"
 attr unit b
 statistic LayeredApsk.host[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
 field count 100
-field mean 4.3178286e-05
+field mean 4.4067175e-05
 field stddev 0
-field min 4.3178286e-05
-field max 4.3178286e-05
-field sum 0.0043178286
-field sqrsum 1.8643643818978e-07
+field min 4.4067175e-05
+field max 4.4067175e-05
+field sum 0.0044067175
+field sqrsum 1.9419159124806e-07
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetDequeued)
@@ -443,7 +443,7 @@ attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
 attr title "queue length, max"
-scalar LayeredApsk.host[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 4.3178286e-05
+scalar LayeredApsk.host[0].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 4.4067175e-05
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -492,12 +492,12 @@ attr recordingmode count
 attr title "finished frame sequences, count"
 statistic LayeredApsk.host[0].wlan[0].mac.dcf frameSequenceDuration:histogram
 field count 100
-field mean 4.3178286e-05
+field mean 4.4067175e-05
 field stddev 0
-field min 4.3178286e-05
-field max 4.3178286e-05
-field sum 0.0043178286
-field sqrsum 1.8643643818978e-07
+field min 4.4067175e-05
+field max 4.4067175e-05
+field sum 0.0044067175
+field sqrsum 1.9419159124806e-07
 attr recordingmode histogram
 attr source frameSequenceDuration(frameSequenceFinished)
 attr title "frame sequence durations"
@@ -836,20 +836,26 @@ attr interpolationmode none
 attr recordingmode count
 attr title "link breaks, count"
 scalar LayeredApsk.host[0].wlan[0].radio radioMode:count 403
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source radioModeChanged
 attr title "Radio mode, count"
+attr type enum
 scalar LayeredApsk.host[0].wlan[0].radio receptionState:count 801
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source receptionStateChanged
 attr title "Radio reception state, count"
+attr type enum
 scalar LayeredApsk.host[0].wlan[0].radio transmissionState:count 800
+attr enum UNDEFINED,IDLE,TRANSMITTING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
+attr type enum
 statistic LayeredApsk.host[0].wlan[0].radio minSnir:histogram
 field count 200
 field mean 81.660836448913
@@ -1322,12 +1328,12 @@ attr title "dropped packet lengths: queue overflow, sum"
 attr unit b
 statistic LayeredApsk.host[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
 field count 100
-field mean 4.3178286e-05
+field mean 4.4067175e-05
 field stddev 0
-field min 4.3178286e-05
-field max 4.3178286e-05
-field sum 0.0043178286
-field sqrsum 1.8643643818978e-07
+field min 4.4067175e-05
+field max 4.4067175e-05
+field sum 0.0044067175
+field sqrsum 1.9419159124806e-07
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetDequeued)
@@ -1391,7 +1397,7 @@ attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
 attr title "queue length, max"
-scalar LayeredApsk.host[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 4.3178286e-05
+scalar LayeredApsk.host[1].wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 4.4067175e-05
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -1440,12 +1446,12 @@ attr recordingmode count
 attr title "finished frame sequences, count"
 statistic LayeredApsk.host[1].wlan[0].mac.dcf frameSequenceDuration:histogram
 field count 100
-field mean 4.3178286e-05
+field mean 4.4067175e-05
 field stddev 0
-field min 4.3178286e-05
-field max 4.3178286e-05
-field sum 0.0043178286
-field sqrsum 1.8643643818978e-07
+field min 4.4067175e-05
+field max 4.4067175e-05
+field sum 0.0044067175
+field sqrsum 1.9419159124806e-07
 attr recordingmode histogram
 attr source frameSequenceDuration(frameSequenceFinished)
 attr title "frame sequence durations"
@@ -1784,20 +1790,26 @@ attr interpolationmode none
 attr recordingmode count
 attr title "link breaks, count"
 scalar LayeredApsk.host[1].wlan[0].radio radioMode:count 403
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source radioModeChanged
 attr title "Radio mode, count"
+attr type enum
 scalar LayeredApsk.host[1].wlan[0].radio receptionState:count 801
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source receptionStateChanged
 attr title "Radio reception state, count"
+attr type enum
 scalar LayeredApsk.host[1].wlan[0].radio transmissionState:count 800
+attr enum UNDEFINED,IDLE,TRANSMITTING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
+attr type enum
 statistic LayeredApsk.host[1].wlan[0].radio minSnir:histogram
 field count 200
 field mean 81.660836448913
@@ -2058,12 +2070,12 @@ attr recordingmode last
 attr title "pings lost, last"
 statistic LayeredApsk.host[1].app[0] rtt:histogram
 field count 100
-field mean 0.000394978286
+field mean 0.000396311619
 field stddev 0.00018970886786193
-field min 0.000121178286
-field max 0.000741178286
-field sum 0.0394978286
-field sqrsum 1.916374064115e-05
+field min 0.000122511619
+field max 0.000742511619
+field sum 0.0396311619
+field sqrsum 1.926924593544e-05
 attr interpolationmode none
 attr recordingmode histogram
 attr title "ping round-trip time"
