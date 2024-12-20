@@ -1,8 +1,8 @@
 version 3
-run QueueOverflow-0-20240311-17:01:34-225222
+run QueueOverflow-0-20241220-17:39:54-131190
 attr configname QueueOverflow
-attr datetime 20240311-17:01:34
-attr datetimef 20240311-170134
+attr datetime 20241220-17:39:54
+attr datetimef 20241220-173954
 attr experiment QueueOverflow
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network PacketDropQueueOverflowShowcase
-attr processid 225222
+attr processid 131190
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -36,9 +36,9 @@ config *.destination.app[0].typename UdpSink
 config *.destination.app[*].localPort 1000
 config *.etherSwitch.eth[*].queue.typename EthernetQosQueue
 config *.etherSwitch.eth[*].queue.dataQueue.typename DropTailQueue
-config *.visualizer.*.packetDropVisualizer.displayPacketDrops true
-config *.visualizer.*.packetDropVisualizer.labelFormat "\"%n/reason: %r\""
-config *.visualizer.*.packetDropVisualizer.fadeOutTime 3s
+config *.visualizer.packetDropVisualizer.displayPacketDrops true
+config *.visualizer.packetDropVisualizer.labelFormat "\"%n/reason: %r\""
+config *.visualizer.packetDropVisualizer.fadeOutTime 3s
 config sim-time-limit 500s
 
 scalar PacketDropQueueOverflowShowcase.source.ethernet pauseSent:count 0
@@ -4080,7 +4080,7 @@ attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, max"
 attr unit b
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 1.6647865184416
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 1.6847345703896
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -4184,7 +4184,7 @@ attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 18064
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 19472
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
@@ -4192,12 +4192,12 @@ attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
 field count 26
-field mean 694.76923076923
-field stddev 1595.7651032077
+field mean 748.92307692308
+field stddev 1584.7789227038
 field min 272
 field max 8512
-field sum 18064
-field sqrsum 76211968
+field sum 19472
+field sqrsum 77371136
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -4205,8 +4205,8 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	0	0
-bin	200	24
-bin	400	0
+bin	200	3
+bin	400	21
 bin	600	1
 bin	800	0
 bin	1000	0
@@ -4279,7 +4279,7 @@ attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 26576
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 27984
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
@@ -4287,12 +4287,12 @@ attr title "incoming packet lengths, sum"
 attr unit b
 statistic PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
 field count 27
-field mean 984.2962962963
-field stddev 2170.6738906619
+field mean 1036.4444444444
+field stddev 2155.6849586676
 field min 272
 field max 8512
-field sum 26576
-field sqrsum 148666112
+field sum 27984
+field sqrsum 149825280
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -4300,8 +4300,8 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	0	0
-bin	200	24
-bin	400	0
+bin	200	3
+bin	400	21
 bin	600	1
 bin	800	0
 bin	1000	0
@@ -4603,7 +4603,7 @@ scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceive
 attr interpolationmode none
 attr recordingmode count
 attr title "packets received, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 256
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 264
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr title "packets received, sum(packetBytes)"
@@ -4622,7 +4622,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Multicast(packetReceivedFromPeer)
 attr title "packets received: multicast, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 32
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 40
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Multicast(packetReceivedFromPeer)
@@ -4632,7 +4632,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Broadcast(packetReceivedFromPeer)
 attr title "packets received: broadcast, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 32
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 40
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Broadcast(packetReceivedFromPeer)
@@ -4652,7 +4652,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211NotRetry(packetReceivedFromPeer)
 attr title "packets received: without retry, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 256
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 264
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211NotRetry(packetReceivedFromPeer)
@@ -4661,7 +4661,7 @@ scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToP
 attr interpolationmode none
 attr recordingmode count
 attr title "packets sent, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 1250
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 1426
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr title "packets sent, sum(packetBytes)"
@@ -4670,7 +4670,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Unicast(packetSentToPeer)
 attr title "packets sent: unicast, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 208
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeerUnicast:sum(packetBytes) 224
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Unicast(packetSentToPeer)
@@ -4680,7 +4680,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Multicast(packetSentToPeer)
 attr title "packets sent: multicast, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 1042
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 1202
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Multicast(packetSentToPeer)
@@ -4690,7 +4690,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Broadcast(packetSentToPeer)
 attr title "packets sent: broadcast , count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 1042
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 1202
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Broadcast(packetSentToPeer)
@@ -4710,7 +4710,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211NotRetry(packetSentToPeer)
 attr title "packets sent: without retry, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 1250
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 1426
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211NotRetry(packetSentToPeer)
@@ -4763,7 +4763,7 @@ scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac packetReceivedFro
 attr interpolationmode none
 attr recordingmode count
 attr title "packets received from lower layer, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 256
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 264
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr title "packets received from lower layer, sum(packetBytes)"
@@ -4771,7 +4771,7 @@ scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac packetSentToLower
 attr interpolationmode none
 attr recordingmode count
 attr title "packets sent to lower layer, count"
-scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac packetSentToLower:sum(packetBytes) 2314
+scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].mac packetSentToLower:sum(packetBytes) 2490
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr title "packets sent to lower layer, sum(packetBytes)"
@@ -4930,20 +4930,26 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].radio radioMode:count 62
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source radioModeChanged
 attr title "Radio mode, count"
+attr type enum
 scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].radio receptionState:count 78
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source receptionStateChanged
 attr title "Radio reception state, count"
+attr type enum
 scalar PacketDropQueueOverflowShowcase.accessPoint.wlan[0].radio transmissionState:count 118
+attr enum UNDEFINED,IDLE,TRANSMITTING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
+attr type enum
 statistic PacketDropQueueOverflowShowcase.accessPoint.wlan[0].radio minSnir:histogram
 field count 9
 field mean 9977.9568162775
@@ -5756,7 +5762,7 @@ attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 1600
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 1664
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
@@ -5764,22 +5770,18 @@ attr title "outgoing packet lengths, sum"
 attr unit b
 statistic PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
 field count 5
-field mean 320
-field stddev 107.92590050586
-field min 256
+field mean 332.8
+field stddev 102.07448260951
+field min 272
 field max 512
-field sum 1600
-field sqrsum 558592
+field sum 1664
+field sqrsum 595456
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
-bin	190	0
-bin	195	0
-bin	200	0
-bin	205	0
 bin	210	0
 bin	215	0
 bin	220	0
@@ -5789,7 +5791,7 @@ bin	235	0
 bin	240	0
 bin	245	0
 bin	250	0
-bin	255	1
+bin	255	0
 bin	260	0
 bin	265	0
 bin	270	2
@@ -5802,7 +5804,7 @@ bin	300	0
 bin	305	0
 bin	310	0
 bin	315	0
-bin	320	0
+bin	320	1
 bin	325	0
 bin	330	0
 bin	335	0
@@ -5854,7 +5856,6 @@ bin	560	0
 bin	565	0
 bin	570	0
 bin	575	0
-bin	580	0
 statistic PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
 field count 0
 field mean -nan
@@ -5876,7 +5877,7 @@ attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 1600
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 1664
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
@@ -5884,22 +5885,18 @@ attr title "incoming packet lengths, sum"
 attr unit b
 statistic PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
 field count 5
-field mean 320
-field stddev 107.92590050586
-field min 256
+field mean 332.8
+field stddev 102.07448260951
+field min 272
 field max 512
-field sum 1600
-field sqrsum 558592
+field sum 1664
+field sqrsum 595456
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
-bin	190	0
-bin	195	0
-bin	200	0
-bin	205	0
 bin	210	0
 bin	215	0
 bin	220	0
@@ -5909,7 +5906,7 @@ bin	235	0
 bin	240	0
 bin	245	0
 bin	250	0
-bin	255	1
+bin	255	0
 bin	260	0
 bin	265	0
 bin	270	2
@@ -5922,7 +5919,7 @@ bin	300	0
 bin	305	0
 bin	310	0
 bin	315	0
-bin	320	0
+bin	320	1
 bin	325	0
 bin	330	0
 bin	335	0
@@ -5974,7 +5971,6 @@ bin	560	0
 bin	565	0
 bin	570	0
 bin	575	0
-bin	580	0
 scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 0
 attr interpolationmode none
 attr recordingmode count
@@ -5989,22 +5985,17 @@ attr title "dropped packet lengths: queue overflow, sum"
 attr unit b
 statistic PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
 field count 5
-field mean 7.87473552e-05
-field stddev 2.3040365094458e-05
-field min 3.8e-05
+field mean 7.95473552e-05
+field stddev 2.1273544915832e-05
+field min 4.2e-05
 field max 9.4934194e-05
-field sum 0.000393736776
-field sqrsum 3.3129163449719e-08
+field sum 0.000397736776
+field sqrsum 3.3449163449719e-08
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetDequeued)
 attr title "queueing times"
 bin	-inf	0
-bin	2.3e-05	0
-bin	2.4e-05	0
-bin	2.5e-05	0
-bin	2.6e-05	0
-bin	2.7e-05	0
 bin	2.8e-05	0
 bin	2.9e-05	0
 bin	3e-05	0
@@ -6015,10 +6006,10 @@ bin	3.4e-05	0
 bin	3.5e-05	0
 bin	3.6e-05	0
 bin	3.7e-05	0
-bin	3.8e-05	1
+bin	3.8e-05	0
 bin	3.9e-05	0
 bin	4e-05	0
-bin	4.1e-05	0
+bin	4.1e-05	1
 bin	4.2e-05	0
 bin	4.3e-05	0
 bin	4.4e-05	0
@@ -6087,14 +6078,13 @@ bin	0.000106	0
 bin	0.000107	0
 bin	0.000108	0
 bin	0.000109	0
-bin	0.00011	0
 scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 1
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode max
 attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
 attr title "queue length, max"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0.00019667171628372
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0.00019866971828172
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -6143,21 +6133,16 @@ attr recordingmode count
 attr title "finished frame sequences, count"
 statistic PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf frameSequenceDuration:histogram
 field count 5
-field mean 7.87473552e-05
-field stddev 2.3040365094458e-05
-field min 3.8e-05
+field mean 7.95473552e-05
+field stddev 2.1273544915832e-05
+field min 4.2e-05
 field max 9.4934194e-05
-field sum 0.000393736776
-field sqrsum 3.3129163449719e-08
+field sum 0.000397736776
+field sqrsum 3.3449163449719e-08
 attr recordingmode histogram
 attr source frameSequenceDuration(frameSequenceFinished)
 attr title "frame sequence durations"
 bin	-inf	0
-bin	2.3e-05	0
-bin	2.4e-05	0
-bin	2.5e-05	0
-bin	2.6e-05	0
-bin	2.7e-05	0
 bin	2.8e-05	0
 bin	2.9e-05	0
 bin	3e-05	0
@@ -6168,10 +6153,10 @@ bin	3.4e-05	0
 bin	3.5e-05	0
 bin	3.6e-05	0
 bin	3.7e-05	0
-bin	3.8e-05	1
+bin	3.8e-05	0
 bin	3.9e-05	0
 bin	4e-05	0
-bin	4.1e-05	0
+bin	4.1e-05	1
 bin	4.2e-05	0
 bin	4.3e-05	0
 bin	4.4e-05	0
@@ -6240,7 +6225,6 @@ bin	0.000106	0
 bin	0.000107	0
 bin	0.000108	0
 bin	0.000109	0
-bin	0.00011	0
 statistic PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf frameSequenceNumPackets:histogram
 field count 5
 field mean 1.8
@@ -6261,7 +6245,7 @@ scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceive
 attr interpolationmode none
 attr recordingmode count
 attr title "packets received, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 1250
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeer:sum(packetBytes) 1426
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr title "packets received, sum(packetBytes)"
@@ -6270,7 +6254,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Unicast(packetReceivedFromPeer)
 attr title "packets received: unicast, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 208
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 224
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Unicast(packetReceivedFromPeer)
@@ -6280,7 +6264,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Multicast(packetReceivedFromPeer)
 attr title "packets received: multicast, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 1042
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 1202
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Multicast(packetReceivedFromPeer)
@@ -6290,7 +6274,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Broadcast(packetReceivedFromPeer)
 attr title "packets received: broadcast, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 1042
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 1202
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Broadcast(packetReceivedFromPeer)
@@ -6310,7 +6294,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211NotRetry(packetReceivedFromPeer)
 attr title "packets received: without retry, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 1250
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 1426
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211NotRetry(packetReceivedFromPeer)
@@ -6319,7 +6303,7 @@ scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToP
 attr interpolationmode none
 attr recordingmode count
 attr title "packets sent, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 256
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToPeer:sum(packetBytes) 264
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr title "packets sent, sum(packetBytes)"
@@ -6338,7 +6322,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Multicast(packetSentToPeer)
 attr title "packets sent: multicast, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 32
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToPeerMulticast:sum(packetBytes) 40
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Multicast(packetSentToPeer)
@@ -6348,7 +6332,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211Broadcast(packetSentToPeer)
 attr title "packets sent: broadcast , count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 32
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 40
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211Broadcast(packetSentToPeer)
@@ -6368,7 +6352,7 @@ attr interpolationmode none
 attr recordingmode count
 attr source ieee80211NotRetry(packetSentToPeer)
 attr title "packets sent: without retry, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 256
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 264
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source ieee80211NotRetry(packetSentToPeer)
@@ -6421,7 +6405,7 @@ scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac packetReceivedFro
 attr interpolationmode none
 attr recordingmode count
 attr title "packets received from lower layer, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 1250
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 1426
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr title "packets received from lower layer, sum(packetBytes)"
@@ -6429,7 +6413,7 @@ scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac packetSentToLower
 attr interpolationmode none
 attr recordingmode count
 attr title "packets sent to lower layer, count"
-scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac packetSentToLower:sum(packetBytes) 256
+scalar PacketDropQueueOverflowShowcase.destination.wlan[0].mac packetSentToLower:sum(packetBytes) 264
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr title "packets sent to lower layer, sum(packetBytes)"
@@ -6588,20 +6572,26 @@ bin	0.46	0
 bin	0.48	0
 bin	0.5	0
 scalar PacketDropQueueOverflowShowcase.destination.wlan[0].radio radioMode:count 21
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source radioModeChanged
 attr title "Radio mode, count"
+attr type enum
 scalar PacketDropQueueOverflowShowcase.destination.wlan[0].radio receptionState:count 78
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source receptionStateChanged
 attr title "Radio reception state, count"
+attr type enum
 scalar PacketDropQueueOverflowShowcase.destination.wlan[0].radio transmissionState:count 36
+attr enum UNDEFINED,IDLE,TRANSMITTING
 attr interpolationmode sample-hold
 attr recordingmode count
 attr source transmissionStateChanged
 attr title "Radio transmission state, count"
+attr type enum
 statistic PacketDropQueueOverflowShowcase.destination.wlan[0].radio minSnir:histogram
 field count 29
 field mean 9977.9568162775
