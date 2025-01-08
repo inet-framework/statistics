@@ -1,8 +1,8 @@
 version 3
-run RequestResponseTraffic-0-20240115-11:23:03-14701
+run RequestResponseTraffic-0-20250108-11:24:41-10730
 attr configname RequestResponseTraffic
-attr datetime 20240115-11:23:03
-attr datetimef 20240115-112303
+attr datetime 20250108-11:24:41
+attr datetimef 20250108-112441
 attr experiment RequestResponseTraffic
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,16 +10,16 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network UdpAppExample
-attr processid 14701
+attr processid 10730
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-RequestResponseTraffic-#0.sca
+config output-vector-file results/omnetpp.ini-RequestResponseTraffic-#0.vec
 config sim-time-limit 100s
 config sim-time-limit 100s
 config *.server.app[0].typename UdpRequestResponseApp
@@ -43,87 +43,519 @@ config *.client.app[0].source.packetLength "intuniform(100B, 200B)"
 config *.client.app[0].source.packetData "intuniform(0, 1)"
 
 scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
 scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
 scalar UdpAppExample.client.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
 scalar UdpAppExample.client.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
 scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
 scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
 scalar UdpAppExample.client.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
 scalar UdpAppExample.client.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
 scalar UdpAppExample.client.ppp[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
 scalar UdpAppExample.client.ppp[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
 scalar UdpAppExample.client.ppp[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
 scalar UdpAppExample.client.ppp[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
 scalar UdpAppExample.client.ppp[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
 scalar UdpAppExample.client.ppp[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
+scalar UdpAppExample.client.ppp[0].queue outgoingPackets:count 101
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:sum 144096
+scalar UdpAppExample.client.ppp[0].queue incomingPackets:count 101
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:sum 144096
+scalar UdpAppExample.client.ppp[0].queue droppedPacketsQueueOverflow:count 0
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:timeavg 0.000147896
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:count 1269
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:sum(packetBytes) 2531106
+scalar UdpAppExample.client.ppp[0].ppp txPk:count 101
+scalar UdpAppExample.client.ppp[0].ppp txPk:sum(packetBytes) 18719
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:count 101
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 18012
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:count 1269
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:sum(packetBytes) 2522223
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:count 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:count 0
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:count 0
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:count 0
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:count 0
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:count 0
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:count 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:count 0
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.arp arpResolutionFailed:count 0
+scalar UdpAppExample.client.ipv4.arp arpResolutionCompleted:count 0
+scalar UdpAppExample.client.ipv4.arp arpResolutionInitiated:count 0
+scalar UdpAppExample.client.ipv4.arp arpReplySent:count 0
+scalar UdpAppExample.client.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:count 0
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar UdpAppExample.client.udp packetReceived:count 989
+scalar UdpAppExample.client.udp packetReceived:sum(packetBytes) 2496843
+scalar UdpAppExample.client.udp packetSent:count 101
+scalar UdpAppExample.client.udp packetSent:sum(packetBytes) 15992
+scalar UdpAppExample.client.udp passedUpPk:count 989
+scalar UdpAppExample.client.udp droppedPkWrongPort:count 0
+scalar UdpAppExample.client.udp droppedPkBadChecksum:count 0
+scalar UdpAppExample.client.app[0].source packets:count 101
+scalar UdpAppExample.client.app[0].source packetLengths:sum 121472
+scalar UdpAppExample.client.app[0].sink packets:count 989
+scalar UdpAppExample.client.app[0].sink packetLengths:sum 19911448
+scalar UdpAppExample.client.app[0].sink droppedPackets:count 989
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:sum 19911448
+scalar UdpAppExample.client.app[0].io "packets sent" 101
+scalar UdpAppExample.client.app[0].io "packets received" 989
+scalar UdpAppExample.client.app[0].io packetReceived:count 989
+scalar UdpAppExample.client.app[0].io packetReceived:sum(packetBytes) 2488931
+scalar UdpAppExample.client.app[0].io packetSent:count 101
+scalar UdpAppExample.client.app[0].io packetSent:sum(packetBytes) 15184
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:count 0
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar UdpAppExample.server.lo[0].lo passedUpPk:count 0
+scalar UdpAppExample.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:count 0
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:count 0
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar UdpAppExample.server.ppp[0].queue queueLength:last 0
+scalar UdpAppExample.server.ppp[0].queue queueLength:max 4
+scalar UdpAppExample.server.ppp[0].queue queueLength:timeavg 0.01230160382267
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:last 0
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:max 99376
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:timeavg 215.97832842961
+scalar UdpAppExample.server.ppp[0].queue outgoingPackets:count 1269
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:sum 20177784
+scalar UdpAppExample.server.ppp[0].queue incomingPackets:count 1269
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:sum 20177784
+scalar UdpAppExample.server.ppp[0].queue droppedPacketsQueueOverflow:count 0
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:timeavg 0.020248848
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:count 100
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:sum(packetBytes) 18487
+scalar UdpAppExample.server.ppp[0].ppp txPk:count 1269
+scalar UdpAppExample.server.ppp[0].ppp txPk:sum(packetBytes) 2531106
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:count 1269
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2522223
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:count 100
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:sum(packetBytes) 17787
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:count 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:count 0
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:count 0
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:count 0
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:count 0
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:count 0
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:count 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:count 0
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.arp arpResolutionFailed:count 0
+scalar UdpAppExample.server.ipv4.arp arpResolutionCompleted:count 0
+scalar UdpAppExample.server.ipv4.arp arpResolutionInitiated:count 0
+scalar UdpAppExample.server.ipv4.arp arpReplySent:count 0
+scalar UdpAppExample.server.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:count 0
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar UdpAppExample.server.udp packetReceived:count 100
+scalar UdpAppExample.server.udp packetReceived:sum(packetBytes) 15787
+scalar UdpAppExample.server.udp packetSent:count 989
+scalar UdpAppExample.server.udp packetSent:sum(packetBytes) 2496843
+scalar UdpAppExample.server.udp passedUpPk:count 100
+scalar UdpAppExample.server.udp droppedPkWrongPort:count 0
+scalar UdpAppExample.server.udp droppedPkBadChecksum:count 0
+scalar UdpAppExample.server.app[0].source.provider[0] packets:count 595
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:sum 2648200
+scalar UdpAppExample.server.app[0].source.provider[1] packets:count 394
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:sum 17263248
+scalar UdpAppExample.server.app[0].source.server[0] numTokensDepleted:count 40
+scalar UdpAppExample.server.app[0].source.server[0] removedTokens:sum 4359
+scalar UdpAppExample.server.app[0].source.server[0] addedTokens:sum 595
+scalar UdpAppExample.server.app[0].source.server[0] incomingPackets:count 595
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:sum 2648200
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPackets:count 595
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:sum 2648200
+scalar UdpAppExample.server.app[0].source.server[1] numTokensDepleted:count 52
+scalar UdpAppExample.server.app[0].source.server[1] removedTokens:sum 1362
+scalar UdpAppExample.server.app[0].source.server[1] addedTokens:sum 398
+scalar UdpAppExample.server.app[0].source.server[1] incomingPackets:count 394
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:sum 17263248
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPackets:count 394
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:sum 17263248
+scalar UdpAppExample.server.app[0].source.multiplexer packets:count 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:sum 0
+scalar UdpAppExample.server.app[0].source.tokenGenerator tokensCreated:count 93
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:sum 92
+scalar UdpAppExample.server.app[0].sink.queue queueLength:last 7
+scalar UdpAppExample.server.app[0].sink.queue queueLength:max 9
+scalar UdpAppExample.server.app[0].sink.queue queueLength:timeavg 4.0540703750657
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:last 9672
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:max 12376
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:timeavg 4929.6725375011
+scalar UdpAppExample.server.app[0].sink.queue outgoingPackets:count 93
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:sum 110224
+scalar UdpAppExample.server.app[0].sink.queue incomingPackets:count 100
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:sum 119896
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketsQueueOverflow:count 0
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:sum 0
+scalar UdpAppExample.server.app[0].sink.server numTokensDepleted:count 90
+scalar UdpAppExample.server.app[0].sink.server removedTokens:sum 0
+scalar UdpAppExample.server.app[0].sink.server addedTokens:sum 92
+scalar UdpAppExample.server.app[0].sink.server incomingPackets:count 93
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:sum 110224
+scalar UdpAppExample.server.app[0].sink.server outgoingPackets:count 93
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:sum 110224
+scalar UdpAppExample.server.app[0].sink.classifier packets:count 93
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:sum 110224
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] tokensCreated:count 41
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:sum 595
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] tokensCreated:count 54
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:sum 398
+scalar UdpAppExample.server.app[0].io "packets sent" 989
+scalar UdpAppExample.server.app[0].io "packets received" 100
+scalar UdpAppExample.server.app[0].io packetReceived:count 100
+scalar UdpAppExample.server.app[0].io packetReceived:sum(packetBytes) 14987
+scalar UdpAppExample.server.app[0].io packetSent:count 989
+scalar UdpAppExample.server.app[0].io packetSent:sum(packetBytes) 2488931
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:count 101
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:sumweights 101
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:mean 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:stddev 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:min 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:max 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:numbins 50
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:rangemin -0.5
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:rangemax 0.5
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:underflows 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:histogram:overflows 0
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:count 101
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:sumweights 101
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:mean 1426.6930693069
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:stddev 238.61541201583
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:min 1032
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:max 1824
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:numbins 61
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:rangemin 820
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:rangemax 2040
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:count 0
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:sumweights 0
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:mean -nan
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:stddev nan
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:min nan
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:max nan
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:numbins 1
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:rangemin 0
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:rangemax 1
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:underflows 0
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:histogram:overflows 0
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:count 101
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:sumweights 101
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:mean 1426.6930693069
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:stddev 238.61541201583
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:min 1032
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:max 1824
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:numbins 61
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:rangemin 820
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:rangemax 2040
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:count 101
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:sumweights 101
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:mean 1202.6930693069
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:stddev 238.61541201583
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:min 808
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:max 1600
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:numbins 60
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:rangemin 600
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:rangemax 1800
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:underflows 0
+scalar UdpAppExample.client.app[0].source packetLengths:histogram:overflows 0
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:count 989
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:sumweights 989
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:mean 20132.910010111
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:stddev 23397.940599994
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:min 800
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:max 79952
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:numbins 50
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:rangemin 0
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:rangemax 100000
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:underflows 0
+scalar UdpAppExample.client.app[0].sink packetLengths:histogram:overflows 0
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:count 989
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:sumweights 989
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:mean 0.10306052863195
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:stddev 0.58567546873562
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:min 0.0001081
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:max 6.169951730898
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:numbins 42
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:rangemin 0
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:rangemax 6.3
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:underflows 0
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:histogram:overflows 0
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:count 989
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:sumweights 989
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:mean 3.8682507583385e-06
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:stddev 0.8403518282177
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:min -6.161905230898
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:max 6.169159630898
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:numbins 62
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:rangemin -6.2
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:rangemax 6.2
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:underflows 0
+scalar UdpAppExample.client.app[0].sink packetJitter:histogram:overflows 0
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:count 989
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:sumweights 989
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:mean -0.0044086324721079
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:stddev 0.58445300178813
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:min -6.0676591923492
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:max 0.13873219540054
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:numbins 72
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:rangemin -6.1
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:rangemax 1.1
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:underflows 0
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:histogram:overflows 0
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:count 989
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:sumweights 989
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:mean 0.52158076013065
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:stddev 0.08246691424634
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:min 0
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:max 0.6220533011599
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:numbins 78
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:rangemin 0
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:rangemax 0.78
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:underflows 0
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:histogram:overflows 0
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:count 989
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:sumweights 989
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:mean 20132.910010111
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:stddev 23397.940599994
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:min 800
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:max 79952
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:numbins 50
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:rangemin 0
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:rangemax 100000
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:underflows 0
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:count 1269
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:sumweights 1269
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:mean 0.00096939352424507
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:stddev 0.0019302714963422
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:min 0
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:max 0.012361190004
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:numbins 42
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:rangemin 0
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:rangemax 0.0126
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:underflows 0
+scalar UdpAppExample.server.ppp[0].queue queueingTime:histogram:overflows 0
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:count 1269
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:sumweights 1269
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:mean 15900.539007092
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:stddev 13544.01833395
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:min 184
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:max 35744
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:numbins 90
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:rangemin 0
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:rangemax 45000
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:count 0
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:sumweights 0
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:mean -nan
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:stddev nan
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:min nan
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:max nan
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:numbins 1
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:rangemin 0
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:rangemax 1
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:underflows 0
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:histogram:overflows 0
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:count 1269
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:sumweights 1269
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:mean 15900.539007092
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:stddev 13544.01833395
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:min 184
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:max 35744
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:numbins 90
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:rangemin 0
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:rangemax 45000
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:count 595
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:sumweights 595
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:mean 4450.756302521
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:stddev 2010.6972205097
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:min 800
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:max 7976
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:numbins 49
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:rangemax 9800
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:count 394
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:sumweights 394
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:mean 43815.350253807
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:stddev 20870.753154737
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:min 8000
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:max 79952
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:numbins 49
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:rangemax 98000
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:count 595
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:sumweights 595
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:mean 4450.756302521
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:stddev 2010.6972205097
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:min 800
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:max 7976
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:numbins 49
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:rangemax 9800
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:count 595
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:sumweights 595
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:mean 4450.756302521
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:stddev 2010.6972205097
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:min 800
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:max 7976
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:numbins 49
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:rangemax 9800
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:count 394
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:sumweights 394
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:mean 43815.350253807
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:stddev 20870.753154737
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:min 8000
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:max 79952
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:numbins 49
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:rangemax 98000
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:count 394
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:sumweights 394
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:mean 43815.350253807
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:stddev 20870.753154737
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:min 8000
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:max 79952
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:numbins 49
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:rangemax 98000
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:count 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:sumweights 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:mean -nan
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:stddev nan
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:min nan
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:max nan
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:numbins 1
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:rangemax 1
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:count 93
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:sumweights 93
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:mean 4.0581527032965
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:stddev 2.514539282615
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:min 0
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:max 8.230500109815
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:numbins 52
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:rangemax 10.4
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:underflows 0
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:histogram:overflows 0
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:count 93
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:sumweights 93
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:mean 1185.2043010753
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:stddev 232.85284395476
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:min 808
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:max 1600
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:numbins 60
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:rangemin 600
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:rangemax 1800
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:count 0
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:sumweights 0
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:mean -nan
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:stddev nan
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:min nan
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:max nan
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:numbins 1
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:rangemin 0
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:rangemax 1
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:underflows 0
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:histogram:overflows 0
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:count 100
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:sumweights 100
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:mean 1198.96
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:stddev 236.83476403296
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:min 808
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:max 1600
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:numbins 60
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:rangemin 600
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:rangemax 1800
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:count 93
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:sumweights 93
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:mean 1185.2043010753
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:stddev 232.85284395476
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:min 808
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:max 1600
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:numbins 60
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:rangemin 600
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:rangemax 1800
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:count 93
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:sumweights 93
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:mean 1185.2043010753
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:stddev 232.85284395476
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:min 808
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:max 1600
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:numbins 60
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:rangemin 600
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:rangemax 1800
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram:overflows 0
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:count 93
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:sumweights 93
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:mean 1185.2043010753
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:stddev 232.85284395476
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:min 808
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:max 1600
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:numbins 60
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:rangemin 600
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:rangemax 1800
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:underflows 0
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:histogram:overflows 0
 statistic UdpAppExample.client.ppp[0].queue queueingTime:histogram
 field count 101
 field mean 0
@@ -132,11 +564,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -189,17 +616,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar UdpAppExample.client.ppp[0].queue outgoingPackets:count 101
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:sum 144096
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic UdpAppExample.client.ppp[0].queue outgoingPacketLengths:histogram
 field count 101
 field mean 1426.6930693069
@@ -208,11 +624,6 @@ field min 1032
 field max 1824
 field sum 144096
 field sqrsum 211274496
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	820	0
 bin	840	0
@@ -284,25 +695,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar UdpAppExample.client.ppp[0].queue incomingPackets:count 101
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:sum 144096
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic UdpAppExample.client.ppp[0].queue incomingPacketLengths:histogram
 field count 101
 field mean 1426.6930693069
@@ -311,11 +706,6 @@ field min 1032
 field max 1824
 field sum 144096
 field sqrsum 211274496
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	820	0
 bin	840	0
@@ -379,244 +769,6 @@ bin	1980	0
 bin	2000	0
 bin	2020	0
 bin	2040	0
-scalar UdpAppExample.client.ppp[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar UdpAppExample.client.ppp[0].ppp transmissionState:timeavg 0.000147896
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source transmissionStateChanged
-attr title "tx state, timeavg"
-scalar UdpAppExample.client.ppp[0].ppp rxPkOk:count 1269
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar UdpAppExample.client.ppp[0].ppp rxPkOk:sum(packetBytes) 2531106
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
-scalar UdpAppExample.client.ppp[0].ppp txPk:count 101
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar UdpAppExample.client.ppp[0].ppp txPk:sum(packetBytes) 18719
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:count 101
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 18012
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar UdpAppExample.client.ppp[0].ppp passedUpPk:count 1269
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar UdpAppExample.client.ppp[0].ppp passedUpPk:sum(packetBytes) 2522223
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar UdpAppExample.client.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar UdpAppExample.client.ipv4.arp arpResolutionCompleted:count 0
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar UdpAppExample.client.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar UdpAppExample.client.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar UdpAppExample.client.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar UdpAppExample.client.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar UdpAppExample.client.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar UdpAppExample.client.udp packetReceived:count 989
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar UdpAppExample.client.udp packetReceived:sum(packetBytes) 2496843
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar UdpAppExample.client.udp packetSent:count 101
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar UdpAppExample.client.udp packetSent:sum(packetBytes) 15992
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar UdpAppExample.client.udp passedUpPk:count 989
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar UdpAppExample.client.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar UdpAppExample.client.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar UdpAppExample.client.app[0].source packets:count 101
-attr recordingmode count
-attr source packetPushed
-attr title "packets, count"
-attr unit pk
-scalar UdpAppExample.client.app[0].source packetLengths:sum 121472
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushed)
-attr title "packet lengths, sum"
-attr unit b
 statistic UdpAppExample.client.app[0].source packetLengths:histogram
 field count 101
 field mean 1202.6930693069
@@ -625,11 +777,6 @@ field min 808
 field max 1600
 field sum 121472
 field sqrsum 151787264
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
 bin	-inf	0
 bin	600	0
 bin	620	0
@@ -692,17 +839,6 @@ bin	1740	0
 bin	1760	0
 bin	1780	0
 bin	1800	0
-scalar UdpAppExample.client.app[0].sink packets:count 989
-attr recordingmode count
-attr source packetPushed
-attr title "packets, count"
-attr unit pk
-scalar UdpAppExample.client.app[0].sink packetLengths:sum 19911448
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushed)
-attr title "packet lengths, sum"
-attr unit b
 statistic UdpAppExample.client.app[0].sink packetLengths:histogram
 field count 989
 field mean 20132.910010111
@@ -711,11 +847,6 @@ field min 800
 field max 79952
 field sum 19911448
 field sqrsum 941769451584
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	90
 bin	2000	170
@@ -776,11 +907,6 @@ field min 0.0001081
 field max 6.169951730898
 field sum 101.926862817
 field sqrsum 349.40420198626
-attr interpolationmode none
-attr recordingmode histogram
-attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
-attr title "mean bit life time per packet"
-attr unit s
 bin	-inf	0
 bin	0	946
 bin	0.15	1
@@ -833,11 +959,6 @@ field min -6.161905230898
 field max 6.169159630898
 field sum 0.0038256999999968
 field sqrsum 697.71690086136
-attr interpolationmode none
-attr recordingmode histogram
-attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
-attr title "packet jitter"
-attr unit s
 bin	-inf	0
 bin	-6.2	1
 bin	-6	1
@@ -910,11 +1031,6 @@ field min -6.0676591923492
 field max 0.13873219540054
 field sum -4.3601375149147
 field sqrsum 337.5055098074
-attr interpolationmode none
-attr recordingmode histogram
-attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
-attr title "packet delay difference to mean"
-attr unit s
 bin	-inf	0
 bin	-6.1	1
 bin	-6	0
@@ -992,15 +1108,11 @@ bin	1.1	0
 statistic UdpAppExample.client.app[0].sink packetDelayVariation:histogram
 field count 989
 field mean 0.52158076013065
-field stddev 0.082466914246375
+field stddev 0.08246691424634
 field min 0
 field max 0.6220533011599
 field sum 515.84337176921
 field sqrsum 275.77316039771
-attr recordingmode histogram
-attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
-attr title "packet delay variation"
-attr unit s
 bin	-inf	0
 bin	0	14
 bin	0.01	0
@@ -1081,17 +1193,6 @@ bin	0.75	0
 bin	0.76	0
 bin	0.77	0
 bin	0.78	0
-scalar UdpAppExample.client.app[0].sink droppedPackets:count 989
-attr recordingmode count
-attr source packetDropped
-attr title "dropped packets, count"
-attr unit pk
-scalar UdpAppExample.client.app[0].sink droppedPacketLengths:sum 19911448
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropped)
-attr title "dropped packet lengths, sum"
-attr unit b
 statistic UdpAppExample.client.app[0].sink droppedPacketLengths:histogram
 field count 989
 field mean 20132.910010111
@@ -1100,11 +1201,6 @@ field min 800
 field max 79952
 field sum 19911448
 field sqrsum 941769451584
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetDropped)
-attr title "dropped packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	90
 bin	2000	170
@@ -1157,123 +1253,14 @@ bin	94000	0
 bin	96000	0
 bin	98000	0
 bin	100000	0
-scalar UdpAppExample.client.app[0].io "packets sent" 101
-scalar UdpAppExample.client.app[0].io "packets received" 989
-scalar UdpAppExample.client.app[0].io packetReceived:count 989
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar UdpAppExample.client.app[0].io packetReceived:sum(packetBytes) 2488931
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar UdpAppExample.client.app[0].io packetSent:count 101
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar UdpAppExample.client.app[0].io packetSent:sum(packetBytes) 15184
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar UdpAppExample.server.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar UdpAppExample.server.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar UdpAppExample.server.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar UdpAppExample.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar UdpAppExample.server.ppp[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar UdpAppExample.server.ppp[0].queue queueLength:max 4
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar UdpAppExample.server.ppp[0].queue queueLength:timeavg 0.01230160382267
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar UdpAppExample.server.ppp[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar UdpAppExample.server.ppp[0].queue queueBitLength:max 99376
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar UdpAppExample.server.ppp[0].queue queueBitLength:timeavg 215.97832842961
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic UdpAppExample.server.ppp[0].queue queueingTime:histogram
 field count 1269
-field mean 0.00096939352424508
+field mean 0.00096939352424507
 field stddev 0.0019302714963422
 field min 0
 field max 0.012361190004
 field sum 1.230160382267
 field sqrsum 0.005917011635234
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	0	981
 bin	0.0003	0
@@ -1318,17 +1305,6 @@ bin	0.0117	0
 bin	0.012	0
 bin	0.0123	1
 bin	0.0126	0
-scalar UdpAppExample.server.ppp[0].queue outgoingPackets:count 1269
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:sum 20177784
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.ppp[0].queue outgoingPacketLengths:histogram
 field count 1269
 field mean 15900.539007092
@@ -1337,11 +1313,6 @@ field min 184
 field max 35744
 field sum 20177784
 field sqrsum 553440110144
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	3
 bin	500	6
@@ -1442,25 +1413,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar UdpAppExample.server.ppp[0].queue incomingPackets:count 1269
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:sum 20177784
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.ppp[0].queue incomingPacketLengths:histogram
 field count 1269
 field mean 15900.539007092
@@ -1469,11 +1424,6 @@ field min 184
 field max 35744
 field sum 20177784
 field sqrsum 553440110144
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	3
 bin	500	6
@@ -1566,244 +1516,6 @@ bin	43500	0
 bin	44000	0
 bin	44500	0
 bin	45000	0
-scalar UdpAppExample.server.ppp[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar UdpAppExample.server.ppp[0].ppp transmissionState:timeavg 0.020248848
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source transmissionStateChanged
-attr title "tx state, timeavg"
-scalar UdpAppExample.server.ppp[0].ppp rxPkOk:count 100
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar UdpAppExample.server.ppp[0].ppp rxPkOk:sum(packetBytes) 18487
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
-scalar UdpAppExample.server.ppp[0].ppp txPk:count 1269
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar UdpAppExample.server.ppp[0].ppp txPk:sum(packetBytes) 2531106
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:count 1269
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2522223
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar UdpAppExample.server.ppp[0].ppp passedUpPk:count 100
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar UdpAppExample.server.ppp[0].ppp passedUpPk:sum(packetBytes) 17787
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar UdpAppExample.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar UdpAppExample.server.ipv4.arp arpResolutionCompleted:count 0
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar UdpAppExample.server.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar UdpAppExample.server.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar UdpAppExample.server.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar UdpAppExample.server.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar UdpAppExample.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar UdpAppExample.server.udp packetReceived:count 100
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar UdpAppExample.server.udp packetReceived:sum(packetBytes) 15787
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar UdpAppExample.server.udp packetSent:count 989
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar UdpAppExample.server.udp packetSent:sum(packetBytes) 2496843
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar UdpAppExample.server.udp passedUpPk:count 100
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar UdpAppExample.server.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar UdpAppExample.server.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar UdpAppExample.server.app[0].source.provider[0] packets:count 595
-attr recordingmode count
-attr source packetPulled
-attr title "packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:sum 2648200
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].source.provider[0] packetLengths:histogram
 field count 595
 field mean 4450.756302521
@@ -1812,11 +1524,6 @@ field min 800
 field max 7976
 field sum 2648200
 field sqrsum 14187977408
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	200	0
@@ -1868,17 +1575,6 @@ bin	9200	0
 bin	9400	0
 bin	9600	0
 bin	9800	0
-scalar UdpAppExample.server.app[0].source.provider[1] packets:count 394
-attr recordingmode count
-attr source packetPulled
-attr title "packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:sum 17263248
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].source.provider[1] packetLengths:histogram
 field count 394
 field mean 43815.350253807
@@ -1887,11 +1583,6 @@ field min 8000
 field max 79952
 field sum 17263248
 field sqrsum 927581474176
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	2000	0
@@ -1943,35 +1634,6 @@ bin	92000	0
 bin	94000	0
 bin	96000	0
 bin	98000	0
-scalar UdpAppExample.server.app[0].source.server[0] numTokensDepleted:count 40
-attr interpolationmode none
-attr recordingmode count
-attr source tokensDepleted
-attr title "number of times tokens are depleted, count"
-attr unit tk
-scalar UdpAppExample.server.app[0].source.server[0] removedTokens:sum 4359
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensRemoved
-attr title "removed tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].source.server[0] addedTokens:sum 595
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensAdded
-attr title "added tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].source.server[0] incomingPackets:count 595
-attr recordingmode count
-attr source packetPulled
-attr title "incoming packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:sum 2648200
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:histogram
 field count 595
 field mean 4450.756302521
@@ -1980,11 +1642,6 @@ field min 800
 field max 7976
 field sum 2648200
 field sqrsum 14187977408
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	200	0
@@ -2036,17 +1693,6 @@ bin	9200	0
 bin	9400	0
 bin	9600	0
 bin	9800	0
-scalar UdpAppExample.server.app[0].source.server[0] outgoingPackets:count 595
-attr recordingmode count
-attr source packetPushed
-attr title "outgoing packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:sum 2648200
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:histogram
 field count 595
 field mean 4450.756302521
@@ -2055,11 +1701,6 @@ field min 800
 field max 7976
 field sum 2648200
 field sqrsum 14187977408
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	200	0
@@ -2111,35 +1752,6 @@ bin	9200	0
 bin	9400	0
 bin	9600	0
 bin	9800	0
-scalar UdpAppExample.server.app[0].source.server[1] numTokensDepleted:count 52
-attr interpolationmode none
-attr recordingmode count
-attr source tokensDepleted
-attr title "number of times tokens are depleted, count"
-attr unit tk
-scalar UdpAppExample.server.app[0].source.server[1] removedTokens:sum 1362
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensRemoved
-attr title "removed tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].source.server[1] addedTokens:sum 398
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensAdded
-attr title "added tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].source.server[1] incomingPackets:count 394
-attr recordingmode count
-attr source packetPulled
-attr title "incoming packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:sum 17263248
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:histogram
 field count 394
 field mean 43815.350253807
@@ -2148,11 +1760,6 @@ field min 8000
 field max 79952
 field sum 17263248
 field sqrsum 927581474176
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	2000	0
@@ -2204,17 +1811,6 @@ bin	92000	0
 bin	94000	0
 bin	96000	0
 bin	98000	0
-scalar UdpAppExample.server.app[0].source.server[1] outgoingPackets:count 394
-attr recordingmode count
-attr source packetPushed
-attr title "outgoing packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:sum 17263248
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:histogram
 field count 394
 field mean 43815.350253807
@@ -2223,11 +1819,6 @@ field min 8000
 field max 79952
 field sum 17263248
 field sqrsum 927581474176
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	2000	0
@@ -2279,17 +1870,6 @@ bin	92000	0
 bin	94000	0
 bin	96000	0
 bin	98000	0
-scalar UdpAppExample.server.app[0].source.multiplexer packets:count 0
-attr recordingmode count
-attr source "merge(packetPushed, packetPulled)"
-attr title "packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source "packetLength(merge(packetPushed, packetPulled))"
-attr title "packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].source.multiplexer packetLengths:histogram
 field count 0
 field mean -nan
@@ -2298,80 +1878,17 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source "packetLength(merge(packetPushed, packetPulled))"
-attr title "packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar UdpAppExample.server.app[0].source.tokenGenerator tokensCreated:count 93
-attr recordingmode count
-attr source count(tokensCreated)
-attr title "tokens created, count"
-attr unit tk
-scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:sum 92
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensCreated
-attr title "number of created tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].sink.queue queueLength:last 7
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.queue queueLength:max 9
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.queue queueLength:timeavg 4.0540703750657
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.queue queueBitLength:last 9672
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar UdpAppExample.server.app[0].sink.queue queueBitLength:max 12376
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar UdpAppExample.server.app[0].sink.queue queueBitLength:timeavg 4929.6725375011
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic UdpAppExample.server.app[0].sink.queue queueingTime:histogram
 field count 93
-field mean 4.0581527032964
-field stddev 2.5145392826151
+field mean 4.0581527032965
+field stddev 2.514539282615
 field min 0
 field max 8.230500109815
 field sum 377.40820140657
 field sqrsum 2113.2876307352
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	0	4
 bin	0.2	2
@@ -2426,17 +1943,6 @@ bin	9.8	0
 bin	10	0
 bin	10.2	0
 bin	10.4	0
-scalar UdpAppExample.server.app[0].sink.queue outgoingPackets:count 93
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:sum 110224
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:histogram
 field count 93
 field mean 1185.2043010753
@@ -2445,11 +1951,6 @@ field min 808
 field max 1600
 field sum 110224
 field sqrsum 135626240
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	600	0
 bin	620	0
@@ -2520,25 +2021,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar UdpAppExample.server.app[0].sink.queue incomingPackets:count 100
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:sum 119896
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].sink.queue incomingPacketLengths:histogram
 field count 100
 field mean 1198.96
@@ -2547,11 +2032,6 @@ field min 808
 field max 1600
 field sum 119896
 field sqrsum 149303488
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	600	0
 bin	620	0
@@ -2614,47 +2094,6 @@ bin	1740	0
 bin	1760	0
 bin	1780	0
 bin	1800	0
-scalar UdpAppExample.server.app[0].sink.queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar UdpAppExample.server.app[0].sink.server numTokensDepleted:count 90
-attr interpolationmode none
-attr recordingmode count
-attr source tokensDepleted
-attr title "number of times tokens are depleted, count"
-attr unit tk
-scalar UdpAppExample.server.app[0].sink.server removedTokens:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensRemoved
-attr title "removed tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].sink.server addedTokens:sum 92
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensAdded
-attr title "added tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].sink.server incomingPackets:count 93
-attr recordingmode count
-attr source packetPulled
-attr title "incoming packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:sum 110224
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].sink.server incomingPacketLengths:histogram
 field count 93
 field mean 1185.2043010753
@@ -2663,11 +2102,6 @@ field min 808
 field max 1600
 field sum 110224
 field sqrsum 135626240
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	600	0
 bin	620	0
@@ -2730,17 +2164,6 @@ bin	1740	0
 bin	1760	0
 bin	1780	0
 bin	1800	0
-scalar UdpAppExample.server.app[0].sink.server outgoingPackets:count 93
-attr recordingmode count
-attr source packetPushed
-attr title "outgoing packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:sum 110224
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].sink.server outgoingPacketLengths:histogram
 field count 93
 field mean 1185.2043010753
@@ -2749,11 +2172,6 @@ field min 808
 field max 1600
 field sum 110224
 field sqrsum 135626240
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushed)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	600	0
 bin	620	0
@@ -2816,17 +2234,6 @@ bin	1740	0
 bin	1760	0
 bin	1780	0
 bin	1800	0
-scalar UdpAppExample.server.app[0].sink.classifier packets:count 93
-attr recordingmode count
-attr source packetPushed
-attr title "packets, count"
-attr unit pk
-scalar UdpAppExample.server.app[0].sink.classifier packetLengths:sum 110224
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushed)
-attr title "packet lengths, sum"
-attr unit b
 statistic UdpAppExample.server.app[0].sink.classifier packetLengths:histogram
 field count 93
 field mean 1185.2043010753
@@ -2835,11 +2242,6 @@ field min 808
 field max 1600
 field sum 110224
 field sqrsum 135626240
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
 bin	-inf	0
 bin	600	0
 bin	620	0
@@ -2902,48 +2304,1147 @@ bin	1740	0
 bin	1760	0
 bin	1780	0
 bin	1800	0
-scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] tokensCreated:count 41
-attr recordingmode count
-attr source count(tokensCreated)
-attr title "tokens created, count"
-attr unit tk
-scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:sum 595
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensCreated
-attr title "number of created tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] tokensCreated:count 54
-attr recordingmode count
-attr source count(tokensCreated)
-attr title "tokens created, count"
-attr unit tk
-scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:sum 398
-attr interpolationmode none
-attr recordingmode sum
-attr source tokensCreated
-attr title "number of created tokens, sum"
-attr unit tk
-scalar UdpAppExample.server.app[0].io "packets sent" 989
-scalar UdpAppExample.server.app[0].io "packets received" 100
-scalar UdpAppExample.server.app[0].io packetReceived:count 100
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar UdpAppExample.server.app[0].io packetReceived:sum(packetBytes) 14987
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar UdpAppExample.server.app[0].io packetSent:count 989
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar UdpAppExample.server.app[0].io packetSent:sum(packetBytes) 2488931
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:count 106
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:sum 0
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:sumweights 106
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:mean 0
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:stddev 0
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:min 0
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:max 0
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:starttime 0
+scalar UdpAppExample.client.ppp[0].queue queueLength:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:count 106
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:sum 0
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:sumweights 106
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:mean 0
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:stddev 0
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:min 0
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:max 0
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:starttime 0
+scalar UdpAppExample.client.ppp[0].queue queueBitLength:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:count 101
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:sum 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:sumweights 101
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:mean 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:stddev 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:min 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:max 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:starttime 0
+scalar UdpAppExample.client.ppp[0].queue queueingTime:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:count 101
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:sum 144096
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:sumweights 101
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:mean 1426.6930693069
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:stddev 238.61541201583
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:min 1032
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:max 1824
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:starttime 0
+scalar UdpAppExample.client.ppp[0].queue incomingPacketLengths:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:count 1000
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:sum 1422960
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:mean 1422.96
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:stddev 4335.6005201437
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:min 0
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:max 18240
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.client.ppp[0].queue incomingDataRate:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:count 101
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:sum 144096
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:sumweights 101
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:mean 1426.6930693069
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:stddev 238.61541201583
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:min 1032
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:max 1824
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:starttime 0
+scalar UdpAppExample.client.ppp[0].queue outgoingPacketLengths:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:count 1000
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:sum 1422960
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:mean 1422.96
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:stddev 4335.6005201437
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:min 0
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:max 18240
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.client.ppp[0].queue outgoingDataRate:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar UdpAppExample.client.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:count 0
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:sum 0
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:sumweights 0
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:mean -nan
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:stddev nan
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:min inf
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:max -inf
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:starttime nan
+scalar UdpAppExample.client.ppp[0].queue flowQueueingTime:vector:endtime nan
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:count 1000
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:sum 0
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:mean 0
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:stddev 0
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:min 0
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:max 0
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.client.ppp[0].queue flowIncomingDataRate:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:count 1000
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:sum 0
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:mean 0
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:min 0
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:max 0
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.client.ppp[0].queue flowOutgoingDataRate:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:count 202
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:sum 101
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:sumweights 202
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:mean 0.5
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:stddev 0.50124223793943
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:min 0
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:max 1
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:starttime 0
+scalar UdpAppExample.client.ppp[0].ppp transmissionState:vector:endtime 100
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):count 101
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):sum 18719
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):sumweights 101
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):mean 185.33663366337
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):stddev 29.826926501979
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):min 136
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):max 235
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):starttime 0
+scalar UdpAppExample.client.ppp[0].ppp txPk:vector(packetBytes):endtime 100
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):count 1269
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):sum 2531106
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):sumweights 1269
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):mean 1994.5673758865
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):stddev 1693.0022917438
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):min 30
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):max 4475
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):starttime 0.0035826
+scalar UdpAppExample.client.ppp[0].ppp rxPkOk:vector(packetBytes):endtime 99.971542744066
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):count 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):min inf
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):count 101
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sum 18012
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sumweights 101
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):mean 178.33663366337
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):stddev 29.826926501979
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):min 129
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):max 228
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):starttime 0
+scalar UdpAppExample.client.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):endtime 100
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):count 1269
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):sum 2522223
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):sumweights 1269
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):mean 1987.5673758865
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):stddev 1693.0022917438
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):min 23
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):max 4468
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):starttime 0.0035826
+scalar UdpAppExample.client.ppp[0].ppp passedUpPk:vector(packetBytes):endtime 99.971542744066
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ppp[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ppp[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar UdpAppExample.client.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):count 101
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):sum 15992
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):sumweights 101
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):mean 158.33663366337
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):stddev 29.826926501979
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):min 109
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):max 208
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):starttime 0
+scalar UdpAppExample.client.udp packetSent:vector(packetBytes):endtime 100
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):count 989
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):sum 2496843
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):sumweights 989
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):mean 2524.6137512639
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):stddev 2924.7425749992
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):min 108
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):max 10002
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):starttime 0.0035826
+scalar UdpAppExample.client.udp packetReceived:vector(packetBytes):endtime 99.971542744066
+scalar UdpAppExample.client.udp passedUpPk:vector(count):count 990
+scalar UdpAppExample.client.udp passedUpPk:vector(count):sum 489555
+scalar UdpAppExample.client.udp passedUpPk:vector(count):sumweights 990
+scalar UdpAppExample.client.udp passedUpPk:vector(count):mean 494.5
+scalar UdpAppExample.client.udp passedUpPk:vector(count):stddev 285.93268438568
+scalar UdpAppExample.client.udp passedUpPk:vector(count):min 0
+scalar UdpAppExample.client.udp passedUpPk:vector(count):max 989
+scalar UdpAppExample.client.udp passedUpPk:vector(count):starttime 0
+scalar UdpAppExample.client.udp passedUpPk:vector(count):endtime 99.971542744066
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):count 1
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):sum 0
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):mean 0
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):stddev nan
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):min 0
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):max 0
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):starttime 0
+scalar UdpAppExample.client.udp droppedPkWrongPort:vector(count):endtime 0
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):count 1
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):sum 0
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):mean 0
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):min 0
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):max 0
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar UdpAppExample.client.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar UdpAppExample.client.app[0].source packetLengths:vector:count 101
+scalar UdpAppExample.client.app[0].source packetLengths:vector:sum 121472
+scalar UdpAppExample.client.app[0].source packetLengths:vector:sumweights 101
+scalar UdpAppExample.client.app[0].source packetLengths:vector:mean 1202.6930693069
+scalar UdpAppExample.client.app[0].source packetLengths:vector:stddev 238.61541201583
+scalar UdpAppExample.client.app[0].source packetLengths:vector:min 808
+scalar UdpAppExample.client.app[0].source packetLengths:vector:max 1600
+scalar UdpAppExample.client.app[0].source packetLengths:vector:starttime 0
+scalar UdpAppExample.client.app[0].source packetLengths:vector:endtime 100
+scalar UdpAppExample.client.app[0].source dataRate:vector:count 1000
+scalar UdpAppExample.client.app[0].source dataRate:vector:sum 1198960
+scalar UdpAppExample.client.app[0].source dataRate:vector:sumweights 1000
+scalar UdpAppExample.client.app[0].source dataRate:vector:mean 1198.96
+scalar UdpAppExample.client.app[0].source dataRate:vector:stddev 3675.0986474472
+scalar UdpAppExample.client.app[0].source dataRate:vector:min 0
+scalar UdpAppExample.client.app[0].source dataRate:vector:max 16000
+scalar UdpAppExample.client.app[0].source dataRate:vector:starttime 0.1
+scalar UdpAppExample.client.app[0].source dataRate:vector:endtime 100
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:count 989
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:sum 19911448
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:sumweights 989
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:mean 20132.910010111
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:stddev 23397.940599994
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:min 800
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:max 79952
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:starttime 0.0035826
+scalar UdpAppExample.client.app[0].sink droppedPacketLengths:vector:endtime 99.971542744066
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:count 1000
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:sum 199114480
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:sumweights 1000
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:mean 199114.48
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:stddev 316725.76008249
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:min 0
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:max 2713760
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:starttime 0.1
+scalar UdpAppExample.client.app[0].sink droppedDataRate:vector:endtime 100
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:count 989
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:sum 19911448
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:sumweights 989
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:mean 20132.910010111
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:stddev 23397.940599994
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:min 800
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:max 79952
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:starttime 0.0035826
+scalar UdpAppExample.client.app[0].sink packetLengths:vector:endtime 99.971542744066
+scalar UdpAppExample.client.app[0].sink dataRate:vector:count 1000
+scalar UdpAppExample.client.app[0].sink dataRate:vector:sum 199114480
+scalar UdpAppExample.client.app[0].sink dataRate:vector:sumweights 1000
+scalar UdpAppExample.client.app[0].sink dataRate:vector:mean 199114.48
+scalar UdpAppExample.client.app[0].sink dataRate:vector:stddev 316725.76008249
+scalar UdpAppExample.client.app[0].sink dataRate:vector:min 0
+scalar UdpAppExample.client.app[0].sink dataRate:vector:max 2713760
+scalar UdpAppExample.client.app[0].sink dataRate:vector:starttime 0.1
+scalar UdpAppExample.client.app[0].sink dataRate:vector:endtime 100
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:count 989
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:sum 101.926862817
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:sumweights 989
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:mean 0.10306052863195
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:stddev 0.58567546873562
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:min 0.0001081
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:max 6.169951730898
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:starttime 0.0035826
+scalar UdpAppExample.client.app[0].sink meanBitLifeTimePerPacket:vector:endtime 99.971542744066
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:count 989
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:sum 0.0038256999999968
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:sumweights 989
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:mean 3.8682507583385e-06
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:stddev 0.8403518282177
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:min -6.161905230898
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:max 6.169159630898
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:starttime 0.0035826
+scalar UdpAppExample.client.app[0].sink packetJitter:vector:endtime 99.971542744066
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:count 989
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:sum -4.3601375149147
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:sumweights 989
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:mean -0.0044086324721079
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:stddev 0.58445300178813
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:min -6.0676591923492
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:max 0.13873219540054
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:starttime 0.0035826
+scalar UdpAppExample.client.app[0].sink packetDelayDifferenceToMean:vector:endtime 99.971542744066
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:count 989
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:sum 515.84337176921
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:sumweights 989
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:mean 0.52158076013065
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:stddev 0.08246691424634
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:min 0
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:max 0.6220533011599
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:starttime 0.0035826
+scalar UdpAppExample.client.app[0].sink packetDelayVariation:vector:endtime 99.971542744066
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):count 101
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):sum 15184
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):sumweights 101
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):mean 150.33663366337
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):stddev 29.826926501979
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):min 101
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):max 200
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):starttime 0
+scalar UdpAppExample.client.app[0].io packetSent:vector(packetBytes):endtime 100
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):count 989
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):sum 2488931
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):sumweights 989
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):mean 2516.6137512639
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):stddev 2924.7425749992
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):min 100
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):max 9994
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):starttime 0.0035826
+scalar UdpAppExample.client.app[0].io packetReceived:vector(packetBytes):endtime 99.971542744066
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:count 1563
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:sum 423
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:sumweights 1563
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:mean 0.27063339731286
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:stddev 0.55579940521081
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:min 0
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:max 4
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:starttime 0
+scalar UdpAppExample.server.ppp[0].queue queueLength:vector:endtime 99.971297044066
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:count 1563
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:sum 8489872
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:sumweights 1563
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:mean 5431.7799104287
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:stddev 12782.435682395
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:min 0
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:max 99376
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:starttime 0
+scalar UdpAppExample.server.ppp[0].queue queueBitLength:vector:endtime 99.971297044066
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:count 1269
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:sum 1.230160382267
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:sumweights 1269
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:mean 0.00096939352424507
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:stddev 0.0019302714963422
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:min 0
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:max 0.012361190004
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:starttime 0.0001433
+scalar UdpAppExample.server.ppp[0].queue queueingTime:vector:endtime 99.971297044066
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:count 1269
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:sum 20177784
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:sumweights 1269
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:mean 15900.539007092
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:stddev 13544.01833395
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:min 184
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:max 35744
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.ppp[0].queue incomingPacketLengths:vector:endtime 99.967717044066
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:count 1000
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:sum 201777840
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:mean 201777.84
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:stddev 314984.34716902
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:min 0
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:max 2736800
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.ppp[0].queue incomingDataRate:vector:endtime 100
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:count 1269
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:sum 20177784
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:sumweights 1269
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:mean 15900.539007092
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:stddev 13544.01833395
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:min 184
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:max 35744
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.ppp[0].queue outgoingPacketLengths:vector:endtime 99.971297044066
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:count 1000
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:sum 201777840
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:mean 201777.84
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:stddev 313409.241049
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:min 0
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:max 2736800
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.ppp[0].queue outgoingDataRate:vector:endtime 100
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar UdpAppExample.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:count 0
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:sum 0
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:sumweights 0
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:mean -nan
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:stddev nan
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:min inf
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:max -inf
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:starttime nan
+scalar UdpAppExample.server.ppp[0].queue flowQueueingTime:vector:endtime nan
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:count 1000
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:sum 0
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:mean 0
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:stddev 0
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:min 0
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:max 0
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.ppp[0].queue flowIncomingDataRate:vector:endtime 100
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:count 1000
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:sum 0
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:mean 0
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:min 0
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:max 0
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.ppp[0].queue flowOutgoingDataRate:vector:endtime 100
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:count 2539
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:sum 1269
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:sumweights 2539
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:mean 0.49980307207562
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:stddev 0.50009845426895
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:min 0
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:max 1
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:starttime 0
+scalar UdpAppExample.server.ppp[0].ppp transmissionState:vector:endtime 99.971542644066
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):count 1269
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):sum 2531106
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):sumweights 1269
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):mean 1994.5673758865
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):stddev 1693.0022917438
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):min 30
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):max 4475
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):starttime 0.0001433
+scalar UdpAppExample.server.ppp[0].ppp txPk:vector(packetBytes):endtime 99.971297044066
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):count 100
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):sum 18487
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):sumweights 100
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):mean 184.87
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):stddev 29.604345504119
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):min 136
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):max 235
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):starttime 0.0001433
+scalar UdpAppExample.server.ppp[0].ppp rxPkOk:vector(packetBytes):endtime 99.0001817
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):count 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):min inf
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):count 1269
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sum 2522223
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sumweights 1269
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):mean 1987.5673758865
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):stddev 1693.0022917438
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):min 23
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):max 4468
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):starttime 0.0001433
+scalar UdpAppExample.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):endtime 99.971297044066
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):count 100
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):sum 17787
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):sumweights 100
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):mean 177.87
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):stddev 29.604345504119
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):min 129
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):max 228
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):starttime 0.0001433
+scalar UdpAppExample.server.ppp[0].ppp passedUpPk:vector(packetBytes):endtime 99.0001817
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ppp[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar UdpAppExample.server.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):count 989
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):sum 2496843
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):sumweights 989
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):mean 2524.6137512639
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):stddev 2924.7425749992
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):min 108
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):max 10002
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):starttime 0.0001433
+scalar UdpAppExample.server.udp packetSent:vector(packetBytes):endtime 99.967717044066
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):count 100
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):sum 15787
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):sumweights 100
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):mean 157.87
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):stddev 29.604345504119
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):min 109
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):max 208
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):starttime 0.0001433
+scalar UdpAppExample.server.udp packetReceived:vector(packetBytes):endtime 99.0001817
+scalar UdpAppExample.server.udp passedUpPk:vector(count):count 101
+scalar UdpAppExample.server.udp passedUpPk:vector(count):sum 5050
+scalar UdpAppExample.server.udp passedUpPk:vector(count):sumweights 101
+scalar UdpAppExample.server.udp passedUpPk:vector(count):mean 50
+scalar UdpAppExample.server.udp passedUpPk:vector(count):stddev 29.300170647967
+scalar UdpAppExample.server.udp passedUpPk:vector(count):min 0
+scalar UdpAppExample.server.udp passedUpPk:vector(count):max 100
+scalar UdpAppExample.server.udp passedUpPk:vector(count):starttime 0
+scalar UdpAppExample.server.udp passedUpPk:vector(count):endtime 99.0001817
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):count 1
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):sum 0
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):mean 0
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):stddev nan
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):min 0
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):max 0
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):starttime 0
+scalar UdpAppExample.server.udp droppedPkWrongPort:vector(count):endtime 0
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):count 1
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):sum 0
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):mean 0
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):min 0
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):max 0
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar UdpAppExample.server.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:count 595
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:sum 2648200
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:sumweights 595
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:mean 4450.756302521
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:stddev 2010.6972205097
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:min 800
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:max 7976
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:starttime 3.0001121
+scalar UdpAppExample.server.app[0].source.provider[0] packetLengths:vector:endtime 99.136400455992
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:sum 26482000
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:mean 26482
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:stddev 37781.051153008
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:min 0
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:max 188560
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].source.provider[0] dataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:count 394
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:sum 17263248
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:sumweights 394
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:mean 43815.350253807
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:stddev 20870.753154737
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:min 8000
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:max 79952
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].source.provider[1] packetLengths:vector:endtime 99.967717044066
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:sum 172632480
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:mean 172632.48
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:stddev 324348.39235222
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:min 0
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:max 2713760
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].source.provider[1] dataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:count 595
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:sum 2648200
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:sumweights 595
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:mean 4450.756302521
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:stddev 2010.6972205097
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:min 800
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:max 7976
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:starttime 3.0001121
+scalar UdpAppExample.server.app[0].source.server[0] incomingPacketLengths:vector:endtime 99.136400455992
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:sum 26482000
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:mean 26482
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:stddev 37781.051153008
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:max 188560
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].source.server[0] incomingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:count 595
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:sum 2648200
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:sumweights 595
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:mean 4450.756302521
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:stddev 2010.6972205097
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:min 800
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:max 7976
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:starttime 3.0001121
+scalar UdpAppExample.server.app[0].source.server[0] outgoingPacketLengths:vector:endtime 99.136400455992
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:sum 26482000
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:mean 26482
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:stddev 37781.051153008
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:max 188560
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].source.server[0] outgoingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:count 637
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:sum -1231662
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:sumweights 637
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:mean -1933.535321821
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:stddev 1098.1737101075
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:min -3764
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:max 18
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:starttime 0
+scalar UdpAppExample.server.app[0].source.server[0] numTokens:vector:endtime 99.136400455992
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:count 394
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:sum 17263248
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:sumweights 394
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:mean 43815.350253807
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:stddev 20870.753154737
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:min 8000
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:max 79952
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].source.server[1] incomingPacketLengths:vector:endtime 99.967717044066
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:sum 172632480
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:mean 172632.48
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:stddev 324348.39235222
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:max 2713760
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].source.server[1] incomingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:count 394
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:sum 17263248
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:sumweights 394
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:mean 43815.350253807
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:stddev 20870.753154737
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:min 8000
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:max 79952
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].source.server[1] outgoingPacketLengths:vector:endtime 99.967717044066
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:sum 172632480
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:mean 172632.48
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:stddev 324348.39235222
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:max 2713760
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].source.server[1] outgoingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:count 449
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:sum -213905
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:sumweights 449
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:mean -476.40311804009
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:stddev 282.76833824751
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:min -964
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:max 8
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:starttime 0
+scalar UdpAppExample.server.app[0].source.server[1] numTokens:vector:endtime 99.967717044066
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:count 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:sum 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:sumweights 0
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:mean -nan
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:stddev nan
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:min inf
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:max -inf
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:starttime nan
+scalar UdpAppExample.server.app[0].source.multiplexer packetLengths:vector:endtime nan
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:sum 0
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:mean 0
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:stddev 0
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:min 0
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:max 0
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].source.multiplexer dataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:count 92
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:sum 92
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:sumweights 92
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:mean 1
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:stddev 0
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:min 1
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:max 1
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:starttime 1.005812178275
+scalar UdpAppExample.server.app[0].source.tokenGenerator numTokensCreated:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:count 195
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:sum 780
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:sumweights 195
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:mean 4
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:stddev 2.5706511670548
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:min 0
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:max 9
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:starttime 0
+scalar UdpAppExample.server.app[0].sink.queue queueLength:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:count 195
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:sum 950448
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:sumweights 195
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:mean 4874.0923076923
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:stddev 3312.332353539
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:min 0
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:max 12376
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:starttime 0
+scalar UdpAppExample.server.app[0].sink.queue queueBitLength:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:count 93
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:sum 377.40820140657
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:sumweights 93
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:mean 4.0581527032965
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:stddev 2.514539282615
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:min 0
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:max 8.230500109815
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].sink.queue queueingTime:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:count 100
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:sum 119896
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:sumweights 100
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:mean 1198.96
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:stddev 236.83476403296
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:min 808
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:max 1600
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].sink.queue incomingPacketLengths:vector:endtime 99.0001817
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:sum 1198960
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:mean 1198.96
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:stddev 3675.0986474472
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:max 16000
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].sink.queue incomingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:count 93
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:sum 110224
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:sumweights 93
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:mean 1185.2043010753
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:stddev 232.85284395476
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:min 808
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:max 1600
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].sink.queue outgoingPacketLengths:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:sum 1102240
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:mean 1102.24
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:stddev 3515.6864242184
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:max 16000
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].sink.queue outgoingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar UdpAppExample.server.app[0].sink.queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:count 0
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:sum 0
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:sumweights 0
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:mean -nan
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:stddev nan
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:min inf
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:max -inf
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:starttime nan
+scalar UdpAppExample.server.app[0].sink.queue flowQueueingTime:vector:endtime nan
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:sum 0
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:mean 0
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:stddev 0
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:max 0
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].sink.queue flowIncomingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:sum 0
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:mean 0
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:stddev 0
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:max 0
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].sink.queue flowOutgoingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:count 93
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:sum 110224
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:sumweights 93
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:mean 1185.2043010753
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:stddev 232.85284395476
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:min 808
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:max 1600
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].sink.server incomingPacketLengths:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:sum 1102240
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:mean 1102.24
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:stddev 3515.6864242184
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:max 16000
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].sink.server incomingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:count 93
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:sum 110224
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:sumweights 93
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:mean 1185.2043010753
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:stddev 232.85284395476
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:min 808
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:max 1600
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].sink.server outgoingPacketLengths:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:sum 1102240
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:mean 1102.24
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:stddev 3515.6864242184
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:min 0
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:max 16000
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].sink.server outgoingDataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:count 187
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:sum 8556
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:sumweights 187
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:mean 45.754010695187
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:stddev 27.055169093688
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:min 0
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:max 92
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:starttime 0
+scalar UdpAppExample.server.app[0].sink.server numTokens:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:count 93
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:sum 110224
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:sumweights 93
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:mean 1185.2043010753
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:stddev 232.85284395476
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:min 808
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:max 1600
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].sink.classifier packetLengths:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:count 1000
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:sum 1102240
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:sumweights 1000
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:mean 1102.24
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:stddev 3515.6864242184
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:min 0
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:max 16000
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:starttime 0.1
+scalar UdpAppExample.server.app[0].sink.classifier dataRate:vector:endtime 100
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:count 40
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:sum 595
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:sumweights 40
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:mean 14.875
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:stddev 3.4432207641639
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:min 10
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:max 20
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:starttime 3.0001121
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[0] numTokensCreated:vector:endtime 98.157584918625
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:count 53
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:sum 398
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:sumweights 53
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:mean 7.5094339622642
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:stddev 1.6712805029658
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:min 5
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:max 10
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:starttime 0.0001433
+scalar UdpAppExample.server.app[0].sink.tokenGenerator[1] numTokensCreated:vector:endtime 99.814398833189
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):count 989
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):sum 2488931
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):sumweights 989
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):mean 2516.6137512639
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):stddev 2924.7425749992
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):min 100
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):max 9994
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):starttime 0.0001433
+scalar UdpAppExample.server.app[0].io packetSent:vector(packetBytes):endtime 99.967717044066
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):count 100
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):sum 14987
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):sumweights 100
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):mean 149.87
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):stddev 29.604345504119
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):min 101
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):max 200
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):starttime 0.0001433
+scalar UdpAppExample.server.app[0].io packetReceived:vector(packetBytes):endtime 99.0001817
 

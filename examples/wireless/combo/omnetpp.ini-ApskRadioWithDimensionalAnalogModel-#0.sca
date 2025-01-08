@@ -1,8 +1,8 @@
 version 3
-run ApskRadioWithDimensionalAnalogModel-0-20241128-14:29:37-78273
+run ApskRadioWithDimensionalAnalogModel-0-20250108-11:31:12-12409
 attr configname ApskRadioWithDimensionalAnalogModel
-attr datetime 20241128-14:29:37
-attr datetimef 20241128-142937
+attr datetime 20250108-11:31:12
+attr datetimef 20250108-113112
 attr experiment ApskRadioWithDimensionalAnalogModel
 attr inifile omnetpp.ini
 attr iterationvars "$hostX=0, $otherHostX=10, $interference=false"
@@ -10,7 +10,7 @@ attr iterationvarsd hostX=0/otherHostX=10/interference=false
 attr iterationvarsf hostX=0,otherHostX=10,interference=false-
 attr measurement "$hostX=0, $otherHostX=10, $interference=false"
 attr network ComboExample
-attr processid 78273
+attr processid 12409
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -20,9 +20,9 @@ itervar hostX 0
 itervar interference false
 itervar otherHostX 10
 config **.param-recording false
-config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-ApskRadioWithDimensionalAnalogModel-#0.sca
+config output-vector-file results/omnetpp.ini-ApskRadioWithDimensionalAnalogModel-#0.vec
 config sim-time-limit 90s
 config extends "AbstractApskRadio, AbstractDimensionalAnalogModel"
 config *.host[*].wlan[*].radio.typename ApskRadio
@@ -85,87 +85,513 @@ config *.host[*].wlan[*].bitrate 2Mbps
 config *.host[*].wlan[*].mac.headerLength 23B
 
 scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
 scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
 scalar ComboExample.host[0].lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
 scalar ComboExample.host[0].lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
 scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
 scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
 scalar ComboExample.host[0].lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
 scalar ComboExample.host[0].lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
 scalar ComboExample.host[0].wlan[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
 scalar ComboExample.host[0].wlan[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
 scalar ComboExample.host[0].wlan[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
 scalar ComboExample.host[0].wlan[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
 scalar ComboExample.host[0].wlan[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
 scalar ComboExample.host[0].wlan[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
+scalar ComboExample.host[0].wlan[0].queue outgoingPackets:count 1790
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:sum 15064640
+scalar ComboExample.host[0].wlan[0].queue incomingPackets:count 1790
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:sum 15064640
+scalar ComboExample.host[0].wlan[0].queue droppedPacketsQueueOverflow:count 0
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:count 1790
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 1924250
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:count 1790
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:sum(packetBytes) 1924250
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:count 1790
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 1883080
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:count 1790
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:sum(packetBytes) 1883080
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:count 0
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:count 0
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:count 0
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+scalar ComboExample.host[0].wlan[0].mac linkBroken:count 0
+scalar ComboExample.host[0].wlan[0].radio radioMode:count 3
+scalar ComboExample.host[0].wlan[0].radio receptionState:count 3581
+scalar ComboExample.host[0].wlan[0].radio transmissionState:count 3581
+scalar ComboExample.host[0].wlan[0].radio packetDropped:count 0
+scalar ComboExample.host[0].wlan[0].radio packetDropped:sum(packetBytes) 0
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:count 0
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:count 0
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:count 0
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:count 0
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:count 0
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:count 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:count 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:count 0
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar ComboExample.host[0].udp packetReceived:count 0
+scalar ComboExample.host[0].udp packetReceived:sum(packetBytes) 0
+scalar ComboExample.host[0].udp packetSent:count 0
+scalar ComboExample.host[0].udp packetSent:sum(packetBytes) 0
+scalar ComboExample.host[0].udp passedUpPk:count 0
+scalar ComboExample.host[0].udp droppedPkWrongPort:count 0
+scalar ComboExample.host[0].udp droppedPkBadChecksum:count 0
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:count 0
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar ComboExample.host[1].lo[0].lo passedUpPk:count 0
+scalar ComboExample.host[1].lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:count 0
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:count 0
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:last 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:max 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:timeavg 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:last 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:max 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:timeavg 0
+scalar ComboExample.host[1].wlan[0].queue outgoingPackets:count 896
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:sum 7540736
+scalar ComboExample.host[1].wlan[0].queue incomingPackets:count 896
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:sum 7540736
+scalar ComboExample.host[1].wlan[0].queue droppedPacketsQueueOverflow:count 0
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:count 1790
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 1924250
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:count 896
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:sum(packetBytes) 963200
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:count 896
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 942592
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:count 895
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:sum(packetBytes) 941540
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:count 0
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:count 0
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:count 895
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 962125
+scalar ComboExample.host[1].wlan[0].mac linkBroken:count 0
+scalar ComboExample.host[1].wlan[0].radio radioMode:count 3
+scalar ComboExample.host[1].wlan[0].radio receptionState:count 3581
+scalar ComboExample.host[1].wlan[0].radio transmissionState:count 1792
+scalar ComboExample.host[1].wlan[0].radio packetDropped:count 0
+scalar ComboExample.host[1].wlan[0].radio packetDropped:sum(packetBytes) 0
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:count 0
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:count 0
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:count 0
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:count 0
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:count 0
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:count 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:count 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:count 0
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar ComboExample.host[1].udp packetReceived:count 0
+scalar ComboExample.host[1].udp packetReceived:sum(packetBytes) 0
+scalar ComboExample.host[1].udp packetSent:count 0
+scalar ComboExample.host[1].udp packetSent:sum(packetBytes) 0
+scalar ComboExample.host[1].udp passedUpPk:count 0
+scalar ComboExample.host[1].udp droppedPkWrongPort:count 0
+scalar ComboExample.host[1].udp droppedPkBadChecksum:count 0
+scalar ComboExample.host[1].app[0] "Pings sent" 896
+scalar ComboExample.host[1].app[0] "ping loss rate (%)" 0.11160714285714
+scalar ComboExample.host[1].app[0] "ping out-of-order rate (%)" 0
+scalar ComboExample.host[1].app[0] pingRxSeq:count 895
+scalar ComboExample.host[1].app[0] pingTxSeq:count 896
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:last nan
+scalar ComboExample.host[1].app[0] numLost:last nan
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:count 0
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar ComboExample.host[2].lo[0].lo passedUpPk:count 0
+scalar ComboExample.host[2].lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:count 0
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:count 0
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:last 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:max 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:timeavg 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:last 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:max 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:timeavg 0
+scalar ComboExample.host[2].wlan[0].queue outgoingPackets:count 895
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:sum 7532320
+scalar ComboExample.host[2].wlan[0].queue incomingPackets:count 895
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:sum 7532320
+scalar ComboExample.host[2].wlan[0].queue droppedPacketsQueueOverflow:count 0
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:count 1790
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 1924250
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:count 895
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:sum(packetBytes) 962125
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:count 895
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 941540
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:count 895
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:sum(packetBytes) 941540
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:count 0
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:count 0
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:count 895
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 962125
+scalar ComboExample.host[2].wlan[0].mac linkBroken:count 0
+scalar ComboExample.host[2].wlan[0].radio radioMode:count 3
+scalar ComboExample.host[2].wlan[0].radio receptionState:count 3581
+scalar ComboExample.host[2].wlan[0].radio transmissionState:count 1791
+scalar ComboExample.host[2].wlan[0].radio packetDropped:count 0
+scalar ComboExample.host[2].wlan[0].radio packetDropped:sum(packetBytes) 0
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:count 0
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:count 0
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:count 0
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:count 0
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:count 0
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:count 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:count 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:count 0
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar ComboExample.host[2].udp packetReceived:count 0
+scalar ComboExample.host[2].udp packetReceived:sum(packetBytes) 0
+scalar ComboExample.host[2].udp packetSent:count 0
+scalar ComboExample.host[2].udp packetSent:sum(packetBytes) 0
+scalar ComboExample.host[2].udp passedUpPk:count 0
+scalar ComboExample.host[2].udp droppedPkWrongPort:count 0
+scalar ComboExample.host[2].udp droppedPkBadChecksum:count 0
+scalar ComboExample.host[2].app[0] "Pings sent" 895
+scalar ComboExample.host[2].app[0] "ping loss rate (%)" 0
+scalar ComboExample.host[2].app[0] "ping out-of-order rate (%)" 0
+scalar ComboExample.host[2].app[0] pingRxSeq:count 895
+scalar ComboExample.host[2].app[0] pingTxSeq:count 895
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:last nan
+scalar ComboExample.host[2].app[0] numLost:last nan
+scalar ComboExample.radioMedium.propagation "Arrival computation count" 7162
+scalar ComboExample.radioMedium "transmission count" 3581
+scalar ComboExample.radioMedium "signal send count" 7162
+scalar ComboExample.radioMedium "reception computation count" 7160
+scalar ComboExample.radioMedium "interference computation count" 28647
+scalar ComboExample.radioMedium "reception decision computation count" 5370
+scalar ComboExample.radioMedium "listening decision computation count" 16117
+scalar ComboExample.radioMedium "reception cache hit" 84
+scalar ComboExample.radioMedium "interference cache hit" 66.666666666667
+scalar ComboExample.radioMedium "noise cache hit" 0
+scalar ComboExample.radioMedium "snir cache hit" 50
+scalar ComboExample.radioMedium "reception decision cache hit" 50
+scalar ComboExample.radioMedium "reception result cache hit" 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:count 1790
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:sumweights 1790
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:mean 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:stddev 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:min 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:max 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:numbins 50
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:rangemin -0.5
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:rangemax 0.5
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:underflows 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:histogram:overflows 0
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:count 1790
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:sumweights 1790
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:mean 8416
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:stddev 0
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:min 8416
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:max 8416
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:numbins 2
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:rangemin 8415
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:rangemax 8417
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:count 0
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:sumweights 0
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:stddev nan
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:min nan
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:max nan
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:numbins 1
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:rangemin 0
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:rangemax 1
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:underflows 0
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:histogram:overflows 0
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:count 1790
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:sumweights 1790
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:mean 8416
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:stddev 0
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:min 8416
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:max 8416
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:numbins 2
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:rangemin 8415
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:rangemax 8417
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:underflows 0
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram:overflows 0
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:count 1790
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:sumweights 1790
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:mean 383.79021214346
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:stddev 7.5274011964701
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:min 376.26491386613
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:max 391.31551042077
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:numbins 46
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:rangemin 372.5
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:rangemax 395.5
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:underflows 0
+scalar ComboExample.host[0].wlan[0].radio minSnir:histogram:overflows 0
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:count 1790
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:mean 0
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:stddev 0
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:min 0
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:max 0
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:numbins 50
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:underflows 0
+scalar ComboExample.host[0].wlan[0].radio packetErrorRate:histogram:overflows 0
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:count 1790
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:mean 0
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:stddev 0
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:min 0
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:max 0
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:numbins 50
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:underflows 0
+scalar ComboExample.host[0].wlan[0].radio bitErrorRate:histogram:overflows 0
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:count 1790
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:mean 0
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:stddev 0
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:min 0
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:max 0
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:numbins 50
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:underflows 0
+scalar ComboExample.host[0].wlan[0].radio symbolErrorRate:histogram:overflows 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:count 896
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:sumweights 896
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:mean 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:stddev 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:min 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:max 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:numbins 50
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:rangemin -0.5
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:rangemax 0.5
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:underflows 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:histogram:overflows 0
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:count 896
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:sumweights 896
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:mean 8416
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:stddev 0
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:min 8416
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:max 8416
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:numbins 2
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:rangemin 8415
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:rangemax 8417
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:count 0
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:sumweights 0
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:stddev nan
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:min nan
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:max nan
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:numbins 1
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:rangemin 0
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:rangemax 1
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:underflows 0
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:histogram:overflows 0
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:count 896
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:sumweights 896
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:mean 8416
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:stddev 0
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:min 8416
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:max 8416
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:numbins 2
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:rangemin 8415
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:rangemax 8417
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:underflows 0
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram:overflows 0
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:count 1790
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:sumweights 1790
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:mean 391.31551042078
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:stddev 0
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:min 391.31551042077
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:max 391.31551042077
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:numbins 51
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:rangemin 390.8
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:rangemax 391.82
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:underflows 0
+scalar ComboExample.host[1].wlan[0].radio minSnir:histogram:overflows 0
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:count 1790
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:mean 0
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:stddev 0
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:min 0
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:max 0
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:numbins 50
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:underflows 0
+scalar ComboExample.host[1].wlan[0].radio packetErrorRate:histogram:overflows 0
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:count 1790
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:mean 0
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:stddev 0
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:min 0
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:max 0
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:numbins 50
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:underflows 0
+scalar ComboExample.host[1].wlan[0].radio bitErrorRate:histogram:overflows 0
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:count 1790
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:mean 0
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:stddev 0
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:min 0
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:max 0
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:numbins 50
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:underflows 0
+scalar ComboExample.host[1].wlan[0].radio symbolErrorRate:histogram:overflows 0
+scalar ComboExample.host[1].app[0] rtt:histogram:count 895
+scalar ComboExample.host[1].app[0] rtt:histogram:sumweights 895
+scalar ComboExample.host[1].app[0] rtt:histogram:mean 0.0086663335640001
+scalar ComboExample.host[1].app[0] rtt:histogram:stddev 0
+scalar ComboExample.host[1].app[0] rtt:histogram:min 0.008666333564
+scalar ComboExample.host[1].app[0] rtt:histogram:max 0.008666333564
+scalar ComboExample.host[1].app[0] rtt:histogram:numbins 51
+scalar ComboExample.host[1].app[0] rtt:histogram:rangemin 0
+scalar ComboExample.host[1].app[0] rtt:histogram:rangemax 0.51
+scalar ComboExample.host[1].app[0] rtt:histogram:underflows 0
+scalar ComboExample.host[1].app[0] rtt:histogram:overflows 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:count 895
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:sumweights 895
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:mean 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:stddev 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:min 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:max 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:numbins 50
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:rangemin -0.5
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:rangemax 0.5
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:underflows 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:histogram:overflows 0
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:count 895
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:sumweights 895
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:mean 8416
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:stddev 0
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:min 8416
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:max 8416
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:numbins 2
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:rangemin 8415
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:rangemax 8417
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:count 0
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:sumweights 0
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:stddev nan
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:min nan
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:max nan
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:numbins 1
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:rangemin 0
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:rangemax 1
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:underflows 0
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:histogram:overflows 0
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:count 895
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:sumweights 895
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:mean 8416
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:stddev 0
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:min 8416
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:max 8416
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:numbins 2
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:rangemin 8415
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:rangemax 8417
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:underflows 0
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram:overflows 0
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:count 1790
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:sumweights 1790
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:mean 376.26491386613
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:stddev 0
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:min 376.26491386613
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:max 376.26491386613
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:numbins 51
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:rangemin 375.76
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:rangemax 376.78
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:underflows 0
+scalar ComboExample.host[2].wlan[0].radio minSnir:histogram:overflows 0
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:count 1790
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:mean 0
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:stddev 0
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:min 0
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:max 0
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:numbins 50
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:underflows 0
+scalar ComboExample.host[2].wlan[0].radio packetErrorRate:histogram:overflows 0
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:count 1790
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:mean 0
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:stddev 0
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:min 0
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:max 0
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:numbins 50
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:underflows 0
+scalar ComboExample.host[2].wlan[0].radio bitErrorRate:histogram:overflows 0
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:count 1790
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:sumweights 1790
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:mean 0
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:stddev 0
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:min 0
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:max 0
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:numbins 50
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:rangemin -0.5
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:rangemax 0.5
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:underflows 0
+scalar ComboExample.host[2].wlan[0].radio symbolErrorRate:histogram:overflows 0
+scalar ComboExample.host[2].app[0] rtt:histogram:count 895
+scalar ComboExample.host[2].app[0] rtt:histogram:sumweights 895
+scalar ComboExample.host[2].app[0] rtt:histogram:mean 0.0086663401699998
+scalar ComboExample.host[2].app[0] rtt:histogram:stddev 0
+scalar ComboExample.host[2].app[0] rtt:histogram:min 0.00866634017
+scalar ComboExample.host[2].app[0] rtt:histogram:max 0.00866634017
+scalar ComboExample.host[2].app[0] rtt:histogram:numbins 51
+scalar ComboExample.host[2].app[0] rtt:histogram:rangemin 0
+scalar ComboExample.host[2].app[0] rtt:histogram:rangemax 0.51
+scalar ComboExample.host[2].app[0] rtt:histogram:underflows 0
+scalar ComboExample.host[2].app[0] rtt:histogram:overflows 0
 statistic ComboExample.host[0].wlan[0].queue queueingTime:histogram
 field count 1790
 field mean 0
@@ -174,11 +600,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -231,17 +652,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar ComboExample.host[0].wlan[0].queue outgoingPackets:count 1790
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:sum 15064640
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic ComboExample.host[0].wlan[0].queue outgoingPacketLengths:histogram
 field count 1790
 field mean 8416
@@ -250,11 +660,6 @@ field min 8416
 field max 8416
 field sum 15064640
 field sqrsum 126784010240
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	8415	0
 bin	8416	1790
@@ -267,25 +672,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar ComboExample.host[0].wlan[0].queue incomingPackets:count 1790
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:sum 15064640
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic ComboExample.host[0].wlan[0].queue incomingPacketLengths:histogram
 field count 1790
 field mean 8416
@@ -294,134 +683,18 @@ field min 8416
 field max 8416
 field sum 15064640
 field sqrsum 126784010240
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	8415	0
 bin	8416	1790
 bin	8417	0
-scalar ComboExample.host[0].wlan[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:count 1790
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, count"
-scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 1924250
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0].mac sentDownPk:count 1790
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets sent to lower layer, count"
-scalar ComboExample.host[0].wlan[0].mac sentDownPk:sum(packetBytes) 1924250
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets sent to lower layer, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:count 1790
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 1883080
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0].mac passedUpPk:count 1790
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar ComboExample.host[0].wlan[0].mac passedUpPk:sum(packetBytes) 1883080
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0].mac linkBroken:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source linkBroken
-attr title "link break, count"
-scalar ComboExample.host[0].wlan[0].radio radioMode:count 3
-attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source radioModeChanged
-attr title "Radio mode, count"
-attr type enum
-scalar ComboExample.host[0].wlan[0].radio receptionState:count 3581
-attr enum UNDEFINED,IDLE,BUSY,RECEIVING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source receptionStateChanged
-attr title "Radio reception state, count"
-attr type enum
-scalar ComboExample.host[0].wlan[0].radio transmissionState:count 3581
-attr enum UNDEFINED,IDLE,TRANSMITTING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source transmissionStateChanged
-attr title "Radio transmission state, count"
-attr type enum
 statistic ComboExample.host[0].wlan[0].radio minSnir:histogram
 field count 1790
 field mean 383.79021214346
-field stddev 7.5274011963285
+field stddev 7.5274011964701
 field min 376.26491386613
 field max 391.31551042077
 field sum 686984.47973679
 field sqrsum 263759287.12178
-attr recordingmode histogram
-attr source minimumSnir(packetSentToUpper)
-attr title "Min SNIR"
 bin	-inf	0
 bin	372.5	0
 bin	373	0
@@ -478,9 +751,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source packetErrorRate(packetSentToUpper)
-attr title "Packet error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -541,9 +811,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source bitErrorRate(packetSentToUpper)
-attr title "Bit error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -604,9 +871,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source symbolErrorRate(packetSentToUpper)
-attr title "Symbol error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -659,221 +923,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar ComboExample.host[0].wlan[0].radio packetDropped:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "packets dropped, count"
-scalar ComboExample.host[0].wlan[0].radio packetDropped:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr title "packets dropped, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar ComboExample.host[0].ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar ComboExample.host[0].ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar ComboExample.host[0].udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar ComboExample.host[0].udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar ComboExample.host[0].udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar ComboExample.host[0].udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar ComboExample.host[0].udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar ComboExample.host[0].udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar ComboExample.host[0].udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar ComboExample.host[1].lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar ComboExample.host[1].lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar ComboExample.host[1].lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar ComboExample.host[1].lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar ComboExample.host[1].wlan[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar ComboExample.host[1].wlan[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar ComboExample.host[1].wlan[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar ComboExample.host[1].wlan[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar ComboExample.host[1].wlan[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic ComboExample.host[1].wlan[0].queue queueingTime:histogram
 field count 896
 field mean 0
@@ -882,11 +931,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -939,17 +983,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar ComboExample.host[1].wlan[0].queue outgoingPackets:count 896
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:sum 7540736
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic ComboExample.host[1].wlan[0].queue outgoingPacketLengths:histogram
 field count 896
 field mean 8416
@@ -958,11 +991,6 @@ field min 8416
 field max 8416
 field sum 7540736
 field sqrsum 63462834176
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	8415	0
 bin	8416	896
@@ -975,25 +1003,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar ComboExample.host[1].wlan[0].queue incomingPackets:count 896
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:sum 7540736
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic ComboExample.host[1].wlan[0].queue incomingPacketLengths:histogram
 field count 896
 field mean 8416
@@ -1002,123 +1014,10 @@ field min 8416
 field max 8416
 field sum 7540736
 field sqrsum 63462834176
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	8415	0
 bin	8416	896
 bin	8417	0
-scalar ComboExample.host[1].wlan[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:count 1790
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, count"
-scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 1924250
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0].mac sentDownPk:count 896
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets sent to lower layer, count"
-scalar ComboExample.host[1].wlan[0].mac sentDownPk:sum(packetBytes) 963200
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets sent to lower layer, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:count 896
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 942592
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0].mac passedUpPk:count 895
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar ComboExample.host[1].wlan[0].mac passedUpPk:sum(packetBytes) 941540
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:count 895
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 962125
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0].mac linkBroken:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source linkBroken
-attr title "link break, count"
-scalar ComboExample.host[1].wlan[0].radio radioMode:count 3
-attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source radioModeChanged
-attr title "Radio mode, count"
-attr type enum
-scalar ComboExample.host[1].wlan[0].radio receptionState:count 3581
-attr enum UNDEFINED,IDLE,BUSY,RECEIVING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source receptionStateChanged
-attr title "Radio reception state, count"
-attr type enum
-scalar ComboExample.host[1].wlan[0].radio transmissionState:count 1792
-attr enum UNDEFINED,IDLE,TRANSMITTING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source transmissionStateChanged
-attr title "Radio transmission state, count"
-attr type enum
 statistic ComboExample.host[1].wlan[0].radio minSnir:histogram
 field count 1790
 field mean 391.31551042078
@@ -1127,9 +1026,6 @@ field min 391.31551042077
 field max 391.31551042077
 field sum 700454.7636532
 field sqrsum 274098813.3656
-attr recordingmode histogram
-attr source minimumSnir(packetSentToUpper)
-attr title "Min SNIR"
 bin	-inf	0
 bin	390.8	0
 bin	390.82	0
@@ -1191,9 +1087,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source packetErrorRate(packetSentToUpper)
-attr title "Packet error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1254,9 +1147,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source bitErrorRate(packetSentToUpper)
-attr title "Bit error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1317,9 +1207,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source symbolErrorRate(packetSentToUpper)
-attr title "Symbol error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1372,158 +1259,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar ComboExample.host[1].wlan[0].radio packetDropped:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "packets dropped, count"
-scalar ComboExample.host[1].wlan[0].radio packetDropped:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr title "packets dropped, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar ComboExample.host[1].ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar ComboExample.host[1].ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar ComboExample.host[1].udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar ComboExample.host[1].udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar ComboExample.host[1].udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar ComboExample.host[1].udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar ComboExample.host[1].udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar ComboExample.host[1].udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar ComboExample.host[1].udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar ComboExample.host[1].app[0] "Pings sent" 896
-scalar ComboExample.host[1].app[0] "ping loss rate (%)" 0.11160714285714
-scalar ComboExample.host[1].app[0] "ping out-of-order rate (%)" 0
-scalar ComboExample.host[1].app[0] pingRxSeq:count 895
-attr interpolationmode none
-attr recordingmode count
-attr title "ping rx seq, count"
-scalar ComboExample.host[1].app[0] pingTxSeq:count 896
-attr interpolationmode none
-attr recordingmode count
-attr title "ping tx seq, count"
-scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:last nan
-attr interpolationmode none
-attr recordingmode last
-attr title "ping out-of-order arrivals, last"
-scalar ComboExample.host[1].app[0] numLost:last nan
-attr interpolationmode none
-attr recordingmode last
-attr title "pings lost, last"
 statistic ComboExample.host[1].app[0] rtt:histogram
 field count 895
 field mean 0.0086663335640001
@@ -1532,10 +1267,6 @@ field min 0.008666333564
 field max 0.008666333564
 field sum 7.7563685397801
 field sqrsum 0.067219277011048
-attr interpolationmode none
-attr recordingmode histogram
-attr title "ping round-trip time"
-attr unit s
 bin	-inf	0
 bin	0	895
 bin	0.01	0
@@ -1589,88 +1320,6 @@ bin	0.48	0
 bin	0.49	0
 bin	0.5	0
 bin	0.51	0
-scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar ComboExample.host[2].lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar ComboExample.host[2].lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar ComboExample.host[2].lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar ComboExample.host[2].lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar ComboExample.host[2].wlan[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar ComboExample.host[2].wlan[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar ComboExample.host[2].wlan[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar ComboExample.host[2].wlan[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar ComboExample.host[2].wlan[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic ComboExample.host[2].wlan[0].queue queueingTime:histogram
 field count 895
 field mean 0
@@ -1679,11 +1328,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1736,17 +1380,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar ComboExample.host[2].wlan[0].queue outgoingPackets:count 895
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:sum 7532320
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic ComboExample.host[2].wlan[0].queue outgoingPacketLengths:histogram
 field count 895
 field mean 8416
@@ -1755,11 +1388,6 @@ field min 8416
 field max 8416
 field sum 7532320
 field sqrsum 63392005120
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	8415	0
 bin	8416	895
@@ -1772,25 +1400,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar ComboExample.host[2].wlan[0].queue incomingPackets:count 895
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:sum 7532320
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic ComboExample.host[2].wlan[0].queue incomingPacketLengths:histogram
 field count 895
 field mean 8416
@@ -1799,134 +1411,18 @@ field min 8416
 field max 8416
 field sum 7532320
 field sqrsum 63392005120
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	8415	0
 bin	8416	895
 bin	8417	0
-scalar ComboExample.host[2].wlan[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:count 1790
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, count"
-scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:sum(packetBytes) 1924250
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0].mac sentDownPk:count 895
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets sent to lower layer, count"
-scalar ComboExample.host[2].wlan[0].mac sentDownPk:sum(packetBytes) 962125
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets sent to lower layer, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:count 895
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:sum(packetBytes) 941540
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0].mac passedUpPk:count 895
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar ComboExample.host[2].wlan[0].mac passedUpPk:sum(packetBytes) 941540
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:count 895
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 962125
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0].mac linkBroken:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source linkBroken
-attr title "link break, count"
-scalar ComboExample.host[2].wlan[0].radio radioMode:count 3
-attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source radioModeChanged
-attr title "Radio mode, count"
-attr type enum
-scalar ComboExample.host[2].wlan[0].radio receptionState:count 3581
-attr enum UNDEFINED,IDLE,BUSY,RECEIVING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source receptionStateChanged
-attr title "Radio reception state, count"
-attr type enum
-scalar ComboExample.host[2].wlan[0].radio transmissionState:count 1791
-attr enum UNDEFINED,IDLE,TRANSMITTING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source transmissionStateChanged
-attr title "Radio transmission state, count"
-attr type enum
 statistic ComboExample.host[2].wlan[0].radio minSnir:histogram
 field count 1790
-field mean 376.26491386614
+field mean 376.26491386613
 field stddev 0
 field min 376.26491386613
 field max 376.26491386613
 field sum 673514.19582038
 field sqrsum 253419760.87796
-attr recordingmode histogram
-attr source minimumSnir(packetSentToUpper)
-attr title "Min SNIR"
 bin	-inf	0
 bin	375.76	0
 bin	375.78	0
@@ -1988,9 +1484,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source packetErrorRate(packetSentToUpper)
-attr title "Packet error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -2051,9 +1544,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source bitErrorRate(packetSentToUpper)
-attr title "Bit error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -2114,9 +1604,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source symbolErrorRate(packetSentToUpper)
-attr title "Symbol error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -2169,158 +1656,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar ComboExample.host[2].wlan[0].radio packetDropped:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "packets dropped, count"
-scalar ComboExample.host[2].wlan[0].radio packetDropped:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr title "packets dropped, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar ComboExample.host[2].ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar ComboExample.host[2].ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar ComboExample.host[2].udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar ComboExample.host[2].udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar ComboExample.host[2].udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar ComboExample.host[2].udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar ComboExample.host[2].udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar ComboExample.host[2].udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar ComboExample.host[2].udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar ComboExample.host[2].app[0] "Pings sent" 895
-scalar ComboExample.host[2].app[0] "ping loss rate (%)" 0
-scalar ComboExample.host[2].app[0] "ping out-of-order rate (%)" 0
-scalar ComboExample.host[2].app[0] pingRxSeq:count 895
-attr interpolationmode none
-attr recordingmode count
-attr title "ping rx seq, count"
-scalar ComboExample.host[2].app[0] pingTxSeq:count 895
-attr interpolationmode none
-attr recordingmode count
-attr title "ping tx seq, count"
-scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:last nan
-attr interpolationmode none
-attr recordingmode last
-attr title "ping out-of-order arrivals, last"
-scalar ComboExample.host[2].app[0] numLost:last nan
-attr interpolationmode none
-attr recordingmode last
-attr title "pings lost, last"
 statistic ComboExample.host[2].app[0] rtt:histogram
 field count 895
 field mean 0.0086663401699998
@@ -2329,10 +1664,6 @@ field min 0.00866634017
 field max 0.00866634017
 field sum 7.7563744521498
 field sqrsum 0.06721937948823
-attr interpolationmode none
-attr recordingmode histogram
-attr title "ping round-trip time"
-attr unit s
 bin	-inf	0
 bin	0	895
 bin	0.01	0
@@ -2386,23 +1717,1174 @@ bin	0.48	0
 bin	0.49	0
 bin	0.5	0
 bin	0.51	0
-scalar ComboExample.radioMedium.propagation "Arrival computation count" 7162
-scalar ComboExample.radioMedium "transmission count" 3581
-scalar ComboExample.radioMedium "signal send count" 7162
-scalar ComboExample.radioMedium "reception computation count" 7160
-scalar ComboExample.radioMedium "interference computation count" 28647
-scalar ComboExample.radioMedium "reception decision computation count" 5370
-scalar ComboExample.radioMedium "listening decision computation count" 16117
-scalar ComboExample.radioMedium "reception cache hit" 84
-attr unit %
-scalar ComboExample.radioMedium "interference cache hit" 66.666666666667
-attr unit %
-scalar ComboExample.radioMedium "noise cache hit" 0
-attr unit %
-scalar ComboExample.radioMedium "snir cache hit" 50
-attr unit %
-scalar ComboExample.radioMedium "reception decision cache hit" 50
-attr unit %
-scalar ComboExample.radioMedium "reception result cache hit" 0
-attr unit %
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:count 1795
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:sum 0
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:sumweights 1795
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:mean 0
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:stddev 0
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:min 0
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:max 0
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:starttime 0
+scalar ComboExample.host[0].wlan[0].queue queueLength:vector:endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:count 1795
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:sum 0
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:sumweights 1795
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:mean 0
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:stddev 0
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:min 0
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:max 0
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:starttime 0
+scalar ComboExample.host[0].wlan[0].queue queueBitLength:vector:endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:count 1790
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:sum 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:sumweights 1790
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:mean 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:stddev 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:min 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:max 0
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:starttime 0.504333166782
+scalar ComboExample.host[0].wlan[0].queue queueingTime:vector:endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:count 1790
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:sum 15064640
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:sumweights 1790
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:mean 8416
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:stddev 0
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:min 8416
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:max 8416
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:starttime 0.504333166782
+scalar ComboExample.host[0].wlan[0].queue incomingPacketLengths:vector:endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:count 900
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:sum 150646400
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:sumweights 900
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:mean 167384.88888889
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:stddev 12517.890311548
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:min 0
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:max 168320
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:starttime 0.1
+scalar ComboExample.host[0].wlan[0].queue incomingDataRate:vector:endtime 90
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:count 1790
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:sum 15064640
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:sumweights 1790
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:mean 8416
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:stddev 0
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:min 8416
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:max 8416
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:starttime 0.504333166782
+scalar ComboExample.host[0].wlan[0].queue outgoingPacketLengths:vector:endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:count 900
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:sum 150646400
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:sumweights 900
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:mean 167384.88888889
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:stddev 12517.890311548
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:min 0
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:max 168320
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:starttime 0.1
+scalar ComboExample.host[0].wlan[0].queue outgoingDataRate:vector:endtime 90
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar ComboExample.host[0].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:count 0
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:sum 0
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:sumweights 0
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:stddev nan
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:min inf
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:max -inf
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:starttime nan
+scalar ComboExample.host[0].wlan[0].queue flowQueueingTime:vector:endtime nan
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:count 900
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:sum 0
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:sumweights 900
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:mean 0
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:stddev 0
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:min 0
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:max 0
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar ComboExample.host[0].wlan[0].queue flowIncomingDataRate:vector:endtime 90
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:count 900
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:sum 0
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:sumweights 900
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:mean 0
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:min 0
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:max 0
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar ComboExample.host[0].wlan[0].queue flowOutgoingDataRate:vector:endtime 90
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):count 1790
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):sum 1883080
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):sumweights 1790
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):mean 1052
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):stddev 0
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):min 1052
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):max 1052
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):starttime 0.504333166782
+scalar ComboExample.host[0].wlan[0].mac passedUpPk:vector(packetBytes):endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):count 1790
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):sum 1924250
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):sumweights 1790
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):mean 1075
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):stddev 0
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):min 1075
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):max 1075
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):starttime 0.504333166782
+scalar ComboExample.host[0].wlan[0].mac sentDownPk:vector(packetBytes):endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 1790
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 1883080
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 1790
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean 1052
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev 0
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):min 1052
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):max 1052
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):starttime 0.504333166782
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromHl:vector(packetBytes):endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):count 1790
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):sum 1924250
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):sumweights 1790
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):mean 1075
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):stddev 0
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):min 1075
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):max 1075
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 0.504333166782
+scalar ComboExample.host[0].wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 0
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 0
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min inf
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max -inf
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:count 3
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:sum 4
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:sumweights 3
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:mean 1.3333333333333
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:stddev 2.3094010767585
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:min 0
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:max 4
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:starttime 0
+scalar ComboExample.host[0].wlan[0].radio radioMode:vector:endtime 0
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:count 3581
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:sum 7161
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:sumweights 3581
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:mean 1.9997207483943
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:stddev 1.0001396160565
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:min 1
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:max 3
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:starttime 0
+scalar ComboExample.host[0].wlan[0].radio receptionState:vector:endtime 89.956333170085
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:count 3581
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:sum 5371
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:sumweights 3581
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:mean 1.4998603741972
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:stddev 0.50006980802826
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:min 1
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:max 2
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:starttime 0
+scalar ComboExample.host[0].wlan[0].radio transmissionState:vector:endtime 89.960666170085
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):count 0
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):sum 0
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):min inf
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):max -inf
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].wlan[0].radio packetDropped:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].wlan[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].wlan[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):count 0
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):sum 0
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):min inf
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):max -inf
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].udp packetSent:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):count 0
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):sum 0
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):sumweights 0
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):mean -nan
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):stddev nan
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):min inf
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):max -inf
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):starttime nan
+scalar ComboExample.host[0].udp packetReceived:vector(packetBytes):endtime nan
+scalar ComboExample.host[0].udp passedUpPk:vector(count):count 1
+scalar ComboExample.host[0].udp passedUpPk:vector(count):sum 0
+scalar ComboExample.host[0].udp passedUpPk:vector(count):sumweights 1
+scalar ComboExample.host[0].udp passedUpPk:vector(count):mean 0
+scalar ComboExample.host[0].udp passedUpPk:vector(count):stddev nan
+scalar ComboExample.host[0].udp passedUpPk:vector(count):min 0
+scalar ComboExample.host[0].udp passedUpPk:vector(count):max 0
+scalar ComboExample.host[0].udp passedUpPk:vector(count):starttime 0
+scalar ComboExample.host[0].udp passedUpPk:vector(count):endtime 0
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):count 1
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):sum 0
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):sumweights 1
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):mean 0
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):stddev nan
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):min 0
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):max 0
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):starttime 0
+scalar ComboExample.host[0].udp droppedPkWrongPort:vector(count):endtime 0
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):count 1
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):sum 0
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):mean 0
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):stddev nan
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):min 0
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):max 0
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):starttime 0
+scalar ComboExample.host[0].udp droppedPkBadChecksum:vector(count):endtime 0
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:count 901
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:sum 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:sumweights 901
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:mean 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:stddev 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:min 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:max 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:starttime 0
+scalar ComboExample.host[1].wlan[0].queue queueLength:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:count 901
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:sum 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:sumweights 901
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:mean 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:stddev 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:min 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:max 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:starttime 0
+scalar ComboExample.host[1].wlan[0].queue queueBitLength:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:count 896
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:sum 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:sumweights 896
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:mean 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:stddev 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:min 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:max 0
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:starttime 0.5
+scalar ComboExample.host[1].wlan[0].queue queueingTime:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:count 896
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:sum 7540736
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:sumweights 896
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:mean 8416
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:stddev 0
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:min 8416
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:max 8416
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:starttime 0.5
+scalar ComboExample.host[1].wlan[0].queue incomingPacketLengths:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:count 900
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:sum 75323200
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:sumweights 900
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:mean 83692.444444444
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:stddev 6258.9451557738
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:min 0
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:max 84160
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:starttime 0.1
+scalar ComboExample.host[1].wlan[0].queue incomingDataRate:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:count 896
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:sum 7540736
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:sumweights 896
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:mean 8416
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:stddev 0
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:min 8416
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:max 8416
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:starttime 0.5
+scalar ComboExample.host[1].wlan[0].queue outgoingPacketLengths:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:count 900
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:sum 75323200
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:sumweights 900
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:mean 83692.444444444
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:stddev 6258.9451557738
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:min 0
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:max 84160
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:starttime 0.1
+scalar ComboExample.host[1].wlan[0].queue outgoingDataRate:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar ComboExample.host[1].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:count 0
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:sum 0
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:sumweights 0
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:stddev nan
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:min inf
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:max -inf
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:starttime nan
+scalar ComboExample.host[1].wlan[0].queue flowQueueingTime:vector:endtime nan
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:count 900
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:sum 0
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:sumweights 900
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:mean 0
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:stddev 0
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:min 0
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:max 0
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar ComboExample.host[1].wlan[0].queue flowIncomingDataRate:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:count 900
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:sum 0
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:sumweights 900
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:mean 0
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:min 0
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:max 0
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar ComboExample.host[1].wlan[0].queue flowOutgoingDataRate:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):count 895
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):sum 941540
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):sumweights 895
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):mean 1052
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):stddev 0
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):min 1052
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):max 1052
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):starttime 0.508666333564
+scalar ComboExample.host[1].wlan[0].mac passedUpPk:vector(packetBytes):endtime 89.908666333564
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):count 896
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):sum 963200
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):sumweights 896
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):mean 1075
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):stddev 0
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):min 1075
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):max 1075
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):starttime 0.5
+scalar ComboExample.host[1].wlan[0].mac sentDownPk:vector(packetBytes):endtime 90
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 896
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 942592
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 896
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean 1052
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev 0
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):min 1052
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):max 1052
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):starttime 0.5
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromHl:vector(packetBytes):endtime 90
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):count 1790
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):sum 1924250
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):sumweights 1790
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):mean 1075
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):stddev 0
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):min 1075
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):max 1075
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 0.508666333564
+scalar ComboExample.host[1].wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 89.960666336867
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 895
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 962125
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 895
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean 1075
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev 0
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min 1075
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max 1075
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime 0.560666336867
+scalar ComboExample.host[1].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime 89.960666336867
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:count 3
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:sum 4
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:sumweights 3
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:mean 1.3333333333333
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:stddev 2.3094010767585
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:min 0
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:max 4
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:starttime 0
+scalar ComboExample.host[1].wlan[0].radio radioMode:vector:endtime 0
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:count 3581
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:sum 7161
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:sumweights 3581
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:mean 1.9997207483943
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:stddev 1.0001396160565
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:min 1
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:max 3
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:starttime 0
+scalar ComboExample.host[1].wlan[0].radio receptionState:vector:endtime 89.960666336867
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:count 1792
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:sum 2688
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:sumweights 1792
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:mean 1.5
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:stddev 0.50013956734396
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:min 1
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:max 2
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:starttime 0
+scalar ComboExample.host[1].wlan[0].radio transmissionState:vector:endtime 90
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):count 0
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):sum 0
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):min inf
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):max -inf
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].wlan[0].radio packetDropped:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].wlan[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].wlan[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):count 0
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):sum 0
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):min inf
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):max -inf
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].udp packetSent:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):count 0
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):sum 0
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):sumweights 0
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):mean -nan
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):stddev nan
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):min inf
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):max -inf
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):starttime nan
+scalar ComboExample.host[1].udp packetReceived:vector(packetBytes):endtime nan
+scalar ComboExample.host[1].udp passedUpPk:vector(count):count 1
+scalar ComboExample.host[1].udp passedUpPk:vector(count):sum 0
+scalar ComboExample.host[1].udp passedUpPk:vector(count):sumweights 1
+scalar ComboExample.host[1].udp passedUpPk:vector(count):mean 0
+scalar ComboExample.host[1].udp passedUpPk:vector(count):stddev nan
+scalar ComboExample.host[1].udp passedUpPk:vector(count):min 0
+scalar ComboExample.host[1].udp passedUpPk:vector(count):max 0
+scalar ComboExample.host[1].udp passedUpPk:vector(count):starttime 0
+scalar ComboExample.host[1].udp passedUpPk:vector(count):endtime 0
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):count 1
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):sum 0
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):sumweights 1
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):mean 0
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):stddev nan
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):min 0
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):max 0
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):starttime 0
+scalar ComboExample.host[1].udp droppedPkWrongPort:vector(count):endtime 0
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):count 1
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):sum 0
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):mean 0
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):stddev nan
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):min 0
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):max 0
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):starttime 0
+scalar ComboExample.host[1].udp droppedPkBadChecksum:vector(count):endtime 0
+scalar ComboExample.host[1].app[0] rtt:vector:count 895
+scalar ComboExample.host[1].app[0] rtt:vector:sum 7.7563685397801
+scalar ComboExample.host[1].app[0] rtt:vector:sumweights 895
+scalar ComboExample.host[1].app[0] rtt:vector:mean 0.0086663335640001
+scalar ComboExample.host[1].app[0] rtt:vector:stddev 0
+scalar ComboExample.host[1].app[0] rtt:vector:min 0.008666333564
+scalar ComboExample.host[1].app[0] rtt:vector:max 0.008666333564
+scalar ComboExample.host[1].app[0] rtt:vector:starttime 0.508666333564
+scalar ComboExample.host[1].app[0] rtt:vector:endtime 89.908666333564
+scalar ComboExample.host[1].app[0] numLost:vector:count 0
+scalar ComboExample.host[1].app[0] numLost:vector:sum 0
+scalar ComboExample.host[1].app[0] numLost:vector:sumweights 0
+scalar ComboExample.host[1].app[0] numLost:vector:mean -nan
+scalar ComboExample.host[1].app[0] numLost:vector:stddev nan
+scalar ComboExample.host[1].app[0] numLost:vector:min inf
+scalar ComboExample.host[1].app[0] numLost:vector:max -inf
+scalar ComboExample.host[1].app[0] numLost:vector:starttime nan
+scalar ComboExample.host[1].app[0] numLost:vector:endtime nan
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:count 0
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:sum 0
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:sumweights 0
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:mean -nan
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:stddev nan
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:min inf
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:max -inf
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:starttime nan
+scalar ComboExample.host[1].app[0] numOutOfOrderArrivals:vector:endtime nan
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:count 896
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:sum 400960
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:sumweights 896
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:mean 447.5
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:stddev 258.79721791395
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:min 0
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:max 895
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:starttime 0.5
+scalar ComboExample.host[1].app[0] pingTxSeq:vector:endtime 90
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:count 895
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:sum 400065
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:sumweights 895
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:mean 447
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:stddev 258.50854273441
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:min 0
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:max 894
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:starttime 0.508666333564
+scalar ComboExample.host[1].app[0] pingRxSeq:vector:endtime 89.908666333564
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:count 900
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:sum 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:sumweights 900
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:mean 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:stddev 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:min 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:max 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:starttime 0
+scalar ComboExample.host[2].wlan[0].queue queueLength:vector:endtime 89.952
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:count 900
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:sum 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:sumweights 900
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:mean 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:stddev 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:min 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:max 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:starttime 0
+scalar ComboExample.host[2].wlan[0].queue queueBitLength:vector:endtime 89.952
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:count 895
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:sum 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:sumweights 895
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:mean 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:stddev 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:min 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:max 0
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:starttime 0.552
+scalar ComboExample.host[2].wlan[0].queue queueingTime:vector:endtime 89.952
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:count 895
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:sum 7532320
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:sumweights 895
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:mean 8416
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:stddev 0
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:min 8416
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:max 8416
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:starttime 0.552
+scalar ComboExample.host[2].wlan[0].queue incomingPacketLengths:vector:endtime 89.952
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:count 900
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:sum 75323200
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:sumweights 900
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:mean 83692.444444444
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:stddev 6258.9451557738
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:min 0
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:max 84160
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:starttime 0.1
+scalar ComboExample.host[2].wlan[0].queue incomingDataRate:vector:endtime 90
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:count 895
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:sum 7532320
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:sumweights 895
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:mean 8416
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:stddev 0
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:min 8416
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:max 8416
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:starttime 0.552
+scalar ComboExample.host[2].wlan[0].queue outgoingPacketLengths:vector:endtime 89.952
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:count 900
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:sum 75323200
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:sumweights 900
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:mean 83692.444444444
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:stddev 6258.9451557738
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:min 0
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:max 84160
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:starttime 0.1
+scalar ComboExample.host[2].wlan[0].queue outgoingDataRate:vector:endtime 90
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar ComboExample.host[2].wlan[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:count 0
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:sum 0
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:sumweights 0
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:stddev nan
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:min inf
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:max -inf
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:starttime nan
+scalar ComboExample.host[2].wlan[0].queue flowQueueingTime:vector:endtime nan
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:count 900
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:sum 0
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:sumweights 900
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:mean 0
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:stddev 0
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:min 0
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:max 0
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar ComboExample.host[2].wlan[0].queue flowIncomingDataRate:vector:endtime 90
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:count 900
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:sum 0
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:sumweights 900
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:mean 0
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:min 0
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:max 0
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar ComboExample.host[2].wlan[0].queue flowOutgoingDataRate:vector:endtime 90
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):count 895
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):sum 941540
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):sumweights 895
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):mean 1052
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):stddev 0
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):min 1052
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):max 1052
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):starttime 0.56066634017
+scalar ComboExample.host[2].wlan[0].mac passedUpPk:vector(packetBytes):endtime 89.96066634017
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):count 895
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):sum 962125
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):sumweights 895
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):mean 1075
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):stddev 0
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):min 1075
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):max 1075
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):starttime 0.552
+scalar ComboExample.host[2].wlan[0].mac sentDownPk:vector(packetBytes):endtime 89.952
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 895
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 941540
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 895
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean 1052
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev 0
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):min 1052
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):max 1052
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):starttime 0.552
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromHl:vector(packetBytes):endtime 89.952
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):count 1790
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):sum 1924250
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):sumweights 1790
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):mean 1075
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):stddev 0
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):min 1075
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):max 1075
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 0.508666336867
+scalar ComboExample.host[2].wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 89.96066634017
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].wlan[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 895
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 962125
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 895
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean 1075
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev 0
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min 1075
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max 1075
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime 0.508666336867
+scalar ComboExample.host[2].wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime 89.908666336867
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:count 3
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:sum 4
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:sumweights 3
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:mean 1.3333333333333
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:stddev 2.3094010767585
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:min 0
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:max 4
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:starttime 0
+scalar ComboExample.host[2].wlan[0].radio radioMode:vector:endtime 0
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:count 3581
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:sum 7161
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:sumweights 3581
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:mean 1.9997207483943
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:stddev 1.0001396160565
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:min 1
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:max 3
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:starttime 0
+scalar ComboExample.host[2].wlan[0].radio receptionState:vector:endtime 89.96066634017
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:count 1791
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:sum 2686
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:sumweights 1791
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:mean 1.499720826354
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:stddev 0.50013956734396
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:min 1
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:max 2
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:starttime 0
+scalar ComboExample.host[2].wlan[0].radio transmissionState:vector:endtime 89.956333
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):count 0
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):sum 0
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):min inf
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):max -inf
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].wlan[0].radio packetDropped:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].wlan[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].wlan[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):count 0
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):sum 0
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):min inf
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):max -inf
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].udp packetSent:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):count 0
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):sum 0
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):sumweights 0
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):mean -nan
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):stddev nan
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):min inf
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):max -inf
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):starttime nan
+scalar ComboExample.host[2].udp packetReceived:vector(packetBytes):endtime nan
+scalar ComboExample.host[2].udp passedUpPk:vector(count):count 1
+scalar ComboExample.host[2].udp passedUpPk:vector(count):sum 0
+scalar ComboExample.host[2].udp passedUpPk:vector(count):sumweights 1
+scalar ComboExample.host[2].udp passedUpPk:vector(count):mean 0
+scalar ComboExample.host[2].udp passedUpPk:vector(count):stddev nan
+scalar ComboExample.host[2].udp passedUpPk:vector(count):min 0
+scalar ComboExample.host[2].udp passedUpPk:vector(count):max 0
+scalar ComboExample.host[2].udp passedUpPk:vector(count):starttime 0
+scalar ComboExample.host[2].udp passedUpPk:vector(count):endtime 0
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):count 1
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):sum 0
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):sumweights 1
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):mean 0
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):stddev nan
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):min 0
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):max 0
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):starttime 0
+scalar ComboExample.host[2].udp droppedPkWrongPort:vector(count):endtime 0
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):count 1
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):sum 0
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):mean 0
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):stddev nan
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):min 0
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):max 0
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):starttime 0
+scalar ComboExample.host[2].udp droppedPkBadChecksum:vector(count):endtime 0
+scalar ComboExample.host[2].app[0] rtt:vector:count 895
+scalar ComboExample.host[2].app[0] rtt:vector:sum 7.7563744521498
+scalar ComboExample.host[2].app[0] rtt:vector:sumweights 895
+scalar ComboExample.host[2].app[0] rtt:vector:mean 0.0086663401699998
+scalar ComboExample.host[2].app[0] rtt:vector:stddev 0
+scalar ComboExample.host[2].app[0] rtt:vector:min 0.00866634017
+scalar ComboExample.host[2].app[0] rtt:vector:max 0.00866634017
+scalar ComboExample.host[2].app[0] rtt:vector:starttime 0.56066634017
+scalar ComboExample.host[2].app[0] rtt:vector:endtime 89.96066634017
+scalar ComboExample.host[2].app[0] numLost:vector:count 0
+scalar ComboExample.host[2].app[0] numLost:vector:sum 0
+scalar ComboExample.host[2].app[0] numLost:vector:sumweights 0
+scalar ComboExample.host[2].app[0] numLost:vector:mean -nan
+scalar ComboExample.host[2].app[0] numLost:vector:stddev nan
+scalar ComboExample.host[2].app[0] numLost:vector:min inf
+scalar ComboExample.host[2].app[0] numLost:vector:max -inf
+scalar ComboExample.host[2].app[0] numLost:vector:starttime nan
+scalar ComboExample.host[2].app[0] numLost:vector:endtime nan
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:count 0
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:sum 0
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:sumweights 0
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:mean -nan
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:stddev nan
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:min inf
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:max -inf
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:starttime nan
+scalar ComboExample.host[2].app[0] numOutOfOrderArrivals:vector:endtime nan
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:count 895
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:sum 400065
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:sumweights 895
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:mean 447
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:stddev 258.50854273441
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:min 0
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:max 894
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:starttime 0.552
+scalar ComboExample.host[2].app[0] pingTxSeq:vector:endtime 89.952
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:count 895
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:sum 400065
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:sumweights 895
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:mean 447
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:stddev 258.50854273441
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:min 0
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:max 894
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:starttime 0.56066634017
+scalar ComboExample.host[2].app[0] pingRxSeq:vector:endtime 89.96066634017
 

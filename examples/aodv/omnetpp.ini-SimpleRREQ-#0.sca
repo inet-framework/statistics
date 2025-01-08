@@ -1,8 +1,8 @@
 version 3
-run SimpleRREQ-0-20240115-11:18:19-14151
+run SimpleRREQ-0-20250108-11:18:14-8886
 attr configname SimpleRREQ
-attr datetime 20240115-11:18:19
-attr datetimef 20240115-111819
+attr datetime 20250108-11:18:14
+attr datetimef 20250108-111814
 attr experiment SimpleRREQ
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,16 +10,16 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network SimpleRREQ
-attr processid 14151
+attr processid 8886
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-SimpleRREQ-#0.sca
+config output-vector-file results/omnetpp.ini-SimpleRREQ-#0.vec
 config sim-time-limit 100s
 config sim-time-limit 100s
 config description "demonstrates a single RREQ-RREP exchange"
@@ -34,6 +34,7 @@ config network AODVNetwork
 config num-rngs 3
 config **.mobility.rng-0 1
 config **.wlan[*].mac.rng-0 2
+config *.radioMedium.sameTransmissionStartTimeCheck "\"ignore\""
 config **.wlan[*].typename AckingWirelessInterface
 config **.wlan[*].bitrate 2Mbps
 config **.wlan[*].mac.headerLength 23B
@@ -60,99 +61,503 @@ scalar SimpleRREQ.radioMedium "interference computation count" 2978
 scalar SimpleRREQ.radioMedium "reception decision computation count" 594
 scalar SimpleRREQ.radioMedium "listening decision computation count" 1592
 scalar SimpleRREQ.radioMedium "reception cache hit" 84
-attr unit %
 scalar SimpleRREQ.radioMedium "interference cache hit" 66.666666666667
-attr unit %
 scalar SimpleRREQ.radioMedium "noise cache hit" 0
-attr unit %
 scalar SimpleRREQ.radioMedium "snir cache hit" 50
-attr unit %
 scalar SimpleRREQ.radioMedium "reception decision cache hit" 50
-attr unit %
 scalar SimpleRREQ.radioMedium "reception result cache hit" 0
-attr unit %
 scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
 scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
 scalar SimpleRREQ.sender.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
 scalar SimpleRREQ.sender.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
 scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
 scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
 scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
 scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
 scalar SimpleRREQ.sender.wlan[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
 scalar SimpleRREQ.sender.wlan[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
 scalar SimpleRREQ.sender.wlan[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
 scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
 scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
 scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPackets:count 99
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:sum 65824
+scalar SimpleRREQ.sender.wlan[0].queue incomingPackets:count 99
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:sum 65824
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketsQueueOverflow:count 0
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:count 198
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 21006
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:count 99
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:sum(packetBytes) 10505
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:count 99
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 8228
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:count 100
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:sum(packetBytes) 8276
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:count 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:count 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:count 98
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 10430
+scalar SimpleRREQ.sender.wlan[0].mac linkBroken:count 0
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:count 3
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:count 397
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:count 199
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:count 0
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:count 0
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar SimpleRREQ.sender.ipv4.arp arpResolutionFailed:count 0
+scalar SimpleRREQ.sender.ipv4.arp arpResolutionCompleted:count 1
+scalar SimpleRREQ.sender.ipv4.arp arpResolutionInitiated:count 0
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:count 1
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:sum(packetBytes) 28
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:count 0
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar SimpleRREQ.sender.udp packetReceived:count 2
+scalar SimpleRREQ.sender.udp packetReceived:sum(packetBytes) 60
+scalar SimpleRREQ.sender.udp packetSent:count 1
+scalar SimpleRREQ.sender.udp packetSent:sum(packetBytes) 32
+scalar SimpleRREQ.sender.udp passedUpPk:count 2
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:count 0
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:count 0
+scalar SimpleRREQ.sender.app[0] "Pings sent" 97
+scalar SimpleRREQ.sender.app[0] "ping loss rate (%)" 0
+scalar SimpleRREQ.sender.app[0] "ping out-of-order rate (%)" 0
+scalar SimpleRREQ.sender.app[0] pingRxSeq:count 97
+scalar SimpleRREQ.sender.app[0] pingTxSeq:count 97
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:last nan
+scalar SimpleRREQ.sender.app[0] numLost:last nan
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:count 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:count 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:count 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:count 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:last 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:timeavg 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:last 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:timeavg 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPackets:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:sum 131616
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPackets:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:sum 131616
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketsQueueOverflow:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 21006
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:sum(packetBytes) 21006
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 16452
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:sum(packetBytes) 16452
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac linkBroken:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:count 3
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:count 397
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:count 397
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpResolutionFailed:count 0
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpResolutionCompleted:count 2
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpResolutionInitiated:count 1
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:count 1
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:sum(packetBytes) 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:count 1
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:sum(packetBytes) 28
+scalar SimpleRREQ.intermediateNode.udp packetReceived:count 2
+scalar SimpleRREQ.intermediateNode.udp packetReceived:sum(packetBytes) 60
+scalar SimpleRREQ.intermediateNode.udp packetSent:count 2
+scalar SimpleRREQ.intermediateNode.udp packetSent:sum(packetBytes) 60
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:count 2
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:count 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:count 0
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:count 0
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:count 0
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:count 0
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:count 0
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:last 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:max 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:timeavg 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:last 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:max 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:timeavg 0
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPackets:count 99
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:sum 65792
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPackets:count 99
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:sum 65792
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketsQueueOverflow:count 0
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:count 198
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 21006
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:count 99
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:sum(packetBytes) 10501
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:count 99
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 8224
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:count 100
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:sum(packetBytes) 8256
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:count 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:count 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:count 98
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 10450
+scalar SimpleRREQ.receiver.wlan[0].mac linkBroken:count 0
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:count 3
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:count 397
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:count 199
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:count 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:count 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.arp arpResolutionFailed:count 0
+scalar SimpleRREQ.receiver.ipv4.arp arpResolutionCompleted:count 2
+scalar SimpleRREQ.receiver.ipv4.arp arpResolutionInitiated:count 1
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:count 0
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:count 1
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:sum(packetBytes) 28
+scalar SimpleRREQ.receiver.udp packetReceived:count 1
+scalar SimpleRREQ.receiver.udp packetReceived:sum(packetBytes) 32
+scalar SimpleRREQ.receiver.udp packetSent:count 1
+scalar SimpleRREQ.receiver.udp packetSent:sum(packetBytes) 28
+scalar SimpleRREQ.receiver.udp passedUpPk:count 1
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:count 0
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:count 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:count 99
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:sumweights 99
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:mean 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:stddev 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:min 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:max 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:numbins 50
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:rangemin -0.5
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:rangemax 0.5
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:underflows 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:histogram:overflows 0
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:count 99
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:sumweights 99
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:mean 664.88888888889
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:stddev 51.629940864297
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:min 224
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:max 672
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:numbins 68
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:rangemin 110
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:rangemax 790
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:count 0
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:sumweights 0
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:stddev nan
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:min nan
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:max nan
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:numbins 1
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:rangemin 0
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:rangemax 1
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:underflows 0
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:histogram:overflows 0
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:count 99
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:sumweights 99
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:mean 664.88888888889
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:stddev 51.629940864297
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:min 224
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:max 672
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:numbins 68
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:rangemin 110
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:rangemax 790
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:underflows 0
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram:overflows 0
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:count 198
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:sumweights 198
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:mean inf
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:stddev 0
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:min inf
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:max inf
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:numbins 1
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:rangemin 0
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:rangemax 1
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:underflows 0
+scalar SimpleRREQ.sender.wlan[0].radio minSnir:histogram:overflows 198
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:count 198
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:mean 0
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:stddev 0
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:min 0
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:max 0
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:numbins 50
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:underflows 0
+scalar SimpleRREQ.sender.wlan[0].radio packetErrorRate:histogram:overflows 0
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:count 198
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:mean 0
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:stddev 0
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:min 0
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:max 0
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:numbins 50
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:underflows 0
+scalar SimpleRREQ.sender.wlan[0].radio bitErrorRate:histogram:overflows 0
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:count 198
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:mean 0
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:stddev 0
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:min 0
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:max 0
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:numbins 50
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:underflows 0
+scalar SimpleRREQ.sender.wlan[0].radio symbolErrorRate:histogram:overflows 0
+scalar SimpleRREQ.sender.app[0] rtt:histogram:count 97
+scalar SimpleRREQ.sender.app[0] rtt:histogram:sumweights 97
+scalar SimpleRREQ.sender.app[0] rtt:histogram:mean 0.0020415753339278
+scalar SimpleRREQ.sender.app[0] rtt:histogram:stddev 0.0013335402503836
+scalar SimpleRREQ.sender.app[0] rtt:histogram:min 0.001906174836
+scalar SimpleRREQ.sender.app[0] rtt:histogram:max 0.015040023135
+scalar SimpleRREQ.sender.app[0] rtt:histogram:numbins 92
+scalar SimpleRREQ.sender.app[0] rtt:histogram:rangemin 0
+scalar SimpleRREQ.sender.app[0] rtt:histogram:rangemax 0.0184
+scalar SimpleRREQ.sender.app[0] rtt:histogram:underflows 0
+scalar SimpleRREQ.sender.app[0] rtt:histogram:overflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:numbins 50
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:rangemin -0.5
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:rangemax 0.5
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:underflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram:overflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:mean 664.72727272727
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:stddev 52.327321663966
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:min 224
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:max 672
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:numbins 68
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:rangemin 110
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:rangemax 790
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:sumweights 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:stddev nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:min nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:max nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:numbins 1
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:rangemin 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:rangemax 1
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:underflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:histogram:overflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:mean 664.72727272727
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:stddev 52.327321663966
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:min 224
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:max 672
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:numbins 68
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:rangemin 110
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:rangemax 790
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:underflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram:overflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:mean inf
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:min inf
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:max inf
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:numbins 1
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:rangemin 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:rangemax 1
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:underflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram:overflows 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:numbins 50
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:underflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio packetErrorRate:histogram:overflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:numbins 50
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:underflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio bitErrorRate:histogram:overflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:numbins 50
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:underflows 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio symbolErrorRate:histogram:overflows 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:count 99
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:sumweights 99
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:mean 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:min 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:max 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:numbins 50
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:rangemin -0.5
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:rangemax 0.5
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:underflows 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram:overflows 0
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:count 99
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:sumweights 99
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:mean 664.56565656566
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:stddev 53.277893262909
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:min 224
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:max 672
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:numbins 68
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:rangemin 110
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:rangemax 790
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:count 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:sumweights 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:stddev nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:min nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:max nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:numbins 1
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:rangemin 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:rangemax 1
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:underflows 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:histogram:overflows 0
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:count 99
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:sumweights 99
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:mean 664.56565656566
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:stddev 53.277893262909
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:min 224
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:max 672
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:numbins 68
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:rangemin 110
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:rangemax 790
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:underflows 0
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram:overflows 0
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:count 198
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:sumweights 198
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:mean inf
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:min inf
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:max inf
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:numbins 1
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:rangemin 0
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:rangemax 1
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:underflows 0
+scalar SimpleRREQ.receiver.wlan[0].radio minSnir:histogram:overflows 198
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:count 198
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:mean 0
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:min 0
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:max 0
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:numbins 50
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:underflows 0
+scalar SimpleRREQ.receiver.wlan[0].radio packetErrorRate:histogram:overflows 0
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:count 198
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:mean 0
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:min 0
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:max 0
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:numbins 50
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:underflows 0
+scalar SimpleRREQ.receiver.wlan[0].radio bitErrorRate:histogram:overflows 0
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:count 198
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:sumweights 198
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:mean 0
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:min 0
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:max 0
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:numbins 50
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:rangemin -0.5
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:rangemax 0.5
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:underflows 0
+scalar SimpleRREQ.receiver.wlan[0].radio symbolErrorRate:histogram:overflows 0
 statistic SimpleRREQ.sender.wlan[0].queue queueingTime:histogram
 field count 99
 field mean 0
@@ -161,11 +566,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -218,17 +618,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar SimpleRREQ.sender.wlan[0].queue outgoingPackets:count 99
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:sum 65824
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:histogram
 field count 99
 field mean 664.88888888889
@@ -237,11 +626,6 @@ field min 224
 field max 672
 field sum 65824
 field sqrsum 44026880
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	110	0
 bin	120	0
@@ -320,25 +704,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar SimpleRREQ.sender.wlan[0].queue incomingPackets:count 99
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:sum 65824
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:histogram
 field count 99
 field mean 664.88888888889
@@ -347,11 +715,6 @@ field min 224
 field max 672
 field sum 65824
 field sqrsum 44026880
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	110	0
 bin	120	0
@@ -422,108 +785,6 @@ bin	760	0
 bin	770	0
 bin	780	0
 bin	790	0
-scalar SimpleRREQ.sender.wlan[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:count 198
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, count"
-scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 21006
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, sum(packetBytes)"
-scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:count 99
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets sent to lower layer, count"
-scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:sum(packetBytes) 10505
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets sent to lower layer, sum(packetBytes)"
-scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:count 99
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 8228
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:count 100
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:sum(packetBytes) 8276
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:count 98
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 10430
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar SimpleRREQ.sender.wlan[0].mac linkBroken:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source linkBroken
-attr title "link break, count"
-scalar SimpleRREQ.sender.wlan[0].radio radioMode:count 3
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source radioModeChanged
-attr title "Radio mode, count"
-scalar SimpleRREQ.sender.wlan[0].radio receptionState:count 397
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source receptionStateChanged
-attr title "Radio reception state, count"
-scalar SimpleRREQ.sender.wlan[0].radio transmissionState:count 199
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source transmissionStateChanged
-attr title "Radio transmission state, count"
 statistic SimpleRREQ.sender.wlan[0].radio minSnir:histogram
 field count 198
 field mean inf
@@ -532,9 +793,6 @@ field min inf
 field max inf
 field sum inf
 field sqrsum inf
-attr recordingmode histogram
-attr source minimumSnir(packetSentToUpper)
-attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
 bin	1	198
@@ -546,9 +804,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source packetErrorRate(packetSentToUpper)
-attr title "Packet error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -609,9 +864,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source bitErrorRate(packetSentToUpper)
-attr title "Bit error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -672,9 +924,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source symbolErrorRate(packetSentToUpper)
-attr title "Symbol error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -727,175 +976,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar SimpleRREQ.sender.ipv4.arp arpResolutionCompleted:count 1
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar SimpleRREQ.sender.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar SimpleRREQ.sender.ipv4.arp arpReplySent:count 1
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar SimpleRREQ.sender.ipv4.arp arpReplySent:sum(packetBytes) 28
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar SimpleRREQ.sender.udp packetReceived:count 2
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar SimpleRREQ.sender.udp packetReceived:sum(packetBytes) 60
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar SimpleRREQ.sender.udp packetSent:count 1
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar SimpleRREQ.sender.udp packetSent:sum(packetBytes) 32
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar SimpleRREQ.sender.udp passedUpPk:count 2
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar SimpleRREQ.sender.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar SimpleRREQ.sender.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar SimpleRREQ.sender.app[0] "Pings sent" 97
-scalar SimpleRREQ.sender.app[0] "ping loss rate (%)" 0
-scalar SimpleRREQ.sender.app[0] "ping out-of-order rate (%)" 0
-scalar SimpleRREQ.sender.app[0] pingRxSeq:count 97
-attr interpolationmode none
-attr recordingmode count
-attr title "ping rx seq, count"
-scalar SimpleRREQ.sender.app[0] pingTxSeq:count 97
-attr interpolationmode none
-attr recordingmode count
-attr title "ping tx seq, count"
-scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:last nan
-attr interpolationmode none
-attr recordingmode last
-attr title "ping out-of-order arrivals, last"
-scalar SimpleRREQ.sender.app[0] numLost:last nan
-attr interpolationmode none
-attr recordingmode last
-attr title "pings lost, last"
 statistic SimpleRREQ.sender.app[0] rtt:histogram
 field count 97
 field mean 0.0020415753339278
@@ -904,10 +984,6 @@ field min 0.001906174836
 field max 0.015040023135
 field sum 0.198032807391
 field sqrsum 0.0005750185364197
-attr interpolationmode none
-attr recordingmode histogram
-attr title "ping round-trip time"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	0.0002	0
@@ -1002,88 +1078,6 @@ bin	0.0178	0
 bin	0.018	0
 bin	0.0182	0
 bin	0.0184	0
-scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:histogram
 field count 198
 field mean 0
@@ -1092,11 +1086,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1149,17 +1138,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPackets:count 198
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:sum 131616
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:histogram
 field count 198
 field mean 664.72727272727
@@ -1168,11 +1146,6 @@ field min 224
 field max 672
 field sum 131616
 field sqrsum 88028160
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	110	0
 bin	120	0
@@ -1251,25 +1224,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPackets:count 198
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:sum 131616
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:histogram
 field count 198
 field mean 664.72727272727
@@ -1278,11 +1235,6 @@ field min 224
 field max 672
 field sum 131616
 field sqrsum 88028160
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	110	0
 bin	120	0
@@ -1353,108 +1305,6 @@ bin	760	0
 bin	770	0
 bin	780	0
 bin	790	0
-scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:count 198
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 21006
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:count 198
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets sent to lower layer, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:sum(packetBytes) 21006
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets sent to lower layer, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:count 198
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 16452
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:count 198
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:sum(packetBytes) 16452
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0].mac linkBroken:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source linkBroken
-attr title "link break, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:count 3
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source radioModeChanged
-attr title "Radio mode, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:count 397
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source receptionStateChanged
-attr title "Radio reception state, count"
-scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:count 397
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source transmissionStateChanged
-attr title "Radio transmission state, count"
 statistic SimpleRREQ.intermediateNode.wlan[0].radio minSnir:histogram
 field count 198
 field mean inf
@@ -1463,9 +1313,6 @@ field min inf
 field max inf
 field sum inf
 field sqrsum inf
-attr recordingmode histogram
-attr source minimumSnir(packetSentToUpper)
-attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
 bin	1	198
@@ -1477,9 +1324,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source packetErrorRate(packetSentToUpper)
-attr title "Packet error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1540,9 +1384,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source bitErrorRate(packetSentToUpper)
-attr title "Bit error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1603,9 +1444,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source symbolErrorRate(packetSentToUpper)
-attr title "Symbol error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1658,238 +1496,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar SimpleRREQ.intermediateNode.ipv4.arp arpResolutionCompleted:count 2
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar SimpleRREQ.intermediateNode.ipv4.arp arpResolutionInitiated:count 1
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:count 1
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:sum(packetBytes) 28
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:count 1
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:sum(packetBytes) 28
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.udp packetReceived:count 2
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar SimpleRREQ.intermediateNode.udp packetReceived:sum(packetBytes) 60
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.udp packetSent:count 2
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar SimpleRREQ.intermediateNode.udp packetSent:sum(packetBytes) 60
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar SimpleRREQ.intermediateNode.udp passedUpPk:count 2
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar SimpleRREQ.receiver.wlan[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar SimpleRREQ.receiver.wlan[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic SimpleRREQ.receiver.wlan[0].queue queueingTime:histogram
 field count 99
 field mean 0
@@ -1898,11 +1504,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1955,17 +1556,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar SimpleRREQ.receiver.wlan[0].queue outgoingPackets:count 99
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:sum 65792
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:histogram
 field count 99
 field mean 664.56565656566
@@ -1974,11 +1564,6 @@ field min 224
 field max 672
 field sum 65792
 field sqrsum 44001280
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	110	0
 bin	120	0
@@ -2057,25 +1642,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar SimpleRREQ.receiver.wlan[0].queue incomingPackets:count 99
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:sum 65792
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:histogram
 field count 99
 field mean 664.56565656566
@@ -2084,11 +1653,6 @@ field min 224
 field max 672
 field sum 65792
 field sqrsum 44001280
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	110	0
 bin	120	0
@@ -2159,108 +1723,6 @@ bin	760	0
 bin	770	0
 bin	780	0
 bin	790	0
-scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:count 198
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, count"
-scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:sum(packetBytes) 21006
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromLower
-attr title "packets received from lower layer, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:count 99
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets sent to lower layer, count"
-scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:sum(packetBytes) 10501
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets sent to lower layer, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:count 99
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:sum(packetBytes) 8224
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:count 100
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:sum(packetBytes) 8256
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:count 98
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 10450
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0].mac linkBroken:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source linkBroken
-attr title "link break, count"
-scalar SimpleRREQ.receiver.wlan[0].radio radioMode:count 3
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source radioModeChanged
-attr title "Radio mode, count"
-scalar SimpleRREQ.receiver.wlan[0].radio receptionState:count 397
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source receptionStateChanged
-attr title "Radio reception state, count"
-scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:count 199
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source transmissionStateChanged
-attr title "Radio transmission state, count"
 statistic SimpleRREQ.receiver.wlan[0].radio minSnir:histogram
 field count 198
 field mean inf
@@ -2269,9 +1731,6 @@ field min inf
 field max inf
 field sum inf
 field sqrsum inf
-attr recordingmode histogram
-attr source minimumSnir(packetSentToUpper)
-attr title "Min SNIR"
 bin	-inf	0
 bin	0	0
 bin	1	198
@@ -2283,9 +1742,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source packetErrorRate(packetSentToUpper)
-attr title "Packet error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -2346,9 +1802,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source bitErrorRate(packetSentToUpper)
-attr title "Bit error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -2409,9 +1862,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr recordingmode histogram
-attr source symbolErrorRate(packetSentToUpper)
-attr title "Symbol error rate"
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -2464,154 +1914,1156 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar SimpleRREQ.receiver.ipv4.arp arpResolutionCompleted:count 2
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar SimpleRREQ.receiver.ipv4.arp arpResolutionInitiated:count 1
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:count 1
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:sum(packetBytes) 28
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar SimpleRREQ.receiver.udp packetReceived:count 1
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar SimpleRREQ.receiver.udp packetReceived:sum(packetBytes) 32
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar SimpleRREQ.receiver.udp packetSent:count 1
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar SimpleRREQ.receiver.udp packetSent:sum(packetBytes) 28
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar SimpleRREQ.receiver.udp passedUpPk:count 1
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar SimpleRREQ.receiver.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:count 104
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:sum 0
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:sumweights 104
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:mean 0
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:stddev 0
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:min 0
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:max 0
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:starttime 0
+scalar SimpleRREQ.sender.wlan[0].queue queueLength:vector:endtime 99.195254009217
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:count 104
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:sum 0
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:sumweights 104
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:mean 0
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:stddev 0
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:min 0
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:max 0
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:starttime 0
+scalar SimpleRREQ.sender.wlan[0].queue queueBitLength:vector:endtime 99.195254009217
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:count 99
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:sum 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:sumweights 99
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:mean 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:stddev 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:min 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:max 0
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:starttime 3.198218232299
+scalar SimpleRREQ.sender.wlan[0].queue queueingTime:vector:endtime 99.195254009217
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:count 99
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:sum 65824
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:sumweights 99
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:mean 664.88888888889
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:stddev 51.629940864297
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:min 224
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:max 672
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:starttime 3.198218232299
+scalar SimpleRREQ.sender.wlan[0].queue incomingPacketLengths:vector:endtime 99.195254009217
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:count 1000
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:sum 658240
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:mean 658.24
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:stddev 2000.8791116956
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:min 0
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:max 8960
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.sender.wlan[0].queue incomingDataRate:vector:endtime 100
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:count 99
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:sum 65824
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:sumweights 99
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:mean 664.88888888889
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:stddev 51.629940864297
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:min 224
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:max 672
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:starttime 3.198218232299
+scalar SimpleRREQ.sender.wlan[0].queue outgoingPacketLengths:vector:endtime 99.195254009217
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:count 1000
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:sum 658240
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:mean 658.24
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:stddev 2000.8791116956
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:min 0
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:max 8960
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.sender.wlan[0].queue outgoingDataRate:vector:endtime 100
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar SimpleRREQ.sender.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:count 0
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:sum 0
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:sumweights 0
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:stddev nan
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:min inf
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:max -inf
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:starttime nan
+scalar SimpleRREQ.sender.wlan[0].queue flowQueueingTime:vector:endtime nan
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:count 1000
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:sum 0
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:mean 0
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:stddev 0
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:min 0
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:max 0
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.sender.wlan[0].queue flowIncomingDataRate:vector:endtime 100
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:count 1000
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:sum 0
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:mean 0
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:min 0
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:max 0
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.sender.wlan[0].queue flowOutgoingDataRate:vector:endtime 100
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):count 100
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):sum 8276
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):sumweights 100
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):mean 82.76
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):stddev 7.3183317633174
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):min 28
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):max 84
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.sender.wlan[0].mac passedUpPk:vector(packetBytes):endtime 99.197160184053
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):count 99
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):sum 10505
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):sumweights 99
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):mean 106.11111111111
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):stddev 6.4537426080371
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):min 51
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):max 107
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):starttime 3.198218232299
+scalar SimpleRREQ.sender.wlan[0].mac sentDownPk:vector(packetBytes):endtime 99.195254009217
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 99
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 8228
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 99
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean 83.111111111111
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev 6.4537426080371
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):min 28
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):max 84
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):starttime 3.198218232299
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromHl:vector(packetBytes):endtime 99.195254009217
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):count 198
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):sum 21006
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):sumweights 198
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):mean 106.09090909091
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):stddev 6.5409152079959
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):min 51
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):max 107
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.sender.wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 99.197160184053
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 98
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 10430
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 98
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean 106.42857142857
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev 5.6568542494924
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min 51
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max 107
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime 3.20299635396
+scalar SimpleRREQ.sender.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime 99.196207096635
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:count 3
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:sum 4
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:sumweights 3
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:mean 1.3333333333333
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:stddev 2.3094010767585
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:min 0
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:max 4
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:starttime 0
+scalar SimpleRREQ.sender.wlan[0].radio radioMode:vector:endtime 0
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:count 397
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:sum 793
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:sumweights 397
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:mean 1.9974811083123
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:stddev 1.0012586537392
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:min 1
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:max 3
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:starttime 0
+scalar SimpleRREQ.sender.wlan[0].radio receptionState:vector:endtime 99.197160184053
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:count 199
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:sum 298
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:sumweights 199
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:mean 1.4974874371859
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:stddev 0.50125470711709
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:min 1
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:max 2
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:starttime 0
+scalar SimpleRREQ.sender.wlan[0].radio transmissionState:vector:endtime 99.195730009217
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.wlan[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.wlan[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar SimpleRREQ.sender.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):count 1
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):sum 28
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):sumweights 1
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):mean 28
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):min 28
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):max 28
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):starttime 3.207802770098
+scalar SimpleRREQ.sender.ipv4.arp arpReplySent:vector(packetBytes):endtime 3.207802770098
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):count 1
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):sum 32
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):sumweights 1
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):mean 32
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):stddev nan
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):min 32
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):max 32
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):starttime 3.198218232299
+scalar SimpleRREQ.sender.udp packetSent:vector(packetBytes):endtime 3.198218232299
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):count 2
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):sum 60
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):sumweights 2
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):mean 30
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):stddev 2.8284271247462
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):min 28
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):max 32
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.sender.udp packetReceived:vector(packetBytes):endtime 3.208387857516
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):count 3
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):sum 3
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):sumweights 3
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):mean 1
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):stddev 1
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):min 0
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):max 2
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):starttime 0
+scalar SimpleRREQ.sender.udp passedUpPk:vector(count):endtime 3.208387857516
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):count 1
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):sum 0
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):mean 0
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):stddev nan
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):min 0
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):max 0
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):starttime 0
+scalar SimpleRREQ.sender.udp droppedPkWrongPort:vector(count):endtime 0
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):count 1
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):sum 0
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):mean 0
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):min 0
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):max 0
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar SimpleRREQ.sender.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar SimpleRREQ.sender.app[0] rtt:vector:count 97
+scalar SimpleRREQ.sender.app[0] rtt:vector:sum 0.198032807391
+scalar SimpleRREQ.sender.app[0] rtt:vector:sumweights 97
+scalar SimpleRREQ.sender.app[0] rtt:vector:mean 0.0020415753339278
+scalar SimpleRREQ.sender.app[0] rtt:vector:stddev 0.0013335402503836
+scalar SimpleRREQ.sender.app[0] rtt:vector:min 0.001906174836
+scalar SimpleRREQ.sender.app[0] rtt:vector:max 0.015040023135
+scalar SimpleRREQ.sender.app[0] rtt:vector:starttime 3.210294032352
+scalar SimpleRREQ.sender.app[0] rtt:vector:endtime 99.197160184053
+scalar SimpleRREQ.sender.app[0] numLost:vector:count 0
+scalar SimpleRREQ.sender.app[0] numLost:vector:sum 0
+scalar SimpleRREQ.sender.app[0] numLost:vector:sumweights 0
+scalar SimpleRREQ.sender.app[0] numLost:vector:mean -nan
+scalar SimpleRREQ.sender.app[0] numLost:vector:stddev nan
+scalar SimpleRREQ.sender.app[0] numLost:vector:min inf
+scalar SimpleRREQ.sender.app[0] numLost:vector:max -inf
+scalar SimpleRREQ.sender.app[0] numLost:vector:starttime nan
+scalar SimpleRREQ.sender.app[0] numLost:vector:endtime nan
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:count 0
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:sum 0
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:sumweights 0
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:mean -nan
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:stddev nan
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:min inf
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:max -inf
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:starttime nan
+scalar SimpleRREQ.sender.app[0] numOutOfOrderArrivals:vector:endtime nan
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:count 97
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:sum 4656
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:sumweights 97
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:mean 48
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:stddev 28.145455524235
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:min 0
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:max 96
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:starttime 3.195254009217
+scalar SimpleRREQ.sender.app[0] pingTxSeq:vector:endtime 99.195254009217
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:count 97
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:sum 4656
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:sumweights 97
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:mean 48
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:stddev 28.145455524235
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:min 0
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:max 96
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:starttime 3.210294032352
+scalar SimpleRREQ.sender.app[0] pingRxSeq:vector:endtime 99.197160184053
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:count 203
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:sumweights 203
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:starttime 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueLength:vector:endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:count 203
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:sumweights 203
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:starttime 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueBitLength:vector:endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:starttime 3.202142722833
+scalar SimpleRREQ.intermediateNode.wlan[0].queue queueingTime:vector:endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:sum 131616
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:mean 664.72727272727
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:stddev 52.327321663966
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:min 224
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:max 672
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:starttime 3.202142722833
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingPacketLengths:vector:endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:count 1000
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:sum 1316160
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:mean 1316.16
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:stddev 4036.9160934983
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:max 25920
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.intermediateNode.wlan[0].queue incomingDataRate:vector:endtime 100
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:sum 131616
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:mean 664.72727272727
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:stddev 52.327321663966
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:min 224
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:max 672
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:starttime 3.202142722833
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingPacketLengths:vector:endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:count 1000
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:sum 1316160
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:mean 1316.16
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:stddev 4036.9160934983
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:max 25920
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.intermediateNode.wlan[0].queue outgoingDataRate:vector:endtime 100
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:sumweights 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:stddev nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:min inf
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:max -inf
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:starttime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowQueueingTime:vector:endtime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:count 1000
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowIncomingDataRate:vector:endtime 100
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:count 1000
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:mean 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:max 0
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.intermediateNode.wlan[0].queue flowOutgoingDataRate:vector:endtime 100
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):sum 16452
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):mean 83.090909090909
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):stddev 6.5409152079958
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):min 28
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):max 84
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):starttime 3.198566776008
+scalar SimpleRREQ.intermediateNode.wlan[0].mac passedUpPk:vector(packetBytes):endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):sum 21006
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):mean 106.09090909091
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):stddev 6.5409152079959
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):min 51
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):max 107
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):starttime 3.202142722833
+scalar SimpleRREQ.intermediateNode.wlan[0].mac sentDownPk:vector(packetBytes):endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 16452
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean 83.090909090909
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev 6.5409152079958
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):min 28
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):max 84
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):starttime 3.202142722833
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromHl:vector(packetBytes):endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):count 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):sum 21006
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):sumweights 198
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):mean 106.09090909091
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):stddev 6.5409152079959
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):min 51
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):max 107
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 3.198566776008
+scalar SimpleRREQ.intermediateNode.wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:count 3
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:sum 4
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:sumweights 3
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:mean 1.3333333333333
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:stddev 2.3094010767585
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:min 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:max 4
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:starttime 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio radioMode:vector:endtime 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:count 397
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:sum 793
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:sumweights 397
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:mean 1.9974811083123
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:stddev 1.0012586537392
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:min 1
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:max 3
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:starttime 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio receptionState:vector:endtime 99.196683640344
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:count 397
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:sum 595
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:sumweights 397
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:mean 1.4987405541562
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:stddev 0.50062932686961
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:min 1
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:max 2
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:starttime 0
+scalar SimpleRREQ.intermediateNode.wlan[0].radio transmissionState:vector:endtime 99.197159640344
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.wlan[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar SimpleRREQ.intermediateNode.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):count 1
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):sum 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 1
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):mean 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):min 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):max 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):starttime 3.207550226389
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpRequestSent:vector(packetBytes):endtime 3.207550226389
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):count 1
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):sum 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):sumweights 1
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):mean 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):min 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):max 28
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):starttime 3.202743810251
+scalar SimpleRREQ.intermediateNode.ipv4.arp arpReplySent:vector(packetBytes):endtime 3.202743810251
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):count 2
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):sum 60
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):sumweights 2
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):mean 30
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):stddev 2.8284271247462
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):min 28
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):max 32
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):starttime 3.202142722833
+scalar SimpleRREQ.intermediateNode.udp packetSent:vector(packetBytes):endtime 3.207550226389
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):count 2
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):sum 60
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):sumweights 2
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):mean 30
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):stddev 2.8284271247462
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):min 28
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):max 32
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):starttime 3.198566776008
+scalar SimpleRREQ.intermediateNode.udp packetReceived:vector(packetBytes):endtime 3.203328897669
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):count 3
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):sum 3
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):sumweights 3
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):mean 1
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):stddev 1
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):min 0
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):max 2
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):starttime 0
+scalar SimpleRREQ.intermediateNode.udp passedUpPk:vector(count):endtime 3.203328897669
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):count 1
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):sum 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):mean 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):stddev nan
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):min 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):max 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):starttime 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkWrongPort:vector(count):endtime 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):count 1
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):sum 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):mean 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):min 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):max 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar SimpleRREQ.intermediateNode.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:count 104
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:sum 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:sumweights 104
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:mean 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:min 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:max 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:starttime 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueLength:vector:endtime 99.196207096635
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:count 104
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:sum 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:sumweights 104
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:mean 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:min 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:max 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:starttime 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueBitLength:vector:endtime 99.196207096635
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:count 99
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:sum 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:sumweights 99
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:mean 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:min 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:max 0
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:starttime 3.202491266542
+scalar SimpleRREQ.receiver.wlan[0].queue queueingTime:vector:endtime 99.196207096635
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:count 99
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:sum 65792
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:sumweights 99
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:mean 664.56565656566
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:stddev 53.277893262909
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:min 224
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:max 672
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:starttime 3.202491266542
+scalar SimpleRREQ.receiver.wlan[0].queue incomingPacketLengths:vector:endtime 99.196207096635
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:count 1000
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:sum 657920
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:mean 657.92
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:stddev 2017.4880251272
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:min 0
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:max 12800
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.receiver.wlan[0].queue incomingDataRate:vector:endtime 100
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:count 99
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:sum 65792
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:sumweights 99
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:mean 664.56565656566
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:stddev 53.277893262909
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:min 224
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:max 672
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:starttime 3.202491266542
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingPacketLengths:vector:endtime 99.196207096635
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:count 1000
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:sum 657920
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:mean 657.92
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:stddev 2017.4880251272
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:min 0
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:max 12800
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.receiver.wlan[0].queue outgoingDataRate:vector:endtime 100
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar SimpleRREQ.receiver.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:count 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:sum 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:sumweights 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:stddev nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:min inf
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:max -inf
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:starttime nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowQueueingTime:vector:endtime nan
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:count 1000
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:sum 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:mean 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:min 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:max 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.receiver.wlan[0].queue flowIncomingDataRate:vector:endtime 100
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:count 1000
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:sum 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:sumweights 1000
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:mean 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:min 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:max 0
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar SimpleRREQ.receiver.wlan[0].queue flowOutgoingDataRate:vector:endtime 100
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):count 100
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):sum 8256
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):sumweights 100
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):mean 82.56
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):stddev 8.461821567631
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):min 28
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):max 84
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.receiver.wlan[0].mac passedUpPk:vector(packetBytes):endtime 99.196207096635
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):count 99
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):sum 10501
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):sumweights 99
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):mean 106.07070707071
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):stddev 6.6597366578636
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):min 51
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):max 107
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.receiver.wlan[0].mac sentDownPk:vector(packetBytes):endtime 99.196207096635
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 99
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 8224
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 99
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean 83.070707070707
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev 6.6597366578636
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):min 28
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):max 84
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromHl:vector(packetBytes):endtime 99.196207096635
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):count 198
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):sum 21006
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):sumweights 198
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):mean 106.09090909091
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):stddev 6.5409152079959
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):min 51
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):max 107
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.receiver.wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 99.197160184053
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 98
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 10450
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 98
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean 106.63265306122
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev 3.6365491603879
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min 71
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max 107
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime 3.208387857516
+scalar SimpleRREQ.receiver.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime 99.197160184053
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:count 3
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:sum 4
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:sumweights 3
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:mean 1.3333333333333
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:stddev 2.3094010767585
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:min 0
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:max 4
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:starttime 0
+scalar SimpleRREQ.receiver.wlan[0].radio radioMode:vector:endtime 0
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:count 397
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:sum 793
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:sumweights 397
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:mean 1.9974811083123
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:stddev 1.0012586537392
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:min 1
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:max 3
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:starttime 0
+scalar SimpleRREQ.receiver.wlan[0].radio receptionState:vector:endtime 99.197160184053
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:count 199
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:sum 298
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:sumweights 199
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:mean 1.4974874371859
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:stddev 0.50125470711709
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:min 1
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:max 2
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:starttime 0
+scalar SimpleRREQ.receiver.wlan[0].radio transmissionState:vector:endtime 99.196683096635
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.wlan[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.wlan[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):count 1
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):sum 28
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 1
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):mean 28
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):min 28
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):max 28
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.receiver.ipv4.arp arpRequestSent:vector(packetBytes):endtime 3.202491266542
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar SimpleRREQ.receiver.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):count 1
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):sum 28
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):sumweights 1
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):mean 28
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):min 28
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):max 28
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.receiver.udp packetSent:vector(packetBytes):endtime 3.202491266542
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):count 1
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):sum 32
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):sumweights 1
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):mean 32
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):stddev nan
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):min 32
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):max 32
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):starttime 3.202491266542
+scalar SimpleRREQ.receiver.udp packetReceived:vector(packetBytes):endtime 3.202491266542
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):count 2
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):sum 1
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):sumweights 2
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):mean 0.5
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):stddev 0.70710678118655
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):min 0
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):max 1
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):starttime 0
+scalar SimpleRREQ.receiver.udp passedUpPk:vector(count):endtime 3.202491266542
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):count 1
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):sum 0
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):mean 0
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):stddev nan
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):min 0
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):max 0
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):starttime 0
+scalar SimpleRREQ.receiver.udp droppedPkWrongPort:vector(count):endtime 0
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):count 1
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):sum 0
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):mean 0
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):min 0
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):max 0
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar SimpleRREQ.receiver.udp droppedPkBadChecksum:vector(count):endtime 0
 

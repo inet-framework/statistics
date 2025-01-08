@@ -1,8 +1,8 @@
 version 3
-run Latency-0-20241104-10:09:25-18815
+run Latency-0-20250108-11:18:50-9400
 attr configname Latency
-attr datetime 20241104-10:09:25
-attr datetimef 20241104-100925
+attr datetime 20250108-11:18:50
+attr datetimef 20250108-111850
 attr experiment Latency
 attr inifile latency.ini
 attr iterationvars "$numNodes=1, $packetLength=46"
@@ -10,7 +10,7 @@ attr iterationvarsd numNodes=1/packetLength=46
 attr iterationvarsf numNodes=1,packetLength=46-
 attr measurement "$numNodes=1, $packetLength=46"
 attr network MultidropNetwork
-attr processid 18815
+attr processid 9400
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -19,9 +19,9 @@ attr seedset 0
 itervar numNodes 1
 itervar packetLength 46
 config **.param-recording false
-config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/latency.ini-Latency-#0.sca
+config output-vector-file results/latency.ini-Latency-#0.vec
 config sim-time-limit 100ms
 config description "Latency analysis of an Ethernet 10BASE-T1S multidrop link"
 config network MultidropNetwork
@@ -44,73 +44,356 @@ config *.visualizer.interfaceTableVisualizer.displayInterfaceTables true
 config *.visualizer.interfaceTableVisualizer.format "\"%N%\\\\%m\""
 
 scalar MultidropNetwork.controller.ethernet pauseSent:count 0
-attr recordingmode count
-attr title "pause sent, count"
 scalar MultidropNetwork.controller.ethernet pauseSent:sum 0
-attr recordingmode sum
-attr title "pause sent, sum"
 scalar MultidropNetwork.controller.ethernet decapPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source decapPk
-attr title "packets decapsulated, count"
 scalar MultidropNetwork.controller.ethernet decapPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source decapPk
-attr title "packets decapsulated, sum(packetBytes)"
 scalar MultidropNetwork.controller.ethernet encapPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source encapPk
-attr title "packets encapsulated, count"
 scalar MultidropNetwork.controller.ethernet encapPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source encapPk
-attr title "packets encapsulated, sum(packetBytes)"
 scalar MultidropNetwork.controller.eth[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
 scalar MultidropNetwork.controller.eth[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
 scalar MultidropNetwork.controller.eth[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
 scalar MultidropNetwork.controller.eth[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
 scalar MultidropNetwork.controller.eth[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
 scalar MultidropNetwork.controller.eth[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
+scalar MultidropNetwork.controller.eth[0].queue outgoingPackets:count 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:sum 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPackets:count 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:sum 0
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketsQueueOverflow:count 0
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar MultidropNetwork.controller.eth[0].mac state:count 2208
+scalar MultidropNetwork.controller.eth[0].mac collision:count 2
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:count 1473
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:count 5512
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:count 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:count 0
+scalar MultidropNetwork.controller.eth[0].plca txCmd:count 11025
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:count 3678
+scalar MultidropNetwork.controller.eth[0].plca dataState:count 4047
+scalar MultidropNetwork.controller.eth[0].plca controlState:count 44832
+scalar MultidropNetwork.controller.eth[0].plca collision:count 2
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:count 11761
+scalar MultidropNetwork.controller.eth[0].phy busUsed:count 14703
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:count 74
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:count 11026
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:count 3679
+scalar MultidropNetwork.controller.eth[0].phy state:count 21685
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:count 0
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:count 0
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar MultidropNetwork.controller.app[0].sink packets:count 735
+scalar MultidropNetwork.controller.app[0].sink packetLengths:sum 270480
+scalar MultidropNetwork.controller.app[0].sink droppedPackets:count 735
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:sum 270480
+scalar MultidropNetwork.controller.app[0].io "packets sent" 0
+scalar MultidropNetwork.controller.app[0].io "packets received" 735
+scalar MultidropNetwork.controller.app[0].io packetReceived:count 735
+scalar MultidropNetwork.controller.app[0].io packetReceived:sum(packetBytes) 33810
+scalar MultidropNetwork.controller.app[0].io packetSent:count 0
+scalar MultidropNetwork.controller.app[0].io packetSent:sum(packetBytes) 0
+scalar MultidropNetwork.node[0].ethernet pauseSent:count 0
+scalar MultidropNetwork.node[0].ethernet pauseSent:sum 0
+scalar MultidropNetwork.node[0].ethernet decapPk:count 0
+scalar MultidropNetwork.node[0].ethernet decapPk:sum(packetBytes) 0
+scalar MultidropNetwork.node[0].ethernet encapPk:count 736
+scalar MultidropNetwork.node[0].ethernet encapPk:sum(packetBytes) 33856
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:last 0
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:max 0
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:timeavg 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:last 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:max 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:timeavg 0
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPackets:count 736
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:sum 376832
+scalar MultidropNetwork.node[0].eth[0].queue incomingPackets:count 736
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:sum 376832
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketsQueueOverflow:count 0
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar MultidropNetwork.node[0].eth[0].mac state:count 4783
+scalar MultidropNetwork.node[0].eth[0].mac collision:count 738
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:count 2209
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:count 5512
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:count 735
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:count 736
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:count 2207
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:count 11025
+scalar MultidropNetwork.node[0].eth[0].plca dataState:count 3680
+scalar MultidropNetwork.node[0].eth[0].plca controlState:count 45934
+scalar MultidropNetwork.node[0].eth[0].plca collision:count 2
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:count 11761
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:count 14703
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:count 74
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:count 3679
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:count 11026
+scalar MultidropNetwork.node[0].eth[0].phy state:count 20582
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:count 0
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:count 0
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar MultidropNetwork.node[0].app[0].source packets:count 736
+scalar MultidropNetwork.node[0].app[0].source packetLengths:sum 270848
+scalar MultidropNetwork.node[0].app[0].io "packets sent" 736
+scalar MultidropNetwork.node[0].app[0].io "packets received" 0
+scalar MultidropNetwork.node[0].app[0].io packetReceived:count 0
+scalar MultidropNetwork.node[0].app[0].io packetReceived:sum(packetBytes) 0
+scalar MultidropNetwork.node[0].app[0].io packetSent:count 736
+scalar MultidropNetwork.node[0].app[0].io packetSent:sum(packetBytes) 33856
+scalar MultidropNetwork.j[0] packetReceived:count 8454
+scalar MultidropNetwork.j[0] packetReceived:sum(packetBytes) 172843
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:count 0
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:min nan
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:max nan
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:numbins 1
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:rangemin 0
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:rangemax 1
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:underflows 0
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:histogram:overflows 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:count 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:min nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:max nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:numbins 1
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:rangemin 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:rangemax 1
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:count 0
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:min nan
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:max nan
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:numbins 1
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:rangemin 0
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:rangemax 1
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:underflows 0
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:histogram:overflows 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:count 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:min nan
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:max nan
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:numbins 1
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:rangemin 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:rangemax 1
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:underflows 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram:overflows 0
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:count 0
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:sumweights 0
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:mean -nan
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:stddev nan
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:min nan
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:max nan
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:numbins 1
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:rangemin 0
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:rangemax 1
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:underflows 0
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:histogram:overflows 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:count 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:sumweights 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:mean -nan
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:stddev nan
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:min nan
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:max nan
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:numbins 1
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:rangemin 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:rangemax 1
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:underflows 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram:overflows 0
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:count 56
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:sumweights 56
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:mean 1103654.4550812
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:stddev 42957.370272937
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:min 1074116.7403779
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:max 1165494.3735759
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:numbins 70
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:rangemin 1050000
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:rangemax 1190000
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:underflows 0
+scalar MultidropNetwork.controller.eth[0].phy throughput:histogram:overflows 0
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:count 5512
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:sumweights 5512
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:mean 2.0000000000002e-06
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:stddev 0
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:min 2e-06
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:max 2e-06
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:numbins 51
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:rangemin 0
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:rangemax 0.51
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:underflows 0
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:histogram:overflows 0
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:count 735
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:mean 368
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:stddev 0
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:min 368
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:max 368
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:numbins 2
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:rangemin 367
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:rangemax 369
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:underflows 0
+scalar MultidropNetwork.controller.app[0].sink packetLengths:histogram:overflows 0
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:count 735
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:mean 9.2264719727893e-05
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:stddev 3.383432823311e-05
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:min 5.84075e-05
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:max 0.0001260365
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:numbins 52
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:rangemin 4e-05
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:rangemax 0.000144
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:underflows 0
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram:overflows 0
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:count 735
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:mean 1.7147823129252e-07
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:stddev 6.7779313942996e-05
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:min -6.7629e-05
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:max 0.000123621
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:numbins 59
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:rangemin -0.00012
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:rangemax 0.000175
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:underflows 0
+scalar MultidropNetwork.controller.app[0].sink packetJitter:histogram:overflows 0
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:count 735
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:mean 1.1476204202972e-07
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:stddev 3.3682467321366e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:min -3.3771780272108e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:max 3.3811209128066e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:numbins 52
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:rangemin -5.2e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:rangemax 5.2e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:underflows 0
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:histogram:overflows 0
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:count 735
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:mean 3.3744030311307e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:stddev 1.2519830185525e-06
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:min 0
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:max 3.3811326359048e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:numbins 85
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:rangemin 0
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:rangemax 4.25e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:underflows 0
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram:overflows 0
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:count 735
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:mean 368
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:stddev 0
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:min 368
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:max 368
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:numbins 2
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:rangemin 367
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:rangemax 369
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:underflows 0
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram:overflows 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:count 736
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:sumweights 736
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:mean 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:stddev 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:min 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:max 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:numbins 50
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:rangemin -0.5
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:rangemax 0.5
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:underflows 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:histogram:overflows 0
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:count 736
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:sumweights 736
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:mean 512
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:stddev 0
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:min 512
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:max 512
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:numbins 2
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:rangemin 511
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:rangemax 513
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:count 0
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:sumweights 0
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:mean -nan
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:stddev nan
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:min nan
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:max nan
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:numbins 1
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:rangemin 0
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:rangemax 1
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:underflows 0
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:histogram:overflows 0
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:count 736
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:sumweights 736
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:mean 512
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:stddev 0
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:min 512
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:max 512
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:numbins 2
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:rangemin 511
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:rangemax 513
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:underflows 0
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram:overflows 0
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:count 735
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:sumweights 735
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:mean 0.00013591127414966
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:stddev 6.7671764896751e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:min 6.8371e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:max 0.000203629
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:numbins 102
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:rangemin 3.4e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:rangemax 0.000238
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:underflows 0
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:histogram:overflows 0
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:count 736
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:sumweights 736
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:mean 3.3811218070652e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:stddev 3.3834328073724e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:min 0
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:max 6.7629e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:numbins 85
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:rangemin 0
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:rangemax 8.5e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:underflows 0
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram:overflows 0
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:count 19
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:sumweights 19
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:mean 5413346.0830268
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:stddev 60257.55424331
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:min 5173442.7452443
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:max 5492632.8322667
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:numbins 49
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:rangemin 5090000
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:rangemax 5580000
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:underflows 0
+scalar MultidropNetwork.node[0].eth[0].phy throughput:histogram:overflows 0
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:count 1838
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:sumweights 1838
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:mean 2.9829240206746e-05
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:stddev 2.3355253034139e-05
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:min 9.6e-06
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:max 5.84e-05
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:numbins 71
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:rangemin 0
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:rangemax 7.1e-05
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:underflows 0
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:histogram:overflows 0
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:count 736
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:sumweights 736
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:mean 368
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:stddev 0
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:min 368
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:max 368
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:numbins 2
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:rangemin 367
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:rangemax 369
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:underflows 0
+scalar MultidropNetwork.node[0].app[0].source packetLengths:histogram:overflows 0
 statistic MultidropNetwork.controller.eth[0].queue queueingTime:histogram
 field count 0
 field mean -nan
@@ -119,25 +402,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar MultidropNetwork.controller.eth[0].queue outgoingPackets:count 0
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:histogram
 field count 0
 field mean -nan
@@ -146,11 +413,6 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
@@ -162,25 +424,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar MultidropNetwork.controller.eth[0].queue incomingPackets:count 0
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic MultidropNetwork.controller.eth[0].queue incomingPacketLengths:histogram
 field count 0
 field mean -nan
@@ -189,54 +435,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar MultidropNetwork.controller.eth[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar MultidropNetwork.controller.eth[0].mac state:count 2208
-attr enum IDLE,WAIT_IFG,TRANSMITTING,JAMMING,BACKOFF,RECEIVING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source stateChanged
-attr title "state, count"
-attr type enum
-scalar MultidropNetwork.controller.eth[0].mac collision:count 2
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source collisionChanged
-attr title "collision, count"
-attr type int
-scalar MultidropNetwork.controller.eth[0].mac carrierSense:count 1473
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source carrierSenseChanged
-attr title "carrier sense, count"
-attr type int
-scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:count 5512
-attr interpolationmode none
-attr recordingmode count
-attr title "transmit opportunity used, count"
-scalar MultidropNetwork.controller.eth[0].plca packetInterval:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "packet interval, count"
-attr unit s
 statistic MultidropNetwork.controller.eth[0].plca packetInterval:histogram
 field count 0
 field mean -nan
@@ -245,18 +446,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr title "packet interval"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "packet pending delay, count"
-attr unit s
 statistic MultidropNetwork.controller.eth[0].plca packetPendingDelay:histogram
 field count 0
 field mean -nan
@@ -265,92 +457,17 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr title "packet pending delay"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar MultidropNetwork.controller.eth[0].plca txCmd:count 11025
-attr enum NONE,BEACON,COMMIT
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "TX command, count"
-attr type enum
-scalar MultidropNetwork.controller.eth[0].plca rxCmd:count 3678
-attr enum NONE,BEACON,COMMIT
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "RX command, count"
-attr type enum
-scalar MultidropNetwork.controller.eth[0].plca dataState:count 4047
-attr enum WAIT_IDLE,IDLE,RECEIVE,HOLD,COLLIDE,DELAY_PENDING,PENDING,WAIT_MAC,TRANSMIT
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source dataStateChanged
-attr title "data state, count"
-attr type enum
-scalar MultidropNetwork.controller.eth[0].plca controlState:count 44832
-attr enum DISABLE,RESYNC,RECOVER,SEND_BEACON,SYNCING,WAIT_TO,EARLY_RECEIVE,COMMIT,YIELD,RECEIVE,TRANSMIT,BURST,ABORT,NEXT_TX_OPPORTUNITY
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source controlStateChanged
-attr title "control state, count"
-attr type enum
-scalar MultidropNetwork.controller.eth[0].plca collision:count 2
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source collisionChanged
-attr title "collision, count"
-attr type int
-scalar MultidropNetwork.controller.eth[0].plca carrierSense:count 11761
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source carrierSenseChanged
-attr title "carrier sense, count"
-attr type int
-scalar MultidropNetwork.controller.eth[0].phy busUsed:count 14703
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "bus used, count"
-scalar MultidropNetwork.controller.eth[0].phy busUtilization:count 74
-attr interpolationmode linear
-attr recordingmode count
-attr source utilization(busUsed)
-attr title "bus utilization, count"
-scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:count 11026
-attr enum NONE,BEACON,COMMIT,DATA,JAM
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "transmitted signal type, count"
-attr type enum
-scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:count 3679
-attr enum NONE,BEACON,COMMIT,DATA,JAM
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "received signal type, count"
-attr type enum
-scalar MultidropNetwork.controller.eth[0].phy state:count 21685
-attr enum IDLE,TRANSMITTING,RECEIVING,COLLISION,CRS_ON
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source stateChanged
-attr title "state, count"
-attr type enum
 statistic MultidropNetwork.controller.eth[0].phy throughput:histogram
 field count 56
 field mean 1103654.4550812
-field stddev 42957.370272836
+field stddev 42957.370272937
 field min 1074116.7403779
 field max 1165494.3735759
 field sum 61804649.484546
 field sqrsum 68312470209692
-attr interpolationmode linear
-attr recordingmode histogram
-attr source throughput(transmissionEnded)
-attr title throughput
-attr unit bps
 bin	-inf	0
 bin	1050000	0
 bin	1052000	0
@@ -425,17 +542,12 @@ bin	1188000	0
 bin	1190000	0
 statistic MultidropNetwork.controller.eth[0].phy transmissionTime:histogram
 field count 5512
-field mean 2.0000000000001e-06
+field mean 2.0000000000002e-06
 field stddev 0
 field min 2e-06
 field max 2e-06
 field sum 0.011024000000001
 field sqrsum 2.2048000000002e-08
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetDuration(transmissionEnded)
-attr title "transmission time"
-attr unit s
 bin	-inf	0
 bin	0	5512
 bin	0.01	0
@@ -489,37 +601,6 @@ bin	0.48	0
 bin	0.49	0
 bin	0.5	0
 bin	0.51	0
-scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar MultidropNetwork.controller.app[0].sink packets:count 735
-attr recordingmode count
-attr source packetPushed
-attr title "packets, count"
-attr unit pk
-scalar MultidropNetwork.controller.app[0].sink packetLengths:sum 270480
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushed)
-attr title "packet lengths, sum"
-attr unit b
 statistic MultidropNetwork.controller.app[0].sink packetLengths:histogram
 field count 735
 field mean 368
@@ -528,28 +609,18 @@ field min 368
 field max 368
 field sum 270480
 field sqrsum 99536640
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
 bin	-inf	0
 bin	367	0
 bin	368	735
 bin	369	0
 statistic MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:histogram
 field count 735
-field mean 9.2264719727892e-05
+field mean 9.2264719727893e-05
 field stddev 3.383432823311e-05
 field min 5.84075e-05
 field max 0.0001260365
 field sum 0.067814569000001
 field sqrsum 7.0971473392205e-06
-attr interpolationmode none
-attr recordingmode histogram
-attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
-attr title "mean bit life time per packet"
-attr unit s
 bin	-inf	0
 bin	4e-05	0
 bin	4.2e-05	0
@@ -612,11 +683,6 @@ field min -6.7629e-05
 field max 0.000123621
 field sum 0.0001260365
 field sqrsum 3.3720435950762e-06
-attr interpolationmode none
-attr recordingmode histogram
-attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
-attr title "packet jitter"
-attr unit s
 bin	-inf	0
 bin	-0.00012	0
 bin	-0.000115	0
@@ -686,11 +752,6 @@ field min -3.3771780272108e-05
 field max 3.3811209128066e-05
 field sum 8.4350100891846e-05
 field sqrsum 8.3273899615329e-07
-attr interpolationmode none
-attr recordingmode histogram
-attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
-attr title "packet delay difference to mean"
-attr unit s
 bin	-inf	0
 bin	-5.2e-05	0
 bin	-5e-05	0
@@ -747,16 +808,12 @@ bin	5e-05	0
 bin	5.2e-05	0
 statistic MultidropNetwork.controller.app[0].sink packetDelayVariation:histogram
 field count 735
-field mean 3.3744030311308e-05
-field stddev 1.2519830185445e-06
+field mean 3.3744030311307e-05
+field stddev 1.2519830185525e-06
 field min 0
 field max 3.3811326359048e-05
 field sum 0.024801862278811
 field sqrsum 8.3806530923847e-07
-attr recordingmode histogram
-attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
-attr title "packet delay variation"
-attr unit s
 bin	-inf	0
 bin	0	1
 bin	5e-07	0
@@ -844,17 +901,6 @@ bin	4.1e-05	0
 bin	4.15e-05	0
 bin	4.2e-05	0
 bin	4.25e-05	0
-scalar MultidropNetwork.controller.app[0].sink droppedPackets:count 735
-attr recordingmode count
-attr source packetDropped
-attr title "dropped packets, count"
-attr unit pk
-scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:sum 270480
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropped)
-attr title "dropped packet lengths, sum"
-attr unit b
 statistic MultidropNetwork.controller.app[0].sink droppedPacketLengths:histogram
 field count 735
 field mean 368
@@ -863,105 +909,10 @@ field min 368
 field max 368
 field sum 270480
 field sqrsum 99536640
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetDropped)
-attr title "dropped packet lengths"
-attr unit b
 bin	-inf	0
 bin	367	0
 bin	368	735
 bin	369	0
-scalar MultidropNetwork.controller.app[0].io "packets sent" 0
-scalar MultidropNetwork.controller.app[0].io "packets received" 735
-scalar MultidropNetwork.controller.app[0].io packetReceived:count 735
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar MultidropNetwork.controller.app[0].io packetReceived:sum(packetBytes) 33810
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar MultidropNetwork.controller.app[0].io packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar MultidropNetwork.controller.app[0].io packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar MultidropNetwork.node[0].ethernet pauseSent:count 0
-attr recordingmode count
-attr title "pause sent, count"
-scalar MultidropNetwork.node[0].ethernet pauseSent:sum 0
-attr recordingmode sum
-attr title "pause sent, sum"
-scalar MultidropNetwork.node[0].ethernet decapPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source decapPk
-attr title "packets decapsulated, count"
-scalar MultidropNetwork.node[0].ethernet decapPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source decapPk
-attr title "packets decapsulated, sum(packetBytes)"
-scalar MultidropNetwork.node[0].ethernet encapPk:count 736
-attr interpolationmode none
-attr recordingmode count
-attr source encapPk
-attr title "packets encapsulated, count"
-scalar MultidropNetwork.node[0].ethernet encapPk:sum(packetBytes) 33856
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source encapPk
-attr title "packets encapsulated, sum(packetBytes)"
-scalar MultidropNetwork.node[0].eth[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar MultidropNetwork.node[0].eth[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar MultidropNetwork.node[0].eth[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic MultidropNetwork.node[0].eth[0].queue queueingTime:histogram
 field count 736
 field mean 0
@@ -970,11 +921,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1027,17 +973,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar MultidropNetwork.node[0].eth[0].queue outgoingPackets:count 736
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:sum 376832
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:histogram
 field count 736
 field mean 512
@@ -1046,11 +981,6 @@ field min 512
 field max 512
 field sum 376832
 field sqrsum 192937984
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	511	0
 bin	512	736
@@ -1063,25 +993,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar MultidropNetwork.node[0].eth[0].queue incomingPackets:count 736
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:sum 376832
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:histogram
 field count 736
 field mean 512
@@ -1090,67 +1004,18 @@ field min 512
 field max 512
 field sum 376832
 field sqrsum 192937984
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	511	0
 bin	512	736
 bin	513	0
-scalar MultidropNetwork.node[0].eth[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar MultidropNetwork.node[0].eth[0].mac state:count 4783
-attr enum IDLE,WAIT_IFG,TRANSMITTING,JAMMING,BACKOFF,RECEIVING
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source stateChanged
-attr title "state, count"
-attr type enum
-scalar MultidropNetwork.node[0].eth[0].mac collision:count 738
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source collisionChanged
-attr title "collision, count"
-attr type int
-scalar MultidropNetwork.node[0].eth[0].mac carrierSense:count 2209
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source carrierSenseChanged
-attr title "carrier sense, count"
-attr type int
-scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:count 5512
-attr interpolationmode none
-attr recordingmode count
-attr title "transmit opportunity used, count"
-scalar MultidropNetwork.node[0].eth[0].plca packetInterval:count 735
-attr interpolationmode none
-attr recordingmode count
-attr title "packet interval, count"
-attr unit s
 statistic MultidropNetwork.node[0].eth[0].plca packetInterval:histogram
 field count 735
 field mean 0.00013591127414966
-field stddev 6.7671764896755e-05
+field stddev 6.7671764896751e-05
 field min 6.8371e-05
 field max 0.000203629
 field sum 0.099894786499999
 field sqrsum 1.6938157053076e-05
-attr interpolationmode none
-attr recordingmode histogram
-attr title "packet interval"
-attr unit s
 bin	-inf	0
 bin	3.4e-05	0
 bin	3.6e-05	0
@@ -1255,11 +1120,6 @@ bin	0.000232	0
 bin	0.000234	0
 bin	0.000236	0
 bin	0.000238	0
-scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:count 736
-attr interpolationmode none
-attr recordingmode count
-attr title "packet pending delay, count"
-attr unit s
 statistic MultidropNetwork.node[0].eth[0].plca packetPendingDelay:histogram
 field count 736
 field mean 3.3811218070652e-05
@@ -1268,10 +1128,6 @@ field min 0
 field max 6.7629e-05
 field sum 0.0248850565
 field sqrsum 1.6827939628293e-06
-attr interpolationmode none
-attr recordingmode histogram
-attr title "packet pending delay"
-attr unit s
 bin	-inf	0
 bin	0	368
 bin	1e-06	0
@@ -1359,85 +1215,14 @@ bin	8.2e-05	0
 bin	8.3e-05	0
 bin	8.4e-05	0
 bin	8.5e-05	0
-scalar MultidropNetwork.node[0].eth[0].plca txCmd:count 2207
-attr enum NONE,BEACON,COMMIT
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "TX command, count"
-attr type enum
-scalar MultidropNetwork.node[0].eth[0].plca rxCmd:count 11025
-attr enum NONE,BEACON,COMMIT
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "RX command, count"
-attr type enum
-scalar MultidropNetwork.node[0].eth[0].plca dataState:count 3680
-attr enum WAIT_IDLE,IDLE,RECEIVE,HOLD,COLLIDE,DELAY_PENDING,PENDING,WAIT_MAC,TRANSMIT
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source dataStateChanged
-attr title "data state, count"
-attr type enum
-scalar MultidropNetwork.node[0].eth[0].plca controlState:count 45934
-attr enum DISABLE,RESYNC,RECOVER,SEND_BEACON,SYNCING,WAIT_TO,EARLY_RECEIVE,COMMIT,YIELD,RECEIVE,TRANSMIT,BURST,ABORT,NEXT_TX_OPPORTUNITY
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source controlStateChanged
-attr title "control state, count"
-attr type enum
-scalar MultidropNetwork.node[0].eth[0].plca collision:count 2
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source collisionChanged
-attr title "collision, count"
-attr type int
-scalar MultidropNetwork.node[0].eth[0].plca carrierSense:count 11761
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source carrierSenseChanged
-attr title "carrier sense, count"
-attr type int
-scalar MultidropNetwork.node[0].eth[0].phy busUsed:count 14703
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "bus used, count"
-scalar MultidropNetwork.node[0].eth[0].phy busUtilization:count 74
-attr interpolationmode linear
-attr recordingmode count
-attr source utilization(busUsed)
-attr title "bus utilization, count"
-scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:count 3679
-attr enum NONE,BEACON,COMMIT,DATA,JAM
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "transmitted signal type, count"
-attr type enum
-scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:count 11026
-attr enum NONE,BEACON,COMMIT,DATA,JAM
-attr interpolationmode sample-hold
-attr recordingmode count
-attr title "received signal type, count"
-attr type enum
-scalar MultidropNetwork.node[0].eth[0].phy state:count 20582
-attr enum IDLE,TRANSMITTING,RECEIVING,COLLISION,CRS_ON
-attr interpolationmode sample-hold
-attr recordingmode count
-attr source stateChanged
-attr title "state, count"
-attr type enum
 statistic MultidropNetwork.node[0].eth[0].phy throughput:histogram
 field count 19
-field mean 5413346.0830269
-field stddev 60257.554240054
+field mean 5413346.0830268
+field stddev 60257.55424331
 field min 5173442.7452443
 field max 5492632.8322667
 field sum 102853575.57751
 field sqrsum 5.56847357989e+14
-attr interpolationmode linear
-attr recordingmode histogram
-attr source throughput(transmissionEnded)
-attr title throughput
-attr unit bps
 bin	-inf	0
 bin	5090000	0
 bin	5100000	0
@@ -1497,11 +1282,6 @@ field min 9.6e-06
 field max 5.84e-05
 field sum 0.054826143499999
 field sqrsum 2.6374466340293e-06
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetDuration(transmissionEnded)
-attr title "transmission time"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1e-06	0
@@ -1575,37 +1355,6 @@ bin	6.8e-05	0
 bin	6.9e-05	0
 bin	7e-05	0
 bin	7.1e-05	0
-scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar MultidropNetwork.node[0].app[0].source packets:count 736
-attr recordingmode count
-attr source packetPushed
-attr title "packets, count"
-attr unit pk
-scalar MultidropNetwork.node[0].app[0].source packetLengths:sum 270848
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushed)
-attr title "packet lengths, sum"
-attr unit b
 statistic MultidropNetwork.node[0].app[0].source packetLengths:histogram
 field count 736
 field mean 368
@@ -1614,45 +1363,917 @@ field min 368
 field max 368
 field sum 270848
 field sqrsum 99672064
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushed)
-attr title "packet lengths"
-attr unit b
 bin	-inf	0
 bin	367	0
 bin	368	736
 bin	369	0
-scalar MultidropNetwork.node[0].app[0].io "packets sent" 736
-scalar MultidropNetwork.node[0].app[0].io "packets received" 0
-scalar MultidropNetwork.node[0].app[0].io packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar MultidropNetwork.node[0].app[0].io packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar MultidropNetwork.node[0].app[0].io packetSent:count 736
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar MultidropNetwork.node[0].app[0].io packetSent:sum(packetBytes) 33856
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar MultidropNetwork.j[0] packetReceived:count 8454
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets, count"
-scalar MultidropNetwork.j[0] packetReceived:sum(packetBytes) 172843
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets, sum(packetBytes)"
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):count 0
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):sum 0
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):mean -nan
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):stddev nan
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):min inf
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):max -inf
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):starttime nan
+scalar MultidropNetwork.controller.ethernet encapPk:vector(packetBytes):endtime nan
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):count 0
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):sum 0
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):mean -nan
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):stddev nan
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):min inf
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):max -inf
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):starttime nan
+scalar MultidropNetwork.controller.ethernet decapPk:vector(packetBytes):endtime nan
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:count 0
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:sum 0
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:sumweights 0
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:mean -nan
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:stddev nan
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:min inf
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:max -inf
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:starttime nan
+scalar MultidropNetwork.controller.ethernet pauseSent:vector:endtime nan
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:count 5
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:sumweights 5
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:stddev 0
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:min 0
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:max 0
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].queue queueLength:vector:endtime 0
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:count 5
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:sumweights 5
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:stddev 0
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:min 0
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:max 0
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].queue queueBitLength:vector:endtime 0
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:count 0
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:min inf
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:max -inf
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:starttime nan
+scalar MultidropNetwork.controller.eth[0].queue queueingTime:vector:endtime nan
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:count 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:min inf
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:max -inf
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:starttime nan
+scalar MultidropNetwork.controller.eth[0].queue incomingPacketLengths:vector:endtime nan
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:count 1
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:sumweights 1
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:min 0
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:max 0
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:starttime 0.1
+scalar MultidropNetwork.controller.eth[0].queue incomingDataRate:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:count 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:min inf
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:max -inf
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:starttime nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingPacketLengths:vector:endtime nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:count 1
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:sumweights 1
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:min 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:max 0
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:starttime 0.1
+scalar MultidropNetwork.controller.eth[0].queue outgoingDataRate:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar MultidropNetwork.controller.eth[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:count 0
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:sumweights 0
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:mean -nan
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:min inf
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:max -inf
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:starttime nan
+scalar MultidropNetwork.controller.eth[0].queue flowQueueingTime:vector:endtime nan
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:count 1
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:sumweights 1
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:min 0
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:max 0
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar MultidropNetwork.controller.eth[0].queue flowIncomingDataRate:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:count 1
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:sumweights 1
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:min 0
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:max 0
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar MultidropNetwork.controller.eth[0].queue flowOutgoingDataRate:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:count 1473
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:sum 737
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:sumweights 1473
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:mean 0.50033944331297
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:stddev 0.50016969286082
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:min 0
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:max 1
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].mac carrierSense:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:count 2
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:sumweights 2
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:stddev 0
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:min 0
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:max 0
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].mac collision:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].mac state:vector:count 2208
+scalar MultidropNetwork.controller.eth[0].mac state:vector:sum 4420
+scalar MultidropNetwork.controller.eth[0].mac state:vector:sumweights 2208
+scalar MultidropNetwork.controller.eth[0].mac state:vector:mean 2.0018115942029
+scalar MultidropNetwork.controller.eth[0].mac state:vector:stddev 2.1615741249398
+scalar MultidropNetwork.controller.eth[0].mac state:vector:min 0
+scalar MultidropNetwork.controller.eth[0].mac state:vector:max 5
+scalar MultidropNetwork.controller.eth[0].mac state:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].mac state:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:count 16537
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:sum 16537
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:sumweights 16537
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:mean 1
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:stddev 0.81649658092773
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:max 2
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].plca curID:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:count 11761
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:sum 5881
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:sumweights 11761
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:mean 0.50004251339172
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:stddev 0.50002125624403
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:max 1
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].plca carrierSense:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:count 2
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:sumweights 2
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:stddev 0
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:max 0
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].plca collision:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:count 44832
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:sum 292140
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:sumweights 44832
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:mean 6.5163276231263
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:stddev 4.155162509554
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:min 1
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:max 13
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].plca controlState:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:count 4047
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:sum 6255
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:sumweights 4047
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:mean 1.5455893254262
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:stddev 0.49797880390596
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:min 1
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:max 2
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].plca dataState:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:count 3678
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:sum 2206
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:sumweights 3678
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:mean 0.59978249048396
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:stddev 0.91654478605482
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:max 2
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:starttime 5.5621e-05
+scalar MultidropNetwork.controller.eth[0].plca rxCmd:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:count 11025
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:sum 5512
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:sumweights 11025
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:mean 0.49995464852608
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:stddev 0.5000226752228
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:max 1
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].plca txCmd:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:count 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:sumweights 0
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:mean -nan
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:min inf
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:max -inf
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:starttime nan
+scalar MultidropNetwork.controller.eth[0].plca packetPendingDelay:vector:endtime nan
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:count 0
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:sumweights 0
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:mean -nan
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:stddev nan
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:min inf
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:max -inf
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:starttime nan
+scalar MultidropNetwork.controller.eth[0].plca packetInterval:vector:endtime nan
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:count 5512
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:sumweights 5512
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:stddev 0
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:max 0
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:starttime 2.001e-06
+scalar MultidropNetwork.controller.eth[0].plca transmitOpportunityUsed:vector:endtime 0.0998788225
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:count 11023
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:sum 734
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:sumweights 11023
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:mean 0.066588043182437
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:stddev 0.35882279656964
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:max 2
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:starttime 5.201e-06
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerTo:vector:endtime 0.0998820225
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:count 5512
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:sum 0
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:sumweights 5512
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:mean 0
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:stddev 0
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:max 0
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:starttime 5.201e-06
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerOwnTo:vector:endtime 0.0998820225
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:count 5511
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:sum 734
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:sumweights 5511
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:mean 0.13318816911631
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:stddev 0.49868063384075
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:min 0
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:max 2
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:starttime 1.0402e-05
+scalar MultidropNetwork.controller.eth[0].plca numPacketsPerCycle:vector:endtime 0.0998788225
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:count 11023
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:sum 0.088852510499988
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:sumweights 11023
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:mean 8.0606468747154e-06
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:stddev 2.6192563896164e-05
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:min 3.2e-06
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:max 0.0001516005
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:starttime 5.201e-06
+scalar MultidropNetwork.controller.eth[0].plca toLength:vector:endtime 0.0998820225
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:count 5512
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:sum 0.017638399999999
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:sumweights 5512
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:mean 3.1999999999998e-06
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:stddev 0
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:min 3.2e-06
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:max 3.2e-06
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:starttime 5.201e-06
+scalar MultidropNetwork.controller.eth[0].plca ownToLength:vector:endtime 0.0998820225
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:count 5511
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:sum 0.099876821500009
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:sumweights 5511
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:mean 1.8123175739432e-05
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:stddev 3.6401601765037e-05
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:min 8.401e-06
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:max 0.0001568015
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:starttime 1.0402e-05
+scalar MultidropNetwork.controller.eth[0].plca cycleLength:vector:endtime 0.0998788225
+scalar MultidropNetwork.controller.eth[0].phy state:vector:count 21685
+scalar MultidropNetwork.controller.eth[0].phy state:vector:sum 40798
+scalar MultidropNetwork.controller.eth[0].phy state:vector:sumweights 21685
+scalar MultidropNetwork.controller.eth[0].phy state:vector:mean 1.8813926677427
+scalar MultidropNetwork.controller.eth[0].phy state:vector:stddev 1.6372652276946
+scalar MultidropNetwork.controller.eth[0].phy state:vector:min 0
+scalar MultidropNetwork.controller.eth[0].phy state:vector:max 4
+scalar MultidropNetwork.controller.eth[0].phy state:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].phy state:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:count 3679
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:sum 4417
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:sumweights 3679
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:mean 1.2005979885839
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:stddev 1.2494652128904
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:min 0
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:max 3
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].phy receivedSignalType:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:count 11026
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:sum 5512
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:sumweights 11026
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:mean 0.49990930527843
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:stddev 0.50002266699689
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:min 0
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:max 1
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].phy transmittedSignalType:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:count 11026
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:sum 5512
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:sumweights 11026
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:mean 0.49990930527843
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:stddev 0.50002266699689
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:min 0
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:max 1
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].phy transmitting:vector:endtime 0.0998788215
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:count 56
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:sum 61804649.484546
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:sumweights 56
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:mean 1103654.4550812
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:stddev 42957.370272937
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:min 1074116.7403779
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:max 1165494.3735759
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:starttime 0.0018580095
+scalar MultidropNetwork.controller.eth[0].phy throughput:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:count 5512
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:sum 0.011024000000001
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:sumweights 5512
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:mean 2.0000000000002e-06
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:stddev 0
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:min 2e-06
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:max 2e-06
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:starttime 2e-06
+scalar MultidropNetwork.controller.eth[0].phy transmissionTime:vector:endtime 0.0998788215
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:count 14703
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:sum 737
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:sumweights 14703
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:mean 0.050125824661634
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:stddev 0.21821197244422
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:min 0
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:max 1
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:starttime 0
+scalar MultidropNetwork.controller.eth[0].phy busUsed:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:count 74
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:sum 31.806256141546
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:sumweights 74
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:mean 0.42981427218305
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:stddev 0.0032463185990827
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:min 0.42941176470588
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:max 0.45729907828738
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:starttime 0.0013540145
+scalar MultidropNetwork.controller.eth[0].phy busUtilization:vector:endtime 0.1
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar MultidropNetwork.controller.eth[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar MultidropNetwork.controller.eth[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:count 735
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:sum 270480
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:mean 368
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:stddev 0
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:min 368
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:max 368
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:starttime 0.000123621
+scalar MultidropNetwork.controller.app[0].sink droppedPacketLengths:vector:endtime 0.0999500365
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:count 8
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:sum 21597350.008297
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:sumweights 8
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:mean 2699668.7510371
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:stddev 24459.453139534
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:min 2640646.9995187
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:max 2721408.8911313
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:starttime 0.0135224075
+scalar MultidropNetwork.controller.app[0].sink droppedDataRate:vector:endtime 0.1
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:count 735
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:sum 270480
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:mean 368
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:stddev 0
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:min 368
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:max 368
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:starttime 0.000123621
+scalar MultidropNetwork.controller.app[0].sink packetLengths:vector:endtime 0.0999500365
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:count 8
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:sum 21597350.008297
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:sumweights 8
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:mean 2699668.7510371
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:stddev 24459.453139534
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:min 2640646.9995187
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:max 2721408.8911313
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:starttime 0.0135224075
+scalar MultidropNetwork.controller.app[0].sink dataRate:vector:endtime 0.1
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:count 735
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:sum 0.067814569000001
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:mean 9.2264719727893e-05
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:stddev 3.383432823311e-05
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:min 5.84075e-05
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:max 0.0001260365
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:starttime 0.000123621
+scalar MultidropNetwork.controller.app[0].sink meanBitLifeTimePerPacket:vector:endtime 0.0999500365
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:count 735
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:sum 0.0001260365
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:mean 1.7147823129252e-07
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:stddev 6.7779313942996e-05
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:min -6.7629e-05
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:max 0.000123621
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:starttime 0.000123621
+scalar MultidropNetwork.controller.app[0].sink packetJitter:vector:endtime 0.0999500365
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:count 735
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:sum 8.4350100891846e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:mean 1.1476204202972e-07
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:stddev 3.3682467321366e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:min -3.3771780272108e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:max 3.3811209128066e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:starttime 0.000123621
+scalar MultidropNetwork.controller.app[0].sink packetDelayDifferenceToMean:vector:endtime 0.0999500365
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:count 735
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:sum 0.024801862278811
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:sumweights 735
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:mean 3.3744030311307e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:stddev 1.2519830185525e-06
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:min 0
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:max 3.3811326359048e-05
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:starttime 0.000123621
+scalar MultidropNetwork.controller.app[0].sink packetDelayVariation:vector:endtime 0.0999500365
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):count 0
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):sum 0
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):mean -nan
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):stddev nan
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):min inf
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):max -inf
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):starttime nan
+scalar MultidropNetwork.controller.app[0].io packetSent:vector(packetBytes):endtime nan
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):count 735
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):sum 33810
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):sumweights 735
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):mean 46
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):stddev 0
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):min 46
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):max 46
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):starttime 0.000123621
+scalar MultidropNetwork.controller.app[0].io packetReceived:vector(packetBytes):endtime 0.0999500365
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):count 736
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):sum 33856
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):sumweights 736
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):mean 46
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):stddev 0
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):min 46
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):max 46
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):starttime 0
+scalar MultidropNetwork.node[0].ethernet encapPk:vector(packetBytes):endtime 0.09996
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):count 0
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):sum 0
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):mean -nan
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):stddev nan
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):min inf
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):max -inf
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):starttime nan
+scalar MultidropNetwork.node[0].ethernet decapPk:vector(packetBytes):endtime nan
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:count 0
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:sum 0
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:sumweights 0
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:mean -nan
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:stddev nan
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:min inf
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:max -inf
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:starttime nan
+scalar MultidropNetwork.node[0].ethernet pauseSent:vector:endtime nan
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:count 741
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:sum 0
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:sumweights 741
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:mean 0
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:stddev 0
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:max 0
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].queue queueLength:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:count 741
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:sum 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:sumweights 741
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:mean 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:stddev 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:max 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].queue queueBitLength:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:count 736
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:sum 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:sumweights 736
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:mean 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:stddev 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:max 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].queue queueingTime:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:count 736
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:sum 376832
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:sumweights 736
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:mean 512
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:stddev 0
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:min 512
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:max 512
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].queue incomingPacketLengths:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:count 8
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:sum 30125166.239572
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:sumweights 8
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:mean 3765645.7799465
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:stddev 18399.371219543
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:min 3734197.7309562
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:max 3802733.2144979
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:starttime 0.013464
+scalar MultidropNetwork.node[0].eth[0].queue incomingDataRate:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:count 736
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:sum 376832
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:sumweights 736
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:mean 512
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:stddev 0
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:min 512
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:max 512
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].queue outgoingPacketLengths:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:count 8
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:sum 30125166.239572
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:sumweights 8
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:mean 3765645.7799465
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:stddev 18399.371219543
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:min 3734197.7309562
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:max 3802733.2144979
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:starttime 0.013464
+scalar MultidropNetwork.node[0].eth[0].queue outgoingDataRate:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar MultidropNetwork.node[0].eth[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:count 0
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:sum 0
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:sumweights 0
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:mean -nan
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:stddev nan
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:min inf
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:max -inf
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:starttime nan
+scalar MultidropNetwork.node[0].eth[0].queue flowQueueingTime:vector:endtime nan
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:count 1
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:sum 0
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:sumweights 1
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:mean 0
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:stddev nan
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:max 0
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar MultidropNetwork.node[0].eth[0].queue flowIncomingDataRate:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:count 1
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:sum 0
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:sumweights 1
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:mean 0
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:stddev nan
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:max 0
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar MultidropNetwork.node[0].eth[0].queue flowOutgoingDataRate:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:count 2209
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:sum 1105
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:sumweights 2209
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:mean 0.50022634676324
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:stddev 0.5001131605763
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:max 1
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].mac carrierSense:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:count 738
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:sum 368
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:sumweights 738
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:mean 0.49864498644986
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:stddev 0.500337260728
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:max 1
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].mac collision:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:count 4783
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:sum 11404
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:sumweights 4783
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:mean 2.3842776500105
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:stddev 1.7774375749277
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:max 5
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].mac state:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:count 16537
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:sum 16537
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:sumweights 16537
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:mean 1
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:stddev 0.81649658092773
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:max 2
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].plca curID:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:count 11761
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:sum 5881
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:sumweights 11761
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:mean 0.50004251339172
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:stddev 0.50002125624403
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:max 1
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].plca carrierSense:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:count 2
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:sum 0
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:sumweights 2
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:mean 0
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:stddev 0
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:max 0
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].plca collision:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:count 45934
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:sum 344682
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:sumweights 45934
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:mean 7.5038533548134
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:stddev 3.4261186154992
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:min 1
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:max 13
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].plca controlState:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:count 3680
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:sum 15464
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:sumweights 3680
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:mean 4.2021739130435
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:stddev 2.9599842150013
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:max 8
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].plca dataState:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:count 11025
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:sum 5512
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:sumweights 11025
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:mean 0.49995464852608
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:stddev 0.5000226752228
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:max 1
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:starttime 7.5e-09
+scalar MultidropNetwork.node[0].eth[0].plca rxCmd:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:count 2207
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:sum 2206
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:sumweights 2207
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:mean 0.99954689623924
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:stddev 1.0002265262233
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:max 2
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:starttime 5.56135e-05
+scalar MultidropNetwork.node[0].eth[0].plca txCmd:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:count 736
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:sum 0.0248850565
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:sumweights 736
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:mean 3.3811218070652e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:stddev 3.3834328073724e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:max 6.7629e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:starttime 6.52135e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetPendingDelay:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:count 735
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:sum 0.099894786499999
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:sumweights 735
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:mean 0.00013591127414966
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:stddev 6.7671764896751e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:min 6.8371e-05
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:max 0.000203629
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:starttime 0.000136
+scalar MultidropNetwork.node[0].eth[0].plca packetInterval:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:count 5512
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:sum 368
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:sumweights 5512
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:mean 0.066763425253991
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:stddev 0.24963448493194
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:max 1
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:starttime 5.2075e-06
+scalar MultidropNetwork.node[0].eth[0].plca transmitOpportunityUsed:vector:endtime 0.099882029
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:count 11023
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:sum 734
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:sumweights 11023
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:mean 0.066588043182437
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:stddev 0.35882279656964
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:max 2
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:starttime 5.2075e-06
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerTo:vector:endtime 0.099882029
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:count 5511
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:sum 734
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:sumweights 5511
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:mean 0.13318816911631
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:stddev 0.49868063384075
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:max 2
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:starttime 8.4075e-06
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerOwnTo:vector:endtime 0.099876828
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:count 5511
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:sum 734
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:sumweights 5511
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:mean 0.13318816911631
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:stddev 0.49868063384075
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:max 2
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:starttime 1.04085e-05
+scalar MultidropNetwork.node[0].eth[0].plca numPacketsPerCycle:vector:endtime 0.099878829
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:count 11023
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:sum 0.088847372499988
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:sumweights 11023
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:mean 8.0601807584131e-06
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:stddev 2.6190052137554e-05
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:min 3.2e-06
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:max 0.0001515865
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:starttime 5.2075e-06
+scalar MultidropNetwork.node[0].eth[0].plca toLength:vector:endtime 0.099882029
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:count 5511
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:sum 0.071208972499999
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:sumweights 5511
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:mean 1.2921243422246e-05
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:stddev 3.6398111001989e-05
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:min 3.2e-06
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:max 0.0001515865
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:starttime 8.4075e-06
+scalar MultidropNetwork.node[0].eth[0].plca ownToLength:vector:endtime 0.099876828
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:count 5511
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:sum 0.099876821500009
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:sumweights 5511
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:mean 1.8123175739432e-05
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:stddev 3.6401601765037e-05
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:min 8.401e-06
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:max 0.0001568015
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:starttime 1.04085e-05
+scalar MultidropNetwork.node[0].eth[0].plca cycleLength:vector:endtime 0.099878829
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:count 20582
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:sum 42264
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:sumweights 20582
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:mean 2.0534447575551
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:stddev 1.6302913837569
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:max 4
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].phy state:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:count 11026
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:sum 5512
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:sumweights 11026
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:mean 0.49990930527843
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:stddev 0.50002266699689
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:max 1
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].phy receivedSignalType:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:count 3679
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:sum 4417
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:sumweights 3679
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:mean 1.2005979885839
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:stddev 1.2494652128904
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:max 3
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].phy transmittedSignalType:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:count 3679
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:sum 1839
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:sumweights 3679
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:mean 0.49986409350367
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:stddev 0.50006794863115
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:max 1
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].phy transmitting:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:count 19
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:sum 102853575.57751
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:sumweights 19
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:mean 5413346.0830268
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:stddev 60257.55424331
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:min 5173442.7452443
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:max 5492632.8322667
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:starttime 0.0053752
+scalar MultidropNetwork.node[0].eth[0].phy throughput:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:count 1838
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:sum 0.054826143499999
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:sumweights 1838
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:mean 2.9829240206746e-05
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:stddev 2.3355253034139e-05
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:min 9.6e-06
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:max 5.84e-05
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:starttime 6.52135e-05
+scalar MultidropNetwork.node[0].eth[0].phy transmissionTime:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:count 14703
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:sum 737
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:sumweights 14703
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:mean 0.050125824661634
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:stddev 0.21821197244422
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:min 0
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:max 1
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:starttime 0
+scalar MultidropNetwork.node[0].eth[0].phy busUsed:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:count 74
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:sum 31.806268807696
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:sumweights 74
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:mean 0.42981444334724
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:stddev 0.0032480496283862
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:min 0.42941176470588
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:max 0.45731413348614
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:starttime 0.001354022
+scalar MultidropNetwork.node[0].eth[0].phy busUtilization:vector:endtime 0.1
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar MultidropNetwork.node[0].eth[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar MultidropNetwork.node[0].eth[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:count 736
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:sum 270848
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:sumweights 736
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:mean 368
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:stddev 0
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:min 368
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:max 368
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:starttime 0
+scalar MultidropNetwork.node[0].app[0].source packetLengths:vector:endtime 0.09996
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:count 8
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:sum 21652463.234692
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:sumweights 8
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:mean 2706557.9043365
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:stddev 13224.548077108
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:min 2683954.6191248
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:max 2733214.4979204
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:starttime 0.013464
+scalar MultidropNetwork.node[0].app[0].source dataRate:vector:endtime 0.1
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):count 736
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):sum 33856
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):sumweights 736
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):mean 46
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):stddev 0
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):min 46
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):max 46
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):starttime 0
+scalar MultidropNetwork.node[0].app[0].io packetSent:vector(packetBytes):endtime 0.09996
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):count 0
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):sum 0
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):sumweights 0
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):mean -nan
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):stddev nan
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):min inf
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):max -inf
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):starttime nan
+scalar MultidropNetwork.node[0].app[0].io packetReceived:vector(packetBytes):endtime nan
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):count 8454
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):sum 172843
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):sumweights 8454
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):mean 20.445114738585
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):stddev 29.984143514959
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):min 3
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):max 80
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):starttime 5e-09
+scalar MultidropNetwork.j[0] packetReceived:vector(packetBytes):endtime 0.0999600025
 

@@ -1,8 +1,8 @@
 version 3
-run nosync3-0-20241030-11:06:55-14834
+run nosync3-0-20250108-11:19:07-9657
 attr configname nosync3
-attr datetime 20241030-11:06:55
-attr datetimef 20241030-110655
+attr datetime 20250108-11:19:07
+attr datetimef 20250108-111907
 attr experiment nosync3
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,16 +10,16 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network GptpMasterSlave
-attr processid 14834
+attr processid 9657
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-nosync3-#0.sca
+config output-vector-file results/omnetpp.ini-nosync3-#0.vec
 config sim-time-limit 10s
 config extends "nosync1, _DriftMaster"
 config description "gptp off, master is in a hurry, client is precise"
@@ -41,113 +41,309 @@ config *.gptpMaster.gptp.masterPorts "[\"eth0\"]"
 config *.gptpSlave.gptp.slavePort "\"eth0\""
 
 scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:count 0
-attr recordingmode count
-attr title "pause sent, count"
 scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:sum 0
-attr recordingmode sum
-attr title "pause sent, sum"
 scalar GptpMasterSlave.gptpMaster.ethernet decapPk:count 10
-attr interpolationmode none
-attr recordingmode count
-attr source decapPk
-attr title "packets decapsulated, count"
 scalar GptpMasterSlave.gptpMaster.ethernet decapPk:sum(packetBytes) 540
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source decapPk
-attr title "packets decapsulated, sum(packetBytes)"
 scalar GptpMasterSlave.gptpMaster.ethernet encapPk:count 319
-attr interpolationmode none
-attr recordingmode count
-attr source encapPk
-attr title "packets encapsulated, count"
 scalar GptpMasterSlave.gptpMaster.ethernet encapPk:sum(packetBytes) 19124
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source encapPk
-attr title "packets encapsulated, sum(packetBytes)"
 scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
 scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
 scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
 scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
 scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
 scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
 scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
 scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
 scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
 scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:max 1
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
 scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:timeavg 1.5264e-05
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
 scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
 scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:max 752
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
 scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:timeavg 0.011478528
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPackets:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:sum 198928
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPackets:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:sum 198928
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketsQueueOverflow:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac "simulated time" 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac full-duplex 1
+scalar GptpMasterSlave.gptpMaster.eth[0].mac "frames/sec sent" 31.8
+scalar GptpMasterSlave.gptpMaster.eth[0].mac "frames/sec rcvd" 1
+scalar GptpMasterSlave.gptpMaster.eth[0].mac "bits/sec sent" 20097.6
+scalar GptpMasterSlave.gptpMaster.eth[0].mac "bits/sec rcvd" 576
+scalar GptpMasterSlave.gptpMaster.eth[0].mac "rx channel idle (%)" 99.99936
+scalar GptpMasterSlave.gptpMaster.eth[0].mac "rx channel utilization (%)" 0.00064
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:count 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:sum(packetBytes) 720
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:count 318
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:sum(packetBytes) 25122
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 24866
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:count 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:sum(packetBytes) 720
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpResolutionFailed:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpResolutionCompleted:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpResolutionInitiated:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:count 0
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.udp packetSent:count 0
+scalar GptpMasterSlave.gptpMaster.udp packetSent:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:count 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:count 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:count 0
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:count 10
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:sum(packetBytes) 540
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:count 0
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:sum 0
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:count 318
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:sum(packetBytes) 19398
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:count 11
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:sum(packetBytes) 594
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:count 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:count 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:count 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:count 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:last 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:max 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:timeavg 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:last 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:max 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:timeavg 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPackets:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:sum 6336
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPackets:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:sum 6336
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketsQueueOverflow:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac "simulated time" 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac full-duplex 1
+scalar GptpMasterSlave.gptpSlave.eth[0].mac "frames/sec sent" 1
+scalar GptpMasterSlave.gptpSlave.eth[0].mac "frames/sec rcvd" 31.8
+scalar GptpMasterSlave.gptpSlave.eth[0].mac "bits/sec sent" 576
+scalar GptpMasterSlave.gptpSlave.eth[0].mac "bits/sec rcvd" 20097.6
+scalar GptpMasterSlave.gptpSlave.eth[0].mac "rx channel idle (%)" 99.9778672
+scalar GptpMasterSlave.gptpSlave.eth[0].mac "rx channel utilization (%)" 0.0221328
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:count 318
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:sum(packetBytes) 25122
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:count 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:sum(packetBytes) 720
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 792
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:count 318
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:sum(packetBytes) 25122
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpResolutionFailed:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpResolutionCompleted:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpResolutionInitiated:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:count 0
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.udp packetSent:count 0
+scalar GptpMasterSlave.gptpSlave.udp packetSent:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:count 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:count 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:count 0
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:count 318
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:sum(packetBytes) 19398
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:sumweights 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:mean 4.7849529780564e-07
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:stddev 4.8075176240269e-07
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:min 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:max 9.6e-07
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:numbins 60
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:rangemin 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:rangemax 1.2e-06
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:underflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram:overflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:sumweights 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:mean 623.5987460815
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:stddev 128.20046997405
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:min 496
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:max 752
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:numbins 78
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:rangemin 430
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:rangemax 820
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:min nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:max nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:numbins 1
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:rangemin 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:rangemax 1
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:underflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:histogram:overflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:sumweights 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:mean 623.5987460815
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:stddev 128.20046997405
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:min 496
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:max 752
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:numbins 78
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:rangemin 430
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:rangemax 820
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:underflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram:overflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:count 100
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:sumweights 100
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:mean 22132.8
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:stddev 6880.810100298
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:min 13920
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:max 27840
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:numbins 105
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:rangemin 10400
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:rangemax 31400
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:underflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram:overflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:count 100
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:sumweights 100
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:mean 0.0221328
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:stddev 0.0068808101002371
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:min 0.01392
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:max 0.02784
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:numbins 105
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:rangemin 0.0104
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:rangemax 0.0314
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:underflows 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram:overflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:sumweights 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:mean 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:max 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:numbins 50
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:rangemin -0.5
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:rangemax 0.5
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:underflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram:overflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:sumweights 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:mean 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:min 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:max 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:numbins 2
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:rangemin 575
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:rangemax 577
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:min nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:max nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:numbins 1
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:rangemin 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:rangemax 1
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:underflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:histogram:overflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:sumweights 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:mean 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:min 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:max 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:numbins 2
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:rangemin 575
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:rangemax 577
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:underflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram:overflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:count 100
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:sumweights 100
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:mean 640
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:stddev 1929.6726052977
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:max 6400
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:numbins 80
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:rangemin 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:rangemax 8000
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:underflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram:overflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:count 100
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:sumweights 100
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:mean 0.00064
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:stddev 0.0019296726051302
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:max 0.0064
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:numbins 80
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:rangemin 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:rangemax 0.008
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:underflows 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:histogram:overflows 0
 statistic GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:histogram
 field count 319
 field mean 4.7849529780564e-07
@@ -156,11 +352,6 @@ field min 0
 field max 9.6e-07
 field sum 0.00015264
 field sqrsum 1.465344e-10
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	0	160
 bin	2e-08	0
@@ -223,17 +414,6 @@ bin	1.14e-06	0
 bin	1.16e-06	0
 bin	1.18e-06	0
 bin	1.2e-06	0
-scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPackets:count 319
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:sum 198928
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:histogram
 field count 319
 field mean 623.5987460815
@@ -242,11 +422,6 @@ field min 496
 field max 752
 field sum 198928
 field sqrsum 129277696
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	430	0
 bin	435	0
@@ -335,25 +510,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPackets:count 319
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:sum 198928
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:histogram
 field count 319
 field mean 623.5987460815
@@ -362,11 +521,6 @@ field min 496
 field max 752
 field sum 198928
 field sqrsum 129277696
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	430	0
 bin	435	0
@@ -447,52 +601,6 @@ bin	805	0
 bin	810	0
 bin	815	0
 bin	820	0
-scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar GptpMasterSlave.gptpMaster.eth[0].mac "simulated time" 10
-scalar GptpMasterSlave.gptpMaster.eth[0].mac full-duplex 1
-scalar GptpMasterSlave.gptpMaster.eth[0].mac "frames/sec sent" 31.8
-scalar GptpMasterSlave.gptpMaster.eth[0].mac "frames/sec rcvd" 1
-scalar GptpMasterSlave.gptpMaster.eth[0].mac "bits/sec sent" 20097.6
-scalar GptpMasterSlave.gptpMaster.eth[0].mac "bits/sec rcvd" 576
-scalar GptpMasterSlave.gptpMaster.eth[0].mac "rx channel idle (%)" 99.99936
-scalar GptpMasterSlave.gptpMaster.eth[0].mac "rx channel utilization (%)" 0.00064
-scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "pause units received, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr title "pause units received, sum"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "pause units sent, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr title "pause units sent, sum"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:count 10
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:sum(packetBytes) 720
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
 statistic GptpMasterSlave.gptpMaster.eth[0].mac throughput:histogram
 field count 100
 field mean 22132.8
@@ -501,11 +609,6 @@ field min 13920
 field max 27840
 field sum 2213280
 field sqrsum 53673292800
-attr interpolationmode linear
-attr recordingmode histogram
-attr source throughput(transmissionEnded)
-attr title throughput
-attr unit bps
 bin	-inf	0
 bin	10400	0
 bin	10600	0
@@ -616,16 +719,11 @@ bin	31400	0
 statistic GptpMasterSlave.gptpMaster.eth[0].mac utilization:histogram
 field count 100
 field mean 0.0221328
-field stddev 0.0068808101002367
+field stddev 0.0068808101002371
 field min 0.01392
 field max 0.02784
 field sum 2.21328
 field sqrsum 0.053673292799917
-attr interpolationmode linear
-attr recordingmode histogram
-attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
-attr title utilization
-attr unit %
 bin	-inf	0
 bin	0.0104	0
 bin	0.0106	0
@@ -733,334 +831,6 @@ bin	0.0308	0
 bin	0.031	0
 bin	0.0312	0
 bin	0.0314	0
-scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:count 318
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:sum(packetBytes) 25122
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:count 319
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packet bytes from higher layer, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 24866
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packet bytes from higher layer, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:count 10
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:sum(packetBytes) 720
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.arp arpResolutionCompleted:count 0
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar GptpMasterSlave.gptpMaster.udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar GptpMasterSlave.gptpMaster.udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar GptpMasterSlave.gptpMaster.udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:count 10
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:sum(packetBytes) 540
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:count 0
-attr recordingmode count
-attr title "pause sent, count"
-scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:sum 0
-attr recordingmode sum
-attr title "pause sent, sum"
-scalar GptpMasterSlave.gptpSlave.ethernet decapPk:count 318
-attr interpolationmode none
-attr recordingmode count
-attr source decapPk
-attr title "packets decapsulated, count"
-scalar GptpMasterSlave.gptpSlave.ethernet decapPk:sum(packetBytes) 19398
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source decapPk
-attr title "packets decapsulated, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ethernet encapPk:count 11
-attr interpolationmode none
-attr recordingmode count
-attr source encapPk
-attr title "packets encapsulated, count"
-scalar GptpMasterSlave.gptpSlave.ethernet encapPk:sum(packetBytes) 594
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source encapPk
-attr title "packets encapsulated, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:histogram
 field count 11
 field mean 0
@@ -1069,11 +839,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -1126,17 +891,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPackets:count 11
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:sum 6336
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:histogram
 field count 11
 field mean 576
@@ -1145,11 +899,6 @@ field min 576
 field max 576
 field sum 6336
 field sqrsum 3649536
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	575	0
 bin	576	11
@@ -1162,25 +911,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPackets:count 11
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:sum 6336
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:histogram
 field count 11
 field mean 576
@@ -1189,61 +922,10 @@ field min 576
 field max 576
 field sum 6336
 field sqrsum 3649536
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	575	0
 bin	576	11
 bin	577	0
-scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar GptpMasterSlave.gptpSlave.eth[0].mac "simulated time" 10
-scalar GptpMasterSlave.gptpSlave.eth[0].mac full-duplex 1
-scalar GptpMasterSlave.gptpSlave.eth[0].mac "frames/sec sent" 1
-scalar GptpMasterSlave.gptpSlave.eth[0].mac "frames/sec rcvd" 31.8
-scalar GptpMasterSlave.gptpSlave.eth[0].mac "bits/sec sent" 576
-scalar GptpMasterSlave.gptpSlave.eth[0].mac "bits/sec rcvd" 20097.6
-scalar GptpMasterSlave.gptpSlave.eth[0].mac "rx channel idle (%)" 99.9778672
-scalar GptpMasterSlave.gptpSlave.eth[0].mac "rx channel utilization (%)" 0.0221328
-scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "pause units received, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr title "pause units received, sum"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "pause units sent, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr title "pause units sent, sum"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:count 318
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:sum(packetBytes) 25122
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
 statistic GptpMasterSlave.gptpSlave.eth[0].mac throughput:histogram
 field count 100
 field mean 640
@@ -1252,11 +934,6 @@ field min 0
 field max 6400
 field sum 64000
 field sqrsum 409600000
-attr interpolationmode linear
-attr recordingmode histogram
-attr source throughput(transmissionEnded)
-attr title throughput
-attr unit bps
 bin	-inf	0
 bin	0	90
 bin	100	0
@@ -1347,11 +1024,6 @@ field min 0
 field max 0.0064
 field sum 0.064
 field sqrsum 0.000409599999936
-attr interpolationmode linear
-attr recordingmode histogram
-attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
-attr title utilization
-attr unit %
 bin	-inf	0
 bin	0	90
 bin	0.0001	0
@@ -1434,224 +1106,958 @@ bin	0.0077	0
 bin	0.0078	0
 bin	0.0079	0
 bin	0.008	0
-scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:count 10
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:sum(packetBytes) 720
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:count 11
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packet bytes from higher layer, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 792
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packet bytes from higher layer, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:count 318
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:sum(packetBytes) 25122
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.arp arpResolutionCompleted:count 0
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar GptpMasterSlave.gptpSlave.udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar GptpMasterSlave.gptpSlave.udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar GptpMasterSlave.gptpSlave.udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:count 318
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:sum(packetBytes) 19398
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:count 0
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:min inf
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.clock.oscillator driftRateChanged:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:count 2
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:sum 20
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:sumweights 2
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:mean 10
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:stddev 14.142135623731
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:min 0
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:max 20
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:starttime 0
+scalar GptpMasterSlave.gptpMaster.clock timeChanged:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):count 319
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):sum 19124
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):sumweights 319
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):mean 59.949843260188
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):stddev 16.025058746756
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):min 44
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):max 76
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):starttime 0.0625
+scalar GptpMasterSlave.gptpMaster.ethernet encapPk:vector(packetBytes):endtime 10
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):count 10
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):sum 540
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):sumweights 10
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):mean 54
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):stddev 0
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):min 54
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):max 54
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):starttime 0.0100064
+scalar GptpMasterSlave.gptpMaster.ethernet decapPk:vector(packetBytes):endtime 9.0100064
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:count 0
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:min inf
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.ethernet pauseSent:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:count 483
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:sum 159
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:sumweights 483
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:mean 0.32919254658385
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:stddev 0.47040722424813
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:min 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:max 1
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:starttime 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueLength:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:count 483
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:sum 119568
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:sumweights 483
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:mean 247.55279503106
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:stddev 353.74623263459
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:min 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:max 752
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:starttime 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueBitLength:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:sum 0.00015264
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:sumweights 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:mean 4.7849529780564e-07
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:stddev 4.8075176240269e-07
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:min 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:max 9.6e-07
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:starttime 0.0625
+scalar GptpMasterSlave.gptpMaster.eth[0].queue queueingTime:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:sum 198928
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:sumweights 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:mean 623.5987460815
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:stddev 128.20046997405
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:min 496
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:max 752
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:starttime 0.0625
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingPacketLengths:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:count 100
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:sum 1984320
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:sumweights 100
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:mean 19843.2
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:stddev 5982.9783603659
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:min 12480
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:max 24960
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:starttime 0.1
+scalar GptpMasterSlave.gptpMaster.eth[0].queue incomingDataRate:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:sum 198928
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:sumweights 319
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:mean 623.5987460815
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:stddev 128.20046997405
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:min 496
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:max 752
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:starttime 0.0625
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingPacketLengths:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:count 100
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:sum 1984320
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:sumweights 100
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:mean 19843.2
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:stddev 5982.9783603659
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:min 12480
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:max 24960
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:starttime 0.1
+scalar GptpMasterSlave.gptpMaster.eth[0].queue outgoingDataRate:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:min inf
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowQueueingTime:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:count 100
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:sumweights 100
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:mean 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:stddev 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:min 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:max 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowIncomingDataRate:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:count 100
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:sumweights 100
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:mean 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:min 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:max 0
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar GptpMasterSlave.gptpMaster.eth[0].queue flowOutgoingDataRate:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:count 639
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:sum 319
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:sumweights 639
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:mean 0.49921752738654
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:stddev 0.50039108336053
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:min 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:max 1
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:starttime 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac transmitting:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:count 100
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:sum 2213280
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:sumweights 100
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:mean 22132.8
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:stddev 6880.810100298
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:min 13920
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:max 27840
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:starttime 0.1
+scalar GptpMasterSlave.gptpMaster.eth[0].mac throughput:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:count 100
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:sum 2.21328
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:sumweights 100
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:mean 0.0221328
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:stddev 0.0068808101002371
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:min 0.01392
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:max 0.02784
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:starttime 0.1
+scalar GptpMasterSlave.gptpMaster.eth[0].mac utilization:vector:endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):count 318
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):sum 25122
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):sumweights 318
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):mean 79
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):stddev 15.023640676607
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):min 64
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):max 94
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):starttime 0.06250576
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPk:vector(packetBytes):endtime 9.93751488
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):count 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):sum 720
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):sumweights 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):mean 72
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):stddev 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):min 72
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):max 72
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):starttime 0.0100064
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPkOk:vector(packetBytes):endtime 9.0100064
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):count 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):sum 720
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):sumweights 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):mean 72
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):stddev 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):min 72
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):max 72
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):starttime 0.0100064
+scalar GptpMasterSlave.gptpMaster.eth[0].mac passedUpPk:vector(packetBytes):endtime 9.0100064
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:min inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac txPausePkUnits:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:min inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac rxPausePkUnits:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):count 319
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):sum 24866
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):sumweights 319
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):mean 77.949843260188
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):stddev 16.025058746756
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):min 62
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):max 94
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):starttime 0.0625
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetReceivedFromUpper:vector(packetBytes):endtime 10
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.eth[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.udp packetSent:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.udp packetReceived:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):count 1
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):sum 0
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):sumweights 1
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):mean 0
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):stddev nan
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):min 0
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):max 0
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):starttime 0
+scalar GptpMasterSlave.gptpMaster.udp passedUpPk:vector(count):endtime 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):count 1
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):sum 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):mean 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):stddev nan
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):min 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):max 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):starttime 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkWrongPort:vector(count):endtime 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):count 1
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):sum 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):mean 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):min 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):max 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar GptpMasterSlave.gptpMaster.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:count 0
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:min inf
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.gptp localTime:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:count 0
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:min inf
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.gptp timeDifference:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:count 0
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:min inf
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.gptp rateRatio:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:count 0
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:sum 0
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:sumweights 0
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:mean -nan
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:stddev nan
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:min inf
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:max -inf
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:starttime nan
+scalar GptpMasterSlave.gptpMaster.gptp peerDelay:vector:endtime nan
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):count 10
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):sum 540
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):sumweights 10
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):mean 54
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):stddev 0
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):min 54
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):max 54
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):starttime 0.0100064
+scalar GptpMasterSlave.gptpMaster.gptp packetDropNotAddressedToUs:vector(packetBytes):endtime 9.0100064
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:count 0
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:min inf
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.clock.oscillator driftRateChanged:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:count 2
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:sum 10
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:sumweights 2
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:mean 5
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:stddev 7.0710678118655
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:min 0
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:max 10
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:starttime 0
+scalar GptpMasterSlave.gptpSlave.clock timeChanged:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):count 11
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):sum 594
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):sumweights 11
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):mean 54
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):stddev 0
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):min 54
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):max 54
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):starttime 0
+scalar GptpMasterSlave.gptpSlave.ethernet encapPk:vector(packetBytes):endtime 10
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):count 318
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):sum 19398
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):sumweights 318
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):mean 61
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):stddev 15.023640676607
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):min 46
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):max 76
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):starttime 0.07250576
+scalar GptpMasterSlave.gptpSlave.ethernet decapPk:vector(packetBytes):endtime 9.94751488
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:count 0
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:min inf
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.ethernet pauseSent:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:count 16
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:sumweights 16
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:mean 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:max 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:starttime 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueLength:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:count 16
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:sumweights 16
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:mean 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:max 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:starttime 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueBitLength:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:sumweights 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:mean 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:max 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:starttime 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue queueingTime:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:sum 6336
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:sumweights 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:mean 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:min 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:max 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:starttime 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingPacketLengths:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:count 100
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:sum 57600
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:sumweights 100
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:mean 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:stddev 1736.7053447679
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:max 5760
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:starttime 0.1
+scalar GptpMasterSlave.gptpSlave.eth[0].queue incomingDataRate:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:sum 6336
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:sumweights 11
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:mean 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:min 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:max 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:starttime 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingPacketLengths:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:count 100
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:sum 57600
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:sumweights 100
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:mean 576
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:stddev 1736.7053447679
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:max 5760
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:starttime 0.1
+scalar GptpMasterSlave.gptpSlave.eth[0].queue outgoingDataRate:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:min inf
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowQueueingTime:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:count 100
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:sumweights 100
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:mean 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:max 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowIncomingDataRate:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:count 100
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:sumweights 100
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:mean 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:max 0
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar GptpMasterSlave.gptpSlave.eth[0].queue flowOutgoingDataRate:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:count 23
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:sum 11
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:sumweights 23
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:mean 0.47826086956522
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:stddev 0.51075391845525
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:max 1
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:starttime 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac transmitting:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:count 100
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:sum 64000
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:sumweights 100
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:mean 640
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:stddev 1929.6726052977
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:max 6400
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:starttime 0.1
+scalar GptpMasterSlave.gptpSlave.eth[0].mac throughput:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:count 100
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:sum 0.064
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:sumweights 100
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:mean 0.00064
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:stddev 0.0019296726051302
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:min 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:max 0.0064
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:starttime 0.1
+scalar GptpMasterSlave.gptpSlave.eth[0].mac utilization:vector:endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):count 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):sum 720
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):sumweights 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):mean 72
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):min 72
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):max 72
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):starttime 6.4e-06
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPk:vector(packetBytes):endtime 9.0000064
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):count 318
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):sum 25122
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):sumweights 318
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):mean 79
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):stddev 15.023640676607
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):min 64
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):max 94
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):starttime 0.07250576
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPkOk:vector(packetBytes):endtime 9.94751488
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):count 318
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):sum 25122
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):sumweights 318
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):mean 79
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):stddev 15.023640676607
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):min 64
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):max 94
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):starttime 0.07250576
+scalar GptpMasterSlave.gptpSlave.eth[0].mac passedUpPk:vector(packetBytes):endtime 9.94751488
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:min inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac txPausePkUnits:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:min inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac rxPausePkUnits:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):count 11
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):sum 792
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):sumweights 11
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):mean 72
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):stddev 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):min 72
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):max 72
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):starttime 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetReceivedFromUpper:vector(packetBytes):endtime 10
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.eth[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.udp packetSent:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):mean -nan
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.udp packetReceived:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):count 1
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):sum 0
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):sumweights 1
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):mean 0
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):stddev nan
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):min 0
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):max 0
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):starttime 0
+scalar GptpMasterSlave.gptpSlave.udp passedUpPk:vector(count):endtime 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):count 1
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):sum 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):mean 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):stddev nan
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):min 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):max 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):starttime 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkWrongPort:vector(count):endtime 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):count 1
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):sum 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):mean 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):min 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):max 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar GptpMasterSlave.gptpSlave.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:count 0
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:min inf
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.gptp localTime:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:count 0
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:min inf
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.gptp timeDifference:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:count 0
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:min inf
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.gptp rateRatio:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:count 0
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:sum 0
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:sumweights 0
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:mean -nan
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:stddev nan
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:min inf
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:max -inf
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:starttime nan
+scalar GptpMasterSlave.gptpSlave.gptp peerDelay:vector:endtime nan
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):count 318
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):sum 19398
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):sumweights 318
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):mean 61
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):stddev 15.023640676607
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):min 46
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):max 76
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):starttime 0.07250576
+scalar GptpMasterSlave.gptpSlave.gptp packetDropNotAddressedToUs:vector(packetBytes):endtime 9.94751488
 

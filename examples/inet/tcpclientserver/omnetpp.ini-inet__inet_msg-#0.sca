@@ -1,8 +1,8 @@
 version 3
-run inet__inet_msg-0-20240115-11:22:46-14682
+run inet__inet_msg-0-20250108-11:23:33-10561
 attr configname inet__inet_msg
-attr datetime 20240115-11:22:46
-attr datetimef 20240115-112246
+attr datetime 20250108-11:23:33
+attr datetimef 20250108-112333
 attr experiment inet__inet_msg
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,16 +10,16 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network ClientServer
-attr processid 14682
+attr processid 10561
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-inet__inet_msg-#0.sca
+config output-vector-file results/omnetpp.ini-inet__inet_msg-#0.vec
 config sim-time-limit 100s
 config sim-time-limit 100s
 config description "inet_TCP <---> inet_TCP"
@@ -52,100 +52,287 @@ config **.ppp[*].queue.packetCapacity 10
 config *.configurator.config "xml(\"<config><interface hosts='*' address='192.168.1.x' netmask='255.255.255.0'/></config>\")"
 
 scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
 scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
 scalar ClientServer.client1.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
 scalar ClientServer.client1.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
 scalar ClientServer.client1.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
 scalar ClientServer.client1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
 scalar ClientServer.client1.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
 scalar ClientServer.client1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
 scalar ClientServer.client1.ppp[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
 scalar ClientServer.client1.ppp[0].queue queueLength:max 10
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
 scalar ClientServer.client1.ppp[0].queue queueLength:timeavg 0.067168115999999
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
 scalar ClientServer.client1.ppp[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
 scalar ClientServer.client1.ppp[0].queue queueBitLength:max 46080
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
 scalar ClientServer.client1.ppp[0].queue queueBitLength:timeavg 306.01159334399
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
+scalar ClientServer.client1.ppp[0].queue outgoingPackets:count 5617
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:sum 9823200
+scalar ClientServer.client1.ppp[0].queue incomingPackets:count 5650
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:sum 9975264
+scalar ClientServer.client1.ppp[0].queue droppedPacketsQueueOverflow:count 33
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 152064
+scalar ClientServer.client1.ppp[0].ppp transmissionState:timeavg 0.010137751999999
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:count 5616
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:sum(packetBytes) 2268780
+scalar ClientServer.client1.ppp[0].ppp txPk:count 5617
+scalar ClientServer.client1.ppp[0].ppp txPk:sum(packetBytes) 1267219
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:count 5617
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 1227900
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:count 5616
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:sum(packetBytes) 2229468
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:count 0
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:count 0
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:count 0
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:count 0
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:count 0
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:count 0
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:count 0
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:count 0
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.arp arpResolutionFailed:count 0
+scalar ClientServer.client1.ipv4.arp arpResolutionCompleted:count 0
+scalar ClientServer.client1.ipv4.arp arpResolutionInitiated:count 0
+scalar ClientServer.client1.ipv4.arp arpReplySent:count 0
+scalar ClientServer.client1.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar ClientServer.client1.ipv4.arp arpRequestSent:count 0
+scalar ClientServer.client1.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar ClientServer.client1.udp packetReceived:count 0
+scalar ClientServer.client1.udp packetReceived:sum(packetBytes) 0
+scalar ClientServer.client1.udp packetSent:count 0
+scalar ClientServer.client1.udp packetSent:sum(packetBytes) 0
+scalar ClientServer.client1.udp passedUpPk:count 0
+scalar ClientServer.client1.udp droppedPkWrongPort:count 0
+scalar ClientServer.client1.udp droppedPkBadChecksum:count 0
+scalar ClientServer.client1.app[0] bytesRcvd 2000000
+scalar ClientServer.client1.app[0] bytesSent 1000000
+scalar ClientServer.client1.app[0] packetReceived:count 3196
+scalar ClientServer.client1.app[0] packetReceived:sum(packetBytes) 2000000
+scalar ClientServer.client1.app[0] packetSent:count 1
+scalar ClientServer.client1.app[0] packetSent:sum(packetBytes) 1000000
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:count 0
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar ClientServer.server.lo[0].lo passedUpPk:count 0
+scalar ClientServer.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:count 0
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar ClientServer.server.lo[0] packetDropNoCarrier:count 0
+scalar ClientServer.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar ClientServer.server.ppp[0].queue queueLength:last 0
+scalar ClientServer.server.ppp[0].queue queueLength:max 10
+scalar ClientServer.server.ppp[0].queue queueLength:timeavg 0.13468182142383
+scalar ClientServer.server.ppp[0].queue queueBitLength:last 0
+scalar ClientServer.server.ppp[0].queue queueBitLength:max 46080
+scalar ClientServer.server.ppp[0].queue queueBitLength:timeavg 616.95098064098
+scalar ClientServer.server.ppp[0].queue outgoingPackets:count 5616
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:sum 17835744
+scalar ClientServer.server.ppp[0].queue incomingPackets:count 5679
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:sum 18126048
+scalar ClientServer.server.ppp[0].queue droppedPacketsQueueOverflow:count 63
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 290304
+scalar ClientServer.server.ppp[0].ppp transmissionState:timeavg 0.018150240000001
+scalar ClientServer.server.ppp[0].ppp rxPkOk:count 5617
+scalar ClientServer.server.ppp[0].ppp rxPkOk:sum(packetBytes) 1267219
+scalar ClientServer.server.ppp[0].ppp txPk:count 5616
+scalar ClientServer.server.ppp[0].ppp txPk:sum(packetBytes) 2268780
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:count 5616
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2229468
+scalar ClientServer.server.ppp[0].ppp passedUpPk:count 5617
+scalar ClientServer.server.ppp[0].ppp passedUpPk:sum(packetBytes) 1227900
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:count 0
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:count 0
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:count 0
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:count 0
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:count 0
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:count 0
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:count 0
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.ip packetDropUndefined:count 0
+scalar ClientServer.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.arp arpResolutionFailed:count 0
+scalar ClientServer.server.ipv4.arp arpResolutionCompleted:count 0
+scalar ClientServer.server.ipv4.arp arpResolutionInitiated:count 0
+scalar ClientServer.server.ipv4.arp arpReplySent:count 0
+scalar ClientServer.server.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar ClientServer.server.ipv4.arp arpRequestSent:count 0
+scalar ClientServer.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar ClientServer.server.udp packetReceived:count 0
+scalar ClientServer.server.udp packetReceived:sum(packetBytes) 0
+scalar ClientServer.server.udp packetSent:count 0
+scalar ClientServer.server.udp packetSent:sum(packetBytes) 0
+scalar ClientServer.server.udp passedUpPk:count 0
+scalar ClientServer.server.udp droppedPkWrongPort:count 0
+scalar ClientServer.server.udp droppedPkBadChecksum:count 0
+scalar ClientServer.server.app[0] bytesRcvd 1000000
+scalar ClientServer.server.app[0] bytesSent 2000000
+scalar ClientServer.server.app[0] packetReceived:count 1600
+scalar ClientServer.server.app[0] packetReceived:sum(packetBytes) 1000000
+scalar ClientServer.server.app[0] packetSent:count 1600
+scalar ClientServer.server.app[0] packetSent:sum(packetBytes) 2000000
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:count 5617
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:sumweights 5617
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:mean 0.0011958005340929
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:stddev 0.0017761724262018
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:min 0
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:max 0.0046262
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:numbins 47
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:rangemin 0
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:rangemax 0.0047
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:underflows 0
+scalar ClientServer.client1.ppp[0].queue queueingTime:histogram:overflows 0
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:count 5617
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:sumweights 5617
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:mean 1748.8338970981
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:stddev 2021.2012710257
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:min 320
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:max 4608
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:numbins 57
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:rangemin 0
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:rangemax 5700
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:count 0
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:sumweights 0
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:mean -nan
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:stddev nan
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:min nan
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:max nan
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:numbins 1
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:rangemin 0
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:rangemax 1
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:underflows 0
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:histogram:overflows 0
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:count 5650
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:sumweights 5650
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:mean 1765.5334513274
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:stddev 2027.0337694067
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:min 320
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:max 4608
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:numbins 57
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:rangemin 0
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:rangemax 5700
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:underflows 0
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram:overflows 0
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:count 3732
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:sumweights 3732
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:mean 1.3793820976797
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:stddev 0.34447080300871
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:min 0.0005041
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:max 1.8431107
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:numbins 98
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:rangemin 0
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:rangemax 1.96
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:underflows 0
+scalar ClientServer.client1.app[0] endToEndDelay:histogram:overflows 0
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:count 3732
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:sumweights 16000000
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:mean 1.3793004814457
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:stddev 0.34444616037179
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:min 0.0005041
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:max 1.8431107
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:numbins 98
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:rangemin 0
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:rangemax 1.96
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:underflows 0
+scalar ClientServer.client1.app[0] endToEndDelay:weightedHistogram:overflows 0
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:count 5616
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:sumweights 5616
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:mean 0.0023981805809087
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:stddev 0.0018671764195413
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:min 0
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:max 0.0046262
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:numbins 47
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:rangemin 0
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:rangemax 0.0047
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:underflows 0
+scalar ClientServer.server.ppp[0].queue queueingTime:histogram:overflows 0
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:count 5616
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:sumweights 5616
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:mean 3175.8803418803
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:stddev 2022.3571135809
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:min 320
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:max 4608
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:numbins 57
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:rangemin 0
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:rangemax 5700
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:count 0
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:sumweights 0
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:mean -nan
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:stddev nan
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:min nan
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:max nan
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:numbins 1
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:rangemin 0
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:rangemax 1
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:underflows 0
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:histogram:overflows 0
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:count 5679
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:sumweights 5679
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:mean 3191.7675647121
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:stddev 2016.6934912766
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:min 320
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:max 4608
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:numbins 57
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:rangemin 0
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:rangemax 5700
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:underflows 0
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:histogram:overflows 0
+scalar ClientServer.server.app[0] endToEndDelay:histogram:count 1866
+scalar ClientServer.server.app[0] endToEndDelay:histogram:sumweights 1866
+scalar ClientServer.server.app[0] endToEndDelay:histogram:mean 2.9417938632185
+scalar ClientServer.server.app[0] endToEndDelay:histogram:stddev 0.44095455932612
+scalar ClientServer.server.app[0] endToEndDelay:histogram:min 0.0004665
+scalar ClientServer.server.app[0] endToEndDelay:histogram:max 3.426590581086
+scalar ClientServer.server.app[0] endToEndDelay:histogram:numbins 76
+scalar ClientServer.server.app[0] endToEndDelay:histogram:rangemin 0
+scalar ClientServer.server.app[0] endToEndDelay:histogram:rangemax 3.8
+scalar ClientServer.server.app[0] endToEndDelay:histogram:underflows 0
+scalar ClientServer.server.app[0] endToEndDelay:histogram:overflows 0
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:count 1866
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:sumweights 8000000
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:mean 2.9417085389963
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:stddev 0.44094643285627
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:min 0.0004665
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:max 3.426590581086
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:numbins 76
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:rangemin 0
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:rangemax 3.8
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:underflows 0
+scalar ClientServer.server.app[0] endToEndDelay:weightedHistogram:overflows 0
 statistic ClientServer.client1.ppp[0].queue queueingTime:histogram
 field count 5617
 field mean 0.0011958005340929
-field stddev 0.0017761724262017
+field stddev 0.0017761724262018
 field min 0
 field max 0.0046262
 field sum 6.7168116
 field sqrsum 0.02574925904504
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	0	3702
 bin	0.0001	1
@@ -195,17 +382,6 @@ bin	0.0044	0
 bin	0.0045	0
 bin	0.0046	560
 bin	0.0047	0
-scalar ClientServer.client1.ppp[0].queue outgoingPackets:count 5617
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:sum 9823200
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic ClientServer.client1.ppp[0].queue outgoingPacketLengths:histogram
 field count 5617
 field mean 1748.8338970981
@@ -214,11 +390,6 @@ field min 320
 field max 4608
 field sum 9823200
 field sqrsum 40121934848
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	100	0
@@ -286,25 +457,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar ClientServer.client1.ppp[0].queue incomingPackets:count 5650
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:sum 9975264
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic ClientServer.client1.ppp[0].queue incomingPacketLengths:histogram
 field count 5650
 field mean 1765.5334513274
@@ -313,11 +468,6 @@ field min 320
 field max 4608
 field sum 9975264
 field sqrsum 40822645760
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	100	0
@@ -377,258 +527,14 @@ bin	5400	0
 bin	5500	0
 bin	5600	0
 bin	5700	0
-scalar ClientServer.client1.ppp[0].queue droppedPacketsQueueOverflow:count 33
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 152064
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar ClientServer.client1.ppp[0].ppp transmissionState:timeavg 0.010137751999999
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source transmissionStateChanged
-attr title "tx state, timeavg"
-scalar ClientServer.client1.ppp[0].ppp rxPkOk:count 5616
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar ClientServer.client1.ppp[0].ppp rxPkOk:sum(packetBytes) 2268780
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0].ppp txPk:count 5617
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar ClientServer.client1.ppp[0].ppp txPk:sum(packetBytes) 1267219
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:count 5617
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 1227900
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0].ppp passedUpPk:count 5616
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar ClientServer.client1.ppp[0].ppp passedUpPk:sum(packetBytes) 2229468
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar ClientServer.client1.ppp[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar ClientServer.client1.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar ClientServer.client1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar ClientServer.client1.ipv4.arp arpResolutionCompleted:count 0
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar ClientServer.client1.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar ClientServer.client1.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar ClientServer.client1.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar ClientServer.client1.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar ClientServer.client1.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar ClientServer.client1.udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar ClientServer.client1.udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar ClientServer.client1.udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar ClientServer.client1.udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar ClientServer.client1.udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar ClientServer.client1.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar ClientServer.client1.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar ClientServer.client1.app[0] bytesRcvd 2000000
-scalar ClientServer.client1.app[0] bytesSent 1000000
-scalar ClientServer.client1.app[0] packetReceived:count 3196
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar ClientServer.client1.app[0] packetReceived:sum(packetBytes) 2000000
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
 statistic ClientServer.client1.app[0] endToEndDelay:histogram
 field count 3732
 field mean 1.3793820976797
-field stddev 0.34447080300866
+field stddev 0.34447080300871
 field min 0.0005041
 field max 1.8431107
 field sum 5147.8539885406
 field sqrsum 7543.578593684
-attr interpolationmode none
-attr recordingmode histogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay"
-attr unit s
 bin	-inf	0
 bin	0	48
 bin	0.02	74
@@ -732,18 +638,13 @@ bin	1.96	0
 statistic ClientServer.client1.app[0] endToEndDelay:weightedHistogram
 field count 3732
 field mean 1.3793004814457
-field stddev 0.34444616037181
+field stddev 0.34444616037179
 field min 0.0005041
 field max 1.8431107
 field weights 16000000
 field weightedSum 22068807.703131
 field sqrSumWeights 68603854848
 field weightedSqrSum 32337298.897057
-attr interpolationmode none
-attr recordingmode weightedHistogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay, weightedHistogram"
-attr unit s
 bin	-inf	0
 bin	0	205824
 bin	0.02	317312
@@ -844,111 +745,14 @@ bin	1.9	0
 bin	1.92	0
 bin	1.94	0
 bin	1.96	0
-scalar ClientServer.client1.app[0] packetSent:count 1
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar ClientServer.client1.app[0] packetSent:sum(packetBytes) 1000000
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar ClientServer.server.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar ClientServer.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar ClientServer.server.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar ClientServer.server.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar ClientServer.server.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar ClientServer.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar ClientServer.server.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar ClientServer.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar ClientServer.server.ppp[0].queue queueLength:max 10
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar ClientServer.server.ppp[0].queue queueLength:timeavg 0.13468182142383
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar ClientServer.server.ppp[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar ClientServer.server.ppp[0].queue queueBitLength:max 46080
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar ClientServer.server.ppp[0].queue queueBitLength:timeavg 616.95098064098
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic ClientServer.server.ppp[0].queue queueingTime:histogram
 field count 5616
 field mean 0.0023981805809087
-field stddev 0.0018671764195412
+field stddev 0.0018671764195413
 field min 0
 field max 0.0046262
 field sum 13.468182142383
 field sqrsum 0.051874975668199
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	0	1837
 bin	0.0001	0
@@ -998,17 +802,6 @@ bin	0.0044	0
 bin	0.0045	0
 bin	0.0046	1129
 bin	0.0047	0
-scalar ClientServer.server.ppp[0].queue outgoingPackets:count 5616
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:sum 17835744
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic ClientServer.server.ppp[0].queue outgoingPacketLengths:histogram
 field count 5616
 field mean 3175.8803418803
@@ -1017,11 +810,6 @@ field min 320
 field max 4608
 field sum 17835744
 field sqrsum 79609136128
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	100	0
@@ -1089,25 +877,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar ClientServer.server.ppp[0].queue incomingPackets:count 5679
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar ClientServer.server.ppp[0].queue incomingPacketLengths:sum 18126048
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic ClientServer.server.ppp[0].queue incomingPacketLengths:histogram
 field count 5679
 field mean 3191.7675647121
@@ -1116,11 +888,6 @@ field min 320
 field max 4608
 field sum 18126048
 field sqrsum 80946856960
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	100	0
@@ -1180,258 +947,14 @@ bin	5400	0
 bin	5500	0
 bin	5600	0
 bin	5700	0
-scalar ClientServer.server.ppp[0].queue droppedPacketsQueueOverflow:count 63
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 290304
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar ClientServer.server.ppp[0].ppp transmissionState:timeavg 0.018150240000001
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source transmissionStateChanged
-attr title "tx state, timeavg"
-scalar ClientServer.server.ppp[0].ppp rxPkOk:count 5617
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar ClientServer.server.ppp[0].ppp rxPkOk:sum(packetBytes) 1267219
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].ppp txPk:count 5616
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar ClientServer.server.ppp[0].ppp txPk:sum(packetBytes) 2268780
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:count 5616
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2229468
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].ppp passedUpPk:count 5617
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar ClientServer.server.ppp[0].ppp passedUpPk:sum(packetBytes) 1227900
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar ClientServer.server.ppp[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar ClientServer.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar ClientServer.server.ppp[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar ClientServer.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar ClientServer.server.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar ClientServer.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar ClientServer.server.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar ClientServer.server.ipv4.arp arpResolutionCompleted:count 0
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar ClientServer.server.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar ClientServer.server.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar ClientServer.server.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar ClientServer.server.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar ClientServer.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar ClientServer.server.udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar ClientServer.server.udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar ClientServer.server.udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar ClientServer.server.udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar ClientServer.server.udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar ClientServer.server.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar ClientServer.server.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar ClientServer.server.app[0] bytesRcvd 1000000
-scalar ClientServer.server.app[0] bytesSent 2000000
-scalar ClientServer.server.app[0] packetReceived:count 1600
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar ClientServer.server.app[0] packetReceived:sum(packetBytes) 1000000
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
 statistic ClientServer.server.app[0] endToEndDelay:histogram
 field count 1866
-field mean 2.9417938632186
-field stddev 0.44095455932577
+field mean 2.9417938632185
+field stddev 0.44095455932612
 field min 0.0004665
 field max 3.426590581086
 field sum 5489.3873487658
 field sqrsum 16511.278337552
-attr interpolationmode none
-attr recordingmode histogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay"
-attr unit s
 bin	-inf	0
 bin	0	19
 bin	0.05	0
@@ -1512,19 +1035,14 @@ bin	3.75	0
 bin	3.8	0
 statistic ClientServer.server.app[0] endToEndDelay:weightedHistogram
 field count 1866
-field mean 2.9417085389962
-field stddev 0.44094643285645
+field mean 2.9417085389963
+field stddev 0.44094643285627
 field min 0.0004665
 field max 3.426590581086
 field weights 8000000
 field weightedSum 23533668.31197
 field sqrSumWeights 34299944960
 field weightedSqrSum 70783829.447023
-attr interpolationmode none
-attr recordingmode weightedHistogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay, weightedHistogram"
-attr unit s
 bin	-inf	0
 bin	0	81472
 bin	0.05	0
@@ -1603,14 +1121,1552 @@ bin	3.65	0
 bin	3.7	0
 bin	3.75	0
 bin	3.8	0
-scalar ClientServer.server.app[0] packetSent:count 1600
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar ClientServer.server.app[0] packetSent:sum(packetBytes) 2000000
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar ClientServer.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar ClientServer.client1.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ClientServer.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ClientServer.client1.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:count 7576
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:sum 28107
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:sumweights 7576
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:mean 3.710005279831
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:stddev 3.9551258732485
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:min 0
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:max 10
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:starttime 0
+scalar ClientServer.client1.ppp[0].queue queueLength:vector:endtime 25.000113
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:count 7576
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:sum 126922816
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:sumweights 7576
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:mean 16753.275607181
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:stddev 18133.894546481
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:min 0
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:max 46080
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:starttime 0
+scalar ClientServer.client1.ppp[0].queue queueBitLength:vector:endtime 25.000113
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:count 5617
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:sum 6.7168116
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:sumweights 5617
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:mean 0.0011958005340929
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:stddev 0.0017761724262018
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:min 0
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:max 0.0046262
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:starttime 0.2
+scalar ClientServer.client1.ppp[0].queue queueingTime:vector:endtime 25.000113
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:count 5650
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:sum 9975264
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:sumweights 5650
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:mean 1765.5334513274
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:stddev 2027.0337694067
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:min 320
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:max 4608
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:starttime 0.2
+scalar ClientServer.client1.ppp[0].queue incomingPacketLengths:vector:endtime 25.000113
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:count 1029
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:sum 211139285.3702
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:sumweights 1029
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:mean 205188.80988358
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:stddev 1322849.6964417
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:min 0
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:max 10510565.307835
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:starttime 0.1
+scalar ClientServer.client1.ppp[0].queue incomingDataRate:vector:endtime 100
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:count 5617
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:sum 9823200
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:sumweights 5617
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:mean 1748.8338970981
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:stddev 2021.2012710257
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:min 320
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:max 4608
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:starttime 0.2
+scalar ClientServer.client1.ppp[0].queue outgoingPacketLengths:vector:endtime 25.000113
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:count 1029
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:sum 206467607.10722
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:sumweights 1029
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:mean 200648.7921353
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:stddev 1299789.8148364
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:min 0
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:max 9879931.3893654
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:starttime 0.1
+scalar ClientServer.client1.ppp[0].queue outgoingDataRate:vector:endtime 100
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:count 33
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sum 152064
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 33
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:mean 4608
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:stddev 0
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:min 4608
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:max 4608
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:starttime 0.4053188
+scalar ClientServer.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:endtime 3.788486481086
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:count 0
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:sum 0
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:sumweights 0
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:mean -nan
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:stddev nan
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:min inf
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:max -inf
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:starttime nan
+scalar ClientServer.client1.ppp[0].queue flowQueueingTime:vector:endtime nan
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:count 1000
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:sum 0
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:sumweights 1000
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:mean 0
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:stddev 0
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:min 0
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:max 0
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar ClientServer.client1.ppp[0].queue flowIncomingDataRate:vector:endtime 100
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:count 1000
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:sum 0
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:sumweights 1000
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:mean 0
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:min 0
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:max 0
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar ClientServer.client1.ppp[0].queue flowOutgoingDataRate:vector:endtime 100
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:count 11235
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:sum 5617
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:sumweights 11235
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:mean 0.49995549621718
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:stddev 0.50002225139629
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:min 0
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:max 1
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:starttime 0
+scalar ClientServer.client1.ppp[0].ppp transmissionState:vector:endtime 25.0001506
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):count 5617
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):sum 1267219
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):sumweights 5617
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):mean 225.60423713726
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):stddev 252.65015887822
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):min 47
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):max 583
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):starttime 0.2
+scalar ClientServer.client1.ppp[0].ppp txPk:vector(packetBytes):endtime 25.000113
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):count 5616
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):sum 2268780
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):sumweights 5616
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):mean 403.98504273504
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):stddev 252.79463919761
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):min 47
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):max 583
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):starttime 0.2000818
+scalar ClientServer.client1.ppp[0].ppp rxPkOk:vector(packetBytes):endtime 25.000113
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):count 5617
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sum 1227900
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sumweights 5617
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):mean 218.60423713726
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):stddev 252.65015887822
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):min 40
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):max 576
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):starttime 0.2
+scalar ClientServer.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):endtime 25.000113
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):count 5616
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):sum 2229468
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):sumweights 5616
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):mean 396.98504273504
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):stddev 252.79463919761
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):min 40
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):max 576
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):starttime 0.2000818
+scalar ClientServer.client1.ppp[0].ppp passedUpPk:vector(packetBytes):endtime 25.000113
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar ClientServer.client1.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):count 0
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):sum 0
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):mean -nan
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):stddev nan
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):min inf
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):max -inf
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):starttime nan
+scalar ClientServer.client1.udp packetSent:vector(packetBytes):endtime nan
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):count 0
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):sum 0
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):sumweights 0
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):mean -nan
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):stddev nan
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):min inf
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):max -inf
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):starttime nan
+scalar ClientServer.client1.udp packetReceived:vector(packetBytes):endtime nan
+scalar ClientServer.client1.udp passedUpPk:vector(count):count 1
+scalar ClientServer.client1.udp passedUpPk:vector(count):sum 0
+scalar ClientServer.client1.udp passedUpPk:vector(count):sumweights 1
+scalar ClientServer.client1.udp passedUpPk:vector(count):mean 0
+scalar ClientServer.client1.udp passedUpPk:vector(count):stddev nan
+scalar ClientServer.client1.udp passedUpPk:vector(count):min 0
+scalar ClientServer.client1.udp passedUpPk:vector(count):max 0
+scalar ClientServer.client1.udp passedUpPk:vector(count):starttime 0
+scalar ClientServer.client1.udp passedUpPk:vector(count):endtime 0
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):count 1
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):sum 0
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):mean 0
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):stddev nan
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):min 0
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):max 0
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):starttime 0
+scalar ClientServer.client1.udp droppedPkWrongPort:vector(count):endtime 0
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):count 1
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):sum 0
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):mean 0
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):min 0
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):max 0
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar ClientServer.client1.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):count 3196
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):sum 2000000
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):sumweights 3196
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):mean 625.78222778473
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):stddev 716.72460174836
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):min 184
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):max 6432
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):starttime 0.4009706
+scalar ClientServer.client1.app[0] packetReceived:vector(packetBytes):endtime 5.669701281086
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):count 1
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):sum 1000000
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):sumweights 1
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):mean 1000000
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):stddev nan
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):min 1000000
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):max 1000000
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):starttime 0.4
+scalar ClientServer.client1.app[0] packetSent:vector(packetBytes):endtime 0.4
+scalar ClientServer.client1.app[0] endToEndDelay:vector:count 3732
+scalar ClientServer.client1.app[0] endToEndDelay:vector:sum 5147.8539885406
+scalar ClientServer.client1.app[0] endToEndDelay:vector:sumweights 3732
+scalar ClientServer.client1.app[0] endToEndDelay:vector:mean 1.3793820976797
+scalar ClientServer.client1.app[0] endToEndDelay:vector:stddev 0.34447080300871
+scalar ClientServer.client1.app[0] endToEndDelay:vector:min 0.0005041
+scalar ClientServer.client1.app[0] endToEndDelay:vector:max 1.8431107
+scalar ClientServer.client1.app[0] endToEndDelay:vector:starttime 0.4009706
+scalar ClientServer.client1.app[0] endToEndDelay:vector:endtime 5.669701281086
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar ClientServer.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar ClientServer.server.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ClientServer.server.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ClientServer.server.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ClientServer.server.ppp[0].queue queueLength:vector:count 9477
+scalar ClientServer.server.ppp[0].queue queueLength:vector:sum 55689
+scalar ClientServer.server.ppp[0].queue queueLength:vector:sumweights 9477
+scalar ClientServer.server.ppp[0].queue queueLength:vector:mean 5.8762266540044
+scalar ClientServer.server.ppp[0].queue queueLength:vector:stddev 3.4877796349376
+scalar ClientServer.server.ppp[0].queue queueLength:vector:min 0
+scalar ClientServer.server.ppp[0].queue queueLength:vector:max 10
+scalar ClientServer.server.ppp[0].queue queueLength:vector:starttime 0
+scalar ClientServer.server.ppp[0].queue queueLength:vector:endtime 25.0000753
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:count 9477
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:sum 254024960
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:sumweights 9477
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:mean 26804.36425029
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:stddev 16143.130730919
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:min 0
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:max 46080
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:starttime 0
+scalar ClientServer.server.ppp[0].queue queueBitLength:vector:endtime 25.0000753
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:count 5616
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:sum 13.468182142383
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:sumweights 5616
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:mean 0.0023981805809087
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:stddev 0.0018671764195413
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:min 0
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:max 0.0046262
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:starttime 0.2000409
+scalar ClientServer.server.ppp[0].queue queueingTime:vector:endtime 25.0000753
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:count 5679
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:sum 18126048
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:sumweights 5679
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:mean 3191.7675647121
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:stddev 2016.6934912766
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:min 320
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:max 4608
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:starttime 0.2000409
+scalar ClientServer.server.ppp[0].queue incomingPacketLengths:vector:endtime 25.0000377
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:count 1029
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:sum 378264225.44635
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:sumweights 1029
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:mean 367603.71763494
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:stddev 1826144.2031382
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:min 0
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:max 10291595.197256
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:starttime 0.1
+scalar ClientServer.server.ppp[0].queue incomingDataRate:vector:endtime 100
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:count 5616
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:sum 17835744
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:sumweights 5616
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:mean 3175.8803418803
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:stddev 2022.3571135809
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:min 320
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:max 4608
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:starttime 0.2000409
+scalar ClientServer.server.ppp[0].queue outgoingPacketLengths:vector:endtime 25.0000753
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:count 1029
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:sum 370603441.19716
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:sumweights 1029
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:mean 360158.83498266
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:stddev 1797706.501027
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:min 0
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:max 9952228.4140432
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:starttime 0.1
+scalar ClientServer.server.ppp[0].queue outgoingDataRate:vector:endtime 100
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:count 63
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sum 290304
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 63
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:mean 4608
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:stddev 0
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:min 4608
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:max 4608
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:starttime 0.4106371
+scalar ClientServer.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:endtime 5.641998781086
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:count 0
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:sum 0
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:sumweights 0
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:mean -nan
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:stddev nan
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:min inf
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:max -inf
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:starttime nan
+scalar ClientServer.server.ppp[0].queue flowQueueingTime:vector:endtime nan
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:count 1000
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:sum 0
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:sumweights 1000
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:mean 0
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:stddev 0
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:min 0
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:max 0
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar ClientServer.server.ppp[0].queue flowIncomingDataRate:vector:endtime 100
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:count 1000
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:sum 0
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:sumweights 1000
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:mean 0
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:min 0
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:max 0
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar ClientServer.server.ppp[0].queue flowOutgoingDataRate:vector:endtime 100
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:count 11233
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:sum 5616
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:sumweights 11233
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:mean 0.49995548829342
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:stddev 0.50002225535799
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:min 0
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:max 1
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:starttime 0
+scalar ClientServer.server.ppp[0].ppp transmissionState:vector:endtime 25.0001129
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):count 5616
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):sum 2268780
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):sumweights 5616
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):mean 403.98504273504
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):stddev 252.79463919761
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):min 47
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):max 583
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):starttime 0.2000409
+scalar ClientServer.server.ppp[0].ppp txPk:vector(packetBytes):endtime 25.0000753
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):count 5617
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):sum 1267219
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):sumweights 5617
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):mean 225.60423713726
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):stddev 252.65015887822
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):min 47
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):max 583
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):starttime 0.2000409
+scalar ClientServer.server.ppp[0].ppp rxPkOk:vector(packetBytes):endtime 25.0001507
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar ClientServer.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ClientServer.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):count 5616
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sum 2229468
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sumweights 5616
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):mean 396.98504273504
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):stddev 252.79463919761
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):min 40
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):max 576
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):starttime 0.2000409
+scalar ClientServer.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):endtime 25.0000753
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):count 5617
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):sum 1227900
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):sumweights 5617
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):mean 218.60423713726
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):stddev 252.65015887822
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):min 40
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):max 576
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):starttime 0.2000409
+scalar ClientServer.server.ppp[0].ppp passedUpPk:vector(packetBytes):endtime 25.0001507
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar ClientServer.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar ClientServer.server.ppp[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar ClientServer.server.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar ClientServer.server.udp packetSent:vector(packetBytes):count 0
+scalar ClientServer.server.udp packetSent:vector(packetBytes):sum 0
+scalar ClientServer.server.udp packetSent:vector(packetBytes):sumweights 0
+scalar ClientServer.server.udp packetSent:vector(packetBytes):mean -nan
+scalar ClientServer.server.udp packetSent:vector(packetBytes):stddev nan
+scalar ClientServer.server.udp packetSent:vector(packetBytes):min inf
+scalar ClientServer.server.udp packetSent:vector(packetBytes):max -inf
+scalar ClientServer.server.udp packetSent:vector(packetBytes):starttime nan
+scalar ClientServer.server.udp packetSent:vector(packetBytes):endtime nan
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):count 0
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):sum 0
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):sumweights 0
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):mean -nan
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):stddev nan
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):min inf
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):max -inf
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):starttime nan
+scalar ClientServer.server.udp packetReceived:vector(packetBytes):endtime nan
+scalar ClientServer.server.udp passedUpPk:vector(count):count 1
+scalar ClientServer.server.udp passedUpPk:vector(count):sum 0
+scalar ClientServer.server.udp passedUpPk:vector(count):sumweights 1
+scalar ClientServer.server.udp passedUpPk:vector(count):mean 0
+scalar ClientServer.server.udp passedUpPk:vector(count):stddev nan
+scalar ClientServer.server.udp passedUpPk:vector(count):min 0
+scalar ClientServer.server.udp passedUpPk:vector(count):max 0
+scalar ClientServer.server.udp passedUpPk:vector(count):starttime 0
+scalar ClientServer.server.udp passedUpPk:vector(count):endtime 0
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):count 1
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):sum 0
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):mean 0
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):stddev nan
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):min 0
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):max 0
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):starttime 0
+scalar ClientServer.server.udp droppedPkWrongPort:vector(count):endtime 0
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):count 1
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):sum 0
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):mean 0
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):min 0
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):max 0
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar ClientServer.server.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):count 1600
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):sum 1000000
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):sumweights 1600
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):mean 625
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):stddev 709.53560198312
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):min 360
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):max 6432
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):starttime 0.4004665
+scalar ClientServer.server.app[0] packetReceived:vector(packetBytes):endtime 3.826590581086
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):count 1600
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):sum 2000000
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):sumweights 1600
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):mean 1250
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):stddev 1419.0712039662
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):min 720
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):max 12864
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):starttime 0.4004665
+scalar ClientServer.server.app[0] packetSent:vector(packetBytes):endtime 3.826590581086
+scalar ClientServer.server.app[0] endToEndDelay:vector:count 1866
+scalar ClientServer.server.app[0] endToEndDelay:vector:sum 5489.3873487658
+scalar ClientServer.server.app[0] endToEndDelay:vector:sumweights 1866
+scalar ClientServer.server.app[0] endToEndDelay:vector:mean 2.9417938632185
+scalar ClientServer.server.app[0] endToEndDelay:vector:stddev 0.44095455932612
+scalar ClientServer.server.app[0] endToEndDelay:vector:min 0.0004665
+scalar ClientServer.server.app[0] endToEndDelay:vector:max 3.426590581086
+scalar ClientServer.server.app[0] endToEndDelay:vector:starttime 0.4004665
+scalar ClientServer.server.app[0] endToEndDelay:vector:endtime 3.826590581086
+scalar ClientServer.server.tcp.conn-1 state:vector:count 1
+scalar ClientServer.server.tcp.conn-1 state:vector:sum 2
+scalar ClientServer.server.tcp.conn-1 state:vector:sumweights 1
+scalar ClientServer.server.tcp.conn-1 state:vector:mean 2
+scalar ClientServer.server.tcp.conn-1 state:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 state:vector:min 2
+scalar ClientServer.server.tcp.conn-1 state:vector:max 2
+scalar ClientServer.server.tcp.conn-1 state:vector:starttime 0
+scalar ClientServer.server.tcp.conn-1 state:vector:endtime 0
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:count 0
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:min inf
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 sndWnd:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:count 0
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:min inf
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 rcvWnd:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:count 0
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:min inf
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 rcvAdv:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:count 0
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:min inf
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 sndNxt:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:count 0
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:min inf
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 sndAck:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:count 1
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:sum 49999
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:sumweights 1
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:mean 49999
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:min 49999
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:max 49999
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-1 rcvSeq:vector:endtime 0.2000409
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:count 1
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:sumweights 1
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:mean 0
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:min 0
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:max 0
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-1 rcvAck:vector:endtime 0.2000409
+scalar ClientServer.server.tcp.conn-1 unacked:vector:count 0
+scalar ClientServer.server.tcp.conn-1 unacked:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 unacked:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 unacked:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 unacked:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 unacked:vector:min inf
+scalar ClientServer.server.tcp.conn-1 unacked:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 unacked:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 unacked:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:count 0
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:min inf
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 dupAcks:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 pipe:vector:count 0
+scalar ClientServer.server.tcp.conn-1 pipe:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 pipe:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 pipe:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 pipe:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 pipe:vector:min inf
+scalar ClientServer.server.tcp.conn-1 pipe:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 pipe:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 pipe:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:count 0
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:min inf
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 sndSacks:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:count 0
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:min inf
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 rcvSacks:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:count 0
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:min inf
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 rcvOooSeg:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:count 0
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:min inf
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 rcvNASeg:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:count 0
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:min inf
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 sackedBytes:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:count 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:min inf
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueBytes:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:count 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:min inf
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvQueueDrops:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:count 1
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:sumweights 1
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:mean 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:min 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:max 0
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-1 tcpRcvPayloadBytes:vector:endtime 0.2000409
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:count 0
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:min inf
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 cwnd:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:count 0
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:min inf
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 ssthresh:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rtt:vector:count 0
+scalar ClientServer.server.tcp.conn-1 rtt:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rtt:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 rtt:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 rtt:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rtt:vector:min inf
+scalar ClientServer.server.tcp.conn-1 rtt:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 rtt:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 rtt:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 srtt:vector:count 0
+scalar ClientServer.server.tcp.conn-1 srtt:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 srtt:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 srtt:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 srtt:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 srtt:vector:min inf
+scalar ClientServer.server.tcp.conn-1 srtt:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 srtt:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 srtt:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:count 0
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:min inf
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 rttvar:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 rto:vector:count 0
+scalar ClientServer.server.tcp.conn-1 rto:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 rto:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 rto:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 rto:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 rto:vector:min inf
+scalar ClientServer.server.tcp.conn-1 rto:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 rto:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 rto:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:count 0
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:min inf
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 numRtos:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 load:vector:count 0
+scalar ClientServer.server.tcp.conn-1 load:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 load:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 load:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 load:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 load:vector:min inf
+scalar ClientServer.server.tcp.conn-1 load:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 load:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 load:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:count 0
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:min inf
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 calcLoad:vector:endtime nan
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:count 0
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:sum 0
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:mean -nan
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:stddev nan
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:min inf
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:max -inf
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:starttime nan
+scalar ClientServer.server.tcp.conn-1 markingProb:vector:endtime nan
+scalar ClientServer.client1.tcp.conn-4 state:vector:count 5
+scalar ClientServer.client1.tcp.conn-4 state:vector:sum 36
+scalar ClientServer.client1.tcp.conn-4 state:vector:sumweights 5
+scalar ClientServer.client1.tcp.conn-4 state:vector:mean 7.2
+scalar ClientServer.client1.tcp.conn-4 state:vector:stddev 3.1937438845343
+scalar ClientServer.client1.tcp.conn-4 state:vector:min 3
+scalar ClientServer.client1.tcp.conn-4 state:vector:max 11
+scalar ClientServer.client1.tcp.conn-4 state:vector:starttime 0.2
+scalar ClientServer.client1.tcp.conn-4 state:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:count 1853
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:sum 13896872
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:sumweights 1853
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:mean 7499.6610901241
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:stddev 75.636489861668
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:min 5360
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:max 7504
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:starttime 0.2000818
+scalar ClientServer.client1.tcp.conn-4 sndWnd:vector:endtime 25.0000754
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:count 5650
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:sum 40402608
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:sumweights 5650
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:mean 7150.9040707965
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:stddev 512.97481957416
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:min 4824
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:max 7504
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:starttime 0.2
+scalar ClientServer.client1.tcp.conn-4 rcvWnd:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:count 5651
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:sum 4197816511
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:sumweights 5651
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:mean 742844.89665546
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:stddev 643586.13284244
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:min 7504
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:max 2057516
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:starttime 0.2
+scalar ClientServer.client1.tcp.conn-4 rcvAdv:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:count 1905
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:sum 1040155824
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:sumweights 1905
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:mean 546013.55590551
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:stddev 290692.51986145
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:min 50000
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:max 1049640
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:starttime 0.4
+scalar ClientServer.client1.tcp.conn-4 sndNxt:vector:endtime 3.826264881086
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:count 5650
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:sum 4157356388
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:sumweights 5650
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:mean 735815.2899115
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:stddev 643242.41616229
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:min 0
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:max 2050012
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:starttime 0.2
+scalar ClientServer.client1.tcp.conn-4 sndAck:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:count 5616
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:sum 4164396543
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:sumweights 5616
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:mean 741523.60096154
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:stddev 641431.92016618
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:min 50010
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:max 2050011
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:starttime 0.2000818
+scalar ClientServer.client1.tcp.conn-4 rcvSeq:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:count 5616
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:sum 4808115890
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:sumweights 5616
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:mean 856145.99180912
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:stddev 316463.29771413
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:min 50000
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:max 1050001
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:starttime 0.2000818
+scalar ClientServer.client1.tcp.conn-4 rcvAck:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:count 3237
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:sum 15410361
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:sumweights 3237
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:mean 4760.6923076923
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:stddev 1195.4978504739
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:min 0
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:max 7504
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:starttime 0.4
+scalar ClientServer.client1.tcp.conn-4 unacked:vector:endtime 25.0000754
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:count 5606
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:sum 1553
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:sumweights 5606
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:mean 0.27702461648234
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:stddev 1.4194256210784
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:min 0
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:max 11
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:starttime 0.4005042
+scalar ClientServer.client1.tcp.conn-4 dupAcks:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:count 0
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:sum 0
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:sumweights 0
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:mean -nan
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:stddev nan
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:min inf
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:max -inf
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:starttime nan
+scalar ClientServer.client1.tcp.conn-4 pipe:vector:endtime nan
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:count 0
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:sum 0
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:sumweights 0
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:mean -nan
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:stddev nan
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:min inf
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:max -inf
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:starttime nan
+scalar ClientServer.client1.tcp.conn-4 sndSacks:vector:endtime nan
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:count 0
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:sum 0
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:sumweights 0
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:mean -nan
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:stddev nan
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:min inf
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:max -inf
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:starttime nan
+scalar ClientServer.client1.tcp.conn-4 rcvSacks:vector:endtime nan
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:count 536
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:sum 143916
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:sumweights 536
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:mean 268.5
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:stddev 154.87414245122
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:min 1
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:max 536
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:starttime 0.4130444
+scalar ClientServer.client1.tcp.conn-4 rcvOooSeg:vector:endtime 5.652221881086
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:count 9
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:sum 45
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:sumweights 9
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:mean 5
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:stddev 2.7386127875258
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:min 1
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:max 9
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:starttime 1.967667681086
+scalar ClientServer.client1.tcp.conn-4 rcvNASeg:vector:endtime 4.002565081086
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:count 0
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:sum 0
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:sumweights 0
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:mean -nan
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:stddev nan
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:min inf
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:max -inf
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:starttime nan
+scalar ClientServer.client1.tcp.conn-4 sackedBytes:vector:endtime nan
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:count 9382
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:sum 10310496
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:sumweights 9382
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:mean 1098.9656789597
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:stddev 1736.2367201817
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:min 0
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:max 5896
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:starttime 0.2
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueBytes:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:count 0
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:sum 0
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:sumweights 0
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:mean -nan
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:stddev nan
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:min inf
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:max -inf
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:starttime nan
+scalar ClientServer.client1.tcp.conn-4 tcpRcvQueueDrops:vector:endtime nan
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:count 5616
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:sum 2004824
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:sumweights 5616
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:mean 356.98433048433
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:stddev 252.79563954566
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:min 0
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:max 536
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:starttime 0.2000818
+scalar ClientServer.client1.tcp.conn-4 tcpRcvPayloadBytes:vector:endtime 25.000113
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:count 1815
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:sum 10048967
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:sumweights 1815
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:mean 5536.6209366391
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:stddev 1295.4142273843
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:min 536
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:max 10184
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:starttime 0.4005042
+scalar ClientServer.client1.tcp.conn-4 cwnd:vector:endtime 25.0000754
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:count 1605
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:sum 77314747396
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:sumweights 1605
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:mean 48171182.178193
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:stddev 452422855.74924
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:min 1474
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:max 4294967295
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:starttime 0.4005042
+scalar ClientServer.client1.tcp.conn-4 ssthresh:vector:endtime 25.0000754
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:count 211
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:sum 0.8711626
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:sumweights 211
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:mean 0.0041287327014218
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:stddev 0.0023114040535739
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:min 0.0003634
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:max 0.0097944
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:starttime 0.4005042
+scalar ClientServer.client1.tcp.conn-4 rtt:vector:endtime 3.826628281086
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:count 211
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:sum 0.844310919886
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:sumweights 211
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:mean 0.0040014735539621
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:stddev 0.00095848139500777
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:min 6.3025e-05
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:max 0.005014829318
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:starttime 0.4005042
+scalar ClientServer.client1.tcp.conn-4 srtt:vector:endtime 3.826628281086
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:count 211
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:sum 5.592975238806
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:sumweights 211
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:mean 0.026506991653109
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:stddev 0.089898659519312
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:min 0.001336833972
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:max 0.656313025
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:starttime 0.4005042
+scalar ClientServer.client1.tcp.conn-4 rttvar:vector:endtime 3.826628281086
+scalar ClientServer.client1.tcp.conn-4 rto:vector:count 211
+scalar ClientServer.client1.tcp.conn-4 rto:vector:sum 216.80978815452
+scalar ClientServer.client1.tcp.conn-4 rto:vector:sumweights 211
+scalar ClientServer.client1.tcp.conn-4 rto:vector:mean 1.0275345410167
+scalar ClientServer.client1.tcp.conn-4 rto:vector:stddev 0.17212754337909
+scalar ClientServer.client1.tcp.conn-4 rto:vector:min 1
+scalar ClientServer.client1.tcp.conn-4 rto:vector:max 2.625315125
+scalar ClientServer.client1.tcp.conn-4 rto:vector:starttime 0.4005042
+scalar ClientServer.client1.tcp.conn-4 rto:vector:endtime 3.826628281086
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:count 2
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:sum 3
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:sumweights 2
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:mean 1.5
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:stddev 0.70710678118655
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:min 1
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:max 2
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:starttime 1.957609681086
+scalar ClientServer.client1.tcp.conn-4 numRtos:vector:endtime 2.984856481086
+scalar ClientServer.client1.tcp.conn-4 load:vector:count 0
+scalar ClientServer.client1.tcp.conn-4 load:vector:sum 0
+scalar ClientServer.client1.tcp.conn-4 load:vector:sumweights 0
+scalar ClientServer.client1.tcp.conn-4 load:vector:mean -nan
+scalar ClientServer.client1.tcp.conn-4 load:vector:stddev nan
+scalar ClientServer.client1.tcp.conn-4 load:vector:min inf
+scalar ClientServer.client1.tcp.conn-4 load:vector:max -inf
+scalar ClientServer.client1.tcp.conn-4 load:vector:starttime nan
+scalar ClientServer.client1.tcp.conn-4 load:vector:endtime nan
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:count 0
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:sum 0
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:sumweights 0
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:mean -nan
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:stddev nan
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:min inf
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:max -inf
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:starttime nan
+scalar ClientServer.client1.tcp.conn-4 calcLoad:vector:endtime nan
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:count 0
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:sum 0
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:sumweights 0
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:mean -nan
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:stddev nan
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:min inf
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:max -inf
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:starttime nan
+scalar ClientServer.client1.tcp.conn-4 markingProb:vector:endtime nan
+scalar ClientServer.server.tcp.conn-5 state:vector:count 5
+scalar ClientServer.server.tcp.conn-5 state:vector:sum 23
+scalar ClientServer.server.tcp.conn-5 state:vector:sumweights 5
+scalar ClientServer.server.tcp.conn-5 state:vector:mean 4.6
+scalar ClientServer.server.tcp.conn-5 state:vector:stddev 2.3021728866443
+scalar ClientServer.server.tcp.conn-5 state:vector:min 1
+scalar ClientServer.server.tcp.conn-5 state:vector:max 7
+scalar ClientServer.server.tcp.conn-5 state:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-5 state:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:count 3739
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:sum 28037624
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:sumweights 3739
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:mean 7498.6959079968
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:stddev 103.22378931956
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:min 4824
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:max 7504
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-5 sndWnd:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:count 5679
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:sum 42547680
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:sumweights 5679
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:mean 7492.1077654517
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:stddev 123.45190001817
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:min 4288
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:max 7504
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-5 rcvWnd:vector:endtime 25.0000377
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:count 5680
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:sum 4901199106
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:sumweights 5680
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:mean 862887.1665493
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:stddev 318124.7929884
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:min 57504
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:max 1057505
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-5 rcvAdv:vector:endtime 25.0000377
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:count 3804
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:sum 3972162972
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:sumweights 3804
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:mean 1044206.8801262
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:stddev 580510.29344406
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:min 50011
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:max 2049827
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:starttime 0.4004665
+scalar ClientServer.server.tcp.conn-5 sndNxt:vector:endtime 5.669516381086
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:count 5679
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:sum 4858593922
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:sumweights 5679
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:mean 855536.87656278
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:stddev 317943.98847513
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:min 50000
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:max 1050001
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-5 sndAck:vector:endtime 25.0000377
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:count 5616
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:sum 4808593105
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:sumweights 5616
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:mean 856230.96599003
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:stddev 316215.1297171
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:min 50000
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:max 1050001
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:starttime 0.2001195
+scalar ClientServer.server.tcp.conn-5 rcvSeq:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:count 5616
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:sum 4153872369
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:sumweights 5616
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:mean 739649.6383547
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:stddev 643284.64621632
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:min 50011
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:max 2050012
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:starttime 0.2001195
+scalar ClientServer.server.tcp.conn-5 rcvAck:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 unacked:vector:count 6470
+scalar ClientServer.server.tcp.conn-5 unacked:vector:sum 30901121
+scalar ClientServer.server.tcp.conn-5 unacked:vector:sumweights 6470
+scalar ClientServer.server.tcp.conn-5 unacked:vector:mean 4776.0619783617
+scalar ClientServer.server.tcp.conn-5 unacked:vector:stddev 1182.8324215013
+scalar ClientServer.server.tcp.conn-5 unacked:vector:min 0
+scalar ClientServer.server.tcp.conn-5 unacked:vector:max 7504
+scalar ClientServer.server.tcp.conn-5 unacked:vector:starttime 0.2001195
+scalar ClientServer.server.tcp.conn-5 unacked:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:count 5609
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:sum 3161
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:sumweights 5609
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:mean 0.56355856658941
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:stddev 1.987998556738
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:min 0
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:max 11
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:starttime 0.4004665
+scalar ClientServer.server.tcp.conn-5 dupAcks:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 pipe:vector:count 0
+scalar ClientServer.server.tcp.conn-5 pipe:vector:sum 0
+scalar ClientServer.server.tcp.conn-5 pipe:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-5 pipe:vector:mean -nan
+scalar ClientServer.server.tcp.conn-5 pipe:vector:stddev nan
+scalar ClientServer.server.tcp.conn-5 pipe:vector:min inf
+scalar ClientServer.server.tcp.conn-5 pipe:vector:max -inf
+scalar ClientServer.server.tcp.conn-5 pipe:vector:starttime nan
+scalar ClientServer.server.tcp.conn-5 pipe:vector:endtime nan
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:count 0
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:sum 0
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:mean -nan
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:stddev nan
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:min inf
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:max -inf
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:starttime nan
+scalar ClientServer.server.tcp.conn-5 sndSacks:vector:endtime nan
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:count 0
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:sum 0
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:mean -nan
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:stddev nan
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:min inf
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:max -inf
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:starttime nan
+scalar ClientServer.server.tcp.conn-5 rcvSacks:vector:endtime nan
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:count 266
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:sum 35511
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:sumweights 266
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:mean 133.5
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:stddev 76.931787968303
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:min 1
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:max 266
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:starttime 0.4091627
+scalar ClientServer.server.tcp.conn-5 rcvOooSeg:vector:endtime 3.798709581086
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:count 6
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:sum 21
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:sumweights 6
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:mean 3.5
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:stddev 1.870828693387
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:min 1
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:max 6
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:starttime 0.4136237
+scalar ClientServer.server.tcp.conn-5 rcvNASeg:vector:endtime 2.986293581086
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:count 0
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:sum 0
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:mean -nan
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:stddev nan
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:min inf
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:max -inf
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:starttime nan
+scalar ClientServer.server.tcp.conn-5 sackedBytes:vector:endtime nan
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:count 7545
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:sum 2034656
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:sumweights 7545
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:mean 269.66944996687
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:stddev 988.65448452318
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:min 0
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:max 5896
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:starttime 0.2000409
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueBytes:vector:endtime 25.0000377
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:count 0
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:sum 0
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:mean -nan
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:stddev nan
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:min inf
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:max -inf
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:starttime nan
+scalar ClientServer.server.tcp.conn-5 tcpRcvQueueDrops:vector:endtime nan
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:count 5616
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:sum 1003216
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:sumweights 5616
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:mean 178.63532763533
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:stddev 252.66190938548
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:min 0
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:max 536
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:starttime 0.2001195
+scalar ClientServer.server.tcp.conn-5 tcpRcvPayloadBytes:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:count 3632
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:sum 20157801
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:sumweights 3632
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:mean 5550.0553414097
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:stddev 1277.1988809554
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:min 536
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:max 10184
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:starttime 0.4014747
+scalar ClientServer.server.tcp.conn-5 cwnd:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:count 3202
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:sum 77320082740
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:sumweights 3202
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:mean 24147433.710181
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:stddev 321165438.4802
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:min 1072
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:max 4294967295
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:starttime 0.4014747
+scalar ClientServer.server.tcp.conn-5 ssthresh:vector:endtime 25.0001507
+scalar ClientServer.server.tcp.conn-5 rtt:vector:count 415
+scalar ClientServer.server.tcp.conn-5 rtt:vector:sum 1.7468684
+scalar ClientServer.server.tcp.conn-5 rtt:vector:sumweights 415
+scalar ClientServer.server.tcp.conn-5 rtt:vector:mean 0.0042093214457831
+scalar ClientServer.server.tcp.conn-5 rtt:vector:stddev 0.0023062811773257
+scalar ClientServer.server.tcp.conn-5 rtt:vector:min 0.0002226
+scalar ClientServer.server.tcp.conn-5 rtt:vector:max 0.0101328
+scalar ClientServer.server.tcp.conn-5 rtt:vector:starttime 0.4014747
+scalar ClientServer.server.tcp.conn-5 rtt:vector:endtime 5.669738981086
+scalar ClientServer.server.tcp.conn-5 srtt:vector:count 415
+scalar ClientServer.server.tcp.conn-5 srtt:vector:sum 1.72122875715
+scalar ClientServer.server.tcp.conn-5 srtt:vector:sumweights 415
+scalar ClientServer.server.tcp.conn-5 srtt:vector:mean 0.0041475391738554
+scalar ClientServer.server.tcp.conn-5 srtt:vector:stddev 0.00072024159258767
+scalar ClientServer.server.tcp.conn-5 srtt:vector:min 0.000126025
+scalar ClientServer.server.tcp.conn-5 srtt:vector:max 0.005014829318
+scalar ClientServer.server.tcp.conn-5 srtt:vector:starttime 0.4014747
+scalar ClientServer.server.tcp.conn-5 srtt:vector:endtime 5.669738981086
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:count 415
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:sum 5.944710228918
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:sumweights 415
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:mean 0.014324602961248
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:stddev 0.06523639080299
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:min 0.001336833971
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:max 0.656376025
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:starttime 0.4014747
+scalar ClientServer.server.tcp.conn-5 rttvar:vector:endtime 5.669738981086
+scalar ClientServer.server.tcp.conn-5 rto:vector:count 415
+scalar ClientServer.server.tcp.conn-5 rto:vector:sum 420.81565649093
+scalar ClientServer.server.tcp.conn-5 rto:vector:sumweights 415
+scalar ClientServer.server.tcp.conn-5 rto:vector:mean 1.0140136300986
+scalar ClientServer.server.tcp.conn-5 rto:vector:stddev 0.12347260757058
+scalar ClientServer.server.tcp.conn-5 rto:vector:min 1
+scalar ClientServer.server.tcp.conn-5 rto:vector:max 2.625630125
+scalar ClientServer.server.tcp.conn-5 rto:vector:starttime 0.4014747
+scalar ClientServer.server.tcp.conn-5 rto:vector:endtime 5.669738981086
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:count 2
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:sum 3
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:sumweights 2
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:mean 1.5
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:stddev 0.70710678118655
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:min 1
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:max 2
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:starttime 1.959056638703
+scalar ClientServer.server.tcp.conn-5 numRtos:vector:endtime 3.996463981086
+scalar ClientServer.server.tcp.conn-5 load:vector:count 0
+scalar ClientServer.server.tcp.conn-5 load:vector:sum 0
+scalar ClientServer.server.tcp.conn-5 load:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-5 load:vector:mean -nan
+scalar ClientServer.server.tcp.conn-5 load:vector:stddev nan
+scalar ClientServer.server.tcp.conn-5 load:vector:min inf
+scalar ClientServer.server.tcp.conn-5 load:vector:max -inf
+scalar ClientServer.server.tcp.conn-5 load:vector:starttime nan
+scalar ClientServer.server.tcp.conn-5 load:vector:endtime nan
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:count 0
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:sum 0
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:mean -nan
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:stddev nan
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:min inf
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:max -inf
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:starttime nan
+scalar ClientServer.server.tcp.conn-5 calcLoad:vector:endtime nan
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:count 0
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:sum 0
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:sumweights 0
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:mean -nan
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:stddev nan
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:min inf
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:max -inf
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:starttime nan
+scalar ClientServer.server.tcp.conn-5 markingProb:vector:endtime nan
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):count 1600
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):sum 1000000
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):sumweights 1600
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):mean 625
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):stddev 709.53560198312
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):min 360
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):max 6432
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):starttime 0.4004665
+scalar ClientServer.server.app[0].thread_5 packetReceived:vector(packetBytes):endtime 3.826590581086
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):count 1600
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):sum 2000000
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):sumweights 1600
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):mean 1250
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):stddev 1419.0712039662
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):min 720
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):max 12864
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):starttime 0.4004665
+scalar ClientServer.server.app[0].thread_5 packetSent:vector(packetBytes):endtime 3.826590581086
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:count 1866
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:sum 5489.3873487658
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:sumweights 1866
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:mean 2.9417938632185
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:stddev 0.44095455932612
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:min 0.0004665
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:max 3.426590581086
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:starttime 0.4004665
+scalar ClientServer.server.app[0].thread_5 endToEndDelay:vector:endtime 3.826590581086
 

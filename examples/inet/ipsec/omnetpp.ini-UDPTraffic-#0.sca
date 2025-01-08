@@ -1,8 +1,8 @@
 version 3
-run UDPTraffic-0-20240115-11:21:27-14574
+run UDPTraffic-0-20250108-11:21:43-10140
 attr configname UDPTraffic
-attr datetime 20240115-11:21:27
-attr datetimef 20240115-112127
+attr datetime 20250108-11:21:43
+attr datetimef 20250108-112143
 attr experiment UDPTraffic
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,16 +10,16 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network TwoHosts
-attr processid 14574
+attr processid 10140
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-UDPTraffic-#0.sca
+config output-vector-file results/omnetpp.ini-UDPTraffic-#0.vec
 config sim-time-limit 200s
 config description "IPsec with UDP traffic"
 config sim-time-limit 200s
@@ -54,87 +54,399 @@ config **.ipsec.espProtectOutDelay 7us
 config **.ipsec.espProtectInDelay 9us
 
 scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
 scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
 scalar TwoHosts.client1.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
 scalar TwoHosts.client1.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
 scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
 scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
 scalar TwoHosts.client1.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
 scalar TwoHosts.client1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
 scalar TwoHosts.client1.ppp[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
 scalar TwoHosts.client1.ppp[0].queue queueLength:max 1
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
 scalar TwoHosts.client1.ppp[0].queue queueLength:timeavg 0.00016804
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
 scalar TwoHosts.client1.ppp[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
 scalar TwoHosts.client1.ppp[0].queue queueBitLength:max 10592
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
 scalar TwoHosts.client1.ppp[0].queue queueBitLength:timeavg 1.706748672
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
+scalar TwoHosts.client1.ppp[0].queue outgoingPackets:count 80
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:sum 742912
+scalar TwoHosts.client1.ppp[0].queue incomingPackets:count 80
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:sum 742912
+scalar TwoHosts.client1.ppp[0].queue droppedPacketsQueueOverflow:count 0
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:timeavg 0.000373696
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:count 0
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:sum(packetBytes) 0
+scalar TwoHosts.client1.ppp[0].ppp txPk:count 80
+scalar TwoHosts.client1.ppp[0].ppp txPk:sum(packetBytes) 93424
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:count 80
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 92864
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:count 0
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:sum(packetBytes) 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:count 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:count 0
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:count 0
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:count 0
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:count 0
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:count 0
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:count 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:count 0
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.arp arpResolutionFailed:count 0
+scalar TwoHosts.client1.ipv4.arp arpResolutionCompleted:count 0
+scalar TwoHosts.client1.ipv4.arp arpResolutionInitiated:count 0
+scalar TwoHosts.client1.ipv4.arp arpReplySent:count 0
+scalar TwoHosts.client1.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:count 0
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ipsec outDrop:count 40
+scalar TwoHosts.client1.ipv4.ipsec outProtect:count 40
+scalar TwoHosts.client1.ipv4.ipsec outBypass:count 40
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:count 0
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:count 0
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:count 0
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:count 0
+scalar TwoHosts.client1.udp packetReceived:count 0
+scalar TwoHosts.client1.udp packetReceived:sum(packetBytes) 0
+scalar TwoHosts.client1.udp packetSent:count 120
+scalar TwoHosts.client1.udp packetSent:sum(packetBytes) 123840
+scalar TwoHosts.client1.udp passedUpPk:count 0
+scalar TwoHosts.client1.udp droppedPkWrongPort:count 0
+scalar TwoHosts.client1.udp droppedPkBadChecksum:count 0
+scalar TwoHosts.client1.app[0] "packets sent" 40
+scalar TwoHosts.client1.app[0] "packets received" 0
+scalar TwoHosts.client1.app[0] packetReceived:count 0
+scalar TwoHosts.client1.app[0] packetReceived:sum(packetBytes) 0
+scalar TwoHosts.client1.app[0] packetSent:count 40
+scalar TwoHosts.client1.app[0] packetSent:sum(packetBytes) 40960
+scalar TwoHosts.client1.app[1] "packets sent" 40
+scalar TwoHosts.client1.app[1] "packets received" 0
+scalar TwoHosts.client1.app[1] packetReceived:count 0
+scalar TwoHosts.client1.app[1] packetReceived:sum(packetBytes) 0
+scalar TwoHosts.client1.app[1] packetSent:count 40
+scalar TwoHosts.client1.app[1] packetSent:sum(packetBytes) 40960
+scalar TwoHosts.client1.app[2] "packets sent" 40
+scalar TwoHosts.client1.app[2] "packets received" 0
+scalar TwoHosts.client1.app[2] packetReceived:count 0
+scalar TwoHosts.client1.app[2] packetReceived:sum(packetBytes) 0
+scalar TwoHosts.client1.app[2] packetSent:count 40
+scalar TwoHosts.client1.app[2] packetSent:sum(packetBytes) 40960
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:count 0
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar TwoHosts.server.lo[0].lo passedUpPk:count 0
+scalar TwoHosts.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:count 0
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:count 0
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar TwoHosts.server.ppp[0].queue queueLength:last 0
+scalar TwoHosts.server.ppp[0].queue queueLength:max 0
+scalar TwoHosts.server.ppp[0].queue queueLength:timeavg 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:last 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:max 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:timeavg 0
+scalar TwoHosts.server.ppp[0].queue outgoingPackets:count 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:sum 0
+scalar TwoHosts.server.ppp[0].queue incomingPackets:count 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:sum 0
+scalar TwoHosts.server.ppp[0].queue droppedPacketsQueueOverflow:count 0
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar TwoHosts.server.ppp[0].ppp transmissionState:timeavg 0
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:count 80
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:sum(packetBytes) 93424
+scalar TwoHosts.server.ppp[0].ppp txPk:count 0
+scalar TwoHosts.server.ppp[0].ppp txPk:sum(packetBytes) 0
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:count 0
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 0
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:count 80
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:sum(packetBytes) 92864
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:count 0
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:count 0
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:count 0
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:count 0
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:count 0
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:count 0
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:count 0
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:count 0
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.arp arpResolutionFailed:count 0
+scalar TwoHosts.server.ipv4.arp arpResolutionCompleted:count 0
+scalar TwoHosts.server.ipv4.arp arpResolutionInitiated:count 0
+scalar TwoHosts.server.ipv4.arp arpReplySent:count 0
+scalar TwoHosts.server.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.arp arpRequestSent:count 0
+scalar TwoHosts.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar TwoHosts.server.ipv4.ipsec outDrop:count 0
+scalar TwoHosts.server.ipv4.ipsec outProtect:count 0
+scalar TwoHosts.server.ipv4.ipsec outBypass:count 0
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:count 0
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:count 40
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:count 0
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:count 40
+scalar TwoHosts.server.udp packetReceived:count 80
+scalar TwoHosts.server.udp packetReceived:sum(packetBytes) 87450
+scalar TwoHosts.server.udp packetSent:count 0
+scalar TwoHosts.server.udp packetSent:sum(packetBytes) 0
+scalar TwoHosts.server.udp passedUpPk:count 80
+scalar TwoHosts.server.udp droppedPkWrongPort:count 0
+scalar TwoHosts.server.udp droppedPkBadChecksum:count 0
+scalar TwoHosts.server.app[0] packetReceived:count 40
+scalar TwoHosts.server.app[0] packetReceived:sum(packetBytes) 40961
+scalar TwoHosts.server.app[1] packetReceived:count 40
+scalar TwoHosts.server.app[1] packetReceived:sum(packetBytes) 40960
+scalar TwoHosts.server.app[2] packetReceived:count 0
+scalar TwoHosts.server.app[2] packetReceived:sum(packetBytes) 0
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:stats:count 40
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:stats:sumweights 40
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:stats:mean 7e-06
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:stats:stddev 0
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:stats:min 7e-06
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:stats:max 7e-06
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:stats:numbins 0
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:stats:count 0
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:stats:sumweights 0
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:stats:mean -nan
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:stats:stddev nan
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:stats:min nan
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:stats:max nan
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:stats:numbins 0
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:stats:count 0
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:stats:sumweights 0
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:stats:mean -nan
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:stats:stddev nan
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:stats:min nan
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:stats:max nan
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:stats:numbins 0
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:stats:count 0
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:stats:sumweights 0
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:stats:mean -nan
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:stats:stddev nan
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:stats:min nan
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:stats:max nan
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:stats:numbins 0
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:stats:count 0
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:stats:sumweights 0
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:stats:mean -nan
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:stats:stddev nan
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:stats:min nan
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:stats:max nan
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:stats:numbins 0
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:stats:count 0
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:stats:sumweights 0
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:stats:mean -nan
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:stats:stddev nan
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:stats:min nan
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:stats:max nan
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:stats:numbins 0
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:stats:count 40
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:stats:sumweights 40
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:stats:mean 9e-06
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:stats:stddev 0
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:stats:min 9e-06
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:stats:max 9e-06
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:stats:numbins 0
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:count 80
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:sumweights 80
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:mean 0.0004201
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:stddev 0.00042275049947945
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:min 0
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:max 0.0008402
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:numbins 53
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:rangemin 0
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:rangemax 0.00106
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:underflows 0
+scalar TwoHosts.client1.ppp[0].queue queueingTime:histogram:overflows 0
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:count 80
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:sumweights 80
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:mean 9286.4
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:stddev 947.06423933
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:min 8416
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:max 10592
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:numbins 66
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:rangemin 7850
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:rangemax 11150
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:count 0
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:sumweights 0
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:mean -nan
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:stddev nan
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:min nan
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:max nan
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:numbins 1
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:rangemin 0
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:rangemax 1
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:underflows 0
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:histogram:overflows 0
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:count 80
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:sumweights 80
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:mean 9286.4
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:stddev 947.06423933
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:min 8416
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:max 10592
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:numbins 66
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:rangemin 7850
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:rangemax 11150
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:underflows 0
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram:overflows 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:count 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:sumweights 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:mean -nan
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:stddev nan
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:min nan
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:max nan
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:numbins 1
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:rangemin 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:rangemax 1
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:underflows 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:histogram:overflows 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:count 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:sumweights 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:mean -nan
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:stddev nan
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:min nan
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:max nan
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:numbins 1
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:rangemin 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:rangemax 1
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:count 0
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:sumweights 0
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:mean -nan
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:stddev nan
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:min nan
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:max nan
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:numbins 1
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:rangemin 0
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:rangemax 1
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:underflows 0
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:histogram:overflows 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:count 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:sumweights 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:mean -nan
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:stddev nan
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:min nan
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:max nan
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:numbins 1
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:rangemin 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:rangemax 1
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:underflows 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram:overflows 0
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:count 40
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:sumweights 40
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:mean 0.00187758
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:stddev 5.1265599001923e-05
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:min 0.0018187
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:max 0.0019211
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:numbins 78
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:rangemin 0.001792
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:rangemax 0.001948
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:underflows 0
+scalar TwoHosts.server.app[0] endToEndDelay:histogram:overflows 0
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:count 40
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:sumweights 40
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:mean 0.0008473
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:stddev 0
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:min 0.0008473
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:max 0.0008473
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:numbins 51
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:rangemin 0
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:rangemax 0.51
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:underflows 0
+scalar TwoHosts.server.app[1] endToEndDelay:histogram:overflows 0
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:count 0
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:sumweights 0
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:mean -nan
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:stddev nan
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:min nan
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:max nan
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:numbins 1
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:rangemin 0
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:rangemax 1
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:underflows 0
+scalar TwoHosts.server.app[2] endToEndDelay:histogram:overflows 0
+statistic TwoHosts.client1.ipv4.ipsec outProcessDelay:stats
+field count 40
+field mean 7e-06
+field stddev 0
+field min 7e-06
+field max 7e-06
+field sum 0.00028
+field sqrsum 1.96e-09
+statistic TwoHosts.client1.ipv4.ipsec inProcessDelay:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+statistic TwoHosts.client1.app[0] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+statistic TwoHosts.client1.app[1] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+statistic TwoHosts.client1.app[2] rcvdPkLifetime:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+statistic TwoHosts.server.ipv4.ipsec outProcessDelay:stats
+field count 0
+field mean -nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+statistic TwoHosts.server.ipv4.ipsec inProcessDelay:stats
+field count 40
+field mean 9e-06
+field stddev 0
+field min 9e-06
+field max 9e-06
+field sum 0.00036
+field sqrsum 3.24e-09
 statistic TwoHosts.client1.ppp[0].queue queueingTime:histogram
 field count 80
 field mean 0.0004201
@@ -143,11 +455,6 @@ field min 0
 field max 0.0008402
 field sum 0.033608
 field sqrsum 2.82374416e-05
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	0	40
 bin	2e-05	0
@@ -203,17 +510,6 @@ bin	0.001	0
 bin	0.00102	0
 bin	0.00104	0
 bin	0.00106	0
-scalar TwoHosts.client1.ppp[0].queue outgoingPackets:count 80
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:sum 742912
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic TwoHosts.client1.ppp[0].queue outgoingPacketLengths:histogram
 field count 80
 field mean 9286.4
@@ -222,11 +518,6 @@ field min 8416
 field max 10592
 field sum 742912
 field sqrsum 6969835520
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	7850	0
 bin	7900	0
@@ -303,25 +594,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar TwoHosts.client1.ppp[0].queue incomingPackets:count 80
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:sum 742912
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic TwoHosts.client1.ppp[0].queue incomingPacketLengths:histogram
 field count 80
 field mean 9286.4
@@ -330,11 +605,6 @@ field min 8416
 field max 10592
 field sum 742912
 field sqrsum 6969835520
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	7850	0
 bin	7900	0
@@ -403,461 +673,6 @@ bin	11000	0
 bin	11050	0
 bin	11100	0
 bin	11150	0
-scalar TwoHosts.client1.ppp[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar TwoHosts.client1.ppp[0].ppp transmissionState:timeavg 0.000373696
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source transmissionStateChanged
-attr title "tx state, timeavg"
-scalar TwoHosts.client1.ppp[0].ppp rxPkOk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar TwoHosts.client1.ppp[0].ppp rxPkOk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
-scalar TwoHosts.client1.ppp[0].ppp txPk:count 80
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar TwoHosts.client1.ppp[0].ppp txPk:sum(packetBytes) 93424
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:count 80
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 92864
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar TwoHosts.client1.ppp[0].ppp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar TwoHosts.client1.ppp[0].ppp passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar TwoHosts.client1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar TwoHosts.client1.ipv4.arp arpResolutionCompleted:count 0
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar TwoHosts.client1.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar TwoHosts.client1.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar TwoHosts.client1.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar TwoHosts.client1.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar TwoHosts.client1.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-statistic TwoHosts.client1.ipv4.ipsec outProcessDelay:stats
-field count 40
-field mean 7e-06
-field stddev 0
-field min 7e-06
-field max 7e-06
-field sum 0.00028
-field sqrsum 1.96e-09
-attr recordingmode stats
-attr title "Outgoing Processing Delay"
-statistic TwoHosts.client1.ipv4.ipsec inProcessDelay:stats
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
-attr recordingmode stats
-attr title "Incoming Processing Delay"
-scalar TwoHosts.client1.ipv4.ipsec outDrop:count 40
-attr recordingmode count
-attr title "Outgoing Packet Dropped, count"
-scalar TwoHosts.client1.ipv4.ipsec outProtect:count 40
-attr recordingmode count
-attr title "Outgoing Packet Protected, count"
-scalar TwoHosts.client1.ipv4.ipsec outBypass:count 40
-attr recordingmode count
-attr title "Outgoing Packet Bypassed, count"
-scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:count 0
-attr recordingmode count
-attr title "Incoming Unprotected Packet Dropped, count"
-scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:count 0
-attr recordingmode count
-attr title "Incoming Unprotected Packet Bypassed, count"
-scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:count 0
-attr recordingmode count
-attr title "Incoming Protected Packet Dropped, count"
-scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:count 0
-attr recordingmode count
-attr title "Incoming Protected Packet Accepted, count"
-scalar TwoHosts.client1.udp packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar TwoHosts.client1.udp packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar TwoHosts.client1.udp packetSent:count 120
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar TwoHosts.client1.udp packetSent:sum(packetBytes) 123840
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar TwoHosts.client1.udp passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar TwoHosts.client1.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar TwoHosts.client1.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar TwoHosts.client1.app[0] "packets sent" 40
-scalar TwoHosts.client1.app[0] "packets received" 0
-scalar TwoHosts.client1.app[0] packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar TwoHosts.client1.app[0] packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-statistic TwoHosts.client1.app[0] rcvdPkLifetime:stats
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
-attr interpolationmode none
-attr recordingmode stats
-attr source dataAge(packetReceived)
-attr title "received packet lifetime"
-attr unit s
-scalar TwoHosts.client1.app[0] packetSent:count 40
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar TwoHosts.client1.app[0] packetSent:sum(packetBytes) 40960
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar TwoHosts.client1.app[1] "packets sent" 40
-scalar TwoHosts.client1.app[1] "packets received" 0
-scalar TwoHosts.client1.app[1] packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar TwoHosts.client1.app[1] packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-statistic TwoHosts.client1.app[1] rcvdPkLifetime:stats
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
-attr interpolationmode none
-attr recordingmode stats
-attr source dataAge(packetReceived)
-attr title "received packet lifetime"
-attr unit s
-scalar TwoHosts.client1.app[1] packetSent:count 40
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar TwoHosts.client1.app[1] packetSent:sum(packetBytes) 40960
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar TwoHosts.client1.app[2] "packets sent" 40
-scalar TwoHosts.client1.app[2] "packets received" 0
-scalar TwoHosts.client1.app[2] packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar TwoHosts.client1.app[2] packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-statistic TwoHosts.client1.app[2] rcvdPkLifetime:stats
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
-attr interpolationmode none
-attr recordingmode stats
-attr source dataAge(packetReceived)
-attr title "received packet lifetime"
-attr unit s
-scalar TwoHosts.client1.app[2] packetSent:count 40
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar TwoHosts.client1.app[2] packetSent:sum(packetBytes) 40960
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar TwoHosts.server.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar TwoHosts.server.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar TwoHosts.server.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar TwoHosts.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar TwoHosts.server.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar TwoHosts.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar TwoHosts.server.ppp[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar TwoHosts.server.ppp[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar TwoHosts.server.ppp[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar TwoHosts.server.ppp[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar TwoHosts.server.ppp[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar TwoHosts.server.ppp[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic TwoHosts.server.ppp[0].queue queueingTime:histogram
 field count 0
 field mean -nan
@@ -866,25 +681,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar TwoHosts.server.ppp[0].queue outgoingPackets:count 0
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic TwoHosts.server.ppp[0].queue outgoingPacketLengths:histogram
 field count 0
 field mean -nan
@@ -893,11 +692,6 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
@@ -909,25 +703,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar TwoHosts.server.ppp[0].queue incomingPackets:count 0
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic TwoHosts.server.ppp[0].queue incomingPacketLengths:histogram
 field count 0
 field mean -nan
@@ -936,292 +714,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar TwoHosts.server.ppp[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar TwoHosts.server.ppp[0].ppp transmissionState:timeavg 0
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source transmissionStateChanged
-attr title "tx state, timeavg"
-scalar TwoHosts.server.ppp[0].ppp rxPkOk:count 80
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar TwoHosts.server.ppp[0].ppp rxPkOk:sum(packetBytes) 93424
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
-scalar TwoHosts.server.ppp[0].ppp txPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar TwoHosts.server.ppp[0].ppp txPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar TwoHosts.server.ppp[0].ppp passedUpPk:count 80
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar TwoHosts.server.ppp[0].ppp passedUpPk:sum(packetBytes) 92864
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar TwoHosts.server.ppp[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar TwoHosts.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar TwoHosts.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar TwoHosts.server.ipv4.arp arpResolutionCompleted:count 0
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar TwoHosts.server.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar TwoHosts.server.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar TwoHosts.server.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar TwoHosts.server.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar TwoHosts.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-statistic TwoHosts.server.ipv4.ipsec outProcessDelay:stats
-field count 0
-field mean -nan
-field stddev nan
-field min nan
-field max nan
-field sum 0
-field sqrsum 0
-attr recordingmode stats
-attr title "Outgoing Processing Delay"
-statistic TwoHosts.server.ipv4.ipsec inProcessDelay:stats
-field count 40
-field mean 9e-06
-field stddev 0
-field min 9e-06
-field max 9e-06
-field sum 0.00036
-field sqrsum 3.24e-09
-attr recordingmode stats
-attr title "Incoming Processing Delay"
-scalar TwoHosts.server.ipv4.ipsec outDrop:count 0
-attr recordingmode count
-attr title "Outgoing Packet Dropped, count"
-scalar TwoHosts.server.ipv4.ipsec outProtect:count 0
-attr recordingmode count
-attr title "Outgoing Packet Protected, count"
-scalar TwoHosts.server.ipv4.ipsec outBypass:count 0
-attr recordingmode count
-attr title "Outgoing Packet Bypassed, count"
-scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:count 0
-attr recordingmode count
-attr title "Incoming Unprotected Packet Dropped, count"
-scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:count 40
-attr recordingmode count
-attr title "Incoming Unprotected Packet Bypassed, count"
-scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:count 0
-attr recordingmode count
-attr title "Incoming Protected Packet Dropped, count"
-scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:count 40
-attr recordingmode count
-attr title "Incoming Protected Packet Accepted, count"
-scalar TwoHosts.server.udp packetReceived:count 80
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar TwoHosts.server.udp packetReceived:sum(packetBytes) 87450
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar TwoHosts.server.udp packetSent:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar TwoHosts.server.udp packetSent:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar TwoHosts.server.udp passedUpPk:count 80
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar TwoHosts.server.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar TwoHosts.server.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar TwoHosts.server.app[0] packetReceived:count 40
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar TwoHosts.server.app[0] packetReceived:sum(packetBytes) 40961
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
 statistic TwoHosts.server.app[0] endToEndDelay:histogram
 field count 40
 field mean 0.00187758
@@ -1230,11 +725,6 @@ field min 0.0018187
 field max 0.0019211
 field sum 0.0751032
 field sqrsum 0.00014111476456
-attr interpolationmode none
-attr recordingmode histogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay"
-attr unit s
 bin	-inf	0
 bin	0.001792	0
 bin	0.001794	0
@@ -1315,16 +805,6 @@ bin	0.001942	0
 bin	0.001944	0
 bin	0.001946	0
 bin	0.001948	0
-scalar TwoHosts.server.app[1] packetReceived:count 40
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar TwoHosts.server.app[1] packetReceived:sum(packetBytes) 40960
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
 statistic TwoHosts.server.app[1] endToEndDelay:histogram
 field count 40
 field mean 0.0008473
@@ -1333,11 +813,6 @@ field min 0.0008473
 field max 0.0008473
 field sum 0.033892
 field sqrsum 2.87166916e-05
-attr interpolationmode none
-attr recordingmode histogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay"
-attr unit s
 bin	-inf	0
 bin	0	40
 bin	0.01	0
@@ -1391,16 +866,6 @@ bin	0.48	0
 bin	0.49	0
 bin	0.5	0
 bin	0.51	0
-scalar TwoHosts.server.app[2] packetReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar TwoHosts.server.app[2] packetReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
 statistic TwoHosts.server.app[2] endToEndDelay:histogram
 field count 0
 field mean -nan
@@ -1409,12 +874,1096 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source dataAge(packetReceived)
-attr title "end-to-end delay"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:count 125
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:sum 40
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:sumweights 125
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:mean 0.32
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:stddev 0.46835332678404
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:min 0
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:max 1
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:starttime 0
+scalar TwoHosts.client1.ppp[0].queue queueLength:vector:endtime 4.9008472
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:count 125
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:sum 406272
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:sumweights 125
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:mean 3250.176
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:stddev 4765.6514432396
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:min 0
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:max 10592
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:starttime 0
+scalar TwoHosts.client1.ppp[0].queue queueBitLength:vector:endtime 4.9008472
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:count 80
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:sum 0.033608
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:sumweights 80
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:mean 0.0004201
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:stddev 0.00042275049947945
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:min 0
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:max 0.0008402
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:starttime 1
+scalar TwoHosts.client1.ppp[0].queue queueingTime:vector:endtime 4.9008472
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:count 80
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:sum 742912
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:sumweights 80
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:mean 9286.4
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:stddev 947.06423933
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:min 8416
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:max 10592
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:starttime 1
+scalar TwoHosts.client1.ppp[0].queue incomingPacketLengths:vector:endtime 4.900007
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:count 2000
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:sum 7429120
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:sumweights 2000
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:mean 3714.56
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:stddev 26018.278394462
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:min 0
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:max 190080
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:starttime 0.1
+scalar TwoHosts.client1.ppp[0].queue incomingDataRate:vector:endtime 200
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:count 80
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:sum 742912
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:sumweights 80
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:mean 9286.4
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:stddev 947.06423933
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:min 8416
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:max 10592
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:starttime 1
+scalar TwoHosts.client1.ppp[0].queue outgoingPacketLengths:vector:endtime 4.9008472
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:count 2000
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:sum 7429120
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:sumweights 2000
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:mean 3714.56
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:stddev 26018.278394462
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:min 0
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:max 190080
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:starttime 0.1
+scalar TwoHosts.client1.ppp[0].queue outgoingDataRate:vector:endtime 200
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar TwoHosts.client1.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:count 0
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:sum 0
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:sumweights 0
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:mean -nan
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:stddev nan
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:min inf
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:max -inf
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:starttime nan
+scalar TwoHosts.client1.ppp[0].queue flowQueueingTime:vector:endtime nan
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:count 2000
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:sum 0
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:sumweights 2000
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:mean 0
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:stddev 0
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:min 0
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:max 0
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar TwoHosts.client1.ppp[0].queue flowIncomingDataRate:vector:endtime 200
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:count 2000
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:sum 0
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:sumweights 2000
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:mean 0
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:min 0
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:max 0
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar TwoHosts.client1.ppp[0].queue flowOutgoingDataRate:vector:endtime 200
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:count 161
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:sum 80
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:sumweights 161
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:mean 0.49689440993789
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:stddev 0.50155039131782
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:min 0
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:max 1
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:starttime 0
+scalar TwoHosts.client1.ppp[0].ppp transmissionState:vector:endtime 4.901912
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):count 80
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):sum 93424
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):sumweights 80
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):mean 1167.8
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):stddev 118.38302991625
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):min 1059
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):max 1331
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):starttime 1
+scalar TwoHosts.client1.ppp[0].ppp txPk:vector(packetBytes):endtime 4.9008472
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):count 0
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):min inf
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ppp[0].ppp rxPkOk:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):count 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):min inf
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):count 80
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sum 92864
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sumweights 80
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):mean 1160.8
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):stddev 118.38302991625
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):min 1052
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):max 1324
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):starttime 1
+scalar TwoHosts.client1.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):endtime 4.9008472
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):count 0
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):min inf
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ppp[0].ppp passedUpPk:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ppp[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ppp[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:count 0
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:sum 0
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:sumweights 0
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:mean -nan
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:stddev nan
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:min inf
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:max -inf
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:starttime nan
+scalar TwoHosts.client1.ipv4.ipsec inProtectedAccept:vector:endtime nan
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:count 0
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:sum 0
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:sumweights 0
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:mean -nan
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:stddev nan
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:min inf
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:max -inf
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:starttime nan
+scalar TwoHosts.client1.ipv4.ipsec inProtectedDrop:vector:endtime nan
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:count 0
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:sum 0
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:sumweights 0
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:mean -nan
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:stddev nan
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:min inf
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:max -inf
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:starttime nan
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedBypass:vector:endtime nan
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:count 0
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:sum 0
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:sumweights 0
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:mean -nan
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:stddev nan
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:min inf
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:max -inf
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:starttime nan
+scalar TwoHosts.client1.ipv4.ipsec inUnprotectedDrop:vector:endtime nan
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:count 40
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:sum 40
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:sumweights 40
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:mean 1
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:stddev 0
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:min 1
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:max 1
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:starttime 1
+scalar TwoHosts.client1.ipv4.ipsec outBypass:vector:endtime 4.9
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:count 40
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:sum 40
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:sumweights 40
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:mean 1
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:stddev 0
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:min 1
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:max 1
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:starttime 1
+scalar TwoHosts.client1.ipv4.ipsec outProtect:vector:endtime 4.9
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:count 40
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:sum 40
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:sumweights 40
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:mean 1
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:stddev 0
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:min 1
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:max 1
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:starttime 1
+scalar TwoHosts.client1.ipv4.ipsec outDrop:vector:endtime 4.9
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:count 0
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:sum 0
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:sumweights 0
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:mean -nan
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:stddev nan
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:min inf
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:max -inf
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:starttime nan
+scalar TwoHosts.client1.ipv4.ipsec inProcessDelay:vector:endtime nan
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:count 40
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:sum 0.00028
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:sumweights 40
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:mean 7e-06
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:stddev 0
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:min 7e-06
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:max 7e-06
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:starttime 1
+scalar TwoHosts.client1.ipv4.ipsec outProcessDelay:vector:endtime 4.9
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):count 120
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):sum 123840
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):sumweights 120
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):mean 1032
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):stddev 0
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):min 1032
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):max 1032
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):starttime 1
+scalar TwoHosts.client1.udp packetSent:vector(packetBytes):endtime 4.9
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):count 0
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):sum 0
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):min inf
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):max -inf
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.udp packetReceived:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.udp passedUpPk:vector(count):count 1
+scalar TwoHosts.client1.udp passedUpPk:vector(count):sum 0
+scalar TwoHosts.client1.udp passedUpPk:vector(count):sumweights 1
+scalar TwoHosts.client1.udp passedUpPk:vector(count):mean 0
+scalar TwoHosts.client1.udp passedUpPk:vector(count):stddev nan
+scalar TwoHosts.client1.udp passedUpPk:vector(count):min 0
+scalar TwoHosts.client1.udp passedUpPk:vector(count):max 0
+scalar TwoHosts.client1.udp passedUpPk:vector(count):starttime 0
+scalar TwoHosts.client1.udp passedUpPk:vector(count):endtime 0
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):count 1
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):sum 0
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):mean 0
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):stddev nan
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):min 0
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):max 0
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):starttime 0
+scalar TwoHosts.client1.udp droppedPkWrongPort:vector(count):endtime 0
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):count 1
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):sum 0
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):mean 0
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):min 0
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):max 0
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar TwoHosts.client1.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):count 0
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):sum 0
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):min inf
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):max -inf
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.app[0] packetReceived:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.app[0] throughput:vector:count 2000
+scalar TwoHosts.client1.app[0] throughput:vector:sum 0
+scalar TwoHosts.client1.app[0] throughput:vector:sumweights 2000
+scalar TwoHosts.client1.app[0] throughput:vector:mean 0
+scalar TwoHosts.client1.app[0] throughput:vector:stddev 0
+scalar TwoHosts.client1.app[0] throughput:vector:min 0
+scalar TwoHosts.client1.app[0] throughput:vector:max 0
+scalar TwoHosts.client1.app[0] throughput:vector:starttime 0.1
+scalar TwoHosts.client1.app[0] throughput:vector:endtime 200
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):count 40
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):sum 40960
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):sumweights 40
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):mean 1024
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):stddev 0
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):min 1024
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):max 1024
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):starttime 1
+scalar TwoHosts.client1.app[0] packetSent:vector(packetBytes):endtime 4.9
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:count 0
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:sum 0
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:sumweights 0
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:mean -nan
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:stddev nan
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:min inf
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:max -inf
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:starttime nan
+scalar TwoHosts.client1.app[0] rcvdPkLifetime:vector:endtime nan
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:count 0
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:sum 0
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:sumweights 0
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:mean -nan
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:stddev nan
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:min inf
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:max -inf
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:starttime nan
+scalar TwoHosts.client1.app[0] rcvdPkSeqNo:vector:endtime nan
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):count 0
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):sum 0
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):min inf
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):max -inf
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.app[1] packetReceived:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.app[1] throughput:vector:count 2000
+scalar TwoHosts.client1.app[1] throughput:vector:sum 0
+scalar TwoHosts.client1.app[1] throughput:vector:sumweights 2000
+scalar TwoHosts.client1.app[1] throughput:vector:mean 0
+scalar TwoHosts.client1.app[1] throughput:vector:stddev 0
+scalar TwoHosts.client1.app[1] throughput:vector:min 0
+scalar TwoHosts.client1.app[1] throughput:vector:max 0
+scalar TwoHosts.client1.app[1] throughput:vector:starttime 0.1
+scalar TwoHosts.client1.app[1] throughput:vector:endtime 200
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):count 40
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):sum 40960
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):sumweights 40
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):mean 1024
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):stddev 0
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):min 1024
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):max 1024
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):starttime 1
+scalar TwoHosts.client1.app[1] packetSent:vector(packetBytes):endtime 4.9
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:count 0
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:sum 0
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:sumweights 0
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:mean -nan
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:stddev nan
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:min inf
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:max -inf
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:starttime nan
+scalar TwoHosts.client1.app[1] rcvdPkLifetime:vector:endtime nan
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:count 0
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:sum 0
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:sumweights 0
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:mean -nan
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:stddev nan
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:min inf
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:max -inf
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:starttime nan
+scalar TwoHosts.client1.app[1] rcvdPkSeqNo:vector:endtime nan
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):count 0
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):sum 0
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):sumweights 0
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):mean -nan
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):stddev nan
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):min inf
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):max -inf
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):starttime nan
+scalar TwoHosts.client1.app[2] packetReceived:vector(packetBytes):endtime nan
+scalar TwoHosts.client1.app[2] throughput:vector:count 2000
+scalar TwoHosts.client1.app[2] throughput:vector:sum 0
+scalar TwoHosts.client1.app[2] throughput:vector:sumweights 2000
+scalar TwoHosts.client1.app[2] throughput:vector:mean 0
+scalar TwoHosts.client1.app[2] throughput:vector:stddev 0
+scalar TwoHosts.client1.app[2] throughput:vector:min 0
+scalar TwoHosts.client1.app[2] throughput:vector:max 0
+scalar TwoHosts.client1.app[2] throughput:vector:starttime 0.1
+scalar TwoHosts.client1.app[2] throughput:vector:endtime 200
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):count 40
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):sum 40960
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):sumweights 40
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):mean 1024
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):stddev 0
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):min 1024
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):max 1024
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):starttime 1
+scalar TwoHosts.client1.app[2] packetSent:vector(packetBytes):endtime 4.9
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:count 0
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:sum 0
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:sumweights 0
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:mean -nan
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:stddev nan
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:min inf
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:max -inf
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:starttime nan
+scalar TwoHosts.client1.app[2] rcvdPkLifetime:vector:endtime nan
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:count 0
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:sum 0
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:sumweights 0
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:mean -nan
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:stddev nan
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:min inf
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:max -inf
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:starttime nan
+scalar TwoHosts.client1.app[2] rcvdPkSeqNo:vector:endtime nan
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar TwoHosts.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar TwoHosts.server.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar TwoHosts.server.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar TwoHosts.server.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:count 5
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:sumweights 5
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:mean 0
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:stddev 0
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:min 0
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:max 0
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:starttime 0
+scalar TwoHosts.server.ppp[0].queue queueLength:vector:endtime 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:count 5
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:sumweights 5
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:mean 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:stddev 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:min 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:max 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:starttime 0
+scalar TwoHosts.server.ppp[0].queue queueBitLength:vector:endtime 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:count 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:sumweights 0
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:mean -nan
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:stddev nan
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:min inf
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:max -inf
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:starttime nan
+scalar TwoHosts.server.ppp[0].queue queueingTime:vector:endtime nan
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:count 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:sumweights 0
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:mean -nan
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:stddev nan
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:min inf
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:max -inf
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:starttime nan
+scalar TwoHosts.server.ppp[0].queue incomingPacketLengths:vector:endtime nan
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:count 2000
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:sumweights 2000
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:mean 0
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:stddev 0
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:min 0
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:max 0
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:starttime 0.1
+scalar TwoHosts.server.ppp[0].queue incomingDataRate:vector:endtime 200
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:count 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:sumweights 0
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:mean -nan
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:stddev nan
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:min inf
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:max -inf
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:starttime nan
+scalar TwoHosts.server.ppp[0].queue outgoingPacketLengths:vector:endtime nan
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:count 2000
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:sumweights 2000
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:mean 0
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:stddev 0
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:min 0
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:max 0
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:starttime 0.1
+scalar TwoHosts.server.ppp[0].queue outgoingDataRate:vector:endtime 200
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar TwoHosts.server.ppp[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:count 0
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:sumweights 0
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:mean -nan
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:stddev nan
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:min inf
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:max -inf
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:starttime nan
+scalar TwoHosts.server.ppp[0].queue flowQueueingTime:vector:endtime nan
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:count 2000
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:sumweights 2000
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:mean 0
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:stddev 0
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:min 0
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:max 0
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar TwoHosts.server.ppp[0].queue flowIncomingDataRate:vector:endtime 200
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:count 2000
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:sum 0
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:sumweights 2000
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:mean 0
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:min 0
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:max 0
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar TwoHosts.server.ppp[0].queue flowOutgoingDataRate:vector:endtime 200
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:count 1
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:sum 0
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:sumweights 1
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:mean 0
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:stddev nan
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:min 0
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:max 0
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:starttime 0
+scalar TwoHosts.server.ppp[0].ppp transmissionState:vector:endtime 0
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):count 0
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):sum 0
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):min inf
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):max -inf
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ppp[0].ppp txPk:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):count 80
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):sum 93424
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):sumweights 80
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):mean 1167.8
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):stddev 118.38302991625
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):min 1059
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):max 1331
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):starttime 1.0008473
+scalar TwoHosts.server.ppp[0].ppp rxPkOk:vector(packetBytes):endtime 4.9019121
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ppp[0].ppp packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):count 0
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):min inf
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ppp[0].ppp packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):count 0
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sum 0
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):min inf
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):max -inf
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ppp[0].ppp rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):count 80
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):sum 92864
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):sumweights 80
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):mean 1160.8
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):stddev 118.38302991625
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):min 1052
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):max 1324
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):starttime 1.0008473
+scalar TwoHosts.server.ppp[0].ppp passedUpPk:vector(packetBytes):endtime 4.9019121
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ppp[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ppp[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar TwoHosts.server.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:count 40
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:sum 40
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:sumweights 40
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:mean 1
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:stddev 0
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:min 1
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:max 1
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:starttime 1.0019121
+scalar TwoHosts.server.ipv4.ipsec inProtectedAccept:vector:endtime 4.9019121
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:count 0
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:sum 0
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:sumweights 0
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:mean -nan
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:stddev nan
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:min inf
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:max -inf
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:starttime nan
+scalar TwoHosts.server.ipv4.ipsec inProtectedDrop:vector:endtime nan
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:count 40
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:sum 40
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:sumweights 40
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:mean 1
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:stddev 0
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:min 1
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:max 1
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:starttime 1.0008473
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedBypass:vector:endtime 4.9008473
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:count 0
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:sum 0
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:sumweights 0
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:mean -nan
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:stddev nan
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:min inf
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:max -inf
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:starttime nan
+scalar TwoHosts.server.ipv4.ipsec inUnprotectedDrop:vector:endtime nan
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:count 0
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:sum 0
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:sumweights 0
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:mean -nan
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:stddev nan
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:min inf
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:max -inf
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:starttime nan
+scalar TwoHosts.server.ipv4.ipsec outBypass:vector:endtime nan
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:count 0
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:sum 0
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:sumweights 0
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:mean -nan
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:stddev nan
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:min inf
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:max -inf
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:starttime nan
+scalar TwoHosts.server.ipv4.ipsec outProtect:vector:endtime nan
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:count 0
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:sum 0
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:sumweights 0
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:mean -nan
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:stddev nan
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:min inf
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:max -inf
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:starttime nan
+scalar TwoHosts.server.ipv4.ipsec outDrop:vector:endtime nan
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:count 40
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:sum 0.00036
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:sumweights 40
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:mean 9e-06
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:stddev 0
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:min 9e-06
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:max 9e-06
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:starttime 1.0019121
+scalar TwoHosts.server.ipv4.ipsec inProcessDelay:vector:endtime 4.9019121
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:count 0
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:sum 0
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:sumweights 0
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:mean -nan
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:stddev nan
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:min inf
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:max -inf
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:starttime nan
+scalar TwoHosts.server.ipv4.ipsec outProcessDelay:vector:endtime nan
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):count 0
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):sum 0
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):mean -nan
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):stddev nan
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):min inf
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):max -inf
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):starttime nan
+scalar TwoHosts.server.udp packetSent:vector(packetBytes):endtime nan
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):count 80
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):sum 87450
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):sumweights 80
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):mean 1093.125
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):stddev 76.642252120658
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):min 1032
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):max 1274
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):starttime 1.0008473
+scalar TwoHosts.server.udp packetReceived:vector(packetBytes):endtime 4.9019211
+scalar TwoHosts.server.udp passedUpPk:vector(count):count 81
+scalar TwoHosts.server.udp passedUpPk:vector(count):sum 3240
+scalar TwoHosts.server.udp passedUpPk:vector(count):sumweights 81
+scalar TwoHosts.server.udp passedUpPk:vector(count):mean 40
+scalar TwoHosts.server.udp passedUpPk:vector(count):stddev 23.526580712037
+scalar TwoHosts.server.udp passedUpPk:vector(count):min 0
+scalar TwoHosts.server.udp passedUpPk:vector(count):max 80
+scalar TwoHosts.server.udp passedUpPk:vector(count):starttime 0
+scalar TwoHosts.server.udp passedUpPk:vector(count):endtime 4.9019211
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):count 1
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):sum 0
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):mean 0
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):stddev nan
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):min 0
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):max 0
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):starttime 0
+scalar TwoHosts.server.udp droppedPkWrongPort:vector(count):endtime 0
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):count 1
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):sum 0
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):mean 0
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):min 0
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):max 0
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar TwoHosts.server.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):count 40
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):sum 40961
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):sumweights 40
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):mean 1024.025
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):stddev 0.15811388312924
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):min 1024
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):max 1025
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):starttime 1.0019211
+scalar TwoHosts.server.app[0] packetReceived:vector(packetBytes):endtime 4.9019211
+scalar TwoHosts.server.app[0] throughput:vector:count 2000
+scalar TwoHosts.server.app[0] throughput:vector:sum 3276880
+scalar TwoHosts.server.app[0] throughput:vector:sumweights 2000
+scalar TwoHosts.server.app[0] throughput:vector:mean 1638.44
+scalar TwoHosts.server.app[0] throughput:vector:stddev 11471.948481726
+scalar TwoHosts.server.app[0] throughput:vector:min 0
+scalar TwoHosts.server.app[0] throughput:vector:max 82000
+scalar TwoHosts.server.app[0] throughput:vector:starttime 0.1
+scalar TwoHosts.server.app[0] throughput:vector:endtime 200
+scalar TwoHosts.server.app[0] endToEndDelay:vector:count 40
+scalar TwoHosts.server.app[0] endToEndDelay:vector:sum 0.0751032
+scalar TwoHosts.server.app[0] endToEndDelay:vector:sumweights 40
+scalar TwoHosts.server.app[0] endToEndDelay:vector:mean 0.00187758
+scalar TwoHosts.server.app[0] endToEndDelay:vector:stddev 5.1265599001923e-05
+scalar TwoHosts.server.app[0] endToEndDelay:vector:min 0.0018187
+scalar TwoHosts.server.app[0] endToEndDelay:vector:max 0.0019211
+scalar TwoHosts.server.app[0] endToEndDelay:vector:starttime 1.0019211
+scalar TwoHosts.server.app[0] endToEndDelay:vector:endtime 4.9019211
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:count 40
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:sum 780
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:sumweights 40
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:mean 19.5
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:stddev 11.6904519445
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:min 0
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:max 39
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:starttime 1.0019211
+scalar TwoHosts.server.app[0] rcvdPkSeqNo:vector:endtime 4.9019211
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):count 40
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):sum 40960
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):sumweights 40
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):mean 1024
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):stddev 0
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):min 1024
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):max 1024
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):starttime 1.0008473
+scalar TwoHosts.server.app[1] packetReceived:vector(packetBytes):endtime 4.9008473
+scalar TwoHosts.server.app[1] throughput:vector:count 2000
+scalar TwoHosts.server.app[1] throughput:vector:sum 3276800
+scalar TwoHosts.server.app[1] throughput:vector:sumweights 2000
+scalar TwoHosts.server.app[1] throughput:vector:mean 1638.4
+scalar TwoHosts.server.app[1] throughput:vector:stddev 11471.668275648
+scalar TwoHosts.server.app[1] throughput:vector:min 0
+scalar TwoHosts.server.app[1] throughput:vector:max 81920
+scalar TwoHosts.server.app[1] throughput:vector:starttime 0.1
+scalar TwoHosts.server.app[1] throughput:vector:endtime 200
+scalar TwoHosts.server.app[1] endToEndDelay:vector:count 40
+scalar TwoHosts.server.app[1] endToEndDelay:vector:sum 0.033892
+scalar TwoHosts.server.app[1] endToEndDelay:vector:sumweights 40
+scalar TwoHosts.server.app[1] endToEndDelay:vector:mean 0.0008473
+scalar TwoHosts.server.app[1] endToEndDelay:vector:stddev 0
+scalar TwoHosts.server.app[1] endToEndDelay:vector:min 0.0008473
+scalar TwoHosts.server.app[1] endToEndDelay:vector:max 0.0008473
+scalar TwoHosts.server.app[1] endToEndDelay:vector:starttime 1.0008473
+scalar TwoHosts.server.app[1] endToEndDelay:vector:endtime 4.9008473
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:count 40
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:sum 780
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:sumweights 40
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:mean 19.5
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:stddev 11.6904519445
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:min 0
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:max 39
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:starttime 1.0008473
+scalar TwoHosts.server.app[1] rcvdPkSeqNo:vector:endtime 4.9008473
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):count 0
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):sum 0
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):sumweights 0
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):mean -nan
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):stddev nan
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):min inf
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):max -inf
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):starttime nan
+scalar TwoHosts.server.app[2] packetReceived:vector(packetBytes):endtime nan
+scalar TwoHosts.server.app[2] throughput:vector:count 2000
+scalar TwoHosts.server.app[2] throughput:vector:sum 0
+scalar TwoHosts.server.app[2] throughput:vector:sumweights 2000
+scalar TwoHosts.server.app[2] throughput:vector:mean 0
+scalar TwoHosts.server.app[2] throughput:vector:stddev 0
+scalar TwoHosts.server.app[2] throughput:vector:min 0
+scalar TwoHosts.server.app[2] throughput:vector:max 0
+scalar TwoHosts.server.app[2] throughput:vector:starttime 0.1
+scalar TwoHosts.server.app[2] throughput:vector:endtime 200
+scalar TwoHosts.server.app[2] endToEndDelay:vector:count 0
+scalar TwoHosts.server.app[2] endToEndDelay:vector:sum 0
+scalar TwoHosts.server.app[2] endToEndDelay:vector:sumweights 0
+scalar TwoHosts.server.app[2] endToEndDelay:vector:mean -nan
+scalar TwoHosts.server.app[2] endToEndDelay:vector:stddev nan
+scalar TwoHosts.server.app[2] endToEndDelay:vector:min inf
+scalar TwoHosts.server.app[2] endToEndDelay:vector:max -inf
+scalar TwoHosts.server.app[2] endToEndDelay:vector:starttime nan
+scalar TwoHosts.server.app[2] endToEndDelay:vector:endtime nan
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:count 0
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:sum 0
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:sumweights 0
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:mean -nan
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:stddev nan
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:min inf
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:max -inf
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:starttime nan
+scalar TwoHosts.server.app[2] rcvdPkSeqNo:vector:endtime nan
 

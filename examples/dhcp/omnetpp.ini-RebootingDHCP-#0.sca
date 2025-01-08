@@ -1,8 +1,8 @@
 version 3
-run RebootingDHCP-0-20240219-17:52:07-106911
+run RebootingDHCP-0-20250108-11:18:28-9078
 attr configname RebootingDHCP
-attr datetime 20240219-17:52:07
-attr datetimef 20240219-175207
+attr datetime 20250108-11:18:28
+attr datetimef 20250108-111828
 attr experiment RebootingDHCP
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,20 +10,20 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network DHCPShutdownReboot
-attr processid 106911
+attr processid 9078
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config **.vector-recording false
 config image-path /home/levy/workspace/inet/images
 config output-scalar-file results/omnetpp.ini-RebootingDHCP-#0.sca
+config output-vector-file results/omnetpp.ini-RebootingDHCP-#0.vec
 config sim-time-limit 500s
 config description "DHCP with rebooting host and server"
 config network DHCPShutdownReboot
-config *.visualizer.*.interfaceTableVisualizer.displayInterfaceTables true
+config *.visualizer.interfaceTableVisualizer.displayInterfaceTables true
 config **.hasStatus true
 config **.scenarioManager.script "xmldoc(\"scenario.xml\")"
 config **.client.numApps 1
@@ -37,113 +37,305 @@ config **.server.app[0].leaseTime 40s
 config sim-time-limit 500s
 
 scalar DHCPShutdownReboot.client.ethernet pauseSent:count 0
-attr recordingmode count
-attr title "pause sent, count"
 scalar DHCPShutdownReboot.client.ethernet pauseSent:sum 0
-attr recordingmode sum
-attr title "pause sent, sum"
 scalar DHCPShutdownReboot.client.ethernet decapPk:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source decapPk
-attr title "packets decapsulated, count"
 scalar DHCPShutdownReboot.client.ethernet decapPk:sum(packetBytes) 7406
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source decapPk
-attr title "packets decapsulated, sum(packetBytes)"
 scalar DHCPShutdownReboot.client.ethernet encapPk:count 32
-attr interpolationmode none
-attr recordingmode count
-attr source encapPk
-attr title "packets encapsulated, count"
 scalar DHCPShutdownReboot.client.ethernet encapPk:sum(packetBytes) 7401
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source encapPk
-attr title "packets encapsulated, sum(packetBytes)"
 scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
 scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
 scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
 scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
 scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
 scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
 scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
 scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
 scalar DHCPShutdownReboot.client.eth[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
 scalar DHCPShutdownReboot.client.eth[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
 scalar DHCPShutdownReboot.client.eth[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
 scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
 scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
 scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPackets:count 32
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:sum 63816
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPackets:count 32
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:sum 63816
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketsQueueOverflow:count 0
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar DHCPShutdownReboot.client.eth[0].mac "simulated time" 500
+scalar DHCPShutdownReboot.client.eth[0].mac full-duplex 1
+scalar DHCPShutdownReboot.client.eth[0].mac "frames/sec sent" 0.064
+scalar DHCPShutdownReboot.client.eth[0].mac "frames/sec rcvd" 0.054
+scalar DHCPShutdownReboot.client.eth[0].mac "bits/sec sent" 129.648
+scalar DHCPShutdownReboot.client.eth[0].mac "bits/sec rcvd" 126.272
+scalar DHCPShutdownReboot.client.eth[0].mac "rx channel idle (%)" 99.99870272
+scalar DHCPShutdownReboot.client.eth[0].mac "rx channel utilization (%)" 0.00129728
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:count 0
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:sum 0
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:count 0
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:sum 0
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:count 27
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:sum(packetBytes) 7892
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:count 32
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:sum(packetBytes) 8103
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:count 32
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 7977
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:count 27
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:sum(packetBytes) 7892
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:count 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:count 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:count 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:count 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:count 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:count 1
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 287
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionFailed:count 1
+scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionCompleted:count 4
+scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionInitiated:count 5
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:count 0
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:sum(packetBytes) 0
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:count 7
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:sum(packetBytes) 196
+scalar DHCPShutdownReboot.client.udp packetReceived:count 23
+scalar DHCPShutdownReboot.client.udp packetReceived:sum(packetBytes) 6762
+scalar DHCPShutdownReboot.client.udp packetSent:count 26
+scalar DHCPShutdownReboot.client.udp packetSent:sum(packetBytes) 6972
+scalar DHCPShutdownReboot.client.udp passedUpPk:count 23
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:count 0
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:count 0
+scalar DHCPShutdownReboot.server.ethernet pauseSent:count 0
+scalar DHCPShutdownReboot.server.ethernet pauseSent:sum 0
+scalar DHCPShutdownReboot.server.ethernet decapPk:count 27
+scalar DHCPShutdownReboot.server.ethernet decapPk:sum(packetBytes) 6815
+scalar DHCPShutdownReboot.server.ethernet encapPk:count 27
+scalar DHCPShutdownReboot.server.ethernet encapPk:sum(packetBytes) 7334
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:count 0
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:count 0
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:count 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:count 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:last 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:max 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:timeavg 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:last 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:max 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:timeavg 0
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPackets:count 27
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:sum 62560
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPackets:count 27
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:sum 62560
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketsQueueOverflow:count 0
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
+scalar DHCPShutdownReboot.server.eth[0].mac "simulated time" 500
+scalar DHCPShutdownReboot.server.eth[0].mac full-duplex 1
+scalar DHCPShutdownReboot.server.eth[0].mac "frames/sec sent" 0.054
+scalar DHCPShutdownReboot.server.eth[0].mac "frames/sec rcvd" 0.054
+scalar DHCPShutdownReboot.server.eth[0].mac "bits/sec sent" 126.272
+scalar DHCPShutdownReboot.server.eth[0].mac "bits/sec rcvd" 116.816
+scalar DHCPShutdownReboot.server.eth[0].mac "rx channel idle (%)" 99.99879728
+scalar DHCPShutdownReboot.server.eth[0].mac "rx channel utilization (%)" 0.00120272
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:count 0
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:sum 0
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:count 0
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:sum 0
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:count 27
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:sum(packetBytes) 7301
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:count 27
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:sum(packetBytes) 7892
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:count 27
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 7820
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:count 27
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:sum(packetBytes) 7301
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:count 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:count 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:count 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:count 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:count 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionFailed:count 0
+scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionCompleted:count 4
+scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionInitiated:count 0
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:count 4
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:sum(packetBytes) 112
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:count 0
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+scalar DHCPShutdownReboot.server.udp packetReceived:count 23
+scalar DHCPShutdownReboot.server.udp packetReceived:sum(packetBytes) 6171
+scalar DHCPShutdownReboot.server.udp packetSent:count 23
+scalar DHCPShutdownReboot.server.udp packetSent:sum(packetBytes) 6762
+scalar DHCPShutdownReboot.server.udp passedUpPk:count 23
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:count 0
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:count 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:count 32
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:sumweights 32
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:mean 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:stddev 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:min 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:max 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:numbins 50
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:rangemin -0.5
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:rangemax 0.5
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:underflows 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram:overflows 0
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:count 32
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:sumweights 32
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:mean 1994.25
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:stddev 874.63994435314
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:min 368
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:max 2536
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:numbins 62
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:rangemin 0
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:rangemax 3100
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:count 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:sumweights 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:mean -nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:stddev nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:min nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:max nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:numbins 1
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:rangemin 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:rangemax 1
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:underflows 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:histogram:overflows 0
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:count 32
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:sumweights 32
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:mean 1994.25
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:stddev 874.63994435314
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:min 368
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:max 2536
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:numbins 62
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:rangemin 0
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:rangemax 3100
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:underflows 0
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram:overflows 0
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:count 5000
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:sumweights 5000
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:mean 133.744
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:stddev 1985.0468570462
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:min 0
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:max 51040
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:numbins 64
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:rangemin 0
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:rangemax 64000
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:underflows 0
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:histogram:overflows 0
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:count 5000
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:sumweights 5000
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:mean 0.00133744
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:stddev 0.019850468570462
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:min 0
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:max 0.5104
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:numbins 64
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:rangemin 0
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:rangemax 0.64
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:underflows 0
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:histogram:overflows 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:count 27
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:mean 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:stddev 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:min 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:max 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:numbins 50
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:rangemin -0.5
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:rangemax 0.5
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:underflows 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram:overflows 0
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:count 27
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:mean 2317.037037037
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:stddev 828.28801575119
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:min 368
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:max 2656
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:numbins 65
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:rangemin 0
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:rangemax 3250
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:underflows 0
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram:overflows 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:count 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:sumweights 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:mean -nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:stddev nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:min nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:max nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:numbins 1
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:rangemin 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:rangemax 1
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:underflows 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:histogram:overflows 0
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:count 27
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:mean 2317.037037037
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:stddev 828.28801575119
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:min 368
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:max 2656
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:numbins 65
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:rangemin 0
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:rangemax 3250
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:underflows 0
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram:overflows 0
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:count 5000
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:sumweights 5000
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:mean 129.728
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:stddev 2063.0984467679
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:min 0
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:max 54400
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:numbins 69
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:rangemin 0
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:rangemax 69000
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:underflows 0
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:histogram:overflows 0
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:count 5000
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:sumweights 5000
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:mean 0.00129728
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:stddev 0.020630984467679
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:min 0
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:max 0.544
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:numbins 68
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:rangemin 0
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:rangemax 0.68
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:underflows 0
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:histogram:overflows 0
 statistic DHCPShutdownReboot.client.eth[0].queue queueingTime:histogram
 field count 32
 field mean 0
@@ -152,11 +344,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -209,17 +396,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar DHCPShutdownReboot.client.eth[0].queue outgoingPackets:count 32
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:sum 63816
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:histogram
 field count 32
 field mean 1994.25
@@ -228,11 +404,6 @@ field min 368
 field max 2536
 field sum 63816
 field sqrsum 150979904
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	50	0
@@ -305,25 +476,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar DHCPShutdownReboot.client.eth[0].queue incomingPackets:count 32
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:sum 63816
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:histogram
 field count 32
 field mean 1994.25
@@ -332,11 +487,6 @@ field min 368
 field max 2536
 field sum 63816
 field sqrsum 150979904
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	50	0
@@ -401,52 +551,6 @@ bin	2950	0
 bin	3000	0
 bin	3050	0
 bin	3100	0
-scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar DHCPShutdownReboot.client.eth[0].mac "simulated time" 500
-scalar DHCPShutdownReboot.client.eth[0].mac full-duplex 1
-scalar DHCPShutdownReboot.client.eth[0].mac "frames/sec sent" 0.064
-scalar DHCPShutdownReboot.client.eth[0].mac "frames/sec rcvd" 0.054
-scalar DHCPShutdownReboot.client.eth[0].mac "bits/sec sent" 129.648
-scalar DHCPShutdownReboot.client.eth[0].mac "bits/sec rcvd" 126.272
-scalar DHCPShutdownReboot.client.eth[0].mac "rx channel idle (%)" 99.99870272
-scalar DHCPShutdownReboot.client.eth[0].mac "rx channel utilization (%)" 0.00129728
-scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "pause units received, count"
-scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr title "pause units received, sum"
-scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "pause units sent, count"
-scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr title "pause units sent, sum"
-scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:sum(packetBytes) 7892
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
 statistic DHCPShutdownReboot.client.eth[0].mac throughput:histogram
 field count 5000
 field mean 133.744
@@ -455,11 +559,6 @@ field min 0
 field max 51040
 field sum 668720
 field sqrsum 19787552000
-attr interpolationmode linear
-attr recordingmode histogram
-attr source throughput(transmissionEnded)
-attr title throughput
-attr unit bps
 bin	-inf	0
 bin	0	4974
 bin	1000	0
@@ -534,11 +633,6 @@ field min 0
 field max 0.5104
 field sum 6.6872
 field sqrsum 1.9787552
-attr interpolationmode linear
-attr recordingmode histogram
-attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
-attr title utilization
-attr unit %
 bin	-inf	0
 bin	0	4974
 bin	0.01	0
@@ -605,324 +699,6 @@ bin	0.61	0
 bin	0.62	0
 bin	0.63	0
 bin	0.64	0
-scalar DHCPShutdownReboot.client.eth[0].mac txPk:count 32
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar DHCPShutdownReboot.client.eth[0].mac txPk:sum(packetBytes) 8103
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:count 32
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packet bytes from higher layer, count"
-scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 7977
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packet bytes from higher layer, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:sum(packetBytes) 7892
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:count 1
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 287
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionFailed:count 1
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionCompleted:count 4
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar DHCPShutdownReboot.client.ipv4.arp arpResolutionInitiated:count 5
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:count 0
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:count 7
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:sum(packetBytes) 196
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.udp packetReceived:count 23
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar DHCPShutdownReboot.client.udp packetReceived:sum(packetBytes) 6762
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.udp packetSent:count 26
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar DHCPShutdownReboot.client.udp packetSent:sum(packetBytes) 6972
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar DHCPShutdownReboot.client.udp passedUpPk:count 23
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
-scalar DHCPShutdownReboot.server.ethernet pauseSent:count 0
-attr recordingmode count
-attr title "pause sent, count"
-scalar DHCPShutdownReboot.server.ethernet pauseSent:sum 0
-attr recordingmode sum
-attr title "pause sent, sum"
-scalar DHCPShutdownReboot.server.ethernet decapPk:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source decapPk
-attr title "packets decapsulated, count"
-scalar DHCPShutdownReboot.server.ethernet decapPk:sum(packetBytes) 6815
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source decapPk
-attr title "packets decapsulated, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ethernet encapPk:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source encapPk
-attr title "packets encapsulated, count"
-scalar DHCPShutdownReboot.server.ethernet encapPk:sum(packetBytes) 7334
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source encapPk
-attr title "packets encapsulated, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, count"
-scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packets received from higher layer, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.eth[0].queue queueLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, last"
-attr unit pk
-scalar DHCPShutdownReboot.server.eth[0].queue queueLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, max"
-attr unit pk
-scalar DHCPShutdownReboot.server.eth[0].queue queueLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
-attr title "queue length, timeavg"
-attr unit pk
-scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:last 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode last
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, last"
-attr unit b
-scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:max 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode max
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, max"
-attr unit b
-scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:timeavg 0
-attr autoWarmupFilter false
-attr interpolationmode sample-hold
-attr recordingmode timeavg
-attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
-attr title "queue bit length, timeavg"
-attr unit b
 statistic DHCPShutdownReboot.server.eth[0].queue queueingTime:histogram
 field count 27
 field mean 0
@@ -931,11 +707,6 @@ field min 0
 field max 0
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(packetPulled)
-attr title "queueing times"
-attr unit s
 bin	-inf	0
 bin	-0.5	0
 bin	-0.48	0
@@ -988,17 +759,6 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar DHCPShutdownReboot.server.eth[0].queue outgoingPackets:count 27
-attr recordingmode count
-attr source packetPulled
-attr title "outgoing packets, count"
-attr unit pk
-scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:sum 62560
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths, sum"
-attr unit b
 statistic DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:histogram
 field count 27
 field mean 2317.037037037
@@ -1007,11 +767,6 @@ field min 368
 field max 2656
 field sum 62560
 field sqrsum 162791424
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPulled)
-attr title "outgoing packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	50	0
@@ -1087,25 +842,9 @@ field min nan
 field max nan
 field sum 0
 field sqrsum 0
-attr interpolationmode none
-attr recordingmode histogram
-attr source queueingTime(demuxFlow(packetPulled))
-attr title "flow queueing times"
-attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar DHCPShutdownReboot.server.eth[0].queue incomingPackets:count 27
-attr recordingmode count
-attr source packetPushStarted
-attr title "incoming packets, count"
-attr unit pk
-scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:sum 62560
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths, sum"
-attr unit b
 statistic DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:histogram
 field count 27
 field mean 2317.037037037
@@ -1114,11 +853,6 @@ field min 368
 field max 2656
 field sum 62560
 field sqrsum 162791424
-attr interpolationmode none
-attr recordingmode histogram
-attr source packetLength(packetPushStarted)
-attr title "incoming packet lengths"
-attr unit b
 bin	-inf	0
 bin	0	0
 bin	50	0
@@ -1186,52 +920,6 @@ bin	3100	0
 bin	3150	0
 bin	3200	0
 bin	3250	0
-scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketsQueueOverflow:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsQueueOverflow(packetDropped)
-attr title "dropped packets: queue overflow, count"
-attr unit pk
-scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
-attr title "dropped packet lengths: queue overflow, sum"
-attr unit b
-scalar DHCPShutdownReboot.server.eth[0].mac "simulated time" 500
-scalar DHCPShutdownReboot.server.eth[0].mac full-duplex 1
-scalar DHCPShutdownReboot.server.eth[0].mac "frames/sec sent" 0.054
-scalar DHCPShutdownReboot.server.eth[0].mac "frames/sec rcvd" 0.054
-scalar DHCPShutdownReboot.server.eth[0].mac "bits/sec sent" 126.272
-scalar DHCPShutdownReboot.server.eth[0].mac "bits/sec rcvd" 116.816
-scalar DHCPShutdownReboot.server.eth[0].mac "rx channel idle (%)" 99.99879728
-scalar DHCPShutdownReboot.server.eth[0].mac "rx channel utilization (%)" 0.00120272
-scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "pause units received, count"
-scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr title "pause units received, sum"
-scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:count 0
-attr interpolationmode none
-attr recordingmode count
-attr title "pause units sent, count"
-scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:sum 0
-attr interpolationmode none
-attr recordingmode sum
-attr title "pause units sent, sum"
-scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source rxPkOk
-attr title "packets received OK, count"
-scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:sum(packetBytes) 7301
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source rxPkOk
-attr title "packets received OK, sum(packetBytes)"
 statistic DHCPShutdownReboot.server.eth[0].mac throughput:histogram
 field count 5000
 field mean 129.728
@@ -1240,11 +928,6 @@ field min 0
 field max 54400
 field sum 648640
 field sqrsum 21361766400
-attr interpolationmode linear
-attr recordingmode histogram
-attr source throughput(transmissionEnded)
-attr title throughput
-attr unit bps
 bin	-inf	0
 bin	0	4979
 bin	1000	0
@@ -1324,11 +1007,6 @@ field min 0
 field max 0.544
 field sum 6.4864
 field sqrsum 2.13617664
-attr interpolationmode linear
-attr recordingmode histogram
-attr source "100 * utilization(count(transmissionStarted) - count(transmissionEnded))"
-attr title utilization
-attr unit %
 bin	-inf	0
 bin	0	4979
 bin	0.01	0
@@ -1399,214 +1077,832 @@ bin	0.65	0
 bin	0.66	0
 bin	0.67	0
 bin	0.68	0
-scalar DHCPShutdownReboot.server.eth[0].mac txPk:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToLower
-attr title "packets transmitted, count"
-scalar DHCPShutdownReboot.server.eth[0].mac txPk:sum(packetBytes) 7892
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToLower
-attr title "packets transmitted, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceivedFromUpper
-attr title "packet bytes from higher layer, count"
-scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:sum(packetBytes) 7820
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceivedFromUpper
-attr title "packet bytes from higher layer, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:count 27
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed to higher layer, count"
-scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:sum(packetBytes) 7301
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSentToUpper
-attr title "packets passed to higher layer, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, count"
-scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packet drop: incorrectly received, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, count"
-scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drop: interface down, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, count"
-scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNotAddressedToUs(packetDropped)
-attr title "packet drop: not addressed to us, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, count"
-scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsInterfaceDown(packetDropped)
-attr title "packet drops: interface down, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, count"
-scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoCarrier(packetDropped)
-attr title "packet drops: no carrier, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, count"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
-attr title "packet drop: address resolution failed, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, count"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsHopLimitReached(packetDropped)
-attr title "packet drop: hop limit reached, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, count"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsForwardingDisabled(packetDropped)
-attr title "packet drop: forwarding disabled, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, count"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsLifetimeExpired(packetDropped)
-attr title "packet drop: lifetime expired, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, count"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoInterfaceFound(packetDropped)
-attr title "packet drop: no interface found, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, count"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsNoRouteFound(packetDropped)
-attr title "packet drop: no route found, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, count"
-scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetDropReasonIsUndefined(packetDropped)
-attr title "packet drop: undefined, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionFailed:count 0
-attr recordingmode count
-attr title "ARP failed resolutions, count"
-scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionCompleted:count 4
-attr recordingmode count
-attr title "ARP completed resolutions, count"
-scalar DHCPShutdownReboot.server.ipv4.arp arpResolutionInitiated:count 0
-attr recordingmode count
-attr title "ARP initiated resolutions, count"
-scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:count 4
-attr recordingmode count
-attr source arpReplySent
-attr title "ARP replies sent, count"
-scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:sum(packetBytes) 112
-attr recordingmode sum(packetBytes)
-attr source arpReplySent
-attr title "ARP replies sent, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:count 0
-attr recordingmode count
-attr source arpRequestSent
-attr title "ARP request sent, count"
-scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
-attr recordingmode sum(packetBytes)
-attr source arpRequestSent
-attr title "ARP request sent, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.udp packetReceived:count 23
-attr interpolationmode none
-attr recordingmode count
-attr source packetReceived
-attr title "packets received, count"
-scalar DHCPShutdownReboot.server.udp packetReceived:sum(packetBytes) 6171
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetReceived
-attr title "packets received, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.udp packetSent:count 23
-attr interpolationmode none
-attr recordingmode count
-attr source packetSent
-attr title "packets sent, count"
-scalar DHCPShutdownReboot.server.udp packetSent:sum(packetBytes) 6762
-attr interpolationmode none
-attr recordingmode sum(packetBytes)
-attr source packetSent
-attr title "packets sent, sum(packetBytes)"
-scalar DHCPShutdownReboot.server.udp passedUpPk:count 23
-attr interpolationmode none
-attr recordingmode count
-attr source packetSentToUpper
-attr title "packets passed up, count"
-scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsNoPortFound(packetDropped)
-attr title "packets dropped (wrong port), count"
-scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:count 0
-attr interpolationmode none
-attr recordingmode count
-attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
-attr title "packets dropped (checksum error), count"
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):count 32
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):sum 7401
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):sumweights 32
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):mean 231.28125
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):stddev 109.32999304414
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):min 28
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):max 299
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):starttime 0
+scalar DHCPShutdownReboot.client.ethernet encapPk:vector(packetBytes):endtime 490.0097653
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):sum 7406
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):mean 274.2962962963
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):stddev 97.01975009673
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):min 46
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):max 314
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):starttime 0.0005225
+scalar DHCPShutdownReboot.client.ethernet decapPk:vector(packetBytes):endtime 490.0102878
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:count 0
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:sum 0
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:sumweights 0
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:mean -nan
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:stddev nan
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:min inf
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:max -inf
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:starttime nan
+scalar DHCPShutdownReboot.client.ethernet pauseSent:vector:endtime nan
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:count 37
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:sumweights 37
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:mean 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:stddev 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:max 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:starttime 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueLength:vector:endtime 490.0097653
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:count 37
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:sumweights 37
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:mean 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:stddev 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:max 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:starttime 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueBitLength:vector:endtime 490.0097653
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:count 32
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:sumweights 32
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:mean 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:stddev 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:max 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:starttime 0
+scalar DHCPShutdownReboot.client.eth[0].queue queueingTime:vector:endtime 490.0097653
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:count 32
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:sum 63816
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:sumweights 32
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:mean 1994.25
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:stddev 874.63994435314
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:min 368
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:max 2536
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:starttime 0
+scalar DHCPShutdownReboot.client.eth[0].queue incomingPacketLengths:vector:endtime 490.0097653
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:count 5000
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:sum 638160
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:sumweights 5000
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:mean 127.632
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:stddev 1908.5940109923
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:max 49760
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:starttime 0.1
+scalar DHCPShutdownReboot.client.eth[0].queue incomingDataRate:vector:endtime 500
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:count 32
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:sum 63816
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:sumweights 32
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:mean 1994.25
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:stddev 874.63994435314
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:min 368
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:max 2536
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:starttime 0
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingPacketLengths:vector:endtime 490.0097653
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:count 5000
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:sum 638160
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:sumweights 5000
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:mean 127.632
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:stddev 1908.5940109923
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:max 49760
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:starttime 0.1
+scalar DHCPShutdownReboot.client.eth[0].queue outgoingDataRate:vector:endtime 500
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar DHCPShutdownReboot.client.eth[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:count 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:sumweights 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:mean -nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:stddev nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:min inf
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:max -inf
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:starttime nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowQueueingTime:vector:endtime nan
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:count 5000
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:sumweights 5000
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:mean 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:stddev 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:max 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar DHCPShutdownReboot.client.eth[0].queue flowIncomingDataRate:vector:endtime 500
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:count 5000
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:sumweights 5000
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:mean 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:max 0
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar DHCPShutdownReboot.client.eth[0].queue flowOutgoingDataRate:vector:endtime 500
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:count 66
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:sum 32
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:sumweights 66
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:mean 0.48484848484848
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:stddev 0.50360009294385
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:max 1
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:starttime 0
+scalar DHCPShutdownReboot.client.eth[0].mac transmitting:vector:endtime 490.0100157
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:count 5000
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:sum 668720
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:sumweights 5000
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:mean 133.744
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:stddev 1985.0468570462
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:max 51040
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:starttime 0.1
+scalar DHCPShutdownReboot.client.eth[0].mac throughput:vector:endtime 500
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:count 5000
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:sum 6.6872
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:sumweights 5000
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:mean 0.00133744
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:stddev 0.019850468570462
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:min 0
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:max 0.5104
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:starttime 0.1
+scalar DHCPShutdownReboot.client.eth[0].mac utilization:vector:endtime 500
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):count 32
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):sum 8103
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):sumweights 32
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):mean 253.21875
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):stddev 101.77290797844
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):min 64
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):max 317
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):starttime 0.0002504
+scalar DHCPShutdownReboot.client.eth[0].mac txPk:vector(packetBytes):endtime 490.0100157
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):sum 7892
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):mean 292.2962962963
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):stddev 97.01975009673
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):min 64
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):max 332
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):starttime 0.0005225
+scalar DHCPShutdownReboot.client.eth[0].mac rxPkOk:vector(packetBytes):endtime 490.0102878
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):sum 7892
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):mean 292.2962962963
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):stddev 97.01975009673
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):min 64
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):max 332
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):starttime 0.0005225
+scalar DHCPShutdownReboot.client.eth[0].mac passedUpPk:vector(packetBytes):endtime 490.0102878
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:count 0
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:sumweights 0
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:mean -nan
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:stddev nan
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:min inf
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:max -inf
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:starttime nan
+scalar DHCPShutdownReboot.client.eth[0].mac txPausePkUnits:vector:endtime nan
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:count 0
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:sum 0
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:sumweights 0
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:mean -nan
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:stddev nan
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:min inf
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:max -inf
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:starttime nan
+scalar DHCPShutdownReboot.client.eth[0].mac rxPausePkUnits:vector:endtime nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):count 32
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):sum 7977
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):sumweights 32
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):mean 249.28125
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):stddev 109.32999304414
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):min 46
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):max 317
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):starttime 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetReceivedFromUpper:vector(packetBytes):endtime 490.0097653
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.eth[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.eth[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 1
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 287
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 1
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean 287
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min 287
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max 287
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime 93.0005273
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime 93.0005273
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):count 7
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):sum 196
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 7
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):mean 28
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):stddev 0
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):min 28
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):max 28
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):starttime 20.0010546
+scalar DHCPShutdownReboot.client.ipv4.arp arpRequestSent:vector(packetBytes):endtime 430.0080825
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.client.ipv4.arp arpReplySent:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):count 26
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):sum 6972
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):sumweights 26
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):mean 268.15384615385
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):stddev 3.4022616911961
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):min 267
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):max 279
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):starttime 0
+scalar DHCPShutdownReboot.client.udp packetSent:vector(packetBytes):endtime 490.0097653
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):count 23
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):sum 6762
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):sumweights 23
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):mean 294
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):stddev 0
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):min 294
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):max 294
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):starttime 0.0005225
+scalar DHCPShutdownReboot.client.udp packetReceived:vector(packetBytes):endtime 490.0102878
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):count 24
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):sum 276
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):sumweights 24
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):mean 11.5
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):stddev 7.0710678118655
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):min 0
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):max 23
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):starttime 0
+scalar DHCPShutdownReboot.client.udp passedUpPk:vector(count):endtime 490.0102878
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):count 1
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):sum 0
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):mean 0
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):stddev nan
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):min 0
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):max 0
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):starttime 0
+scalar DHCPShutdownReboot.client.udp droppedPkWrongPort:vector(count):endtime 0
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):count 1
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):sum 0
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):mean 0
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):min 0
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):max 0
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar DHCPShutdownReboot.client.udp droppedPkBadChecksum:vector(count):endtime 0
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):sum 7334
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):mean 271.62962962963
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):stddev 103.5360019689
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):min 28
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):max 314
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):starttime 0.00025045
+scalar DHCPShutdownReboot.server.ethernet encapPk:vector(packetBytes):endtime 490.01001575
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):sum 6815
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):mean 252.40740740741
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):stddev 87.779995644381
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):min 46
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):max 299
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):starttime 0.00025045
+scalar DHCPShutdownReboot.server.ethernet decapPk:vector(packetBytes):endtime 490.01001575
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:count 0
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:sum 0
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:sumweights 0
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:mean -nan
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:stddev nan
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:min inf
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:max -inf
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:starttime nan
+scalar DHCPShutdownReboot.server.ethernet pauseSent:vector:endtime nan
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:count 32
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:sumweights 32
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:mean 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:stddev 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:max 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:starttime 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueLength:vector:endtime 490.01001575
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:count 32
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:sumweights 32
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:mean 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:stddev 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:max 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:starttime 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueBitLength:vector:endtime 490.01001575
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:count 27
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:mean 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:stddev 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:max 0
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:starttime 0.00025045
+scalar DHCPShutdownReboot.server.eth[0].queue queueingTime:vector:endtime 490.01001575
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:count 27
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:sum 62560
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:mean 2317.037037037
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:stddev 828.28801575119
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:min 368
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:max 2656
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:starttime 0.00025045
+scalar DHCPShutdownReboot.server.eth[0].queue incomingPacketLengths:vector:endtime 490.01001575
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:count 5000
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:sum 625600
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:sumweights 5000
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:mean 125.12
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:stddev 1990.4014582976
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:max 53120
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:starttime 0.1
+scalar DHCPShutdownReboot.server.eth[0].queue incomingDataRate:vector:endtime 500
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:count 27
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:sum 62560
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:mean 2317.037037037
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:stddev 828.28801575119
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:min 368
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:max 2656
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:starttime 0.00025045
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingPacketLengths:vector:endtime 490.01001575
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:count 5000
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:sum 625600
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:sumweights 5000
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:mean 125.12
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:stddev 1990.4014582976
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:max 53120
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:starttime 0.1
+scalar DHCPShutdownReboot.server.eth[0].queue outgoingDataRate:vector:endtime 500
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:starttime nan
+scalar DHCPShutdownReboot.server.eth[0].queue droppedPacketLengthsQueueOverflow:vector:endtime nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:count 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:sumweights 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:mean -nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:stddev nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:min inf
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:max -inf
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:starttime nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowQueueingTime:vector:endtime nan
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:count 5000
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:sumweights 5000
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:mean 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:stddev 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:max 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:starttime 0.1
+scalar DHCPShutdownReboot.server.eth[0].queue flowIncomingDataRate:vector:endtime 500
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:count 5000
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:sumweights 5000
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:mean 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:stddev 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:max 0
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:starttime 0.1
+scalar DHCPShutdownReboot.server.eth[0].queue flowOutgoingDataRate:vector:endtime 500
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:count 56
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:sum 27
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:sumweights 56
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:mean 0.48214285714286
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:stddev 0.50420311306137
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:max 1
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:starttime 0
+scalar DHCPShutdownReboot.server.eth[0].mac transmitting:vector:endtime 490.01028775
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:count 5000
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:sum 648640
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:sumweights 5000
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:mean 129.728
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:stddev 2063.0984467679
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:max 54400
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:starttime 0.1
+scalar DHCPShutdownReboot.server.eth[0].mac throughput:vector:endtime 500
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:count 5000
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:sum 6.4864
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:sumweights 5000
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:mean 0.00129728
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:stddev 0.020630984467679
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:min 0
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:max 0.544
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:starttime 0.1
+scalar DHCPShutdownReboot.server.eth[0].mac utilization:vector:endtime 500
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):sum 7892
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):mean 292.2962962963
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):stddev 97.01975009673
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):min 64
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):max 332
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):starttime 0.00052245
+scalar DHCPShutdownReboot.server.eth[0].mac txPk:vector(packetBytes):endtime 490.01028775
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):sum 7301
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):mean 270.40740740741
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):stddev 87.779995644381
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):min 64
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):max 317
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):starttime 0.00025045
+scalar DHCPShutdownReboot.server.eth[0].mac rxPkOk:vector(packetBytes):endtime 490.01001575
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):sum 7301
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):mean 270.40740740741
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):stddev 87.779995644381
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):min 64
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):max 317
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):starttime 0.00025045
+scalar DHCPShutdownReboot.server.eth[0].mac passedUpPk:vector(packetBytes):endtime 490.01001575
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:count 0
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:sumweights 0
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:mean -nan
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:stddev nan
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:min inf
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:max -inf
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:starttime nan
+scalar DHCPShutdownReboot.server.eth[0].mac txPausePkUnits:vector:endtime nan
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:count 0
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:sum 0
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:sumweights 0
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:mean -nan
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:stddev nan
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:min inf
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:max -inf
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:starttime nan
+scalar DHCPShutdownReboot.server.eth[0].mac rxPausePkUnits:vector:endtime nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):count 27
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):sum 7820
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):sumweights 27
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):mean 289.62962962963
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):stddev 103.5360019689
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):min 46
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):max 332
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):starttime 0.00025045
+scalar DHCPShutdownReboot.server.eth[0].mac packetReceivedFromUpper:vector(packetBytes):endtime 490.01001575
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.eth[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.eth[0] packetDropInterfaceDown:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.eth[0] packetDropNoCarrier:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropHopLimitReached:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.ipv4.ip packetDropUndefined:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):count 0
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):sum 0
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):sumweights 0
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):mean -nan
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):stddev nan
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):min inf
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):max -inf
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):starttime nan
+scalar DHCPShutdownReboot.server.ipv4.arp arpRequestSent:vector(packetBytes):endtime nan
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):count 4
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):sum 112
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):sumweights 4
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):mean 28
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):stddev 0
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):min 28
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):max 28
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):starttime 20.00111225
+scalar DHCPShutdownReboot.server.ipv4.arp arpReplySent:vector(packetBytes):endtime 430.00814015
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):count 23
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):sum 6762
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):sumweights 23
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):mean 294
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):stddev 0
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):min 294
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):max 294
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):starttime 0.00025045
+scalar DHCPShutdownReboot.server.udp packetSent:vector(packetBytes):endtime 490.01001575
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):count 23
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):sum 6171
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):sumweights 23
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):mean 268.30434782609
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):stddev 3.5984186250054
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):min 267
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):max 279
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):starttime 0.00025045
+scalar DHCPShutdownReboot.server.udp packetReceived:vector(packetBytes):endtime 490.01001575
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):count 24
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):sum 276
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):sumweights 24
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):mean 11.5
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):stddev 7.0710678118655
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):min 0
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):max 23
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):starttime 0
+scalar DHCPShutdownReboot.server.udp passedUpPk:vector(count):endtime 490.01001575
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):count 1
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):sum 0
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):sumweights 1
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):mean 0
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):stddev nan
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):min 0
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):max 0
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):starttime 0
+scalar DHCPShutdownReboot.server.udp droppedPkWrongPort:vector(count):endtime 0
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):count 1
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):sum 0
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):sumweights 1
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):mean 0
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):stddev nan
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):min 0
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):max 0
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):starttime 0
+scalar DHCPShutdownReboot.server.udp droppedPkBadChecksum:vector(count):endtime 0
 
