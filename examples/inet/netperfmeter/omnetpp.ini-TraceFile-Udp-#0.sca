@@ -1,8 +1,8 @@
 version 3
-run TraceFile-Udp-0-20251118-11:48:49-110753
+run TraceFile-Udp-0-20251219-10:40:08-10034
 attr configname TraceFile-Udp
-attr datetime 20251118-11:48:49
-attr datetimef 20251118-114849
+attr datetime 20251219-10:40:08
+attr datetimef 20251219-104008
 attr experiment TraceFile-Udp
 attr inifile omnetpp.ini
 attr iterationvars "$N1=fullPath(), $N2=fullPath(), $alphaMainClientNetPerfMeterID=ancestorIndex(0), $alphaMainClientID=ancestorIndex(1), $alphaMainServerNetPerfMeterID=ancestorIndex(0)"
@@ -10,7 +10,7 @@ attr iterationvarsd N1=fullPath()/N2=fullPath()/alphaMainClientNetPerfMeterID=an
 attr iterationvarsf N1=fullPath(),N2=fullPath(),alphaMainClientNetPerfMeterID=ancestorIndex(0),alphaMainClientID=ancestorIndex(1),alphaMainServerNetPerfMeterID=ancestorIndex(0)-
 attr measurement "$N1=fullPath(), $N2=fullPath(), $alphaMainClientNetPerfMeterID=ancestorIndex(0), $alphaMainClientID=ancestorIndex(1), $alphaMainServerNetPerfMeterID=ancestorIndex(0)"
 attr network testNetwork
-attr processid 110753
+attr processid 10034
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -37,8 +37,6 @@ config network testNetwork
 config sim-time-limit 100s
 config rng-class cMersenneTwister
 config seed-0-mt 1
-config output-scalar-file scalars.sca
-config output-vector-file vectors.vec
 config sim-time-limit "3600s 1ms"
 config simtime-resolution 10ns
 config testNetwork.*Main[*].hasSctp true
@@ -629,6 +627,10 @@ scalar testNetwork.clientMain[0].udp packetSent:sum(packetBytes) 521600
 scalar testNetwork.clientMain[0].udp passedUpPk:count 0
 scalar testNetwork.clientMain[0].udp droppedPkWrongPort:count 0
 scalar testNetwork.clientMain[0].udp droppedPkBadChecksum:count 0
+scalar testNetwork.clientMain[0].sctp "Packets Received" 0
+scalar testNetwork.clientMain[0].sctp "Packets Dropped" 0
+scalar testNetwork.clientMain[0].sctp "Number of PacketDrop Reports" 0
+scalar testNetwork.clientMain[0].sctp RTXMethod 0
 scalar testNetwork.serverMain[0].lo[0].lo rcvdPkFromHl:count 0
 scalar testNetwork.serverMain[0].lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
 scalar testNetwork.serverMain[0].lo[0].lo passedUpPk:count 0
@@ -694,6 +696,10 @@ scalar testNetwork.serverMain[0].udp packetSent:sum(packetBytes) 0
 scalar testNetwork.serverMain[0].udp passedUpPk:count 3443
 scalar testNetwork.serverMain[0].udp droppedPkWrongPort:count 0
 scalar testNetwork.serverMain[0].udp droppedPkBadChecksum:count 0
+scalar testNetwork.serverMain[0].sctp "Packets Received" 0
+scalar testNetwork.serverMain[0].sctp "Packets Dropped" 0
+scalar testNetwork.serverMain[0].sctp "Number of PacketDrop Reports" 0
+scalar testNetwork.serverMain[0].sctp RTXMethod 0
 scalar testNetwork.clientMain[0].app[0] "Received Message Delay Stream #0:count" 0
 scalar testNetwork.clientMain[0].app[0] "Received Message Delay Stream #0:sumweights" 0
 scalar testNetwork.clientMain[0].app[0] "Received Message Delay Stream #0:mean" -nan
