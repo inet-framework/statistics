@@ -1,8 +1,8 @@
 version 3
-run General-0-20260121-12:52:51-166170
+run General-0-20260206-21:59:21-3562065
 attr configname General
-attr datetime 20260121-12:52:51
-attr datetimef 20260121-125251
+attr datetime 20260206-21:59:21
+attr datetimef 20260206-215921
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars "$delay=10, $bw=10, $mtu=1280, $ql=100000"
@@ -10,7 +10,7 @@ attr iterationvarsd delay=10/bw=10/mtu=1280/ql=100000
 attr iterationvarsf delay=10,bw=10,mtu=1280,ql=100000-
 attr measurement "$delay=10, $bw=10, $mtu=1280, $ql=100000"
 attr network shared_link
-attr processid 166170
+attr processid 3562065
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -42,6 +42,7 @@ config **.bottleneckDelay 10ms
 config **.bottleneckDatarate 10Mbps
 config **.ppp[*].ppp.mtu 1280B
 config **.router1.ppp[3].queue.dataCapacity "10 * 2*10 kb"
+config **.sender*.hasQuic true
 config **.sender*.numApps 1
 config **.sender*.app[*].typename TrafficgenCompound
 config **.sender*.app[0].numGenerators 1
@@ -62,11 +63,13 @@ config **.sender*.quic.accurateIncreaseInNewRenoCongestionAvoidance true
 config **.sender*.quic.sendQueueLimit 100000B
 config **.sender*.quic.sendQueueLowWaterRatio .8
 config **.quic.bundleAckForNonAckElicitingPackets true
+config **.receiver*.hasQuic true
 config **.receiver*.numApps 1
 config **.receiver*.app[*].typename QuicDiscardServer
 config **.receiver*.app[*].localAddress "\"\""
 config **.receiver*.app[*].localPort 1000
 config **.receiver*.quic.numReceivedAckElicitingsBeforeAck 2
+config **.traffic*.hasQuic true
 config **.traffic*.numApps 1
 config **.traffic*.app[*].typename UdpBasicApp
 config **.traffic*.app[0].localPort 100
@@ -2058,6 +2061,15 @@ scalar shared_link.sender1.udp packetSent:vector(packetBytes):min inf
 scalar shared_link.sender1.udp packetSent:vector(packetBytes):max -inf
 scalar shared_link.sender1.udp packetSent:vector(packetBytes):starttime nan
 scalar shared_link.sender1.udp packetSent:vector(packetBytes):endtime nan
+scalar shared_link.sender1.udp outgoingDataRate:vector:count 0
+scalar shared_link.sender1.udp outgoingDataRate:vector:sum 0
+scalar shared_link.sender1.udp outgoingDataRate:vector:sumweights 0
+scalar shared_link.sender1.udp outgoingDataRate:vector:mean -nan
+scalar shared_link.sender1.udp outgoingDataRate:vector:stddev nan
+scalar shared_link.sender1.udp outgoingDataRate:vector:min inf
+scalar shared_link.sender1.udp outgoingDataRate:vector:max -inf
+scalar shared_link.sender1.udp outgoingDataRate:vector:starttime nan
+scalar shared_link.sender1.udp outgoingDataRate:vector:endtime nan
 scalar shared_link.sender1.udp packetReceived:vector(packetBytes):count 0
 scalar shared_link.sender1.udp packetReceived:vector(packetBytes):sum 0
 scalar shared_link.sender1.udp packetReceived:vector(packetBytes):sumweights 0
@@ -2112,6 +2124,15 @@ scalar shared_link.sender1.quic packetSent:vector(packetBytes):min inf
 scalar shared_link.sender1.quic packetSent:vector(packetBytes):max -inf
 scalar shared_link.sender1.quic packetSent:vector(packetBytes):starttime nan
 scalar shared_link.sender1.quic packetSent:vector(packetBytes):endtime nan
+scalar shared_link.sender1.quic outgoingDataRate:vector:count 0
+scalar shared_link.sender1.quic outgoingDataRate:vector:sum 0
+scalar shared_link.sender1.quic outgoingDataRate:vector:sumweights 0
+scalar shared_link.sender1.quic outgoingDataRate:vector:mean -nan
+scalar shared_link.sender1.quic outgoingDataRate:vector:stddev nan
+scalar shared_link.sender1.quic outgoingDataRate:vector:min inf
+scalar shared_link.sender1.quic outgoingDataRate:vector:max -inf
+scalar shared_link.sender1.quic outgoingDataRate:vector:starttime nan
+scalar shared_link.sender1.quic outgoingDataRate:vector:endtime nan
 scalar shared_link.sender1.app[0].generator[0] sentPkt:vector(packetBytes):count 0
 scalar shared_link.sender1.app[0].generator[0] sentPkt:vector(packetBytes):sum 0
 scalar shared_link.sender1.app[0].generator[0] sentPkt:vector(packetBytes):sumweights 0
@@ -2427,6 +2448,15 @@ scalar shared_link.sender2.udp packetSent:vector(packetBytes):min inf
 scalar shared_link.sender2.udp packetSent:vector(packetBytes):max -inf
 scalar shared_link.sender2.udp packetSent:vector(packetBytes):starttime nan
 scalar shared_link.sender2.udp packetSent:vector(packetBytes):endtime nan
+scalar shared_link.sender2.udp outgoingDataRate:vector:count 0
+scalar shared_link.sender2.udp outgoingDataRate:vector:sum 0
+scalar shared_link.sender2.udp outgoingDataRate:vector:sumweights 0
+scalar shared_link.sender2.udp outgoingDataRate:vector:mean -nan
+scalar shared_link.sender2.udp outgoingDataRate:vector:stddev nan
+scalar shared_link.sender2.udp outgoingDataRate:vector:min inf
+scalar shared_link.sender2.udp outgoingDataRate:vector:max -inf
+scalar shared_link.sender2.udp outgoingDataRate:vector:starttime nan
+scalar shared_link.sender2.udp outgoingDataRate:vector:endtime nan
 scalar shared_link.sender2.udp packetReceived:vector(packetBytes):count 0
 scalar shared_link.sender2.udp packetReceived:vector(packetBytes):sum 0
 scalar shared_link.sender2.udp packetReceived:vector(packetBytes):sumweights 0
@@ -2481,6 +2511,15 @@ scalar shared_link.sender2.quic packetSent:vector(packetBytes):min inf
 scalar shared_link.sender2.quic packetSent:vector(packetBytes):max -inf
 scalar shared_link.sender2.quic packetSent:vector(packetBytes):starttime nan
 scalar shared_link.sender2.quic packetSent:vector(packetBytes):endtime nan
+scalar shared_link.sender2.quic outgoingDataRate:vector:count 0
+scalar shared_link.sender2.quic outgoingDataRate:vector:sum 0
+scalar shared_link.sender2.quic outgoingDataRate:vector:sumweights 0
+scalar shared_link.sender2.quic outgoingDataRate:vector:mean -nan
+scalar shared_link.sender2.quic outgoingDataRate:vector:stddev nan
+scalar shared_link.sender2.quic outgoingDataRate:vector:min inf
+scalar shared_link.sender2.quic outgoingDataRate:vector:max -inf
+scalar shared_link.sender2.quic outgoingDataRate:vector:starttime nan
+scalar shared_link.sender2.quic outgoingDataRate:vector:endtime nan
 scalar shared_link.sender2.app[0].generator[0] sentPkt:vector(packetBytes):count 0
 scalar shared_link.sender2.app[0].generator[0] sentPkt:vector(packetBytes):sum 0
 scalar shared_link.sender2.app[0].generator[0] sentPkt:vector(packetBytes):sumweights 0
@@ -2796,6 +2835,15 @@ scalar shared_link.trafficGenerator.udp packetSent:vector(packetBytes):min inf
 scalar shared_link.trafficGenerator.udp packetSent:vector(packetBytes):max -inf
 scalar shared_link.trafficGenerator.udp packetSent:vector(packetBytes):starttime nan
 scalar shared_link.trafficGenerator.udp packetSent:vector(packetBytes):endtime nan
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:count 0
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:sum 0
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:sumweights 0
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:mean -nan
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:stddev nan
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:min inf
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:max -inf
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:starttime nan
+scalar shared_link.trafficGenerator.udp outgoingDataRate:vector:endtime nan
 scalar shared_link.trafficGenerator.udp packetReceived:vector(packetBytes):count 0
 scalar shared_link.trafficGenerator.udp packetReceived:vector(packetBytes):sum 0
 scalar shared_link.trafficGenerator.udp packetReceived:vector(packetBytes):sumweights 0
@@ -2850,6 +2898,15 @@ scalar shared_link.trafficGenerator.quic packetSent:vector(packetBytes):min inf
 scalar shared_link.trafficGenerator.quic packetSent:vector(packetBytes):max -inf
 scalar shared_link.trafficGenerator.quic packetSent:vector(packetBytes):starttime nan
 scalar shared_link.trafficGenerator.quic packetSent:vector(packetBytes):endtime nan
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:count 0
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:sum 0
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:sumweights 0
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:mean -nan
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:stddev nan
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:min inf
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:max -inf
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:starttime nan
+scalar shared_link.trafficGenerator.quic outgoingDataRate:vector:endtime nan
 scalar shared_link.trafficGenerator.app[0] packetReceived:vector(packetBytes):count 0
 scalar shared_link.trafficGenerator.app[0] packetReceived:vector(packetBytes):sum 0
 scalar shared_link.trafficGenerator.app[0] packetReceived:vector(packetBytes):sumweights 0
@@ -3201,6 +3258,15 @@ scalar shared_link.receiver1.udp packetSent:vector(packetBytes):min inf
 scalar shared_link.receiver1.udp packetSent:vector(packetBytes):max -inf
 scalar shared_link.receiver1.udp packetSent:vector(packetBytes):starttime nan
 scalar shared_link.receiver1.udp packetSent:vector(packetBytes):endtime nan
+scalar shared_link.receiver1.udp outgoingDataRate:vector:count 0
+scalar shared_link.receiver1.udp outgoingDataRate:vector:sum 0
+scalar shared_link.receiver1.udp outgoingDataRate:vector:sumweights 0
+scalar shared_link.receiver1.udp outgoingDataRate:vector:mean -nan
+scalar shared_link.receiver1.udp outgoingDataRate:vector:stddev nan
+scalar shared_link.receiver1.udp outgoingDataRate:vector:min inf
+scalar shared_link.receiver1.udp outgoingDataRate:vector:max -inf
+scalar shared_link.receiver1.udp outgoingDataRate:vector:starttime nan
+scalar shared_link.receiver1.udp outgoingDataRate:vector:endtime nan
 scalar shared_link.receiver1.udp packetReceived:vector(packetBytes):count 0
 scalar shared_link.receiver1.udp packetReceived:vector(packetBytes):sum 0
 scalar shared_link.receiver1.udp packetReceived:vector(packetBytes):sumweights 0
@@ -3255,6 +3321,15 @@ scalar shared_link.receiver1.quic packetSent:vector(packetBytes):min inf
 scalar shared_link.receiver1.quic packetSent:vector(packetBytes):max -inf
 scalar shared_link.receiver1.quic packetSent:vector(packetBytes):starttime nan
 scalar shared_link.receiver1.quic packetSent:vector(packetBytes):endtime nan
+scalar shared_link.receiver1.quic outgoingDataRate:vector:count 0
+scalar shared_link.receiver1.quic outgoingDataRate:vector:sum 0
+scalar shared_link.receiver1.quic outgoingDataRate:vector:sumweights 0
+scalar shared_link.receiver1.quic outgoingDataRate:vector:mean -nan
+scalar shared_link.receiver1.quic outgoingDataRate:vector:stddev nan
+scalar shared_link.receiver1.quic outgoingDataRate:vector:min inf
+scalar shared_link.receiver1.quic outgoingDataRate:vector:max -inf
+scalar shared_link.receiver1.quic outgoingDataRate:vector:starttime nan
+scalar shared_link.receiver1.quic outgoingDataRate:vector:endtime nan
 scalar shared_link.receiver1.app[0] bytesReceived:vector:count 0
 scalar shared_link.receiver1.app[0] bytesReceived:vector:sum 0
 scalar shared_link.receiver1.app[0] bytesReceived:vector:sumweights 0
@@ -3570,6 +3645,15 @@ scalar shared_link.receiver2.udp packetSent:vector(packetBytes):min inf
 scalar shared_link.receiver2.udp packetSent:vector(packetBytes):max -inf
 scalar shared_link.receiver2.udp packetSent:vector(packetBytes):starttime nan
 scalar shared_link.receiver2.udp packetSent:vector(packetBytes):endtime nan
+scalar shared_link.receiver2.udp outgoingDataRate:vector:count 0
+scalar shared_link.receiver2.udp outgoingDataRate:vector:sum 0
+scalar shared_link.receiver2.udp outgoingDataRate:vector:sumweights 0
+scalar shared_link.receiver2.udp outgoingDataRate:vector:mean -nan
+scalar shared_link.receiver2.udp outgoingDataRate:vector:stddev nan
+scalar shared_link.receiver2.udp outgoingDataRate:vector:min inf
+scalar shared_link.receiver2.udp outgoingDataRate:vector:max -inf
+scalar shared_link.receiver2.udp outgoingDataRate:vector:starttime nan
+scalar shared_link.receiver2.udp outgoingDataRate:vector:endtime nan
 scalar shared_link.receiver2.udp packetReceived:vector(packetBytes):count 0
 scalar shared_link.receiver2.udp packetReceived:vector(packetBytes):sum 0
 scalar shared_link.receiver2.udp packetReceived:vector(packetBytes):sumweights 0
@@ -3624,6 +3708,15 @@ scalar shared_link.receiver2.quic packetSent:vector(packetBytes):min inf
 scalar shared_link.receiver2.quic packetSent:vector(packetBytes):max -inf
 scalar shared_link.receiver2.quic packetSent:vector(packetBytes):starttime nan
 scalar shared_link.receiver2.quic packetSent:vector(packetBytes):endtime nan
+scalar shared_link.receiver2.quic outgoingDataRate:vector:count 0
+scalar shared_link.receiver2.quic outgoingDataRate:vector:sum 0
+scalar shared_link.receiver2.quic outgoingDataRate:vector:sumweights 0
+scalar shared_link.receiver2.quic outgoingDataRate:vector:mean -nan
+scalar shared_link.receiver2.quic outgoingDataRate:vector:stddev nan
+scalar shared_link.receiver2.quic outgoingDataRate:vector:min inf
+scalar shared_link.receiver2.quic outgoingDataRate:vector:max -inf
+scalar shared_link.receiver2.quic outgoingDataRate:vector:starttime nan
+scalar shared_link.receiver2.quic outgoingDataRate:vector:endtime nan
 scalar shared_link.receiver2.app[0] bytesReceived:vector:count 0
 scalar shared_link.receiver2.app[0] bytesReceived:vector:sum 0
 scalar shared_link.receiver2.app[0] bytesReceived:vector:sumweights 0
@@ -3939,6 +4032,15 @@ scalar shared_link.trafficConsumer.udp packetSent:vector(packetBytes):min inf
 scalar shared_link.trafficConsumer.udp packetSent:vector(packetBytes):max -inf
 scalar shared_link.trafficConsumer.udp packetSent:vector(packetBytes):starttime nan
 scalar shared_link.trafficConsumer.udp packetSent:vector(packetBytes):endtime nan
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:count 0
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:sum 0
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:sumweights 0
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:mean -nan
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:stddev nan
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:min inf
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:max -inf
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:starttime nan
+scalar shared_link.trafficConsumer.udp outgoingDataRate:vector:endtime nan
 scalar shared_link.trafficConsumer.udp packetReceived:vector(packetBytes):count 0
 scalar shared_link.trafficConsumer.udp packetReceived:vector(packetBytes):sum 0
 scalar shared_link.trafficConsumer.udp packetReceived:vector(packetBytes):sumweights 0
@@ -3993,6 +4095,15 @@ scalar shared_link.trafficConsumer.quic packetSent:vector(packetBytes):min inf
 scalar shared_link.trafficConsumer.quic packetSent:vector(packetBytes):max -inf
 scalar shared_link.trafficConsumer.quic packetSent:vector(packetBytes):starttime nan
 scalar shared_link.trafficConsumer.quic packetSent:vector(packetBytes):endtime nan
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:count 0
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:sum 0
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:sumweights 0
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:mean -nan
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:stddev nan
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:min inf
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:max -inf
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:starttime nan
+scalar shared_link.trafficConsumer.quic outgoingDataRate:vector:endtime nan
 scalar shared_link.trafficConsumer.app[0] packetReceived:vector(packetBytes):count 0
 scalar shared_link.trafficConsumer.app[0] packetReceived:vector(packetBytes):sum 0
 scalar shared_link.trafficConsumer.app[0] packetReceived:vector(packetBytes):sumweights 0

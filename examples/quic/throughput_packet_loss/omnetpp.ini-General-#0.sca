@@ -1,8 +1,8 @@
 version 3
-run General-0-20260121-12:52:52-166190
+run General-0-20260206-21:59:21-3562068
 attr configname General
-attr datetime 20260121-12:52:52
-attr datetimef 20260121-125252
+attr datetime 20260206-21:59:21
+attr datetimef 20260206-215921
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars "$delay=10, $startTime=2s, $stopTime=14s, $p=.008"
@@ -10,7 +10,7 @@ attr iterationvarsd delay=10/startTime=2s/stopTime=14s/p=.008
 attr iterationvarsf delay=10,startTime=2s,stopTime=14s,p=.008-
 attr measurement "$delay=10, $startTime=2s, $stopTime=14s, $p=.008"
 attr network bottleneck
-attr processid 166190
+attr processid 3562068
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -37,6 +37,7 @@ config **.linkDelay 10ms
 config **.linkDatarate 100Gbps
 config **.ppp[*].queue.packetCapacity 200
 config **.ppp[*].ppp.mtu 1280B
+config **.sender.hasQuic true
 config **.sender.numApps 1
 config **.sender.app[*].typename TrafficgenCompound
 config **.sender.app[0].numGenerators 1
@@ -56,6 +57,7 @@ config **.sender.quic.sendQueueLowWaterRatio .8
 config **.sender.quic.accurateIncreaseInNewRenoCongestionAvoidance true
 config **.quic.bundleAckForNonAckElicitingPackets false
 config **.router1.pppg$o[1].channel.per .008
+config **.receiver.hasQuic true
 config **.receiver.numApps 1
 config **.receiver.app[*].typename QuicDiscardServer
 config **.receiver.app[*].localAddress "\"\""
@@ -2443,6 +2445,15 @@ scalar bottleneck.sender.udp packetSent:vector(packetBytes):min 23
 scalar bottleneck.sender.udp packetSent:vector(packetBytes):max 1260
 scalar bottleneck.sender.udp packetSent:vector(packetBytes):starttime 0
 scalar bottleneck.sender.udp packetSent:vector(packetBytes):endtime 14.017598000629002
+scalar bottleneck.sender.udp outgoingDataRate:vector:count 146
+scalar bottleneck.sender.udp outgoingDataRate:vector:sum 1003309134.2302327
+scalar bottleneck.sender.udp outgoingDataRate:vector:sumweights 146
+scalar bottleneck.sender.udp outgoingDataRate:vector:mean 6871980.3714399505
+scalar bottleneck.sender.udp outgoingDataRate:vector:stddev 6263437.8198014274
+scalar bottleneck.sender.udp outgoingDataRate:vector:min 0
+scalar bottleneck.sender.udp outgoingDataRate:vector:max 50397080.920437761
+scalar bottleneck.sender.udp outgoingDataRate:vector:starttime 0.10000000000000001
+scalar bottleneck.sender.udp outgoingDataRate:vector:endtime 14.212500098400005
 scalar bottleneck.sender.udp packetReceived:vector(packetBytes):count 8721
 scalar bottleneck.sender.udp packetReceived:vector(packetBytes):sum 1139791
 scalar bottleneck.sender.udp packetReceived:vector(packetBytes):sumweights 8721
@@ -2497,6 +2508,15 @@ scalar bottleneck.sender.quic packetSent:vector(packetBytes):min 15
 scalar bottleneck.sender.quic packetSent:vector(packetBytes):max 1252
 scalar bottleneck.sender.quic packetSent:vector(packetBytes):starttime 0
 scalar bottleneck.sender.quic packetSent:vector(packetBytes):endtime 14.017598000629002
+scalar bottleneck.sender.quic outgoingDataRate:vector:count 146
+scalar bottleneck.sender.quic outgoingDataRate:vector:sum 996926961.69543767
+scalar bottleneck.sender.quic outgoingDataRate:vector:sumweights 146
+scalar bottleneck.sender.quic outgoingDataRate:vector:mean 6828266.8609276554
+scalar bottleneck.sender.quic outgoingDataRate:vector:stddev 6223743.2037480548
+scalar bottleneck.sender.quic outgoingDataRate:vector:min 0
+scalar bottleneck.sender.quic outgoingDataRate:vector:max 50077099.454276249
+scalar bottleneck.sender.quic outgoingDataRate:vector:starttime 0.10000000000000001
+scalar bottleneck.sender.quic outgoingDataRate:vector:endtime 14.212500098400005
 scalar bottleneck.sender.app[0].generator[0] sentPkt:vector(packetBytes):count 917
 scalar bottleneck.sender.app[0].generator[0] sentPkt:vector(packetBytes):sum 13755000
 scalar bottleneck.sender.app[0].generator[0] sentPkt:vector(packetBytes):sumweights 917
@@ -3766,6 +3786,15 @@ scalar bottleneck.receiver.udp packetSent:vector(packetBytes):min 22
 scalar bottleneck.receiver.udp packetSent:vector(packetBytes):max 236
 scalar bottleneck.receiver.udp packetSent:vector(packetBytes):starttime 0.010000118560000002
 scalar bottleneck.receiver.udp packetSent:vector(packetBytes):endtime 14.010000005568003
+scalar bottleneck.receiver.udp outgoingDataRate:vector:count 146
+scalar bottleneck.receiver.udp outgoingDataRate:vector:sum 94110281.311356723
+scalar bottleneck.receiver.udp outgoingDataRate:vector:sumweights 146
+scalar bottleneck.receiver.udp outgoingDataRate:vector:mean 644590.96788600495
+scalar bottleneck.receiver.udp outgoingDataRate:vector:stddev 402338.55125730793
+scalar bottleneck.receiver.udp outgoingDataRate:vector:min 0
+scalar bottleneck.receiver.udp outgoingDataRate:vector:max 1475760.0000000002
+scalar bottleneck.receiver.udp outgoingDataRate:vector:starttime 0.10000000000000001
+scalar bottleneck.receiver.udp outgoingDataRate:vector:endtime 14.212500098400005
 scalar bottleneck.receiver.udp packetReceived:vector(packetBytes):count 8736
 scalar bottleneck.receiver.udp packetReceived:vector(packetBytes):sum 10983822
 scalar bottleneck.receiver.udp packetReceived:vector(packetBytes):sumweights 8736
@@ -3820,6 +3849,15 @@ scalar bottleneck.receiver.quic packetSent:vector(packetBytes):min 14
 scalar bottleneck.receiver.quic packetSent:vector(packetBytes):max 228
 scalar bottleneck.receiver.quic packetSent:vector(packetBytes):starttime 0.010000118560000002
 scalar bottleneck.receiver.quic packetSent:vector(packetBytes):endtime 14.010000005568003
+scalar bottleneck.receiver.quic outgoingDataRate:vector:count 146
+scalar bottleneck.receiver.quic outgoingDataRate:vector:sum 87797240.303925097
+scalar bottleneck.receiver.quic outgoingDataRate:vector:sumweights 146
+scalar bottleneck.receiver.quic outgoingDataRate:vector:mean 601350.96098578838
+scalar bottleneck.receiver.quic outgoingDataRate:vector:stddev 387270.47620879591
+scalar bottleneck.receiver.quic outgoingDataRate:vector:min 0
+scalar bottleneck.receiver.quic outgoingDataRate:vector:max 1425200.0000000002
+scalar bottleneck.receiver.quic outgoingDataRate:vector:starttime 0.10000000000000001
+scalar bottleneck.receiver.quic outgoingDataRate:vector:endtime 14.212500098400005
 scalar bottleneck.receiver.app[0] bytesReceived:vector:count 7174
 scalar bottleneck.receiver.app[0] bytesReceived:vector:sum 10729425
 scalar bottleneck.receiver.app[0] bytesReceived:vector:sumweights 7174
@@ -4004,15 +4042,15 @@ scalar bottleneck.receiver.quic consumedData_cid=0:vector:count 7174
 scalar bottleneck.receiver.quic consumedData_cid=0:vector:sum 39606955814
 scalar bottleneck.receiver.quic consumedData_cid=0:vector:sumweights 7174
 scalar bottleneck.receiver.quic consumedData_cid=0:vector:mean 5520902.6782826874
-scalar bottleneck.receiver.quic consumedData_cid=0:vector:stddev 3018912.0824985192
+scalar bottleneck.receiver.quic consumedData_cid=0:vector:stddev 3018912.0824985183
 scalar bottleneck.receiver.quic consumedData_cid=0:vector:min 1234
 scalar bottleneck.receiver.quic consumedData_cid=0:vector:max 10729425
 scalar bottleneck.receiver.quic consumedData_cid=0:vector:starttime 2.0100001235520004
 scalar bottleneck.receiver.quic consumedData_cid=0:vector:endtime 14.007597975381003
 scalar bottleneck.sender.quic latestRtt_cid=0:vector:count 8703
-scalar bottleneck.sender.quic latestRtt_cid=0:vector:sum 174.06183186988943
+scalar bottleneck.sender.quic latestRtt_cid=0:vector:sum 174.0618318698894
 scalar bottleneck.sender.quic latestRtt_cid=0:vector:sumweights 8703
-scalar bottleneck.sender.quic latestRtt_cid=0:vector:mean 0.02000021048717562
+scalar bottleneck.sender.quic latestRtt_cid=0:vector:mean 0.020000210487175617
 scalar bottleneck.sender.quic latestRtt_cid=0:vector:stddev 4.1797893421891724e-07
 scalar bottleneck.sender.quic latestRtt_cid=0:vector:min 0.020000010079999998
 scalar bottleneck.sender.quic latestRtt_cid=0:vector:max 0.020005483040000001
@@ -4121,7 +4159,7 @@ scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):count 8
 scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):sum 46764325048
 scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):sumweights 8717
 scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):mean 5364726.9757944243
-scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):stddev 3097842.9098429773
+scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):stddev 3097842.9098429787
 scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):min 0
 scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):max 10729425
 scalar bottleneck.receiver.quic streamRcvAppData_cid=0_sid=0:vector(sum):starttime 2.0100001235520004
@@ -4157,7 +4195,7 @@ scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:count 7174
 scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:sum 39606955814
 scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:sumweights 7174
 scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:mean 5520902.6782826874
-scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:stddev 3018912.0824985192
+scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:stddev 3018912.0824985183
 scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:min 1234
 scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:max 10729425
 scalar bottleneck.receiver.quic consumedData_cid=0_sid=0:vector:starttime 2.0100001235520004
@@ -4184,7 +4222,7 @@ scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:count 8716
 scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:sum 46764325048
 scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:sumweights 8716
 scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:mean 5365342.4791188622
-scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:stddev 3097487.5450022169
+scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:stddev 3097487.5450022183
 scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:min 1234
 scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:max 10729425
 scalar bottleneck.receiver.quic totalRcvAppData_cid=0:vector:starttime 2.0100001235520004
