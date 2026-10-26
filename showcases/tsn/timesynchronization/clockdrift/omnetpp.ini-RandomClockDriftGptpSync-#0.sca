@@ -1,8 +1,8 @@
 version 3
-run RandomClockDriftGptpSync-0-20260715-12:47:51-2822878
+run RandomClockDriftGptpSync-0-20261026-16:53:36-5249
 attr configname RandomClockDriftGptpSync
-attr datetime 20260715-12:47:51
-attr datetimef 20260715-124751
+attr datetime 20261026-16:53:36
+attr datetimef 20261026-165336
 attr experiment RandomClockDriftGptpSync
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,14 +10,14 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network ClockDriftShowcase
-attr processid 2822878
+attr processid 5249
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config image-path /home/levy/workspace/inet/.claude/worktrees/gptp-rebase/images
+config image-path /home/runner/work/inet/inet/inet/images
 config output-scalar-file results/omnetpp.ini-RandomClockDriftGptpSync-#0.sca
 config output-scalar-precision 17
 config output-vector-file results/omnetpp.ini-RandomClockDriftGptpSync-#0.vec
@@ -42,9 +42,7 @@ config *.source*.app[1].gptpNodeType "\"SLAVE_NODE\""
 config *.source*.app[1].slavePort "\"eth0\""
 config *.source*.app[1].syncInterval 500us
 config *.source*.app[1].pdelayInterval 1ms
-config description "Clocks with random drift rate"
 config *.*.clock.oscillator.nominalTickLength 10ns
-config *.source*.clock.typename OscillatorBasedClock
 config *.source*.clock.oscillator.typename RandomDriftOscillator
 config *.source1.clock.oscillator.driftRateChange "uniform(-125ppm, 125ppm)"
 config *.source2.clock.oscillator.driftRateChange "uniform(-100ppm, 100ppm)"
@@ -57,13 +55,11 @@ config *.switch1.clock.oscillator.driftRateChange "uniform(-75ppm, 75ppm)"
 config *.switch1.clock.oscillator.changeInterval 0.1ms
 config *.switch1.eth[0].macLayer.queue.gate[*].clockModule "\"^.^.^.^.clock\""
 config network ClockDriftShowcase
-config sim-time-limit 0.1s
 config simtime-resolution fs
 config **.transmitter.typename StreamingTransmitter
 config **.receiver.typename DestreamingReceiver
 config *.*.ethernet.typename EthernetLayer
 config **.hasGlobalArp true
-config *.source*.numApps 1
 config *.source*.app[*].typename UdpSourceApp
 config *.source*.app[0].source.packetLength 800B
 config *.source*.app[0].source.productionInterval 20us
@@ -215,6 +211,8 @@ scalar ClockDriftShowcase.source1.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropNoRouteFound:count 0
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:count 0
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropUndefined:count 0
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar ClockDriftShowcase.source1.udp packetReceived:count 0
@@ -359,6 +357,8 @@ scalar ClockDriftShowcase.source2.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropNoRouteFound:count 0
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:count 0
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropUndefined:count 0
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar ClockDriftShowcase.source2.udp packetReceived:count 0
@@ -1053,6 +1053,8 @@ scalar ClockDriftShowcase.sink1.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropNoRouteFound:count 0
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:count 0
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropUndefined:count 0
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar ClockDriftShowcase.sink1.udp packetReceived:count 5001
@@ -1197,6 +1199,8 @@ scalar ClockDriftShowcase.sink2.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropNoRouteFound:count 0
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:count 0
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropUndefined:count 0
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar ClockDriftShowcase.sink2.udp packetReceived:count 5001
@@ -31473,6 +31477,15 @@ scalar ClockDriftShowcase.source1.ipv4.ip packetDropNoRouteFound:vector(packetBy
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar ClockDriftShowcase.source1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar ClockDriftShowcase.source1.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
@@ -32985,6 +32998,15 @@ scalar ClockDriftShowcase.source2.ipv4.ip packetDropNoRouteFound:vector(packetBy
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar ClockDriftShowcase.source2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar ClockDriftShowcase.source2.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
@@ -40770,6 +40792,15 @@ scalar ClockDriftShowcase.sink1.ipv4.ip packetDropNoRouteFound:vector(packetByte
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar ClockDriftShowcase.sink1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar ClockDriftShowcase.sink1.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
@@ -42264,6 +42295,15 @@ scalar ClockDriftShowcase.sink2.ipv4.ip packetDropNoRouteFound:vector(packetByte
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar ClockDriftShowcase.sink2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar ClockDriftShowcase.sink2.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0

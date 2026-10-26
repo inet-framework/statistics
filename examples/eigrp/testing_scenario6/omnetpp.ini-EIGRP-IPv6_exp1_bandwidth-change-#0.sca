@@ -1,8 +1,8 @@
 version 3
-run EIGRP-IPv6_exp1_bandwidth-change-0-20260622-18:15:12-435254
+run EIGRP-IPv6_exp1_bandwidth-change-0-20261026-16:49:20-1628
 attr configname EIGRP-IPv6_exp1_bandwidth-change
-attr datetime 20260622-18:15:12
-attr datetimef 20260622-181512
+attr datetime 20261026-16:49:20
+attr datetimef 20261026-164920
 attr experiment EIGRP-IPv6_exp1_bandwidth-change
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,14 +10,14 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network EigrpTestNetwork
-attr processid 435254
+attr processid 1628
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config image-path /home/andras/projects/inet/images
+config image-path /home/runner/work/inet/inet/inet/images
 config output-scalar-file results/omnetpp.ini-EIGRP-IPv6_exp1_bandwidth-change-#0.sca
 config output-scalar-precision 17
 config output-vector-file results/omnetpp.ini-EIGRP-IPv6_exp1_bandwidth-change-#0.vec
@@ -26,7 +26,6 @@ config record-eventlog false
 config sim-time-limit 3min
 config **.scenarioManager.script "xmldoc(\"scenario1.xml\")"
 config network EigrpTestNetwork
-config sim-time-limit 3min
 config num-rngs 2
 config **.eigrp.*.rng-0 1
 config **.interfaceTable.displayAddresses true
@@ -36,7 +35,6 @@ config **.R1.eigrp.configData "xmldoc(\"config.xml\", \"Devices/Router[@id='2001
 config **.R2.eigrp.configData "xmldoc(\"config.xml\", \"Devices/Router[@id='2001:db8:b::1']/\")"
 config **.R3.eigrp.configData "xmldoc(\"config.xml\", \"Devices/Router[@id='2001:db8:c::1']/\")"
 config **.R4.eigrp.configData "xmldoc(\"config.xml\", \"Devices/Router[@id='2001:db8:d::1']/\")"
-config **.scenarioManager.script "xmldoc(\"scenario.xml\")"
 
 scalar EigrpTestNetwork.R1.ethernet pauseSent:count 0
 scalar EigrpTestNetwork.R1.ethernet pauseSent:sum 0
@@ -678,6 +676,8 @@ scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropNoRouteFound:count 0
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:count 0
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropUndefined:count 0
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN1.ipv4.arp arpResolutionFailed:count 0
@@ -762,6 +762,8 @@ scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropNoRouteFound:count 0
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:count 0
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropUndefined:count 0
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN2.ipv4.arp arpResolutionFailed:count 0
@@ -846,6 +848,8 @@ scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropNoRouteFound:count 0
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:count 0
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropUndefined:count 0
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN3.ipv4.arp arpResolutionFailed:count 0
@@ -930,6 +934,8 @@ scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropNoRouteFound:count 0
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:count 0
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropUndefined:count 0
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar EigrpTestNetwork.LAN4.ipv4.arp arpResolutionFailed:count 0
@@ -9880,6 +9886,15 @@ scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar EigrpTestNetwork.LAN1.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
@@ -10303,6 +10318,15 @@ scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar EigrpTestNetwork.LAN2.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
@@ -10726,6 +10750,15 @@ scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar EigrpTestNetwork.LAN3.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
@@ -11149,6 +11182,15 @@ scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropNoRouteFound:vector(packetBytes):
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar EigrpTestNetwork.LAN4.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0

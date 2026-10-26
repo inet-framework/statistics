@@ -1,8 +1,8 @@
 version 3
-run Wireless05-0-20260430-09:23:06-1850817
+run Wireless05-0-20261026-16:55:12-7321
 attr configname Wireless05
-attr datetime 20260430-09:23:06
-attr datetimef 20260430-092306
+attr datetime 20261026-16:55:12
+attr datetimef 20261026-165512
 attr experiment Wireless05
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,14 +10,14 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network WirelessB
-attr processid 1850817
+attr processid 7321
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config image-path /home/zoli/Projects/OMNET/inet/images
+config image-path /home/runner/work/inet/inet/inet/images
 config output-scalar-file results/omnetpp.ini-Wireless05-#0.sca
 config output-scalar-precision 17
 config output-vector-file results/omnetpp.ini-Wireless05-#0.vec
@@ -30,8 +30,6 @@ config *.host*.wlan[0].radio.receiver.ignoreInterference false
 config *.host*.wlan[0].radio.transmitter.analogModel.interferenceRange 500m
 config *.hostA.wlan[0].radio.displayInterferenceRange true
 config *.visualizer.dataLinkVisualizer.packetFilter "\"\""
-config description "Setting up static routing"
-config extends Wireless03
 config *.host*.forwarding true
 config *.configurator.config "xml(\"<config><interface hosts='**' address='10.0.0.x' netmask='255.255.255.0'/><autoroute metric='errorRate'/></config>\")"
 config *.configurator.optimizeRoutes false
@@ -42,21 +40,13 @@ config *.visualizer.networkRouteVisualizer.displayRoutes true
 config *.visualizer.*LinkVisualizer.lineShift 0
 config *.visualizer.networkRouteVisualizer.lineShift 0
 config *.visualizer.networkRouteVisualizer.packetFilter "\"UDPData*\""
-config description "Adding more nodes and decreasing the communication range"
-config extends Wireless02
 config network WirelessB
 config *.host*.wlan[0].radio.transmitter.analogModel.communicationRange 250m
 config *.hostR1.wlan[0].radio.displayCommunicationRange true
-config description "Setting up some animations"
-config extends Wireless01
 config *.hostA.wlan[0].radio.displayCommunicationRange true
 config *.visualizer.sceneVisualizer.descriptionFigure "\"title\""
 config *.visualizer.mediumVisualizer.displaySignals true
-config *.visualizer.physicalLinkVisualizer.displayLinks true
 config *.visualizer.physicalLinkVisualizer.packetFilter "\"UDPData*\""
-config description "Two hosts communicating wirelessly"
-config network WirelessA
-config sim-time-limit 20s
 config *.radioMedium.signalAnalogRepresentation "\"unitDisk\""
 config *.host*.ipv4.arp.typename GlobalArp
 config *.hostA.numApps 1
@@ -73,8 +63,6 @@ config *.host*.wlan[0].typename AckingWirelessInterface
 config *.host*.wlan[0].mac.useAck false
 config *.host*.wlan[0].mac.fullDuplex false
 config *.host*.wlan[0].radio.signalAnalogRepresentation "\"unitDisk\""
-config *.host*.wlan[0].radio.transmitter.analogModel.communicationRange 500m
-config *.host*.wlan[0].radio.receiver.ignoreInterference true
 config *.host*.wlan[0].mac.headerLength 23B
 config *.host*.**.bitrate 1Mbps
 
@@ -85,8 +73,8 @@ scalar WirelessB.radioMedium "reception computation count" 10180
 scalar WirelessB.radioMedium "interference computation count" 26724
 scalar WirelessB.radioMedium "reception decision computation count" 4608
 scalar WirelessB.radioMedium "listening decision computation count" 12692
-scalar WirelessB.radioMedium "reception cache hit" 84.381472560180427
-scalar WirelessB.radioMedium "interference cache hit" 66.666666666666671
+scalar WirelessB.radioMedium "reception cache hit" 84.38147256018043
+scalar WirelessB.radioMedium "interference cache hit" 66.66666666666667
 scalar WirelessB.radioMedium "noise cache hit" 0
 scalar WirelessB.radioMedium "snir cache hit" 50
 scalar WirelessB.radioMedium "reception decision cache hit" 50
@@ -101,10 +89,10 @@ scalar WirelessB.hostA.lo[0] packetDropNoCarrier:count 0
 scalar WirelessB.hostA.lo[0] packetDropNoCarrier:sum(packetBytes) 0
 scalar WirelessB.hostA.wlan[0].queue queueLength:last 0
 scalar WirelessB.hostA.wlan[0].queue queueLength:max 6
-scalar WirelessB.hostA.wlan[0].queue queueLength:timeavg 0.70554268512289997
+scalar WirelessB.hostA.wlan[0].queue queueLength:timeavg 0.7055426851229
 scalar WirelessB.hostA.wlan[0].queue queueBitLength:last 0
 scalar WirelessB.hostA.wlan[0].queue queueBitLength:max 49344
-scalar WirelessB.hostA.wlan[0].queue queueBitLength:timeavg 5802.3830424507296
+scalar WirelessB.hostA.wlan[0].queue queueBitLength:timeavg 5802.38304245073
 scalar WirelessB.hostA.wlan[0].queue outgoingPackets:count 1651
 scalar WirelessB.hostA.wlan[0].queue outgoingPacketLengths:sum 13577824
 scalar WirelessB.hostA.wlan[0].queue incomingPackets:count 1651
@@ -145,6 +133,8 @@ scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:count 0
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:count 0
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar WirelessB.hostA.ipv4.ip packetDropUndefined:count 0
 scalar WirelessB.hostA.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar WirelessB.hostA.udp packetReceived:count 0
@@ -214,6 +204,8 @@ scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:count 0
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:count 0
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar WirelessB.hostB.ipv4.ip packetDropUndefined:count 0
 scalar WirelessB.hostB.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar WirelessB.hostB.udp packetReceived:count 138
@@ -279,6 +271,8 @@ scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:count 0
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar WirelessB.hostR1.udp packetReceived:count 0
@@ -342,6 +336,8 @@ scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:count 0
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar WirelessB.hostR2.udp packetReceived:count 0
@@ -405,6 +401,8 @@ scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:count 0
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar WirelessB.hostR3.udp packetReceived:count 0
@@ -416,17 +414,17 @@ scalar WirelessB.hostR3.udp droppedPkWrongPort:count 0
 scalar WirelessB.hostR3.udp droppedPkBadChecksum:count 0
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:stats:count 0
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:stats:sumweights 0
-scalar WirelessB.hostA.app[0] rcvdPkLifetime:stats:mean -nan
+scalar WirelessB.hostA.app[0] rcvdPkLifetime:stats:mean nan
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:stats:stddev nan
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:stats:min nan
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:stats:max nan
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:stats:numbins 0
 scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:count 1651
 scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:sumweights 1651
-scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:mean 0.0085468526362556026
-scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:stddev 0.0099645100241651657
+scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:mean 0.008546852636255603
+scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:stddev 0.009964510024165166
 scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:min 0
-scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:max 0.050622228296999999
+scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:max 0.050622228297
 scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:numbins 51
 scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:rangemin 0
 scalar WirelessB.hostA.wlan[0].queue queueingTime:histogram:rangemax 0.051000000000000004
@@ -445,7 +443,7 @@ scalar WirelessB.hostA.wlan[0].queue outgoingPacketLengths:histogram:underflows 
 scalar WirelessB.hostA.wlan[0].queue outgoingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:histogram:count 0
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:histogram:sumweights 0
-scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:histogram:mean nan
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:histogram:stddev nan
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:histogram:min nan
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:histogram:max nan
@@ -467,7 +465,7 @@ scalar WirelessB.hostA.wlan[0].queue incomingPacketLengths:histogram:underflows 
 scalar WirelessB.hostA.wlan[0].queue incomingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostA.wlan[0].radio minSnir:histogram:count 138
 scalar WirelessB.hostA.wlan[0].radio minSnir:histogram:sumweights 138
-scalar WirelessB.hostA.wlan[0].radio minSnir:histogram:mean -nan
+scalar WirelessB.hostA.wlan[0].radio minSnir:histogram:mean nan
 scalar WirelessB.hostA.wlan[0].radio minSnir:histogram:stddev 0
 scalar WirelessB.hostA.wlan[0].radio minSnir:histogram:min inf
 scalar WirelessB.hostA.wlan[0].radio minSnir:histogram:max inf
@@ -511,7 +509,7 @@ scalar WirelessB.hostA.wlan[0].radio symbolErrorRate:histogram:underflows 0
 scalar WirelessB.hostA.wlan[0].radio symbolErrorRate:histogram:overflows 0
 scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:count 0
 scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:mean -nan
+scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:mean nan
 scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:stddev nan
 scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:min nan
 scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:max nan
@@ -522,7 +520,7 @@ scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:underflows 0
 scalar WirelessB.hostB.wlan[0].queue queueingTime:histogram:overflows 0
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:count 0
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:mean -nan
+scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:mean nan
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:stddev nan
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:min nan
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:max nan
@@ -533,7 +531,7 @@ scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:underflows 
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:count 0
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:mean nan
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:stddev nan
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:min nan
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:max nan
@@ -544,7 +542,7 @@ scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:underflows 0
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram:overflows 0
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:count 0
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:mean -nan
+scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:mean nan
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:stddev nan
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:min nan
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:max nan
@@ -555,8 +553,8 @@ scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:underflows 
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:count 894
 scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:sumweights 894
-scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:mean -nan
-scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:stddev -nan
+scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:mean nan
+scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:stddev nan
 scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:min 0
 scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:max inf
 scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:numbins 50
@@ -566,7 +564,7 @@ scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:underflows 0
 scalar WirelessB.hostB.wlan[0].radio minSnir:histogram:overflows 138
 scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:count 894
 scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:sumweights 894
-scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:mean 0.84563758389261745
+scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:mean 0.8456375838926175
 scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:stddev 0.36149804429993493
 scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:min 0
 scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:max 1
@@ -577,7 +575,7 @@ scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:underflows 0
 scalar WirelessB.hostB.wlan[0].radio packetErrorRate:histogram:overflows 0
 scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:count 894
 scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:sumweights 894
-scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:mean 0.84563758389261745
+scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:mean 0.8456375838926175
 scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:stddev 0.36149804429993493
 scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:min 0
 scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:max 1
@@ -588,7 +586,7 @@ scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:underflows 0
 scalar WirelessB.hostB.wlan[0].radio bitErrorRate:histogram:overflows 0
 scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:count 894
 scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:sumweights 894
-scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:mean 0.84563758389261745
+scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:mean 0.8456375838926175
 scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:stddev 0.36149804429993493
 scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:min 0
 scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:max 1
@@ -599,12 +597,12 @@ scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:underflows 0
 scalar WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram:overflows 0
 scalar WirelessB.hostB.app[0] endToEndDelay:histogram:count 138
 scalar WirelessB.hostB.app[0] endToEndDelay:histogram:sumweights 138
-scalar WirelessB.hostB.app[0] endToEndDelay:histogram:mean 0.020245949328862319
-scalar WirelessB.hostB.app[0] endToEndDelay:histogram:stddev 0.0050997705315926128
+scalar WirelessB.hostB.app[0] endToEndDelay:histogram:mean 0.02024594932886232
+scalar WirelessB.hostB.app[0] endToEndDelay:histogram:stddev 0.005099770531592613
 scalar WirelessB.hostB.app[0] endToEndDelay:histogram:min 0.01700934464
-scalar WirelessB.hostB.app[0] endToEndDelay:histogram:max 0.040323434712999998
+scalar WirelessB.hostB.app[0] endToEndDelay:histogram:max 0.040323434713
 scalar WirelessB.hostB.app[0] endToEndDelay:histogram:numbins 71
-scalar WirelessB.hostB.app[0] endToEndDelay:histogram:rangemin 0.010999999999999999
+scalar WirelessB.hostB.app[0] endToEndDelay:histogram:rangemin 0.011
 scalar WirelessB.hostB.app[0] endToEndDelay:histogram:rangemax 0.0465
 scalar WirelessB.hostB.app[0] endToEndDelay:histogram:underflows 0
 scalar WirelessB.hostB.app[0] endToEndDelay:histogram:overflows 0
@@ -632,7 +630,7 @@ scalar WirelessB.hostR1.wlan[0].queue outgoingPacketLengths:histogram:underflows
 scalar WirelessB.hostR1.wlan[0].queue outgoingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:histogram:count 0
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:histogram:sumweights 0
-scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:histogram:mean nan
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:histogram:stddev nan
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:histogram:min nan
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:histogram:max nan
@@ -654,7 +652,7 @@ scalar WirelessB.hostR1.wlan[0].queue incomingPacketLengths:histogram:underflows
 scalar WirelessB.hostR1.wlan[0].queue incomingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostR1.wlan[0].radio minSnir:histogram:count 894
 scalar WirelessB.hostR1.wlan[0].radio minSnir:histogram:sumweights 894
-scalar WirelessB.hostR1.wlan[0].radio minSnir:histogram:mean -nan
+scalar WirelessB.hostR1.wlan[0].radio minSnir:histogram:mean nan
 scalar WirelessB.hostR1.wlan[0].radio minSnir:histogram:stddev 0
 scalar WirelessB.hostR1.wlan[0].radio minSnir:histogram:min inf
 scalar WirelessB.hostR1.wlan[0].radio minSnir:histogram:max inf
@@ -698,7 +696,7 @@ scalar WirelessB.hostR1.wlan[0].radio symbolErrorRate:histogram:underflows 0
 scalar WirelessB.hostR1.wlan[0].radio symbolErrorRate:histogram:overflows 0
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:count 0
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:mean nan
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:min nan
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:max nan
@@ -709,7 +707,7 @@ scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:underflows 0
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:histogram:overflows 0
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:count 0
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:mean nan
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:min nan
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:max nan
@@ -720,7 +718,7 @@ scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:underflows
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:count 0
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:mean nan
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:min nan
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:max nan
@@ -731,7 +729,7 @@ scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:underflows 0
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram:overflows 0
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:count 0
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:mean nan
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:min nan
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:max nan
@@ -742,8 +740,8 @@ scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:underflows
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:count 1788
 scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:sumweights 1788
-scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:mean -nan
-scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:stddev -nan
+scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:mean nan
+scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:stddev nan
 scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:min 0
 scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:max inf
 scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:numbins 50
@@ -753,8 +751,8 @@ scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:underflows 0
 scalar WirelessB.hostR2.wlan[0].radio minSnir:histogram:overflows 576
 scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:count 1788
 scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:sumweights 1788
-scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:mean 0.67785234899328861
-scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:stddev 0.46742993096101287
+scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:mean 0.6778523489932886
+scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:stddev 0.4674299309610129
 scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:min 0
 scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:max 1
 scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:numbins 2
@@ -764,8 +762,8 @@ scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:underflows 0
 scalar WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram:overflows 0
 scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:count 1788
 scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:sumweights 1788
-scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:mean 0.67785234899328861
-scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:stddev 0.46742993096101287
+scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:mean 0.6778523489932886
+scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:stddev 0.4674299309610129
 scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:min 0
 scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:max 1
 scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:numbins 2
@@ -775,8 +773,8 @@ scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:underflows 0
 scalar WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram:overflows 0
 scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:count 1788
 scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:sumweights 1788
-scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:mean 0.67785234899328861
-scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:stddev 0.46742993096101287
+scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:mean 0.6778523489932886
+scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:stddev 0.4674299309610129
 scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:min 0
 scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:max 1
 scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:numbins 2
@@ -786,7 +784,7 @@ scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:underflows 0
 scalar WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram:overflows 0
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:count 0
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:mean nan
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:min nan
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:max nan
@@ -797,7 +795,7 @@ scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:underflows 0
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:histogram:overflows 0
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:count 0
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:mean nan
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:min nan
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:max nan
@@ -808,7 +806,7 @@ scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:underflows
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:count 0
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:mean nan
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:min nan
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:max nan
@@ -819,7 +817,7 @@ scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:underflows 0
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram:overflows 0
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:count 0
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:mean nan
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:min nan
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:max nan
@@ -830,8 +828,8 @@ scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:underflows
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram:overflows 0
 scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:count 894
 scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:sumweights 894
-scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:mean -nan
-scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:stddev -nan
+scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:mean nan
+scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:stddev nan
 scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:min 0
 scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:max inf
 scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:numbins 50
@@ -841,7 +839,7 @@ scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:underflows 0
 scalar WirelessB.hostR3.wlan[0].radio minSnir:histogram:overflows 138
 scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:count 894
 scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:sumweights 894
-scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:mean 0.84563758389261745
+scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:mean 0.8456375838926175
 scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:stddev 0.36149804429993493
 scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:min 0
 scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:max 1
@@ -852,7 +850,7 @@ scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:underflows 0
 scalar WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram:overflows 0
 scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:count 894
 scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:sumweights 894
-scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:mean 0.84563758389261745
+scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:mean 0.8456375838926175
 scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:stddev 0.36149804429993493
 scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:min 0
 scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:max 1
@@ -863,7 +861,7 @@ scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:underflows 0
 scalar WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram:overflows 0
 scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:count 894
 scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:sumweights 894
-scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:mean 0.84563758389261745
+scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:mean 0.8456375838926175
 scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:stddev 0.36149804429993493
 scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:min 0
 scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:max 1
@@ -874,7 +872,7 @@ scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:underflows 0
 scalar WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram:overflows 0
 statistic WirelessB.hostA.app[0] rcvdPkLifetime:stats
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -882,64 +880,64 @@ field sum 0
 field sqrsum 0
 statistic WirelessB.hostA.wlan[0].queue queueingTime:histogram
 field count 1651
-field mean 0.0085468526362556026
-field stddev 0.0099645100241651657
+field mean 0.008546852636255603
+field stddev 0.009964510024165166
 field min 0
-field max 0.050622228296999999
+field max 0.050622228297
 field sum 14.110853702458
-field sqrsum 0.28443429620245558
+field sqrsum 0.2844342962024556
 bin	-inf	0
 bin	0	552
 bin	0.001	56
 bin	0.002	56
-bin	0.0030000000000000001	57
-bin	0.0040000000000000001	64
-bin	0.0050000000000000001	79
-bin	0.0060000000000000001	62
-bin	0.0070000000000000001	63
-bin	0.0080000000000000002	71
-bin	0.0090000000000000011	36
+bin	0.003	57
+bin	0.004	64
+bin	0.005	79
+bin	0.006	62
+bin	0.007	63
+bin	0.008	71
+bin	0.009000000000000001	36
 bin	0.01	39
-bin	0.010999999999999999	38
+bin	0.011	38
 bin	0.012	45
 bin	0.013000000000000001	39
 bin	0.014	33
-bin	0.014999999999999999	42
+bin	0.015	42
 bin	0.016	32
-bin	0.017000000000000001	25
+bin	0.017	25
 bin	0.018000000000000002	27
 bin	0.019	15
 bin	0.02	17
-bin	0.021000000000000001	23
-bin	0.021999999999999999	19
+bin	0.021	23
+bin	0.022	19
 bin	0.023	14
 bin	0.024	18
-bin	0.025000000000000001	19
+bin	0.025	19
 bin	0.026000000000000002	5
 bin	0.027	11
-bin	0.028000000000000001	6
-bin	0.029000000000000001	10
-bin	0.029999999999999999	14
+bin	0.028	6
+bin	0.029	10
+bin	0.03	14
 bin	0.031	6
-bin	0.032000000000000001	4
-bin	0.033000000000000002	2
-bin	0.034000000000000002	6
-bin	0.035000000000000003	5
+bin	0.032	4
+bin	0.033	2
+bin	0.034	6
+bin	0.035	5
 bin	0.036000000000000004	5
-bin	0.036999999999999998	8
-bin	0.037999999999999999	5
+bin	0.037	8
+bin	0.038	5
 bin	0.039	2
-bin	0.040000000000000001	1
-bin	0.041000000000000002	3
-bin	0.042000000000000003	4
+bin	0.04	1
+bin	0.041	3
+bin	0.042	4
 bin	0.043000000000000003	3
-bin	0.043999999999999997	0
-bin	0.044999999999999998	1
-bin	0.045999999999999999	4
+bin	0.044	0
+bin	0.045	1
+bin	0.046	4
 bin	0.047	2
-bin	0.048000000000000001	0
-bin	0.049000000000000002	1
-bin	0.050000000000000003	2
+bin	0.048	0
+bin	0.049	1
+bin	0.05	2
 bin	0.051000000000000004	0
 statistic WirelessB.hostA.wlan[0].queue outgoingPacketLengths:histogram
 field count 1651
@@ -955,7 +953,7 @@ bin	8224	1651
 bin	8225	0
 statistic WirelessB.hostA.wlan[0].queue flowQueueingTime:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -978,12 +976,12 @@ bin	8224	1651
 bin	8225	0
 statistic WirelessB.hostA.wlan[0].radio minSnir:histogram
 field count 138
-field mean -nan
+field mean nan
 field stddev 0
 field min inf
 field max inf
-field sum -nan
-field sqrsum -nan
+field sum nan
+field sqrsum nan
 bin	-inf	0
 bin	0	0
 bin	1	138
@@ -997,55 +995,55 @@ field sum 0
 field sqrsum 0
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	138
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	0
 statistic WirelessB.hostA.wlan[0].radio bitErrorRate:histogram
 field count 138
@@ -1057,55 +1055,55 @@ field sum 0
 field sqrsum 0
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	138
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	0
 statistic WirelessB.hostA.wlan[0].radio symbolErrorRate:histogram
 field count 138
@@ -1117,59 +1115,59 @@ field sum 0
 field sqrsum 0
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	138
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	0
 statistic WirelessB.hostB.wlan[0].queue queueingTime:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1180,7 +1178,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostB.wlan[0].queue outgoingPacketLengths:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1191,7 +1189,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostB.wlan[0].queue flowQueueingTime:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1202,7 +1200,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostB.wlan[0].queue incomingPacketLengths:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1213,67 +1211,67 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostB.wlan[0].radio minSnir:histogram
 field count 894
-field mean -nan
-field stddev -nan
+field mean nan
+field stddev nan
 field min 0
 field max inf
-field sum -nan
-field sqrsum -nan
+field sum nan
+field sqrsum nan
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	756
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	138
 statistic WirelessB.hostB.wlan[0].radio packetErrorRate:histogram
 field count 894
-field mean 0.84563758389261745
+field mean 0.8456375838926175
 field stddev 0.36149804429993493
 field min 0
 field max 1
@@ -1285,7 +1283,7 @@ bin	1	756
 bin	2	0
 statistic WirelessB.hostB.wlan[0].radio bitErrorRate:histogram
 field count 894
-field mean 0.84563758389261745
+field mean 0.8456375838926175
 field stddev 0.36149804429993493
 field min 0
 field max 1
@@ -1297,7 +1295,7 @@ bin	1	756
 bin	2	0
 statistic WirelessB.hostB.wlan[0].radio symbolErrorRate:histogram
 field count 894
-field mean 0.84563758389261745
+field mean 0.8456375838926175
 field stddev 0.36149804429993493
 field min 0
 field max 1
@@ -1309,84 +1307,84 @@ bin	1	756
 bin	2	0
 statistic WirelessB.hostB.app[0] endToEndDelay:histogram
 field count 138
-field mean 0.020245949328862319
-field stddev 0.0050997705315926128
+field mean 0.02024594932886232
+field stddev 0.005099770531592613
 field min 0.01700934464
-field max 0.040323434712999998
+field max 0.040323434713
 field sum 2.7939410073829998
-field sqrsum 0.060129037411368109
+field sqrsum 0.06012903741136811
 bin	-inf	0
-bin	0.010999999999999999	0
+bin	0.011	0
 bin	0.0115	0
 bin	0.012	0
 bin	0.012499999999999999	0
-bin	0.012999999999999999	0
+bin	0.013	0
 bin	0.0135	0
 bin	0.013999999999999999	0
 bin	0.014499999999999999	0
-bin	0.014999999999999999	0
+bin	0.015	0
 bin	0.0155	0
 bin	0.016	0
-bin	0.016500000000000001	0
-bin	0.017000000000000001	80
-bin	0.017500000000000002	0
-bin	0.017999999999999999	6
-bin	0.018499999999999999	1
+bin	0.0165	0
+bin	0.017	80
+bin	0.0175	0
+bin	0.018	6
+bin	0.0185	1
 bin	0.019	5
 bin	0.0195	1
 bin	0.02	1
 bin	0.020499999999999997	1
 bin	0.020999999999999998	3
-bin	0.021499999999999998	3
-bin	0.021999999999999999	5
-bin	0.022499999999999999	0
+bin	0.0215	3
+bin	0.022	5
+bin	0.0225	0
 bin	0.023	4
 bin	0.0235	1
 bin	0.024	1
-bin	0.024500000000000001	1
-bin	0.025000000000000001	3
+bin	0.0245	1
+bin	0.025	3
 bin	0.025500000000000002	1
-bin	0.025999999999999999	3
-bin	0.026499999999999999	2
+bin	0.026	3
+bin	0.0265	2
 bin	0.027	1
 bin	0.0275	2
-bin	0.028000000000000001	0
-bin	0.028500000000000001	0
-bin	0.029000000000000001	1
-bin	0.029499999999999998	0
-bin	0.029999999999999999	3
-bin	0.030499999999999999	0
+bin	0.028	0
+bin	0.0285	0
+bin	0.029	1
+bin	0.0295	0
+bin	0.03	3
+bin	0.0305	0
 bin	0.031	1
 bin	0.0315	1
-bin	0.032000000000000001	1
-bin	0.032500000000000001	1
-bin	0.033000000000000002	1
-bin	0.033500000000000002	0
-bin	0.034000000000000002	2
-bin	0.034500000000000003	1
-bin	0.035000000000000003	0
+bin	0.032	1
+bin	0.0325	1
+bin	0.033	1
+bin	0.0335	0
+bin	0.034	2
+bin	0.0345	1
+bin	0.035	0
 bin	0.035500000000000004	0
 bin	0.036000000000000004	0
 bin	0.036500000000000005	0
 bin	0.037000000000000005	0
-bin	0.037499999999999999	0
-bin	0.037999999999999999	0
+bin	0.0375	0
+bin	0.038	0
 bin	0.0385	0
 bin	0.039	0
 bin	0.0395	0
-bin	0.040000000000000001	1
-bin	0.040500000000000001	0
+bin	0.04	1
+bin	0.0405	0
 bin	0.040999999999999995	0
 bin	0.041499999999999995	0
 bin	0.041999999999999996	0
 bin	0.042499999999999996	0
-bin	0.042999999999999997	0
-bin	0.043499999999999997	0
-bin	0.043999999999999997	0
-bin	0.044499999999999998	0
-bin	0.044999999999999998	0
-bin	0.045499999999999999	0
-bin	0.045999999999999999	0
+bin	0.043	0
+bin	0.0435	0
+bin	0.044	0
+bin	0.0445	0
+bin	0.045	0
+bin	0.0455	0
+bin	0.046	0
 bin	0.0465	0
 statistic WirelessB.hostR1.wlan[0].queue queueingTime:histogram
 field count 894
@@ -1398,55 +1396,55 @@ field sum 0
 field sqrsum 0
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	894
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	0
 statistic WirelessB.hostR1.wlan[0].queue outgoingPacketLengths:histogram
 field count 894
@@ -1462,7 +1460,7 @@ bin	8224	894
 bin	8225	0
 statistic WirelessB.hostR1.wlan[0].queue flowQueueingTime:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1485,12 +1483,12 @@ bin	8224	894
 bin	8225	0
 statistic WirelessB.hostR1.wlan[0].radio minSnir:histogram
 field count 894
-field mean -nan
+field mean nan
 field stddev 0
 field min inf
 field max inf
-field sum -nan
-field sqrsum -nan
+field sum nan
+field sqrsum nan
 bin	-inf	0
 bin	0	0
 bin	1	894
@@ -1504,55 +1502,55 @@ field sum 0
 field sqrsum 0
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	894
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	0
 statistic WirelessB.hostR1.wlan[0].radio bitErrorRate:histogram
 field count 894
@@ -1564,55 +1562,55 @@ field sum 0
 field sqrsum 0
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	894
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	0
 statistic WirelessB.hostR1.wlan[0].radio symbolErrorRate:histogram
 field count 894
@@ -1624,59 +1622,59 @@ field sum 0
 field sqrsum 0
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	894
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	0
 statistic WirelessB.hostR2.wlan[0].queue queueingTime:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1687,7 +1685,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1698,7 +1696,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostR2.wlan[0].queue flowQueueingTime:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1709,7 +1707,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostR2.wlan[0].queue incomingPacketLengths:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1720,68 +1718,68 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostR2.wlan[0].radio minSnir:histogram
 field count 1788
-field mean -nan
-field stddev -nan
+field mean nan
+field stddev nan
 field min 0
 field max inf
-field sum -nan
-field sqrsum -nan
+field sum nan
+field sqrsum nan
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	1212
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	576
 statistic WirelessB.hostR2.wlan[0].radio packetErrorRate:histogram
 field count 1788
-field mean 0.67785234899328861
-field stddev 0.46742993096101287
+field mean 0.6778523489932886
+field stddev 0.4674299309610129
 field min 0
 field max 1
 field sum 1212
@@ -1792,8 +1790,8 @@ bin	1	1212
 bin	2	0
 statistic WirelessB.hostR2.wlan[0].radio bitErrorRate:histogram
 field count 1788
-field mean 0.67785234899328861
-field stddev 0.46742993096101287
+field mean 0.6778523489932886
+field stddev 0.4674299309610129
 field min 0
 field max 1
 field sum 1212
@@ -1804,8 +1802,8 @@ bin	1	1212
 bin	2	0
 statistic WirelessB.hostR2.wlan[0].radio symbolErrorRate:histogram
 field count 1788
-field mean 0.67785234899328861
-field stddev 0.46742993096101287
+field mean 0.6778523489932886
+field stddev 0.4674299309610129
 field min 0
 field max 1
 field sum 1212
@@ -1816,7 +1814,7 @@ bin	1	1212
 bin	2	0
 statistic WirelessB.hostR3.wlan[0].queue queueingTime:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1827,7 +1825,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1838,7 +1836,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostR3.wlan[0].queue flowQueueingTime:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1849,7 +1847,7 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostR3.wlan[0].queue incomingPacketLengths:histogram
 field count 0
-field mean -nan
+field mean nan
 field stddev nan
 field min nan
 field max nan
@@ -1860,67 +1858,67 @@ bin	0	0
 bin	1	0
 statistic WirelessB.hostR3.wlan[0].radio minSnir:histogram
 field count 894
-field mean -nan
-field stddev -nan
+field mean nan
+field stddev nan
 field min 0
 field max inf
-field sum -nan
-field sqrsum -nan
+field sum nan
+field sqrsum nan
 bin	-inf	0
 bin	-0.5	0
-bin	-0.47999999999999998	0
-bin	-0.46000000000000002	0
+bin	-0.48	0
+bin	-0.46	0
 bin	-0.44	0
-bin	-0.41999999999999998	0
-bin	-0.40000000000000002	0
+bin	-0.42	0
+bin	-0.4	0
 bin	-0.38	0
-bin	-0.35999999999999999	0
+bin	-0.36	0
 bin	-0.33999999999999997	0
-bin	-0.32000000000000001	0
-bin	-0.29999999999999999	0
-bin	-0.28000000000000003	0
-bin	-0.26000000000000001	0
-bin	-0.23999999999999999	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
 bin	-0.21999999999999997	0
-bin	-0.20000000000000001	0
-bin	-0.17999999999999999	0
+bin	-0.2	0
+bin	-0.18	0
 bin	-0.15999999999999998	0
-bin	-0.14000000000000001	0
+bin	-0.14	0
 bin	-0.12	0
-bin	-0.099999999999999978	0
-bin	-0.080000000000000016	0
-bin	-0.059999999999999998	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
 bin	-0.03999999999999998	0
 bin	-0.020000000000000018	0
 bin	0	756
 bin	0.020000000000000018	0
 bin	0.040000000000000036	0
-bin	0.060000000000000053	0
+bin	0.06000000000000005	0
 bin	0.07999999999999996	0
-bin	0.099999999999999978	0
+bin	0.09999999999999998	0
 bin	0.12	0
-bin	0.14000000000000001	0
+bin	0.14	0
 bin	0.16000000000000003	0
 bin	0.18000000000000005	0
 bin	0.20000000000000007	0
 bin	0.21999999999999997	0
-bin	0.23999999999999999	0
-bin	0.26000000000000001	0
-bin	0.28000000000000003	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
 bin	0.30000000000000004	0
 bin	0.32000000000000006	0
 bin	0.33999999999999997	0
-bin	0.35999999999999999	0
+bin	0.36	0
 bin	0.38	0
-bin	0.40000000000000002	0
+bin	0.4	0
 bin	0.42000000000000004	0
 bin	0.44000000000000006	0
 bin	0.45999999999999996	0
-bin	0.47999999999999998	0
+bin	0.48	0
 bin	0.5	138
 statistic WirelessB.hostR3.wlan[0].radio packetErrorRate:histogram
 field count 894
-field mean 0.84563758389261745
+field mean 0.8456375838926175
 field stddev 0.36149804429993493
 field min 0
 field max 1
@@ -1932,7 +1930,7 @@ bin	1	756
 bin	2	0
 statistic WirelessB.hostR3.wlan[0].radio bitErrorRate:histogram
 field count 894
-field mean 0.84563758389261745
+field mean 0.8456375838926175
 field stddev 0.36149804429993493
 field min 0
 field max 1
@@ -1944,7 +1942,7 @@ bin	1	756
 bin	2	0
 statistic WirelessB.hostR3.wlan[0].radio symbolErrorRate:histogram
 field count 894
-field mean 0.84563758389261745
+field mean 0.8456375838926175
 field stddev 0.36149804429993493
 field min 0
 field max 1
@@ -1957,7 +1955,7 @@ bin	2	0
 scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
 scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
 scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean nan
 scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
 scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
@@ -1966,7 +1964,7 @@ scalar WirelessB.hostA.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
 scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):count 0
 scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):sum 0
 scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):mean nan
 scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):min inf
 scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):max -inf
@@ -1975,7 +1973,7 @@ scalar WirelessB.hostA.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -1984,7 +1982,7 @@ scalar WirelessB.hostA.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime
 scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -1993,8 +1991,8 @@ scalar WirelessB.hostA.lo[0] packetDropNoCarrier:vector(packetBytes):endtime nan
 scalar WirelessB.hostA.wlan[0].queue queueLength:vector:count 2799
 scalar WirelessB.hostA.wlan[0].queue queueLength:vector:sum 3305
 scalar WirelessB.hostA.wlan[0].queue queueLength:vector:sumweights 2799
-scalar WirelessB.hostA.wlan[0].queue queueLength:vector:mean 1.1807788495891389
-scalar WirelessB.hostA.wlan[0].queue queueLength:vector:stddev 1.2654373277602029
+scalar WirelessB.hostA.wlan[0].queue queueLength:vector:mean 1.180778849589139
+scalar WirelessB.hostA.wlan[0].queue queueLength:vector:stddev 1.265437327760203
 scalar WirelessB.hostA.wlan[0].queue queueLength:vector:min 0
 scalar WirelessB.hostA.wlan[0].queue queueLength:vector:max 6
 scalar WirelessB.hostA.wlan[0].queue queueLength:vector:starttime 0
@@ -2002,7 +2000,7 @@ scalar WirelessB.hostA.wlan[0].queue queueLength:vector:endtime 19.9955172051590
 scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:count 2799
 scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:sum 27180320
 scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:sumweights 2799
-scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:mean 9710.7252590210792
+scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:mean 9710.72525902108
 scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:stddev 10406.95658349991
 scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:min 0
 scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:max 49344
@@ -2011,10 +2009,10 @@ scalar WirelessB.hostA.wlan[0].queue queueBitLength:vector:endtime 19.9955172051
 scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:count 1651
 scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:sum 14.110853702458
 scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:sumweights 1651
-scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:mean 0.0085468526362556026
-scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:stddev 0.0099645100241651657
+scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:mean 0.008546852636255603
+scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:stddev 0.009964510024165166
 scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:min 0
-scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:max 0.050622228296999999
+scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:max 0.050622228297
 scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:starttime 0.022315250545000005
 scalar WirelessB.hostA.wlan[0].queue queueingTime:vector:endtime 19.995517205159004
 scalar WirelessB.hostA.wlan[0].queue incomingPacketLengths:vector:count 1651
@@ -2029,11 +2027,11 @@ scalar WirelessB.hostA.wlan[0].queue incomingPacketLengths:vector:endtime 19.985
 scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:count 200
 scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:sum 135778240
 scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:sumweights 200
-scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:mean 678891.19999999995
-scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:stddev 209711.79741836729
+scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:mean 678891.2
+scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:stddev 209711.7974183673
 scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:min 0
 scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:max 1315840
-scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostA.wlan[0].queue incomingDataRate:vector:endtime 20
 scalar WirelessB.hostA.wlan[0].queue outgoingPacketLengths:vector:count 1651
 scalar WirelessB.hostA.wlan[0].queue outgoingPacketLengths:vector:sum 13577824
@@ -2047,16 +2045,16 @@ scalar WirelessB.hostA.wlan[0].queue outgoingPacketLengths:vector:endtime 19.995
 scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:count 200
 scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:sum 135778240
 scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:sumweights 200
-scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:mean 678891.19999999995
-scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:stddev 189805.35969091361
+scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:mean 678891.2
+scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:stddev 189805.3596909136
 scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:min 0
-scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:max 986880.00000000012
-scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:max 986880.0000000001
+scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostA.wlan[0].queue outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
 scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
 scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
-scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean nan
 scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
 scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
 scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
@@ -2065,7 +2063,7 @@ scalar WirelessB.hostA.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:en
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:vector:count 0
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:vector:sum 0
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:vector:sumweights 0
-scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:vector:mean nan
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:vector:stddev nan
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:vector:min inf
 scalar WirelessB.hostA.wlan[0].queue flowQueueingTime:vector:max -inf
@@ -2078,7 +2076,7 @@ scalar WirelessB.hostA.wlan[0].queue flowIncomingDataRate:vector:mean 0
 scalar WirelessB.hostA.wlan[0].queue flowIncomingDataRate:vector:stddev 0
 scalar WirelessB.hostA.wlan[0].queue flowIncomingDataRate:vector:min 0
 scalar WirelessB.hostA.wlan[0].queue flowIncomingDataRate:vector:max 0
-scalar WirelessB.hostA.wlan[0].queue flowIncomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostA.wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostA.wlan[0].queue flowIncomingDataRate:vector:endtime 20
 scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:count 200
 scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:sum 0
@@ -2087,12 +2085,12 @@ scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:mean 0
 scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:stddev 0
 scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:min 0
 scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:max 0
-scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostA.wlan[0].queue flowOutgoingDataRate:vector:endtime 20
 scalar WirelessB.hostA.wlan[0].mac passedUpPk:vector(packetBytes):count 0
 scalar WirelessB.hostA.wlan[0].mac passedUpPk:vector(packetBytes):sum 0
 scalar WirelessB.hostA.wlan[0].mac passedUpPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.wlan[0].mac passedUpPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.wlan[0].mac passedUpPk:vector(packetBytes):mean nan
 scalar WirelessB.hostA.wlan[0].mac passedUpPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.wlan[0].mac passedUpPk:vector(packetBytes):min inf
 scalar WirelessB.hostA.wlan[0].mac passedUpPk:vector(packetBytes):max -inf
@@ -2123,12 +2121,12 @@ scalar WirelessB.hostA.wlan[0].mac rcvdPkFromLl:vector(packetBytes):mean 1051
 scalar WirelessB.hostA.wlan[0].mac rcvdPkFromLl:vector(packetBytes):stddev 0
 scalar WirelessB.hostA.wlan[0].mac rcvdPkFromLl:vector(packetBytes):min 1051
 scalar WirelessB.hostA.wlan[0].mac rcvdPkFromLl:vector(packetBytes):max 1051
-scalar WirelessB.hostA.wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 0.53434436671200014
+scalar WirelessB.hostA.wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 0.5343443667120001
 scalar WirelessB.hostA.wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 19.966143218944005
 scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
 scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
 scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean nan
 scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
 scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
@@ -2137,7 +2135,7 @@ scalar WirelessB.hostA.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBy
 scalar WirelessB.hostA.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostA.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostA.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostA.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostA.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -2150,13 +2148,13 @@ scalar WirelessB.hostA.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes
 scalar WirelessB.hostA.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev 0
 scalar WirelessB.hostA.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min 1051
 scalar WirelessB.hostA.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max 1051
-scalar WirelessB.hostA.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime 0.53434436671200014
+scalar WirelessB.hostA.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime 0.5343443667120001
 scalar WirelessB.hostA.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime 19.966143218944005
 scalar WirelessB.hostA.wlan[0].radio radioMode:vector:count 3304
 scalar WirelessB.hostA.wlan[0].radio radioMode:vector:sum 8255
 scalar WirelessB.hostA.wlan[0].radio radioMode:vector:sumweights 3304
-scalar WirelessB.hostA.wlan[0].radio radioMode:vector:mean 2.4984866828087169
-scalar WirelessB.hostA.wlan[0].radio radioMode:vector:stddev 0.50369282186595254
+scalar WirelessB.hostA.wlan[0].radio radioMode:vector:mean 2.498486682808717
+scalar WirelessB.hostA.wlan[0].radio radioMode:vector:stddev 0.5036928218659525
 scalar WirelessB.hostA.wlan[0].radio radioMode:vector:min 0
 scalar WirelessB.hostA.wlan[0].radio radioMode:vector:max 3
 scalar WirelessB.hostA.wlan[0].radio radioMode:vector:starttime 0
@@ -2164,8 +2162,8 @@ scalar WirelessB.hostA.wlan[0].radio radioMode:vector:endtime 19.995517205159004
 scalar WirelessB.hostA.wlan[0].radio receptionState:vector:count 4026
 scalar WirelessB.hostA.wlan[0].radio receptionState:vector:sum 3705
 scalar WirelessB.hostA.wlan[0].radio receptionState:vector:sumweights 4026
-scalar WirelessB.hostA.wlan[0].radio receptionState:vector:mean 0.92026825633383014
-scalar WirelessB.hostA.wlan[0].radio receptionState:vector:stddev 0.93641394868944783
+scalar WirelessB.hostA.wlan[0].radio receptionState:vector:mean 0.9202682563338301
+scalar WirelessB.hostA.wlan[0].radio receptionState:vector:stddev 0.9364139486894478
 scalar WirelessB.hostA.wlan[0].radio receptionState:vector:min 0
 scalar WirelessB.hostA.wlan[0].radio receptionState:vector:max 3
 scalar WirelessB.hostA.wlan[0].radio receptionState:vector:starttime 0
@@ -2173,8 +2171,8 @@ scalar WirelessB.hostA.wlan[0].radio receptionState:vector:endtime 19.9955172051
 scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:count 6602
 scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:sum 6603
 scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:sumweights 6602
-scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:mean 1.0001514692517419
-scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:stddev 0.70716032351417035
+scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:mean 1.000151469251742
+scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:stddev 0.7071603235141704
 scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:min 0
 scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:max 2
 scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:starttime 0.022315250545000005
@@ -2182,7 +2180,7 @@ scalar WirelessB.hostA.wlan[0].radio transmissionState:vector:endtime 19.9955172
 scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -2191,7 +2189,7 @@ scalar WirelessB.hostA.wlan[0] packetDropInterfaceDown:vector(packetBytes):endti
 scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -2200,7 +2198,7 @@ scalar WirelessB.hostA.wlan[0] packetDropNoCarrier:vector(packetBytes):endtime n
 scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
 scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
 scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean nan
 scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
 scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
@@ -2209,7 +2207,7 @@ scalar WirelessB.hostA.ipv4.ip packetDropAddressResolutionFailed:vector(packetBy
 scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
 scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
 scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean nan
 scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
 scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
@@ -2218,7 +2216,7 @@ scalar WirelessB.hostA.ipv4.ip packetDropHopLimitReached:vector(packetBytes):end
 scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
 scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
 scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean nan
 scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
 scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
@@ -2227,7 +2225,7 @@ scalar WirelessB.hostA.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):
 scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
 scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
 scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean nan
 scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
 scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
@@ -2236,7 +2234,7 @@ scalar WirelessB.hostA.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):end
 scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
 scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
 scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean nan
 scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
 scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
@@ -2245,16 +2243,25 @@ scalar WirelessB.hostA.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):en
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean nan
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar WirelessB.hostA.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar WirelessB.hostA.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar WirelessB.hostA.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar WirelessB.hostA.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar WirelessB.hostA.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.ipv4.ip packetDropUndefined:vector(packetBytes):mean nan
 scalar WirelessB.hostA.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
 scalar WirelessB.hostA.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
@@ -2272,16 +2279,16 @@ scalar WirelessB.hostA.udp packetSent:vector(packetBytes):endtime 19.98529122859
 scalar WirelessB.hostA.udp outgoingDataRate:vector:count 200
 scalar WirelessB.hostA.udp outgoingDataRate:vector:sum 133136640.00000001
 scalar WirelessB.hostA.udp outgoingDataRate:vector:sumweights 200
-scalar WirelessB.hostA.udp outgoingDataRate:vector:mean 665683.20000000007
+scalar WirelessB.hostA.udp outgoingDataRate:vector:mean 665683.2000000001
 scalar WirelessB.hostA.udp outgoingDataRate:vector:stddev 205631.8013596439
 scalar WirelessB.hostA.udp outgoingDataRate:vector:min 0
 scalar WirelessB.hostA.udp outgoingDataRate:vector:max 1290240
-scalar WirelessB.hostA.udp outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostA.udp outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostA.udp outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostA.udp packetReceived:vector(packetBytes):count 0
 scalar WirelessB.hostA.udp packetReceived:vector(packetBytes):sum 0
 scalar WirelessB.hostA.udp packetReceived:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.udp packetReceived:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.udp packetReceived:vector(packetBytes):mean nan
 scalar WirelessB.hostA.udp packetReceived:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.udp packetReceived:vector(packetBytes):min inf
 scalar WirelessB.hostA.udp packetReceived:vector(packetBytes):max -inf
@@ -2317,7 +2324,7 @@ scalar WirelessB.hostA.udp droppedPkBadChecksum:vector(count):endtime 0
 scalar WirelessB.hostA.app[0] packetReceived:vector(packetBytes):count 0
 scalar WirelessB.hostA.app[0] packetReceived:vector(packetBytes):sum 0
 scalar WirelessB.hostA.app[0] packetReceived:vector(packetBytes):sumweights 0
-scalar WirelessB.hostA.app[0] packetReceived:vector(packetBytes):mean -nan
+scalar WirelessB.hostA.app[0] packetReceived:vector(packetBytes):mean nan
 scalar WirelessB.hostA.app[0] packetReceived:vector(packetBytes):stddev nan
 scalar WirelessB.hostA.app[0] packetReceived:vector(packetBytes):min inf
 scalar WirelessB.hostA.app[0] packetReceived:vector(packetBytes):max -inf
@@ -2330,7 +2337,7 @@ scalar WirelessB.hostA.app[0] throughput:vector:mean 0
 scalar WirelessB.hostA.app[0] throughput:vector:stddev 0
 scalar WirelessB.hostA.app[0] throughput:vector:min 0
 scalar WirelessB.hostA.app[0] throughput:vector:max 0
-scalar WirelessB.hostA.app[0] throughput:vector:starttime 0.10000000000000001
+scalar WirelessB.hostA.app[0] throughput:vector:starttime 0.1
 scalar WirelessB.hostA.app[0] throughput:vector:endtime 20
 scalar WirelessB.hostA.app[0] packetSent:vector(packetBytes):count 1651
 scalar WirelessB.hostA.app[0] packetSent:vector(packetBytes):sum 1651000
@@ -2344,7 +2351,7 @@ scalar WirelessB.hostA.app[0] packetSent:vector(packetBytes):endtime 19.98529122
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:count 0
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:sum 0
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:sumweights 0
-scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:mean -nan
+scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:mean nan
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:stddev nan
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:min inf
 scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:max -inf
@@ -2353,7 +2360,7 @@ scalar WirelessB.hostA.app[0] rcvdPkLifetime:vector:endtime nan
 scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:count 0
 scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:sum 0
 scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:sumweights 0
-scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:mean -nan
+scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:mean nan
 scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:stddev nan
 scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:min inf
 scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:max -inf
@@ -2362,7 +2369,7 @@ scalar WirelessB.hostA.app[0] rcvdPkSeqNo:vector:endtime nan
 scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
 scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
 scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean nan
 scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
 scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
@@ -2371,7 +2378,7 @@ scalar WirelessB.hostB.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
 scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):count 0
 scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):sum 0
 scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):mean nan
 scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):min inf
 scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):max -inf
@@ -2380,7 +2387,7 @@ scalar WirelessB.hostB.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -2389,7 +2396,7 @@ scalar WirelessB.hostB.lo[0] packetDropInterfaceDown:vector(packetBytes):endtime
 scalar WirelessB.hostB.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostB.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostB.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.lo[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostB.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostB.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -2416,7 +2423,7 @@ scalar WirelessB.hostB.wlan[0].queue queueBitLength:vector:endtime 0
 scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:count 0
 scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:sum 0
 scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:mean -nan
+scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:mean nan
 scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:stddev nan
 scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:min inf
 scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:max -inf
@@ -2425,7 +2432,7 @@ scalar WirelessB.hostB.wlan[0].queue queueingTime:vector:endtime nan
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:vector:count 0
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:vector:sum 0
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:vector:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:vector:mean -nan
+scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:vector:mean nan
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:vector:stddev nan
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:vector:min inf
 scalar WirelessB.hostB.wlan[0].queue incomingPacketLengths:vector:max -inf
@@ -2438,12 +2445,12 @@ scalar WirelessB.hostB.wlan[0].queue incomingDataRate:vector:mean 0
 scalar WirelessB.hostB.wlan[0].queue incomingDataRate:vector:stddev 0
 scalar WirelessB.hostB.wlan[0].queue incomingDataRate:vector:min 0
 scalar WirelessB.hostB.wlan[0].queue incomingDataRate:vector:max 0
-scalar WirelessB.hostB.wlan[0].queue incomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostB.wlan[0].queue incomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostB.wlan[0].queue incomingDataRate:vector:endtime 20
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:vector:count 0
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:vector:sum 0
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:vector:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:vector:mean -nan
+scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:vector:mean nan
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:vector:stddev nan
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:vector:min inf
 scalar WirelessB.hostB.wlan[0].queue outgoingPacketLengths:vector:max -inf
@@ -2456,12 +2463,12 @@ scalar WirelessB.hostB.wlan[0].queue outgoingDataRate:vector:mean 0
 scalar WirelessB.hostB.wlan[0].queue outgoingDataRate:vector:stddev 0
 scalar WirelessB.hostB.wlan[0].queue outgoingDataRate:vector:min 0
 scalar WirelessB.hostB.wlan[0].queue outgoingDataRate:vector:max 0
-scalar WirelessB.hostB.wlan[0].queue outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostB.wlan[0].queue outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostB.wlan[0].queue outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
 scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
 scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean nan
 scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
 scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
 scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
@@ -2470,7 +2477,7 @@ scalar WirelessB.hostB.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:en
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:vector:count 0
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:vector:sum 0
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:vector:sumweights 0
-scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:vector:mean nan
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:vector:stddev nan
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:vector:min inf
 scalar WirelessB.hostB.wlan[0].queue flowQueueingTime:vector:max -inf
@@ -2483,7 +2490,7 @@ scalar WirelessB.hostB.wlan[0].queue flowIncomingDataRate:vector:mean 0
 scalar WirelessB.hostB.wlan[0].queue flowIncomingDataRate:vector:stddev 0
 scalar WirelessB.hostB.wlan[0].queue flowIncomingDataRate:vector:min 0
 scalar WirelessB.hostB.wlan[0].queue flowIncomingDataRate:vector:max 0
-scalar WirelessB.hostB.wlan[0].queue flowIncomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostB.wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostB.wlan[0].queue flowIncomingDataRate:vector:endtime 20
 scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:count 200
 scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:sum 0
@@ -2492,7 +2499,7 @@ scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:mean 0
 scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:stddev 0
 scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:min 0
 scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:max 0
-scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostB.wlan[0].queue flowOutgoingDataRate:vector:endtime 20
 scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):count 138
 scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):sum 141864
@@ -2501,12 +2508,12 @@ scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):mean 1028
 scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):stddev 0
 scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):min 1028
 scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):max 1028
-scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):starttime 0.53434436671200014
+scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):starttime 0.5343443667120001
 scalar WirelessB.hostB.wlan[0].mac passedUpPk:vector(packetBytes):endtime 19.966143218944005
 scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):count 0
 scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):sum 0
 scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):mean nan
 scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):min inf
 scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):max -inf
@@ -2515,7 +2522,7 @@ scalar WirelessB.hostB.wlan[0].mac sentDownPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostB.wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 0
 scalar WirelessB.hostB.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 0
 scalar WirelessB.hostB.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean nan
 scalar WirelessB.hostB.wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.wlan[0].mac rcvdPkFromHl:vector(packetBytes):min inf
 scalar WirelessB.hostB.wlan[0].mac rcvdPkFromHl:vector(packetBytes):max -inf
@@ -2542,7 +2549,7 @@ scalar WirelessB.hostB.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBy
 scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -2551,7 +2558,7 @@ scalar WirelessB.hostB.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):e
 scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 0
 scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 0
 scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean nan
 scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min inf
 scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max -inf
@@ -2560,7 +2567,7 @@ scalar WirelessB.hostB.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes
 scalar WirelessB.hostB.wlan[0].radio radioMode:vector:count 3
 scalar WirelessB.hostB.wlan[0].radio radioMode:vector:sum 2
 scalar WirelessB.hostB.wlan[0].radio radioMode:vector:sumweights 3
-scalar WirelessB.hostB.wlan[0].radio radioMode:vector:mean 0.66666666666666663
+scalar WirelessB.hostB.wlan[0].radio radioMode:vector:mean 0.6666666666666666
 scalar WirelessB.hostB.wlan[0].radio radioMode:vector:stddev 1.1547005383792517
 scalar WirelessB.hostB.wlan[0].radio radioMode:vector:min 0
 scalar WirelessB.hostB.wlan[0].radio radioMode:vector:max 2
@@ -2570,7 +2577,7 @@ scalar WirelessB.hostB.wlan[0].radio receptionState:vector:count 2505
 scalar WirelessB.hostB.wlan[0].radio receptionState:vector:sum 5258
 scalar WirelessB.hostB.wlan[0].radio receptionState:vector:sumweights 2505
 scalar WirelessB.hostB.wlan[0].radio receptionState:vector:mean 2.099001996007984
-scalar WirelessB.hostB.wlan[0].radio receptionState:vector:stddev 0.77795286806600095
+scalar WirelessB.hostB.wlan[0].radio receptionState:vector:stddev 0.777952868066001
 scalar WirelessB.hostB.wlan[0].radio receptionState:vector:min 1
 scalar WirelessB.hostB.wlan[0].radio receptionState:vector:max 3
 scalar WirelessB.hostB.wlan[0].radio receptionState:vector:starttime 0
@@ -2578,7 +2585,7 @@ scalar WirelessB.hostB.wlan[0].radio receptionState:vector:endtime 19.9955185497
 scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:count 0
 scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:sum 0
 scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:sumweights 0
-scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:mean -nan
+scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:mean nan
 scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:stddev nan
 scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:min inf
 scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:max -inf
@@ -2587,7 +2594,7 @@ scalar WirelessB.hostB.wlan[0].radio transmissionState:vector:endtime nan
 scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -2596,7 +2603,7 @@ scalar WirelessB.hostB.wlan[0] packetDropInterfaceDown:vector(packetBytes):endti
 scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -2605,7 +2612,7 @@ scalar WirelessB.hostB.wlan[0] packetDropNoCarrier:vector(packetBytes):endtime n
 scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
 scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
 scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean nan
 scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
 scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
@@ -2614,7 +2621,7 @@ scalar WirelessB.hostB.ipv4.ip packetDropAddressResolutionFailed:vector(packetBy
 scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
 scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
 scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean nan
 scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
 scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
@@ -2623,7 +2630,7 @@ scalar WirelessB.hostB.ipv4.ip packetDropHopLimitReached:vector(packetBytes):end
 scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
 scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
 scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean nan
 scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
 scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
@@ -2632,7 +2639,7 @@ scalar WirelessB.hostB.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):
 scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
 scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
 scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean nan
 scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
 scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
@@ -2641,7 +2648,7 @@ scalar WirelessB.hostB.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):end
 scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
 scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
 scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean nan
 scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
 scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
@@ -2650,16 +2657,25 @@ scalar WirelessB.hostB.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):en
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean nan
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar WirelessB.hostB.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar WirelessB.hostB.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):mean nan
 scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
 scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
@@ -2668,7 +2684,7 @@ scalar WirelessB.hostB.ipv4.ip packetDropUndefined:vector(packetBytes):endtime n
 scalar WirelessB.hostB.udp packetSent:vector(packetBytes):count 0
 scalar WirelessB.hostB.udp packetSent:vector(packetBytes):sum 0
 scalar WirelessB.hostB.udp packetSent:vector(packetBytes):sumweights 0
-scalar WirelessB.hostB.udp packetSent:vector(packetBytes):mean -nan
+scalar WirelessB.hostB.udp packetSent:vector(packetBytes):mean nan
 scalar WirelessB.hostB.udp packetSent:vector(packetBytes):stddev nan
 scalar WirelessB.hostB.udp packetSent:vector(packetBytes):min inf
 scalar WirelessB.hostB.udp packetSent:vector(packetBytes):max -inf
@@ -2681,7 +2697,7 @@ scalar WirelessB.hostB.udp outgoingDataRate:vector:mean 0
 scalar WirelessB.hostB.udp outgoingDataRate:vector:stddev 0
 scalar WirelessB.hostB.udp outgoingDataRate:vector:min 0
 scalar WirelessB.hostB.udp outgoingDataRate:vector:max 0
-scalar WirelessB.hostB.udp outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostB.udp outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostB.udp outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):count 138
 scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):sum 139104
@@ -2690,13 +2706,13 @@ scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):mean 1008
 scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):stddev 0
 scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):min 1008
 scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):max 1008
-scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):starttime 0.53434436671200014
+scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):starttime 0.5343443667120001
 scalar WirelessB.hostB.udp packetReceived:vector(packetBytes):endtime 19.966143218944005
 scalar WirelessB.hostB.udp passedUpPk:vector(count):count 139
 scalar WirelessB.hostB.udp passedUpPk:vector(count):sum 9591
 scalar WirelessB.hostB.udp passedUpPk:vector(count):sumweights 139
 scalar WirelessB.hostB.udp passedUpPk:vector(count):mean 69
-scalar WirelessB.hostB.udp passedUpPk:vector(count):stddev 40.269922605670189
+scalar WirelessB.hostB.udp passedUpPk:vector(count):stddev 40.26992260567019
 scalar WirelessB.hostB.udp passedUpPk:vector(count):min 0
 scalar WirelessB.hostB.udp passedUpPk:vector(count):max 138
 scalar WirelessB.hostB.udp passedUpPk:vector(count):starttime 0
@@ -2726,7 +2742,7 @@ scalar WirelessB.hostB.app[0] packetReceived:vector(packetBytes):mean 1000
 scalar WirelessB.hostB.app[0] packetReceived:vector(packetBytes):stddev 0
 scalar WirelessB.hostB.app[0] packetReceived:vector(packetBytes):min 1000
 scalar WirelessB.hostB.app[0] packetReceived:vector(packetBytes):max 1000
-scalar WirelessB.hostB.app[0] packetReceived:vector(packetBytes):starttime 0.53434436671200014
+scalar WirelessB.hostB.app[0] packetReceived:vector(packetBytes):starttime 0.5343443667120001
 scalar WirelessB.hostB.app[0] packetReceived:vector(packetBytes):endtime 19.966143218944005
 scalar WirelessB.hostB.app[0] throughput:vector:count 200
 scalar WirelessB.hostB.app[0] throughput:vector:sum 11040000
@@ -2735,30 +2751,30 @@ scalar WirelessB.hostB.app[0] throughput:vector:mean 55200
 scalar WirelessB.hostB.app[0] throughput:vector:stddev 64355.794934943835
 scalar WirelessB.hostB.app[0] throughput:vector:min 0
 scalar WirelessB.hostB.app[0] throughput:vector:max 240000.00000000003
-scalar WirelessB.hostB.app[0] throughput:vector:starttime 0.10000000000000001
+scalar WirelessB.hostB.app[0] throughput:vector:starttime 0.1
 scalar WirelessB.hostB.app[0] throughput:vector:endtime 20
 scalar WirelessB.hostB.app[0] endToEndDelay:vector:count 138
 scalar WirelessB.hostB.app[0] endToEndDelay:vector:sum 2.7939410073829998
 scalar WirelessB.hostB.app[0] endToEndDelay:vector:sumweights 138
-scalar WirelessB.hostB.app[0] endToEndDelay:vector:mean 0.020245949328862319
-scalar WirelessB.hostB.app[0] endToEndDelay:vector:stddev 0.0050997705315926128
+scalar WirelessB.hostB.app[0] endToEndDelay:vector:mean 0.02024594932886232
+scalar WirelessB.hostB.app[0] endToEndDelay:vector:stddev 0.005099770531592613
 scalar WirelessB.hostB.app[0] endToEndDelay:vector:min 0.01700934464
-scalar WirelessB.hostB.app[0] endToEndDelay:vector:max 0.040323434712999998
-scalar WirelessB.hostB.app[0] endToEndDelay:vector:starttime 0.53434436671200014
+scalar WirelessB.hostB.app[0] endToEndDelay:vector:max 0.040323434713
+scalar WirelessB.hostB.app[0] endToEndDelay:vector:starttime 0.5343443667120001
 scalar WirelessB.hostB.app[0] endToEndDelay:vector:endtime 19.966143218944005
 scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:count 138
 scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:sum 116437
 scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:sumweights 138
-scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:mean 843.74637681159425
+scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:mean 843.7463768115942
 scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:stddev 483.05403215321303
 scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:min 44
 scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:max 1647
-scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:starttime 0.53434436671200014
+scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:starttime 0.5343443667120001
 scalar WirelessB.hostB.app[0] rcvdPkSeqNo:vector:endtime 19.966143218944005
 scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
 scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
 scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
@@ -2767,7 +2783,7 @@ scalar WirelessB.hostR1.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
 scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):count 0
 scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):min inf
 scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):max -inf
@@ -2776,7 +2792,7 @@ scalar WirelessB.hostR1.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -2785,7 +2801,7 @@ scalar WirelessB.hostR1.lo[0] packetDropInterfaceDown:vector(packetBytes):endtim
 scalar WirelessB.hostR1.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostR1.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.lo[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostR1.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -2830,11 +2846,11 @@ scalar WirelessB.hostR1.wlan[0].queue incomingPacketLengths:vector:endtime 19.98
 scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:count 200
 scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:sum 73522560
 scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:sumweights 200
-scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:mean 367612.79999999999
-scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:stddev 86435.105259763382
+scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:mean 367612.8
+scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:stddev 86435.10525976338
 scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:min 82240
 scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:max 493440.00000000006
-scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR1.wlan[0].queue incomingDataRate:vector:endtime 20
 scalar WirelessB.hostR1.wlan[0].queue outgoingPacketLengths:vector:count 894
 scalar WirelessB.hostR1.wlan[0].queue outgoingPacketLengths:vector:sum 7352256
@@ -2848,16 +2864,16 @@ scalar WirelessB.hostR1.wlan[0].queue outgoingPacketLengths:vector:endtime 19.98
 scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:count 200
 scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:sum 73522560
 scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:sumweights 200
-scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:mean 367612.79999999999
-scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:stddev 86435.105259763382
+scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:mean 367612.8
+scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:stddev 86435.10525976338
 scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:min 82240
 scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:max 493440.00000000006
-scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR1.wlan[0].queue outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
 scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
 scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
-scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean nan
 scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
 scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
 scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
@@ -2866,7 +2882,7 @@ scalar WirelessB.hostR1.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:e
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:vector:count 0
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:vector:sum 0
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:vector:sumweights 0
-scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:vector:mean nan
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:vector:stddev nan
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:vector:min inf
 scalar WirelessB.hostR1.wlan[0].queue flowQueueingTime:vector:max -inf
@@ -2879,7 +2895,7 @@ scalar WirelessB.hostR1.wlan[0].queue flowIncomingDataRate:vector:mean 0
 scalar WirelessB.hostR1.wlan[0].queue flowIncomingDataRate:vector:stddev 0
 scalar WirelessB.hostR1.wlan[0].queue flowIncomingDataRate:vector:min 0
 scalar WirelessB.hostR1.wlan[0].queue flowIncomingDataRate:vector:max 0
-scalar WirelessB.hostR1.wlan[0].queue flowIncomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR1.wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR1.wlan[0].queue flowIncomingDataRate:vector:endtime 20
 scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:count 200
 scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:sum 0
@@ -2888,7 +2904,7 @@ scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:mean 0
 scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:stddev 0
 scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:min 0
 scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:max 0
-scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR1.wlan[0].queue flowOutgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR1.wlan[0].mac passedUpPk:vector(packetBytes):count 894
 scalar WirelessB.hostR1.wlan[0].mac passedUpPk:vector(packetBytes):sum 919032
@@ -2929,7 +2945,7 @@ scalar WirelessB.hostR1.wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 19.
 scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 0
 scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min inf
 scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max -inf
@@ -2938,7 +2954,7 @@ scalar WirelessB.hostR1.wlan[0].mac packetDropIncorrectlyReceived:vector(packetB
 scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -2947,7 +2963,7 @@ scalar WirelessB.hostR1.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):
 scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):count 0
 scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min inf
 scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max -inf
@@ -2956,8 +2972,8 @@ scalar WirelessB.hostR1.wlan[0].mac packetDropNotAddressedToUs:vector(packetByte
 scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:count 1791
 scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:sum 4472
 scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:sumweights 1791
-scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:mean 2.4969290898939138
-scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:stddev 0.50678806187763115
+scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:mean 2.496929089893914
+scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:stddev 0.5067880618776311
 scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:min 0
 scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:max 3
 scalar WirelessB.hostR1.wlan[0].radio radioMode:vector:starttime 0
@@ -2975,7 +2991,7 @@ scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:count 3576
 scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:sum 3576
 scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:sumweights 3576
 scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:mean 1
-scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:stddev 0.70720567032501946
+scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:stddev 0.7072056703250195
 scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:min 0
 scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:max 2
 scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:starttime 0.030819922865000005
@@ -2983,7 +2999,7 @@ scalar WirelessB.hostR1.wlan[0].radio transmissionState:vector:endtime 19.995517
 scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -2992,7 +3008,7 @@ scalar WirelessB.hostR1.wlan[0] packetDropInterfaceDown:vector(packetBytes):endt
 scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -3001,7 +3017,7 @@ scalar WirelessB.hostR1.wlan[0] packetDropNoCarrier:vector(packetBytes):endtime 
 scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
 scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
@@ -3010,7 +3026,7 @@ scalar WirelessB.hostR1.ipv4.ip packetDropAddressResolutionFailed:vector(packetB
 scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
 scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
@@ -3019,7 +3035,7 @@ scalar WirelessB.hostR1.ipv4.ip packetDropHopLimitReached:vector(packetBytes):en
 scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
 scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
@@ -3028,7 +3044,7 @@ scalar WirelessB.hostR1.ipv4.ip packetDropForwardingDisabled:vector(packetBytes)
 scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
 scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
@@ -3037,7 +3053,7 @@ scalar WirelessB.hostR1.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):en
 scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
 scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
@@ -3046,16 +3062,25 @@ scalar WirelessB.hostR1.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):e
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar WirelessB.hostR1.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar WirelessB.hostR1.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
 scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
@@ -3064,7 +3089,7 @@ scalar WirelessB.hostR1.ipv4.ip packetDropUndefined:vector(packetBytes):endtime 
 scalar WirelessB.hostR1.udp packetSent:vector(packetBytes):count 0
 scalar WirelessB.hostR1.udp packetSent:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.udp packetSent:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.udp packetSent:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.udp packetSent:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.udp packetSent:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.udp packetSent:vector(packetBytes):min inf
 scalar WirelessB.hostR1.udp packetSent:vector(packetBytes):max -inf
@@ -3077,12 +3102,12 @@ scalar WirelessB.hostR1.udp outgoingDataRate:vector:mean 0
 scalar WirelessB.hostR1.udp outgoingDataRate:vector:stddev 0
 scalar WirelessB.hostR1.udp outgoingDataRate:vector:min 0
 scalar WirelessB.hostR1.udp outgoingDataRate:vector:max 0
-scalar WirelessB.hostR1.udp outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR1.udp outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR1.udp outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR1.udp packetReceived:vector(packetBytes):count 0
 scalar WirelessB.hostR1.udp packetReceived:vector(packetBytes):sum 0
 scalar WirelessB.hostR1.udp packetReceived:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR1.udp packetReceived:vector(packetBytes):mean -nan
+scalar WirelessB.hostR1.udp packetReceived:vector(packetBytes):mean nan
 scalar WirelessB.hostR1.udp packetReceived:vector(packetBytes):stddev nan
 scalar WirelessB.hostR1.udp packetReceived:vector(packetBytes):min inf
 scalar WirelessB.hostR1.udp packetReceived:vector(packetBytes):max -inf
@@ -3118,7 +3143,7 @@ scalar WirelessB.hostR1.udp droppedPkBadChecksum:vector(count):endtime 0
 scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
 scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
 scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
@@ -3127,7 +3152,7 @@ scalar WirelessB.hostR2.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
 scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):count 0
 scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):min inf
 scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):max -inf
@@ -3136,7 +3161,7 @@ scalar WirelessB.hostR2.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -3145,7 +3170,7 @@ scalar WirelessB.hostR2.lo[0] packetDropInterfaceDown:vector(packetBytes):endtim
 scalar WirelessB.hostR2.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostR2.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.lo[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostR2.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -3172,7 +3197,7 @@ scalar WirelessB.hostR2.wlan[0].queue queueBitLength:vector:endtime 0
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:count 0
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:sum 0
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:mean nan
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:min inf
 scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:max -inf
@@ -3181,7 +3206,7 @@ scalar WirelessB.hostR2.wlan[0].queue queueingTime:vector:endtime nan
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:vector:count 0
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:vector:sum 0
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:vector:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:vector:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:vector:mean nan
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:vector:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:vector:min inf
 scalar WirelessB.hostR2.wlan[0].queue incomingPacketLengths:vector:max -inf
@@ -3194,12 +3219,12 @@ scalar WirelessB.hostR2.wlan[0].queue incomingDataRate:vector:mean 0
 scalar WirelessB.hostR2.wlan[0].queue incomingDataRate:vector:stddev 0
 scalar WirelessB.hostR2.wlan[0].queue incomingDataRate:vector:min 0
 scalar WirelessB.hostR2.wlan[0].queue incomingDataRate:vector:max 0
-scalar WirelessB.hostR2.wlan[0].queue incomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR2.wlan[0].queue incomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR2.wlan[0].queue incomingDataRate:vector:endtime 20
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:vector:count 0
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:vector:sum 0
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:vector:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:vector:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:vector:mean nan
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:vector:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:vector:min inf
 scalar WirelessB.hostR2.wlan[0].queue outgoingPacketLengths:vector:max -inf
@@ -3212,12 +3237,12 @@ scalar WirelessB.hostR2.wlan[0].queue outgoingDataRate:vector:mean 0
 scalar WirelessB.hostR2.wlan[0].queue outgoingDataRate:vector:stddev 0
 scalar WirelessB.hostR2.wlan[0].queue outgoingDataRate:vector:min 0
 scalar WirelessB.hostR2.wlan[0].queue outgoingDataRate:vector:max 0
-scalar WirelessB.hostR2.wlan[0].queue outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR2.wlan[0].queue outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR2.wlan[0].queue outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
 scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
 scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean nan
 scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
 scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
@@ -3226,7 +3251,7 @@ scalar WirelessB.hostR2.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:e
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:vector:count 0
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:vector:sum 0
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:vector:sumweights 0
-scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:vector:mean nan
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:vector:stddev nan
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:vector:min inf
 scalar WirelessB.hostR2.wlan[0].queue flowQueueingTime:vector:max -inf
@@ -3239,7 +3264,7 @@ scalar WirelessB.hostR2.wlan[0].queue flowIncomingDataRate:vector:mean 0
 scalar WirelessB.hostR2.wlan[0].queue flowIncomingDataRate:vector:stddev 0
 scalar WirelessB.hostR2.wlan[0].queue flowIncomingDataRate:vector:min 0
 scalar WirelessB.hostR2.wlan[0].queue flowIncomingDataRate:vector:max 0
-scalar WirelessB.hostR2.wlan[0].queue flowIncomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR2.wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR2.wlan[0].queue flowIncomingDataRate:vector:endtime 20
 scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:count 200
 scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:sum 0
@@ -3248,12 +3273,12 @@ scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:mean 0
 scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:stddev 0
 scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:min 0
 scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:max 0
-scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR2.wlan[0].queue flowOutgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):count 0
 scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):min inf
 scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):max -inf
@@ -3262,7 +3287,7 @@ scalar WirelessB.hostR2.wlan[0].mac passedUpPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):count 0
 scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):min inf
 scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):max -inf
@@ -3271,7 +3296,7 @@ scalar WirelessB.hostR2.wlan[0].mac sentDownPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostR2.wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 0
 scalar WirelessB.hostR2.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.wlan[0].mac rcvdPkFromHl:vector(packetBytes):min inf
 scalar WirelessB.hostR2.wlan[0].mac rcvdPkFromHl:vector(packetBytes):max -inf
@@ -3298,7 +3323,7 @@ scalar WirelessB.hostR2.wlan[0].mac packetDropIncorrectlyReceived:vector(packetB
 scalar WirelessB.hostR2.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR2.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR2.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -3316,7 +3341,7 @@ scalar WirelessB.hostR2.wlan[0].mac packetDropNotAddressedToUs:vector(packetByte
 scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:count 3
 scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:sum 2
 scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:sumweights 3
-scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:mean 0.66666666666666663
+scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:mean 0.6666666666666666
 scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:stddev 1.1547005383792517
 scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:min 0
 scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:max 2
@@ -3325,8 +3350,8 @@ scalar WirelessB.hostR2.wlan[0].radio radioMode:vector:endtime 0
 scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:count 3798
 scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:sum 8739
 scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:sumweights 3798
-scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:mean 2.3009478672985781
-scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:stddev 0.74209318015821013
+scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:mean 2.300947867298578
+scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:stddev 0.7420931801582101
 scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:min 1
 scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:max 3
 scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:starttime 0
@@ -3334,7 +3359,7 @@ scalar WirelessB.hostR2.wlan[0].radio receptionState:vector:endtime 19.995517739
 scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:count 0
 scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:sum 0
 scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:sumweights 0
-scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:mean -nan
+scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:mean nan
 scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:stddev nan
 scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:min inf
 scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:max -inf
@@ -3343,7 +3368,7 @@ scalar WirelessB.hostR2.wlan[0].radio transmissionState:vector:endtime nan
 scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -3352,7 +3377,7 @@ scalar WirelessB.hostR2.wlan[0] packetDropInterfaceDown:vector(packetBytes):endt
 scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -3361,7 +3386,7 @@ scalar WirelessB.hostR2.wlan[0] packetDropNoCarrier:vector(packetBytes):endtime 
 scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
 scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
@@ -3370,7 +3395,7 @@ scalar WirelessB.hostR2.ipv4.ip packetDropAddressResolutionFailed:vector(packetB
 scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
 scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
@@ -3379,7 +3404,7 @@ scalar WirelessB.hostR2.ipv4.ip packetDropHopLimitReached:vector(packetBytes):en
 scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
 scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
@@ -3388,7 +3413,7 @@ scalar WirelessB.hostR2.ipv4.ip packetDropForwardingDisabled:vector(packetBytes)
 scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
 scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
@@ -3397,7 +3422,7 @@ scalar WirelessB.hostR2.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):en
 scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
 scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
@@ -3406,16 +3431,25 @@ scalar WirelessB.hostR2.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):e
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar WirelessB.hostR2.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar WirelessB.hostR2.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
 scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
@@ -3424,7 +3458,7 @@ scalar WirelessB.hostR2.ipv4.ip packetDropUndefined:vector(packetBytes):endtime 
 scalar WirelessB.hostR2.udp packetSent:vector(packetBytes):count 0
 scalar WirelessB.hostR2.udp packetSent:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.udp packetSent:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.udp packetSent:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.udp packetSent:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.udp packetSent:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.udp packetSent:vector(packetBytes):min inf
 scalar WirelessB.hostR2.udp packetSent:vector(packetBytes):max -inf
@@ -3437,12 +3471,12 @@ scalar WirelessB.hostR2.udp outgoingDataRate:vector:mean 0
 scalar WirelessB.hostR2.udp outgoingDataRate:vector:stddev 0
 scalar WirelessB.hostR2.udp outgoingDataRate:vector:min 0
 scalar WirelessB.hostR2.udp outgoingDataRate:vector:max 0
-scalar WirelessB.hostR2.udp outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR2.udp outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR2.udp outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR2.udp packetReceived:vector(packetBytes):count 0
 scalar WirelessB.hostR2.udp packetReceived:vector(packetBytes):sum 0
 scalar WirelessB.hostR2.udp packetReceived:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR2.udp packetReceived:vector(packetBytes):mean -nan
+scalar WirelessB.hostR2.udp packetReceived:vector(packetBytes):mean nan
 scalar WirelessB.hostR2.udp packetReceived:vector(packetBytes):stddev nan
 scalar WirelessB.hostR2.udp packetReceived:vector(packetBytes):min inf
 scalar WirelessB.hostR2.udp packetReceived:vector(packetBytes):max -inf
@@ -3478,7 +3512,7 @@ scalar WirelessB.hostR2.udp droppedPkBadChecksum:vector(count):endtime 0
 scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):count 0
 scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):min inf
 scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):max -inf
@@ -3487,7 +3521,7 @@ scalar WirelessB.hostR3.lo[0].lo rcvdPkFromHl:vector(packetBytes):endtime nan
 scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):count 0
 scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):min inf
 scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):max -inf
@@ -3496,7 +3530,7 @@ scalar WirelessB.hostR3.lo[0].lo passedUpPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -3505,7 +3539,7 @@ scalar WirelessB.hostR3.lo[0] packetDropInterfaceDown:vector(packetBytes):endtim
 scalar WirelessB.hostR3.lo[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostR3.lo[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.lo[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.lo[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.lo[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.lo[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.lo[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostR3.lo[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -3532,7 +3566,7 @@ scalar WirelessB.hostR3.wlan[0].queue queueBitLength:vector:endtime 0
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:count 0
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:sum 0
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:mean nan
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:min inf
 scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:max -inf
@@ -3541,7 +3575,7 @@ scalar WirelessB.hostR3.wlan[0].queue queueingTime:vector:endtime nan
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:vector:count 0
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:vector:sum 0
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:vector:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:vector:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:vector:mean nan
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:vector:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:vector:min inf
 scalar WirelessB.hostR3.wlan[0].queue incomingPacketLengths:vector:max -inf
@@ -3554,12 +3588,12 @@ scalar WirelessB.hostR3.wlan[0].queue incomingDataRate:vector:mean 0
 scalar WirelessB.hostR3.wlan[0].queue incomingDataRate:vector:stddev 0
 scalar WirelessB.hostR3.wlan[0].queue incomingDataRate:vector:min 0
 scalar WirelessB.hostR3.wlan[0].queue incomingDataRate:vector:max 0
-scalar WirelessB.hostR3.wlan[0].queue incomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR3.wlan[0].queue incomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR3.wlan[0].queue incomingDataRate:vector:endtime 20
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:vector:count 0
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:vector:sum 0
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:vector:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:vector:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:vector:mean nan
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:vector:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:vector:min inf
 scalar WirelessB.hostR3.wlan[0].queue outgoingPacketLengths:vector:max -inf
@@ -3572,12 +3606,12 @@ scalar WirelessB.hostR3.wlan[0].queue outgoingDataRate:vector:mean 0
 scalar WirelessB.hostR3.wlan[0].queue outgoingDataRate:vector:stddev 0
 scalar WirelessB.hostR3.wlan[0].queue outgoingDataRate:vector:min 0
 scalar WirelessB.hostR3.wlan[0].queue outgoingDataRate:vector:max 0
-scalar WirelessB.hostR3.wlan[0].queue outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR3.wlan[0].queue outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR3.wlan[0].queue outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:count 0
 scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sum 0
 scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:mean nan
 scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:min inf
 scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:max -inf
@@ -3586,7 +3620,7 @@ scalar WirelessB.hostR3.wlan[0].queue droppedPacketLengthsQueueOverflow:vector:e
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:vector:count 0
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:vector:sum 0
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:vector:sumweights 0
-scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:vector:mean -nan
+scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:vector:mean nan
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:vector:stddev nan
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:vector:min inf
 scalar WirelessB.hostR3.wlan[0].queue flowQueueingTime:vector:max -inf
@@ -3599,7 +3633,7 @@ scalar WirelessB.hostR3.wlan[0].queue flowIncomingDataRate:vector:mean 0
 scalar WirelessB.hostR3.wlan[0].queue flowIncomingDataRate:vector:stddev 0
 scalar WirelessB.hostR3.wlan[0].queue flowIncomingDataRate:vector:min 0
 scalar WirelessB.hostR3.wlan[0].queue flowIncomingDataRate:vector:max 0
-scalar WirelessB.hostR3.wlan[0].queue flowIncomingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR3.wlan[0].queue flowIncomingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR3.wlan[0].queue flowIncomingDataRate:vector:endtime 20
 scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:count 200
 scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:sum 0
@@ -3608,12 +3642,12 @@ scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:mean 0
 scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:stddev 0
 scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:min 0
 scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:max 0
-scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR3.wlan[0].queue flowOutgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):count 0
 scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):min inf
 scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):max -inf
@@ -3622,7 +3656,7 @@ scalar WirelessB.hostR3.wlan[0].mac passedUpPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):count 0
 scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):min inf
 scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):max -inf
@@ -3631,7 +3665,7 @@ scalar WirelessB.hostR3.wlan[0].mac sentDownPk:vector(packetBytes):endtime nan
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromHl:vector(packetBytes):count 0
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromHl:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromHl:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromHl:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromHl:vector(packetBytes):min inf
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromHl:vector(packetBytes):max -inf
@@ -3644,7 +3678,7 @@ scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromLl:vector(packetBytes):mean 1051
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromLl:vector(packetBytes):stddev 0
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromLl:vector(packetBytes):min 1051
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromLl:vector(packetBytes):max 1051
-scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 0.039324524206000008
+scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromLl:vector(packetBytes):starttime 0.03932452420600001
 scalar WirelessB.hostR3.wlan[0].mac rcvdPkFromLl:vector(packetBytes):endtime 19.995518478820006
 scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):count 756
 scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):sum 794556
@@ -3653,12 +3687,12 @@ scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetB
 scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):stddev 0
 scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):min 1051
 scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):max 1051
-scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime 0.039324524206000008
+scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):starttime 0.03932452420600001
 scalar WirelessB.hostR3.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes):endtime 19.995518478820006
 scalar WirelessB.hostR3.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR3.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR3.wlan[0].mac packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -3671,12 +3705,12 @@ scalar WirelessB.hostR3.wlan[0].mac packetDropNotAddressedToUs:vector(packetByte
 scalar WirelessB.hostR3.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):stddev 0
 scalar WirelessB.hostR3.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):min 1051
 scalar WirelessB.hostR3.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):max 1051
-scalar WirelessB.hostR3.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime 0.53434429573300013
+scalar WirelessB.hostR3.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):starttime 0.5343442957330001
 scalar WirelessB.hostR3.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes):endtime 19.966143147965003
 scalar WirelessB.hostR3.wlan[0].radio radioMode:vector:count 3
 scalar WirelessB.hostR3.wlan[0].radio radioMode:vector:sum 2
 scalar WirelessB.hostR3.wlan[0].radio radioMode:vector:sumweights 3
-scalar WirelessB.hostR3.wlan[0].radio radioMode:vector:mean 0.66666666666666663
+scalar WirelessB.hostR3.wlan[0].radio radioMode:vector:mean 0.6666666666666666
 scalar WirelessB.hostR3.wlan[0].radio radioMode:vector:stddev 1.1547005383792517
 scalar WirelessB.hostR3.wlan[0].radio radioMode:vector:min 0
 scalar WirelessB.hostR3.wlan[0].radio radioMode:vector:max 2
@@ -3686,7 +3720,7 @@ scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:count 2505
 scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:sum 5258
 scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:sumweights 2505
 scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:mean 2.099001996007984
-scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:stddev 0.77795286806600095
+scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:stddev 0.777952868066001
 scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:min 1
 scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:max 3
 scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:starttime 0
@@ -3694,7 +3728,7 @@ scalar WirelessB.hostR3.wlan[0].radio receptionState:vector:endtime 19.995518478
 scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:count 0
 scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:sum 0
 scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:sumweights 0
-scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:mean -nan
+scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:mean nan
 scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:stddev nan
 scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:min inf
 scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:max -inf
@@ -3703,7 +3737,7 @@ scalar WirelessB.hostR3.wlan[0].radio transmissionState:vector:endtime nan
 scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):count 0
 scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):min inf
 scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):max -inf
@@ -3712,7 +3746,7 @@ scalar WirelessB.hostR3.wlan[0] packetDropInterfaceDown:vector(packetBytes):endt
 scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):count 0
 scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):min inf
 scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):max -inf
@@ -3721,7 +3755,7 @@ scalar WirelessB.hostR3.wlan[0] packetDropNoCarrier:vector(packetBytes):endtime 
 scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):min inf
 scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetBytes):max -inf
@@ -3730,7 +3764,7 @@ scalar WirelessB.hostR3.ipv4.ip packetDropAddressResolutionFailed:vector(packetB
 scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):min inf
 scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):max -inf
@@ -3739,7 +3773,7 @@ scalar WirelessB.hostR3.ipv4.ip packetDropHopLimitReached:vector(packetBytes):en
 scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):min inf
 scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes):max -inf
@@ -3748,7 +3782,7 @@ scalar WirelessB.hostR3.ipv4.ip packetDropForwardingDisabled:vector(packetBytes)
 scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):min inf
 scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):max -inf
@@ -3757,7 +3791,7 @@ scalar WirelessB.hostR3.ipv4.ip packetDropLifetimeExpired:vector(packetBytes):en
 scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):min inf
 scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):max -inf
@@ -3766,16 +3800,25 @@ scalar WirelessB.hostR3.ipv4.ip packetDropNoInterfaceFound:vector(packetBytes):e
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):min inf
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar WirelessB.hostR3.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar WirelessB.hostR3.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):min inf
 scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):max -inf
@@ -3784,7 +3827,7 @@ scalar WirelessB.hostR3.ipv4.ip packetDropUndefined:vector(packetBytes):endtime 
 scalar WirelessB.hostR3.udp packetSent:vector(packetBytes):count 0
 scalar WirelessB.hostR3.udp packetSent:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.udp packetSent:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.udp packetSent:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.udp packetSent:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.udp packetSent:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.udp packetSent:vector(packetBytes):min inf
 scalar WirelessB.hostR3.udp packetSent:vector(packetBytes):max -inf
@@ -3797,12 +3840,12 @@ scalar WirelessB.hostR3.udp outgoingDataRate:vector:mean 0
 scalar WirelessB.hostR3.udp outgoingDataRate:vector:stddev 0
 scalar WirelessB.hostR3.udp outgoingDataRate:vector:min 0
 scalar WirelessB.hostR3.udp outgoingDataRate:vector:max 0
-scalar WirelessB.hostR3.udp outgoingDataRate:vector:starttime 0.10000000000000001
+scalar WirelessB.hostR3.udp outgoingDataRate:vector:starttime 0.1
 scalar WirelessB.hostR3.udp outgoingDataRate:vector:endtime 20
 scalar WirelessB.hostR3.udp packetReceived:vector(packetBytes):count 0
 scalar WirelessB.hostR3.udp packetReceived:vector(packetBytes):sum 0
 scalar WirelessB.hostR3.udp packetReceived:vector(packetBytes):sumweights 0
-scalar WirelessB.hostR3.udp packetReceived:vector(packetBytes):mean -nan
+scalar WirelessB.hostR3.udp packetReceived:vector(packetBytes):mean nan
 scalar WirelessB.hostR3.udp packetReceived:vector(packetBytes):stddev nan
 scalar WirelessB.hostR3.udp packetReceived:vector(packetBytes):min inf
 scalar WirelessB.hostR3.udp packetReceived:vector(packetBytes):max -inf

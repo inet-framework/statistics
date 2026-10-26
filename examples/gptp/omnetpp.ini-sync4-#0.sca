@@ -1,8 +1,8 @@
 version 3
-run sync4-0-20260715-12:47:51-2822875
+run sync4-0-20261026-16:49:28-1965
 attr configname sync4
-attr datetime 20260715-12:47:51
-attr datetimef 20260715-124751
+attr datetime 20261026-16:49:28
+attr datetimef 20261026-164928
 attr experiment sync4
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,14 +10,14 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network GptpMasterSlave
-attr processid 2822875
+attr processid 1965
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 config **.param-recording false
-config image-path /home/levy/workspace/inet/.claude/worktrees/gptp-rebase/images
+config image-path /home/runner/work/inet/inet/inet/images
 config output-scalar-file results/omnetpp.ini-sync4-#0.sca
 config output-scalar-precision 17
 config output-vector-file results/omnetpp.ini-sync4-#0.vec
@@ -26,10 +26,8 @@ config record-eventlog false
 config sim-time-limit 10s
 config extends "sync1, _DriftMaster, _DriftSlave"
 config description "gptp on, master is in a hurry, client is late"
-config description "gptp on, master is precise, client is precise"
 config *.gptpMaster.clock.oscillator.driftRate 100000ppm
 config *.gptpSlave.clock.oscillator.driftRate -100000ppm
-config sim-time-limit 10s
 config simtime-resolution fs
 config network GptpMasterSlave
 config **.transmitter.typename StreamingTransmitter
@@ -142,6 +140,8 @@ scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:count 0
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:count 0
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar GptpMasterSlave.gptpMaster.ipv4.arp arpResolutionFailed:count 0
@@ -255,6 +255,8 @@ scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:count 0
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:count 0
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:sum(packetBytes) 0
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:count 0
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:sum(packetBytes) 0
 scalar GptpMasterSlave.gptpSlave.ipv4.arp arpResolutionFailed:count 0
@@ -5418,6 +5420,15 @@ scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBy
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar GptpMasterSlave.gptpMaster.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
@@ -6507,6 +6518,15 @@ scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetByt
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):max -inf
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):starttime nan
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropNoRouteFound:vector(packetBytes):endtime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):count 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sum 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):sumweights 0
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):mean nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):stddev nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):min inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):max -inf
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):starttime nan
+scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropPacketTooBig:vector(packetBytes):endtime nan
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):count 0
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):sum 0
 scalar GptpMasterSlave.gptpSlave.ipv4.ip packetDropUndefined:vector(packetBytes):sumweights 0
