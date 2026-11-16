@@ -1,8 +1,8 @@
 version 3
-run General-0-20261026-16:53:42-5302
+run General-0-20261116-13:41:35-33104
 attr configname General
-attr datetime 20261026-16:53:42
-attr datetimef 20261026-165342
+attr datetime 20261116-13:41:35
+attr datetimef 20261116-134135
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network inet.networks.tsn.TsnLinearNetwork
-attr processid 5302
+attr processid 33104
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -50,6 +50,7 @@ config *.client.hasOutgoingStreams true
 config *.server.hasIncomingStreams true
 config *.client.bridging.streamIdentifier.identifier.mapping "[{stream: \"best effort\", packetFilter: expr(udp.destPort == 1000)},\n                                                         {stream: \"video\", packetFilter: expr(udp.destPort == 1001)}]"
 config *.client.bridging.streamCoder.encoder.mapping "[{stream: \"best effort\", pcp: 0},\n                                                 {stream: \"video\", pcp: 4}]"
+config *.switch.hasIncomingStreams true
 config *.switch.bridging.streamCoder.decoder.mapping "[{pcp: 0, stream: \"best effort\"},\n                                                 {pcp: 4, stream: \"video\"}]"
 config *.switch.hasEgressTrafficShaping true
 config *.switch.eth[*].macLayer.queue.numTrafficClasses 2
@@ -264,12 +265,18 @@ scalar TsnLinearNetwork.switch.bridging.directionReverser.reverser incomingPacke
 scalar TsnLinearNetwork.switch.bridging.directionReverser.reverser flowIncomingPacketLengths:sum 0
 scalar TsnLinearNetwork.switch.bridging.directionReverser.join packets:count 0
 scalar TsnLinearNetwork.switch.bridging.directionReverser.join packetLengths:sum 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPackets:count 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:sum 553154464
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:sum 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPackets:count 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:sum 553154464
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPackets:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:sum 553154464
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPackets:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:sum 553154464
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPackets:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:sum 553154464
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPackets:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:sum 553154464
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:sum 0
 scalar TsnLinearNetwork.switch.bridging.interfaceRelay.selector packetDropped:count 0
 scalar TsnLinearNetwork.switch.bridging.interfaceRelay.selector packetDropped:sum(packetBytes) 0
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter outgoingPackets:count 67261
@@ -1904,50 +1911,94 @@ scalar TsnLinearNetwork.switch.bridging.directionReverser.join packetLengths:his
 scalar TsnLinearNetwork.switch.bridging.directionReverser.join packetLengths:histogram:rangemax 1
 scalar TsnLinearNetwork.switch.bridging.directionReverser.join packetLengths:histogram:underflows 0
 scalar TsnLinearNetwork.switch.bridging.directionReverser.join packetLengths:histogram:overflows 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:count 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:sumweights 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:mean 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:stddev 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:min 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:max 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:numbins 2
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:rangemin 8223
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:rangemax 8225
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:underflows 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram:overflows 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:count 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:sumweights 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:mean nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:stddev nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:min nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:max nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:numbins 1
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:rangemin 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:rangemax 1
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:underflows 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram:overflows 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:count 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:sumweights 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:mean 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:stddev 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:min 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:max 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:numbins 2
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:rangemin 8223
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:rangemax 8225
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:underflows 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram:overflows 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:count 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:sumweights 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:mean nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:stddev nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:min nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:max nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:numbins 1
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:rangemin 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:rangemax 1
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:underflows 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram:overflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:sumweights 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:mean 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:min 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:max 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:numbins 2
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:rangemin 8223
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:rangemax 8225
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:underflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram:overflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:count 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:sumweights 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:mean nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:stddev nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:min nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:max nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:numbins 1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:rangemin 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:rangemax 1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:underflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram:overflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:sumweights 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:mean 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:min 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:max 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:numbins 2
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:rangemin 8223
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:rangemax 8225
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:underflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram:overflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:count 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:sumweights 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:mean nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:stddev nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:min nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:max nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:numbins 1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:rangemin 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:rangemax 1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:underflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram:overflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:sumweights 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:mean 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:min 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:max 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:numbins 2
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:rangemin 8223
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:rangemax 8225
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:underflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram:overflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:count 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:sumweights 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:mean nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:stddev nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:min nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:max nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:numbins 1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:rangemin 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:rangemax 1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:underflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram:overflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:sumweights 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:mean 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:min 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:max 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:numbins 2
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:rangemin 8223
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:rangemax 8225
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:underflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram:overflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:count 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:sumweights 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:mean nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:stddev nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:min nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:max nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:numbins 1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:rangemin 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:rangemax 1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:underflows 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram:overflows 0
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter outgoingPacketLengths:histogram:count 67261
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter outgoingPacketLengths:histogram:sumweights 67261
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter outgoingPacketLengths:histogram:mean 8368
@@ -6563,7 +6614,7 @@ field sqrsum 0
 bin	-inf	0
 bin	0	0
 bin	1	0
-statistic TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:histogram
+statistic TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:histogram
 field count 67261
 field mean 8224
 field stddev 0
@@ -6575,7 +6626,7 @@ bin	-inf	0
 bin	8223	0
 bin	8224	67261
 bin	8225	0
-statistic TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:histogram
+statistic TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:histogram
 field count 0
 field mean nan
 field stddev nan
@@ -6586,7 +6637,7 @@ field sqrsum 0
 bin	-inf	0
 bin	0	0
 bin	1	0
-statistic TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:histogram
+statistic TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:histogram
 field count 67261
 field mean 8224
 field stddev 0
@@ -6598,7 +6649,53 @@ bin	-inf	0
 bin	8223	0
 bin	8224	67261
 bin	8225	0
-statistic TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:histogram
+statistic TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:histogram
+field count 67261
+field mean 8224
+field stddev 0
+field min 8224
+field max 8224
+field sum 553154464
+field sqrsum 4549142311936
+bin	-inf	0
+bin	8223	0
+bin	8224	67261
+bin	8225	0
+statistic TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:histogram
+field count 67261
+field mean 8224
+field stddev 0
+field min 8224
+field max 8224
+field sum 553154464
+field sqrsum 4549142311936
+bin	-inf	0
+bin	8223	0
+bin	8224	67261
+bin	8225	0
+statistic TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:histogram
 field count 0
 field mean nan
 field stddev nan
@@ -11651,7 +11748,7 @@ scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vecto
 scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vector:sum 38561946788.71399
 scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vector:sumweights 673
 scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vector:mean 57298583.63850518
-scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vector:stddev 9615974.220246335
+scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vector:stddev 9615974.220246354
 scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vector:min 32761050.083309922
 scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vector:max 75098780.14485355
 scalar TsnLinearNetwork.client.ethernet.macHeaderInserter incomingDataRate:vector:starttime 0.015009944980000004
@@ -12101,7 +12198,7 @@ scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vec
 scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:sum 38561946788.71399
 scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:sumweights 673
 scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:mean 57298583.63850518
-scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:stddev 9615974.220246335
+scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:stddev 9615974.220246354
 scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:min 32761050.083309922
 scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:max 75098780.14485355
 scalar TsnLinearNetwork.client.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:starttime 0.015009944980000004
@@ -12305,9 +12402,9 @@ scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueBitLength:vector:max 1
 scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueBitLength:vector:starttime 0
 scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueBitLength:vector:endtime 9.999988587075002
 scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:count 67262
-scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:sum 0.737259220455
+scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:sum 0.7372592204549999
 scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:sumweights 67262
-scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:mean 1.096100651861378e-05
+scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:mean 1.0961006518613778e-05
 scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:stddev 2.2506643688373925e-05
 scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:min 0
 scalar TsnLinearNetwork.client.eth[0].macLayer.queue queueingTime:vector:max 8.56e-05
@@ -13232,10 +13329,10 @@ scalar TsnLinearNetwork.client.app[0].source packetLengths:vector:max 8000
 scalar TsnLinearNetwork.client.app[0].source packetLengths:vector:starttime 0
 scalar TsnLinearNetwork.client.app[0].source packetLengths:vector:endtime 9.999988587075002
 scalar TsnLinearNetwork.client.app[0].source dataRate:vector:count 453
-scalar TsnLinearNetwork.client.app[0].source dataRate:vector:sum 16810413166.027782
+scalar TsnLinearNetwork.client.app[0].source dataRate:vector:sum 16810413166.02778
 scalar TsnLinearNetwork.client.app[0].source dataRate:vector:sumweights 453
-scalar TsnLinearNetwork.client.app[0].source dataRate:vector:mean 37109079.83670592
-scalar TsnLinearNetwork.client.app[0].source dataRate:vector:stddev 5571605.802120895
+scalar TsnLinearNetwork.client.app[0].source dataRate:vector:mean 37109079.836705916
+scalar TsnLinearNetwork.client.app[0].source dataRate:vector:stddev 5571605.802120934
 scalar TsnLinearNetwork.client.app[0].source dataRate:vector:min 28002476.2619161
 scalar TsnLinearNetwork.client.app[0].source dataRate:vector:max 43998900.567792304
 scalar TsnLinearNetwork.client.app[0].source dataRate:vector:starttime 0.021842628709000004
@@ -13268,10 +13365,10 @@ scalar TsnLinearNetwork.client.app[1].source packetLengths:vector:max 8000
 scalar TsnLinearNetwork.client.app[1].source packetLengths:vector:starttime 0
 scalar TsnLinearNetwork.client.app[1].source packetLengths:vector:endtime 9.998986959161002
 scalar TsnLinearNetwork.client.app[1].source dataRate:vector:count 226
-scalar TsnLinearNetwork.client.app[1].source dataRate:vector:sum 4628233791.254085
+scalar TsnLinearNetwork.client.app[1].source dataRate:vector:sum 4628233791.254086
 scalar TsnLinearNetwork.client.app[1].source dataRate:vector:sumweights 226
-scalar TsnLinearNetwork.client.app[1].source dataRate:vector:mean 20478910.580770284
-scalar TsnLinearNetwork.client.app[1].source dataRate:vector:stddev 7190726.260468628
+scalar TsnLinearNetwork.client.app[1].source dataRate:vector:mean 20478910.58077029
+scalar TsnLinearNetwork.client.app[1].source dataRate:vector:stddev 7190726.2604686115
 scalar TsnLinearNetwork.client.app[1].source dataRate:vector:min 560000
 scalar TsnLinearNetwork.client.app[1].source dataRate:vector:max 31834278.644100036
 scalar TsnLinearNetwork.client.app[1].source dataRate:vector:starttime 0.04502732332200001
@@ -13384,78 +13481,150 @@ scalar TsnLinearNetwork.switch.bridging.directionReverser.join dataRate:vector:m
 scalar TsnLinearNetwork.switch.bridging.directionReverser.join dataRate:vector:max 0
 scalar TsnLinearNetwork.switch.bridging.directionReverser.join dataRate:vector:starttime 0.1
 scalar TsnLinearNetwork.switch.bridging.directionReverser.join dataRate:vector:endtime 10
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:count 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:sum 553154464
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:sumweights 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:mean 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:stddev 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:min 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:max 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:starttime 8.469000000000002e-05
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingPacketLengths:vector:endtime 9.999788525389002
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:count 673
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:sum 38411522158.09083
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:sumweights 673
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:mean 57075070.07145739
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:stddev 9578773.921933943
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:min 32433715.3326268
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:max 74531872.07456018
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:starttime 0.015094634980000004
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner incomingDataRate:vector:endtime 10
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:count 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:sum 553154464
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:sumweights 67261
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:mean 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:stddev 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:min 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:max 8224
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:starttime 8.469000000000002e-05
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingPacketLengths:vector:endtime 9.999788525389002
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:count 673
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:sum 38411522158.09083
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:sumweights 673
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:mean 57075070.07145739
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:stddev 9578773.921933943
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:min 32433715.3326268
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:max 74531872.07456018
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:starttime 0.015094634980000004
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner outgoingDataRate:vector:endtime 10
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:count 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:sum 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:sumweights 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:mean nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:stddev nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:min inf
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:max -inf
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:starttime nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingPacketLengths:vector:endtime nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:count 100
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:sum 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:sumweights 100
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:mean 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:stddev 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:min 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:max 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:starttime 0.1
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowIncomingDataRate:vector:endtime 10
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:count 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:sum 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:sumweights 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:mean nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:stddev nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:min inf
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:max -inf
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:starttime nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingPacketLengths:vector:endtime nan
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:count 100
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:sum 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:sumweights 100
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:mean 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:stddev 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:min 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:max 0
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:starttime 0.1
-scalar TsnLinearNetwork.switch.bridging.interfaceRelay.learner flowOutgoingDataRate:vector:endtime 10
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:sum 553154464
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:sumweights 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:mean 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:min 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:max 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:starttime 8.469000000000002e-05
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingPacketLengths:vector:endtime 9.999788525389002
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:count 673
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:sum 38411522158.09083
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:sumweights 673
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:mean 57075070.07145739
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:stddev 9578773.921933943
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:min 32433715.3326268
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:max 74531872.07456018
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:starttime 0.015094634980000004
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder incomingDataRate:vector:endtime 10
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:sum 553154464
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:sumweights 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:mean 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:min 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:max 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:starttime 8.469000000000002e-05
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingPacketLengths:vector:endtime 9.999788525389002
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:count 673
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:sum 38411522158.09083
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:sumweights 673
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:mean 57075070.07145739
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:stddev 9578773.921933943
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:min 32433715.3326268
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:max 74531872.07456018
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:starttime 0.015094634980000004
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder outgoingDataRate:vector:endtime 10
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:count 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:sumweights 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:mean nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:stddev nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:min inf
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:max -inf
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:starttime nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingPacketLengths:vector:endtime nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:count 100
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:sumweights 100
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:mean 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:min 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:max 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:starttime 0.1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowIncomingDataRate:vector:endtime 10
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:count 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:sumweights 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:mean nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:stddev nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:min inf
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:max -inf
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:starttime nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingPacketLengths:vector:endtime nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:count 100
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:sumweights 100
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:mean 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:min 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:max 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:starttime 0.1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.decoder flowOutgoingDataRate:vector:endtime 10
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:sum 553154464
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:sumweights 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:mean 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:min 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:max 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:starttime 8.469000000000002e-05
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingPacketLengths:vector:endtime 9.999788525389002
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:count 673
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:sum 38411522158.09083
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:sumweights 673
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:mean 57075070.07145739
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:stddev 9578773.921933943
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:min 32433715.3326268
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:max 74531872.07456018
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:starttime 0.015094634980000004
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder incomingDataRate:vector:endtime 10
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:count 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:sum 553154464
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:sumweights 67261
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:mean 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:min 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:max 8224
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:starttime 8.469000000000002e-05
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingPacketLengths:vector:endtime 9.999788525389002
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:count 673
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:sum 38411522158.09083
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:sumweights 673
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:mean 57075070.07145739
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:stddev 9578773.921933943
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:min 32433715.3326268
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:max 74531872.07456018
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:starttime 0.015094634980000004
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder outgoingDataRate:vector:endtime 10
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:count 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:sumweights 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:mean nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:stddev nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:min inf
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:max -inf
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:starttime nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingPacketLengths:vector:endtime nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:count 100
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:sumweights 100
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:mean 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:min 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:max 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:starttime 0.1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowIncomingDataRate:vector:endtime 10
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:count 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:sumweights 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:mean nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:stddev nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:min inf
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:max -inf
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:starttime nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingPacketLengths:vector:endtime nan
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:count 100
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:sum 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:sumweights 100
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:mean 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:stddev 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:min 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:max 0
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:starttime 0.1
+scalar TsnLinearNetwork.switch.bridging.streamCoder.encoder flowOutgoingDataRate:vector:endtime 10
 scalar TsnLinearNetwork.switch.bridging.interfaceRelay.selector packetDropped:vector(packetBytes):count 0
 scalar TsnLinearNetwork.switch.bridging.interfaceRelay.selector packetDropped:vector(packetBytes):sum 0
 scalar TsnLinearNetwork.switch.bridging.interfaceRelay.selector packetDropped:vector(packetBytes):sumweights 0
@@ -13478,7 +13647,7 @@ scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vecto
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vector:sum 38560983333.803246
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vector:sumweights 673
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vector:mean 57297152.05617124
-scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vector:stddev 9616045.415793601
+scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vector:stddev 9616045.415793581
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vector:min 32559916.559602
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vector:max 74821879.358897
 scalar TsnLinearNetwork.switch.ethernet.macHeaderInserter incomingDataRate:vector:starttime 0.015094634980000004
@@ -13712,7 +13881,7 @@ scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector
 scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector:sum 38560983333.803246
 scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector:sumweights 673
 scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector:mean 57297152.05617124
-scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector:stddev 9616045.415793601
+scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector:stddev 9616045.415793581
 scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector:min 32559916.559602
 scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector:max 74821879.358897
 scalar TsnLinearNetwork.switch.ethernet.macHeaderChecker outgoingDataRate:vector:starttime 0.015094634980000004
@@ -13928,7 +14097,7 @@ scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vec
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:sum 38560983333.803246
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:sumweights 673
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:mean 57297152.05617124
-scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:stddev 9616045.415793601
+scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:stddev 9616045.415793581
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:min 32559916.559602
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:max 74821879.358897
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderInserter outgoingDataRate:vector:starttime 0.015094634980000004
@@ -13982,7 +14151,7 @@ scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vect
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vector:sum 38560983333.803246
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vector:sumweights 673
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vector:mean 57297152.05617124
-scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vector:stddev 9616045.415793601
+scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vector:stddev 9616045.415793581
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vector:min 32559916.559602
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vector:max 74821879.358897
 scalar TsnLinearNetwork.switch.ieee8021q.qTagHeaderChecker incomingDataRate:vector:starttime 0.015094634980000004
@@ -15800,7 +15969,7 @@ scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vecto
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vector:sum 3447.266476242026
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vector:sumweights 21676
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vector:mean 0.15903609873786795
-scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vector:stddev 0.12728734940391745
+scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vector:stddev 0.12728734940391742
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vector:min 0
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vector:max 0.387234783111
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] queueingTime:vector:starttime 0.004
@@ -15818,7 +15987,7 @@ scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:v
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector:sum 4859636013.395607
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector:sumweights 226
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector:mean 21502814.218564633
-scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector:stddev 7550272.667554863
+scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector:stddev 7550272.667554858
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector:min 588000
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector:max 33465084.019892454
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.queue[1] incomingDataRate:vector:starttime 0.04511201332200001
@@ -15959,10 +16128,10 @@ scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgori
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector:starttime 0
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] gateState:vector:endtime 9.999922359035002
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:count 184464
-scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:sum -335859359.17878014
+scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:sum -335859359.1787801
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:sumweights 184464
-scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:mean -1820.7311951317338
-scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:stddev 1402.7399941085416
+scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:mean -1820.7311951317336
+scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:stddev 1402.739994108542
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:min -3085.0240000000003
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:max 59.97490824
 scalar TsnLinearNetwork.switch.eth[1].macLayer.queue.transmissionSelectionAlgorithm[0] numCredits:vector:starttime 0
@@ -16673,7 +16842,7 @@ scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRat
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRate:vector:sum 38532528605.75111
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRate:vector:sumweights 670
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRate:vector:mean 57511236.72500165
-scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRate:vector:stddev 6578693.513098888
+scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRate:vector:stddev 6578693.513098917
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRate:vector:min 38901775.075582504
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRate:vector:max 63456189.04863044
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.phyHeaderInserter outgoingDataRate:vector:starttime 0.016267667292000004
@@ -16736,7 +16905,7 @@ scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:vector:sum 38532528605.75111
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:vector:sumweights 670
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:vector:mean 57511236.72500165
-scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:vector:stddev 6578693.513098888
+scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:vector:stddev 6578693.513098917
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:vector:min 38901775.075582504
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:vector:max 63456189.04863044
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter incomingDataRate:vector:starttime 0.016267667292000004
@@ -16754,7 +16923,7 @@ scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:vector:sum 38532528605.75111
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:vector:sumweights 670
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:vector:mean 57511236.72500165
-scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:vector:stddev 6578693.513098888
+scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:vector:stddev 6578693.513098917
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:vector:min 38901775.075582504
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:vector:max 63456189.04863044
 scalar TsnLinearNetwork.switch.eth[1].phyLayer.outboundEmitter outgoingDataRate:vector:starttime 0.016267667292000004
@@ -18920,36 +19089,36 @@ scalar TsnLinearNetwork.server.app[0].sink dataRate:vector:max 41272504.36180723
 scalar TsnLinearNetwork.server.app[0].sink dataRate:vector:starttime 0.024084690000000006
 scalar TsnLinearNetwork.server.app[0].sink dataRate:vector:endtime 10
 scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:count 45282
-scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:sum 884.725701466756
+scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:sum 884.7257014667559
 scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:sumweights 45282
-scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:mean 0.019538132182031626
-scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:stddev 0.020073031789455947
+scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:mean 0.019538132182031622
+scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:stddev 0.020073031789455954
 scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:min 0.00016938
 scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:max 0.054277158095
 scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:starttime 0.00016938000000000004
 scalar TsnLinearNetwork.server.app[0].sink meanBitLifeTimePerPacket:vector:endtime 9.999873215389002
 scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:count 45282
-scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:sum 884.725701466756
+scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:sum 884.7257014667559
 scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:sumweights 45282
-scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:mean 0.019538132182031626
+scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:mean 0.019538132182031622
 scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:stddev 0.02007303178945595
 scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:min 0.00016938
 scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:max 0.054277158095
 scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:starttime 0.00016938000000000004
 scalar TsnLinearNetwork.server.app[0].sink packetLifeTime:vector:endtime 9.999873215389002
 scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:count 45282
-scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:sum 0.00016937999999999394
+scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:sum 0.00016937999999999142
 scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:sumweights 45282
-scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:mean 3.7405591625810245e-09
+scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:mean 3.740559162580968e-09
 scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:stddev 0.0003840832828107853
 scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:min -0.00015188064000000012
 scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:max 0.002150077127
 scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:starttime 0.00016938000000000004
 scalar TsnLinearNetwork.server.app[0].sink packetJitter:vector:endtime 9.999873215389002
 scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:count 45282
-scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:sum -47.46599137912016
+scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:sum -47.465991379120176
 scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:sumweights 45282
-scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:mean -0.0010482308948173702
+scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:mean -0.0010482308948173706
 scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:stddev 0.020044860724972254
 scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:min -0.0350046290154163
 scalar TsnLinearNetwork.server.app[0].sink packetDelayDifferenceToMean:vector:max 0.026746924255569706
@@ -19019,10 +19188,10 @@ scalar TsnLinearNetwork.server.app[1].sink dataRate:vector:max 21399892.93526565
 scalar TsnLinearNetwork.server.app[1].sink dataRate:vector:starttime 0.04702152552200001
 scalar TsnLinearNetwork.server.app[1].sink dataRate:vector:endtime 10
 scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:count 21676
-scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:sum 3451.3047923406957
+scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:sum 3451.304792340696
 scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:sumweights 21676
-scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:mean 0.1592224023039627
-scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:stddev 0.1272873764633288
+scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:mean 0.15922240230396273
+scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:stddev 0.12728737646332877
 scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:min 0.00016938
 scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:max 0.387447674044
 scalar TsnLinearNetwork.server.app[1].sink meanBitLifeTimePerPacket:vector:starttime 0.004084690000000001
@@ -19037,9 +19206,9 @@ scalar TsnLinearNetwork.server.app[1].sink packetLifeTime:vector:max 0.387447674
 scalar TsnLinearNetwork.server.app[1].sink packetLifeTime:vector:starttime 0.004084690000000001
 scalar TsnLinearNetwork.server.app[1].sink packetLifeTime:vector:endtime 9.995973370424002
 scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:count 21676
-scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:sum 0.24807314103199996
+scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:sum 0.24807314103199998
 scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:sumweights 21676
-scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:mean 1.1444599604724117e-05
+scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:mean 1.1444599604724119e-05
 scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:stddev 0.0010790654986764748
 scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:min -0.004070907812999999
 scalar TsnLinearNetwork.server.app[1].sink packetJitter:vector:max 0.004152209758
