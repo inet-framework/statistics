@@ -1,16 +1,16 @@
 version 3
-run General-0-20261119-15:00:41-1205
-attr configname General
-attr datetime 20261119-15:00:41
-attr datetimef 20261119-150041
-attr experiment General
+run FiltersAndMappers-0-20261119-18:10:16-1208
+attr configname FiltersAndMappers
+attr datetime 20261119-18:10:16
+attr datetimef 20261119-181016
+attr experiment FiltersAndMappers
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network SharedCoreExample
-attr processid 1205
+attr processid 1208
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -18,14 +18,38 @@ attr runnumber 0
 attr seedset 0
 config **.param-recording false
 config image-path /home/runner/work/inet/inet/inet/images
-config output-scalar-file results/omnetpp.ini-General-#0.sca
+config output-scalar-file results/omnetpp.ini-FiltersAndMappers-#0.sca
 config output-scalar-precision 17
-config output-vector-file results/omnetpp.ini-General-#0.vec
+config output-vector-file results/omnetpp.ini-FiltersAndMappers-#0.vec
 config output-vector-precision 17
 config record-eventlog false
 config sim-time-limit 100ms
+config description "two service providers, each with C-VLANs for its customers, share a core that separates them by S-VLAN; the bridge ports are configured with the filters and mappers of VlanPolicyLayer"
+config *.sp*.bridging.vlanPolicy.typename VlanPolicyLayer
+config *.peb*.bridging.vlanPolicy.typename VlanPolicyLayer
+config *.pb.bridging.vlanPolicy.typename VlanPolicyLayer
+config *.sp*.bridging.directionReverser.reverser.forwardPcp false
+config *.peb*.bridging.directionReverser.reverser.forwardPcp false
+config *.pb.bridging.directionReverser.reverser.forwardPcp false
+config *.sp*.bridging.vlanPolicy.inboundMapper.typename VlanIndMapper
+config *.sp*.bridging.vlanPolicy.inboundFilter.acceptedVlanIds "{\"eth0\" : [-1], \"eth1\" : [-1], \"eth2\" : [-1], \"eth3\" : [10, 20]}"
+config *.sp*.bridging.vlanPolicy.outboundFilter.acceptedVlanIds "{\"eth0\" : [-1], \"eth1\" : [-1], \"eth2\" : [-1], \"eth3\" : [10, 20]}"
+config *.sp1w.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 10}, \"eth1\" : {\"-1\" : 10}, \"eth2\" : {\"-1\" : 20}}"
+config *.sp1w.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"10\" : -1}, \"eth1\" : {\"10\" : -1}, \"eth2\" : {\"20\" : -1}}"
+config *.sp1e.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 10}, \"eth1\" : {\"-1\" : 20}, \"eth2\" : {\"-1\" : 20}}"
+config *.sp1e.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"10\" : -1}, \"eth1\" : {\"20\" : -1}, \"eth2\" : {\"20\" : -1}}"
+config *.sp2w.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 10}, \"eth1\" : {\"-1\" : 20}, \"eth2\" : {\"-1\" : 20}}"
+config *.sp2w.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"10\" : -1}, \"eth1\" : {\"20\" : -1}, \"eth2\" : {\"20\" : -1}}"
+config *.sp2e.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 10}, \"eth1\" : {\"-1\" : 10}, \"eth2\" : {\"-1\" : 20}}"
+config *.sp2e.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"10\" : -1}, \"eth1\" : {\"10\" : -1}, \"eth2\" : {\"20\" : -1}}"
+config *.peb*.bridging.vlanPolicy.inboundMapper.typename VlanIndMapper
+config *.peb*.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 100}, \"eth1\" : {\"-1\" : 200}}"
+config *.peb*.bridging.vlanPolicy.inboundFilter.acceptedVlanIds "{\"eth0\" : [-1], \"eth1\" : [-1], \"eth2\" : [100, 200]}"
+config *.peb*.bridging.vlanPolicy.outboundFilter.acceptedVlanIds "{\"eth0\" : [-1], \"eth1\" : [-1], \"eth2\" : [100, 200]}"
+config *.peb*.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"100\" : -1}, \"eth1\" : {\"200\" : -1}}"
+config *.pb.bridging.vlanPolicy.inboundFilter.acceptedVlanIds "{\"eth0\" : [100, 200], \"eth1\" : [100, 200]}"
+config *.pb.bridging.vlanPolicy.outboundFilter.acceptedVlanIds "{\"eth0\" : [100, 200], \"eth1\" : [100, 200]}"
 config network SharedCoreExample
-config description "two service providers, each with C-VLANs for its customers, share a core that separates them by S-VLAN"
 config **.fcsMode "\"computed\""
 config **.checksumMode "\"computed\""
 config *.*.llc.typename ""
@@ -76,37 +100,13 @@ config *.pb.ieee8021q.typename Ieee8021qProtocol
 config *.sp*.bridging.typename BridgingLayer
 config *.peb*.bridging.typename BridgingLayer
 config *.pb.bridging.typename BridgingLayer
-config *.sp*.bridging.vlanPolicy.typename VlanPolicyLayer
-config *.peb*.bridging.vlanPolicy.typename VlanPolicyLayer
-config *.pb.bridging.vlanPolicy.typename VlanPolicyLayer
-config *.sp*.bridging.directionReverser.reverser.forwardPcp false
-config *.peb*.bridging.directionReverser.reverser.forwardPcp false
-config *.pb.bridging.directionReverser.reverser.forwardPcp false
 config *.pebW.numPcapRecorders 2
 config *.pebW.pcapRecorder[0].moduleNamePatterns "\"eth[0]\""
-config *.pebW.pcapRecorder[0].pcapFile "\"results/General-#0-pebW_eth0.pcap\""
+config *.pebW.pcapRecorder[0].pcapFile "\"results/FiltersAndMappers-#0-pebW_eth0.pcap\""
 config *.pebW.pcapRecorder[1].moduleNamePatterns "\"eth[2]\""
-config *.pebW.pcapRecorder[1].pcapFile "\"results/General-#0-pebW_eth2.pcap\""
-config *.sp*.bridging.vlanPolicy.inboundMapper.typename VlanIndMapper
-config *.sp*.bridging.vlanPolicy.inboundFilter.acceptedVlanIds "{\"eth0\" : [-1], \"eth1\" : [-1], \"eth2\" : [-1], \"eth3\" : [10, 20]}"
-config *.sp*.bridging.vlanPolicy.outboundFilter.acceptedVlanIds "{\"eth0\" : [-1], \"eth1\" : [-1], \"eth2\" : [-1], \"eth3\" : [10, 20]}"
-config *.sp1w.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 10}, \"eth1\" : {\"-1\" : 10}, \"eth2\" : {\"-1\" : 20}}"
-config *.sp1w.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"10\" : -1}, \"eth1\" : {\"10\" : -1}, \"eth2\" : {\"20\" : -1}}"
-config *.sp1e.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 10}, \"eth1\" : {\"-1\" : 20}, \"eth2\" : {\"-1\" : 20}}"
-config *.sp1e.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"10\" : -1}, \"eth1\" : {\"20\" : -1}, \"eth2\" : {\"20\" : -1}}"
-config *.sp2w.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 10}, \"eth1\" : {\"-1\" : 20}, \"eth2\" : {\"-1\" : 20}}"
-config *.sp2w.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"10\" : -1}, \"eth1\" : {\"20\" : -1}, \"eth2\" : {\"20\" : -1}}"
-config *.sp2e.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 10}, \"eth1\" : {\"-1\" : 10}, \"eth2\" : {\"-1\" : 20}}"
-config *.sp2e.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"10\" : -1}, \"eth1\" : {\"10\" : -1}, \"eth2\" : {\"20\" : -1}}"
+config *.pebW.pcapRecorder[1].pcapFile "\"results/FiltersAndMappers-#0-pebW_eth2.pcap\""
 config *.peb*.**.vlanTagType "\"s\""
 config *.pb.**.vlanTagType "\"s\""
-config *.peb*.bridging.vlanPolicy.inboundMapper.typename VlanIndMapper
-config *.peb*.bridging.vlanPolicy.inboundMapper.mappedVlanIds "{\"eth0\" : {\"-1\" : 100}, \"eth1\" : {\"-1\" : 200}}"
-config *.peb*.bridging.vlanPolicy.inboundFilter.acceptedVlanIds "{\"eth0\" : [-1], \"eth1\" : [-1], \"eth2\" : [100, 200]}"
-config *.peb*.bridging.vlanPolicy.outboundFilter.acceptedVlanIds "{\"eth0\" : [-1], \"eth1\" : [-1], \"eth2\" : [100, 200]}"
-config *.peb*.bridging.vlanPolicy.outboundMapper.mappedVlanIds "{\"eth0\" : {\"100\" : -1}, \"eth1\" : {\"200\" : -1}}"
-config *.pb.bridging.vlanPolicy.inboundFilter.acceptedVlanIds "{\"eth0\" : [100, 200], \"eth1\" : [100, 200]}"
-config *.pb.bridging.vlanPolicy.outboundFilter.acceptedVlanIds "{\"eth0\" : [100, 200], \"eth1\" : [100, 200]}"
 
 scalar SharedCoreExample.hostA1a.ethernet.macHeaderInserter outgoingPackets:count 12
 scalar SharedCoreExample.hostA1a.ethernet.macHeaderInserter outgoingPacketLengths:sum 8512
