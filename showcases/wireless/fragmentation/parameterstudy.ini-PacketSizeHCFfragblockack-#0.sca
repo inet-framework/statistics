@@ -1,8 +1,8 @@
 version 3
-run PacketSizeHCFfragblockack-0-20261119-13:38:03-1232
+run PacketSizeHCFfragblockack-0-20261124-00:55:04-1435777
 attr configname PacketSizeHCFfragblockack
-attr datetime 20261119-13:38:03
-attr datetimef 20261119-133803
+attr datetime 20261124-00:55:04
+attr datetimef 20261124-005504
 attr experiment PacketSizeHCFfragblockack
 attr inifile parameterstudy.ini
 attr iterationvars $packetSize=100
@@ -10,7 +10,7 @@ attr iterationvarsd packetSize=100
 attr iterationvarsf packetSize=100-
 attr measurement $packetSize=100
 attr network FragmentationShowcase
-attr processid 1232
+attr processid 1435777
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -18,7 +18,7 @@ attr runnumber 0
 attr seedset 0
 itervar packetSize 100
 config **.param-recording false
-config image-path /home/runner/work/inet/inet/inet/images
+config image-path /opt/workspace-opt/inet-ieee80211-basic-blockack-bitmap/images
 config output-scalar-file results/parameterstudy.ini-PacketSizeHCFfragblockack-#0.sca
 config output-scalar-precision 17
 config output-vector-file results/parameterstudy.ini-PacketSizeHCFfragblockack-#0.vec
@@ -29,14 +29,20 @@ config extends PacketSizeHCFfrag
 config **.fragmentationThreshold "int((100 + 8 + 20 + 8 + 15) / 16) * 1B + 26B + 4B"
 config *.*.wlan[*].mac.hcf.isBlockAckSupported true
 config *.wifiHost*.wlan[*].mac.hcf.blockAckVariant "\"basic\""
+config extends IterationPacketSize
+config **.fragmentationThreshold "int((100 + 8 + 20 + 8 + 15) / 16) * 1B + 26B + 4B"
 config *.*.wlan[*].mac.qosStation true
+config *.*.wlan[*].mac.hcf.isBlockAckSupported false
 config **.wlan[*].classifier.typename QosClassifier
 config **.mac.hcf.originatorMacDataService.msduAggregationPolicy.typename ""
 config *.wifiHost1.app[0].destPort 4000
 config *.wifiHost2.app[0].localPort 4000
+config sim-time-limit 1s
 config *.wifiHost1.app[0].messageLength 100B
+config **.fragmentationThreshold "int((100 + 8 + 20 + 8 + 15) / 16) * 1B + 24B + 4B"
 config **.mtu 12250B
 config network FragmentationShowcase
+config sim-time-limit 10s
 config **.app*.throughput:vector.vector-recording true
 config **.*.wlan[*].radio.minSnir:vector.vector-recording true
 config **.app*.throughput.result-recording-modes +vector
@@ -46,9 +52,12 @@ config **.arp.typename GlobalArp
 config *.wifiHost1.numApps 1
 config *.wifiHost1.app[0].typename UdpBasicApp
 config *.wifiHost1.app[0].destAddresses "\"wifiHost2\""
+config *.wifiHost1.app[0].destPort 4000
 config *.wifiHost1.app[0].sendInterval 0.5ms
+config *.wifiHost1.app[0].messageLength 2000Byte
 config *.wifiHost2.numApps 1
 config *.wifiHost2.app[0].typename UdpSink
+config *.wifiHost2.app[0].localPort 4000
 config *.wifiHost*.wlan[*].radio.receiver.energyDetection -105dBm
 config *.wifiHost*.wlan[*].radio.receiver.sensitivity -105dBm
 config *.wifiHost*.wlan[*].radio.receiver.snirThreshold 0dB
@@ -560,8 +569,8 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.originatorMacDataService 
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.originatorMacDataService packetFragmented:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDeaggregated:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDefragmented:count 260
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:count 1
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 39
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:count 1358
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 52394
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf blockAckAgreementDeleted:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf blockAckAgreementAdded:count 1
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf edcaCollisionDetected:count 0
@@ -588,8 +597,8 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithRetry
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithRetry:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithoutRetry:count 1113
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithoutRetry:sum(packetBytes) 166715
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:count 1
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:sum(packetBytes) 39
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:count 1358
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:sum(packetBytes) 52394
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropNotAddressedToUs:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropNotAddressedToUs:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropQueueOverflow:count 0
@@ -615,8 +624,8 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromUpper:count
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToUpper:count 259
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToUpper:sum(packetBytes) 35224
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:count 464
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:sum(packetBytes) 16775
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:count 1821
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:sum(packetBytes) 69130
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropIncorrectlyReceived:count 463
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 16736
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropNotAddressedToUs:count 0
@@ -625,8 +634,8 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropQueueOverflow:count
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropRetryLimitReached:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropDuplicateDetected:count 1
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 39
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropDuplicateDetected:count 1358
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 52394
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropOther:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropOther:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac linkBroken:count 0
