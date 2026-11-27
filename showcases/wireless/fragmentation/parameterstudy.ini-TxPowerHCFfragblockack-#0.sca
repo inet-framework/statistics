@@ -1,8 +1,8 @@
 version 3
-run TxPowerHCFfragblockack-0-20261118-20:55:28-1291
+run TxPowerHCFfragblockack-0-20261127-14:30:41-2882104
 attr configname TxPowerHCFfragblockack
-attr datetime 20261118-20:55:28
-attr datetimef 20261118-205528
+attr datetime 20261127-14:30:41
+attr datetimef 20261127-143041
 attr experiment TxPowerHCFfragblockack
 attr inifile parameterstudy.ini
 attr iterationvars $txPower=0.06
@@ -10,7 +10,7 @@ attr iterationvarsd txPower=0.06
 attr iterationvarsf txPower=0.06-
 attr measurement $txPower=0.06
 attr network FragmentationShowcase
-attr processid 1291
+attr processid 2882104
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -18,7 +18,7 @@ attr runnumber 0
 attr seedset 0
 itervar txPower 0.06
 config **.param-recording false
-config image-path /home/runner/work/inet/inet/inet/images
+config image-path /opt/workspace-opt/inet-ieee80211-edca-contention-recovery/images
 config output-scalar-file results/parameterstudy.ini-TxPowerHCFfragblockack-#0.sca
 config output-scalar-precision 17
 config output-vector-file results/parameterstudy.ini-TxPowerHCFfragblockack-#0.vec
@@ -28,14 +28,18 @@ config sim-time-limit 10s
 config extends "TxPowerHCFfrag, IterationTxPower"
 config *.*.wlan[*].mac.hcf.isBlockAckSupported true
 config *.wifiHost*.wlan[*].mac.hcf.blockAckVariant "\"basic\""
+config extends IterationTxPower
 config **.fragmentationThreshold 250B
 config *.*.wlan[*].mac.qosStation true
+config *.*.wlan[*].mac.hcf.isBlockAckSupported false
 config **.wlan[*].classifier.typename QosClassifier
 config **.mac.hcf.originatorMacDataService.msduAggregationPolicy.typename ""
 config *.wifiHost1.app[0].destPort 4000
 config *.wifiHost2.app[0].localPort 4000
+config sim-time-limit 10s
 config *.wifiHost*.wlan[*].radio.transmitter.power 0.06mW
 config network FragmentationShowcase
+config sim-time-limit 10s
 config **.app*.throughput:vector.vector-recording true
 config **.*.wlan[*].radio.minSnir:vector.vector-recording true
 config **.app*.throughput.result-recording-modes +vector
@@ -45,13 +49,16 @@ config **.arp.typename GlobalArp
 config *.wifiHost1.numApps 1
 config *.wifiHost1.app[0].typename UdpBasicApp
 config *.wifiHost1.app[0].destAddresses "\"wifiHost2\""
+config *.wifiHost1.app[0].destPort 4000
 config *.wifiHost1.app[0].sendInterval 0.5ms
 config *.wifiHost1.app[0].messageLength 2000Byte
 config *.wifiHost2.numApps 1
 config *.wifiHost2.app[0].typename UdpSink
+config *.wifiHost2.app[0].localPort 4000
 config *.wifiHost*.wlan[*].radio.receiver.energyDetection -105dBm
 config *.wifiHost*.wlan[*].radio.receiver.sensitivity -105dBm
 config *.wifiHost*.wlan[*].radio.receiver.snirThreshold 0dB
+config *.wifiHost*.wlan[*].radio.transmitter.power 0.08mW
 config *.visualizer.dataLinkVisualizer.displayLinks true
 config *.visualizer.physicalLinkVisualizer.displayLinks true
 config *.visualizer.interfaceTableVisualizer.displayInterfaceTables true
@@ -80,7 +87,7 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.pendingQueu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 117920
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 119538
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
@@ -138,7 +145,7 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].pendingQueu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueLength:max 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueLength:timeavg 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].contention channelAccessGranted:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].contention stateChanged:count 117920
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].contention stateChanged:count 119538
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopEnded:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure retryLimitReached:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 0
@@ -170,7 +177,7 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueLength:max 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueLength:timeavg 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].contention channelAccessGranted:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].contention stateChanged:count 117920
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].contention stateChanged:count 119538
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopEnded:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure retryLimitReached:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 0
@@ -187,72 +194,72 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentT
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithRetry:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:last 4
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:last 3
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:max 100
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:timeavg 12.800258825136002
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:last 66112
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:timeavg 13.4095582802656
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:last 49584
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:max 1652800
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:timeavg 211562.67786184783
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPackets:count 63
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:sum 1041264
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueBitLength:timeavg 221633.17925622984
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPackets:count 60
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:sum 991680
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPackets:count 20000
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPacketLengths:sum 330560000
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue droppedPacketsQueueOverflow:count 56
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue droppedPacketLengthsQueueOverflow:sum 925568
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue droppedPacketsQueueOverflow:count 363
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue droppedPacketLengthsQueueOverflow:sum 5999664
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:max 10
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:timeavg 1.2597889
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].contention channelAccessGranted:count 4410
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].contention stateChanged:count 135560
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopEnded:count 4410
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure retryLimitReached:count 630
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:timeavg 1.166306
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].contention channelAccessGranted:count 4200
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].contention stateChanged:count 136338
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopEnded:count 4200
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure retryLimitReached:count 600
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] channelOwnershipChanged:count 8820
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeer:count 4410
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeer:sum(packetBytes) 1030176
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerUnicast:count 4410
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerUnicast:sum(packetBytes) 1030176
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] channelOwnershipChanged:count 8400
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeer:count 4200
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeer:sum(packetBytes) 981120
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerUnicast:count 4200
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerUnicast:sum(packetBytes) 981120
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerMulticast:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerMulticast:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerBroadcast:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerBroadcast:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithRetry:count 3780
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithRetry:sum(packetBytes) 883008
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:count 630
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:sum(packetBytes) 147168
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithRetry:count 3600
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithRetry:sum(packetBytes) 840960
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:count 600
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:sum(packetBytes) 140160
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:last 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:max 1
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:timeavg 0.0192167001984
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:timeavg 0.019441978159999998
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:last 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:max 296
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:timeavg 5.2453984539648
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPackets:count 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:sum 972552
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPackets:count 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:sum 972552
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:timeavg 5.30636205952
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPackets:count 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:sum 995600
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPackets:count 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:sum 995600
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue droppedPacketsQueueOverflow:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:max 1
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:timeavg 0.6651810207808
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].contention channelAccessGranted:count 24807
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].contention stateChanged:count 217148
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopEnded:count 24806
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:timeavg 0.6609530604895999
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].contention channelAccessGranted:count 25385
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].contention stateChanged:count 221080
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopEnded:count 25385
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure retryLimitReached:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 3507
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] channelOwnershipChanged:count 49613
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:count 24807
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:sum(packetBytes) 844761
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:count 24807
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:sum(packetBytes) 844761
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 3593
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] channelOwnershipChanged:count 50770
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:count 25385
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:sum(packetBytes) 864326
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:count 25385
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:sum(packetBytes) 864326
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerMulticast:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerMulticast:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerBroadcast:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerBroadcast:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:count 21237
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:sum(packetBytes) 723192
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:count 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:sum(packetBytes) 121569
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:count 21730
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:sum(packetBytes) 739876
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:count 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:sum(packetBytes) 124450
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.originatorMacDataService packetAggregated:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.originatorMacDataService packetFragmented:count 63
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.originatorMacDataService packetFragmented:count 60
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDeaggregated:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDefragmented:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:count 0
@@ -260,74 +267,74 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService p
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf blockAckAgreementDeleted:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf blockAckAgreementAdded:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf edcaCollisionDetected:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceFinished:count 29216
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerUnicast:count 62
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerUnicast:sum(packetBytes) 868
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceFinished:count 29585
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerUnicast:count 61
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerUnicast:sum(packetBytes) 854
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerMulticast:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerBroadcast:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:count 62
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 868
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeer:count 29217
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeer:sum(packetBytes) 1874937
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerUnicast:count 29217
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerUnicast:sum(packetBytes) 1874937
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:count 61
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 854
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeer:count 29585
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeer:sum(packetBytes) 1845446
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerUnicast:count 29585
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerUnicast:sum(packetBytes) 1845446
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerMulticast:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerMulticast:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerBroadcast:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerBroadcast:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithRetry:count 25017
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithRetry:sum(packetBytes) 1606200
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithoutRetry:count 4200
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithoutRetry:sum(packetBytes) 268737
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDrop:count 24070
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDrop:sum(packetBytes) 41448173
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithRetry:count 25330
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithRetry:sum(packetBytes) 1580836
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithoutRetry:count 4255
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetSentToPeerWithoutRetry:sum(packetBytes) 264610
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDrop:count 24130
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDrop:sum(packetBytes) 41452338
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropNotAddressedToUs:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropNotAddressedToUs:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropQueueOverflow:count 56
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropQueueOverflow:sum(packetBytes) 115696
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropRetryLimitReached:count 4137
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropRetryLimitReached:sum(packetBytes) 266595
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropQueueOverflow:count 363
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropQueueOverflow:sum(packetBytes) 749958
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropRetryLimitReached:count 4193
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropRetryLimitReached:sum(packetBytes) 262496
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropLifetimeExpired:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf packetDropLifetimeExpired:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf linkBroken:count 4137
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameTransmissionOutcome:count 3569
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameTransmissionOutcome:sum(packetBytes) 121535
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameAcked:count 62
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameAcked:sum(packetBytes) 2108
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameRetryLimitReached:count 3507
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameRetryLimitReached:sum(packetBytes) 119427
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf linkBroken:count 4193
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameTransmissionOutcome:count 3654
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameTransmissionOutcome:sum(packetBytes) 124416
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameAcked:count 61
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameAcked:sum(packetBytes) 2080
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameRetryLimitReached:count 3593
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameRetryLimitReached:sum(packetBytes) 122336
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameDroppedBeforeTx:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac frameDroppedBeforeTx:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromLower:count 508
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 8032
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToLower:count 29217
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToLower:sum(packetBytes) 1874937
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromLower:count 537
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 8921
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToLower:count 29585
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToLower:sum(packetBytes) 1845446
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromUpper:count 20000
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 40720000
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToUpper:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetSentToUpper:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDrop:count 24516
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDrop:sum(packetBytes) 41455337
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropIncorrectlyReceived:count 446
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 7164
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDrop:count 24606
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDrop:sum(packetBytes) 41460405
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropIncorrectlyReceived:count 476
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 8067
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropNotAddressedToUs:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropQueueOverflow:count 56
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 115696
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropRetryLimitReached:count 4137
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 266595
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropQueueOverflow:count 363
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 749958
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropRetryLimitReached:count 4193
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 262496
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropDuplicateDetected:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropOther:count 19877
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropOther:sum(packetBytes) 41065882
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac linkBroken:count 4137
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioMode:count 58437
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio receptionState:count 59454
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio transmissionState:count 116868
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropOther:count 19574
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac packetDropOther:sum(packetBytes) 40439884
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac linkBroken:count 4193
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioMode:count 59173
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio receptionState:count 60247
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio transmissionState:count 118340
 scalar FragmentationShowcase.wifiHost1.wlan[0] packetDropInterfaceDown:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost1.wlan[0] packetDropNoCarrier:count 0
@@ -384,7 +391,7 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.pendingQueu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:max 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.contention channelAccessGranted:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 176394
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess.contention stateChanged:count 178704
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.channelAccess channelOwnershipChanged:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.originatorMacDataService packetAggregated:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.dcf.originatorMacDataService packetFragmented:count 0
@@ -442,7 +449,7 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].pendingQueu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueLength:max 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].inProgressFrames queueLength:timeavg 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].contention channelAccessGranted:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].contention stateChanged:count 176394
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].contention stateChanged:count 178704
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopEnded:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure retryLimitReached:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 0
@@ -474,7 +481,7 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueLength:max 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].inProgressFrames queueLength:timeavg 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].contention channelAccessGranted:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].contention stateChanged:count 176394
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].contention stateChanged:count 178704
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopEnded:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure retryLimitReached:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 0
@@ -506,7 +513,7 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:max 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueLength:timeavg 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].contention channelAccessGranted:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].contention stateChanged:count 176394
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].contention stateChanged:count 178704
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopEnded:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure retryLimitReached:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 0
@@ -525,113 +532,113 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentT
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:last 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:max 1
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:timeavg 0.0009153999999999999
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:timeavg 0.0015412602912
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:last 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:max 296
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:timeavg 0.27095839999999993
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPackets:count 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:sum 2072
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPackets:count 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:sum 2072
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueBitLength:timeavg 0.4562130461952
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPackets:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:sum 2664
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPackets:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:sum 2664
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue droppedPacketsQueueOverflow:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue droppedPacketLengthsQueueOverflow:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:max 1
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:timeavg 0.0027719205824
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].contention channelAccessGranted:count 44
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].contention stateChanged:count 176570
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopEnded:count 44
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueLength:timeavg 0.0029112602912
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].contention channelAccessGranted:count 63
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].contention stateChanged:count 178956
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopEnded:count 63
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure retryLimitReached:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 6
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] channelOwnershipChanged:count 88
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:count 43
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:sum(packetBytes) 1591
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:count 43
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:sum(packetBytes) 1591
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure retryLimitReached:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] channelOwnershipChanged:count 126
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:count 63
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeer:sum(packetBytes) 2331
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:count 63
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerUnicast:sum(packetBytes) 2331
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerMulticast:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerMulticast:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerBroadcast:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerBroadcast:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:count 36
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:sum(packetBytes) 1332
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:count 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:sum(packetBytes) 259
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:count 54
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithRetry:sum(packetBytes) 1998
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:sum(packetBytes) 333
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.originatorMacDataService packetAggregated:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.originatorMacDataService packetFragmented:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDeaggregated:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDefragmented:count 451
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDefragmented:count 454
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf blockAckAgreementDeleted:count 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf blockAckAgreementAdded:count 7
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf blockAckAgreementDeleted:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf blockAckAgreementAdded:count 9
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf edcaCollisionDetected:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceFinished:count 43
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerUnicast:count 468
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerUnicast:sum(packetBytes) 15936
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceFinished:count 63
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerUnicast:count 476
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerUnicast:sum(packetBytes) 16211
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerMulticast:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerBroadcast:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:count 394
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:sum(packetBytes) 13417
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:count 74
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 2519
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeer:count 511
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeer:sum(packetBytes) 8143
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerUnicast:count 511
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerUnicast:sum(packetBytes) 8143
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:count 399
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithRetry:sum(packetBytes) 13590
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:count 77
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 2621
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeer:count 539
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeer:sum(packetBytes) 8995
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerUnicast:count 539
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerUnicast:sum(packetBytes) 8995
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerMulticast:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerMulticast:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerBroadcast:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerBroadcast:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithRetry:count 36
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithRetry:sum(packetBytes) 1332
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithoutRetry:count 475
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithoutRetry:sum(packetBytes) 6811
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:count 6
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:sum(packetBytes) 222
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithRetry:count 54
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithRetry:sum(packetBytes) 1998
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithoutRetry:count 485
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetSentToPeerWithoutRetry:sum(packetBytes) 6997
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDrop:sum(packetBytes) 333
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropNotAddressedToUs:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropNotAddressedToUs:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropQueueOverflow:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropQueueOverflow:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropRetryLimitReached:count 6
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropRetryLimitReached:sum(packetBytes) 222
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropRetryLimitReached:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropRetryLimitReached:sum(packetBytes) 333
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropLifetimeExpired:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf packetDropLifetimeExpired:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf linkBroken:count 6
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameTransmissionOutcome:count 6
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameTransmissionOutcome:sum(packetBytes) 222
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf linkBroken:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameTransmissionOutcome:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameTransmissionOutcome:sum(packetBytes) 333
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameAcked:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameAcked:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameRetryLimitReached:count 6
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameRetryLimitReached:sum(packetBytes) 222
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameRetryLimitReached:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameRetryLimitReached:sum(packetBytes) 333
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameDroppedBeforeTx:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac frameDroppedBeforeTx:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromLower:count 29214
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 1874835
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToLower:count 511
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToLower:sum(packetBytes) 8143
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromLower:count 29583
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromLower:sum(packetBytes) 1845378
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToLower:count 539
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToLower:sum(packetBytes) 8995
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromUpper:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetReceivedFromUpper:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToUpper:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetSentToUpper:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:count 28752
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:sum(packetBytes) 1859121
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropIncorrectlyReceived:count 28746
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 1858899
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:count 29116
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDrop:sum(packetBytes) 1829500
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropIncorrectlyReceived:count 29107
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropIncorrectlyReceived:sum(packetBytes) 1829167
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropNotAddressedToUs:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropNotAddressedToUs:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropQueueOverflow:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropQueueOverflow:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropRetryLimitReached:count 6
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 222
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropRetryLimitReached:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropRetryLimitReached:sum(packetBytes) 333
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropDuplicateDetected:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropDuplicateDetected:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropOther:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac packetDropOther:sum(packetBytes) 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac linkBroken:count 6
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioMode:count 1025
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio receptionState:count 59454
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio transmissionState:count 2044
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac linkBroken:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioMode:count 1081
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio receptionState:count 60247
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio transmissionState:count 2156
 scalar FragmentationShowcase.wifiHost2.wlan[0] packetDropInterfaceDown:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0] packetDropInterfaceDown:sum(packetBytes) 0
 scalar FragmentationShowcase.wifiHost2.wlan[0] packetDropNoCarrier:count 0
@@ -661,14 +668,14 @@ scalar FragmentationShowcase.wifiHost2.udp droppedPkWrongPort:count 0
 scalar FragmentationShowcase.wifiHost2.udp droppedPkBadChecksum:count 0
 scalar FragmentationShowcase.wifiHost2.app[0] packetReceived:count 0
 scalar FragmentationShowcase.wifiHost2.app[0] packetReceived:sum(packetBytes) 0
-scalar FragmentationShowcase.radioMedium.propagation "Arrival computation count" 29728
-scalar FragmentationShowcase.radioMedium "transmission count" 29728
-scalar FragmentationShowcase.radioMedium "signal send count" 29728
-scalar FragmentationShowcase.radioMedium "reception computation count" 29728
-scalar FragmentationShowcase.radioMedium "interference computation count" 118904
-scalar FragmentationShowcase.radioMedium "reception decision computation count" 29722
-scalar FragmentationShowcase.radioMedium "listening decision computation count" 59460
-scalar FragmentationShowcase.radioMedium "reception cache hit" 85.71222592831121
+scalar FragmentationShowcase.radioMedium.propagation "Arrival computation count" 30124
+scalar FragmentationShowcase.radioMedium "transmission count" 30124
+scalar FragmentationShowcase.radioMedium "signal send count" 30124
+scalar FragmentationShowcase.radioMedium "reception computation count" 30124
+scalar FragmentationShowcase.radioMedium "interference computation count" 120492
+scalar FragmentationShowcase.radioMedium "reception decision computation count" 30120
+scalar FragmentationShowcase.radioMedium "listening decision computation count" 60252
+scalar FragmentationShowcase.radioMedium "reception cache hit" 85.71293064197906
 scalar FragmentationShowcase.radioMedium "interference cache hit" 66.66666666666667
 scalar FragmentationShowcase.radioMedium "noise cache hit" 0
 scalar FragmentationShowcase.radioMedium "snir cache hit" 50
@@ -890,19 +897,19 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopDuration:histogram:rangemax 1
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopDuration:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopDuration:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:count 63
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:sumweights 63
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:mean 0.0020438954544761906
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:stddev 0.0048052473162904655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:count 60
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:sumweights 60
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:mean 0.0012742738031999998
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:stddev 0.0006691031693897155
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:min 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:max 0.039120794176
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:numbins 49
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:max 0.002448397088
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:numbins 62
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:rangemin 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:rangemax 0.049
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:rangemax 0.0031000000000000003
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram:count 63
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram:sumweights 63
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram:count 60
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram:sumweights 60
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram:mean 16528
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram:stddev 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram:min 16528
@@ -934,21 +941,21 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPacketLengths:histogram:rangemax 16529
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPacketLengths:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue incomingPacketLengths:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:count 630
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:sumweights 630
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:mean 0.019996649206349207
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:stddev 0.010635468125436576
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:min 0.002383
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:max 0.040348
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:numbins 49
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:count 600
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:sumweights 600
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:mean 0.019438433333333335
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:stddev 0.010384475380446559
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:min 0.002503
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:max 0.040327999999999996
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:numbins 50
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:rangemin 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:rangemax 0.049
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:rangemax 0.05
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:count 4410
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:sumweights 4410
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:count 4200
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:sumweights 4200
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:mean 0.0001634
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:stddev 1.6801905085905112e-05
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:stddev 1.6802000357213678e-05
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:min 0.000113
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:max 0.000169
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:numbins 51
@@ -956,21 +963,21 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:rangemax 0.51
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:count 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:sumweights 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:mean 5.025084763702409
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:stddev 2.889256807903667
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:min 0.035758
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:max 9.998785
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:count 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:sumweights 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:mean 4.979303412043915
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:stddev 2.872193378587012
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:min 0.030698
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:max 9.999007
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:numbins 50
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:rangemin 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:rangemax 9.999999999999977
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:count 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:sumweights 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:mean 272.4235294117647
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:stddev 3.160399739631291
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:count 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:sumweights 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:mean 272.3939808481532
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:stddev 3.050059784723164
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:min 272
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:max 296
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:numbins 36
@@ -989,10 +996,10 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram:rangemax 1
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:count 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:sumweights 3570
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:mean 272.4235294117647
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:stddev 3.160399739631291
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:count 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:sumweights 3655
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:mean 272.3939808481532
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:stddev 3.050059784723164
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:min 272
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:max 296
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:numbins 36
@@ -1000,21 +1007,21 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:rangemax 302
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:count 3569
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:sumweights 3569
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:mean 0.0018634337931655927
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:stddev 0.0002742339357759171
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:count 3654
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:sumweights 3654
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:mean 0.0018085762465506294
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:stddev 0.00027377983505998826
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:min 8.7397088e-05
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:max 0.004497397088
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:numbins 56
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:rangemin 7.999999999999999e-05
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:rangemax 0.004560000000000001
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:max 0.004257397088
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:numbins 88
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:rangemin 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:rangemax 0.0044
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:count 24806
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:sumweights 24806
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:mean 9.697599852680802e-05
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:stddev 4.794968538306479e-07
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:count 25385
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:sumweights 25385
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:mean 9.697692426109907e-05
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:stddev 4.701813575443848e-07
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:min 8.7397088e-05
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:max 9.7e-05
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:numbins 51
@@ -1022,10 +1029,10 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:rangemax 0.51
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:count 29216
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:sumweights 29216
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:mean 0.00010700234869441402
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:stddev 2.4663358531164732e-05
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:count 29585
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:sumweights 29585
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:mean 0.00010640659869420314
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:stddev 2.4035521575395808e-05
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:min 8.7397088e-05
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:max 0.000169
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:numbins 51
@@ -1033,8 +1040,8 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:his
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:rangemax 0.51
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram:count 29216
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram:sumweights 29216
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram:count 29585
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram:sumweights 29585
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram:mean 2
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram:stddev 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram:min 2
@@ -1055,8 +1062,8 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:histogram:rang
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:histogram:rangemax 0.5
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:count 508
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:sumweights 508
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:count 537
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:sumweights 537
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:mean 13.38410401384434
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:stddev 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:min 13.38410401384434
@@ -1066,10 +1073,10 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:rangemin 
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:rangemax 13.9
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:count 508
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:sumweights 508
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:mean 0.8700618789099785
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:stddev 0.03233984958294084
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:count 537
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:sumweights 537
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:mean 0.8742428010923022
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:stddev 0.03809954291216622
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:min 0.8606165477702739
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:max 0.9805722532445237
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram:numbins 91
@@ -1374,19 +1381,19 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:rangemax 1
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:count 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:sumweights 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:mean 5.093609238489143
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:stddev 2.8474131259771807
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:min 0.770466095632
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:max 9.783777095631999
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:numbins 61
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:sumweights 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:mean 5.753258607066666
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:stddev 3.6071537679340953
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:min 0.18650009563199998
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:max 9.872836095632
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:numbins 62
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:rangemin 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:rangemax 12.200000000000001
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:rangemax 12.4
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:count 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:sumweights 7
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:sumweights 9
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:mean 296
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:stddev 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram:min 296
@@ -1407,8 +1414,8 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram:rangemax 1
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:count 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:sumweights 7
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:sumweights 9
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:mean 296
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:stddev 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:min 296
@@ -1418,30 +1425,30 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:rangemax 297
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:count 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:sumweights 7
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:mean 0.003959886546285715
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:stddev 0.005288881847382228
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:min 0.0017389999999999999
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:max 0.015942602912
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:numbins 98
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:count 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:sumweights 9
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:mean 0.003234733656888889
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:stddev 0.004273773523352855
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:min 0.001479
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:max 0.014620602912
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:numbins 90
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:rangemin 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:rangemax 0.0196
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:rangemax 0.018000000000000002
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:count 44
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:sumweights 44
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:mean 9.479545454545456e-05
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:stddev 1.4623300212021503e-05
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:min 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:count 63
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:sumweights 63
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:mean 9.7e-05
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:stddev 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:min 9.7e-05
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:max 9.7e-05
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:numbins 61
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:numbins 51
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:rangemin 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:rangemax 0.00012200000000000002
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:rangemax 0.51
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:count 43
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:sumweights 43
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:count 63
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:sumweights 63
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:mean 9.7e-05
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:stddev 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:min 9.7e-05
@@ -1451,8 +1458,8 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:his
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:rangemax 0.51
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram:count 43
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram:sumweights 43
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram:count 63
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram:sumweights 63
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram:mean 2
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram:stddev 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram:min 2
@@ -1473,8 +1480,8 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:histogram:rang
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:histogram:rangemax 0.5
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:count 29214
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:sumweights 29214
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:count 29583
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:sumweights 29583
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:mean 13.38410401384434
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:stddev 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:min 13.38410401384434
@@ -1484,10 +1491,10 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:rangemin 
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:rangemax 13.9
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:underflows 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram:overflows 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:count 29214
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:sumweights 29214
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:mean 0.9834992715163059
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:stddev 0.006941976748495793
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:count 29583
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:sumweights 29583
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:mean 0.9833251184451568
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:stddev 0.0067678035848207545
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:min 0.9805722532445237
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:max 0.9999999996142345
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram:numbins 51
@@ -1746,75 +1753,88 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueingTime:histogram
-field count 63
-field mean 0.0020438954544761906
-field stddev 0.0048052473162904655
+field count 60
+field mean 0.0012742738031999998
+field stddev 0.0006691031693897155
 field min 0
-field max 0.039120794176
-field sum 0.128765413632
-field sqrsum 0.0016947879534006279
+field max 0.002448397088
+field sum 0.07645642819199999
+field sqrsum 0.0001238406675572619
 bin	-inf	0
-bin	0	21
-bin	0.001	26
-bin	0.002	15
+bin	0	1
+bin	5e-05	0
+bin	1e-04	0
+bin	0.00015000000000000001	1
+bin	2e-04	0
+bin	0.00025	1
+bin	0.00030000000000000003	2
+bin	0.00035	1
+bin	4e-04	2
+bin	0.00045000000000000004	1
+bin	5e-04	2
+bin	0.00055	1
+bin	0.0006000000000000001	2
+bin	0.0006500000000000001	1
+bin	7e-04	1
+bin	0.00075	1
+bin	8e-04	1
+bin	0.0008500000000000001	3
+bin	0.0009000000000000001	3
+bin	0.00095	1
+bin	0.001	1
+bin	0.0010500000000000002	1
+bin	0.0011	2
+bin	0.00115	1
+bin	0.0012000000000000001	0
+bin	0.00125	1
+bin	0.0013000000000000002	1
+bin	0.00135	1
+bin	0.0014	1
+bin	0.0014500000000000001	1
+bin	0.0015	1
+bin	0.0015500000000000002	1
+bin	0.0016	1
+bin	0.00165	2
+bin	0.0017000000000000001	2
+bin	0.00175	0
+bin	0.0018000000000000002	2
+bin	0.00185	1
+bin	0.0019	1
+bin	0.0019500000000000001	4
+bin	0.002	2
+bin	0.00205	1
+bin	0.0021000000000000003	1
+bin	0.00215	1
+bin	0.0022	3
+bin	0.0022500000000000003	0
+bin	0.0023	0
+bin	0.00235	0
+bin	0.0024000000000000002	2
+bin	0.00245	0
+bin	0.0025	0
+bin	0.00255	0
+bin	0.0026000000000000003	0
+bin	0.00265	0
+bin	0.0027	0
+bin	0.0027500000000000003	0
+bin	0.0028	0
+bin	0.00285	0
+bin	0.0029000000000000002	0
+bin	0.00295	0
 bin	0.003	0
-bin	0.004	0
-bin	0.005	0
-bin	0.006	0
-bin	0.007	0
-bin	0.008	0
-bin	0.009000000000000001	0
-bin	0.01	0
-bin	0.011	0
-bin	0.012	0
-bin	0.013000000000000001	0
-bin	0.014	0
-bin	0.015	0
-bin	0.016	0
-bin	0.017	0
-bin	0.018000000000000002	0
-bin	0.019	0
-bin	0.02	0
-bin	0.021	0
-bin	0.022	0
-bin	0.023	0
-bin	0.024	0
-bin	0.025	0
-bin	0.026000000000000002	0
-bin	0.027	0
-bin	0.028	0
-bin	0.029	0
-bin	0.03	0
-bin	0.031	0
-bin	0.032	0
-bin	0.033	0
-bin	0.034	0
-bin	0.035	0
-bin	0.036000000000000004	0
-bin	0.037	0
-bin	0.038	0
-bin	0.039	1
-bin	0.04	0
-bin	0.041	0
-bin	0.042	0
-bin	0.043000000000000003	0
-bin	0.044	0
-bin	0.045	0
-bin	0.046	0
-bin	0.047	0
-bin	0.048	0
-bin	0.049	0
+bin	0.00305	0
+bin	0.0031000000000000003	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue outgoingPacketLengths:histogram
-field count 63
+field count 60
 field mean 16528
 field stddev 0
 field min 16528
 field max 16528
-field sum 1041264
-field sqrsum 17210011392
+field sum 991680
+field sqrsum 16390487040
 bin	-inf	0
 bin	16527	0
-bin	16528	63
+bin	16528	60
 bin	16529	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue flowQueueingTime:histogram
 field count 0
@@ -1840,54 +1860,54 @@ bin	16527	0
 bin	16528	20000
 bin	16529	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].inProgressFrames queueingTime:histogram
-field count 630
-field mean 0.019996649206349207
-field stddev 0.010635468125436576
-field min 0.002383
-field max 0.040348
-field sum 12.597889
-field sqrsum 0.323063758707
+field count 600
+field mean 0.019438433333333335
+field stddev 0.010384475380446559
+field min 0.002503
+field max 0.040327999999999996
+field sum 11.66306
+field sqrsum 0.2913061743
 bin	-inf	0
 bin	0	0
 bin	0.001	0
 bin	0.002	16
 bin	0.003	43
-bin	0.004	4
-bin	0.005	2
-bin	0.006	25
-bin	0.007	33
-bin	0.008	3
-bin	0.009000000000000001	6
-bin	0.01	30
-bin	0.011	22
-bin	0.012	5
-bin	0.013000000000000001	17
-bin	0.014	24
-bin	0.015	17
-bin	0.016	14
-bin	0.017	23
-bin	0.018000000000000002	15
-bin	0.019	15
-bin	0.02	17
-bin	0.021	21
-bin	0.022	13
-bin	0.023	14
-bin	0.024	24
+bin	0.004	1
+bin	0.005	5
+bin	0.006	29
+bin	0.007	24
+bin	0.008	5
+bin	0.009000000000000001	18
+bin	0.01	25
+bin	0.011	15
+bin	0.012	8
+bin	0.013000000000000001	22
+bin	0.014	16
+bin	0.015	16
+bin	0.016	16
+bin	0.017	19
+bin	0.018000000000000002	12
+bin	0.019	16
+bin	0.02	24
+bin	0.021	10
+bin	0.022	17
+bin	0.023	15
+bin	0.024	23
 bin	0.025	15
-bin	0.026000000000000002	12
-bin	0.027	22
-bin	0.028	22
-bin	0.029	12
-bin	0.03	17
-bin	0.031	22
-bin	0.032	15
-bin	0.033	12
-bin	0.034	25
-bin	0.035	18
-bin	0.036000000000000004	12
-bin	0.037	10
-bin	0.038	9
-bin	0.039	3
+bin	0.026000000000000002	16
+bin	0.027	15
+bin	0.028	18
+bin	0.029	17
+bin	0.03	16
+bin	0.031	19
+bin	0.032	16
+bin	0.033	19
+bin	0.034	21
+bin	0.035	13
+bin	0.036000000000000004	13
+bin	0.037	5
+bin	0.038	0
+bin	0.039	1
 bin	0.04	1
 bin	0.041	0
 bin	0.042	0
@@ -1898,16 +1918,17 @@ bin	0.046	0
 bin	0.047	0
 bin	0.048	0
 bin	0.049	0
+bin	0.05	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopDuration:histogram
-field count 4410
+field count 4200
 field mean 0.0001634
-field stddev 1.6801905085905112e-05
+field stddev 1.6802000357213678e-05
 field min 0.000113
 field max 0.000169
-field sum 0.720594
-field sqrsum 0.00011898973799999999
+field sum 0.68628
+field sqrsum 0.00011332355999999998
 bin	-inf	0
-bin	0	4410
+bin	0	4200
 bin	0.01	0
 bin	0.02	0
 bin	0.03	0
@@ -1960,73 +1981,73 @@ bin	0.49	0
 bin	0.5	0
 bin	0.51	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram
-field count 3570
-field mean 5.025084763702409
-field stddev 2.889256807903667
-field min 0.035758
-field max 9.998785
-field sum 17939.5526064176
-field sqrsum 119941.08816544806
+field count 3655
+field mean 4.979303412043915
+field stddev 2.872193378587012
+field min 0.030698
+field max 9.999007
+field sum 18199.35397102051
+field sqrsum 120763.75933871004
 bin	-inf	0
-bin	0	61
-bin	0.2	59
-bin	0.4	74
-bin	0.6000000000000001	60
-bin	0.8	76
-bin	1	91
-bin	1.2000000000000002	75
-bin	1.4000000000000001	76
-bin	1.6	53
-bin	1.8	57
-bin	2	66
-bin	2.2	74
-bin	2.4000000000000004	92
-bin	2.6	87
-bin	2.8000000000000003	49
-bin	3	77
-bin	3.2	94
-bin	3.4000000000000004	62
-bin	3.5999999999999996	88
-bin	3.799999999999999	61
-bin	3.9999999999999982	92
-bin	4.1999999999999975	76
-bin	4.399999999999997	91
-bin	4.599999999999996	59
-bin	4.799999999999995	72
-bin	4.999999999999995	60
-bin	5.199999999999994	26
-bin	5.399999999999993	92
-bin	5.5999999999999925	51
-bin	5.799999999999992	71
-bin	5.999999999999991	76
-bin	6.19999999999999	58
-bin	6.39999999999999	93
-bin	6.599999999999989	72
-bin	6.799999999999988	68
-bin	6.999999999999988	73
-bin	7.199999999999987	55
-bin	7.399999999999986	94
-bin	7.599999999999985	69
-bin	7.799999999999985	48
-bin	7.999999999999984	77
-bin	8.199999999999983	62
-bin	8.399999999999983	75
-bin	8.599999999999982	76
-bin	8.799999999999981	78
-bin	8.99999999999998	73
-bin	9.19999999999998	76
-bin	9.399999999999979	74
-bin	9.599999999999978	58
-bin	9.799999999999978	93
+bin	0	64
+bin	0.2	45
+bin	0.4	77
+bin	0.6000000000000001	80
+bin	0.8	78
+bin	1	78
+bin	1.2000000000000002	78
+bin	1.4000000000000001	95
+bin	1.6	62
+bin	1.8	62
+bin	2	78
+bin	2.2	97
+bin	2.4000000000000004	78
+bin	2.6	69
+bin	2.8000000000000003	73
+bin	3	95
+bin	3.2	79
+bin	3.4	63
+bin	3.599999999999999	61
+bin	3.7999999999999985	79
+bin	3.999999999999998	77
+bin	4.1999999999999975	93
+bin	4.399999999999997	81
+bin	4.599999999999996	32
+bin	4.799999999999995	55
+bin	4.999999999999995	48
+bin	5.199999999999994	61
+bin	5.399999999999993	79
+bin	5.5999999999999925	95
+bin	5.799999999999992	66
+bin	5.999999999999991	90
+bin	6.19999999999999	61
+bin	6.39999999999999	95
+bin	6.599999999999989	77
+bin	6.799999999999988	78
+bin	6.999999999999988	78
+bin	7.199999999999987	62
+bin	7.399999999999986	80
+bin	7.599999999999985	74
+bin	7.799999999999985	45
+bin	7.999999999999984	61
+bin	8.199999999999983	80
+bin	8.399999999999983	81
+bin	8.599999999999982	92
+bin	8.799999999999981	74
+bin	8.99999999999998	67
+bin	9.19999999999998	97
+bin	9.399999999999979	62
+bin	9.599999999999978	92
+bin	9.799999999999978	31
 bin	9.999999999999977	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram
-field count 3570
-field mean 272.4235294117647
-field stddev 3.160399739631291
+field count 3655
+field mean 272.3939808481532
+field stddev 3.050059784723164
 field min 272
 field max 296
-field sum 972552
-field sqrsum 264981696
+field sum 995600
+field sqrsum 271229440
 bin	-inf	0
 bin	266	0
 bin	267	0
@@ -2034,7 +2055,7 @@ bin	268	0
 bin	269	0
 bin	270	0
 bin	271	0
-bin	272	3507
+bin	272	3595
 bin	273	0
 bin	274	0
 bin	275	0
@@ -2058,7 +2079,7 @@ bin	292	0
 bin	293	0
 bin	294	0
 bin	295	0
-bin	296	63
+bin	296	60
 bin	297	0
 bin	298	0
 bin	299	0
@@ -2077,13 +2098,13 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram
-field count 3570
-field mean 272.4235294117647
-field stddev 3.160399739631291
+field count 3655
+field mean 272.3939808481532
+field stddev 3.050059784723164
 field min 272
 field max 296
-field sum 972552
-field sqrsum 264981696
+field sum 995600
+field sqrsum 271229440
 bin	-inf	0
 bin	266	0
 bin	267	0
@@ -2091,7 +2112,7 @@ bin	268	0
 bin	269	0
 bin	270	0
 bin	271	0
-bin	272	3507
+bin	272	3595
 bin	273	0
 bin	274	0
 bin	275	0
@@ -2115,7 +2136,7 @@ bin	292	0
 bin	293	0
 bin	294	0
 bin	295	0
-bin	296	63
+bin	296	60
 bin	297	0
 bin	298	0
 bin	299	0
@@ -2123,81 +2144,113 @@ bin	300	0
 bin	301	0
 bin	302	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram
-field count 3569
-field mean 0.0018634337931655927
-field stddev 0.0002742339357759171
+field count 3654
+field mean 0.0018085762465506294
+field stddev 0.00027377983505998826
 field min 8.7397088e-05
-field max 0.004497397088
-field sum 6.650595207808
-field sqrsum 0.012661272624357718
+field max 0.004257397088
+field sum 6.608537604896
+field sqrsum 0.012225856205857732
 bin	-inf	0
-bin	7.999999999999999e-05	12
-bin	0.00015999999999999999	0
-bin	0.00023999999999999998	3
-bin	0.0003200000000000001	0
-bin	0.0004000000000000001	4
-bin	0.00048000000000000007	2
-bin	0.0005600000000000001	2
-bin	0.00064	1
-bin	0.00072	2
-bin	0.0008000000000000001	1
-bin	0.0008800000000000001	0
-bin	0.0009600000000000001	2
-bin	0.0010400000000000001	0
-bin	0.0011200000000000001	4
-bin	0.0012000000000000001	7
-bin	0.00128	27
-bin	0.00136	68
-bin	0.00144	135
-bin	0.00152	200
-bin	0.0016	303
-bin	0.00168	429
-bin	0.0017600000000000003	452
-bin	0.00184	479
-bin	0.0019200000000000003	438
-bin	0.002	374
-bin	0.0020800000000000003	259
-bin	0.0021600000000000005	174
-bin	0.0022400000000000002	110
-bin	0.00232	52
-bin	0.0024000000000000002	20
-bin	0.0024800000000000004	5
-bin	0.0025600000000000006	0
-bin	0.0026400000000000004	0
-bin	0.0027200000000000006	0
-bin	0.0028000000000000004	0
-bin	0.0028800000000000006	0
-bin	0.0029600000000000004	0
-bin	0.0030400000000000006	0
-bin	0.0031200000000000004	0
-bin	0.0032000000000000006	0
-bin	0.0032800000000000004	0
-bin	0.0033600000000000006	0
-bin	0.0034400000000000003	0
-bin	0.0035200000000000006	0
-bin	0.0036000000000000008	0
-bin	0.0036800000000000005	1
-bin	0.0037600000000000003	1
-bin	0.0038400000000000005	0
-bin	0.003920000000000001	0
-bin	0.004	1
-bin	0.00408	0
-bin	0.0041600000000000005	0
-bin	0.004240000000000001	0
-bin	0.00432	0
+bin	0	0
+bin	5e-05	12
+bin	1e-04	0
+bin	0.00015000000000000001	0
+bin	2e-04	0
+bin	0.00025	2
+bin	0.00030000000000000003	2
+bin	0.00035	4
+bin	4e-04	1
+bin	0.00045000000000000004	1
+bin	5e-04	2
+bin	0.00055	0
+bin	0.0006000000000000001	3
+bin	0.0006500000000000001	2
+bin	7e-04	2
+bin	0.00075	0
+bin	8e-04	0
+bin	0.0008500000000000001	1
+bin	0.0009000000000000001	1
+bin	0.00095	0
+bin	0.001	2
+bin	0.0010500000000000002	3
+bin	0.0011	0
+bin	0.00115	5
+bin	0.0012000000000000001	6
+bin	0.00125	16
+bin	0.0013000000000000002	25
+bin	0.00135	64
+bin	0.0014	52
+bin	0.0014500000000000001	144
+bin	0.0015	109
+bin	0.0015500000000000002	188
+bin	0.0016	179
+bin	0.00165	346
+bin	0.0017000000000000001	227
+bin	0.00175	389
+bin	0.0018000000000000002	241
+bin	0.00185	370
+bin	0.0019	233
+bin	0.0019500000000000001	281
+bin	0.002	185
+bin	0.00205	191
+bin	0.0021000000000000003	118
+bin	0.00215	110
+bin	0.0022	45
+bin	0.0022500000000000003	43
+bin	0.0023	19
+bin	0.00235	18
+bin	0.0024000000000000002	4
+bin	0.00245	2
+bin	0.0025	0
+bin	0.00255	0
+bin	0.0026000000000000003	0
+bin	0.00265	0
+bin	0.0027	0
+bin	0.0027500000000000003	0
+bin	0.0028	0
+bin	0.00285	0
+bin	0.0029000000000000002	0
+bin	0.00295	0
+bin	0.003	0
+bin	0.00305	0
+bin	0.0031000000000000003	0
+bin	0.00315	0
+bin	0.0032	0
+bin	0.0032500000000000003	0
+bin	0.0033	0
+bin	0.00335	0
+bin	0.0034000000000000002	0
+bin	0.0034500000000000004	0
+bin	0.0035	1
+bin	0.00355	1
+bin	0.0036000000000000003	0
+bin	0.00365	0
+bin	0.0037	1
+bin	0.0037500000000000003	0
+bin	0.0038	0
+bin	0.00385	1
+bin	0.0039000000000000003	0
+bin	0.00395	0
+bin	0.004	0
+bin	0.00405	0
+bin	0.0041	1
+bin	0.00415	0
+bin	0.004200000000000001	0
+bin	0.00425	1
+bin	0.0043	0
+bin	0.004350000000000001	0
 bin	0.0044	0
-bin	0.0044800000000000005	1
-bin	0.004560000000000001	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram
-field count 24806
-field mean 9.697599852680802e-05
-field stddev 4.794968538306479e-07
+field count 25385
+field mean 9.697692426109907e-05
+field stddev 4.701813575443848e-07
 field min 8.7397088e-05
 field max 9.7e-05
-field sum 2.405586619456
-field sqrsum 0.00023328986756143455
+field sum 2.461759222368
+field sqrsum 0.00023873944931044366
 bin	-inf	0
-bin	0	24806
+bin	0	25385
 bin	0.01	0
 bin	0.02	0
 bin	0.03	0
@@ -2250,15 +2303,15 @@ bin	0.49	0
 bin	0.5	0
 bin	0.51	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceDuration:histogram
-field count 29216
-field mean 0.00010700234869441402
-field stddev 2.4663358531164732e-05
+field count 29585
+field mean 0.00010640659869420314
+field stddev 2.4035521575395808e-05
 field min 8.7397088e-05
 field max 0.000169
-field sum 3.126180619456
-field sqrsum 0.00035227960556143454
+field sum 3.148039222368
+field sqrsum 0.00035206300931044364
 bin	-inf	0
-bin	0	29216
+bin	0	29585
 bin	0.01	0
 bin	0.02	0
 bin	0.03	0
@@ -2311,16 +2364,16 @@ bin	0.49	0
 bin	0.5	0
 bin	0.51	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].mac.hcf frameSequenceNumPackets:histogram
-field count 29216
+field count 29585
 field mean 2
 field stddev 0
 field min 2
 field max 2
-field sum 58432
-field sqrsum 116864
+field sum 59170
+field sqrsum 118340
 bin	-inf	0
 bin	1	0
-bin	2	29216
+bin	2	29585
 bin	3	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:histogram
 field count 1
@@ -2383,13 +2436,13 @@ bin	0.45999999999999996	0
 bin	0.48	0
 bin	0.5	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:histogram
-field count 508
+field count 537
 field mean 13.38410401384434
 field stddev 0
 field min 13.38410401384434
 field max 13.38410401384434
-field sum 6799.124839032925
-field sqrsum 91000.19404872932
+field sum 7187.26385543441
+field sqrsum 96195.08701607803
 bin	-inf	0
 bin	12.88	0
 bin	12.9	0
@@ -2416,7 +2469,7 @@ bin	13.3	0
 bin	13.32	0
 bin	13.340000000000002	0
 bin	13.360000000000001	0
-bin	13.38	508
+bin	13.38	537
 bin	13.4	0
 bin	13.420000000000002	0
 bin	13.440000000000001	0
@@ -2444,13 +2497,13 @@ bin	13.860000000000001	0
 bin	13.88	0
 bin	13.9	0
 statistic FragmentationShowcase.wifiHost1.wlan[0].radio packetErrorRate:histogram
-field count 508
-field mean 0.8700618789099785
-field stddev 0.03233984958294084
+field count 537
+field mean 0.8742428010923022
+field stddev 0.03809954291216622
 field min 0.8606165477702739
 field max 0.9805722532445237
-field sum 441.9914344862691
-field sqrsum 385.09015194786093
+field sum 469.4683841865663
+field sqrsum 411.207399506723
 bin	-inf	0
 bin	0.8300000000000001	0
 bin	0.8320000000000001	0
@@ -2467,7 +2520,7 @@ bin	0.8520000000000001	0
 bin	0.8540000000000001	0
 bin	0.8560000000000001	0
 bin	0.8580000000000001	0
-bin	0.8600000000000001	468
+bin	0.8600000000000001	476
 bin	0.8620000000000001	0
 bin	0.8640000000000001	0
 bin	0.8660000000000001	0
@@ -2527,7 +2580,7 @@ bin	0.9720000000000001	0
 bin	0.9740000000000001	0
 bin	0.9760000000000001	0
 bin	0.9780000000000001	0
-bin	0.9800000000000001	40
+bin	0.9800000000000001	61
 bin	0.9820000000000001	0
 bin	0.9840000000000001	0
 bin	0.9860000000000001	0
@@ -2842,15 +2895,15 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueingTime:histogram
-field count 7
-field mean 5.093609238489143
-field stddev 2.8474131259771807
-field min 0.770466095632
-field max 9.783777095631999
-field sum 35.655264669424
-field sqrsum 230.26055458087646
+field count 9
+field mean 5.753258607066666
+field stddev 3.6071537679340953
+field min 0.18650009563199998
+field max 9.872836095632
+field sum 51.7793274636
+field sqrsum 401.9923278422492
 bin	-inf	0
-bin	0	0
+bin	0	1
 bin	0.2	0
 bin	0.4	0
 bin	0.6000000000000001	1
@@ -2864,7 +2917,7 @@ bin	2	0
 bin	2.2	0
 bin	2.4000000000000004	0
 bin	2.6	0
-bin	2.8000000000000003	1
+bin	2.8000000000000003	0
 bin	3	0
 bin	3.2	0
 bin	3.4000000000000004	0
@@ -2873,33 +2926,33 @@ bin	3.8000000000000003	0
 bin	4	0
 bin	4.2	0
 bin	4.4	0
-bin	4.6000000000000005	0
+bin	4.6000000000000005	1
 bin	4.800000000000001	1
-bin	5	0
-bin	5.2	2
+bin	5	1
+bin	5.2	0
 bin	5.4	0
 bin	5.6000000000000005	0
 bin	5.800000000000001	0
 bin	6	0
 bin	6.2	0
 bin	6.4	0
-bin	6.6000000000000005	1
+bin	6.6000000000000005	0
 bin	6.800000000000001	0
 bin	7	0
 bin	7.2	0
 bin	7.4	0
-bin	7.6000000000000005	0
+bin	7.6000000000000005	1
 bin	7.800000000000001	0
 bin	8	0
 bin	8.200000000000001	0
 bin	8.4	0
 bin	8.6	0
 bin	8.8	0
-bin	9	0
+bin	9	1
 bin	9.200000000000001	0
-bin	9.4	0
-bin	9.600000000000001	1
-bin	9.8	0
+bin	9.4	1
+bin	9.600000000000001	0
+bin	9.8	1
 bin	10	0
 bin	10.200000000000001	0
 bin	10.4	0
@@ -2912,17 +2965,18 @@ bin	11.600000000000001	0
 bin	11.8	0
 bin	12	0
 bin	12.200000000000001	0
+bin	12.4	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue outgoingPacketLengths:histogram
-field count 7
+field count 9
 field mean 296
 field stddev 0
 field min 296
 field max 296
-field sum 2072
-field sqrsum 613312
+field sum 2664
+field sqrsum 788544
 bin	-inf	0
 bin	295	0
-bin	296	7
+bin	296	9
 bin	297	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue flowQueueingTime:histogram
 field count 0
@@ -2936,25 +2990,25 @@ bin	-inf	0
 bin	0	0
 bin	1	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue incomingPacketLengths:histogram
-field count 7
+field count 9
 field mean 296
 field stddev 0
 field min 296
 field max 296
-field sum 2072
-field sqrsum 613312
+field sum 2664
+field sqrsum 788544
 bin	-inf	0
 bin	295	0
-bin	296	7
+bin	296	9
 bin	297	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].inProgressFrames queueingTime:histogram
-field count 7
-field mean 0.003959886546285715
-field stddev 0.005288881847382228
-field min 0.0017389999999999999
-field max 0.015942602912
-field sum 0.027719205824
-field sqrsum 0.00027759853738959777
+field count 9
+field mean 0.003234733656888889
+field stddev 0.004273773523352855
+field min 0.001479
+field max 0.014620602912
+field sum 0.029112602912
+field sqrsum 0.00024029263751038286
 bin	-inf	0
 bin	0	0
 bin	2e-04	0
@@ -2963,12 +3017,12 @@ bin	0.0006000000000000001	0
 bin	8e-04	0
 bin	0.001	0
 bin	0.0012000000000000001	0
-bin	0.0014	0
+bin	0.0014	1
 bin	0.0016	2
-bin	0.0018000000000000002	3
-bin	0.002	0
+bin	0.0018000000000000002	4
+bin	0.002	1
 bin	0.0022	0
-bin	0.0024000000000000002	1
+bin	0.0024000000000000002	0
 bin	0.0026000000000000003	0
 bin	0.0028	0
 bin	0.003	0
@@ -3029,13 +3083,13 @@ bin	0.013800000000000002	0
 bin	0.014	0
 bin	0.0142	0
 bin	0.014400000000000001	0
-bin	0.0146	0
+bin	0.0146	1
 bin	0.0148	0
 bin	0.015000000000000001	0
 bin	0.0152	0
 bin	0.0154	0
 bin	0.015600000000000001	0
-bin	0.0158	1
+bin	0.0158	0
 bin	0.016	0
 bin	0.0162	0
 bin	0.0164	0
@@ -3047,95 +3101,77 @@ bin	0.017400000000000002	0
 bin	0.0176	0
 bin	0.0178	0
 bin	0.018000000000000002	0
-bin	0.0182	0
-bin	0.0184	0
-bin	0.018600000000000002	0
-bin	0.0188	0
-bin	0.019	0
-bin	0.019200000000000002	0
-bin	0.0194	0
-bin	0.0196	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopDuration:histogram
-field count 44
-field mean 9.479545454545456e-05
-field stddev 1.4623300212021503e-05
-field min 0
-field max 9.7e-05
-field sum 0.004171
-field sqrsum 4.04587e-07
-bin	-inf	0
-bin	0	1
-bin	2.0000000000000003e-06	0
-bin	4.000000000000001e-06	0
-bin	6.000000000000001e-06	0
-bin	8.000000000000001e-06	0
-bin	1.0000000000000003e-05	0
-bin	1.2000000000000002e-05	0
-bin	1.4000000000000001e-05	0
-bin	1.6000000000000003e-05	0
-bin	1.8000000000000004e-05	0
-bin	2.0000000000000005e-05	0
-bin	2.2000000000000003e-05	0
-bin	2.4000000000000004e-05	0
-bin	2.6000000000000005e-05	0
-bin	2.8000000000000003e-05	0
-bin	3.0000000000000004e-05	0
-bin	3.2000000000000005e-05	0
-bin	3.4000000000000007e-05	0
-bin	3.600000000000001e-05	0
-bin	3.800000000000001e-05	0
-bin	4.000000000000001e-05	0
-bin	4.2000000000000004e-05	0
-bin	4.4000000000000006e-05	0
-bin	4.600000000000001e-05	0
-bin	4.800000000000001e-05	0
-bin	5.000000000000001e-05	0
-bin	5.200000000000001e-05	0
-bin	5.400000000000001e-05	0
-bin	5.6000000000000006e-05	0
-bin	5.800000000000001e-05	0
-bin	6.000000000000001e-05	0
-bin	6.200000000000002e-05	0
-bin	6.400000000000001e-05	0
-bin	6.6e-05	0
-bin	6.800000000000001e-05	0
-bin	7.000000000000001e-05	0
-bin	7.200000000000002e-05	0
-bin	7.400000000000001e-05	0
-bin	7.600000000000002e-05	0
-bin	7.800000000000001e-05	0
-bin	8.000000000000002e-05	0
-bin	8.200000000000001e-05	0
-bin	8.400000000000001e-05	0
-bin	8.600000000000002e-05	0
-bin	8.800000000000001e-05	0
-bin	9.000000000000002e-05	0
-bin	9.200000000000001e-05	0
-bin	9.400000000000002e-05	0
-bin	9.600000000000002e-05	43
-bin	9.800000000000001e-05	0
-bin	0.00010000000000000002	0
-bin	0.00010200000000000001	0
-bin	0.00010400000000000002	0
-bin	0.00010600000000000002	0
-bin	0.00010800000000000002	0
-bin	0.00011000000000000002	0
-bin	0.00011200000000000001	0
-bin	0.00011400000000000002	0
-bin	0.00011600000000000001	0
-bin	0.00011800000000000002	0
-bin	0.00012000000000000002	0
-bin	0.00012200000000000002	0
-statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram
-field count 43
+field count 63
 field mean 9.7e-05
 field stddev 0
 field min 9.7e-05
 field max 9.7e-05
-field sum 0.004171
-field sqrsum 4.04587e-07
+field sum 0.006111
+field sqrsum 5.92767e-07
 bin	-inf	0
-bin	0	43
+bin	0	63
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35000000000000003	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41000000000000003	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47000000000000003	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceDuration:histogram
+field count 63
+field mean 9.7e-05
+field stddev 0
+field min 9.7e-05
+field max 9.7e-05
+field sum 0.006111
+field sqrsum 5.92767e-07
+bin	-inf	0
+bin	0	63
 bin	0.01	0
 bin	0.02	0
 bin	0.03	0
@@ -3188,16 +3224,16 @@ bin	0.49	0
 bin	0.5	0
 bin	0.51	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].mac.hcf frameSequenceNumPackets:histogram
-field count 43
+field count 63
 field mean 2
 field stddev 0
 field min 2
 field max 2
-field sum 86
-field sqrsum 172
+field sum 126
+field sqrsum 252
 bin	-inf	0
 bin	1	0
-bin	2	43
+bin	2	63
 bin	3	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:histogram
 field count 1
@@ -3260,13 +3296,13 @@ bin	0.45999999999999996	0
 bin	0.48	0
 bin	0.5	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:histogram
-field count 29214
+field count 29583
 field mean 13.38410401384434
 field stddev 0
 field min 13.38410401384434
 field max 13.38410401384434
-field sum 391003.21466044855
-field sqrsum 5233227.694762949
+field sum 395941.9490415571
+field sqrsum 5299328.229416455
 bin	-inf	0
 bin	12.88	0
 bin	12.9	0
@@ -3293,7 +3329,7 @@ bin	13.3	0
 bin	13.32	0
 bin	13.340000000000002	0
 bin	13.360000000000001	0
-bin	13.38	29214
+bin	13.38	29583
 bin	13.4	0
 bin	13.420000000000002	0
 bin	13.440000000000001	0
@@ -3321,13 +3357,13 @@ bin	13.860000000000001	0
 bin	13.88	0
 bin	13.9	0
 statistic FragmentationShowcase.wifiHost2.wlan[0].radio packetErrorRate:histogram
-field count 29214
-field mean 0.9834992715163059
-field stddev 0.006941976748495793
+field count 29583
+field mean 0.9833251184451568
+field stddev 0.0067678035848207545
 field min 0.9805722532445237
 field max 0.9999999996142345
-field sum 28731.94771807736
-field sqrsum 28259.257454859566
+field sum 29089.706978963073
+field sqrsum 28605.994509861528
 bin	-inf	0
 bin	0.48	0
 bin	0.5	0
@@ -3354,7 +3390,7 @@ bin	0.8999999999999999	0
 bin	0.9199999999999999	0
 bin	0.94	0
 bin	0.96	0
-bin	0.98	29214
+bin	0.98	29583
 bin	1	0
 bin	1.02	0
 bin	1.04	0
@@ -3927,15 +3963,6 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].txopProcedu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopActive:vector:max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopActive:vector:starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopActive:vector:endtime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:sum 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:sumweights 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:mean nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:stddev nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:min inf
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:max -inf
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:starttime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sumweights 0
@@ -3999,6 +4026,15 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentT
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:vector(packetBytes):max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:vector(packetBytes):starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:vector(packetBytes):endtime nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:count 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:sum 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:sumweights 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:mean nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:stddev nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:min inf
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:max -inf
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:starttime nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:vector:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:vector:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:vector:sumweights 0
@@ -4152,15 +4188,6 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopActive:vector:max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopActive:vector:starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopActive:vector:endtime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:sum 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:sumweights 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:mean nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:stddev nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:min inf
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:max -inf
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:starttime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sumweights 0
@@ -4224,6 +4251,15 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentT
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:vector(packetBytes):max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:vector(packetBytes):starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:vector(packetBytes):endtime nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:count 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:sum 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:sumweights 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:mean nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:stddev nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:min inf
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:max -inf
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:starttime nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:vector:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:vector:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:vector:sumweights 0
@@ -4377,15 +4413,6 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopActive:vector:max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopActive:vector:starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopActive:vector:endtime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:sum 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:sumweights 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:mean nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:stddev nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:min inf
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:max -inf
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:starttime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sumweights 0
@@ -4449,6 +4476,15 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentT
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:vector(packetBytes):max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:vector(packetBytes):starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:vector(packetBytes):endtime nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:count 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:sum 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:sumweights 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:mean nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:stddev nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:min inf
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:max -inf
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:starttime nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:vector:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:vector:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:vector:sumweights 0
@@ -4602,15 +4638,6 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedu
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopActive:vector:max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopActive:vector:starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopActive:vector:endtime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:count 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:sum 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:sumweights 0
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:mean nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:stddev nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:min inf
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:max -inf
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:starttime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sumweights 0
@@ -4674,6 +4701,15 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentT
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:vector(packetBytes):max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:vector(packetBytes):starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:vector(packetBytes):endtime nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:count 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:sum 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:sumweights 0
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:mean nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:stddev nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:min inf
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:max -inf
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:starttime nan
+scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes):count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes):sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes):sumweights 0
@@ -5025,15 +5061,15 @@ scalar FragmentationShowcase.wifiHost1.wlan[0].radio transmissionState:vector:mi
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio transmissionState:vector:max -inf
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio transmissionState:vector:starttime nan
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio transmissionState:vector:endtime nan
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:count 508
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:sum 6799.124839032925
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:sumweights 508
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:count 537
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:sum 7187.26385543441
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:sumweights 537
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:mean 13.38410401384434
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:stddev 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:min 13.38410401384434
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:max 13.38410401384434
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:starttime 0.045741397088000006
-scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:endtime 9.967587397088002
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:starttime 0.06706939708800001
+scalar FragmentationShowcase.wifiHost1.wlan[0].radio minSnir:vector:endtime 9.991097397088001
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:vector:count 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:vector:sum 0
 scalar FragmentationShowcase.wifiHost1.wlan[0].radio radioChannel:vector:sumweights 0
@@ -5745,15 +5781,6 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].txopProcedu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopActive:vector:max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopActive:vector:starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].txopProcedure txopActive:vector:endtime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:sum 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:sumweights 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:mean nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:stddev nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:min inf
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:max -inf
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:starttime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].recoveryProcedure contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sumweights 0
@@ -5817,6 +5844,15 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentT
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:vector(packetBytes):max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:vector(packetBytes):starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] packetSentToPeerWithoutRetry:vector(packetBytes):endtime nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:count 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:sum 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:sumweights 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:mean nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:stddev nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:min inf
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:max -inf
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:starttime nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[0] contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:vector:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:vector:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].pendingQueue queueLength:vector:sumweights 0
@@ -5970,15 +6006,6 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].txopProcedu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopActive:vector:max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopActive:vector:starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].txopProcedure txopActive:vector:endtime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:sum 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:sumweights 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:mean nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:stddev nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:min inf
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:max -inf
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:starttime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].recoveryProcedure contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sumweights 0
@@ -6042,6 +6069,15 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentT
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:vector(packetBytes):max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:vector(packetBytes):starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] packetSentToPeerWithoutRetry:vector(packetBytes):endtime nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:count 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:sum 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:sumweights 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:mean nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:stddev nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:min inf
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:max -inf
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:starttime nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[1] contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:vector:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:vector:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].pendingQueue queueLength:vector:sumweights 0
@@ -6195,15 +6231,6 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopActive:vector:max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopActive:vector:starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].txopProcedure txopActive:vector:endtime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:sum 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:sumweights 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:mean nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:stddev nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:min inf
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:max -inf
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:starttime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].recoveryProcedure contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sumweights 0
@@ -6267,6 +6294,15 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentT
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:vector(packetBytes):max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:vector(packetBytes):starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] packetSentToPeerWithoutRetry:vector(packetBytes):endtime nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:count 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:sum 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:sumweights 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:mean nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:stddev nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:min inf
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:max -inf
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:starttime nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[2] contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:vector:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:vector:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].pendingQueue queueLength:vector:sumweights 0
@@ -6420,15 +6456,6 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedu
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopActive:vector:max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopActive:vector:starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].txopProcedure txopActive:vector:endtime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:count 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:sum 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:sumweights 0
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:mean nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:stddev nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:min inf
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:max -inf
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:starttime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].recoveryProcedure contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3].mgmtAndNonQoSRecoveryProcedure contentionWindowChanged:vector:sumweights 0
@@ -6492,6 +6519,15 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentT
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:vector(packetBytes):max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:vector(packetBytes):starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] packetSentToPeerWithoutRetry:vector(packetBytes):endtime nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:count 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:sum 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:sumweights 0
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:mean nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:stddev nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:min inf
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:max -inf
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:starttime nan
+scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.edca.edcaf[3] contentionWindowChanged:vector:endtime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes):count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes):sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].mac.hcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes):sumweights 0
@@ -6843,15 +6879,15 @@ scalar FragmentationShowcase.wifiHost2.wlan[0].radio transmissionState:vector:mi
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio transmissionState:vector:max -inf
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio transmissionState:vector:starttime nan
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio transmissionState:vector:endtime nan
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:count 29214
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:sum 391003.21466044855
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:sumweights 29214
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:count 29583
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:sum 395941.9490415571
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:sumweights 29583
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:mean 13.38410401384434
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:stddev 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:min 13.38410401384434
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:max 13.38410401384434
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:starttime 0.0006146985440000001
-scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:endtime 9.999962698544001
+scalar FragmentationShowcase.wifiHost2.wlan[0].radio minSnir:vector:endtime 9.999790698544002
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:vector:count 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:vector:sum 0
 scalar FragmentationShowcase.wifiHost2.wlan[0].radio radioChannel:vector:sumweights 0
